@@ -31,6 +31,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// ===  하이버네이트 공간 검색 특화 - 추가됨 ===
+	implementation 'org.hibernate:hibernate-spatial:6.6.1.Final'
 }
 
 tasks.named('test') {
