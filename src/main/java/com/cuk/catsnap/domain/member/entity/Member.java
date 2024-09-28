@@ -1,5 +1,8 @@
 package com.cuk.catsnap.domain.member.entity;
 
+import com.cuk.catsnap.domain.social.entity.PhotographerBlock;
+import com.cuk.catsnap.domain.social.entity.PhotographerSubscribe;
+import com.cuk.catsnap.domain.social.entity.PlaceSubscribe;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,6 +47,18 @@ public class Member {
     @Column(name="sns_connect_date")
     private LocalDateTime snsConnectDate;
 
+
+    // OneToMany
+
     @OneToMany(mappedBy = "member")
     private List<MemberAgree> memberAgrees;
+
+    @OneToMany(mappedBy = "member")
+    private List<PhotographerSubscribe> photographerSubscribeList;
+
+    @OneToMany(mappedBy = "member")
+    private List<PhotographerBlock> photographerBlockList;
+
+    @OneToMany(mappedBy = "member")
+    private List<PlaceSubscribe> placeSubscribeList;
 }
