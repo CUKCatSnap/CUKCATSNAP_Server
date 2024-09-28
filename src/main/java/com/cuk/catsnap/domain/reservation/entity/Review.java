@@ -32,8 +32,8 @@ public class Review {
     private Photographer photographer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="review_id")
-    private Review review;
+    @JoinColumn(name="reservation_id")
+    private Reservation reservation;
 
     @Column(name="place_score")
     private Integer placeScore;
