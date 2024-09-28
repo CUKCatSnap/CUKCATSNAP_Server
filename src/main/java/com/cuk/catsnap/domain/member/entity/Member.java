@@ -39,7 +39,7 @@ public class Member {
 
     @Column(name = "sns_type")
     @Enumerated(EnumType.STRING)
-    private SNSTYPE snstype;
+    private SnsType snstype;
 
     @Column(name="sns_id")
     private String snsId;
