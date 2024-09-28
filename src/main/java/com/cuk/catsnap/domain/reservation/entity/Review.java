@@ -32,7 +32,7 @@ public class Review {
     @JoinColumn(name="photographer_id")
     private Photographer photographer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="reservation_id")
     private Reservation reservation;
 

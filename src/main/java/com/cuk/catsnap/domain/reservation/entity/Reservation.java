@@ -57,5 +57,8 @@ public class Reservation {
     //OneToMany
 
     @OneToMany(mappedBy = "reservation")
-    private List<ReservationNotification> reservationNotifications;
+    private List<ReservationNotification> reservationNotificationList;
+
+    @OneToOne(mappedBy = "reservation")
+    private Review review;
 }
