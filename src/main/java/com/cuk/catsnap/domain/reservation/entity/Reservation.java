@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.reservation.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.domain.notification.entity.ReservationNotification;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="reservation")
@@ -51,4 +53,9 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private ReservationState reservationState;
 
+
+    //OneToMany
+
+    @OneToMany(mappedBy = "reservation")
+    private List<ReservationNotification> reservationNotifications;
 }

@@ -1,32 +1,27 @@
-package com.cuk.catsnap.domain.feed.entity;
+package com.cuk.catsnap.domain.notification.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
-import com.cuk.catsnap.domain.notification.entity.FeedLikeNotification;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name="feed_like")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="notification_type")
+@Table(name = "notification")
 @Getter
-@Builder
-@AllArgsConstructor
+@SuperBuilder
 @NoArgsConstructor
-public class FeedLike {
+@AllArgsConstructor
+public abstract class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="feed_like_id")
+    @Column(name = "notification_id")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="feed_id")
-    private Feed feed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
@@ -36,9 +31,6 @@ public class FeedLike {
     @JoinColumn(name="photographer_id")
     private Photographer photographer;
 
-
-    //OneToMany
-
-    @OneToMany(mappedBy = "feedLike")
-    private List<FeedLikeNotification> feedLikeNotifications;
+    private String title;
+    private String content;
 }

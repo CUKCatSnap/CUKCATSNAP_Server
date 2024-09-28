@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.feed.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.domain.notification.entity.FeedCommentNotification;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -44,4 +45,7 @@ public class FeedComment {
     //OneToMany
     @OneToMany(mappedBy = "parentComment")
     private List<FeedComment> children;
+
+    @OneToMany(mappedBy = "feedComment")
+    private List<FeedCommentNotification> feedCommentNotifications;
 }

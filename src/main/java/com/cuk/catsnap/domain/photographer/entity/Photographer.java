@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.photographer.entity;
 import com.cuk.catsnap.domain.feed.entity.Feed;
 import com.cuk.catsnap.domain.feed.entity.FeedComment;
 import com.cuk.catsnap.domain.feed.entity.FeedLike;
+import com.cuk.catsnap.domain.notification.entity.Notification;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.Review;
 import jakarta.persistence.*;
@@ -55,4 +56,7 @@ public class Photographer {
 
     @OneToMany(mappedBy = "photographer")
     private List<FeedComment> feedCommentList;
+
+    @OneToMany(mappedBy = "photographer")
+    private List<Notification> notificationList;
 }

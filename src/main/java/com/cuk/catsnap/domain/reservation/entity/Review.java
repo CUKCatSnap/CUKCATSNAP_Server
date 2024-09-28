@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.reservation.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.domain.notification.entity.PlaceSubscribeNotification;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -51,4 +52,7 @@ public class Review {
 
     @OneToMany(mappedBy = "review")
     private List<ReviewPhoto> reviewPhotoList;
+
+    @OneToMany(mappedBy = "review")
+    private List<PlaceSubscribeNotification> placeSubscribeNotificationList;
 }

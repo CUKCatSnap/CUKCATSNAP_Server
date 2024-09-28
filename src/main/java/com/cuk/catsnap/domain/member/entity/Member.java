@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.member.entity;
 import com.cuk.catsnap.domain.feed.entity.Feed;
 import com.cuk.catsnap.domain.feed.entity.FeedComment;
 import com.cuk.catsnap.domain.feed.entity.FeedLike;
+import com.cuk.catsnap.domain.notification.entity.Notification;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.Review;
 import com.cuk.catsnap.domain.reservation.entity.ReviewLike;
@@ -82,4 +83,7 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<FeedComment> feedCommentList;
+
+    @OneToMany(mappedBy = "member")
+    private List<Notification> notificationList;
 }
