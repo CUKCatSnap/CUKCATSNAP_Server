@@ -18,6 +18,7 @@ public class Photographer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="photographer_id")
     private Long id;
 
     private String identifier;
