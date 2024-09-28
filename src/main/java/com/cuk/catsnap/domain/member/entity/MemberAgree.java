@@ -1,4 +1,4 @@
-package com.cuk.catsnap.domain.user.entity;
+package com.cuk.catsnap.domain.member.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
