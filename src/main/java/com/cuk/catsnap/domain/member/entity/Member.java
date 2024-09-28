@@ -1,5 +1,8 @@
 package com.cuk.catsnap.domain.member.entity;
 
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.Review;
+import com.cuk.catsnap.domain.reservation.entity.ReviewLike;
 import com.cuk.catsnap.domain.social.entity.PhotographerBlock;
 import com.cuk.catsnap.domain.social.entity.PhotographerSubscribe;
 import com.cuk.catsnap.domain.social.entity.PlaceSubscribe;
@@ -61,4 +64,13 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<PlaceSubscribe> placeSubscribeList;
+
+    @OneToMany(mappedBy = "member")
+    private List<Reservation> ReservationList;
+
+    @OneToMany(mappedBy = "member")
+    private List<Review> reviewList;
+
+    @OneToMany(mappedBy = "member")
+    private List<ReviewLike> ReviewLikeList;
 }
