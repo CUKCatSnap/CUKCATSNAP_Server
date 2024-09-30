@@ -1,8 +1,10 @@
 package com.cuk.catsnap.global.result;
 
 import lombok.Builder;
+import lombok.Getter;
 
 @Builder
+@Getter
 public class ResultResponse<T> {
     private final int status;
     private final String code;
