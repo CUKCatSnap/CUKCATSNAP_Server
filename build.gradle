@@ -24,13 +24,15 @@ repositories {
 }
 
 dependencies {
-	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	//runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// ===  하이버네이트 공간 검색 특화 - 추가됨 ===
+	implementation 'org.hibernate:hibernate-spatial:6.6.1.Final'
 	// === spring docs 의존성 추가 ===
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 }
