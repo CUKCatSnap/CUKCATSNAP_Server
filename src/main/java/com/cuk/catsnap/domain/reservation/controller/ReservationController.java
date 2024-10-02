@@ -31,12 +31,23 @@ public class ReservationController {
             @Parameter(description="all : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) upcoming : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴) ")
             @RequestParam("type")
             String reservationQuery,
-            @Parameter(hidden = true)
             Pageable pageable){
         return null;
     }
-/*
-all, upcoming,
- */
+
+    @Operation(summary = "특정 월의 예약 유무를 일별로 조회", description = "특정 월의 예약 유무를 일별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
+    @GetMapping("/my/month")
+    public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
+            @Parameter(description = "조회하고 싶은 연도")
+            @RequestParam("year")
+            Integer year,
+
+            @Parameter(description = "조회하고 싶은 달")
+            @RequestParam("month")
+            Integer month
+    ){
+        return null;
+    }
+
 
 }

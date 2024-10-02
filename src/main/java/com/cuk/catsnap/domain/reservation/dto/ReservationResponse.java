@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -61,5 +62,21 @@ public class ReservationResponse {
         private String title;
         private String content;
         private long price;
+    }
+
+    @Getter
+    @Builder
+    public static class MonthReservationCheckList{
+        List<MonthReservationCheck> monthReservationCheckList;
+    }
+
+    @Getter
+    @Builder
+    public static class MonthReservationCheck{
+        @Schema(description = "질문한 달의 예약이 있는 날",example = "yyyy-MM-dd", type = "string")
+        @JsonFormat(pattern = "yyyy-MM-dd")
+        private LocalDate reservationDate;
+        @Schema(description = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED")
+        private ReservationState reservationState;
     }
 }
