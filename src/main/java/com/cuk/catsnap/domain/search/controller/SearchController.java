@@ -28,25 +28,24 @@ public class SearchController {
     public ResultResponse<PagedData<SearchResponse.PreviewFeedSearchList>> postPreviewFeedSearch(
             @Parameter(name="검색 파라미터", description = "검색 파라미터")
             @RequestBody
-            SearchRequest.FeedSearchParameter feedSearchParameter,
+            SearchRequest.SearchParameter searchParameter,
             Pageable pageable
-            ){
+            ) {
+        return null;
+    }
+
+    @Operation(summary = "리뷰를 상세검색 하는 API입니다.", description = "리뷰를 상세검색하는 API. 모든 리뷰 검색은 해당 API이용. 상세 검색으로 사용되는 파라미터가 아니라면 null로 처리하기")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SS001", description = "성공적으로 리뷰 검색을 완료하였습니다."),
+    })
+    @PostMapping("/review/preview")
+    public ResultResponse<PagedData<SearchResponse.PreviewReviewSearchList>> postPreviewReviewSearch(
+            @Parameter(name="검색 파라미터", description = "검색 파라미터")
+            @RequestBody
+            SearchRequest.SearchParameter searchParameter,
+            Pageable pageable
+            ) {
+
         return null;
     }
 }
-
-/*
-
-@Tag(name="피드를 검색하는 API입니다", description = "모든 피드 검색은 해당 api를 이용합니다. (자신의 피드 검색 제외)")
-@RestController
-@RequestMapping("/search/feed")
-public class FeedSearchController {
-
-    @Operation(summary = "피드를 상세검색 하는 API입니다.", description = "피드를 상세검색하는 API. 모든 피드 검색은 해당 API이용. 상세 검색으로 사용되는 파라미터가 아니라면 null로 처리하기")
-    @PostMapping("/preview")
-    public ResultResponse<PagedData<FeedSearchResponse.FeedPreviewSearchList>> postFeedPreview(){
-        return null;
-    }
-}
-
- */

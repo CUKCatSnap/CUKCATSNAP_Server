@@ -8,7 +8,7 @@ public class SearchRequest {
 
     @Getter
     @NoArgsConstructor
-    public static class FeedSearchParameter{
+    public static class SearchParameter {
         @Schema(description = "검색어")
         private String searchTerm;
         @Schema(description = "검색할 화면의 좌표값")
@@ -17,6 +17,8 @@ public class SearchRequest {
         private Long photographerId;
         @Schema(description = "내가 구독한 작가의 피드만을 보려면 true, 아니면 false")
         private Boolean isMySubscribePhotographer;
+        @Schema(description = "내가 구독한 장소의 피드만을 보려면 true, 아니면 false")
+        private Boolean isMySubscribePlace;
     }
 
     @Getter
