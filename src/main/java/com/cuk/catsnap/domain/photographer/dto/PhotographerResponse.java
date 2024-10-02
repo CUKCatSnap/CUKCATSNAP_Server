@@ -4,7 +4,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 public class PhotographerResponse {
+
+    @Getter
+    @Builder
+    public static class PhotographerTinyInformationList{
+        List<PhotographerTinyInformation> PhotographerTinyInformationList;
+    }
 
     @Getter
     @Builder
@@ -13,5 +21,7 @@ public class PhotographerResponse {
         private Long photographerId;
         private String nickname;
         private String profilePhotoUrl;
+        private Double photographerRating;
+        private Integer recentReservation;
     }
 }
