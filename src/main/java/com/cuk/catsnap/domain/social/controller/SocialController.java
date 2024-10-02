@@ -26,7 +26,6 @@ public class SocialController {
             @ApiResponse(responseCode = "200 SS000", description = "성공적으로 구독 목록을 조회했습니다."),
     })
     @GetMapping("/{type}/photographer")
-
     public ResultResponse<PagedData<PhotographerResponse.PhotographerTinyInformationList>> getSubscribePhotographerList(
             @Parameter(description = "구독한 작가를 조회 : subscribe , 차단한 작가 조회: block")
             @PathVariable
