@@ -79,4 +79,19 @@ public class ReservationResponse {
         @Schema(description = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED")
         private ReservationState reservationState;
     }
+
+    @Getter
+    @Builder
+    public static class DayReservationCheckList{
+        List<DayReservation> dayReservationList;
+    }
+
+    @Getter
+    @Builder
+    public static class DayReservation{
+        private Long reservationId;
+        private Time time;
+        private Long photographerId;
+        private String photographerNickname;
+    }
 }
