@@ -26,7 +26,7 @@ public class ReservationResponse {
     public static class MyReservation{
         @Schema(description = "예약 id", nullable = false)
         private long reservationId;
-        private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
+        private PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
         private Location location;
         private Time time;
         private Program program;
@@ -91,7 +91,6 @@ public class ReservationResponse {
     public static class DayReservation{
         private Long reservationId;
         private Time time;
-        private Long photographerId;
-        private String photographerNickname;
+        private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
     }
 }

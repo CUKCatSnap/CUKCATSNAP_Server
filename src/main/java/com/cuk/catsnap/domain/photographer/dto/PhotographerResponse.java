@@ -11,7 +11,7 @@ public class PhotographerResponse {
     @Getter
     @Builder
     public static class PhotographerTinyInformationList{
-        List<PhotographerTinyInformation> PhotographerTinyInformationList;
+        List<PhotographerFullyInformation> PhotographerTinyInformationList;
     }
 
     @Getter
@@ -21,7 +21,18 @@ public class PhotographerResponse {
         private Long photographerId;
         private String nickname;
         private String profilePhotoUrl;
+    }
+
+    @Getter
+    @Builder
+    @Schema(description = "작가의 Id와 닉네임", nullable = false)
+    public static class PhotographerFullyInformation {
+        private Long photographerId;
+        private String nickname;
+        private String profilePhotoUrl;
         private Double photographerRating;
         private Integer recentReservation;
     }
+
+
 }

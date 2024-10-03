@@ -18,7 +18,7 @@ public class SearchResponse {
     @Getter
     @Builder
     public static class PreviewFeedSearch {
-        public PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
+        public PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
         @Schema(description = "검색된 피드의 id")
         public Long feedId;
         @Schema(description = "검색에 보여줄 이미지 1장")
@@ -34,7 +34,7 @@ public class SearchResponse {
     @Getter
     @Builder
     public static class PreviewReviewSearch {
-        public PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
+        public PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
         @Schema(description = "검색된 리뷰의 id")
         public Long reviewId;
         @Schema(description = "검색에 보여줄 이미지 1장")
