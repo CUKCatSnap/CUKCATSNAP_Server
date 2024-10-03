@@ -21,7 +21,7 @@ import java.time.LocalDate;
 
 @Tag(name = "예약 관련 API", description = "사용자가 예약한 예약 조회, 새로운 예약하기, 특정 작가의 예약을 조회할 수 있는 API입니다.")
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping("/reservation")
 public class ReservationController {
 
     @Operation(summary = "예약을 조회하는 API", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
