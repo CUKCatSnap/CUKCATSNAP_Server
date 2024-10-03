@@ -1,5 +1,6 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
+import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.global.result.PagedData;
 import com.cuk.catsnap.global.result.ResultResponse;
@@ -12,10 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -102,6 +100,19 @@ public class ReservationController {
     public ResultResponse<ReservationResponse.PhotographerReservationGuidance> getPhotographerReservationGuidance(
             @RequestParam("photographerId")
             Long photographerId
+    ){
+        return null;
+    }
+
+    @Operation(summary = "새로운 예약을 생성하는 API", description = "새로운 예약을 만드는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SR004", description = "예약이 성공적으로 완료되었습니다.")
+    })
+    @PostMapping("/book")
+    public ResultResponse<ReservationResponse.ReservationBookResult> postBookReservation(
+            @Parameter(description = "새로운 예약 형식")
+            @RequestBody
+            ReservationRequest.ReservationBook reservationBook
     ){
         return null;
     }

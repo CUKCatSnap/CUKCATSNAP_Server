@@ -132,4 +132,12 @@ public class ReservationResponse {
         @Schema(description = "작가가 설정한 예약전 주의사항입니다.")
         private String photographerNotification;
     }
+
+    @Getter
+    @Builder
+    public static class ReservationBookResult {
+        private Long reservationId;
+        @Schema(description = "예약의 상태를 의미합니다. 작가의 설정에 따라 바로 완료 될 수도 있고, 완료 대기일 수도 있습니다. (PENDING, APPROVED)")
+        private ReservationState reservationState;
+    }
 }
