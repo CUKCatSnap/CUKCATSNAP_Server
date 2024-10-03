@@ -93,4 +93,42 @@ public class ReservationResponse {
         private Time time;
         private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
     }
+
+    @Getter
+    @Builder
+    public static class PhotographerAvailableReservationTimeList {
+        private List<PhotographerAvailableReservationTime> photographerAvailableReservationTimeList;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerAvailableReservationTime {
+        private Time time;
+        @Schema(description = "true이면 해당 시간에 예약이 가능함")
+        private Boolean isAvailableReservation;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerProgramList {
+        private List<PhotographerProgram> photographerProgramList;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerProgram{
+        private String programId;
+        private String title;
+        private String content;
+        private Long price;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerReservationGuidance{
+        @Schema(description = "작가가 설정한 예약 가능한 장소입니다. 주소 형태가 아니라 문자열 형태입니다.")
+        private String availablePlace;
+        @Schema(description = "작가가 설정한 예약전 주의사항입니다.")
+        private String photographerNotification;
+    }
 }

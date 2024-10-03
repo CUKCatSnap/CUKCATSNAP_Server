@@ -44,7 +44,7 @@ public class ReservationController {
     })
     @GetMapping("/my/month")
     public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
-            @Parameter(description = "조회하고 싶은 달")
+            @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
             @RequestParam("month")
             @DateTimeFormat(pattern = "yyyy-MM")
             LocalDate reservationMonth
@@ -58,6 +58,7 @@ public class ReservationController {
     })
     @GetMapping("/my/day")
     public ResultResponse<ReservationResponse.DayReservationCheckList> getMyDayReservation(
+            @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
             @RequestParam("day")
             @DateTimeFormat(pattern = "yyyy-MM-dd")
             LocalDate reservationDay
@@ -65,4 +66,43 @@ public class ReservationController {
         return null;
     }
 
+    @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회", description = "특정 작가의 특정 날짜에 예약 가능한 시간을 조회하는 API입니다. 특정 작가에게 예약을 할 때 조회되는 API")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
+    })
+    @GetMapping("/photographer/time")
+    public ResultResponse<ReservationResponse.PhotographerAvailableReservationTimeList> getPhotographerAvailableReservationTimeList(
+            @RequestParam("photographerId")
+            Long photographerId,
+            @Parameter(description = "예약을 하고 싶은 날", example = "yyyy-MM-dd")
+            @RequestParam("date")
+            @DateTimeFormat(pattern = "yyyy-MM-dd")
+            LocalDate date
+    ){
+        return null;
+    }
+
+    @Operation(summary = "특정 작가의 예약 가능한 프로그램 조회", description = "특정 작가의 예약 가능한 프로그램을 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SR002", description = "성공적으로 예약 가능한 프로그램을 조회했습니다.")
+    })
+    @GetMapping("/photographer/program")
+    public ResultResponse<ReservationResponse.PhotographerProgramList> getPhotographerProgram(
+            @RequestParam("photographerId")
+            Long photographerId
+    ){
+        return null;
+    }
+
+    @Operation(summary = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회", description = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SR003", description = "성공적으로 예약 주의사항과 예약 가능한 장소를 조회했습니다.")
+    })
+    @GetMapping("/photographer/notification")
+    public ResultResponse<ReservationResponse.PhotographerReservationGuidance> getPhotographerReservationGuidance(
+            @RequestParam("photographerId")
+            Long photographerId
+    ){
+        return null;
+    }
 }
