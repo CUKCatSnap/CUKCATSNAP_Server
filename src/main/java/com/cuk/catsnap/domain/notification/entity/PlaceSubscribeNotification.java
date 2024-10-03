@@ -1,6 +1,6 @@
 package com.cuk.catsnap.domain.notification.entity;
 
-import com.cuk.catsnap.domain.reservation.entity.Review;
+import com.cuk.catsnap.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

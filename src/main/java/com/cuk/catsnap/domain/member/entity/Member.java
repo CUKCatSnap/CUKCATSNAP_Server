@@ -1,12 +1,11 @@
 package com.cuk.catsnap.domain.member.entity;
 
-import com.cuk.catsnap.domain.feed.entity.Feed;
 import com.cuk.catsnap.domain.feed.entity.FeedComment;
 import com.cuk.catsnap.domain.feed.entity.FeedLike;
 import com.cuk.catsnap.domain.notification.entity.Notification;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
-import com.cuk.catsnap.domain.reservation.entity.Review;
-import com.cuk.catsnap.domain.reservation.entity.ReviewLike;
+import com.cuk.catsnap.domain.review.entity.Review;
+import com.cuk.catsnap.domain.review.entity.ReviewLike;
 import com.cuk.catsnap.domain.social.entity.PhotographerBlock;
 import com.cuk.catsnap.domain.social.entity.PhotographerSubscribe;
 import com.cuk.catsnap.domain.social.entity.PlaceSubscribe;

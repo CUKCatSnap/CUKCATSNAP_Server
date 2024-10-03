@@ -1,8 +1,9 @@
-package com.cuk.catsnap.domain.reservation.entity;
+package com.cuk.catsnap.domain.review.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.notification.entity.PlaceSubscribeNotification;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
