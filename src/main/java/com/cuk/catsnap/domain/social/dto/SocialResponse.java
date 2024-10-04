@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.social.dto;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class SocialResponse {
@@ -10,12 +11,14 @@ public class SocialResponse {
     @Getter
     @Builder
     public static class subscribePlaceList{
-        List<subscribePlace> subscribePlaceList;
+        private List<subscribePlace> subscribePlaceList;
     }
 
     @Getter
     @Builder
     public static class subscribePlace{
-        String keyword;
+        private Long placeSubscribeId;
+        private String keyword;
+        private LocalDateTime createdAt;
     }
 }
