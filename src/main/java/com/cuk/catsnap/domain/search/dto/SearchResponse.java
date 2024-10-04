@@ -134,6 +134,9 @@ public class SearchResponse {
         @Schema(description = "좋아요 수")
         private Long likeCount;
 
+        @Schema(description = "댓글 수")
+        private Long commentCount;
+
         @Schema(description = "내가 좋아요를 눌렀는지")
         private Boolean isMeLiked;
     }
