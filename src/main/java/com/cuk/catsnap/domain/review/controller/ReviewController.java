@@ -8,10 +8,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name="리뷰에 관한 API", description = "리뷰에 관한 API입니다.")
 @RestController
@@ -31,5 +28,16 @@ public class ReviewController {
         return null;
     }
 
-
+    @Operation(summary = "리뷰에 좋아요를 토글하는 API", description = "리뷰에 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SV001", description = "리뷰 좋아요를 토글했습니다.")
+    })
+    @PostMapping("/like/{reviewId}")
+    public ResultResponse<?> reviewLikeToggle(
+            @Parameter(description = "리뷰 id")
+            @RequestParam("reviewId")
+            Long reviewId
+    ){
+        return null;
+    }
 }
