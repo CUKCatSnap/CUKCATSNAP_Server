@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum FeedResultCode implements ResultCode {
     FEED_COMMENT_LOOK_UP(200, "SF000", "성공적으로 피드의 모든 댓글 조회를 완료하였습니다"),
-    POST_FEED_COMMENT(201, "SF001", "성공적으로 피드에 댓글을 작성하였습니다."),;
+    POST_FEED_COMMENT(201, "SF001", "성공적으로 피드에 댓글을 작성하였습니다."),
+    DELETE_FEED_COMMENT(200, "SF002", "성공적으로 피드의 댓글을 삭제하였습니다."),;
     private final int status;
     private final String code;
     private final String message;

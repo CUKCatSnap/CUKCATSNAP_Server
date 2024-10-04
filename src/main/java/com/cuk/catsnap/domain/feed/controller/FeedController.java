@@ -39,4 +39,17 @@ public class FeedController {
     ) {
         return null;
     }
+
+    @Operation(summary = "피드에 댓글을 삭제하는 API", description = "피드에 댓글을 삭제하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SF002", description = "성공적으로 피드의 댓글을 삭제하였습니다.")
+    })
+    @DeleteMapping("/comment/{feedCommentId}")
+    public ResultResponse<?> deleteFeedComment(
+            @Parameter(description = "feed comment id")
+            @PathVariable("feedCommentId")
+            Long feedCommentId
+    ) {
+        return null;
+    }
 }
