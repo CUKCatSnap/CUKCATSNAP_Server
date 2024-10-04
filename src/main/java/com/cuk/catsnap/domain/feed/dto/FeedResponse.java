@@ -26,6 +26,10 @@ public class FeedResponse {
         private UserInformation writerInformation;
         private String content;
         private Long likeCount;
+
+        @Schema(description = "로그인한 사용자가 해당 댓글에 좋아요를 눌렀는지 여부")
+        private Boolean isMeLiked;
+        
         private LocalDateTime createdAt;
     }
 
