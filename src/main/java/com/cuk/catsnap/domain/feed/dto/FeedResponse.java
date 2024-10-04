@@ -21,7 +21,7 @@ public class FeedResponse {
         private Long feedCommentId;
 
         @Schema(description = "해당 댓글이 대댓글이라면 부모의 댓글 id, 아니라면 null")
-        private Long parentFeedCommentId;
+        private Long parentCommentId;
 
         private UserInformation writerInformation;
         private String content;
@@ -29,7 +29,7 @@ public class FeedResponse {
 
         @Schema(description = "로그인한 사용자가 해당 댓글에 좋아요를 눌렀는지 여부")
         private Boolean isMeLiked;
-        
+
         private LocalDateTime createdAt;
     }
 
