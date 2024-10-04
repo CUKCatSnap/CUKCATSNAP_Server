@@ -64,8 +64,8 @@ public class SearchController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SS001", description = "성공적으로 리뷰 검색을 완료하였습니다."),
     })
-    @PostMapping("/review/preview")
-    public ResultResponse<PagedData<SearchResponse.PreviewReviewSearchList>> postDetailReviewSearch(
+    @PostMapping("/review/detail")
+    public ResultResponse<PagedData<SearchResponse.DetailReviewSearchList>> postDetailReviewSearch(
             @Parameter(name="검색 파라미터", description = "검색 파라미터")
             @RequestBody
             SearchRequest.SearchParameter searchParameter,

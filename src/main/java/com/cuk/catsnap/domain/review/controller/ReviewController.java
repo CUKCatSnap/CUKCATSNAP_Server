@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/review")
 public class ReviewController {
 
-    @Operation(summary = "새로운 예약을 만드는 API", description = "새로운 예약을 만드는 API. 응답으로  AWS S3에 사진을 업로드 할 수 있는 URL을 반환합니다.")
+    @Operation(summary = "리뷰를 작성하는 API", description = "리뷰를 작성하는 API. 응답으로  AWS S3에 사진을 업로드 할 수 있는 URL을 반환합니다.")
     @ApiResponses({
             @ApiResponse(responseCode = "201 SV000", description = "새로운 리뷰를 업로드 했습니다.")
     })
