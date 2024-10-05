@@ -6,6 +6,7 @@ import com.cuk.catsnap.domain.feed.entity.FeedLike;
 import com.cuk.catsnap.domain.notification.entity.Notification;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.review.entity.Review;
+import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +22,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Photographer {
+public class Photographer extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

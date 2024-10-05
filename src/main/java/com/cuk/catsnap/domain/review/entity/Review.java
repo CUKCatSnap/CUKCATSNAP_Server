@@ -4,6 +4,7 @@ import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.notification.entity.PlaceSubscribeNotification;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +19,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review {
+public class Review extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

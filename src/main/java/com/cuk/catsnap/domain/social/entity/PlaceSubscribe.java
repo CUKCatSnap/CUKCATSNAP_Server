@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.social.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlaceSubscribe {
+public class PlaceSubscribe extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

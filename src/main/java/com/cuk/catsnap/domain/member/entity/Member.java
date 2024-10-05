@@ -9,6 +9,7 @@ import com.cuk.catsnap.domain.review.entity.ReviewLike;
 import com.cuk.catsnap.domain.social.entity.PhotographerBlock;
 import com.cuk.catsnap.domain.social.entity.PhotographerSubscribe;
 import com.cuk.catsnap.domain.social.entity.PlaceSubscribe;
+import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +26,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

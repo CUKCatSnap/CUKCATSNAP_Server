@@ -2,6 +2,7 @@ package com.cuk.catsnap.domain.notification.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
+import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Notification {
+public abstract class Notification extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

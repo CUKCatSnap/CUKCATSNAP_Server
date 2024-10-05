@@ -1,5 +1,6 @@
 package com.cuk.catsnap.domain.member.entity;
 
+import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberAgree {
+public class MemberAgree extends BaseTimeEntity {
 
     @Id
     @Column(name = "user_agree_id")
