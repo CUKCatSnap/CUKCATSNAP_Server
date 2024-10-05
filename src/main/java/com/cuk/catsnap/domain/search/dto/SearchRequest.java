@@ -11,8 +11,8 @@ public class SearchRequest {
     public static class SearchParameter {
         @Schema(description = "검색어")
         private String searchTerm;
-        @Schema(description = "검색할 화면의 좌표값")
-        private GeoSearchParameter geoSearchParameter;
+        //@Schema(description = "검색할 화면의 좌표값")
+        //private GeoSearchParameter geoSearchParameter;
         @Schema(description = "작가의 id")
         private Long photographerId;
         @Schema(description = "내가 구독한 작가의 피드만을 보려면 true, 아니면 false")
