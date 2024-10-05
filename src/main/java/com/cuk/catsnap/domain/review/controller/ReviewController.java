@@ -2,6 +2,7 @@ package com.cuk.catsnap.domain.review.controller;
 
 import com.cuk.catsnap.domain.review.dto.ReviewRequest;
 import com.cuk.catsnap.domain.review.dto.ReviewResponse;
+import com.cuk.catsnap.domain.search.dto.SearchResponse;
 import com.cuk.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -36,6 +37,19 @@ public class ReviewController {
     public ResultResponse<?> reviewLikeToggle(
             @Parameter(description = "리뷰 id")
             @RequestParam("reviewId")
+            Long reviewId
+    ){
+        return null;
+    }
+
+    @Operation(summary = "리뷰 1개를 피드 Id로 조회하는 API", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SV002", description = "리뷰를 성공적으로 조회했습니다.")
+    })
+    @GetMapping("/{reviewId}")
+    public ResultResponse<SearchResponse.DetailReviewSearch> getReview(
+            @Parameter(description = "리뷰 id")
+            @PathVariable("reviewId")
             Long reviewId
     ){
         return null;

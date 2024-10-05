@@ -2,6 +2,7 @@ package com.cuk.catsnap.domain.feed.controller;
 
 import com.cuk.catsnap.domain.feed.dto.FeedRequest;
 import com.cuk.catsnap.domain.feed.dto.FeedResponse;
+import com.cuk.catsnap.domain.search.dto.SearchResponse;
 import com.cuk.catsnap.global.result.PagedData;
 import com.cuk.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -86,6 +87,18 @@ public class FeedController {
             @Parameter(description = "피드 작성 정보")
             @RequestBody
             FeedRequest.PostFeed postFeed
+    ) {
+        return null;
+    }
+
+    @Operation(summary = "피드 1개를 피드 Id로 조회하는 API", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SF006", description = "성공적으로 피드를 조회하였습니다.")
+    })
+    @GetMapping("/{feedId}")
+    public ResultResponse<SearchResponse.DetailFeedSearch> getFeed(
+            @PathVariable("feedId")
+            Long feedId
     ) {
         return null;
     }
