@@ -54,10 +54,10 @@ public class FeedController {
     }
 
     @Operation(summary = "피드 댓글의 좋아요를 토글하는 API", description = "피드 댓글의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
-    @PostMapping("/comment/like/{feedCommentId}")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SF003", description = "성공적으로 피드 댓글의 좋아요를 토글하였습니다.")
     })
+    @PostMapping("/comment/like/{feedCommentId}")
     public ResultResponse<?> feedCommentLikeToggle(
             @PathVariable("feedCommentId")
             Long feedCommentId
@@ -66,13 +66,26 @@ public class FeedController {
     }
 
     @Operation(summary = "피드에 좋아요를 토글하는 API", description = "피드의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
-    @PostMapping("/like/{feedId}")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SF004", description = "성공적으로 피드의 좋아요를 토글하였습니다.")
     })
+    @PostMapping("/like/{feedId}")
     public ResultResponse<?> feedLikeToggle(
             @PathVariable("feedId")
             Long feedId
+    ) {
+        return null;
+    }
+
+    @Operation(summary = "피드를 작성하는 API", description = "피드를 작성하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SF005", description = "성공적으로 피드를 작성하였습니다.")
+    })
+    @PostMapping
+    public ResultResponse<FeedResponse.FeedPhotoPresignedURL> postFeed(
+            @Parameter(description = "피드 작성 정보")
+            @RequestBody
+            FeedRequest.PostFeed postFeed
     ) {
         return null;
     }
