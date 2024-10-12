@@ -1,4 +1,4 @@
-package com.cuk.catsnap.global.result.code;
+package com.cuk.catsnap.global.result.errorcode;
 
 import com.cuk.catsnap.global.result.ResultCode;
 import lombok.Getter;
@@ -6,8 +6,9 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum PhotographerResultCode implements ResultCode {
-    PHOTOGRAPHER_SIGN_UP(201, "SP000", "사진작가 회원가입 성공"),;
+
+public enum PhotographerErrorCode implements ResultCode {
+    DUPLICATED_SIGNUP_ID(409,"EP000", "중복된 ID로 회원가입이 불가능 합니다.");
     private final int status;
     private final String code;
     private final String message;

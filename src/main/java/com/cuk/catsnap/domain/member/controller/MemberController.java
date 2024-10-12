@@ -24,9 +24,10 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @Operation(summary = "회원가입 API", description = "회원가입을 할 수 있는 API입니다.")
+    @Operation(summary = "회원가입 API(구현 완료)", description = "회원가입을 할 수 있는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201 SM000", description = "성공적으로 회원가입을 했습니다.")
+            @ApiResponse(responseCode = "201 SM000", description = "성공적으로 회원가입을 했습니다."),
+            @ApiResponse(responseCode = "409 EM000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
     @PostMapping("/signup/catsnsap")
     public ResultResponse<?> signUp(
@@ -42,7 +43,7 @@ public class MemberController {
     *로그인 처리는 Spring Security의 필터로 처리하므로 해당 메서드는 필요하지 않습니다.
     *해당 컨트롤러는 API 명세만을 위한 것입니다.
      */
-    @Operation(summary = "자체 서비스 API", description = "자체 서비스 로그인(네이버나 카카오 등의 OAuth 로그인이 아닌 " +
+    @Operation(summary = "자체 서비스 API(구현 완료)", description = "자체 서비스 로그인(네이버나 카카오 등의 OAuth 로그인이 아닌 " +
             "자체 서비스 로그인)을 할 수 있는 API입니다. 로그인 성공 시 헤더에 accessToken: Bearer {accessToken}과 " +
             "쿠키에 refreshToken: {refreshToken}을 담아서 반환합니다.")
     @ApiResponses({

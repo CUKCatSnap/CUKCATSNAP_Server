@@ -9,24 +9,13 @@ import org.springframework.stereotype.Component;
 public class MemberConverter {
 
     public Member memberRequestMemberSignUpToMember(MemberRequest.MemberSignUp memberSignUp, String hashedPassword) {
-        if(hashedPassword != null){
-            return Member.builder()
-                    .identifier(memberSignUp.getIdentifier())
-                    .password(hashedPassword)
-                    .birthday(memberSignUp.getBirthday())
-                    .nickname(memberSignUp.getNickname())
-                    .phoneNumber(memberSignUp.getPhoneNumber())
-                    .snstype(SnsType.CATSNAP)
-                    .build();
-        } else{
-            return Member.builder()
-                    .identifier(memberSignUp.getIdentifier())
-                    .password(memberSignUp.getPassword())
-                    .birthday(memberSignUp.getBirthday())
-                    .nickname(memberSignUp.getNickname())
-                    .phoneNumber(memberSignUp.getPhoneNumber())
-                    .snstype(SnsType.CATSNAP)
-                    .build();
-        }
+        return Member.builder()
+                .identifier(memberSignUp.getIdentifier())
+                .password(hashedPassword)
+                .birthday(memberSignUp.getBirthday())
+                .nickname(memberSignUp.getNickname())
+                .phoneNumber(memberSignUp.getPhoneNumber())
+                .snstype(SnsType.CATSNAP)
+                .build();
     }
 }

@@ -4,8 +4,7 @@ import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.MemberRequest;
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
-import com.cuk.catsnap.global.Exception.member.DuplicatedMemberId;
-import com.cuk.catsnap.global.result.errorcode.MemberErrorCode;
+import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,7 @@ public class MemberServiceImpl implements MemberService {
     public void singUp(MemberRequest.MemberSignUp memberSignUp) {
         memberRepository.findByIdentifier(memberSignUp.getIdentifier())
                 .ifPresent(member -> {
-                    throw new DuplicatedMemberId("이미 존재하는 아이디입니다.");
+                    throw new DuplicatedMemberIdException("이미 존재하는 아이디입니다.");
                 });
 
         Member singUpMember = memberConverter.memberRequestMemberSignUpToMember(memberSignUp, passwordEncoder.encode(memberSignUp.getPassword()));

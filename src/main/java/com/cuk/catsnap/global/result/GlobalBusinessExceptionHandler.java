@@ -1,19 +1,24 @@
 package com.cuk.catsnap.global.result;
 
 import com.cuk.catsnap.global.Exception.BusinessException;
-import com.cuk.catsnap.global.Exception.member.DuplicatedMemberId;
+import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
+import com.cuk.catsnap.global.result.errorcode.ErrorRepository;
 import com.cuk.catsnap.global.result.errorcode.MemberErrorCode;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
+@RequiredArgsConstructor
 public class GlobalBusinessExceptionHandler {
 
-    @ExceptionHandler(value = DuplicatedMemberId.class)
+    private final ErrorRepository errorRepository;
+
+    @ExceptionHandler(value = BusinessException.class)
     public ResponseEntity<Object> handleBusinessException(BusinessException e){
-        ResultCode resultCode = MemberErrorCode.DUPLICATED_SIGNUP_ID;
+        ResultCode resultCode = errorRepository.getResultCode(e);
 
         return ResponseEntity
                 .status(HttpStatus.valueOf(resultCode.getStatus()))

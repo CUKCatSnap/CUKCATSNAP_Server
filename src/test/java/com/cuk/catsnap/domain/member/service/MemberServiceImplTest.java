@@ -4,7 +4,7 @@ import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.MemberRequest;
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
-import com.cuk.catsnap.global.Exception.member.DuplicatedMemberId;
+import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -86,7 +86,7 @@ class MemberServiceImplTest {
 
         //when, then
         Assertions.assertThatThrownBy(() -> memberService.singUp(memberSignUp))
-                .isInstanceOf(DuplicatedMemberId.class);
+                .isInstanceOf(DuplicatedMemberIdException.class);
         Mockito.verify(memberRepository, Mockito.never()).save(Mockito.any(Member.class));
     }
 }
