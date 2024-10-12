@@ -42,12 +42,13 @@ public class MemberController {
     *로그인 처리는 Spring Security의 필터로 처리하므로 해당 메서드는 필요하지 않습니다.
     *해당 컨트롤러는 API 명세만을 위한 것입니다.
      */
-
     @Operation(summary = "자체 서비스 API", description = "자체 서비스 로그인(네이버나 카카오 등의 OAuth 로그인이 아닌 " +
             "자체 서비스 로그인)을 할 수 있는 API입니다. 로그인 성공 시 헤더에 accessToken: Bearer {accessToken}과 " +
             "쿠키에 refreshToken: {refreshToken}을 담아서 반환합니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SM000", description = "로그인 성공"),
+            @ApiResponse(responseCode = "200 SY000", description = "로그인 성공"),
+            @ApiResponse(responseCode = "401 EY000", description = "로그인 실패 (아이디 또는 비밀번호가 일치하지 않음)"),
+            @ApiResponse(responseCode = "400 EY001", description = "로그인 실패 (잘못된 로그인 API 요청 형식)"),
     })
     @PostMapping("/signin/catsnap")
     public ResultResponse<?> signIn(
@@ -55,7 +56,6 @@ public class MemberController {
             @RequestBody
             SecurityRequest.MemberSingInRequest memberSignIn
     ) {
-
         return null;
     }
 }
