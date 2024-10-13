@@ -1,14 +1,11 @@
 package com.cuk.catsnap.global.security.filter;
 
-import com.cuk.catsnap.global.result.ResultCode;
-import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.code.SecurityResultCode;
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
 import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
 import com.cuk.catsnap.global.security.dto.SecurityRequest;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletInputStream;
@@ -22,22 +19,20 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 
-import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.Map;
 
 
 @Component
 public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private final ObjectMapper objectMapper;
-    private ServletSecurityResponse servletSecurityResponse;
+    private final ServletSecurityResponse servletSecurityResponse;
 
-    protected MemberSignInAuthenticationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper) {
+    protected MemberSignInAuthenticationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper,ServletSecurityResponse servletSecurityResponse) {
         super("/member/signin/catsnap", authenticationManager);
         this.objectMapper = objectMapper;
+        this.servletSecurityResponse = servletSecurityResponse;
     }
 
     @Override
