@@ -22,13 +22,12 @@ import org.springframework.util.StreamUtils;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-@Component
 public class PhotographerSignInAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private final ObjectMapper objectMapper;
     private final ServletSecurityResponse servletSecurityResponse;
 
-    protected PhotographerSignInAuthenticationFilter( AuthenticationManager authenticationManager, ObjectMapper objectMapper, ServletSecurityResponse servletSecurityResponse) {
+    public PhotographerSignInAuthenticationFilter( AuthenticationManager authenticationManager, ObjectMapper objectMapper, ServletSecurityResponse servletSecurityResponse) {
         super("/photographer/signin/catsnap", authenticationManager);
         this.objectMapper = objectMapper;
         this.servletSecurityResponse = servletSecurityResponse;
