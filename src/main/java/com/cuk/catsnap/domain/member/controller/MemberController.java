@@ -29,7 +29,7 @@ public class MemberController {
             @ApiResponse(responseCode = "201 SM000", description = "성공적으로 회원가입을 했습니다."),
             @ApiResponse(responseCode = "409 EM000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
-    @PostMapping("/signup/catsnsap")
+    @PostMapping("/signup/catsnap")
     public ResultResponse<?> signUp(
             @Parameter(description = "회원가입 양식", required = true)
             @RequestBody
@@ -55,7 +55,7 @@ public class MemberController {
     public ResultResponse<?> signIn(
             @Parameter(description = "로그인 양식", required = true)
             @RequestBody
-            SecurityRequest.MemberSingInRequest memberSignIn
+            SecurityRequest.CatsnapSignInRequest memberSignIn
     ) {
         return null;
     }

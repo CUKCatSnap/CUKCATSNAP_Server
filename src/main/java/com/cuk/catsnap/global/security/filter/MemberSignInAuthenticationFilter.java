@@ -37,11 +37,11 @@ public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProc
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        SecurityRequest.CatsnapSingInRequest catsnapSingInRequest = null;
+        SecurityRequest.CatsnapSignInRequest catsnapSignInRequest = null;
         try{
             ServletInputStream inputStream = request.getInputStream();
             String body = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
-            catsnapSingInRequest= objectMapper.readValue(body, SecurityRequest.CatsnapSingInRequest.class);
+            catsnapSignInRequest = objectMapper.readValue(body, SecurityRequest.CatsnapSignInRequest.class);
         } catch (IOException e) {
             /*
             * API 요청 형식이 잘못되었을 때 발생하는 예외 처리. AuthenticationException은 인증 과정에서 발생하는 문제와 관련된
@@ -51,8 +51,8 @@ public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProc
             return null;
         }
 
-        String identifier = catsnapSingInRequest.getIdentifier();
-        String password = catsnapSingInRequest.getPassword();
+        String identifier = catsnapSignInRequest.getIdentifier();
+        String password = catsnapSignInRequest.getPassword();
         Authentication beforeAuthentication = new MemberAuthentication(identifier, password);
         AuthenticationManager authenticationManager = this.getAuthenticationManager();
         return authenticationManager.authenticate(beforeAuthentication);

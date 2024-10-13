@@ -15,7 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class MemberAuthenticationFilter extends OncePerRequestFilter {
 
-    private final AuthenticationManager authenticationManager;
+    //private final AuthenticationManager authenticationManager;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
