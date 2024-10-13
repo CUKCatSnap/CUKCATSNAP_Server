@@ -26,8 +26,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -83,7 +88,17 @@ public class SecurityConfig {
         return new PhotographerSignInAuthenticationFilter(authenticationManager(), objectMapper, servletSecurityResponse);
     }
 
-
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("https://api.catsnap.net", "http://localhost:8081"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
     @Bean
     public SecurityFilterChain config(HttpSecurity http) throws Exception {
@@ -94,6 +109,8 @@ public class SecurityConfig {
             .addFilterAt(memberSignInAuthenticationFilter(), BasicAuthenticationFilter.class)
             .addFilterAt(photographerSignInAuthenticationFilter(), BasicAuthenticationFilter.class)
             .csrf(AbstractHttpConfigurer::disable)
+            .cors(cors->cors
+                    .configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(authorizeRequests->
                     authorizeRequests
                     .anyRequest().permitAll()
