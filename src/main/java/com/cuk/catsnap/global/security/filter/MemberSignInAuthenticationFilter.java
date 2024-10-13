@@ -6,6 +6,7 @@ import com.cuk.catsnap.global.result.code.SecurityResultCode;
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
 import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
 import com.cuk.catsnap.global.security.dto.SecurityRequest;
+import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -32,32 +33,31 @@ import java.util.Map;
 public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private final ObjectMapper objectMapper;
-    private final SecretKey key;
+    private ServletSecurityResponse servletSecurityResponse;
 
-    protected MemberSignInAuthenticationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper, SecretKey key) {
+    protected MemberSignInAuthenticationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper) {
         super("/member/signin/catsnap", authenticationManager);
         this.objectMapper = objectMapper;
-        this.key = key;
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        SecurityRequest.MemberSingInRequest securityRequest = null;
+        SecurityRequest.CatsnapSingInRequest catsnapSingInRequest = null;
         try{
             ServletInputStream inputStream = request.getInputStream();
             String body = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
-            securityRequest= objectMapper.readValue(body, SecurityRequest.MemberSingInRequest.class);
+            catsnapSingInRequest= objectMapper.readValue(body, SecurityRequest.CatsnapSingInRequest.class);
         } catch (IOException e) {
             /*
             * API 요청 형식이 잘못되었을 때 발생하는 예외 처리. AuthenticationException은 인증 과정에서 발생하는 문제와 관련된
             *  것이므로 이것을 상속한 예외를 사용하지 않는다.
              */
-            responseBody(response, SecurityErrorCode.BAD_API_FORM);
+            servletSecurityResponse.responseBody(response, SecurityErrorCode.BAD_API_FORM);
             return null;
         }
 
-        String identifier = securityRequest.getIdentifier();
-        String password = securityRequest.getPassword();
+        String identifier = catsnapSingInRequest.getIdentifier();
+        String password = catsnapSingInRequest.getPassword();
         Authentication beforeAuthentication = new MemberAuthentication(identifier, password);
         AuthenticationManager authenticationManager = this.getAuthenticationManager();
         return authenticationManager.authenticate(beforeAuthentication);
@@ -70,13 +70,13 @@ public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProc
         /*
          * accessToken을 생성하는 부분. 1시간 동안 유효(시간 * 분 * 초 * ms)
          */
-        String accessToken = setJwtToken("catsnap","accessToken", authResult.getPrincipal(),
+        String accessToken = servletSecurityResponse.setJwtToken("catsnap","accessToken", authResult.getPrincipal(),
                 authResult.getAuthorities(),authResult.getDetails(),1L * 60L * 60L* 1000L);
 
         /*
          * refreshToken을 생성하는 부분. 30일 동안 유효30일(일 * 시간 * 분 * 초 * ms)
          */
-        String refreshToken = setJwtToken("catsnap","refreshToken", authResult.getPrincipal(),
+        String refreshToken = servletSecurityResponse.setJwtToken("catsnap","refreshToken", authResult.getPrincipal(),
                 authResult.getAuthorities(),authResult.getDetails(),30L * 24L * 60L * 60L * 1000L);
 
         Cookie accessTokenCookie = new Cookie("refreshToken", refreshToken);
@@ -87,40 +87,13 @@ public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProc
         response.setStatus(HttpServletResponse.SC_OK);
         response.setHeader("Authorization", "Bearer " + accessToken);
         response.addCookie(accessTokenCookie);
-        responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN);
+        servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN);
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException{
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        responseBody(response, SecurityErrorCode.WRONG_ID_OR_PASSWORD);
+        servletSecurityResponse.responseBody(response, SecurityErrorCode.WRONG_ID_OR_PASSWORD);
     }
 
-    /*
-        * JWT 토큰 생성 메서드.
-        *  expiration은 ms 단위임.
-        * principal은 로그인 시 사용하는 id값이고  id는 데이터베이스에서 사용되는 유저의 id값임.
-     */
-    private String setJwtToken(Object provider, Object type, Object principal, Object authorities, Object id, Long expiration) {
-        return Jwts.builder()
-                .setHeader(Map.of(
-                        "provider", provider,
-                        "type", type
-                ))
-                .setClaims(Map.of(
-                        "identifier", principal,
-                        "authorities", authorities,
-                        "id", id
-                ))
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(key)
-                .compact();
-    }
-
-    private void responseBody(HttpServletResponse response, ResultCode resultCode) throws IOException {
-        String jsonResponse = objectMapper.writeValueAsString(ResultResponse.of(resultCode));
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(jsonResponse);
-    }
 }

@@ -29,4 +29,9 @@ public class Util {
     public SecretKey secretKey() {
         return Keys.hmacShaKeyFor(jwtKey.getBytes());
     }
+
+    @Bean
+    public ServletSecurityResponse servletResponse(ObjectMapper objectMapper, SecretKey key) {
+        return new ServletSecurityResponse(objectMapper, key);
+    }
 }
