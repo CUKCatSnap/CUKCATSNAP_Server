@@ -5,7 +5,7 @@ import lombok.Getter;
 public class SecurityRequest {
 
     @Getter
-    public static class MemberSingInRequest {
+    public static class CatsnapSignInRequest {
         private String identifier;
         private String password;
     }
