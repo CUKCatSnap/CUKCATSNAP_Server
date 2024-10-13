@@ -1,9 +1,7 @@
 package com.cuk.catsnap.global.result;
 
 import com.cuk.catsnap.global.Exception.BusinessException;
-import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import com.cuk.catsnap.global.result.errorcode.ErrorRepository;
-import com.cuk.catsnap.global.result.errorcode.MemberErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

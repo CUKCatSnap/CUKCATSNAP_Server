@@ -2,7 +2,6 @@ package com.cuk.catsnap.global.security.provider;
 
 import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
 import com.cuk.catsnap.global.security.service.MemberDetailsService;
-import com.cuk.catsnap.global.security.userdetail.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -10,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 public class MemberAuthenticationProvider implements AuthenticationProvider {

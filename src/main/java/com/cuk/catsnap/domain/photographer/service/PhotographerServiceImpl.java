@@ -1,17 +1,13 @@
 package com.cuk.catsnap.domain.photographer.service;
 
-import com.cuk.catsnap.domain.member.dto.MemberRequest;
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
-import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

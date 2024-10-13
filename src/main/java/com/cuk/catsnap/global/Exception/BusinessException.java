@@ -1,6 +1,5 @@
 package com.cuk.catsnap.global.Exception;
 
-import com.cuk.catsnap.global.result.ResultCode;
 import lombok.Getter;
 
 @Getter
