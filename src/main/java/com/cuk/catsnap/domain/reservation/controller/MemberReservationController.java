@@ -25,14 +25,14 @@ import java.time.LocalDate;
 @Tag(name = "예약 관련 API", description = "사용자가 예약한 예약 조회, 새로운 예약하기, 특정 작가의 예약을 조회할 수 있는 API입니다.")
 @RestController
 @RequestMapping("/reservation")
-public class ReservationController {
+public class MemberReservationController {
 
     @Operation(summary = "예약을 조회하는 API", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다."),
             @ApiResponse(responseCode = "400 SR000", description = "예약 조회 실패", content = @Content(schema = @Schema(implementation = ResultResponse.class))),
     })
-    @GetMapping("/my")
+    @GetMapping("/member")
     public ResultResponse<PagedData<ReservationResponse.MyReservationList>> getMyReservation(
             @Parameter(description="all : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) upcoming : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴) ")
             @RequestParam("type")
@@ -46,7 +46,7 @@ public class ReservationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
-    @GetMapping("/my/month")
+    @GetMapping("/member/month")
     public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
             @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
             @RequestParam("month")
@@ -60,7 +60,7 @@ public class ReservationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
-    @GetMapping("/my/day")
+    @GetMapping("/member/day")
     public ResultResponse<ReservationResponse.DayReservationCheckList> getMyDayReservation(
             @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
             @RequestParam("day")
