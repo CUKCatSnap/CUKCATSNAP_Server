@@ -32,7 +32,7 @@ public class MemberReservationController {
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다."),
             @ApiResponse(responseCode = "400 SR000", description = "예약 조회 실패", content = @Content(schema = @Schema(implementation = ResultResponse.class))),
     })
-    @GetMapping("/member")
+    @GetMapping("/member/my")
     public ResultResponse<PagedData<ReservationResponse.MyReservationList>> getMyReservation(
             @Parameter(description="all : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) upcoming : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴) ")
             @RequestParam("type")
@@ -46,7 +46,7 @@ public class MemberReservationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
-    @GetMapping("/member/month")
+    @GetMapping("/member/my/month")
     public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
             @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
             @RequestParam("month")
@@ -60,8 +60,8 @@ public class MemberReservationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
-    @GetMapping("/member/day")
-    public ResultResponse<ReservationResponse.DayReservationCheckList> getMyDayReservation(
+    @GetMapping("/member/my/day")
+    public ResultResponse<ReservationResponse.MemberReservationInformationList> getMyDayReservation(
             @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
             @RequestParam("day")
             @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -74,7 +74,7 @@ public class MemberReservationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
     })
-    @GetMapping("/photographer/time")
+    @GetMapping("/member/photographer/time")
     public ResultResponse<ReservationResponse.PhotographerAvailableReservationTimeList> getPhotographerAvailableReservationTimeList(
             @RequestParam("photographerId")
             Long photographerId,

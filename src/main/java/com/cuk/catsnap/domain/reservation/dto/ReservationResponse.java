@@ -1,5 +1,6 @@
 package com.cuk.catsnap.domain.reservation.dto;
 
+import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -82,16 +83,40 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    public static class DayReservationCheckList{
-        List<DayReservation> dayReservationList;
+    public static class MemberReservationInformationList {
+        List<MemberReservationInformation> memberReservationInformationList;
     }
 
     @Getter
     @Builder
-    public static class DayReservation{
+    public static class MemberReservationInformation {
         private Long reservationId;
-        private Time time;
         private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
+        private Location location;
+        private String locationName;
+        private Time time;
+        private Program program;
+        @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
+        private ReservationState state;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerReservationInformationList {
+        List<PhotographerReservationInformation> photographerReservationInformationList;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerReservationInformation {
+        private Long reservationId;
+        private MemberResponse.MemberTinyInformation memberTinyInformation;
+        private Location location;
+        private String locationName;
+        private Time time;
+        private Program program;
+        @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
+        private ReservationState state;
     }
 
     @Getter
@@ -139,5 +164,17 @@ public class ReservationResponse {
         private Long reservationId;
         @Schema(description = "예약의 상태를 의미합니다. 작가의 설정에 따라 바로 완료 될 수도 있고, 완료 대기일 수도 있습니다. (PENDING, APPROVED)")
         private ReservationState reservationState;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerReservationTimeFormatId {
+        private Long photographerReservationTimeFormatId;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerProgramId {
+        private Long photographerProgramId;
     }
 }
