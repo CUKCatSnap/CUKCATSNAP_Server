@@ -3,7 +3,7 @@ package com.cuk.catsnap.domain.reservation.controller;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
-import com.cuk.catsnap.domain.reservation.entity.WeekDay;
+import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -124,7 +124,7 @@ public class PhotographerReservationController {
                     "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
                     required = true)
             @RequestParam("weekday")
-            WeekDay weekday,
+            Weekday weekday,
             @Parameter(description = "등록하고자 하는 예약 시간 형식의 id", required = true)
             @RequestParam("timeFormatId")
             Long timeFormatId
@@ -146,7 +146,7 @@ public class PhotographerReservationController {
                     "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
                     required = true)
             @RequestParam("weekday")
-            WeekDay weekday
+            Weekday weekday
     ){
         return null;
     }
