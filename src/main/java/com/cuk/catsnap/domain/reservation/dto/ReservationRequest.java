@@ -1,7 +1,11 @@
 package com.cuk.catsnap.domain.reservation.dto;
 
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
+import com.cuk.catsnap.global.jsonformat.deserialize.HoursMinutesListSerializer;
+import com.cuk.catsnap.global.jsonformat.serializer.HoursMinutesListDeserializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,27 +28,21 @@ public class ReservationRequest {
         private ReservationState reservationState;
     }
 
+    /*
+    * 특정 형식은 여러개의 시작 시간을 가지고 있음.
+     */
     @Getter
     @NoArgsConstructor
     public static class PhotographerReservationTimeFormat {
         @Schema(description = "예약 시간 형식의 이름", example = "주말용 형식", type = "string")
         private String formatName;
-        private List<startTimeEndTime> startTimeEndTimeList;
+
+        @Schema(description = "예약 시작 시간", example = "HH:mm", type = "string")
+        @JsonSerialize(using = HoursMinutesListSerializer.class)
+        @JsonDeserialize(using = HoursMinutesListDeserializer.class)
+        private List<LocalTime> startTimeList;
     }
 
-    /*
-    * 작가가 예약 시간 형식을 설정할 때 사용하는 DTO
-     */
-    @Getter
-    @NoArgsConstructor
-    public static class startTimeEndTime {
-        @Schema(description = "시작 시간", example = "HH:mm", type = "string")
-        @JsonFormat(pattern = "HH:mm")
-        private LocalTime startTime;
-        @Schema(description = "종료 시간", example = "HH:mm", type = "string")
-        @JsonFormat(pattern = "HH:mm")
-        private LocalTime endTime;
-    }
 
     @Getter
     @NoArgsConstructor
