@@ -10,6 +10,7 @@ import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatReposi
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import com.cuk.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -68,5 +69,16 @@ public class ReservationServiceImpl implements ReservationService {
     public List<ReservationTimeFormat> getMyReservationTimeFormatList() {
         Long photographerId = GetAuthenticationInfo.getUserId();
         return reservationTimeFormatRepository.findByPhotographerId(photographerId);
+    }
+
+    @Override
+    public void deleteReservationTimeFormat(String reservationTimeFormatId) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        DeleteResult deleteResult = reservationTimeFormatRepository.deleteById(reservationTimeFormatId,photographerId);
+        if(deleteResult.getDeletedCount() == 0) {
+            throw new OwnershipNotFoundException("내가 소유한 예약 시간 형식 중, 해당 예약 시간 형식을 찾을 수 없습니다.");
+        }
+        // 해당 time format을 이용하고 있는 요일의 매핑을 null로 초기화
+        weekdayReservationTimeMappingRepository.updateReservationTimeFormatIdToNull(photographerId,reservationTimeFormatId);
     }
 }

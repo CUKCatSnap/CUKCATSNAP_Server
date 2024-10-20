@@ -126,13 +126,15 @@ public class PhotographerReservationController {
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT, photographerReservationTimeFormatList);
     }
 
-    @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제",
+    @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제(구현 완료)",
             description = "작가가 자신의 예약 시간 형식을 삭제하는 API입니다." +
                         "만약 해당 시간 형식을 요일에 등록한 경우, 요일에 등록된 시간 형식도 삭제됩니다." +
                         "timeFormat은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
     )
-    @ApiResponses(
-            @ApiResponse(responseCode = "200 SR007", description = "성공적으로 예약 시간 형식을 삭제했습니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SR007", description = "성공적으로 예약 시간 형식을 삭제했습니다."),
+            @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
+    }
     )
     @DeleteMapping("/my/timeformat")
     public ResultResponse<?> deleteTimeFormat(
@@ -140,7 +142,8 @@ public class PhotographerReservationController {
             @RequestParam("timeFormatId")
             String timeFormatId
     ){
-        return null;
+        reservationService.deleteReservationTimeFormat(timeFormatId);
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_DELETE);
     }
 
     @Operation(

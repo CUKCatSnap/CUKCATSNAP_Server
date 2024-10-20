@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.reservation.repository;
 
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -38,6 +39,13 @@ public class ReservationTimeFormatRepository {
     public List<ReservationTimeFormat> findByPhotographerId(Long photographerId) {
         Query query = Query.query(Criteria.where("photographerId").is(photographerId));
         return mongoOperations.find(query, ReservationTimeFormat.class);
+    }
 
+    public DeleteResult deleteById(String reservationTimeFormatId, Long photographerId) {
+        Query query = Query.query(Criteria.where("id")
+                .is(reservationTimeFormatId)
+                .and("photographerId")
+                .is(photographerId));
+        return mongoOperations.remove(query, ReservationTimeFormat.class);
     }
 }

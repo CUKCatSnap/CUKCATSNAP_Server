@@ -11,4 +11,5 @@ public interface ReservationService {
     void createJoinedPhotographerReservationTimeFormat(Photographer photographer);
     String createReservationTimeFormat(ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat, String reservationTimeFormatId);
     List<ReservationTimeFormat> getMyReservationTimeFormatList();
+    void deleteReservationTimeFormat(String reservationTimeFormatId);
 }
