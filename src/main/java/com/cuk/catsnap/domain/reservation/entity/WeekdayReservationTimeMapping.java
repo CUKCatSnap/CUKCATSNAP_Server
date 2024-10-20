@@ -30,9 +30,12 @@ public class WeekdayReservationTimeMapping {
     @ManyToOne
     private Photographer photographer;
 
-    @ManyToOne
-    @JoinColumn(name = "reservation_time_format_id")
-    private ReservationTimeFormat reservationTimeFormat;
+
+    /*
+   * reservationTimeFormat은 Nosql의 도큐먼트.
+     */
+    @Column(name = "reservation_time_format_id")
+    private String reservationTimeFormatId;
 
     @Column(name = "weekday")
     @Enumerated(EnumType.STRING)
