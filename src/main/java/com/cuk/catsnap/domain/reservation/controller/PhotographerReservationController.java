@@ -4,12 +4,15 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
+import com.cuk.catsnap.domain.reservation.service.ReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
+import com.cuk.catsnap.global.result.code.ReservationResultCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +27,10 @@ import java.time.LocalDate;
 @Tag(name = "작가 예약 관련 API", description = "작가가 예약을 관리할 수 있는 API입니다.")
 @RestController
 @RequestMapping("/reservation/photographer")
+@RequiredArgsConstructor
 public class PhotographerReservationController {
+
+    private final ReservationService reservationService;
 
     @Operation(summary = "작가의 특정 월의 예약 유무를 일별로 조회", description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
     @ApiResponses({
@@ -74,13 +80,14 @@ public class PhotographerReservationController {
         return null;
     }
 
-    @Operation(summary = "작가가 자신의 예약 시간 형식을 등록",
+    @Operation(summary = "작가가 자신의 예약 시간 형식을 등록(구현 완료)",
             description = "작가가 자신의 예약 시간 형식을 등록하는 API입니다." +
                     "만약 수정을 원한다면, requestParameter로 timeFormatId 넘겨주어야 합니다."
     )
-    @ApiResponses(
-            @ApiResponse(responseCode = "200 SR006", description = "성공적으로 예약 시간 형식을 등록했습니다.")
-    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SR006", description = "성공적으로 예약 시간 형식을 등록했습니다."),
+            @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
+    })
     @PostMapping("/my/timeformat")
     public ResultResponse<ReservationResponse.PhotographerReservationTimeFormatId> registerTimeFormat(
             @Parameter(description = "예약 시간 형식", required = true)
@@ -90,7 +97,12 @@ public class PhotographerReservationController {
             @RequestParam("timeFormatId")
             Long timeFormatId
     ){
-        return null;
+        String reservationTimeFormatId = reservationService.createReservationTimeFormat(photographerReservationTimeFormat, timeFormatId.toString());
+        ReservationResponse.PhotographerReservationTimeFormatId photographerReservationTimeFormatId =
+                ReservationResponse.PhotographerReservationTimeFormatId.builder()
+                .photographerReservationTimeFormatId(reservationTimeFormatId)
+                .build();
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT,photographerReservationTimeFormatId);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제",

@@ -169,7 +169,7 @@ public class ReservationResponse {
     @Getter
     @Builder
     public static class PhotographerReservationTimeFormatId {
-        private Long photographerReservationTimeFormatId;
+        private String photographerReservationTimeFormatId;
     }
 
     @Getter

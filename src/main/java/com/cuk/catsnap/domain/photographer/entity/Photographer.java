@@ -5,6 +5,7 @@ import com.cuk.catsnap.domain.feed.entity.FeedComment;
 import com.cuk.catsnap.domain.feed.entity.FeedLike;
 import com.cuk.catsnap.domain.notification.entity.Notification;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import com.cuk.catsnap.domain.review.entity.Review;
 import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
@@ -66,4 +67,7 @@ public class Photographer extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "photographer")
     private List<Notification> notificationList;
+
+    @OneToMany(mappedBy = "photographer")
+    private List<WeekdayReservationTimeMapping> weekdayReservationTimeMappingList;
 }
