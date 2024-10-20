@@ -1,5 +1,7 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
+import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
+import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Tag(name = "작가 예약 관련 API", description = "작가가 예약을 관리할 수 있는 API입니다.")
 @RestController
@@ -31,6 +34,7 @@ import java.time.LocalDate;
 public class PhotographerReservationController {
 
     private final ReservationService reservationService;
+    private final ReservationConverter reservationConverter;
 
     @Operation(summary = "작가의 특정 월의 예약 유무를 일별로 조회", description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
     @ApiResponses({
@@ -104,6 +108,22 @@ public class PhotographerReservationController {
                 .photographerReservationTimeFormatId(reservationTimeFormatId)
                 .build();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT,photographerReservationTimeFormatId);
+    }
+
+    @Operation(summary = "작가가 자신의 예약 시간 형식을 조회(구현 완료)",
+            description = "작가가 자신의 예약 시간 형식을 조회하는 API입니다." +
+                        "예약 시간 형식은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
+    )
+    @ApiResponses(
+            @ApiResponse(responseCode = "200 SR012", description = "성공적으로 예약 시간 형식을 조회했습니다.")
+    )
+    @GetMapping("/my/timeformat")
+    public ResultResponse<ReservationResponse.PhotographerReservationTimeFormatList> getTimeFormat(){
+        List<ReservationTimeFormat> reservationTimeFormats = reservationService.getMyReservationTimeFormatList();
+        ReservationResponse.PhotographerReservationTimeFormatList photographerReservationTimeFormatList =
+                reservationConverter.toPhotographerReservationTimeFormatList(reservationTimeFormats);
+
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT, photographerReservationTimeFormatList);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제",

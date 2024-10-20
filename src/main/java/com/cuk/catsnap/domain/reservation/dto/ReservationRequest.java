@@ -47,19 +47,6 @@ public class ReservationRequest {
         private List<LocalTime> startTimeList;
     }
 
-
-    @Getter
-    @NoArgsConstructor
-    public static class PhotographerReservationWeekdayTimeFormat {
-        private List<PhotographerReservationTimeFormat> photographerReservationTimeFormatList;
-    }
-
-    @Getter
-    @NoArgsConstructor
-    public static class PhotographerReservationTimeFormatList {
-        private List<PhotographerReservationTimeFormat> photographerReservationTimeFormatList;
-    }
-
     @Getter
     @NoArgsConstructor
     public static class PhotographerProgram {

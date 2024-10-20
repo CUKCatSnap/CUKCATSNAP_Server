@@ -10,6 +10,7 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 public class ReservationResponse {
@@ -176,5 +177,20 @@ public class ReservationResponse {
     @Builder
     public static class PhotographerProgramId {
         private Long photographerProgramId;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerReservationTimeFormatList {
+        private List<PhotographerReservationTimeFormat> reservationTimeFormatList;
+    }
+
+    @Getter
+    @Builder
+    public static class PhotographerReservationTimeFormat {
+        private String id;
+        private String formatName;
+        @Schema(description = "예약의 시작 시간", example = "HH:mm", type = "string")
+        private List<LocalTime> startTimeList;
     }
 }

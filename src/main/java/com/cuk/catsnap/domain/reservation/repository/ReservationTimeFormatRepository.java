@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 @RequiredArgsConstructor
@@ -19,6 +21,7 @@ public class ReservationTimeFormatRepository {
     public ReservationTimeFormat save(ReservationTimeFormat reservationTimeFormat) {
         return mongoOperations.save(reservationTimeFormat);
     }
+
     public UpdateResult update(ReservationTimeFormat reservationTimeFormat, String reservationTimeFormatId, Long photographerId) {
         Query query = Query.query(Criteria.where("id")
                 .is(reservationTimeFormatId)
@@ -30,5 +33,11 @@ public class ReservationTimeFormatRepository {
                 .set("startTimeList", reservationTimeFormat.getStartTimeList());
 
         return mongoOperations.updateFirst(query, update, ReservationTimeFormat.class);
+    }
+
+    public List<ReservationTimeFormat> findByPhotographerId(Long photographerId) {
+        Query query = Query.query(Criteria.where("photographerId").is(photographerId));
+        return mongoOperations.find(query, ReservationTimeFormat.class);
+
     }
 }

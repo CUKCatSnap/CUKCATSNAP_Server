@@ -18,7 +18,8 @@ public enum ReservationResultCode implements ResultCode {
     PHOTOGRAPHER_RESERVATION_TIME_FORMAT_MAPPING_WEEKDAY(201, "SR008", "성공적으로 예약 시간 형식을 특정 요일에 등록했습니다."),
     PHOTOGRAPHER_RESERVATION_TIME_FORMAT_UNMAPPING_WEEKDAY(200, "SR009", "성공적으로 예약 시간 형식을 특정 요일에 등록했습니다."),
     PHOTOGRAPHER_POST_PROGRAM(201, "SR010", "성공적으로 예약 프로그램을 등록(수정)했습니다."),
-    PHOTOGRAPHER_DELETE_PROGRAM(200, "SR011", "성공적으로 예약 프로그램을 삭제했습니다."),;
+    PHOTOGRAPHER_DELETE_PROGRAM(200, "SR011", "성공적으로 예약 프로그램을 삭제했습니다."),
+    PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP(200, "SR012", "성공적으로 예약 시간 형식을 조회했습니다."),;
     private final int status;
     private final String code;
     private final String message;

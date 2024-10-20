@@ -63,4 +63,10 @@ public class ReservationServiceImpl implements ReservationService {
             return reservationTimeFormatId;
         }
     }
+
+    @Override
+    public List<ReservationTimeFormat> getMyReservationTimeFormatList() {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        return reservationTimeFormatRepository.findByPhotographerId(photographerId);
+    }
 }
