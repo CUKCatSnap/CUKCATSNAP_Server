@@ -82,7 +82,8 @@ public class PhotographerReservationController {
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 등록(구현 완료)",
             description = "작가가 자신의 예약 시간 형식을 등록하는 API입니다." +
-                    "만약 수정을 원한다면, requestParameter로 timeFormatId 넘겨주어야 합니다."
+                        "만약 수정을 원한다면, requestParameter로 timeFormatId 넘겨주어야 합니다." +
+                        "timeFormat은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR006", description = "성공적으로 예약 시간 형식을 등록했습니다."),
@@ -95,7 +96,7 @@ public class PhotographerReservationController {
             ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
             @Parameter(description = "예약 시간 형식의 이름", required = false)
             @RequestParam("timeFormatId")
-            Long timeFormatId
+            String timeFormatId
     ){
         String reservationTimeFormatId = reservationService.createReservationTimeFormat(photographerReservationTimeFormat, timeFormatId.toString());
         ReservationResponse.PhotographerReservationTimeFormatId photographerReservationTimeFormatId =
@@ -107,7 +108,8 @@ public class PhotographerReservationController {
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제",
             description = "작가가 자신의 예약 시간 형식을 삭제하는 API입니다." +
-            "만약 해당 시간 형식을 요일에 등록한 경우, 요일에 등록된 시간 형식도 삭제됩니다."
+                        "만약 해당 시간 형식을 요일에 등록한 경우, 요일에 등록된 시간 형식도 삭제됩니다." +
+                        "timeFormat은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
     )
     @ApiResponses(
             @ApiResponse(responseCode = "200 SR007", description = "성공적으로 예약 시간 형식을 삭제했습니다.")
@@ -116,7 +118,7 @@ public class PhotographerReservationController {
     public ResultResponse<?> deleteTimeFormat(
             @Parameter(description = "삭제하고자 하는 예약 시간 형식의 id", required = true)
             @RequestParam("timeFormatId")
-            Long timeFormatId
+            String timeFormatId
     ){
         return null;
     }
