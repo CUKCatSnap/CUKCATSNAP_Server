@@ -36,5 +36,5 @@ public class WeekdayReservationTimeMapping {
 
     @Column(name = "weekday")
     @Enumerated(EnumType.STRING)
-    private Weekday weekDay;
+    private Weekday weekday;
 }
