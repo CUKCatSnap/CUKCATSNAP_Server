@@ -13,11 +13,19 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 
 
+/*
+*Program은 작가가 삭제를 하더라도 해당 프로그램을 예약한 사람들에게는 영향을 주지 않아야 한다.
+*따라서 삭제 여부를 표시하는 deleted 필드를 추가하고, 이 필드가 true일 경우 삭제된 프로그램으로 간주한다.
+*그러나 해당 프로그램을 과거에 예약한 사람들에게는 여전히 예약 내역이 보여야 하므로, 삭제된 프로그램에 대한 예약 내역도 보여야 한다.
+* 또한 삭제는 @SQLDelete을 통해 하지만, 조회는 @Where가 아닌 별도의 쿼리를 통해 조회해야 한다.
+ */
 @Entity(name = "program")
 @Getter
 @Builder
+@SQLDelete(sql = "UPDATE program SET deleted = true WHERE program_id = ?")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Program extends BaseTimeEntity {
@@ -38,4 +46,10 @@ public class Program extends BaseTimeEntity {
     @Column(name = "duration_minutes")
     private Long durationMinutes;
     private Long version;
+
+    /*
+    * 삭제 여부
+    * 작가가 삭제를 하더라도 과거에 예약한 사람들에게는 여전히 예약 내역이 보여야 하므로, 삭제된 프로그램에 대한 예약 내역도 보여야 한다.
+     */
+    private Boolean deleted;
 }
