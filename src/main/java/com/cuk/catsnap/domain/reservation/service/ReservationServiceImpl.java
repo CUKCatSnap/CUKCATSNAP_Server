@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -80,5 +81,25 @@ public class ReservationServiceImpl implements ReservationService {
         }
         // 해당 time format을 이용하고 있는 요일의 매핑을 null로 초기화
         weekdayReservationTimeMappingRepository.updateReservationTimeFormatIdToNull(photographerId,reservationTimeFormatId);
+    }
+
+    @Override
+    public void mappingWeekdayToReservationTimeFormat(String reservationTimeFormatId, Weekday weekday) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findFirstByPhotographerAndWeekday(photographerId,weekday);
+        weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
+            mapping.setWeekday(weekday),
+            () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
+        );
+    }
+
+    @Override
+    public void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findFirstByPhotographerAndWeekday(photographerId,weekday);
+        weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
+            mapping.setWeekday(null),
+            () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
+        );
     }
 }

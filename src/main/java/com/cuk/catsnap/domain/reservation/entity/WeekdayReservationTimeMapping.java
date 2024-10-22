@@ -40,4 +40,8 @@ public class WeekdayReservationTimeMapping {
     @Column(name = "weekday")
     @Enumerated(EnumType.STRING)
     private Weekday weekday;
+
+    public void setWeekday(Weekday weekday) {
+        this.weekday = weekday;
+    }
 }
