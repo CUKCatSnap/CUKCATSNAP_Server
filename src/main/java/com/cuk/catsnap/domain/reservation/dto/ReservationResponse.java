@@ -31,7 +31,7 @@ public class ReservationResponse {
         private PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
         private Location location;
         private Time time;
-        private Program program;
+        private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
     }
@@ -60,7 +60,7 @@ public class ReservationResponse {
     @Getter
     @Builder
     @Schema(description = "예약한 프로그램의 정보를 나타내는 필드", nullable = false)
-    public static class Program{
+    public static class ReservedProgram {
         private String title;
         private String content;
         private long price;
@@ -96,7 +96,7 @@ public class ReservationResponse {
         private Location location;
         private String locationName;
         private Time time;
-        private Program program;
+        private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
     }
@@ -115,7 +115,7 @@ public class ReservationResponse {
         private Location location;
         private String locationName;
         private Time time;
-        private Program program;
+        private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
     }
@@ -143,11 +143,11 @@ public class ReservationResponse {
     @Getter
     @Builder
     public static class PhotographerProgram{
-        private String programId;
+        private Long programId;
         private String title;
         private String content;
         private Long price;
-        private Long durationTimeMinute;
+        private Long durationMinutes;
     }
 
     @Getter
@@ -188,7 +188,7 @@ public class ReservationResponse {
     @Getter
     @Builder
     public static class PhotographerReservationTimeFormat {
-        private String id;
+        private String reservationTimeFormatId;
         private String formatName;
         @Schema(description = "예약의 시작 시간", example = "HH:mm", type = "string")
         private List<LocalTime> startTimeList;

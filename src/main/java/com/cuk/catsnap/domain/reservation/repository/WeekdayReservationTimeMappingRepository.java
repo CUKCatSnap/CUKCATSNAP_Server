@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public interface WeekdayReservationTimeMappingRepository extends JpaRepository<WeekdayReservationTimeMapping, Long> {
     @Modifying
-    @Query("UPDATE WeekdayReservationTimeMapping m  SET m.reservationTimeFormatId = null WHERE m.photographerId = :photographerId AND m.reservationTimeFormatId = :reservationTimeFormatId")
+    @Query("UPDATE WeekdayReservationTimeMapping m  SET m.reservationTimeFormatId = null WHERE m.photographer.id = :photographerId AND m.reservationTimeFormatId = :reservationTimeFormatId")
     void updateReservationTimeFormatIdToNull(Long photographerId, String reservationTimeFormatId);
 
-    Optional<WeekdayReservationTimeMapping> findFirstByPhotographerAndWeekday(Long photographerId, Weekday weekday);
+    Optional<WeekdayReservationTimeMapping> findByPhotographerIdAndWeekday(Long photographerId, Weekday weekday);
 }

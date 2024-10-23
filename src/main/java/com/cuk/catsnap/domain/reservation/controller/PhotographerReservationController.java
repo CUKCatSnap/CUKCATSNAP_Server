@@ -4,6 +4,7 @@ import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.ReservationService;
@@ -193,14 +194,15 @@ public class PhotographerReservationController {
     }
 
     @Operation (
-            summary = "작가가 자신의 예약 프로그램을 등록하거 수정",
+            summary = "작가가 자신의 예약 프로그램을 등록하거 수정(구현 완료)",
             description = "작가가 자신의 예약 프로그램을 등록하거 수정하는 API입니다." +
                     "만약 수정을 원한다면, requestParameter로 programId 넘겨주어야 합니다." +
                     "내부적으로 프로그램 수정은 새로운 프로그램을 등록하기 때문에 프로그램 Id가 바뀜을 유의해야 합니다."
     )
-    @ApiResponses(
-            @ApiResponse(responseCode = "201 SR010", description = "성공적으로가 예약 프로그램을 등록(수정)했습니다.")
-    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SR010", description = "성공적으로가 예약 프로그램을 등록(수정)했습니다."),
+            @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
+    })
     @PostMapping("/my/program")
     public ResultResponse<ReservationResponse.PhotographerProgramId> postProgram(
             @Parameter(description = "예약 프로그램", required = true)
@@ -210,22 +212,42 @@ public class PhotographerReservationController {
             @RequestParam("programId")
             Long programId
     ){
-        return null;
+        Long photographerProgramId =  reservationService.createProgram(photographerProgram, programId);
+        ReservationResponse.PhotographerProgramId photographerProgramIdResponse = ReservationResponse.PhotographerProgramId.builder()
+                .photographerProgramId(photographerProgramId)
+                .build();
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_POST_PROGRAM, photographerProgramIdResponse);
     }
 
     @Operation(
-            summary = "작가가 자신의 예약 프로그램을 삭제",
-            description = "작가가 자신의 예약 프로그램을 삭제하는 API입니다."
+            summary = "작가가 자신의 예약 프로그램을 조회(구현 완료)",
+            description = "작가가 자신의 예약 프로그램을 조회하는 API입니다."
     )
     @ApiResponses(
-            @ApiResponse(responseCode = "200 SR011", description = "성공적으로가 예약 프로그램을 삭제했습니다.")
+            @ApiResponse(responseCode = "200 SR013", description = "성공적으로가 예약 프로그램을 조회했습니다.")
     )
+    @GetMapping("/my/program")
+    public ResultResponse<ReservationResponse.PhotographerProgramList> getProgram() {
+        List<Program> programList = reservationService.getMyProgramList();
+        ReservationResponse.PhotographerProgramList photographerProgramList = reservationConverter.toPhotographerProgramList(programList);
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM, photographerProgramList);
+    }
+
+    @Operation(
+            summary = "작가가 자신의 예약 프로그램을 삭제(구현 완료)",
+            description = "작가가 자신의 예약 프로그램을 삭제하는 API입니다."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SR011", description = "성공적으로가 예약 프로그램을 삭제했습니다."),
+            @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
+    })
     @DeleteMapping("/my/program")
     public ResultResponse<?> deleteProgram(
             @Parameter(description = "삭제하고자 하는 예약 프로그램의 id", required = true)
             @RequestParam("programId")
             Long programId
     ){
-        return null;
+        reservationService.softDeleteProgram(programId);
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_DELETE_PROGRAM);
     }
 }

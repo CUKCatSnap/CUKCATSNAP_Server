@@ -53,6 +53,7 @@ public class ReservationRequest {
         private String title;
         private String content;
         private Long price;
-        private Long duration;
+        @Schema(description = "프로그램의 소요 시간(분)", example = "60", type = "integer")
+        private Long durationMinutes;
     }
 }

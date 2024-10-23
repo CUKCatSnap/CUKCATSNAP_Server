@@ -1,11 +1,14 @@
 package com.cuk.catsnap.domain.reservation.service;
 
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
+import com.cuk.catsnap.domain.reservation.repository.ProgramRepository;
 import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import com.cuk.catsnap.global.Exception.authority.OwnershipNotFoundException;
@@ -28,6 +31,8 @@ public class ReservationServiceImpl implements ReservationService {
     private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
     private final ReservationTimeFormatRepository reservationTimeFormatRepository;
     private final ReservationConverter reservationConverter;
+    private final ProgramRepository programRepository;
+    private final PhotographerRepository photographerRepository;
 
     /*
     * 새로운 작가가 회원가입을 하면, 각 요일에 대한 예약 테이블을 생성한다.
@@ -86,7 +91,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void mappingWeekdayToReservationTimeFormat(String reservationTimeFormatId, Weekday weekday) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findFirstByPhotographerAndWeekday(photographerId,weekday);
+        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,weekday);
         weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
             mapping.setWeekday(weekday),
             () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
@@ -96,10 +101,41 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findFirstByPhotographerAndWeekday(photographerId,weekday);
+        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,weekday);
         weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
             mapping.setWeekday(null),
             () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
         );
+    }
+
+    /*
+    * Program은 수정을 하더라도 기존의 것을 soft delete하고 새로운 것을 생성하는 방식으로 진행한다.
+    * 왜냐하면 기존의 Program을 예약한 고객이 있을 수 있기 때문이다.
+     */
+    @Override
+    public Long createProgram(ReservationRequest.PhotographerProgram photographerProgram, Long programId) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        Photographer photographer = photographerRepository.getReferenceById(photographerId);
+        Program program = reservationConverter.toProgram(photographerProgram, photographer);
+        if(programId != null) {
+            softDeleteProgram(programId);
+        }
+        return programRepository.save(program).getId();
+    }
+
+    @Override
+    public List<Program> getMyProgramList() {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        return programRepository.findByPhotographerIdAndDeletedFalse(photographerId);
+    }
+
+    @Override
+    public Long softDeleteProgram(Long programId) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        Long deletedCount = programRepository.softDeleteByProgramIdAndPhotographerId(programId, photographerId);
+        if(deletedCount == 0) {
+            throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
+        }
+        return deletedCount;
     }
 }
