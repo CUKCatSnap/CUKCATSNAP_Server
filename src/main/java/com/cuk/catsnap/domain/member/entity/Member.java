@@ -49,8 +49,8 @@ public class Member extends BaseTimeEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "profile_photo")
-    private String profilePhoto;
+    @Column(name = "profile_photo_url")
+    private String profilePhotoUrl;
 
     @Column(name = "sns_type")
     @Enumerated(EnumType.STRING)
