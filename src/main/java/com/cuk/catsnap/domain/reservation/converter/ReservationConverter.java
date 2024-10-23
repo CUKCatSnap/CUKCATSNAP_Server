@@ -1,5 +1,6 @@
 package com.cuk.catsnap.domain.reservation.converter;
 
+import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -75,6 +76,28 @@ public class ReservationConverter {
                 .toList();
         return ReservationResponse.MonthReservationCheckList.builder()
                 .monthReservationCheckList(monthReservationCheckList)
+                .build();
+    }
+
+    public ReservationResponse.PhotographerReservationInformation toPhotographerReservationInformation(Reservation reservation, MemberResponse.MemberTinyInformation memberTinyInformation) {
+        return ReservationResponse.PhotographerReservationInformation.builder()
+                .reservationId(reservation.getId())
+                .memberTinyInformation(memberTinyInformation)
+                .location(ReservationResponse.Location.builder()
+                        .lat(reservation.getLocation().getY())
+                        .lng(reservation.getLocation().getX())
+                        .locationName(reservation.getLocationName())
+                        .build())
+                .time(ReservationResponse.Time.builder()
+                        .startTime(reservation.getStartTime())
+                        .endTime(reservation.getEndTime())
+                        .build())
+                .reservedProgram(ReservationResponse.ReservedProgram.builder()
+                        .title(reservation.getProgram().getTitle())
+                        .content(reservation.getProgram().getContent())
+                        .price(reservation.getProgram().getPrice())
+                        .build())
+                .state(reservation.getReservationState())
                 .build();
     }
 }

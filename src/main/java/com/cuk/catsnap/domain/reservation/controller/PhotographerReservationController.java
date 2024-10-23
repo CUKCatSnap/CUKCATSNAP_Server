@@ -18,7 +18,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,7 +56,8 @@ public class PhotographerReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, monthReservationCheckList);
     }
 
-    @Operation(summary = "작가의 특정 일의 예약 목록을 조회", description = "작가 자신으로 예약된 예약 목록을 조회하는 API입니다.")
+    @Operation(summary = "작가의 특정 일의 예약 목록을 조회(구현 완료)",
+            description = "작가 자신으로 예약된 예약 목록을 조회하는 API입니다.")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
@@ -65,10 +65,11 @@ public class PhotographerReservationController {
     public ResultResponse<ReservationResponse.PhotographerReservationInformationList> getMyDayReservation(
             @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
             @RequestParam("day")
-            @DateTimeFormat(pattern = "yyyy-MM-dd")
+            @JsonFormat(pattern = "yyyy-MM-dd")
             LocalDate reservationDay
     ){
-        return null;
+        ReservationResponse.PhotographerReservationInformationList photographerReservationInformationList = photographerReservationService.getReservationDetailListByDay(reservationDay);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, photographerReservationInformationList);
     }
 
     @Operation(summary = "작가가 자신의 예약 상태를 변경",

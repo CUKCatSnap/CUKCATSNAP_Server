@@ -113,7 +113,6 @@ public class ReservationResponse {
         private Long reservationId;
         private MemberResponse.MemberTinyInformation memberTinyInformation;
         private Location location;
-        private String locationName;
         private Time time;
         private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")

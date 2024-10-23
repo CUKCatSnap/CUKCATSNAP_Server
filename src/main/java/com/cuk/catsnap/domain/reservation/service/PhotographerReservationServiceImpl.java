@@ -1,10 +1,13 @@
 package com.cuk.catsnap.domain.reservation.service;
 
+import com.cuk.catsnap.domain.member.converter.MemberConverter;
+import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
@@ -23,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +42,7 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     private final ProgramRepository programRepository;
     private final PhotographerRepository photographerRepository;
     private final ReservationRepository reservationRepository;
+    private final MemberConverter memberConverter;
 
     /*
     * 새로운 작가가 회원가입을 하면, 각 요일에 대한 예약 테이블을 생성한다.
@@ -150,5 +155,25 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(),month.getMonthValue(),1,0,0,0);
         LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(),month.getMonthValue(),month.lengthOfMonth(),23,59,59);
         return reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(photographerId, startOfMonth, endOfMonth);
+    }
+
+    @Override
+    public ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(LocalDate day) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        LocalDateTime startOfDay = LocalDateTime.of(day.getYear(),day.getMonthValue(),day.getDayOfMonth(),0,0,0);
+        LocalDateTime endOfDay = LocalDateTime.of(day.getYear(),day.getMonthValue(),day.getDayOfMonth(),23,59,59);
+        List<Reservation> reservationList = reservationRepository.findAllReservationWithEagerByPhotographerIdAndStartTimeBetween(photographerId, startOfDay, endOfDay);
+
+        List<ReservationResponse.PhotographerReservationInformation> photographerReservationInformationList = new ArrayList<>();
+        reservationList.stream()
+                .map(reservation -> {
+                    MemberResponse.MemberTinyInformation memberTinyInformation = memberConverter.toMemberTinyInformation(reservation.getMember());
+                    return reservationConverter.toPhotographerReservationInformation(reservation, memberTinyInformation);
+                })
+                .forEach(photographerReservationInformationList::add);
+
+        return ReservationResponse.PhotographerReservationInformationList.builder()
+                .photographerReservationInformationList(photographerReservationInformationList)
+                .build();
     }
 }

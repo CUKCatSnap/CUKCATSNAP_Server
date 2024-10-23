@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.reservation.service;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
@@ -23,4 +24,5 @@ public interface PhotographerReservationService {
     List<Program> getMyProgramList();
     Long softDeleteProgram(Long programId);
     List<Reservation> getReservationListByMonth(LocalDate month);
+    ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(LocalDate day);
 }
