@@ -9,11 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 /*
@@ -50,4 +53,10 @@ public class Program extends BaseTimeEntity {
     * 작가가 삭제를 하더라도 과거에 예약한 사람들에게는 여전히 예약 내역이 보여야 하므로, 삭제된 프로그램에 대한 예약 내역도 보여야 한다.
      */
     private Boolean deleted = false;
+
+
+    //======= @OneToMany ========
+
+    @OneToMany(mappedBy = "program")
+    private List<Reservation> reservationList;
 }

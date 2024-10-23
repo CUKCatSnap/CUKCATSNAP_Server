@@ -48,6 +48,10 @@ public class Reservation extends BaseTimeEntity {
     @JoinColumn(name="photographer_id")
     private Photographer photographer;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="program_id")
+    private Program program;
+
     private Point location;
 
     @Column(name="location_name")
