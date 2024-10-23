@@ -24,10 +24,10 @@ import static org.mockito.Mockito.mockStatic;
 
 
 @ExtendWith(MockitoExtension.class)
-class ReservationServiceImplTest {
+class PhotographerReservationServiceImplTest {
 
     @InjectMocks
-    private ReservationServiceImpl ReservationService;
+    private PhotographerReservationServiceImpl ReservationService;
 
     @Spy
     private WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;

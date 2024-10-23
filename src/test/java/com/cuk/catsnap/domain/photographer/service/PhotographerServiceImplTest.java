@@ -4,10 +4,7 @@ import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
-import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
-import com.cuk.catsnap.domain.reservation.service.ReservationService;
-import com.cuk.catsnap.domain.reservation.service.ReservationServiceImpl;
-import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
+import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -40,7 +37,7 @@ class PhotographerServiceImplTest {
     private PasswordEncoder passwordEncoder;
 
     @Spy
-    private ReservationService reservationService;
+    private PhotographerReservationService reservationService;
 
     @Test
     @DisplayName("singUp() : 회원가입 테스트 - 성공 ")

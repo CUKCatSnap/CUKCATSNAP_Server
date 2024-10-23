@@ -7,7 +7,7 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
-import com.cuk.catsnap.domain.reservation.service.ReservationService;
+import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.code.ReservationResultCode;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +34,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PhotographerReservationController {
 
-    private final ReservationService reservationService;
+    private final PhotographerReservationService reservationService;
     private final ReservationConverter reservationConverter;
 
     @Operation(summary = "작가의 특정 월의 예약 유무를 일별로 조회", description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")

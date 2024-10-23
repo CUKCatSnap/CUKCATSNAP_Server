@@ -26,7 +26,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ReservationServiceImpl implements ReservationService {
+public class PhotographerReservationServiceImpl implements PhotographerReservationService {
 
     private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
     private final ReservationTimeFormatRepository reservationTimeFormatRepository;

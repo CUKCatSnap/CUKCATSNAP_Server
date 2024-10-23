@@ -8,7 +8,7 @@ import com.cuk.catsnap.domain.reservation.entity.Weekday;
 
 import java.util.List;
 
-public interface ReservationService {
+public interface PhotographerReservationService {
 
     void createJoinedPhotographerReservationTimeFormat(Photographer photographer);
     String createReservationTimeFormat(ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat, String reservationTimeFormatId);
