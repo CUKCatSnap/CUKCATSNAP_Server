@@ -5,11 +5,13 @@ import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.code.ReservationResultCode;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -34,10 +36,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PhotographerReservationController {
 
-    private final PhotographerReservationService reservationService;
+    private final PhotographerReservationService photographerReservationService;
     private final ReservationConverter reservationConverter;
 
-    @Operation(summary = "작가의 특정 월의 예약 유무를 일별로 조회", description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
+    @Operation(summary = "작가의 특정 월의 특정 일에 예약 유무를 일별로 조회(구현 완료)",
+            description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. " +
+            "예) 2024년 9월에 예약이 있는 날은 ? -> 2024년 9월 7일, 2024년 9월 13일")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
@@ -45,10 +49,12 @@ public class PhotographerReservationController {
     public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
             @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
             @RequestParam("month")
-            @DateTimeFormat(pattern = "yyyy-MM")
+            @JsonFormat(pattern = "yyyy-MM")
             LocalDate reservationMonth
     ){
-        return null;
+        List<Reservation> reservationList = photographerReservationService.getReservationListByMonth(reservationMonth);
+        ReservationResponse.MonthReservationCheckList monthReservationCheckList = reservationConverter.toMonthReservationCheckList(reservationList);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, monthReservationCheckList);
     }
 
     @Operation(summary = "작가의 특정 일의 예약 목록을 조회", description = "작가 자신으로 예약된 예약 목록을 조회하는 API입니다.")
@@ -103,7 +109,7 @@ public class PhotographerReservationController {
             @RequestParam("timeFormatId")
             String timeFormatId
     ){
-        String reservationTimeFormatId = reservationService.createReservationTimeFormat(photographerReservationTimeFormat, timeFormatId.toString());
+        String reservationTimeFormatId = photographerReservationService.createReservationTimeFormat(photographerReservationTimeFormat, timeFormatId.toString());
         ReservationResponse.PhotographerReservationTimeFormatId photographerReservationTimeFormatId =
                 ReservationResponse.PhotographerReservationTimeFormatId.builder()
                 .photographerReservationTimeFormatId(reservationTimeFormatId)
@@ -120,7 +126,7 @@ public class PhotographerReservationController {
     )
     @GetMapping("/my/timeformat")
     public ResultResponse<ReservationResponse.PhotographerReservationTimeFormatList> getTimeFormat(){
-        List<ReservationTimeFormat> reservationTimeFormats = reservationService.getMyReservationTimeFormatList();
+        List<ReservationTimeFormat> reservationTimeFormats = photographerReservationService.getMyReservationTimeFormatList();
         ReservationResponse.PhotographerReservationTimeFormatList photographerReservationTimeFormatList =
                 reservationConverter.toPhotographerReservationTimeFormatList(reservationTimeFormats);
 
@@ -143,7 +149,7 @@ public class PhotographerReservationController {
             @RequestParam("timeFormatId")
             String timeFormatId
     ){
-        reservationService.deleteReservationTimeFormat(timeFormatId);
+        photographerReservationService.deleteReservationTimeFormat(timeFormatId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_DELETE);
     }
 
@@ -168,7 +174,7 @@ public class PhotographerReservationController {
             @RequestParam("timeFormatId")
             String timeFormatId
     ){
-        reservationService.mappingWeekdayToReservationTimeFormat(timeFormatId, weekday);
+        photographerReservationService.mappingWeekdayToReservationTimeFormat(timeFormatId, weekday);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_MAPPING_WEEKDAY);
     }
 
@@ -189,7 +195,7 @@ public class PhotographerReservationController {
             @RequestParam("weekday")
             Weekday weekday
     ){
-        reservationService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday);
+        photographerReservationService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_UNMAPPING_WEEKDAY);
     }
 
@@ -212,7 +218,7 @@ public class PhotographerReservationController {
             @RequestParam("programId")
             Long programId
     ){
-        Long photographerProgramId =  reservationService.createProgram(photographerProgram, programId);
+        Long photographerProgramId =  photographerReservationService.createProgram(photographerProgram, programId);
         ReservationResponse.PhotographerProgramId photographerProgramIdResponse = ReservationResponse.PhotographerProgramId.builder()
                 .photographerProgramId(photographerProgramId)
                 .build();
@@ -228,7 +234,7 @@ public class PhotographerReservationController {
     )
     @GetMapping("/my/program")
     public ResultResponse<ReservationResponse.PhotographerProgramList> getProgram() {
-        List<Program> programList = reservationService.getMyProgramList();
+        List<Program> programList = photographerReservationService.getMyProgramList();
         ReservationResponse.PhotographerProgramList photographerProgramList = reservationConverter.toPhotographerProgramList(programList);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM, photographerProgramList);
     }
@@ -247,7 +253,7 @@ public class PhotographerReservationController {
             @RequestParam("programId")
             Long programId
     ){
-        reservationService.softDeleteProgram(programId);
+        photographerReservationService.softDeleteProgram(programId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_DELETE_PROGRAM);
     }
 }

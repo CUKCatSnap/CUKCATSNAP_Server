@@ -5,6 +5,7 @@ import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -62,6 +63,18 @@ public class ReservationConverter {
 
         return ReservationResponse.PhotographerProgramList.builder()
                 .photographerProgramList(responsePhotographerProgramList)
+                .build();
+    }
+    public ReservationResponse.MonthReservationCheckList toMonthReservationCheckList(List<Reservation> programList) {
+        List<ReservationResponse.MonthReservationCheck> monthReservationCheckList = programList.stream()
+                .map(program -> ReservationResponse.MonthReservationCheck.builder()
+                        .reservationDate(program.getStartTime().toLocalDate())
+                        .reservationState(program.getReservationState())
+                        .build()
+                )
+                .toList();
+        return ReservationResponse.MonthReservationCheckList.builder()
+                .monthReservationCheckList(monthReservationCheckList)
                 .build();
     }
 }

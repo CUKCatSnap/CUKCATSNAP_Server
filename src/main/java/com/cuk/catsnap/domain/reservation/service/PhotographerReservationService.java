@@ -4,8 +4,11 @@ import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.entity.Program;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PhotographerReservationService {
@@ -19,4 +22,5 @@ public interface PhotographerReservationService {
     Long createProgram(ReservationRequest.PhotographerProgram photographerProgram, Long programId);
     List<Program> getMyProgramList();
     Long softDeleteProgram(Long programId);
+    List<Reservation> getReservationListByMonth(LocalDate month);
 }

@@ -6,9 +6,11 @@ import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.entity.Program;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import com.cuk.catsnap.domain.reservation.repository.ProgramRepository;
+import com.cuk.catsnap.domain.reservation.repository.ReservationRepository;
 import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import com.cuk.catsnap.global.Exception.authority.OwnershipNotFoundException;
@@ -19,6 +21,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +37,7 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     private final ReservationConverter reservationConverter;
     private final ProgramRepository programRepository;
     private final PhotographerRepository photographerRepository;
+    private final ReservationRepository reservationRepository;
 
     /*
     * 새로운 작가가 회원가입을 하면, 각 요일에 대한 예약 테이블을 생성한다.
@@ -137,5 +142,13 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
             throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
         }
         return deletedCount;
+    }
+
+    @Override
+    public List<Reservation> getReservationListByMonth(LocalDate month) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(),month.getMonthValue(),1,0,0,0);
+        LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(),month.getMonthValue(),month.lengthOfMonth(),23,59,59);
+        return reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(photographerId, startOfMonth, endOfMonth);
     }
 }
