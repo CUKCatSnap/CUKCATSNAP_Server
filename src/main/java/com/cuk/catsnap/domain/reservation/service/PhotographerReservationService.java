@@ -23,7 +23,7 @@ public interface PhotographerReservationService {
     void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday);
     Long createProgram(ReservationRequest.PhotographerProgram photographerProgram, Long programId);
     List<Program> getMyProgramList();
-    Long softDeleteProgram(Long programId);
+    int softDeleteProgram(Long programId);
     List<Reservation> getReservationListByMonth(LocalDate month);
     ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(LocalDate day);
     void changeReservationState(Long reservationId, ReservationState reservationState);

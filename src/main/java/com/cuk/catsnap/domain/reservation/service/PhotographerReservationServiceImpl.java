@@ -142,9 +142,9 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public Long softDeleteProgram(Long programId) {
+    public int softDeleteProgram(Long programId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        Long deletedCount = programRepository.softDeleteByProgramIdAndPhotographerId(programId, photographerId);
+        int deletedCount = programRepository.softDeleteByProgramIdAndPhotographerId(programId, photographerId);
         if(deletedCount == 0) {
             throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
         }
