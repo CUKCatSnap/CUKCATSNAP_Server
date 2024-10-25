@@ -18,9 +18,13 @@ public class ServletSecurityResponse {
     private final ObjectMapper objectMapper;
     private final SecretKey key;
 
+    /*
+    * 응답 메시지를 전송하는 메서드. resultCode를 받아서 ResultResponse로 변환하여 바디에 담아서 전송한다.
+     */
     public void responseBody(HttpServletResponse response, ResultCode resultCode) throws IOException {
         String jsonResponse = objectMapper.writeValueAsString(ResultResponse.of(resultCode));
         response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
         response.getWriter().write(jsonResponse);
     }
 

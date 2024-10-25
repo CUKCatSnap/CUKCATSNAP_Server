@@ -2,6 +2,7 @@ package com.cuk.catsnap.global.security;
 
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
+import com.cuk.catsnap.global.security.filter.JwtAuthenticationFilter;
 import com.cuk.catsnap.global.security.filter.MemberSignInAuthenticationFilter;
 import com.cuk.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
 import com.cuk.catsnap.global.security.provider.MemberAuthenticationProvider;
@@ -44,6 +45,7 @@ public class SecurityConfig {
     private final ServletSecurityResponse servletSecurityResponse;
     private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -100,9 +102,14 @@ public class SecurityConfig {
         return source;
     }
 
+
+    /*
+    * 로그인, 회원가입 관련 필터 설정
+     */
     @Bean
-    public SecurityFilterChain config(HttpSecurity http) throws Exception {
+    public SecurityFilterChain signInUpConfig(HttpSecurity http) throws Exception {
         http
+            .securityMatcher("/member/signup/catsnap", "/photographer/signup/catsnap", "/member/signin/catsnap, /photographer/signin/catsnap")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
@@ -114,6 +121,46 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorizeRequests->
                     authorizeRequests
                     .anyRequest().permitAll()
+            );
+        return http.build();
+    }
+
+    /*
+    * Photographer 계정으로 로그인 후 접근해야 하는 리소스에 대한 필터 설정
+     */
+    @Bean
+    public SecurityFilterChain authenticatedPhotographerConfig(HttpSecurity http) throws Exception {
+        http
+                .securityMatcher("/reservation/photographer/my/**")
+                .formLogin(FormLoginConfigurer::disable)
+                .httpBasic(HttpBasicConfigurer::disable)
+                .logout(LogoutConfigurer::disable)
+                .addFilterAt(jwtAuthenticationFilter, BasicAuthenticationFilter.class)
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors->cors
+                        .configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(authorizeRequests->
+                        authorizeRequests
+                                .anyRequest().hasRole("PHOTOGRAPHER")
+                );
+        return http.build();
+    }
+
+    /*
+    * 로그인 없이 접근 가능한 리소스에 대한 필터 설정
+     */
+    @Bean
+    public SecurityFilterChain publicResourceConfig(HttpSecurity http) throws Exception {
+        http.securityMatcher("/**")
+            .formLogin(FormLoginConfigurer::disable)
+            .httpBasic(HttpBasicConfigurer::disable)
+            .logout(LogoutConfigurer::disable)
+            .csrf(AbstractHttpConfigurer::disable)
+            .cors(cors->cors
+                    .configurationSource(corsConfigurationSource()))
+            .authorizeHttpRequests(authorizeRequests->
+                    authorizeRequests
+                            .anyRequest().permitAll()
             );
         return http.build();
     }
