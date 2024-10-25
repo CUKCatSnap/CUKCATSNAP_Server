@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 @Tag(name = "작가 예약 관련 API", description = "작가가 예약을 관리할 수 있는 API입니다.")
@@ -48,10 +49,9 @@ public class PhotographerReservationController {
     public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
             @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
             @RequestParam("month")
-            @JsonFormat(pattern = "yyyy-MM")
-            LocalDate reservationMonth
+            YearMonth reservationMonth
     ){
-        List<Reservation> reservationList = photographerReservationService.getReservationListByMonth(reservationMonth);
+        List<Reservation> reservationList = photographerReservationService.getReservationListByMonth(reservationMonth.atDay(1));
         ReservationResponse.MonthReservationCheckList monthReservationCheckList = reservationConverter.toMonthReservationCheckList(reservationList);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, monthReservationCheckList);
     }
@@ -65,7 +65,6 @@ public class PhotographerReservationController {
     public ResultResponse<ReservationResponse.PhotographerReservationInformationList> getMyDayReservation(
             @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
             @RequestParam("day")
-            @JsonFormat(pattern = "yyyy-MM-dd")
             LocalDate reservationDay
     ){
         ReservationResponse.PhotographerReservationInformationList photographerReservationInformationList = photographerReservationService.getReservationDetailListByDay(reservationDay);
