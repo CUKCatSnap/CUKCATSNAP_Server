@@ -47,6 +47,7 @@ public class ReservationConverter {
                 .content(photographerProgram.getContent())
                 .price(photographerProgram.getPrice())
                 .durationMinutes(photographerProgram.getDurationMinutes())
+                .deleted(false)
                 .build();
     }
 
