@@ -4,7 +4,7 @@ import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
-import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
+import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -34,6 +35,9 @@ class PhotographerServiceImplTest {
 
     @Mock
     private PasswordEncoder passwordEncoder;
+
+    @Spy
+    private PhotographerReservationService reservationService;
 
     @Test
     @DisplayName("singUp() : 회원가입 테스트 - 성공 ")
@@ -72,6 +76,7 @@ class PhotographerServiceImplTest {
         Mockito.verify(passwordEncoder).encode(photographerSignUp.getPassword());
         Mockito.verify(photographerConverter).photographerSignUpToPhotographer(photographerSignUp, passwordEncoder.encode("password"));
         Mockito.verify(photographerRepository).save(Mockito.any(Photographer.class));
+        Mockito.verify(reservationService).createJoinedPhotographerReservationTimeFormat(Mockito.any(Photographer.class));
     }
 
     @Test
@@ -96,5 +101,6 @@ class PhotographerServiceImplTest {
                 .isInstanceOf(DuplicatedPhotographerException.class);
 
         Mockito.verify(photographerRepository, Mockito.never()).save(Mockito.any(Photographer.class));
+        Mockito.verify(reservationService, Mockito.never()).createJoinedPhotographerReservationTimeFormat(Mockito.any(Photographer.class));
     }
 }

@@ -4,7 +4,9 @@ import com.cuk.catsnap.domain.feed.entity.Feed;
 import com.cuk.catsnap.domain.feed.entity.FeedComment;
 import com.cuk.catsnap.domain.feed.entity.FeedLike;
 import com.cuk.catsnap.domain.notification.entity.Notification;
+import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import com.cuk.catsnap.domain.review.entity.Review;
 import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
@@ -43,8 +45,8 @@ public class Photographer extends BaseTimeEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "profile_photo")
-    private String profilePhoto;
+    @Column(name = "profile_photo_url")
+    private String profilePhotoUrl;
 
 
     // OneToMany
@@ -66,4 +68,10 @@ public class Photographer extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "photographer")
     private List<Notification> notificationList;
+
+    @OneToMany(mappedBy = "photographer")
+    private List<WeekdayReservationTimeMapping> weekdayReservationTimeMappingList;
+
+    @OneToMany(mappedBy = "photographer")
+    private List<Program> programList;
 }
