@@ -3,7 +3,11 @@ package com.cuk.catsnap.domain.reservation.dto;
 import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
+import com.cuk.catsnap.global.jsonformat.deserialize.HoursMinutesListSerializer;
+import com.cuk.catsnap.global.jsonformat.serializer.HoursMinutesListDeserializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
@@ -190,6 +194,8 @@ public class ReservationResponse {
         private String reservationTimeFormatId;
         private String formatName;
         @Schema(description = "예약의 시작 시간", example = "HH:mm", type = "string")
+        @JsonSerialize(using = HoursMinutesListSerializer.class)
+        @JsonDeserialize(using = HoursMinutesListDeserializer.class)
         private List<LocalTime> startTimeList;
     }
 }
