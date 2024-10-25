@@ -79,4 +79,8 @@ public class Reservation extends BaseTimeEntity {
 
     @OneToOne(mappedBy = "reservation")
     private Review review;
+
+    public void setReservationState(ReservationState reservationState) {
+        this.reservationState = reservationState;
+    }
 }

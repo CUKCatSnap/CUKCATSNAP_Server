@@ -11,7 +11,6 @@ import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.code.ReservationResultCode;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -71,14 +70,15 @@ public class PhotographerReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, photographerReservationInformationList);
     }
 
-    @Operation(summary = "작가가 자신의 예약 상태를 변경",
+    @Operation(summary = "작가가 자신의 예약 상태를 변경(구현 완료)",
             description = "작가가 자신의 예약 상태를 변경하는 API입니다. " +
             "(PENDING -> APPROVED) (PENDING -> REJECTED) (APPROVED -> PHOTOGRAPHY_CANCELLED) 으로 변경 가능합니다." +
             " 변경하고자 하는 최종 상태만을 요청하면 됩니다."
     )
-    @ApiResponses(
-            @ApiResponse(responseCode = "201 SR005", description = "성공적으로 예약 상태를 변경했습니다.")
-    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SR005", description = "성공적으로 예약 상태를 변경했습니다."),
+            @ApiResponse(responseCode = "400 ER000", description = "해당 예약 상태에서 요청하신 예약상태로 변경할 수 없습니다.")
+    })
     @PostMapping("/my/status")
     public ResultResponse<?> changeReservationStatus(
             @Parameter(description = "예약 id", required = true)
@@ -88,7 +88,8 @@ public class PhotographerReservationController {
             @RequestParam("status")
             ReservationState status
     ){
-        return null;
+        photographerReservationService.changeReservationState(reservationId, status);
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_STATE_CHANGE);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 등록(구현 완료)",

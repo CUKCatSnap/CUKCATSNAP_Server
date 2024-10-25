@@ -10,6 +10,7 @@ import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import com.cuk.catsnap.domain.reservation.repository.ProgramRepository;
@@ -17,6 +18,7 @@ import com.cuk.catsnap.domain.reservation.repository.ReservationRepository;
 import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import com.cuk.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import com.cuk.catsnap.global.Exception.reservation.CanNotChangeReservationState;
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
@@ -175,5 +177,33 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         return ReservationResponse.PhotographerReservationInformationList.builder()
                 .photographerReservationInformationList(photographerReservationInformationList)
                 .build();
+    }
+
+    /*
+    * 예약 상태를 변경한다.
+    * 작가가 예약을 바꿀 수 있는 경우는 아래와 같다.
+    * (PENDING -> APPROVED) (PENDING -> REJECTED) (APPROVED -> PHOTOGRAPHY_CANCELLED)
+     */
+    @Override
+    public void changeReservationState(Long reservationId, ReservationState reservationState) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        reservationRepository.findReservationByIdAndPhotographerId(reservationId, photographerId)
+                .ifPresentOrElse(reservation -> {
+                    if(isPossibleChangeReservationState(reservation, reservationState)) {
+                        reservation.setReservationState(reservationState);
+                    } else {
+                        throw new CanNotChangeReservationState("예약 상태를 변경할 수 없습니다.");
+                    }
+                }, () -> {
+                    throw new OwnershipNotFoundException("내가 소유한 예약 중, 해당 예약을 찾을 수 없습니다.");
+                });
+    }
+
+    private boolean isPossibleChangeReservationState(Reservation currentReservation, ReservationState targetReservationState) {
+        return switch (currentReservation.getReservationState()) {
+            case PENDING -> targetReservationState == ReservationState.APPROVED || targetReservationState == ReservationState.REJECTED;
+            case APPROVED -> targetReservationState == ReservationState.PHOTOGRAPHY_CANCELLED;
+            default -> false;
+        };
     }
 }
