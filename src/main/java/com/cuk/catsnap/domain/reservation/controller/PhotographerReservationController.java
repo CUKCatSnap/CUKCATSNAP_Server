@@ -131,7 +131,7 @@ public class PhotographerReservationController {
         ReservationResponse.PhotographerReservationTimeFormatList photographerReservationTimeFormatList =
                 reservationConverter.toPhotographerReservationTimeFormatList(reservationTimeFormats);
 
-        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT, photographerReservationTimeFormatList);
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP, photographerReservationTimeFormatList);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제(구현 완료)",
