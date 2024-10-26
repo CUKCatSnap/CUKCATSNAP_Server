@@ -107,10 +107,10 @@ public class PhotographerReservationController {
             @RequestBody
             ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
             @Parameter(description = "예약 시간 형식의 이름", required = false)
-            @RequestParam("timeFormatId")
+            @RequestParam(name = "timeFormatId", required = false)
             String timeFormatId
     ){
-        String reservationTimeFormatId = photographerReservationService.createReservationTimeFormat(photographerReservationTimeFormat, timeFormatId.toString());
+        String reservationTimeFormatId = photographerReservationService.createReservationTimeFormat(photographerReservationTimeFormat, timeFormatId);
         ReservationResponse.PhotographerReservationTimeFormatId photographerReservationTimeFormatId =
                 ReservationResponse.PhotographerReservationTimeFormatId.builder()
                 .photographerReservationTimeFormatId(reservationTimeFormatId)
@@ -131,7 +131,7 @@ public class PhotographerReservationController {
         ReservationResponse.PhotographerReservationTimeFormatList photographerReservationTimeFormatList =
                 reservationConverter.toPhotographerReservationTimeFormatList(reservationTimeFormats);
 
-        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT, photographerReservationTimeFormatList);
+        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP, photographerReservationTimeFormatList);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제(구현 완료)",
@@ -216,7 +216,7 @@ public class PhotographerReservationController {
             @RequestBody
             ReservationRequest.PhotographerProgram photographerProgram,
             @Parameter(description = "예약 프로그램의 id, 수정을 할 때만 입력", required = false)
-            @RequestParam("programId")
+            @RequestParam(name = "programId", required = false)
             Long programId
     ){
         Long photographerProgramId =  photographerReservationService.createProgram(photographerProgram, programId);

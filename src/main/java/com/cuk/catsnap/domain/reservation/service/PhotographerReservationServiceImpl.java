@@ -100,12 +100,15 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         weekdayReservationTimeMappingRepository.updateReservationTimeFormatIdToNull(photographerId,reservationTimeFormatId);
     }
 
+    /*
+    * 요일을 예약 시간 형식에 매핑시킨다. (요일을 고정. 예약 시간을 요일에 매핑시키는 것이다.)
+     */
     @Override
     public void mappingWeekdayToReservationTimeFormat(String reservationTimeFormatId, Weekday weekday) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,weekday);
         weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
-            mapping.setWeekday(weekday),
+            mapping.updateReservationTimeFormatId(reservationTimeFormatId),
             () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
         );
     }
@@ -115,7 +118,7 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         Long photographerId = GetAuthenticationInfo.getUserId();
         Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,weekday);
         weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
-            mapping.setWeekday(null),
+            mapping.updateReservationTimeFormatId(null),
             () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
         );
     }
@@ -142,9 +145,9 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public Long softDeleteProgram(Long programId) {
+    public int softDeleteProgram(Long programId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        Long deletedCount = programRepository.softDeleteByProgramIdAndPhotographerId(programId, photographerId);
+        int deletedCount = programRepository.softDeleteByProgramIdAndPhotographerId(programId, photographerId);
         if(deletedCount == 0) {
             throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
         }
