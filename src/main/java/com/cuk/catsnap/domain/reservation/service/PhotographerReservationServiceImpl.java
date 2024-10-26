@@ -111,7 +111,6 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
             mapping.updateReservationTimeFormatId(reservationTimeFormatId),
             () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
         );
-        System.out.println(weekdayReservationTimeMapping.get().getWeekday());
     }
 
     @Override
