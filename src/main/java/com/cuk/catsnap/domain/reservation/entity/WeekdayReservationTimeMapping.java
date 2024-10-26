@@ -9,7 +9,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,7 +41,7 @@ public class WeekdayReservationTimeMapping extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Weekday weekday;
 
-    public void setWeekday(Weekday weekday) {
-        this.weekday = weekday;
+    public void updateReservationTimeFormatId(String reservationTimeFormatId) {
+        this.reservationTimeFormatId = reservationTimeFormatId;
     }
 }
