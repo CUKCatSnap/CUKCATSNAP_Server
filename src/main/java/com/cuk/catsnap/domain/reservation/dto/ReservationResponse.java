@@ -44,8 +44,8 @@ public class ReservationResponse {
     @Builder
     @Schema(description = "예약의 위치를 나타내는 필드", nullable = false)
     public static class Location{
-        private double lat;
-        private double lng;
+        private double latitude;
+        private double longitude;
         private String locationName;
     }
 
