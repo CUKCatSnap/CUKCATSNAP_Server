@@ -8,6 +8,7 @@ import com.cuk.catsnap.global.Exception.reservation.NotFoundProgramException;
 import com.cuk.catsnap.global.Exception.reservation.DeletedProgramException;
 import com.cuk.catsnap.global.Exception.reservation.CanNotChangeReservationState;
 import com.cuk.catsnap.global.Exception.reservation.NotFoundStartTimeException;
+import com.cuk.catsnap.global.Exception.reservation.OverLappingTimeException;
 import com.cuk.catsnap.global.result.ResultCode;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ public class ErrorRepository {
         errorMap.put(NotFoundProgramException.class, ReservationErrorCode.NOT_FOUND_PROGRAM);
         errorMap.put(DeletedProgramException.class, ReservationErrorCode.DELETED_PROGRAM);
         errorMap.put(NotFoundStartTimeException.class, ReservationErrorCode.NOT_FOUND_START_TIME);
+        errorMap.put(OverLappingTimeException.class, ReservationErrorCode.CANNOT_RESERVATION_OVERBOOKING);
     }
 
     public ResultCode getResultCode(BusinessException e){
