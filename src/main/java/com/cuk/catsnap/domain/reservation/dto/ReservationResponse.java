@@ -9,8 +9,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -43,9 +45,11 @@ public class ReservationResponse {
     @Getter
     @Builder
     @Schema(description = "예약의 위치를 나타내는 필드", nullable = false)
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Location{
-        private double latitude;
-        private double longitude;
+        private Double latitude;
+        private Double longitude;
         private String locationName;
     }
 
