@@ -25,7 +25,7 @@ public class ReservationRequest {
         @Schema(description = "예약시 시작할 시간을 입력. 만약 작가가 설정한 시작 시간과 일치하지 않으면 오류 발생", example = "yyyy-MM-dd HH:mm", type = "string")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         private LocalDateTime startTime;
-        private String programId;
+        private Long programId;
     }
 
     /*
