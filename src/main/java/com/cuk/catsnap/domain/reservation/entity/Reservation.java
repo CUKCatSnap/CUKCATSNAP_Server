@@ -63,10 +63,6 @@ public class Reservation extends BaseTimeEntity {
     @Column(name="end_time")
     private LocalDateTime endTime;
 
-    private String title;
-    private String content;
-    private Long price;
-
     @Column(name="reservation_state")
     @Enumerated(EnumType.STRING)
     private ReservationState reservationState;
