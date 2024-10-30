@@ -1,6 +1,8 @@
 package com.cuk.catsnap.domain.photographer.converter;
 
+import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
+import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,15 @@ public class PhotographerConverter {
                 .birthday(photographerSignUp.getBirthday())
                 .nickname(photographerSignUp.getNickname())
                 .phoneNumber(photographerSignUp.getPhoneNumber())
+                .build();
+    }
+
+    public PhotographerResponse.PhotographerSetting toPhotographerSetting(PhotographerSetting photographerSetting) {
+        return PhotographerResponse.PhotographerSetting.builder()
+                .autoReservationAccept(photographerSetting.getAutoReservationAccept())
+                .enableOverBooking(photographerSetting.getEnableOverBooking())
+                .preReservationDays(photographerSetting.getPreReservationDays())
+                .announcement(photographerSetting.getAnnouncement())
                 .build();
     }
 }
