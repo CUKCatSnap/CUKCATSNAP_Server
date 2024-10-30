@@ -20,7 +20,8 @@ public class PhotographerSettingRepository {
     }
 
     public PhotographerSetting findByPhotographerId(Long photographerId) {
-        return mongoOperations.findById(photographerId, PhotographerSetting.class);
+        Query query = Query.query(Criteria.where("photographerId").is(photographerId));
+        return mongoOperations.findOne(query, PhotographerSetting.class);
     }
 
     public UpdateResult updatePhotographerSetting(PhotographerSetting photographerSetting) {

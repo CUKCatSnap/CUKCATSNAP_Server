@@ -1,6 +1,9 @@
 package com.cuk.catsnap.domain.photographer.controller;
 
+import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
+import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
+import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.photographer.service.PhotographerService;
 import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.code.PhotographerResultCode;
@@ -11,6 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PhotographerController {
 
     private final PhotographerService photographerService;
+    private final PhotographerConverter photographerConverter;
 
     @Operation(summary = "작가 회원가입 API(구현 완료)", description = "작가가 회원가입을 할 수 있는 API입니다.")
     @ApiResponses({
@@ -56,5 +61,16 @@ public class PhotographerController {
             SecurityRequest.CatsnapSignInRequest photographerSignIn
     ) {
         return null;
+    }
+
+    @Operation(summary = "작가가 자신의 예약 설정을 조회하는 API(구현 완료)", description = "작가가 자신의 예약 설정을 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SP001", description = "사진작가 자신의 환경설정 조회 성공")
+    })
+    @GetMapping("/my/setting")
+    public ResultResponse<PhotographerResponse.PhotographerSetting> lookUpMySetting() {
+        PhotographerSetting photographerSetting =  photographerService.getPhotographerSetting();
+        PhotographerResponse.PhotographerSetting photographerSettingDto = photographerConverter.toPhotographerSetting(photographerSetting);
+        return ResultResponse.of(PhotographerResultCode.LOOK_UP_MY_SETTING, photographerSettingDto);
     }
 }

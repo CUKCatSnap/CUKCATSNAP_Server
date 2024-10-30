@@ -8,11 +8,14 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerSettingRepository;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
+import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class PhotographerServiceImpl implements PhotographerService{
 
@@ -55,5 +58,11 @@ public class PhotographerServiceImpl implements PhotographerService{
                 .announcement("")
                 .build();
         photographerSettingRepository.save(photographerSetting);
+    }
+
+    @Override
+    public PhotographerSetting getPhotographerSetting() {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        return photographerSettingRepository.findByPhotographerId(photographerId);
     }
 }
