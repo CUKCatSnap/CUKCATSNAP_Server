@@ -65,4 +65,17 @@ public class PhotographerServiceImpl implements PhotographerService{
         Long photographerId = GetAuthenticationInfo.getUserId();
         return photographerSettingRepository.findByPhotographerId(photographerId);
     }
+
+    @Override
+    public void updatePhotographerSetting(PhotographerRequest.PhotographerSetting photographerSetting) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        PhotographerSetting photographerSettingDocument = PhotographerSetting.builder()
+                .photographerId(photographerId)
+                .autoReservationAccept(photographerSetting.getAutoReservationAccept())
+                .enableOverBooking(photographerSetting.getEnableOverBooking())
+                .preReservationDays(photographerSetting.getPreReservationDays())
+                .announcement(photographerSetting.getAnnouncement())
+                .build();
+        photographerSettingRepository.updatePhotographerSetting(photographerSettingDocument);
+    }
 }

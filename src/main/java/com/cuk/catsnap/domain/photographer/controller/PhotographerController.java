@@ -73,4 +73,18 @@ public class PhotographerController {
         PhotographerResponse.PhotographerSetting photographerSettingDto = photographerConverter.toPhotographerSetting(photographerSetting);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_MY_SETTING, photographerSettingDto);
     }
+
+    @Operation(summary = "작가가 자신의 예약 설정을 수정하는 API(구현 완료)", description = "작가가 자신의 예약 설정을 수정하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SP002", description = "사진작가 자신의 환경설정 변경 성공")
+    })
+    @PostMapping("/my/setting")
+    public ResultResponse<?> updateMySetting(
+            @Parameter(description = "작가의 환경설정", required = true)
+            @RequestBody
+            PhotographerRequest.PhotographerSetting photographerSetting
+    ) {
+        photographerService.updatePhotographerSetting(photographerSetting);
+        return ResultResponse.of(PhotographerResultCode.UPDATE_MY_SETTING);
+    }
 }
