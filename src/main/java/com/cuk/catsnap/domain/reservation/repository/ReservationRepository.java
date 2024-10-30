@@ -16,4 +16,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findAllReservationWithEagerByPhotographerIdAndStartTimeBetween(Long photographerId, LocalDateTime startTime, LocalDateTime endTime);
 
     Optional<Reservation> findReservationByIdAndPhotographerId(Long reservationId, Long photographerId);
+    List<Reservation> findAllByPhotographerIdAndStartTimeBetweenOrderByStartTimeAsc(Long photographerId, LocalDateTime startTime, LocalDateTime endTime);
 }

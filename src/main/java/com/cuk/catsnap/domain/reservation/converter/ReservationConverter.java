@@ -101,4 +101,11 @@ public class ReservationConverter {
                 .state(reservation.getReservationState())
                 .build();
     }
+
+    public ReservationResponse.ReservationBookResult toReservationBookResult(Reservation reservation) {
+        return ReservationResponse.ReservationBookResult.builder()
+                .reservationId(reservation.getId())
+                .reservationState(reservation.getReservationState())
+                .build();
+    }
 }

@@ -1,9 +1,13 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
+import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
 import com.cuk.catsnap.global.result.PagedData;
 import com.cuk.catsnap.global.result.ResultResponse;
+import com.cuk.catsnap.global.result.code.ReservationResultCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,6 +15,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
-@Tag(name = "예약 관련 API", description = "사용자가 예약한 예약 조회, 새로운 예약하기, 특정 작가의 예약을 조회할 수 있는 API입니다.")
+@Tag(name = "유저 예약 관련 API", description = "새로운 예약을 생성하거나 자신의 예약을 조회하는 API입니다.")
 @RestController
 @RequestMapping("/reservation")
+@RequiredArgsConstructor
 public class MemberReservationController {
+
+    private final MemberReservationService memberReservationService;
+    private final ReservationConverter reservationConverter;
 
     @Operation(summary = "예약을 조회하는 API", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
     @ApiResponses({
@@ -110,9 +119,15 @@ public class MemberReservationController {
         return null;
     }
 
-    @Operation(summary = "새로운 예약을 생성하는 API", description = "새로운 예약을 만드는 API입니다.")
+    @Operation(summary = "새로운 예약을 생성하는 API(구현 완료)", description = "새로운 예약을 만드는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201 SR004", description = "예약이 성공적으로 완료되었습니다.")
+            @ApiResponse(responseCode = "201 SR004", description = "예약이 성공적으로 완료되었습니다."),
+            @ApiResponse(responseCode = "404 EP001", description = "존재하지 않는 프로그램입니다"),
+            @ApiResponse(responseCode = "404 EP002", description = "삭제된 프로그램입니다"),
+            @ApiResponse(responseCode = "400 EP003", description = "해당 요일에 요청하는 시작시간이 존재하지 않습니다."),
+            @ApiResponse(responseCode = "400 EP004", description = "해당 시간대는 예약 중복으로 인해 예약이 불가능합니다."),
+            @ApiResponse(responseCode = "400 EP005", description = "신규 예약의 시작시간은 현재보다 과거일 수 없습니다.")
+
     })
     @PostMapping("/book")
     public ResultResponse<ReservationResponse.ReservationBookResult> postBookReservation(
@@ -120,6 +135,11 @@ public class MemberReservationController {
             @RequestBody
             ReservationRequest.ReservationBook reservationBook
     ){
-        return null;
+        Reservation reservation = memberReservationService.createReservation(reservationBook);
+        ReservationResponse.ReservationBookResult reservationBookResult = reservationConverter.toReservationBookResult(reservation);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_BOOK_COMPLETE, reservationBookResult);
     }
 }
+/*
+
+ */
