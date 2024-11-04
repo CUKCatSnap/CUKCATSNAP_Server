@@ -6,6 +6,7 @@ import com.cuk.catsnap.domain.photographer.document.PhotographerReservationNotic
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerSettingRepository;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
@@ -26,6 +27,7 @@ public class PhotographerServiceImpl implements PhotographerService{
     private final PhotographerSettingRepository photographerSettingRepository;
     private final PhotographerConverter photographerConverter;
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
+    private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
 
     private final PhotographerReservationService photographerReservationService;
 
@@ -64,6 +66,7 @@ public class PhotographerServiceImpl implements PhotographerService{
                 .build();
         photographerSettingRepository.save(photographerSetting);
         photographerReservationNoticeRepository.save("", photographerId);
+        photographerReservationLocationRepository.save("", photographerId);
     }
 
     @Override
