@@ -1,6 +1,8 @@
 package com.cuk.catsnap.domain.photographer.controller;
 
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationLocation;
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
@@ -86,5 +88,57 @@ public class PhotographerController {
     ) {
         photographerService.updatePhotographerSetting(photographerSetting);
         return ResultResponse.of(PhotographerResultCode.UPDATE_MY_SETTING);
+    }
+
+    @Operation(summary = "작가가 자신의 예약 전 알림을 조회하는 API(구현 완료)", description = "작가가 자신의 예약 전 알림을 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SP003", description = "사진작가 자신의 예약 전 알림 조회 성공")
+    })
+    @GetMapping("/my/reservation/notice")
+    public ResultResponse<PhotographerResponse.PhotographerReservationNotice> lookUpMyReservationNotice(
+    ) {
+        PhotographerReservationNotice photographerReservationNotice = photographerService.getReservationNotice();
+        PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(photographerReservationNotice);
+        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_NOTICE, photographerReservationNoticeDto);
+    }
+
+    @Operation(summary = "작가가 자신의 예약 전 알림을 수정하는 API(구현 완료)", description = "작가가 자신의 예약 전 알림을 수정하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SP004", description = "사진작가 자신의 예약 전 알림 변경 성공")
+    })
+    @PostMapping("/my/reservation/notice")
+    public ResultResponse<?> updateMyReservationNotice(
+            @Parameter(description = "작가의 예약 전 알림", required = true)
+            @RequestBody
+            PhotographerRequest.PhotographerReservationNotice photographerReservationNotice
+    ) {
+        photographerService.updateReservationNotice(photographerReservationNotice);
+        return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_NOTICE);
+    }
+
+    @Operation(summary = "작가가 자신이 예약을 받을 장소를 조회하는 API(구현 완료)", description = "작가가 자신이 예약을 받을 장소를 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SP005", description = "사진작가 자신의 예약 전 알림 조회 성공")
+    })
+    @GetMapping("/my/reservation/location")
+    public ResultResponse<PhotographerResponse.PhotographerReservationLocation> lookUpMyReservationLocation(
+    ) {
+        PhotographerReservationLocation photographerReservationLocation = photographerService.getReservationLocation();
+        PhotographerResponse.PhotographerReservationLocation photographerReservationLocationDto = photographerConverter.toPhotographerReservationLocation(photographerReservationLocation);
+        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_LOCATION, photographerReservationLocationDto);
+    }
+
+    @Operation(summary = "작가가 자신이 예약을 받을 장소를 수정하는 API(구현 완료)", description = "작가가 자신이 예약을 받을 장소를 수정하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SP006", description = "사진작가 자신의 예약 전 알림 변경 성공")
+    })
+    @PostMapping("/my/reservation/location")
+    public ResultResponse<?> updateMyReservationLocation(
+            @Parameter(description = "작가의 예약 전 알림", required = true)
+            @RequestBody
+            PhotographerRequest.PhotographerReservationLocation photographerReservationLocation
+    ) {
+        photographerService.updateReservationLocation(photographerReservationLocation);
+        return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_LOCATION);
     }
 }

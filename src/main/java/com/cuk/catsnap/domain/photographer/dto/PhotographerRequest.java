@@ -56,7 +56,25 @@ public class PhotographerRequest {
         private Boolean enableOverBooking;
         @Schema(description = "작가가 예약을 현재를 기준으로 며칠 후 까지 예약을 받을지")
         private Long preReservationDays;
-        @Schema(description = "작가가 예약을 받을 때 보여줄 공지")
-        private String announcement;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Schema(description = "예약전  공지 사항")
+    public static class PhotographerReservationNotice {
+        @Schema(description = "예약전  공지 사항")
+        private String content;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Schema(description = "작가의 예약 가능 지역")
+    public static class PhotographerReservationLocation {
+        @Schema(description = "작가의 예약 가능 지역")
+        private String content;
     }
 }

@@ -1,5 +1,7 @@
 package com.cuk.catsnap.domain.photographer.converter;
 
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationLocation;
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
@@ -24,7 +26,18 @@ public class PhotographerConverter {
                 .autoReservationAccept(photographerSetting.getAutoReservationAccept())
                 .enableOverBooking(photographerSetting.getEnableOverBooking())
                 .preReservationDays(photographerSetting.getPreReservationDays())
-                .announcement(photographerSetting.getAnnouncement())
+                .build();
+    }
+
+    public PhotographerResponse.PhotographerReservationNotice toPhotographerReservationNotice(PhotographerReservationNotice photographerReservationNotice) {
+        return PhotographerResponse.PhotographerReservationNotice.builder()
+                .content(photographerReservationNotice.getContent())
+                .build();
+    }
+
+    public PhotographerResponse.PhotographerReservationLocation toPhotographerReservationLocation(PhotographerReservationLocation photographerReservationLocation) {
+        return PhotographerResponse.PhotographerReservationLocation.builder()
+                .content(photographerReservationLocation.getContent())
                 .build();
     }
 }

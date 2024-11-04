@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PhotographerSetting {
+public class PhotographerReservationLocation {
 
-    private String id;
-    private Long photographerId;
-    private Boolean autoReservationAccept;
-    private Boolean enableOverBooking;
-    private Long preReservationDays;
+    String id;
+    Long photographerId;
+    String content;
 }
