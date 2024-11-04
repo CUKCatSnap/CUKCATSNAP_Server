@@ -57,11 +57,11 @@ public class ReservationResponse {
     @Builder
     @Schema(description = "예약의 시간을 나타내는 필드", nullable = false)
     public static class Time{
-        @Schema(example = "yyyy-MM-dd HH:mm:ss", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @Schema(example = "yyyy-MM-dd HH:mm", type = "string")
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         private LocalDateTime startTime;
-        @Schema(example = "yyyy-MM-dd HH:mm:ss", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @Schema(example = "yyyy-MM-dd HH:mm", type = "string")
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         private LocalDateTime endTime;
     }
 
