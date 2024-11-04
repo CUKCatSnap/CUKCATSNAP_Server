@@ -24,7 +24,6 @@ public class PhotographerConverter {
                 .autoReservationAccept(photographerSetting.getAutoReservationAccept())
                 .enableOverBooking(photographerSetting.getEnableOverBooking())
                 .preReservationDays(photographerSetting.getPreReservationDays())
-                .announcement(photographerSetting.getAnnouncement())
                 .build();
     }
 }

@@ -16,5 +16,4 @@ public class PhotographerSetting {
     private Boolean autoReservationAccept;
     private Boolean enableOverBooking;
     private Long preReservationDays;
-    private String announcement;
 }

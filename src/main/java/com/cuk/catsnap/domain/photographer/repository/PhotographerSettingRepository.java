@@ -29,8 +29,7 @@ public class PhotographerSettingRepository {
         Update update = new Update()
                 .set("autoReservationAccept", photographerSetting.getAutoReservationAccept())
                 .set("enableOverBooking", photographerSetting.getEnableOverBooking())
-                .set("preReservationDays", photographerSetting.getPreReservationDays())
-                .set("announcement", photographerSetting.getAnnouncement());
+                .set("preReservationDays", photographerSetting.getPreReservationDays());
         return mongoOperations.updateFirst(query, update, PhotographerSetting.class);
     }
 }

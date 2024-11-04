@@ -55,7 +55,6 @@ public class PhotographerServiceImpl implements PhotographerService{
                 .autoReservationAccept(false)
                 .enableOverBooking(false)
                 .preReservationDays(14L)
-                .announcement("")
                 .build();
         photographerSettingRepository.save(photographerSetting);
     }
@@ -74,7 +73,6 @@ public class PhotographerServiceImpl implements PhotographerService{
                 .autoReservationAccept(photographerSetting.getAutoReservationAccept())
                 .enableOverBooking(photographerSetting.getEnableOverBooking())
                 .preReservationDays(photographerSetting.getPreReservationDays())
-                .announcement(photographerSetting.getAnnouncement())
                 .build();
         photographerSettingRepository.updatePhotographerSetting(photographerSettingDocument);
     }
