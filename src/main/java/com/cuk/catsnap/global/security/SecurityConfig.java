@@ -31,6 +31,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.crypto.SecretKey;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,7 +46,7 @@ public class SecurityConfig {
     private final ServletSecurityResponse servletSecurityResponse;
     private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final SecretKey secretKey;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -113,8 +114,8 @@ public class SecurityConfig {
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
-            .addFilterAt(memberSignInAuthenticationFilter(), BasicAuthenticationFilter.class)
-            .addFilterAt(photographerSignInAuthenticationFilter(), BasicAuthenticationFilter.class)
+            .addFilterAt(new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper, servletSecurityResponse), BasicAuthenticationFilter.class)
+            .addFilterAt(new PhotographerSignInAuthenticationFilter(authenticationManager(), objectMapper, servletSecurityResponse), BasicAuthenticationFilter.class)
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors->cors
                     .configurationSource(corsConfigurationSource()))
@@ -135,7 +136,7 @@ public class SecurityConfig {
                 .formLogin(FormLoginConfigurer::disable)
                 .httpBasic(HttpBasicConfigurer::disable)
                 .logout(LogoutConfigurer::disable)
-                .addFilterAt(jwtAuthenticationFilter, BasicAuthenticationFilter.class)
+                .addFilterAt(new JwtAuthenticationFilter(servletSecurityResponse, secretKey), BasicAuthenticationFilter.class)
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors->cors
                         .configurationSource(corsConfigurationSource()))
