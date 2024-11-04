@@ -46,7 +46,7 @@ public class PhotographerServiceImpl implements PhotographerService{
         // weekdayReservationTimeMapping 생성 (예약을 형식을 요일에 매핑하는 테이블 생성)
         photographerReservationService.createJoinedPhotographerReservationTimeFormat(photographer);
         // photographerSetting 초기화
-        initializePhotographerSetting(photographer.getId());
+        initializeSineUpPhotographer(photographer.getId());
         // todo : 이용약관 동의 여부 확인
     }
 
@@ -54,7 +54,7 @@ public class PhotographerServiceImpl implements PhotographerService{
     * 작가 회원가입 시 초기화 작업
      */
     @Override
-    public void initializePhotographerSetting(Long photographerId) {
+    public void initializeSineUpPhotographer(Long photographerId) {
         PhotographerSetting photographerSetting = PhotographerSetting.builder()
                 .photographerId(photographerId)
                 .autoReservationAccept(false)
