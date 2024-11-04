@@ -5,6 +5,7 @@ import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerSettingRepository;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
@@ -23,6 +24,7 @@ public class PhotographerServiceImpl implements PhotographerService{
     private final PhotographerRepository photographerRepository;
     private final PhotographerSettingRepository photographerSettingRepository;
     private final PhotographerConverter photographerConverter;
+    private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
 
     private final PhotographerReservationService photographerReservationService;
 
@@ -48,6 +50,9 @@ public class PhotographerServiceImpl implements PhotographerService{
         // todo : 이용약관 동의 여부 확인
     }
 
+    /*
+    * 작가 회원가입 시 초기화 작업
+     */
     @Override
     public void initializePhotographerSetting(Long photographerId) {
         PhotographerSetting photographerSetting = PhotographerSetting.builder()
@@ -57,6 +62,7 @@ public class PhotographerServiceImpl implements PhotographerService{
                 .preReservationDays(14L)
                 .build();
         photographerSettingRepository.save(photographerSetting);
+        photographerReservationNoticeRepository.save("", photographerId);
     }
 
     @Override
