@@ -22,4 +22,9 @@ public class PhotographerReservationLocationRepository {
                 .build();
         return mongoOperations.save(photographerReservationLocation);
     }
+
+    public PhotographerReservationLocation findByPhotographerId(Long photographerId) {
+        Query query = Query.query(Criteria.where("photographerId").is(photographerId));
+        return mongoOperations.findOne(query, PhotographerReservationLocation.class);
+    }
 }

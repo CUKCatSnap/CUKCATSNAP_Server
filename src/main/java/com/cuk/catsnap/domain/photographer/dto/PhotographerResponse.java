@@ -53,4 +53,12 @@ public class PhotographerResponse {
         @Schema(description = "예약전  공지 사항")
         private String content;
     }
+
+    @Getter
+    @Builder
+    @Schema(description = "작가의 예약 가능 지역")
+    public static class PhotographerReservationLocation {
+        @Schema(description = "작가의 예약 가능 지역")
+        private String content;
+    }
 }
