@@ -36,9 +36,4 @@ public class Util {
     public ServletSecurityResponse servletResponse(ObjectMapper objectMapper, SecretKey key) {
         return new ServletSecurityResponse(objectMapper, key);
     }
-
-    @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter(ServletSecurityResponse servletSecurityResponse, SecretKey secretKey) {
-        return new JwtAuthenticationFilter(servletSecurityResponse, secretKey);
-    }
 }

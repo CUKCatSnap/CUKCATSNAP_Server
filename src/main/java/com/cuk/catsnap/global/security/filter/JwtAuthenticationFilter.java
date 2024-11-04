@@ -93,9 +93,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         servletSecurityResponse.responseBody(response, securityErrorCode);
     }
-
-    @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return !request.getServletPath().contains("my");
-    }
 }
