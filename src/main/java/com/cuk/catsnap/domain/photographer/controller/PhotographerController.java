@@ -100,4 +100,18 @@ public class PhotographerController {
         PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(photographerReservationNotice);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_NOTICE, photographerReservationNoticeDto);
     }
+
+    @Operation(summary = "작가가 자신의 예약 전 알림을 수정하는 API(구현 완료)", description = "작가가 자신의 예약 전 알림을 수정하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SP004", description = "사진작가 자신의 예약 전 알림 변경 성공")
+    })
+    @PostMapping("/my/reservation/notice")
+    public ResultResponse<?> updateMyReservationNotice(
+            @Parameter(description = "작가의 예약 전 알림", required = true)
+            @RequestBody
+            PhotographerRequest.PhotographerReservationNotice photographerReservationNotice
+    ) {
+        photographerService.updateReservationNotice(photographerReservationNotice);
+        return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_NOTICE);
+    }
 }

@@ -89,4 +89,14 @@ public class PhotographerServiceImpl implements PhotographerService{
         return photographerReservationNoticeRepository.findByPhotographerId(GetAuthenticationInfo.getUserId());
     }
 
+    @Override
+    public void updateReservationNotice(PhotographerRequest.PhotographerReservationNotice photographerReservationNotice) {
+        Long photographerId = GetAuthenticationInfo.getUserId();
+        PhotographerReservationNotice photographerReservationNoticeDocument = PhotographerReservationNotice.builder()
+                .photographerId(photographerId)
+                .content(photographerReservationNotice.getContent())
+                .build();
+        photographerReservationNoticeRepository.updatePhotographerReservationNotice(photographerReservationNoticeDocument);
+    }
+
 }
