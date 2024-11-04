@@ -2,6 +2,7 @@ package com.cuk.catsnap.domain.photographer.service;
 
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
@@ -82,4 +83,10 @@ public class PhotographerServiceImpl implements PhotographerService{
                 .build();
         photographerSettingRepository.updatePhotographerSetting(photographerSettingDocument);
     }
+
+    @Override
+    public PhotographerReservationNotice getReservationNotice() {
+        return photographerReservationNoticeRepository.findByPhotographerId(GetAuthenticationInfo.getUserId());
+    }
+
 }

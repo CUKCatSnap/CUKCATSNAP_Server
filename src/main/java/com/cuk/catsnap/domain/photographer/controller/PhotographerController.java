@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.photographer.controller;
 
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
@@ -86,5 +87,17 @@ public class PhotographerController {
     ) {
         photographerService.updatePhotographerSetting(photographerSetting);
         return ResultResponse.of(PhotographerResultCode.UPDATE_MY_SETTING);
+    }
+
+    @Operation(summary = "작가가 자신의 예약 전 알림을 조회하는 API(구현 완료)", description = "작가가 자신의 예약 전 알림을 조회하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200 SP003", description = "사진작가 자신의 예약 전 알림 조회 성공")
+    })
+    @GetMapping("/my/reservation/notice")
+    public ResultResponse<PhotographerResponse.PhotographerReservationNotice> lookUpMyReservationNotice(
+    ) {
+        PhotographerReservationNotice photographerReservationNotice = photographerService.getReservationNotice();
+        PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(photographerReservationNotice);
+        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_NOTICE, photographerReservationNoticeDto);
     }
 }

@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.photographer.service;
 
 import com.cuk.catsnap.domain.photographer.document.PhotographerSetting;
+import com.cuk.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerRequest;
 
 public interface PhotographerService {
@@ -9,4 +10,5 @@ public interface PhotographerService {
     void initializeSineUpPhotographer(Long photographerId);
     PhotographerSetting getPhotographerSetting();
     void updatePhotographerSetting(PhotographerRequest.PhotographerSetting photographerSetting);
+    PhotographerReservationNotice getReservationNotice();
 }

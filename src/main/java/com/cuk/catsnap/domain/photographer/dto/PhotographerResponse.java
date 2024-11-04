@@ -45,4 +45,12 @@ public class PhotographerResponse {
         @Schema(description = "작가가 예약을 현재를 기준으로 며칠 후 까지 예약을 받을지")
         private Long preReservationDays;
     }
+
+    @Getter
+    @Builder
+    @Schema(description = "예약전  공지 사항")
+    public static class PhotographerReservationNotice {
+        @Schema(description = "예약전  공지 사항")
+        private String content;
+    }
 }
