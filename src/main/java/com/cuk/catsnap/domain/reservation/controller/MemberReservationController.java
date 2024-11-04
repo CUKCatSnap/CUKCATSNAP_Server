@@ -114,16 +114,18 @@ public class MemberReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_PROGRAM_LOOK_UP, photographerProgramList);
     }
 
-    @Operation(summary = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회", description = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회")
+    @Operation(summary = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회(구현 완료)", description = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SR003", description = "성공적으로 예약 주의사항과 예약 가능한 장소를 조회했습니다.")
+            @ApiResponse(responseCode = "200 SR003", description = "성공적으로 예약 주의사항과 예약 가능한 장소를 조회했습니다."),
+            @ApiResponse(responseCode = "404 EO000", description = "해당 게시물의 소유권을 찾을 수 없습니다."),
     })
-    @GetMapping("/photographer/notification")
+    @GetMapping("/photographer/guidance")
     public ResultResponse<ReservationResponse.PhotographerReservationGuidance> getPhotographerReservationGuidance(
             @RequestParam("photographerId")
             Long photographerId
     ){
-        return null;
+        ReservationResponse.PhotographerReservationGuidance photographerReservationGuidanceDto =  memberReservationService.getPhotographerReservationGuidance(photographerId);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_GUIDANCE_LOOK_UP, photographerReservationGuidanceDto);
     }
 
     @Operation(summary = "새로운 예약을 생성하는 API(구현 완료)", description = "새로운 예약을 만드는 API입니다.")

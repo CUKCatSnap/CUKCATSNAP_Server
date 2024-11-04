@@ -13,4 +13,5 @@ public interface MemberReservationService {
     Reservation createReservation(ReservationRequest.ReservationBook reservationBook);
     ReservationResponse.PhotographerAvailableReservationTimeList getAvailableReservationTime(LocalDate date, Long photographerId);
     List<Program> getPhotographerProgram(Long photographerId);
+    ReservationResponse.PhotographerReservationGuidance getPhotographerReservationGuidance(Long photographerId);
 }

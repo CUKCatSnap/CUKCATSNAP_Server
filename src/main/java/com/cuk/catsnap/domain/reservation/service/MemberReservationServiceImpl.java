@@ -4,6 +4,8 @@ import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -47,6 +49,8 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final ReservationRepository reservationRepository;
     private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
+    private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
+    private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final GeographyConverter geographyConverter;
     private final ReservationConverter reservationConverter;
 
@@ -110,6 +114,22 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     @Override
     public List<Program> getPhotographerProgram(Long photographerId) {
         return programRepository.findByPhotographerIdAndDeletedFalse(photographerId);
+    }
+
+    @Override
+    public ReservationResponse.PhotographerReservationGuidance getPhotographerReservationGuidance(Long photographerId) {
+        String photographerNotification = "";
+        String photographerLocation = "";
+        try{
+            photographerNotification = photographerReservationNoticeRepository.findByPhotographerId(photographerId).getContent();
+            photographerLocation = photographerReservationLocationRepository.findByPhotographerId(photographerId).getContent();
+        } catch (NullPointerException e) {
+            throw new OwnershipNotFoundException("해당 작가의 예약 전 주의사항 또는 예약 가능한 장소가 존재하지 않습니다.");
+        }
+        return ReservationResponse.PhotographerReservationGuidance.builder()
+                .photographerNotification(photographerNotification)
+                .photographerLocation(photographerLocation)
+                .build();
     }
 
     /*
