@@ -27,4 +27,11 @@ public class PhotographerReservationLocationRepository {
         Query query = Query.query(Criteria.where("photographerId").is(photographerId));
         return mongoOperations.findOne(query, PhotographerReservationLocation.class);
     }
+
+    public UpdateResult updatePhotographerReservationLocation(PhotographerReservationLocation photographerReservationLocation) {
+        Query query = Query.query(Criteria.where("photographerId").is(photographerReservationLocation.getPhotographerId()));
+        Update update = new Update()
+                .set("content", photographerReservationLocation.getContent());
+        return mongoOperations.updateFirst(query, update, PhotographerReservationLocation.class);
+    }
 }

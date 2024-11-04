@@ -127,4 +127,18 @@ public class PhotographerController {
         PhotographerResponse.PhotographerReservationLocation photographerReservationLocationDto = photographerConverter.toPhotographerReservationLocation(photographerReservationLocation);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_LOCATION, photographerReservationLocationDto);
     }
+
+    @Operation(summary = "작가가 자신이 예약을 받을 장소를 수정하는 API(구현 완료)", description = "작가가 자신이 예약을 받을 장소를 수정하는 API입니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201 SP006", description = "사진작가 자신의 예약 전 알림 변경 성공")
+    })
+    @PostMapping("/my/reservation/location")
+    public ResultResponse<?> updateMyReservationLocation(
+            @Parameter(description = "작가의 예약 전 알림", required = true)
+            @RequestBody
+            PhotographerRequest.PhotographerReservationLocation photographerReservationLocation
+    ) {
+        photographerService.updateReservationLocation(photographerReservationLocation);
+        return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_LOCATION);
+    }
 }

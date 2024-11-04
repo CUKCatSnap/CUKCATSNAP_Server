@@ -14,4 +14,5 @@ public interface PhotographerService {
     PhotographerReservationNotice getReservationNotice();
     void updateReservationNotice(PhotographerRequest.PhotographerReservationNotice photographerReservationNotice);
     PhotographerReservationLocation getReservationLocation();
+    void updateReservationLocation(PhotographerRequest.PhotographerReservationLocation photographerReservationLocation);
 }
