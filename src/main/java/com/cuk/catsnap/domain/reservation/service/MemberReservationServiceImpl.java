@@ -4,8 +4,10 @@ import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
+import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -31,6 +33,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -45,6 +48,7 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
     private final GeographyConverter geographyConverter;
+    private final ReservationConverter reservationConverter;
 
     @Override
     public Reservation createReservation(ReservationRequest.ReservationBook reservationBook) {
@@ -82,6 +86,25 @@ public class MemberReservationServiceImpl implements MemberReservationService {
                 .endTime(reservationBook.getStartTime().plusMinutes(program.getDurationMinutes()))
                 .reservationState(ReservationState.APPROVED) // todo : 작가 설정에 따른 초기 예약 상태 설정 필요
                 .build());
+    }
+
+    @Override
+    public ReservationResponse.PhotographerAvailableReservationTimeList getAvailableReservationTime(LocalDate date, Long photographerId) {
+        Weekday weekday = getWeekday(date);
+        String ReservationTimeFormatId = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId, weekday)
+                .orElseThrow(() -> new OwnershipNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."))
+                .getReservationTimeFormatId();
+        ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(ReservationTimeFormatId);
+        if(reservationTimeFormat == null) {
+            return ReservationResponse.PhotographerAvailableReservationTimeList.builder()
+                    .photographerAvailableReservationTimeList(Collections.emptyList())
+                    .build();
+        }
+        List<LocalTime> photographerStartTimeList = reservationTimeFormat.getStartTimeList().stream()
+                .filter(time -> time.atDate(date).isAfter(LocalDateTime.now()))
+                .toList();
+        List<Reservation> reservationList = reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(photographerId, LocalDateTime.of(date, LocalTime.MIN), LocalDateTime.of(date, LocalTime.MAX));
+        return reservationConverter.toPhotographerAvailableReservationTimeList(photographerStartTimeList, reservationList);
     }
 
     /*

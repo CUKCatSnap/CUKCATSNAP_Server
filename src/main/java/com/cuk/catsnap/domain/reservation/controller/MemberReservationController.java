@@ -79,7 +79,9 @@ public class MemberReservationController {
         return null;
     }
 
-    @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회", description = "특정 작가의 특정 날짜에 예약 가능한 시간을 조회하는 API입니다. 특정 작가에게 예약을 할 때 조회되는 API")
+    @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회",
+            description = "특정 작가의 특정 날짜에 예약 가능한 시간을 조회하는 API입니다. 특정 작가에게 예약을 할 때 조회되는 API입니다." +
+                    "만약 예약 가능한 시간이 없다면 photographerAvailableReservationTimeList는 빈 배열이 됩니다.")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
     })
@@ -92,7 +94,8 @@ public class MemberReservationController {
             @DateTimeFormat(pattern = "yyyy-MM-dd")
             LocalDate date
     ){
-        return null;
+        ReservationResponse.PhotographerAvailableReservationTimeList photographerAvailableReservationTimeList= memberReservationService.getAvailableReservationTime(date, photographerId);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_AVAILABLE_TIME_LOOK_UP, photographerAvailableReservationTimeList);
     }
 
     @Operation(summary = "특정 작가의 예약 가능한 프로그램 조회", description = "특정 작가의 예약 가능한 프로그램을 조회하는 API입니다.")
