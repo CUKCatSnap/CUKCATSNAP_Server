@@ -113,8 +113,8 @@ public class SecurityConfig {
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
-            .addFilterAt(memberSignInAuthenticationFilter(), BasicAuthenticationFilter.class)
-            .addFilterAt(photographerSignInAuthenticationFilter(), BasicAuthenticationFilter.class)
+            .addFilterAt(new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper, servletSecurityResponse), BasicAuthenticationFilter.class)
+            .addFilterAt(new PhotographerSignInAuthenticationFilter(authenticationManager(), objectMapper, servletSecurityResponse), BasicAuthenticationFilter.class)
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors->cors
                     .configurationSource(corsConfigurationSource()))
