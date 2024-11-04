@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.reservation.controller;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
 import com.cuk.catsnap.global.result.PagedData;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Tag(name = "유저 예약 관련 API", description = "새로운 예약을 생성하거나 자신의 예약을 조회하는 API입니다.")
 @RestController
@@ -79,7 +81,7 @@ public class MemberReservationController {
         return null;
     }
 
-    @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회",
+    @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회(구현 완료)",
             description = "특정 작가의 특정 날짜에 예약 가능한 시간을 조회하는 API입니다. 특정 작가에게 예약을 할 때 조회되는 API입니다." +
                     "만약 예약 가능한 시간이 없다면 photographerAvailableReservationTimeList는 빈 배열이 됩니다.")
     @ApiResponses({
@@ -98,7 +100,7 @@ public class MemberReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_AVAILABLE_TIME_LOOK_UP, photographerAvailableReservationTimeList);
     }
 
-    @Operation(summary = "특정 작가의 예약 가능한 프로그램 조회", description = "특정 작가의 예약 가능한 프로그램을 조회하는 API입니다.")
+    @Operation(summary = "특정 작가의 예약 가능한 프로그램 조회(구현 완료)", description = "특정 작가의 예약 가능한 프로그램을 조회하는 API입니다.")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR002", description = "성공적으로 예약 가능한 프로그램을 조회했습니다.")
     })
@@ -107,7 +109,9 @@ public class MemberReservationController {
             @RequestParam("photographerId")
             Long photographerId
     ){
-        return null;
+        List<Program> programList = memberReservationService.getPhotographerProgram(photographerId);
+        ReservationResponse.PhotographerProgramList photographerProgramList =  reservationConverter.toPhotographerProgramList(programList);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_PROGRAM_LOOK_UP, photographerProgramList);
     }
 
     @Operation(summary = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회", description = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회")

@@ -107,6 +107,11 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         return reservationConverter.toPhotographerAvailableReservationTimeList(photographerStartTimeList, reservationList);
     }
 
+    @Override
+    public List<Program> getPhotographerProgram(Long photographerId) {
+        return programRepository.findByPhotographerIdAndDeletedFalse(photographerId);
+    }
+
     /*
     * todo : 공휴일을 체크하는 로직이 없음. 공휴일을 체크하는 로직을 추가해야함.
      */
