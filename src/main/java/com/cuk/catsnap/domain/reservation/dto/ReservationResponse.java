@@ -136,7 +136,9 @@ public class ReservationResponse {
     @Getter
     @Builder
     public static class PhotographerAvailableReservationTime {
-        private Time time;
+        @Schema(description = "예약 가능한 시간", example = "HH:mm", type = "string")
+        @JsonFormat(pattern = "HH:mm")
+        private LocalTime startTime;
         @Schema(description = "true이면 해당 시간에 예약이 가능함")
         private Boolean isAvailableReservation;
     }
