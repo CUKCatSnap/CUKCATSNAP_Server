@@ -140,6 +140,3 @@ public class MemberReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_BOOK_COMPLETE, reservationBookResult);
     }
 }
-/*
-
- */

@@ -33,7 +33,7 @@ public class ReservationResponse {
     @Builder
     public static class MyReservation{
         @Schema(description = "예약 id", nullable = false)
-        private long reservationId;
+        private Long reservationId;
         private PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
         private Location location;
         private Time time;
