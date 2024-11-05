@@ -34,23 +34,12 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    @Schema(description = "예약의 시간을 나타내는 필드", nullable = false)
-    public static class Time{
-        @Schema(example = "yyyy-MM-dd HH:mm", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-        private LocalDateTime startTime;
-        @Schema(example = "yyyy-MM-dd HH:mm", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-        private LocalDateTime endTime;
-    }
-
-    @Getter
-    @Builder
     @Schema(description = "예약한 프로그램의 정보를 나타내는 필드", nullable = false)
     public static class ReservedProgram {
         private String title;
         private String content;
-        private long price;
+        private Long durationMinutes;
+        private Long price;
     }
 
     @Getter
@@ -82,7 +71,7 @@ public class ReservationResponse {
         private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
         private Location location;
         private String locationName;
-        private Time time;
+        private LocalDateTime startTime;
         private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
@@ -100,7 +89,7 @@ public class ReservationResponse {
         private Long reservationId;
         private MemberResponse.MemberTinyInformation memberTinyInformation;
         private Location location;
-        private Time time;
+        private LocalDateTime startTime;
         private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
