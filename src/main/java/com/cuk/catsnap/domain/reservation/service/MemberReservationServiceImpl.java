@@ -12,6 +12,7 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
@@ -28,6 +29,8 @@ import com.cuk.catsnap.global.Exception.reservation.OverLappingTimeException;
 import com.cuk.catsnap.global.geography.converter.GeographyConverter;
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -130,6 +133,24 @@ public class MemberReservationServiceImpl implements MemberReservationService {
                 .photographerNotification(photographerNotification)
                 .photographerLocation(photographerLocation)
                 .build();
+    }
+
+    @Override
+    public Slice<Reservation> getMyReservation(ReservationQueryType reservationQueryType, Pageable pageable) {
+        Long memberId = GetAuthenticationInfo.getUserId();
+
+        if(reservationQueryType.equals(ReservationQueryType.ALL)) {
+            return reservationRepository.findAllByMemberIdOrderByCreatedAtDesc(memberId, pageable);
+        } else if(reservationQueryType.equals(ReservationQueryType.UPCOMING)) {
+            LocalDateTime now = LocalDateTime.now()
+                    .withHour(0)
+                    .withMinute(0)
+                    .withSecond(0)
+                    .withNano(0);
+            return reservationRepository.findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(memberId, now, List.of(ReservationState.APPROVED, ReservationState.PENDING), pageable);
+        }
+
+        throw new IllegalArgumentException("올바른 예약 조회 타입이 아닙니다.");
     }
 
     /*

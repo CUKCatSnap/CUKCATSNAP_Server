@@ -11,4 +11,12 @@ public class SlicedData<T> {
     private T slicedData;
     private Boolean isFirst;
     private Boolean isLast;
+
+    public static <T> SlicedData<T> of(T slicedData, Boolean isFirst, Boolean isLast) {
+        return SlicedData.<T>builder()
+                .slicedData(slicedData)
+                .isFirst(isFirst)
+                .isLast(isLast)
+                .build();
+    }
 }

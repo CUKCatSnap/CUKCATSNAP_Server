@@ -1,6 +1,9 @@
 package com.cuk.catsnap.domain.reservation.repository;
 
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.ReservationState;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -17,4 +20,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     Optional<Reservation> findReservationByIdAndPhotographerId(Long reservationId, Long photographerId);
     List<Reservation> findAllByPhotographerIdAndStartTimeBetweenOrderByStartTimeAsc(Long photographerId, LocalDateTime startTime, LocalDateTime endTime);
+    Slice<Reservation> findAllByMemberIdOrderByCreatedAtDesc(Long memberId, Pageable pageable);
+
+    @EntityGraph(attributePaths = {"photographer", "program"})
+    Slice<Reservation> findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(Long memberId, LocalDateTime startTime, List<ReservationState> reservationStateList, Pageable pageable);
 }

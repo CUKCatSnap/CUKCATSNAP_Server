@@ -2,6 +2,7 @@ package com.cuk.catsnap.domain.reservation.converter;
 
 import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.MemberResponse;
+import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ReservationConverter {
 
     private final MemberConverter memberConverter;
+    private final PhotographerConverter photographerConverter;
     /*
     * ReservationTimeFormat은 Nosql의 도큐먼트 입니다.
      */
@@ -150,6 +152,24 @@ public class ReservationConverter {
                 .content(program.getContent())
                 .durationMinutes(program.getDurationMinutes())
                 .price(program.getPrice())
+                .build();
+    }
+
+    public ReservationResponse.MemberReservationInformationList toMemberReservationInformationList(List<Reservation> reservationList) {
+        List<ReservationResponse.MemberReservationInformation> memberReservationInformationList = reservationList.stream()
+                .map(reservation -> ReservationResponse.MemberReservationInformation.builder()
+                        .reservationId(reservation.getId())
+                        .photographerTinyInformation(photographerConverter.toPhotographerTinyInformation(reservation.getPhotographer()))
+                        .location(toLocation(reservation))
+                        .startTime(reservation.getStartTime())
+                        .reservedProgram(toReservedProgram(reservation.getProgram()))
+                        .state(reservation.getReservationState())
+                        .build()
+                )
+                .toList();
+
+        return ReservationResponse.MemberReservationInformationList.builder()
+                .memberReservationInformationList(memberReservationInformationList)
                 .build();
     }
 }
