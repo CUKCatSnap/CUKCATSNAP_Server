@@ -92,18 +92,9 @@ public class ReservationConverter {
         return ReservationResponse.PhotographerReservationInformation.builder()
                 .reservationId(reservation.getId())
                 .memberTinyInformation(memberTinyInformation)
-                .location(ReservationResponse.Location.builder()
-                        .latitude(reservation.getLocation().getY())
-                        .longitude(reservation.getLocation().getX())
-                        .locationName(reservation.getLocationName())
-                        .build())
+                .location(toLocation(reservation))
                 .startTime(reservation.getStartTime())
-                .reservedProgram(ReservationResponse.ReservedProgram.builder()
-                        .title(reservation.getProgram().getTitle())
-                        .content(reservation.getProgram().getContent())
-                        .durationMinutes(reservation.getProgram().getDurationMinutes())
-                        .price(reservation.getProgram().getPrice())
-                        .build())
+                .reservedProgram(toReservedProgram(reservation.getProgram()))
                 .state(reservation.getReservationState())
                 .build();
     }
@@ -142,6 +133,23 @@ public class ReservationConverter {
 
         return ReservationResponse.PhotographerAvailableReservationTimeList.builder()
                 .photographerAvailableReservationTimeList(photographerAvailableReservationTimeList)
+                .build();
+    }
+
+    public ReservationResponse.Location toLocation(Reservation reservation) {
+        return ReservationResponse.Location.builder()
+                .latitude(reservation.getLocation().getY())
+                .longitude(reservation.getLocation().getX())
+                .locationName(reservation.getLocationName())
+                .build();
+    }
+
+    public ReservationResponse.ReservedProgram toReservedProgram(Program program) {
+        return ReservationResponse.ReservedProgram.builder()
+                .title(program.getTitle())
+                .content(program.getContent())
+                .durationMinutes(program.getDurationMinutes())
+                .price(program.getPrice())
                 .build();
     }
 }
