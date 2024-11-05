@@ -40,7 +40,7 @@ public class MemberReservationController {
     private final MemberReservationService memberReservationService;
     private final ReservationConverter reservationConverter;
 
-    @Operation(summary = "예약을 조회하는 API", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
+    @Operation(summary = "예약을 조회하는 API(구현 완료)", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다."),
     })
@@ -55,7 +55,7 @@ public class MemberReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, SlicedData.of(memberReservationInformationList, reservationSlice.isFirst(), reservationSlice.isLast()));
     }
 
-    @Operation(summary = "특정 월의 예약 유무를 일별로 조회", description = "특정 월의 예약 유무를 일별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
+    @Operation(summary = "특정 월의 예약 유무를 일별로 조회(구현 완료)", description = "특정 월의 예약 유무를 일별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
@@ -71,7 +71,7 @@ public class MemberReservationController {
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, monthReservationCheckList);
     }
 
-    @Operation(summary = "특정 일의 예약 목록을 조회", description = "특정 일의 예약 목록을 조회하는 API입니다.")
+    @Operation(summary = "특정 일의 예약 목록을 조회(구현 완료)", description = "특정 일의 예약 목록을 조회하는 API입니다.")
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
