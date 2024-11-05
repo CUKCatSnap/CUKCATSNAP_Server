@@ -5,6 +5,7 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
 import com.cuk.catsnap.global.result.PagedData;
 import com.cuk.catsnap.global.result.ResultResponse;
@@ -47,7 +48,7 @@ public class MemberReservationController {
     public ResultResponse<PagedData<ReservationResponse.MyReservationList>> getMyReservation(
             @Parameter(description="all : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) upcoming : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴. 예약의 상태가 PENDING, APPROVED 인 것만 보여줌) ")
             @RequestParam("type")
-            String reservationQuery,
+            ReservationQueryType reservationQueryType,
             @RequestParam
             Pageable pageable){
         return null;
