@@ -24,4 +24,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     @EntityGraph(attributePaths = {"photographer", "program"})
     Slice<Reservation> findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(Long memberId, LocalDateTime startTime, List<ReservationState> reservationStateList, Pageable pageable);
+
+    List<Reservation> findAllReservationByMemberIdAndStartTimeBetween(Long memberId, LocalDateTime startTime, LocalDateTime endTime);
 }

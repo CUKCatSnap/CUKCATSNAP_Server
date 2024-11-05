@@ -153,6 +153,14 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         throw new IllegalArgumentException("올바른 예약 조회 타입이 아닙니다.");
     }
 
+    @Override
+    public List<Reservation> getReservationListByMonth(LocalDate month) {
+        Long memberId = GetAuthenticationInfo.getUserId();
+        LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(),month.getMonthValue(),1,0,0,0);
+        LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(),month.getMonthValue(),month.lengthOfMonth(),23,59,59);
+        return reservationRepository.findAllReservationByMemberIdAndStartTimeBetween(memberId, startOfMonth, endOfMonth);
+    }
+
     /*
     * todo : 공휴일을 체크하는 로직이 없음. 공휴일을 체크하는 로직을 추가해야함.
      */

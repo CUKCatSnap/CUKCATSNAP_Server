@@ -18,4 +18,5 @@ public interface MemberReservationService {
     List<Program> getPhotographerProgram(Long photographerId);
     ReservationResponse.PhotographerReservationGuidance getPhotographerReservationGuidance(Long photographerId);
     Slice<Reservation> getMyReservation(ReservationQueryType reservationQueryType, Pageable pageable);
+    List<Reservation> getReservationListByMonth(LocalDate month);
 }

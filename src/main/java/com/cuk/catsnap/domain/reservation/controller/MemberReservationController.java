@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 @Tag(name = "유저 예약 관련 API", description = "새로운 예약을 생성하거나 자신의 예약을 조회하는 API입니다.")
@@ -62,9 +63,11 @@ public class MemberReservationController {
             @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
             @RequestParam("month")
             @DateTimeFormat(pattern = "yyyy-MM")
-            LocalDate reservationMonth
+            YearMonth reservationMonth
     ){
-        return null;
+        List<Reservation> reservationList =  memberReservationService.getReservationListByMonth(reservationMonth.atDay(1));
+        ReservationResponse.MonthReservationCheckList monthReservationCheckList = reservationConverter.toMonthReservationCheckList(reservationList);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, monthReservationCheckList);
     }
 
     @Operation(summary = "특정 일의 예약 목록을 조회", description = "특정 일의 예약 목록을 조회하는 API입니다.")
