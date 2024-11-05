@@ -21,27 +21,6 @@ import java.util.List;
 
 public class ReservationResponse {
 
-
-    @Getter
-    @Builder
-    public static class MyReservationList{
-        @Schema(description = "현재 API에 맞는 상태의 예약만을 보여줍니다", nullable = true)
-        private List<MyReservation> myReservationList;
-    }
-
-    @Getter
-    @Builder
-    public static class MyReservation{
-        @Schema(description = "예약 id", nullable = false)
-        private Long reservationId;
-        private PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
-        private Location location;
-        private Time time;
-        private ReservedProgram reservedProgram;
-        @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
-        private ReservationState state;
-    }
-
     @Getter
     @Builder
     @Schema(description = "예약의 위치를 나타내는 필드", nullable = false)
