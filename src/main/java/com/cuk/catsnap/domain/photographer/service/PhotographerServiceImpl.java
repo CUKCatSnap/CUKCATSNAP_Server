@@ -118,4 +118,9 @@ public class PhotographerServiceImpl implements PhotographerService{
         photographerReservationLocationRepository.updatePhotographerReservationLocation(photographerReservationLocationDocument);
     }
 
+    @Override
+    public PhotographerSetting findPhotographerSetting(Long photographerId) {
+        return photographerSettingRepository.findByPhotographerId(photographerId);
+    }
+
 }

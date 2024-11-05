@@ -6,6 +6,7 @@ import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
+import com.cuk.catsnap.domain.photographer.service.PhotographerService;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -21,6 +22,7 @@ import com.cuk.catsnap.domain.reservation.repository.ReservationRepository;
 import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import com.cuk.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import com.cuk.catsnap.global.Exception.reservation.CanNotReserveAfterDeadline;
 import com.cuk.catsnap.global.Exception.reservation.CanNotStartTimeBeforeNow;
 import com.cuk.catsnap.global.Exception.reservation.DeletedProgramException;
 import com.cuk.catsnap.global.Exception.reservation.NotFoundProgramException;
@@ -56,6 +58,7 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final GeographyConverter geographyConverter;
     private final ReservationConverter reservationConverter;
+    private final PhotographerService photographerService;
 
     @Override
     public Reservation createReservation(ReservationRequest.ReservationBook reservationBook) {
@@ -183,10 +186,10 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     * 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인하는 메소드 입니다.
      */
     private boolean isAvailableReservationDate(LocalDate wantToReservationDate, Long photographerId) {
-        /*
-        * todo : 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인하는 로직이 필요합니다.
-        * 아직 작가의 예약 설정 로직이 미개발입니다..
-         */
+        Long preReservationDays = photographerService.findPhotographerSetting(photographerId).getPreReservationDays();
+        if(wantToReservationDate.isAfter(LocalDate.now().plusDays(preReservationDays))) {
+            throw new CanNotReserveAfterDeadline("해당 작가는 " + preReservationDays + "이후 까지만 예약이 가능합니다.");
+        }
         return true;
     }
 
