@@ -92,7 +92,7 @@ public class MemberReservationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
     })
-    @GetMapping("/member/photographer/time")
+    @GetMapping("/photographer/time")
     public ResultResponse<ReservationResponse.PhotographerAvailableReservationTimeList> getPhotographerAvailableReservationTimeList(
             @RequestParam("photographerId")
             Long photographerId,
@@ -143,7 +143,7 @@ public class MemberReservationController {
             @ApiResponse(responseCode = "400 EP005", description = "신규 예약의 시작시간은 현재보다 과거일 수 없습니다.")
 
     })
-    @PostMapping("/book")
+    @PostMapping("/member/book")
     public ResultResponse<ReservationResponse.ReservationBookResult> postBookReservation(
             @Parameter(description = "새로운 예약 형식")
             @RequestBody
