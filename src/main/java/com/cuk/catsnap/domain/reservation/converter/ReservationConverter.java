@@ -1,5 +1,6 @@
 package com.cuk.catsnap.domain.reservation.converter;
 
+import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
@@ -7,6 +8,7 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -15,8 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class ReservationConverter {
 
+    private final MemberConverter memberConverter;
     /*
     * ReservationTimeFormat은 Nosql의 도큐먼트 입니다.
      */
@@ -83,7 +87,8 @@ public class ReservationConverter {
                 .build();
     }
 
-    public ReservationResponse.PhotographerReservationInformation toPhotographerReservationInformation(Reservation reservation, MemberResponse.MemberTinyInformation memberTinyInformation) {
+    public ReservationResponse.PhotographerReservationInformation toPhotographerReservationInformation(Reservation reservation) {
+        MemberResponse.MemberTinyInformation memberTinyInformation = memberConverter.toMemberTinyInformation(reservation.getMember());
         return ReservationResponse.PhotographerReservationInformation.builder()
                 .reservationId(reservation.getId())
                 .memberTinyInformation(memberTinyInformation)

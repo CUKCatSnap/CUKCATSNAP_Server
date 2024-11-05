@@ -172,8 +172,8 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         List<ReservationResponse.PhotographerReservationInformation> photographerReservationInformationList = new ArrayList<>();
         reservationList.stream()
                 .map(reservation -> {
-                    MemberResponse.MemberTinyInformation memberTinyInformation = memberConverter.toMemberTinyInformation(reservation.getMember());
-                    return reservationConverter.toPhotographerReservationInformation(reservation, memberTinyInformation);
+
+                    return reservationConverter.toPhotographerReservationInformation(reservation);
                 })
                 .forEach(photographerReservationInformationList::add);
 
