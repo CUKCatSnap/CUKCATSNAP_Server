@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.reservation.converter;
 import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
+import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;

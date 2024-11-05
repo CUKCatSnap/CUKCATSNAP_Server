@@ -10,6 +10,7 @@ import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.SlicedData;
 import com.cuk.catsnap.global.result.code.ReservationResultCode;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -78,10 +79,11 @@ public class MemberReservationController {
     public ResultResponse<ReservationResponse.MemberReservationInformationList> getMyDayReservation(
             @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
             @RequestParam("day")
-            @DateTimeFormat(pattern = "yyyy-MM-dd")
+            @JsonFormat(pattern = "yyyy-MM-dd")
             LocalDate reservationDay
     ){
-        return null;
+        ReservationResponse.MemberReservationInformationList memberReservationInformationList = memberReservationService.getReservationDetailListByDay(reservationDay);
+        return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP, memberReservationInformationList);
     }
 
     @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회(구현 완료)",

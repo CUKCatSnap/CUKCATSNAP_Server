@@ -161,6 +161,16 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         return reservationRepository.findAllReservationByMemberIdAndStartTimeBetween(memberId, startOfMonth, endOfMonth);
     }
 
+    @Override
+    public ReservationResponse.MemberReservationInformationList getReservationDetailListByDay(LocalDate day) {
+        Long memberId = GetAuthenticationInfo.getUserId();
+        LocalDateTime startOfDay = LocalDateTime.of(day.getYear(),day.getMonthValue(),day.getDayOfMonth(),0,0,0);
+        LocalDateTime endOfDay = LocalDateTime.of(day.getYear(),day.getMonthValue(),day.getDayOfMonth(),23,59,59);
+        List<Reservation> reservationList = reservationRepository.findAllReservationWithEagerByMemberIdAndStartTimeBetween(memberId, startOfDay, endOfDay);
+
+        return reservationConverter.toMemberReservationInformationList(reservationList);
+    }
+
     /*
     * todo : 공휴일을 체크하는 로직이 없음. 공휴일을 체크하는 로직을 추가해야함.
      */
