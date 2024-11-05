@@ -22,9 +22,9 @@ import com.cuk.catsnap.global.Exception.reservation.CanNotChangeReservationState
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -172,8 +172,8 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         List<ReservationResponse.PhotographerReservationInformation> photographerReservationInformationList = new ArrayList<>();
         reservationList.stream()
                 .map(reservation -> {
-                    MemberResponse.MemberTinyInformation memberTinyInformation = memberConverter.toMemberTinyInformation(reservation.getMember());
-                    return reservationConverter.toPhotographerReservationInformation(reservation, memberTinyInformation);
+
+                    return reservationConverter.toPhotographerReservationInformation(reservation);
                 })
                 .forEach(photographerReservationInformationList::add);
 

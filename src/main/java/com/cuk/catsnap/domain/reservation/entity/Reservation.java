@@ -52,6 +52,7 @@ public class Reservation extends BaseTimeEntity {
     @JoinColumn(name="program_id")
     private Program program;
 
+    @Column(columnDefinition = "geometry(Point, 4326)")
     private Point location;
 
     @Column(name="location_name")
@@ -62,10 +63,6 @@ public class Reservation extends BaseTimeEntity {
 
     @Column(name="end_time")
     private LocalDateTime endTime;
-
-    private String title;
-    private String content;
-    private Long price;
 
     @Column(name="reservation_state")
     @Enumerated(EnumType.STRING)

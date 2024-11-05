@@ -17,14 +17,6 @@ public class Util {
     private String jwtKey;
 
     /*
-     *  로그인 처리 과정에서  request의 body값을 읽을 때 필요한 ObjectMapper 빈 등록
-     */
-    @Bean
-    public ObjectMapper objectMapper() {
-        return new ObjectMapper();
-    }
-
-    /*
         *  JWT 토큰 생성 시 사용할 SecretKey 빈 등록
      */
     @Bean

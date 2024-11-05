@@ -40,4 +40,12 @@ public class PhotographerConverter {
                 .content(photographerReservationLocation.getContent())
                 .build();
     }
+
+    public PhotographerResponse.PhotographerTinyInformation toPhotographerTinyInformation(Photographer photographer) {
+        return PhotographerResponse.PhotographerTinyInformation.builder()
+                .photographerId(photographer.getId())
+                .nickname(photographer.getNickname())
+                .profilePhotoUrl(photographer.getProfilePhotoUrl())
+                .build();
+    }
 }

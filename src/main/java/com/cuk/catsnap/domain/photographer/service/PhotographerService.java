@@ -15,4 +15,5 @@ public interface PhotographerService {
     void updateReservationNotice(PhotographerRequest.PhotographerReservationNotice photographerReservationNotice);
     PhotographerReservationLocation getReservationLocation();
     void updateReservationLocation(PhotographerRequest.PhotographerReservationLocation photographerReservationLocation);
+    PhotographerSetting findPhotographerSetting(Long photographerId);
 }

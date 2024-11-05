@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProgramRepository extends JpaRepository<Program, Long> {
@@ -17,4 +18,5 @@ public interface ProgramRepository extends JpaRepository<Program, Long> {
     @Query("UPDATE Program p SET p.deleted = true WHERE p.id = :programId and p.photographer.id = :photographerId")
     int softDeleteByProgramIdAndPhotographerId(@Param("programId") Long programId,  @Param("photographerId") Long photographerId);
     List<Program> findByPhotographerIdAndDeletedFalse(Long photographerId);
+    Optional<Program> findByIdAndPhotographerId(Long id, Long photographerId);
 }

@@ -48,4 +48,9 @@ public class ReservationTimeFormatRepository {
                 .is(photographerId));
         return mongoOperations.remove(query, ReservationTimeFormat.class);
     }
+
+    public ReservationTimeFormat findById(String reservationTimeFormatId) {
+        Query query = Query.query(Criteria.where("id").is(reservationTimeFormatId));
+        return mongoOperations.findOne(query, ReservationTimeFormat.class);
+    }
 }

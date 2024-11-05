@@ -9,8 +9,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,46 +21,15 @@ import java.util.List;
 
 public class ReservationResponse {
 
-
-    @Getter
-    @Builder
-    public static class MyReservationList{
-        @Schema(description = "현재 API에 맞는 상태의 예약만을 보여줍니다", nullable = true)
-        private List<MyReservation> myReservationList;
-    }
-
-    @Getter
-    @Builder
-    public static class MyReservation{
-        @Schema(description = "예약 id", nullable = false)
-        private long reservationId;
-        private PhotographerResponse.PhotographerFullyInformation photographerTinyInformation;
-        private Location location;
-        private Time time;
-        private ReservedProgram reservedProgram;
-        @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
-        private ReservationState state;
-    }
-
     @Getter
     @Builder
     @Schema(description = "예약의 위치를 나타내는 필드", nullable = false)
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Location{
-        private double lat;
-        private double lng;
+        private Double latitude;
+        private Double longitude;
         private String locationName;
-    }
-
-    @Getter
-    @Builder
-    @Schema(description = "예약의 시간을 나타내는 필드", nullable = false)
-    public static class Time{
-        @Schema(example = "yyyy-MM-dd HH:mm:ss", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        private LocalDateTime startTime;
-        @Schema(example = "yyyy-MM-dd HH:mm:ss", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        private LocalDateTime endTime;
     }
 
     @Getter
@@ -67,7 +38,8 @@ public class ReservationResponse {
     public static class ReservedProgram {
         private String title;
         private String content;
-        private long price;
+        private Long durationMinutes;
+        private Long price;
     }
 
     @Getter
@@ -99,7 +71,7 @@ public class ReservationResponse {
         private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
         private Location location;
         private String locationName;
-        private Time time;
+        private LocalDateTime startTime;
         private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
@@ -117,7 +89,7 @@ public class ReservationResponse {
         private Long reservationId;
         private MemberResponse.MemberTinyInformation memberTinyInformation;
         private Location location;
-        private Time time;
+        private LocalDateTime startTime;
         private ReservedProgram reservedProgram;
         @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
         private ReservationState state;
@@ -132,7 +104,9 @@ public class ReservationResponse {
     @Getter
     @Builder
     public static class PhotographerAvailableReservationTime {
-        private Time time;
+        @Schema(description = "예약 가능한 시간", example = "HH:mm", type = "string")
+        @JsonFormat(pattern = "HH:mm")
+        private LocalTime startTime;
         @Schema(description = "true이면 해당 시간에 예약이 가능함")
         private Boolean isAvailableReservation;
     }
@@ -157,7 +131,7 @@ public class ReservationResponse {
     @Builder
     public static class PhotographerReservationGuidance{
         @Schema(description = "작가가 설정한 예약 가능한 장소입니다. 주소 형태가 아니라 문자열 형태입니다.")
-        private String availablePlace;
+        private String photographerLocation;
         @Schema(description = "작가가 설정한 예약전 주의사항입니다.")
         private String photographerNotification;
     }

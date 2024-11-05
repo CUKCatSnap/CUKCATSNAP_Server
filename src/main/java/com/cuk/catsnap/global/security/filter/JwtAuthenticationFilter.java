@@ -55,8 +55,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
                 UsernamePasswordAuthenticationToken authenticationToken;
-                if(authorities.get(0).get("authority").equals("ROLE_USER")) {
-                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                if(authorities.get(0).get("authority").equals("ROLE_MEMBER")) {
+                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_MEMBER"));
                 } else if(authorities.get(0).get("authority").equals("ROLE_PHOTOGRAPHER")) {
                     grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_PHOTOGRAPHER"));
                 }
