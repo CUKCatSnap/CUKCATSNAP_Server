@@ -7,8 +7,8 @@ import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
-import com.cuk.catsnap.global.result.PagedData;
 import com.cuk.catsnap.global.result.ResultResponse;
+import com.cuk.catsnap.global.result.SlicedData;
 import com.cuk.catsnap.global.result.code.ReservationResultCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -45,7 +45,7 @@ public class MemberReservationController {
             @ApiResponse(responseCode = "400 SR000", description = "예약 조회 실패", content = @Content(schema = @Schema(implementation = ResultResponse.class))),
     })
     @GetMapping("/member/my")
-    public ResultResponse<PagedData<ReservationResponse.MyReservationList>> getMyReservation(
+    public ResultResponse<SlicedData<ReservationResponse.MyReservationList>> getMyReservation(
             @Parameter(description="all : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) upcoming : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴. 예약의 상태가 PENDING, APPROVED 인 것만 보여줌) ")
             @RequestParam("type")
             ReservationQueryType reservationQueryType,
