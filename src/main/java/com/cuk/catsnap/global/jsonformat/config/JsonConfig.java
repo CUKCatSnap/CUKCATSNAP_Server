@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class JsonConfig {
 
     /*
-    * ObjectMapper 빈 등록
-    * - JavaTimeModule 등록 -> 등록을 하지 않으면 LocalDateTime, LocalDate, LocalTime 등의 시간 관련 클래스를 직,역직렬화할 때 에러가 발생함.
+     * ObjectMapper 빈 등록
+     * - JavaTimeModule 등록 -> 등록을 하지 않으면 LocalDateTime, LocalDate, LocalTime 등의 시간 관련 클래스를 직,역직렬화할 때 에러가 발생함.
      */
     @Bean
     public ObjectMapper objectMapper() {

@@ -1,5 +1,7 @@
 package com.cuk.catsnap.domain.reservation.service;
 
+import static org.mockito.Mockito.mockStatic;
+
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
@@ -7,6 +9,8 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import java.time.LocalTime;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,11 +20,6 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.LocalTime;
-import java.util.List;
-
-import static org.mockito.Mockito.mockStatic;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -44,12 +43,13 @@ class PhotographerReservationServiceImplTest {
     public void createJoinedPhotographerReservationTimeFormat() {
         //given
         Photographer photographer = Photographer.builder()
-                .identifier("test")
-                .build();
+            .identifier("test")
+            .build();
         //when
         ReservationService.createJoinedPhotographerReservationTimeFormat(photographer);
         //then
-        Mockito.verify(weekdayReservationTimeMappingRepository,Mockito.times(1)).saveAll(Mockito.any());
+        Mockito.verify(weekdayReservationTimeMappingRepository, Mockito.times(1))
+            .saveAll(Mockito.any());
     }
 
     @Test
@@ -59,14 +59,15 @@ class PhotographerReservationServiceImplTest {
         MockedStatic<GetAuthenticationInfo> mockedStatic = mockStatic(GetAuthenticationInfo.class);
         mockedStatic.when(GetAuthenticationInfo::getUserId).thenReturn(1L);
         ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat = ReservationRequest.PhotographerReservationTimeFormat.builder()
-                .formatName("test")
-                .startTimeList(List.of(LocalTime.of(10,0), LocalTime.of(11,0)))
-                .build();
-        Mockito.when(reservationTimeFormatRepository.save(Mockito.any())).thenReturn(ReservationTimeFormat.builder().id("testId").build());
+            .formatName("test")
+            .startTimeList(List.of(LocalTime.of(10, 0), LocalTime.of(11, 0)))
+            .build();
+        Mockito.when(reservationTimeFormatRepository.save(Mockito.any()))
+            .thenReturn(ReservationTimeFormat.builder().id("testId").build());
 
         //when
-        ReservationService.createReservationTimeFormat(photographerReservationTimeFormat,null);
+        ReservationService.createReservationTimeFormat(photographerReservationTimeFormat, null);
         //then
-        Mockito.verify(reservationTimeFormatRepository,Mockito.times(1)).save(Mockito.any());
+        Mockito.verify(reservationTimeFormatRepository, Mockito.times(1)).save(Mockito.any());
     }
 }

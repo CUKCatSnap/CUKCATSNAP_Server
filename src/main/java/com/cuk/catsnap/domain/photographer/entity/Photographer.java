@@ -16,16 +16,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.util.List;
-
 @Entity
-@Table(name="photograph")
+@Table(name = "photograph")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -34,7 +33,7 @@ public class Photographer extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="photographer_id")
+    @Column(name = "photographer_id")
     private Long id;
 
     private String identifier;
@@ -47,7 +46,6 @@ public class Photographer extends BaseTimeEntity {
 
     @Column(name = "profile_photo_url")
     private String profilePhotoUrl;
-
 
     // OneToMany
 

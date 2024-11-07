@@ -18,7 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="photographer_subscribe")
+@Table(name = "photographer_subscribe")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -31,10 +31,10 @@ public class PhotographerSubscribe extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="photographer_id")
+    @JoinColumn(name = "photographer_id")
     private Photographer photographer;
 }

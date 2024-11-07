@@ -18,17 +18,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @Entity
-@Table(name="reservation")
+@Table(name = "reservation")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -37,37 +36,36 @@ public class Reservation extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="reservation_id")
+    @Column(name = "reservation_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="photographer_id")
+    @JoinColumn(name = "photographer_id")
     private Photographer photographer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="program_id")
+    @JoinColumn(name = "program_id")
     private Program program;
 
     @Column(columnDefinition = "geometry(Point, 4326)")
     private Point location;
 
-    @Column(name="location_name")
+    @Column(name = "location_name")
     private String locationName;
 
-    @Column(name="start_time")
+    @Column(name = "start_time")
     private LocalDateTime startTime;
 
-    @Column(name="end_time")
+    @Column(name = "end_time")
     private LocalDateTime endTime;
 
-    @Column(name="reservation_state")
+    @Column(name = "reservation_state")
     @Enumerated(EnumType.STRING)
     private ReservationState reservationState;
-
 
     //OneToMany
 

@@ -9,6 +9,7 @@ public class ReviewResponse {
     @Getter
     @Builder
     public static class ReviewPhotoPresignedURL {
+
         @Schema(description = "새로 만들어진 리뷰의 Id")
         private Long reviewId;
         @Schema(description = "사진이 AWS s3 저장될 이름")

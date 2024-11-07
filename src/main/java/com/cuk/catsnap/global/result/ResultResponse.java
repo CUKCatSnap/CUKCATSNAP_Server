@@ -7,6 +7,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class ResultResponse<T> {
+
     @Schema(description = "HTTP 상태코드를 의미합니다.")
     private final int status;
 
@@ -21,19 +22,19 @@ public class ResultResponse<T> {
 
     public static <T> ResultResponse<T> of(ResultCode resultCode, T data) {
         return ResultResponse.<T>builder()
-                .status(resultCode.getStatus())
-                .code(resultCode.getCode())
-                .message(resultCode.getMessage())
-                .data(data)
-                .build();
+            .status(resultCode.getStatus())
+            .code(resultCode.getCode())
+            .message(resultCode.getMessage())
+            .data(data)
+            .build();
     }
 
     public static <T> ResultResponse<T> of(ResultCode resultCode) {
         return ResultResponse.<T>builder()
-                .status(resultCode.getStatus())
-                .code(resultCode.getCode())
-                .message(resultCode.getMessage())
-                .data(null)
-                .build();
+            .status(resultCode.getStatus())
+            .code(resultCode.getCode())
+            .message(resultCode.getMessage())
+            .data(null)
+            .build();
     }
 }

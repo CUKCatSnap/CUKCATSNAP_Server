@@ -19,14 +19,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "member")
@@ -56,12 +55,11 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private SnsType snstype;
 
-    @Column(name="sns_id")
+    @Column(name = "sns_id")
     private String snsId;
 
-    @Column(name="sns_connect_date")
+    @Column(name = "sns_connect_date")
     private LocalDateTime snsConnectDate;
-
 
     // OneToMany
 

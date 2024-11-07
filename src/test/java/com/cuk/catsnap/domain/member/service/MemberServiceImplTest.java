@@ -5,6 +5,7 @@ import com.cuk.catsnap.domain.member.dto.MemberRequest;
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
 import com.cuk.catsnap.global.Exception.member.DuplicatedMemberIdException;
+import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -15,8 +16,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Optional;
 
 @Tag("member_login")
 @ExtendWith(MockitoExtension.class)
@@ -39,27 +38,28 @@ class MemberServiceImplTest {
     public void singUp() {
         //given
         MemberRequest.MemberSignUp memberSignUp = MemberRequest.MemberSignUp.builder()
-                .identifier("id")
-                .password("password")
-                .build();
+            .identifier("id")
+            .password("password")
+            .build();
 
         Member member = Member.builder()
-                .identifier("id")
-                .password("encoded_password")
-                .build();
+            .identifier("id")
+            .password("encoded_password")
+            .build();
 
         Mockito.when(memberRepository.save(member))
-                .thenReturn(Member.builder()
-                        .id(1L)
-                        .identifier("id")
-                        .password("encoded_password")
-                        .build());
+            .thenReturn(Member.builder()
+                .id(1L)
+                .identifier("id")
+                .password("encoded_password")
+                .build());
 
         Mockito.when(passwordEncoder.encode("password"))
-                .thenReturn("encoded_password");
+            .thenReturn("encoded_password");
 
-        Mockito.when(memberConverter.memberRequestMemberSignUpToMember(memberSignUp, "encoded_password"))
-                .thenReturn(member);
+        Mockito.when(
+                memberConverter.memberRequestMemberSignUpToMember(memberSignUp, "encoded_password"))
+            .thenReturn(member);
 
         //when
         memberService.singUp(memberSignUp);
@@ -74,19 +74,19 @@ class MemberServiceImplTest {
     public void duplicatedMemberId() {
         //given
         MemberRequest.MemberSignUp memberSignUp = MemberRequest.MemberSignUp.builder()
-                .identifier("duplicatedId")
-                .password("password")
-                .build();
+            .identifier("duplicatedId")
+            .password("password")
+            .build();
 
         Mockito.when(memberRepository.findByIdentifier("duplicatedId"))
-                .thenReturn(Optional.of(Member.builder()
-                        .identifier("duplicatedId")
-                        .password("encoded_password")
-                        .build()));
+            .thenReturn(Optional.of(Member.builder()
+                .identifier("duplicatedId")
+                .password("encoded_password")
+                .build()));
 
         //when, then
         Assertions.assertThatThrownBy(() -> memberService.singUp(memberSignUp))
-                .isInstanceOf(DuplicatedMemberIdException.class);
+            .isInstanceOf(DuplicatedMemberIdException.class);
         Mockito.verify(memberRepository, Mockito.never()).save(Mockito.any(Member.class));
     }
 }

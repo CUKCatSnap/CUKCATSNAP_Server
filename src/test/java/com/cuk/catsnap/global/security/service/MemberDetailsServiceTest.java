@@ -2,6 +2,8 @@ package com.cuk.catsnap.global.security.service;
 
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
+import java.util.List;
+import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -14,9 +16,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import java.util.List;
-import java.util.Optional;
 
 @Tag("member_login")
 @ExtendWith(MockitoExtension.class)
@@ -32,20 +31,21 @@ class MemberDetailsServiceTest {
     void loadUserByUsername() {
         //given
         Member member = Member.builder()
-                .identifier("test")
-                .password("encoded_password")
-                .build();
+            .identifier("test")
+            .password("encoded_password")
+            .build();
 
         Mockito.when(memberRepository.findByIdentifier("test"))
-                .thenReturn(Optional.of(member));
+            .thenReturn(Optional.of(member));
 
         //when
-        UserDetails userDetails =  memberDetailsService.loadUserByUsername(member.getIdentifier());
+        UserDetails userDetails = memberDetailsService.loadUserByUsername(member.getIdentifier());
 
         //then
         Assertions.assertThat(userDetails.getUsername()).isEqualTo(member.getIdentifier());
         Assertions.assertThat(userDetails.getPassword()).isEqualTo(member.getPassword());
-        Assertions.assertThat(userDetails.getAuthorities()).isEqualTo(List.of(new SimpleGrantedAuthority("ROLE_MEMBER")));
+        Assertions.assertThat(userDetails.getAuthorities())
+            .isEqualTo(List.of(new SimpleGrantedAuthority("ROLE_MEMBER")));
         Mockito.verify(memberRepository).findByIdentifier("test");
     }
 
@@ -54,11 +54,12 @@ class MemberDetailsServiceTest {
     void loadUserByUsernameNull() {
         //given
         Mockito.when(memberRepository.findByIdentifier("not_exist_member"))
-                .thenReturn(Optional.empty());
+            .thenReturn(Optional.empty());
 
         //when,then
-        Assertions.assertThatThrownBy(() -> memberDetailsService.loadUserByUsername("not_exist_member"))
-                .isInstanceOf(UsernameNotFoundException.class);
+        Assertions.assertThatThrownBy(
+                () -> memberDetailsService.loadUserByUsername("not_exist_member"))
+            .isInstanceOf(UsernameNotFoundException.class);
         Mockito.verify(memberRepository).findByIdentifier("not_exist_member");
     }
 }

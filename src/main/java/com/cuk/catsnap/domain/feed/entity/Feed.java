@@ -13,15 +13,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name="feed")
+@Table(name = "feed")
 @Getter
 @Builder
 @AllArgsConstructor
@@ -30,15 +29,14 @@ public class Feed extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="feed_id")
+    @Column(name = "feed_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="photographer_id")
+    @JoinColumn(name = "photographer_id")
     private Photographer photographer;
 
     private String content;
-
 
     //OneToMany
 

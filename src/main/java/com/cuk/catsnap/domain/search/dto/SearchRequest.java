@@ -9,6 +9,7 @@ public class SearchRequest {
     @Getter
     @NoArgsConstructor
     public static class SearchParameter {
+
         @Schema(description = "검색어")
         private String searchTerm;
         //@Schema(description = "검색할 화면의 좌표값")
@@ -23,7 +24,8 @@ public class SearchRequest {
 
     @Getter
     @NoArgsConstructor
-    public static class GeoSearchParameter{
+    public static class GeoSearchParameter {
+
         @Schema(description = "검색할 화면의 좌상단의 좌표")
         private LocationParameter upperLeft;
         @Schema(description = "검색할 화면의 우하단의 좌표")
@@ -32,7 +34,8 @@ public class SearchRequest {
 
     @Getter
     @NoArgsConstructor
-    public static class LocationParameter{
+    public static class LocationParameter {
+
         @Schema(description = "위도값")
         private double lat;
         @Schema(description = "경도값")

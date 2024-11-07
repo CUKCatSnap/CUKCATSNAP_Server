@@ -5,23 +5,24 @@ import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Builder;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Builder;
+import lombok.Getter;
 
 public class SearchResponse {
 
     @Getter
     @Builder
-    public static class PreviewFeedSearchList{
+    public static class PreviewFeedSearchList {
+
         private List<PreviewFeedSearch> previewFeedSearchList;
     }
 
     @Getter
     @Builder
     public static class PreviewFeedSearch {
+
         private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
 
         @Schema(description = "검색된 피드의 id")
@@ -41,12 +42,14 @@ public class SearchResponse {
     @Getter
     @Builder
     public static class DetailFeedSearchList {
+
         private List<DetailFeedSearch> detailFeedSearchList;
     }
 
     @Getter
     @Builder
-    public static class DetailFeedSearch{
+    public static class DetailFeedSearch {
+
         private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
 
         @Schema(description = "글 작성 시간")
@@ -71,13 +74,15 @@ public class SearchResponse {
 
     @Getter
     @Builder
-    public static class PreviewReviewSearchList{
+    public static class PreviewReviewSearchList {
+
         private List<PreviewReviewSearch> previewReviewSearchList;
     }
 
     @Getter
     @Builder
     public static class PreviewReviewSearch {
+
         private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
         private MemberResponse.MemberTinyInformation memberFullyInformation;
 
@@ -104,12 +109,14 @@ public class SearchResponse {
     @Getter
     @Builder
     public static class DetailReviewSearchList {
+
         List<DetailReviewSearch> detailReviewSearchList;
     }
 
     @Getter
     @Builder
-    public static class DetailReviewSearch{
+    public static class DetailReviewSearch {
+
         private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
 
         @Schema(description = "글 작성 시간")

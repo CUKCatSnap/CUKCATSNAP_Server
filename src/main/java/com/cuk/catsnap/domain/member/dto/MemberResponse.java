@@ -10,6 +10,7 @@ public class MemberResponse {
     @Builder
     @Schema(description = "모델의 Id와 닉네임", nullable = false)
     public static class MemberTinyInformation {
+
         private Long memberId;
         private String nickname;
         private String profilePhotoUrl;

@@ -6,6 +6,7 @@ import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
+import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -17,8 +18,6 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Optional;
 
 @Tag("member_login")
 @ExtendWith(MockitoExtension.class)
@@ -45,28 +44,29 @@ class PhotographerServiceImplTest {
 
         //given
         PhotographerRequest.PhotographerSignUp photographerSignUp =
-                PhotographerRequest.PhotographerSignUp.builder()
-                        .identifier("test")
-                        .password("password")
-                        .build();
-
-        Photographer photographer
-                = Photographer.builder()
+            PhotographerRequest.PhotographerSignUp.builder()
                 .identifier("test")
-                .password("encoded_password")
+                .password("password")
                 .build();
 
+        Photographer photographer
+            = Photographer.builder()
+            .identifier("test")
+            .password("encoded_password")
+            .build();
+
         Mockito.when(passwordEncoder.encode("password"))
-                .thenReturn("encoded_password");
+            .thenReturn("encoded_password");
 
         Mockito.when(photographerRepository.findByIdentifier("test"))
-                .thenReturn(Optional.empty());
+            .thenReturn(Optional.empty());
 
-        Mockito.when(photographerConverter.photographerSignUpToPhotographer(photographerSignUp, "encoded_password"))
-                .thenReturn(Photographer.builder()
-                        .identifier("test")
-                        .password("encoded_password")
-                        .build());
+        Mockito.when(photographerConverter.photographerSignUpToPhotographer(photographerSignUp,
+                "encoded_password"))
+            .thenReturn(Photographer.builder()
+                .identifier("test")
+                .password("encoded_password")
+                .build());
 
         //when
         photographerService.singUp(photographerSignUp);
@@ -74,9 +74,11 @@ class PhotographerServiceImplTest {
         //then
         Mockito.verify(photographerRepository).findByIdentifier(photographerSignUp.getIdentifier());
         Mockito.verify(passwordEncoder).encode(photographerSignUp.getPassword());
-        Mockito.verify(photographerConverter).photographerSignUpToPhotographer(photographerSignUp, passwordEncoder.encode("password"));
+        Mockito.verify(photographerConverter).photographerSignUpToPhotographer(photographerSignUp,
+            passwordEncoder.encode("password"));
         Mockito.verify(photographerRepository).save(Mockito.any(Photographer.class));
-        Mockito.verify(reservationService).createJoinedPhotographerReservationTimeFormat(Mockito.any(Photographer.class));
+        Mockito.verify(reservationService)
+            .createJoinedPhotographerReservationTimeFormat(Mockito.any(Photographer.class));
     }
 
     @Test
@@ -85,22 +87,24 @@ class PhotographerServiceImplTest {
 
         //given
         PhotographerRequest.PhotographerSignUp photographerSignUp =
-                PhotographerRequest.PhotographerSignUp.builder()
-                        .identifier("test")
-                        .password("password")
-                        .build();
+            PhotographerRequest.PhotographerSignUp.builder()
+                .identifier("test")
+                .password("password")
+                .build();
 
         Mockito.when(photographerRepository.findByIdentifier("test"))
-                .thenReturn(Optional.of(Photographer.builder()
-                        .identifier("test")
-                        .password("encoded_password")
-                        .build()));
+            .thenReturn(Optional.of(Photographer.builder()
+                .identifier("test")
+                .password("encoded_password")
+                .build()));
 
         //when, then
-        Assertions.assertThatThrownBy(()->photographerService.singUp(photographerSignUp))
-                .isInstanceOf(DuplicatedPhotographerException.class);
+        Assertions.assertThatThrownBy(() -> photographerService.singUp(photographerSignUp))
+            .isInstanceOf(DuplicatedPhotographerException.class);
 
-        Mockito.verify(photographerRepository, Mockito.never()).save(Mockito.any(Photographer.class));
-        Mockito.verify(reservationService, Mockito.never()).createJoinedPhotographerReservationTimeFormat(Mockito.any(Photographer.class));
+        Mockito.verify(photographerRepository, Mockito.never())
+            .save(Mockito.any(Photographer.class));
+        Mockito.verify(reservationService, Mockito.never())
+            .createJoinedPhotographerReservationTimeFormat(Mockito.any(Photographer.class));
     }
 }

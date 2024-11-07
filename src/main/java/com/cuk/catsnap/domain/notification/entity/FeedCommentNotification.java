@@ -20,6 +20,6 @@ import lombok.experimental.SuperBuilder;
 public class FeedCommentNotification extends Notification {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="feed_comment_id")
+    @JoinColumn(name = "feed_comment_id")
     private FeedComment feedComment;
 }

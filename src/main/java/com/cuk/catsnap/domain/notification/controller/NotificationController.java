@@ -23,43 +23,43 @@ public class NotificationController {
 
     @Operation(summary = "알림을 조회하는 API", description = "알림을 조회하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SN000", description = "성공적으로 알림을 조회했습니다.")
+        @ApiResponse(responseCode = "200 SN000", description = "성공적으로 알림을 조회했습니다.")
     })
     @GetMapping
     public ResultResponse<PagedData<NotificationResponse.NotificationList>> getNotification(
-            @RequestParam
-            Pageable pageable
+        @RequestParam
+        Pageable pageable
     ) {
         return null;
     }
 
     @Operation(summary = "알림을 읽음 처리하는 API", description = "알림을 읽음 처리하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SN001", description = "성공적으로 알림을 읽음 처리했습니다.")
+        @ApiResponse(responseCode = "200 SN001", description = "성공적으로 알림을 읽음 처리했습니다.")
     })
     @PatchMapping("/{notificationId}")
     public ResultResponse<?> patchNotificationRead(
-            @PathVariable
-            Long notificationId
+        @PathVariable
+        Long notificationId
     ) {
         return null;
     }
 
     @Operation(summary = "알림을 삭제하는 API", description = "알림을 삭제하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SN002", description = "성공적으로 알림을 삭제했습니다.")
+        @ApiResponse(responseCode = "200 SN002", description = "성공적으로 알림을 삭제했습니다.")
     })
     @DeleteMapping("/{notificationId}")
     public ResultResponse<?> deleteNotification(
-            @PathVariable
-            Long notificationId
+        @PathVariable
+        Long notificationId
     ) {
         return null;
     }
 
     @Operation(summary = "모든 알림을 삭제하는 API", description = "모든 알림을 삭제하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SN002", description = "성공적으로 모든 알림을 삭제했습니다.")
+        @ApiResponse(responseCode = "200 SN002", description = "성공적으로 모든 알림을 삭제했습니다.")
     })
     @DeleteMapping("/all")
     public ResultResponse<?> deleteAllNotification() {

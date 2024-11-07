@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class SlicedData<T> {
+
     @Schema(description = "스크롤화된 데이터입니다.")
     private T slicedData;
     private Boolean isFirst;
@@ -14,9 +15,9 @@ public class SlicedData<T> {
 
     public static <T> SlicedData<T> of(T slicedData, Boolean isFirst, Boolean isLast) {
         return SlicedData.<T>builder()
-                .slicedData(slicedData)
-                .isFirst(isFirst)
-                .isLast(isLast)
-                .build();
+            .slicedData(slicedData)
+            .isFirst(isFirst)
+            .isLast(isLast)
+            .build();
     }
 }
