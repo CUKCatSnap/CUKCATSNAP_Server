@@ -15,6 +15,8 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -39,6 +41,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -108,7 +111,7 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     }
 
     @Override
-    public ReservationResponse.PhotographerAvailableReservationTimeList getAvailableReservationTime(
+    public PhotographerAvailableReservationTimeListResponse getAvailableReservationTime(
         LocalDate date, Long photographerId) {
         Weekday weekday = getWeekday(date);
         String ReservationTimeFormatId = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
@@ -118,10 +121,14 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
             ReservationTimeFormatId);
         if (reservationTimeFormat == null) {
-            return ReservationResponse.PhotographerAvailableReservationTimeList.builder()
-                .photographerAvailableReservationTimeList(Collections.emptyList())
-                .build();
+            return PhotographerAvailableReservationTimeListResponse.from(Collections.emptyList());
         }
+
+        /*
+         * photographerStartTimeList는 작가가 설정한 예약 가능한 시간 목록입니다.(단 현재 시간 이후만 조회)
+         * ReservationList는 현재까지 작가에게 예약된 예약 목록입니다.
+         * 현재 예약 가능한 시간대를 조회하기 위해 예약된 시간대를 isAvailableReservation을 false로 설정하여 반환합니다.
+         */
         List<LocalTime> photographerStartTimeList = reservationTimeFormat.getStartTimeList()
             .stream()
             .filter(time -> time.atDate(date).isAfter(LocalDateTime.now()))
@@ -129,8 +136,28 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         List<Reservation> reservationList = reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(
             photographerId, LocalDateTime.of(date, LocalTime.MIN),
             LocalDateTime.of(date, LocalTime.MAX));
-        return reservationConverter.toPhotographerAvailableReservationTimeList(
-            photographerStartTimeList, reservationList);
+
+        List<PhotographerAvailableReservationTimeResponse> photographerAvailableReservationTimeResponseArrayList = new ArrayList<>();
+        for (LocalTime startTime : photographerStartTimeList) {
+            boolean isAvailableReservation = true;
+            LocalDateTime startDateTime = LocalDateTime.now().toLocalDate().atTime(startTime);
+            for (Reservation reservation : reservationList) {
+                LocalDateTime reservationStartTime = reservation.getStartTime();
+                LocalDateTime reservationEndTime = reservation.getEndTime();
+                if (reservationStartTime.isAfter(startDateTime)
+                    || reservationStartTime.isEqual(startDateTime)
+                    && reservationEndTime.isBefore(startDateTime) || reservationEndTime.isEqual(
+                    startDateTime)) {
+                    isAvailableReservation = false;
+                    break;
+                }
+            }
+            photographerAvailableReservationTimeResponseArrayList.add(
+                PhotographerAvailableReservationTimeResponse.of(startTime, isAvailableReservation));
+        }
+
+        return PhotographerAvailableReservationTimeListResponse.from(
+            photographerAvailableReservationTimeResponseArrayList);
     }
 
     @Override

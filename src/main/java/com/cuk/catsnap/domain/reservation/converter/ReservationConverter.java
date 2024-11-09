@@ -6,9 +6,6 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -82,40 +79,6 @@ public class ReservationConverter {
         return ReservationResponse.ReservationBookResult.builder()
             .reservationId(reservation.getId())
             .reservationState(reservation.getReservationState())
-            .build();
-    }
-
-    public ReservationResponse.PhotographerAvailableReservationTimeList toPhotographerAvailableReservationTimeList(
-        List<LocalTime> photographerStartTimeList, List<Reservation> reservationList) {
-        List<ReservationResponse.PhotographerAvailableReservationTime> photographerAvailableReservationTimeList = new ArrayList<>();
-        /*
-         * photographerStartTimeList는 작가가 설정한 예약 가능한 시간 목록입니다.
-         * ReservationList는 현재까지 작가에게 예약된 예약 목록입니다.
-         * 현재 예약 가능한 시간대를 조회하기 위해 예약된 시간대를 isAvailableReservation을 false로 설정하여 반환합니다.
-         */
-        for (LocalTime startTime : photographerStartTimeList) {
-            boolean isAvailableReservation = true;
-            LocalDateTime startDateTime = LocalDateTime.now().toLocalDate().atTime(startTime);
-            for (Reservation reservation : reservationList) {
-                LocalDateTime reservationStartTime = reservation.getStartTime();
-                LocalDateTime reservationEndTime = reservation.getEndTime();
-                if (reservationStartTime.isAfter(startDateTime)
-                    || reservationStartTime.isEqual(startDateTime)
-                    && reservationEndTime.isBefore(startDateTime) || reservationEndTime.isEqual(
-                    startDateTime)) {
-                    isAvailableReservation = false;
-                    break;
-                }
-            }
-            photographerAvailableReservationTimeList.add(
-                ReservationResponse.PhotographerAvailableReservationTime.builder()
-                    .startTime(startTime)
-                    .isAvailableReservation(isAvailableReservation)
-                    .build());
-        }
-
-        return ReservationResponse.PhotographerAvailableReservationTimeList.builder()
-            .photographerAvailableReservationTimeList(photographerAvailableReservationTimeList)
             .build();
     }
 }

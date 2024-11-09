@@ -5,6 +5,7 @@ import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -98,7 +99,7 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
     })
     @GetMapping("/photographer/time")
-    public ResultResponse<ReservationResponse.PhotographerAvailableReservationTimeList> getPhotographerAvailableReservationTimeList(
+    public ResultResponse<PhotographerAvailableReservationTimeListResponse> getPhotographerAvailableReservationTimeList(
         @RequestParam("photographerId")
         Long photographerId,
         @Parameter(description = "예약을 하고 싶은 날", example = "yyyy-MM-dd")
@@ -106,10 +107,10 @@ public class MemberReservationController {
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         LocalDate date
     ) {
-        ReservationResponse.PhotographerAvailableReservationTimeList photographerAvailableReservationTimeList = memberReservationService.getAvailableReservationTime(
+        PhotographerAvailableReservationTimeListResponse photographerAvailableReservationTimeListResponse = memberReservationService.getAvailableReservationTime(
             date, photographerId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_AVAILABLE_TIME_LOOK_UP,
-            photographerAvailableReservationTimeList);
+            photographerAvailableReservationTimeListResponse);
     }
 
     @Operation(summary = "특정 작가의 예약 가능한 프로그램 조회(구현 완료)", description = "특정 작가의 예약 가능한 프로그램을 조회하는 API입니다.")
