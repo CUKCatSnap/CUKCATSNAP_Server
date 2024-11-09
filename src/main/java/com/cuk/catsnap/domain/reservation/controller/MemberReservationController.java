@@ -1,6 +1,5 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
@@ -38,7 +37,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberReservationController {
 
     private final MemberReservationService memberReservationService;
-    private final ReservationConverter reservationConverter;
 
     @Operation(summary = "예약을 조회하는 API(구현 완료)", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
     @ApiResponses({

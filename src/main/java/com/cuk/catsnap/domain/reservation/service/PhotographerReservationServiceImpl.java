@@ -1,15 +1,13 @@
 package com.cuk.catsnap.domain.reservation.service;
 
-import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationResponse;
@@ -47,11 +45,9 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
 
     private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
     private final ReservationTimeFormatRepository reservationTimeFormatRepository;
-    private final ReservationConverter reservationConverter;
     private final ProgramRepository programRepository;
     private final PhotographerRepository photographerRepository;
     private final ReservationRepository reservationRepository;
-    private final MemberConverter memberConverter;
 
     /*
      * 새로운 작가가 회원가입을 하면, 각 요일에 대한 예약 테이블을 생성한다.
@@ -154,11 +150,10 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
      */
     @Override
     public photographerProgramIdResponse createProgram(
-        ReservationRequest.PhotographerProgram photographerProgram,
-        Long programId) {
+        ProgramRequest programRequest, Long programId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         Photographer photographer = photographerRepository.getReferenceById(photographerId);
-        Program program = reservationConverter.toProgram(photographerProgram, photographer);
+        Program program = programRequest.toEntity(photographer);
         if (programId != null) {
             softDeleteProgram(programId);
         }

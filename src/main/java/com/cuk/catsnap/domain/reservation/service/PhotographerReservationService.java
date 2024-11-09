@@ -3,7 +3,7 @@ package com.cuk.catsnap.domain.reservation.service;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
@@ -30,8 +30,7 @@ public interface PhotographerReservationService {
     void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday);
 
     photographerProgramIdResponse createProgram(
-        ReservationRequest.PhotographerProgram photographerProgram,
-        Long programId);
+        ProgramRequest programRequest, Long programId);
 
     PhotographerProgramListResponse getMyProgramList();
 

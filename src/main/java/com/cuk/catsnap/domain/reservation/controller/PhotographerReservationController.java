@@ -1,9 +1,8 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
@@ -37,7 +36,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PhotographerReservationController {
 
     private final PhotographerReservationService photographerReservationService;
-    private final ReservationConverter reservationConverter;
 
     @Operation(summary = "작가의 특정 월의 특정 일에 예약 유무를 일별로 조회(구현 완료)",
         description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. " +
@@ -217,13 +215,13 @@ public class PhotographerReservationController {
     public ResultResponse<photographerProgramIdResponse> postProgram(
         @Parameter(description = "예약 프로그램", required = true)
         @RequestBody
-        ReservationRequest.PhotographerProgram photographerProgram,
+        ProgramRequest programRequest,
         @Parameter(description = "예약 프로그램의 id, 수정을 할 때만 입력", required = false)
         @RequestParam(name = "programId", required = false)
         Long programId
     ) {
         photographerProgramIdResponse photographerProgramIdResponse = photographerReservationService.createProgram(
-            photographerProgram, programId);
+            programRequest, programId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_POST_PROGRAM,
             photographerProgramIdResponse);
     }

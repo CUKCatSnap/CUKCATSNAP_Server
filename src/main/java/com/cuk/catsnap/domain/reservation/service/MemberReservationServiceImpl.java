@@ -7,7 +7,6 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import com.cuk.catsnap.domain.photographer.service.PhotographerService;
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
@@ -67,7 +66,6 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final GeographyConverter geographyConverter;
-    private final ReservationConverter reservationConverter;
     private final PhotographerService photographerService;
 
     @Override
