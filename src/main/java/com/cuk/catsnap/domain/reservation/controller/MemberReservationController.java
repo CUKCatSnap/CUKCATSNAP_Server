@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
@@ -61,18 +62,16 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/member/my/month")
-    public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
+    public ResultResponse<MonthReservationCheckListResponse> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
         @DateTimeFormat(pattern = "yyyy-MM")
         YearMonth reservationMonth
     ) {
-        List<Reservation> reservationList = memberReservationService.getReservationListByMonth(
+        MonthReservationCheckListResponse monthReservationCheckListResponse = memberReservationService.getReservationListByMonth(
             reservationMonth.atDay(1));
-        ReservationResponse.MonthReservationCheckList monthReservationCheckList = reservationConverter.toMonthReservationCheckList(
-            reservationList);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            monthReservationCheckList);
+            monthReservationCheckListResponse);
     }
 
     @Operation(summary = "특정 일의 예약 목록을 조회(구현 완료)", description = "특정 일의 예약 목록을 조회하는 API입니다.")

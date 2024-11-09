@@ -1,5 +1,6 @@
 package com.cuk.catsnap.domain.reservation.service;
 
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
@@ -27,7 +28,7 @@ public interface MemberReservationService {
         ReservationQueryType reservationQueryType,
         Pageable pageable);
 
-    List<Reservation> getReservationListByMonth(LocalDate month);
+    MonthReservationCheckListResponse getReservationListByMonth(LocalDate month);
 
     MemberReservationInformationListResponse getReservationDetailListByDay(
         LocalDate day);

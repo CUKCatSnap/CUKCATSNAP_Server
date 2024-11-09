@@ -2,11 +2,11 @@ package com.cuk.catsnap.domain.reservation.controller;
 
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
@@ -45,17 +45,15 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/month")
-    public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
+    public ResultResponse<MonthReservationCheckListResponse> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
         YearMonth reservationMonth
     ) {
-        List<Reservation> reservationList = photographerReservationService.getReservationListByMonth(
+        MonthReservationCheckListResponse monthReservationCheckListResponse = photographerReservationService.getReservationListByMonth(
             reservationMonth.atDay(1));
-        ReservationResponse.MonthReservationCheckList monthReservationCheckList = reservationConverter.toMonthReservationCheckList(
-            reservationList);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            monthReservationCheckList);
+            monthReservationCheckListResponse);
     }
 
     @Operation(summary = "작가의 특정 일의 예약 목록을 조회(구현 완료)",

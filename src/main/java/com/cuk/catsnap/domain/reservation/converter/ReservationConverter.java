@@ -1,7 +1,5 @@
 package com.cuk.catsnap.domain.reservation.converter;
 
-import com.cuk.catsnap.domain.member.converter.MemberConverter;
-import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -18,9 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ReservationConverter {
-
-    private final MemberConverter memberConverter;
-    private final PhotographerConverter photographerConverter;
 
     /*
      * ReservationTimeFormat은 Nosql의 도큐먼트 입니다.
@@ -79,20 +74,6 @@ public class ReservationConverter {
 
         return ReservationResponse.PhotographerProgramList.builder()
             .photographerProgramList(responsePhotographerProgramList)
-            .build();
-    }
-
-    public ReservationResponse.MonthReservationCheckList toMonthReservationCheckList(
-        List<Reservation> programList) {
-        List<ReservationResponse.MonthReservationCheck> monthReservationCheckList = programList.stream()
-            .map(program -> ReservationResponse.MonthReservationCheck.builder()
-                .reservationDate(program.getStartTime().toLocalDate())
-                .reservationState(program.getReservationState())
-                .build()
-            )
-            .toList();
-        return ReservationResponse.MonthReservationCheckList.builder()
-            .monthReservationCheckList(monthReservationCheckList)
             .build();
     }
 

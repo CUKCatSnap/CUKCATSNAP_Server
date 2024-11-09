@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -27,24 +26,6 @@ public class ReservationResponse {
         private Double latitude;
         private Double longitude;
         private String locationName;
-    }
-
-    @Getter
-    @Builder
-    public static class MonthReservationCheckList {
-
-        List<MonthReservationCheck> monthReservationCheckList;
-    }
-
-    @Getter
-    @Builder
-    public static class MonthReservationCheck {
-
-        @Schema(description = "질문한 달의 예약이 있는 날", example = "yyyy-MM-dd", type = "string")
-        @JsonFormat(pattern = "yyyy-MM-dd")
-        private LocalDate reservationDate;
-        @Schema(description = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED")
-        private ReservationState reservationState;
     }
 
     @Getter

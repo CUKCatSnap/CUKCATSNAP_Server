@@ -2,10 +2,10 @@ package com.cuk.catsnap.domain.reservation.service;
 
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import java.time.LocalDate;
@@ -33,7 +33,7 @@ public interface PhotographerReservationService {
 
     int softDeleteProgram(Long programId);
 
-    List<Reservation> getReservationListByMonth(LocalDate month);
+    MonthReservationCheckListResponse getReservationListByMonth(LocalDate month);
 
     PhotographerReservationInformationListResponse getReservationDetailListByDay(LocalDate day);
 

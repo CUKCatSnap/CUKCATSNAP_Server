@@ -9,6 +9,8 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNot
 import com.cuk.catsnap.domain.photographer.service.PhotographerService;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
@@ -186,14 +188,22 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     }
 
     @Override
-    public List<Reservation> getReservationListByMonth(LocalDate month) {
+    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(), 1, 0,
             0, 0);
         LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(),
             month.lengthOfMonth(), 23, 59, 59);
-        return reservationRepository.findAllReservationByMemberIdAndStartTimeBetween(memberId,
+
+        List<Reservation> reservationList = reservationRepository.findAllReservationByMemberIdAndStartTimeBetween(
+            memberId,
             startOfMonth, endOfMonth);
+
+        return MonthReservationCheckListResponse.from(
+            reservationList.stream()
+                .map(MonthReservationCheckResponse::from)
+                .toList()
+        );
     }
 
     @Override
