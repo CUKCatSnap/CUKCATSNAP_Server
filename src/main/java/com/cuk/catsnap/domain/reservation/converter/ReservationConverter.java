@@ -56,24 +56,6 @@ public class ReservationConverter {
             .build();
     }
 
-    public ReservationResponse.PhotographerProgramList toPhotographerProgramList(
-        List<Program> programList) {
-        List<ReservationResponse.PhotographerProgram> responsePhotographerProgramList = programList.stream()
-            .map(program -> ReservationResponse.PhotographerProgram.builder()
-                .programId(program.getId())
-                .title(program.getTitle())
-                .content(program.getContent())
-                .price(program.getPrice())
-                .durationMinutes(program.getDurationMinutes())
-                .build()
-            )
-            .toList();
-
-        return ReservationResponse.PhotographerProgramList.builder()
-            .photographerProgramList(responsePhotographerProgramList)
-            .build();
-    }
-
     public ReservationResponse.ReservationBookResult toReservationBookResult(
         Reservation reservation) {
         return ReservationResponse.ReservationBookResult.builder()

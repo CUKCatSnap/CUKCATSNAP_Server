@@ -11,6 +11,8 @@ import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
@@ -161,8 +163,13 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     }
 
     @Override
-    public List<Program> getPhotographerProgram(Long photographerId) {
-        return programRepository.findByPhotographerIdAndDeletedFalse(photographerId);
+    public PhotographerProgramListResponse getPhotographerProgram(Long photographerId) {
+        List<Program> programList = programRepository.findByPhotographerIdAndDeletedFalse(
+            photographerId);
+        return PhotographerProgramListResponse.from(
+            programList.stream()
+                .map(PhotographerProgramResponse::from)
+                .toList());
     }
 
     @Override

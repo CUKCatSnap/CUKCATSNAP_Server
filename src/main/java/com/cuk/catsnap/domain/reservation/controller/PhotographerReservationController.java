@@ -3,10 +3,10 @@ package com.cuk.catsnap.domain.reservation.controller;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
-import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
@@ -245,12 +245,10 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR013", description = "성공적으로가 예약 프로그램을 조회했습니다.")
     )
     @GetMapping("/my/program")
-    public ResultResponse<ReservationResponse.PhotographerProgramList> getProgram() {
-        List<Program> programList = photographerReservationService.getMyProgramList();
-        ReservationResponse.PhotographerProgramList photographerProgramList = reservationConverter.toPhotographerProgramList(
-            programList);
+    public ResultResponse<PhotographerProgramListResponse> getProgram() {
+        PhotographerProgramListResponse photographerProgramListResponse = photographerReservationService.getMyProgramList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM,
-            photographerProgramList);
+            photographerProgramListResponse);
     }
 
     @Operation(

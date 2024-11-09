@@ -29,24 +29,6 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    public static class PhotographerProgramList {
-
-        private List<PhotographerProgram> photographerProgramList;
-    }
-
-    @Getter
-    @Builder
-    public static class PhotographerProgram {
-
-        private Long programId;
-        private String title;
-        private String content;
-        private Long price;
-        private Long durationMinutes;
-    }
-
-    @Getter
-    @Builder
     public static class PhotographerReservationGuidance {
 
         @Schema(description = "작가가 설정한 예약 가능한 장소입니다. 주소 형태가 아니라 문자열 형태입니다.")
