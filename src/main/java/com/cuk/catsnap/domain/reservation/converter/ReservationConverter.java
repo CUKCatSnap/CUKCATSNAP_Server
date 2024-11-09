@@ -13,19 +13,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ReservationConverter {
 
-    /*
-     * ReservationTimeFormat은 Nosql의 도큐먼트 입니다.
-     */
-    public ReservationTimeFormat toReservationTimeFormat(
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
-        Long photographerId) {
-        return ReservationTimeFormat.builder()
-            .photographerId(photographerId)
-            .formatName(photographerReservationTimeFormat.getFormatName())
-            .startTimeList(photographerReservationTimeFormat.getStartTimeList())
-            .build();
-    }
-
     public ReservationResponse.PhotographerReservationTimeFormatList toPhotographerReservationTimeFormatList(
         List<ReservationTimeFormat> reservationTimeFormatList) {
         List<ReservationResponse.PhotographerReservationTimeFormat> responsePhotographerReservationTimeFormatList = reservationTimeFormatList.stream()

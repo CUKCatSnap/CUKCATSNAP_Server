@@ -1,36 +1,10 @@
 package com.cuk.catsnap.domain.reservation.dto;
 
-import com.cuk.catsnap.global.jsonformat.deserialize.HoursMinutesListSerializer;
-import com.cuk.catsnap.global.jsonformat.serializer.HoursMinutesListDeserializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.LocalTime;
-import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 public class ReservationRequest {
-
-    /*
-     * 특정 형식은 여러개의 시작 시간을 가지고 있음.
-     */
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class PhotographerReservationTimeFormat {
-
-        @Schema(description = "예약 시간 형식의 이름", example = "주말용 형식", type = "string")
-        private String formatName;
-
-        @Schema(description = "예약 시작 시간", example = "HH:mm", type = "string")
-        @JsonSerialize(using = HoursMinutesListSerializer.class)
-        @JsonDeserialize(using = HoursMinutesListDeserializer.class)
-        private List<LocalTime> startTimeList;
-    }
 
     @Getter
     @NoArgsConstructor

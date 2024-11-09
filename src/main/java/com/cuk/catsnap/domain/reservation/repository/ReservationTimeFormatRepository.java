@@ -22,12 +22,11 @@ public class ReservationTimeFormatRepository {
         return mongoOperations.save(reservationTimeFormat);
     }
 
-    public UpdateResult update(ReservationTimeFormat reservationTimeFormat,
-        String reservationTimeFormatId, Long photographerId) {
+    public UpdateResult update(ReservationTimeFormat reservationTimeFormat) {
         Query query = Query.query(Criteria.where("id")
-            .is(reservationTimeFormatId)
+            .is(reservationTimeFormat.getId())
             .and("photographerId")
-            .is(photographerId));
+            .is(reservationTimeFormat.getPhotographerId()));
 
         Update update = new Update()
             .set("formatName", reservationTimeFormat.getFormatName())

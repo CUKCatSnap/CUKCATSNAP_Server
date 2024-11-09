@@ -6,7 +6,9 @@ import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
@@ -107,22 +109,18 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/timeformat")
-    public ResultResponse<ReservationResponse.PhotographerReservationTimeFormatId> registerTimeFormat(
+    public ResultResponse<ReservationTimeFormatIdResponse> registerTimeFormat(
         @Parameter(description = "예약 시간 형식", required = true)
         @RequestBody
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
+        ReservationTimeFormatRequest reservationTimeFormatRequest,
         @Parameter(description = "예약 시간 형식의 이름", required = false)
         @RequestParam(name = "timeFormatId", required = false)
         String timeFormatId
     ) {
-        String reservationTimeFormatId = photographerReservationService.createReservationTimeFormat(
-            photographerReservationTimeFormat, timeFormatId);
-        ReservationResponse.PhotographerReservationTimeFormatId photographerReservationTimeFormatId =
-            ReservationResponse.PhotographerReservationTimeFormatId.builder()
-                .photographerReservationTimeFormatId(reservationTimeFormatId)
-                .build();
+        ReservationTimeFormatIdResponse reservationTimeFormatIdResponse = photographerReservationService.createReservationTimeFormat(
+            reservationTimeFormatRequest, timeFormatId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT,
-            photographerReservationTimeFormatId);
+            reservationTimeFormatIdResponse);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 조회(구현 완료)",

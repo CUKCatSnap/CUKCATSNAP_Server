@@ -5,7 +5,9 @@ import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
@@ -16,8 +18,8 @@ public interface PhotographerReservationService {
 
     void createJoinedPhotographerReservationTimeFormat(Photographer photographer);
 
-    String createReservationTimeFormat(
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
+    ReservationTimeFormatIdResponse createReservationTimeFormat(
+        ReservationTimeFormatRequest reservationTimeFormatRequest,
         String reservationTimeFormatId);
 
     List<ReservationTimeFormat> getMyReservationTimeFormatList();

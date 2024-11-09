@@ -10,8 +10,10 @@ import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
@@ -68,26 +70,29 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public String createReservationTimeFormat(
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
-        String reservationTimeFormatId) {
+    public ReservationTimeFormatIdResponse createReservationTimeFormat(
+        ReservationTimeFormatRequest reservationTimeFormatRequest, String reservationTimeFormatId) {
+
         Long photographerId = GetAuthenticationInfo.getUserId();
-        ReservationTimeFormat reservationTimeFormat = reservationConverter.toReservationTimeFormat(
-            photographerReservationTimeFormat, photographerId);
+        ReservationTimeFormat reservationTimeFormat = null;
+
         /*
          *reservationTimeFormatId가 null이면 새로운 ReservationTimeFormat 생성이고,
          * null이 아니라면 기존의 ReservationTimeFormat 업데이트.
          */
         if (reservationTimeFormatId == null) {
-            return reservationTimeFormatRepository.save(reservationTimeFormat).getId();
+            reservationTimeFormat = reservationTimeFormatRequest.toEntity(photographerId);
+            reservationTimeFormatRepository.save(reservationTimeFormat);
         } else {
+            reservationTimeFormat = reservationTimeFormatRequest.toEntity(reservationTimeFormatId,
+                photographerId);
             UpdateResult updateResult = reservationTimeFormatRepository.update(
-                reservationTimeFormat, reservationTimeFormatId, photographerId);
+                reservationTimeFormat);
             if (updateResult.getModifiedCount() == 0) {
                 throw new OwnershipNotFoundException("내가 소유한 예약 시간 형식 중, 해당 예약 시간 형식을 찾을 수 없습니다.");
             }
-            return reservationTimeFormatId;
         }
+        return ReservationTimeFormatIdResponse.from(reservationTimeFormat);
     }
 
     @Override

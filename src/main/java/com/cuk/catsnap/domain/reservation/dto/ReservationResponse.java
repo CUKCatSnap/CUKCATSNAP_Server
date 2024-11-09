@@ -28,13 +28,6 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    public static class PhotographerReservationTimeFormatId {
-
-        private String photographerReservationTimeFormatId;
-    }
-
-    @Getter
-    @Builder
     public static class PhotographerReservationTimeFormatList {
 
         private List<PhotographerReservationTimeFormat> reservationTimeFormatList;
