@@ -7,10 +7,18 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import com.cuk.catsnap.domain.photographer.service.PhotographerService;
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -29,11 +37,13 @@ import com.cuk.catsnap.global.Exception.reservation.NotFoundProgramException;
 import com.cuk.catsnap.global.Exception.reservation.NotFoundStartTimeException;
 import com.cuk.catsnap.global.Exception.reservation.OverLappingTimeException;
 import com.cuk.catsnap.global.geography.converter.GeographyConverter;
+import com.cuk.catsnap.global.result.SlicedData;
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -56,17 +66,17 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final GeographyConverter geographyConverter;
-    private final ReservationConverter reservationConverter;
     private final PhotographerService photographerService;
 
     @Override
-    public Reservation createReservation(ReservationRequest.ReservationBook reservationBook) {
+    public ReservationBookResultResponse createReservation(
+        MemberReservationRequest memberReservationRequest) {
         Long memberId = GetAuthenticationInfo.getUserId();
-        LocalDate startDate = reservationBook.getStartTime().toLocalDate();
-        LocalTime startTime = reservationBook.getStartTime().toLocalTime();
+        LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
+        LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
         Weekday weekday = getWeekday(startDate);
         Program program = programRepository.findByIdAndPhotographerId(
-                reservationBook.getProgramId(), reservationBook.getPhotographerId())
+                memberReservationRequest.programId(), memberReservationRequest.photographerId())
             .orElseThrow(() -> new NotFoundProgramException("해당 작가의 프로그램이 존재하지 않습니다."));
         if (program.getDeleted()) {
             throw new DeletedProgramException("해당 작가의 프로그램이 삭제되었습니다.");
@@ -78,31 +88,34 @@ public class MemberReservationServiceImpl implements MemberReservationService {
          * 3. 해당 일에 사용자가 원하는 예약 시작 시간이 존재하는지 확인
          * 4. 해당 일에 시간이 중복되는지 확인(작가 설정에 따라 중복 가능)
          */
-        isAvailableReservationDate(startDate, reservationBook.getPhotographerId());
-        isAfterNow(reservationBook.getStartTime());
-        isValidStartTimeInTimeFormat(startTime, weekday, reservationBook.getPhotographerId());
-        isNotOverBooking(startDate, startTime, reservationBook.getPhotographerId(),
+        isAvailableReservationDate(startDate, memberReservationRequest.photographerId());
+        isAfterNow(memberReservationRequest.startTime());
+        isValidStartTimeInTimeFormat(startTime, weekday, memberReservationRequest.photographerId());
+        isNotOverBooking(startDate, startTime, memberReservationRequest.photographerId(),
             program.getDurationMinutes());
 
         Member member = memberRepository.getReferenceById(memberId);
         Photographer photographer = photographerRepository.getReferenceById(
-            reservationBook.getPhotographerId());
+            memberReservationRequest.photographerId());
 
-        return reservationRepository.save(Reservation.builder()
+        Reservation reservation = reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
             .program(program)
-            .location(geographyConverter.toPoint(reservationBook.getLocation().getLatitude(),
-                reservationBook.getLocation().getLongitude()))
-            .locationName(reservationBook.getLocation().getLocationName())
-            .startTime(reservationBook.getStartTime())
-            .endTime(reservationBook.getStartTime().plusMinutes(program.getDurationMinutes()))
+            .location(geographyConverter.toPoint(
+                memberReservationRequest.reservationLocation().latitude(),
+                memberReservationRequest.reservationLocation().longitude()))
+            .locationName(memberReservationRequest.reservationLocation().locationName())
+            .startTime(memberReservationRequest.startTime())
+            .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
             .reservationState(ReservationState.APPROVED) // todo : 작가 설정에 따른 초기 예약 상태 설정 필요
             .build());
+
+        return ReservationBookResultResponse.from(reservation);
     }
 
     @Override
-    public ReservationResponse.PhotographerAvailableReservationTimeList getAvailableReservationTime(
+    public PhotographerAvailableReservationTimeListResponse getAvailableReservationTime(
         LocalDate date, Long photographerId) {
         Weekday weekday = getWeekday(date);
         String ReservationTimeFormatId = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
@@ -112,10 +125,14 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
             ReservationTimeFormatId);
         if (reservationTimeFormat == null) {
-            return ReservationResponse.PhotographerAvailableReservationTimeList.builder()
-                .photographerAvailableReservationTimeList(Collections.emptyList())
-                .build();
+            return PhotographerAvailableReservationTimeListResponse.from(Collections.emptyList());
         }
+
+        /*
+         * photographerStartTimeList는 작가가 설정한 예약 가능한 시간 목록입니다.(단 현재 시간 이후만 조회)
+         * ReservationList는 현재까지 작가에게 예약된 예약 목록입니다.
+         * 현재 예약 가능한 시간대를 조회하기 위해 예약된 시간대를 isAvailableReservation을 false로 설정하여 반환합니다.
+         */
         List<LocalTime> photographerStartTimeList = reservationTimeFormat.getStartTimeList()
             .stream()
             .filter(time -> time.atDate(date).isAfter(LocalDateTime.now()))
@@ -123,17 +140,42 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         List<Reservation> reservationList = reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(
             photographerId, LocalDateTime.of(date, LocalTime.MIN),
             LocalDateTime.of(date, LocalTime.MAX));
-        return reservationConverter.toPhotographerAvailableReservationTimeList(
-            photographerStartTimeList, reservationList);
+
+        List<PhotographerAvailableReservationTimeResponse> photographerAvailableReservationTimeResponseArrayList = new ArrayList<>();
+        for (LocalTime startTime : photographerStartTimeList) {
+            boolean isAvailableReservation = true;
+            LocalDateTime startDateTime = LocalDateTime.now().toLocalDate().atTime(startTime);
+            for (Reservation reservation : reservationList) {
+                LocalDateTime reservationStartTime = reservation.getStartTime();
+                LocalDateTime reservationEndTime = reservation.getEndTime();
+                if (reservationStartTime.isAfter(startDateTime)
+                    || reservationStartTime.isEqual(startDateTime)
+                    && reservationEndTime.isBefore(startDateTime) || reservationEndTime.isEqual(
+                    startDateTime)) {
+                    isAvailableReservation = false;
+                    break;
+                }
+            }
+            photographerAvailableReservationTimeResponseArrayList.add(
+                PhotographerAvailableReservationTimeResponse.of(startTime, isAvailableReservation));
+        }
+
+        return PhotographerAvailableReservationTimeListResponse.from(
+            photographerAvailableReservationTimeResponseArrayList);
     }
 
     @Override
-    public List<Program> getPhotographerProgram(Long photographerId) {
-        return programRepository.findByPhotographerIdAndDeletedFalse(photographerId);
+    public PhotographerProgramListResponse getPhotographerProgram(Long photographerId) {
+        List<Program> programList = programRepository.findByPhotographerIdAndDeletedFalse(
+            photographerId);
+        return PhotographerProgramListResponse.from(
+            programList.stream()
+                .map(PhotographerProgramResponse::from)
+                .toList());
     }
 
     @Override
-    public ReservationResponse.PhotographerReservationGuidance getPhotographerReservationGuidance(
+    public PhotographerReservationGuidanceResponse getPhotographerReservationGuidance(
         Long photographerId) {
         String photographerNotification = "";
         String photographerLocation = "";
@@ -145,46 +187,61 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         } catch (NullPointerException e) {
             throw new OwnershipNotFoundException("해당 작가의 예약 전 주의사항 또는 예약 가능한 장소가 존재하지 않습니다.");
         }
-        return ReservationResponse.PhotographerReservationGuidance.builder()
-            .photographerNotification(photographerNotification)
-            .photographerLocation(photographerLocation)
-            .build();
+        return PhotographerReservationGuidanceResponse.of(photographerLocation,
+            photographerNotification);
     }
 
     @Override
-    public Slice<Reservation> getMyReservation(ReservationQueryType reservationQueryType,
+    public SlicedData<MemberReservationInformationListResponse> getMyReservation(
+        ReservationQueryType reservationQueryType,
         Pageable pageable) {
         Long memberId = GetAuthenticationInfo.getUserId();
+        Slice<Reservation> reservationSlice = null;
 
         if (reservationQueryType.equals(ReservationQueryType.ALL)) {
-            return reservationRepository.findAllByMemberIdOrderByCreatedAtDesc(memberId, pageable);
+            reservationSlice = reservationRepository.findAllByMemberIdOrderByCreatedAtDesc(memberId,
+                pageable);
         } else if (reservationQueryType.equals(ReservationQueryType.UPCOMING)) {
             LocalDateTime now = LocalDateTime.now()
                 .withHour(0)
                 .withMinute(0)
                 .withSecond(0)
                 .withNano(0);
-            return reservationRepository.findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(
+            reservationSlice = reservationRepository.findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(
                 memberId, now, List.of(ReservationState.APPROVED, ReservationState.PENDING),
                 pageable);
         }
 
-        throw new IllegalArgumentException("올바른 예약 조회 타입이 아닙니다.");
+        MemberReservationInformationListResponse memberReservationInformationListResponse = MemberReservationInformationListResponse.from(
+            reservationSlice.getContent()
+                .stream()
+                .map(MemberReservationInformationResponse::from)
+                .toList());
+        return SlicedData.of(memberReservationInformationListResponse, reservationSlice.isFirst(),
+            reservationSlice.isLast());
     }
 
     @Override
-    public List<Reservation> getReservationListByMonth(LocalDate month) {
+    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(), 1, 0,
             0, 0);
         LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(),
             month.lengthOfMonth(), 23, 59, 59);
-        return reservationRepository.findAllReservationByMemberIdAndStartTimeBetween(memberId,
+
+        List<Reservation> reservationList = reservationRepository.findAllReservationByMemberIdAndStartTimeBetween(
+            memberId,
             startOfMonth, endOfMonth);
+
+        return MonthReservationCheckListResponse.from(
+            reservationList.stream()
+                .map(MonthReservationCheckResponse::from)
+                .toList()
+        );
     }
 
     @Override
-    public ReservationResponse.MemberReservationInformationList getReservationDetailListByDay(
+    public MemberReservationInformationListResponse getReservationDetailListByDay(
         LocalDate day) {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
@@ -193,8 +250,10 @@ public class MemberReservationServiceImpl implements MemberReservationService {
             day.getDayOfMonth(), 23, 59, 59);
         List<Reservation> reservationList = reservationRepository.findAllReservationWithEagerByMemberIdAndStartTimeBetween(
             memberId, startOfDay, endOfDay);
-
-        return reservationConverter.toMemberReservationInformationList(reservationList);
+        List<MemberReservationInformationResponse> reservationListResponse = reservationList.stream()
+            .map(MemberReservationInformationResponse::from)
+            .toList();
+        return MemberReservationInformationListResponse.from(reservationListResponse);
     }
 
     /*

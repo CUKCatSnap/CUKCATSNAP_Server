@@ -1,25 +1,27 @@
 package com.cuk.catsnap.domain.reservation.service;
 
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
-import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
-import com.cuk.catsnap.domain.reservation.entity.Program;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import java.time.LocalDate;
-import java.util.List;
 
 public interface PhotographerReservationService {
 
     void createJoinedPhotographerReservationTimeFormat(Photographer photographer);
 
-    String createReservationTimeFormat(
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
+    ReservationTimeFormatIdResponse createReservationTimeFormat(
+        ReservationTimeFormatRequest reservationTimeFormatRequest,
         String reservationTimeFormatId);
 
-    List<ReservationTimeFormat> getMyReservationTimeFormatList();
+    ReservationTimeFormatListResponse getMyReservationTimeFormatList();
 
     void deleteReservationTimeFormat(String reservationTimeFormatId);
 
@@ -27,16 +29,16 @@ public interface PhotographerReservationService {
 
     void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday);
 
-    Long createProgram(ReservationRequest.PhotographerProgram photographerProgram, Long programId);
+    photographerProgramIdResponse createProgram(
+        ProgramRequest programRequest, Long programId);
 
-    List<Program> getMyProgramList();
+    PhotographerProgramListResponse getMyProgramList();
 
     int softDeleteProgram(Long programId);
 
-    List<Reservation> getReservationListByMonth(LocalDate month);
+    MonthReservationCheckListResponse getReservationListByMonth(LocalDate month);
 
-    ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(
-        LocalDate day);
+    PhotographerReservationInformationListResponse getReservationDetailListByDay(LocalDate day);
 
     void changeReservationState(Long reservationId, ReservationState reservationState);
 }

@@ -1,12 +1,20 @@
 package com.cuk.catsnap.domain.reservation.service;
 
-import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -23,7 +31,6 @@ import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,11 +45,9 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
 
     private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
     private final ReservationTimeFormatRepository reservationTimeFormatRepository;
-    private final ReservationConverter reservationConverter;
     private final ProgramRepository programRepository;
     private final PhotographerRepository photographerRepository;
     private final ReservationRepository reservationRepository;
-    private final MemberConverter memberConverter;
 
     /*
      * 새로운 작가가 회원가입을 하면, 각 요일에 대한 예약 테이블을 생성한다.
@@ -63,32 +68,41 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public String createReservationTimeFormat(
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
-        String reservationTimeFormatId) {
+    public ReservationTimeFormatIdResponse createReservationTimeFormat(
+        ReservationTimeFormatRequest reservationTimeFormatRequest, String reservationTimeFormatId) {
+
         Long photographerId = GetAuthenticationInfo.getUserId();
-        ReservationTimeFormat reservationTimeFormat = reservationConverter.toReservationTimeFormat(
-            photographerReservationTimeFormat, photographerId);
+        ReservationTimeFormat reservationTimeFormat = null;
+
         /*
          *reservationTimeFormatId가 null이면 새로운 ReservationTimeFormat 생성이고,
          * null이 아니라면 기존의 ReservationTimeFormat 업데이트.
          */
         if (reservationTimeFormatId == null) {
-            return reservationTimeFormatRepository.save(reservationTimeFormat).getId();
+            reservationTimeFormat = reservationTimeFormatRequest.toEntity(photographerId);
+            reservationTimeFormatRepository.save(reservationTimeFormat);
         } else {
+            reservationTimeFormat = reservationTimeFormatRequest.toEntity(reservationTimeFormatId,
+                photographerId);
             UpdateResult updateResult = reservationTimeFormatRepository.update(
-                reservationTimeFormat, reservationTimeFormatId, photographerId);
+                reservationTimeFormat);
             if (updateResult.getModifiedCount() == 0) {
                 throw new OwnershipNotFoundException("내가 소유한 예약 시간 형식 중, 해당 예약 시간 형식을 찾을 수 없습니다.");
             }
-            return reservationTimeFormatId;
         }
+        return ReservationTimeFormatIdResponse.from(reservationTimeFormat);
     }
 
     @Override
-    public List<ReservationTimeFormat> getMyReservationTimeFormatList() {
+    public ReservationTimeFormatListResponse getMyReservationTimeFormatList() {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        return reservationTimeFormatRepository.findByPhotographerId(photographerId);
+        List<ReservationTimeFormat> reservationTimeFormatList = reservationTimeFormatRepository.findByPhotographerId(
+            photographerId);
+        return ReservationTimeFormatListResponse.from(
+            reservationTimeFormatList.stream()
+                .map(ReservationTimeFormatResponse::from)
+                .toList());
+
     }
 
     @Override
@@ -135,21 +149,29 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
      * 왜냐하면 기존의 Program을 예약한 고객이 있을 수 있기 때문이다.
      */
     @Override
-    public Long createProgram(ReservationRequest.PhotographerProgram photographerProgram,
-        Long programId) {
+    public photographerProgramIdResponse createProgram(
+        ProgramRequest programRequest, Long programId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         Photographer photographer = photographerRepository.getReferenceById(photographerId);
-        Program program = reservationConverter.toProgram(photographerProgram, photographer);
+        Program program = programRequest.toEntity(photographer);
         if (programId != null) {
             softDeleteProgram(programId);
         }
-        return programRepository.save(program).getId();
+        Program savedProgram = programRepository.save(program);
+
+        return photographerProgramIdResponse.from(savedProgram);
     }
 
     @Override
-    public List<Program> getMyProgramList() {
+    public PhotographerProgramListResponse getMyProgramList() {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        return programRepository.findByPhotographerIdAndDeletedFalse(photographerId);
+        List<Program> programList = programRepository.findByPhotographerIdAndDeletedFalse(
+            photographerId);
+        return PhotographerProgramListResponse.from(
+            programList.stream()
+                .map(PhotographerProgramResponse::from)
+                .toList()
+        );
     }
 
     @Override
@@ -164,38 +186,39 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public List<Reservation> getReservationListByMonth(LocalDate month) {
+    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(), 1, 0,
             0, 0);
         LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(),
             month.lengthOfMonth(), 23, 59, 59);
-        return reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(
+
+        List<Reservation> reservationList = reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(
             photographerId, startOfMonth, endOfMonth);
+
+        return MonthReservationCheckListResponse.from(
+            reservationList.stream()
+                .map(MonthReservationCheckResponse::from)
+                .toList()
+        );
     }
 
     @Override
-    public ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(
+    public PhotographerReservationInformationListResponse getReservationDetailListByDay(
         LocalDate day) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
             day.getDayOfMonth(), 0, 0, 0);
         LocalDateTime endOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
             day.getDayOfMonth(), 23, 59, 59);
+
         List<Reservation> reservationList = reservationRepository.findAllReservationWithEagerByPhotographerIdAndStartTimeBetween(
             photographerId, startOfDay, endOfDay);
 
-        List<ReservationResponse.PhotographerReservationInformation> photographerReservationInformationList = new ArrayList<>();
-        reservationList.stream()
-            .map(reservation -> {
-
-                return reservationConverter.toPhotographerReservationInformation(reservation);
-            })
-            .forEach(photographerReservationInformationList::add);
-
-        return ReservationResponse.PhotographerReservationInformationList.builder()
-            .photographerReservationInformationList(photographerReservationInformationList)
-            .build();
+        return PhotographerReservationInformationListResponse.from(
+            reservationList.stream()
+                .map(PhotographerReservationInformationResponse::from)
+                .toList());
     }
 
     /*

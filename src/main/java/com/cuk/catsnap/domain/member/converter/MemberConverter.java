@@ -1,7 +1,6 @@
 package com.cuk.catsnap.domain.member.converter;
 
 import com.cuk.catsnap.domain.member.dto.MemberRequest;
-import com.cuk.catsnap.domain.member.dto.MemberResponse;
 import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.entity.SnsType;
 import org.springframework.stereotype.Component;
@@ -18,14 +17,6 @@ public class MemberConverter {
             .nickname(memberSignUp.getNickname())
             .phoneNumber(memberSignUp.getPhoneNumber())
             .snstype(SnsType.CATSNAP)
-            .build();
-    }
-
-    public MemberResponse.MemberTinyInformation toMemberTinyInformation(Member member) {
-        return MemberResponse.MemberTinyInformation.builder()
-            .memberId(member.getId())
-            .nickname(member.getNickname())
-            .profilePhotoUrl(member.getProfilePhotoUrl())
             .build();
     }
 }

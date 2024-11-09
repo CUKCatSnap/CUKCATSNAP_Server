@@ -17,16 +17,6 @@ public class PhotographerResponse {
     @Getter
     @Builder
     @Schema(description = "작가의 Id와 닉네임", nullable = false)
-    public static class PhotographerTinyInformation {
-
-        private Long photographerId;
-        private String nickname;
-        private String profilePhotoUrl;
-    }
-
-    @Getter
-    @Builder
-    @Schema(description = "작가의 Id와 닉네임", nullable = false)
     public static class PhotographerFullyInformation {
 
         private Long photographerId;

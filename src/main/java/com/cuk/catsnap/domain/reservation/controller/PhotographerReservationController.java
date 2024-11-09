@@ -1,11 +1,13 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
-import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
-import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
-import com.cuk.catsnap.domain.reservation.entity.Program;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
@@ -18,7 +20,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PhotographerReservationController {
 
     private final PhotographerReservationService photographerReservationService;
-    private final ReservationConverter reservationConverter;
 
     @Operation(summary = "작가의 특정 월의 특정 일에 예약 유무를 일별로 조회(구현 완료)",
         description = "작가 자신으로 예약된 예약 목록을 월별로 조회하는 API입니다. " +
@@ -44,17 +44,15 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/month")
-    public ResultResponse<ReservationResponse.MonthReservationCheckList> getMyMonthReservationCheck(
+    public ResultResponse<MonthReservationCheckListResponse> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
         YearMonth reservationMonth
     ) {
-        List<Reservation> reservationList = photographerReservationService.getReservationListByMonth(
+        MonthReservationCheckListResponse monthReservationCheckListResponse = photographerReservationService.getReservationListByMonth(
             reservationMonth.atDay(1));
-        ReservationResponse.MonthReservationCheckList monthReservationCheckList = reservationConverter.toMonthReservationCheckList(
-            reservationList);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            monthReservationCheckList);
+            monthReservationCheckListResponse);
     }
 
     @Operation(summary = "작가의 특정 일의 예약 목록을 조회(구현 완료)",
@@ -63,15 +61,15 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/day")
-    public ResultResponse<ReservationResponse.PhotographerReservationInformationList> getMyDayReservation(
+    public ResultResponse<PhotographerReservationInformationListResponse> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
         LocalDate reservationDay
     ) {
-        ReservationResponse.PhotographerReservationInformationList photographerReservationInformationList = photographerReservationService.getReservationDetailListByDay(
+        PhotographerReservationInformationListResponse photographerReservationInformationListResponse = photographerReservationService.getReservationDetailListByDay(
             reservationDay);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            photographerReservationInformationList);
+            photographerReservationInformationListResponse);
     }
 
     @Operation(summary = "작가가 자신의 예약 상태를 변경(구현 완료)",
@@ -107,22 +105,18 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/timeformat")
-    public ResultResponse<ReservationResponse.PhotographerReservationTimeFormatId> registerTimeFormat(
+    public ResultResponse<ReservationTimeFormatIdResponse> registerTimeFormat(
         @Parameter(description = "예약 시간 형식", required = true)
         @RequestBody
-        ReservationRequest.PhotographerReservationTimeFormat photographerReservationTimeFormat,
+        ReservationTimeFormatRequest reservationTimeFormatRequest,
         @Parameter(description = "예약 시간 형식의 이름", required = false)
         @RequestParam(name = "timeFormatId", required = false)
         String timeFormatId
     ) {
-        String reservationTimeFormatId = photographerReservationService.createReservationTimeFormat(
-            photographerReservationTimeFormat, timeFormatId);
-        ReservationResponse.PhotographerReservationTimeFormatId photographerReservationTimeFormatId =
-            ReservationResponse.PhotographerReservationTimeFormatId.builder()
-                .photographerReservationTimeFormatId(reservationTimeFormatId)
-                .build();
+        ReservationTimeFormatIdResponse reservationTimeFormatIdResponse = photographerReservationService.createReservationTimeFormat(
+            reservationTimeFormatRequest, timeFormatId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT,
-            photographerReservationTimeFormatId);
+            reservationTimeFormatIdResponse);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 조회(구현 완료)",
@@ -133,13 +127,10 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR012", description = "성공적으로 예약 시간 형식을 조회했습니다.")
     )
     @GetMapping("/my/timeformat")
-    public ResultResponse<ReservationResponse.PhotographerReservationTimeFormatList> getTimeFormat() {
-        List<ReservationTimeFormat> reservationTimeFormats = photographerReservationService.getMyReservationTimeFormatList();
-        ReservationResponse.PhotographerReservationTimeFormatList photographerReservationTimeFormatList =
-            reservationConverter.toPhotographerReservationTimeFormatList(reservationTimeFormats);
-
+    public ResultResponse<ReservationTimeFormatListResponse> getTimeFormat() {
+        ReservationTimeFormatListResponse reservationTimeFormatList = photographerReservationService.getMyReservationTimeFormatList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP,
-            photographerReservationTimeFormatList);
+            reservationTimeFormatList);
     }
 
     @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제(구현 완료)",
@@ -221,19 +212,16 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/program")
-    public ResultResponse<ReservationResponse.PhotographerProgramId> postProgram(
+    public ResultResponse<photographerProgramIdResponse> postProgram(
         @Parameter(description = "예약 프로그램", required = true)
         @RequestBody
-        ReservationRequest.PhotographerProgram photographerProgram,
+        ProgramRequest programRequest,
         @Parameter(description = "예약 프로그램의 id, 수정을 할 때만 입력", required = false)
         @RequestParam(name = "programId", required = false)
         Long programId
     ) {
-        Long photographerProgramId = photographerReservationService.createProgram(
-            photographerProgram, programId);
-        ReservationResponse.PhotographerProgramId photographerProgramIdResponse = ReservationResponse.PhotographerProgramId.builder()
-            .photographerProgramId(photographerProgramId)
-            .build();
+        photographerProgramIdResponse photographerProgramIdResponse = photographerReservationService.createProgram(
+            programRequest, programId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_POST_PROGRAM,
             photographerProgramIdResponse);
     }
@@ -246,12 +234,10 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR013", description = "성공적으로가 예약 프로그램을 조회했습니다.")
     )
     @GetMapping("/my/program")
-    public ResultResponse<ReservationResponse.PhotographerProgramList> getProgram() {
-        List<Program> programList = photographerReservationService.getMyProgramList();
-        ReservationResponse.PhotographerProgramList photographerProgramList = reservationConverter.toPhotographerProgramList(
-            programList);
+    public ResultResponse<PhotographerProgramListResponse> getProgram() {
+        PhotographerProgramListResponse photographerProgramListResponse = photographerReservationService.getMyProgramList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM,
-            photographerProgramList);
+            photographerProgramListResponse);
     }
 
     @Operation(
