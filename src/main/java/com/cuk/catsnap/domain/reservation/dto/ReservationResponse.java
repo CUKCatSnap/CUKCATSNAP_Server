@@ -31,17 +31,6 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    @Schema(description = "예약한 프로그램의 정보를 나타내는 필드", nullable = false)
-    public static class ReservedProgram {
-
-        private String title;
-        private String content;
-        private Long durationMinutes;
-        private Long price;
-    }
-
-    @Getter
-    @Builder
     public static class MonthReservationCheckList {
 
         List<MonthReservationCheck> monthReservationCheckList;

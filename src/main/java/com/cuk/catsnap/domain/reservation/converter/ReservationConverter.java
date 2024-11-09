@@ -137,22 +137,4 @@ public class ReservationConverter {
             .photographerAvailableReservationTimeList(photographerAvailableReservationTimeList)
             .build();
     }
-
-    public ReservationResponse.Location toLocation(Reservation reservation) {
-        return ReservationResponse.Location.builder()
-            .latitude(reservation.getLocation().getY())
-            .longitude(reservation.getLocation().getX())
-            .locationName(reservation.getLocationName())
-            .build();
-    }
-
-    public ReservationResponse.ReservedProgram toReservedProgram(Program program) {
-        return ReservationResponse.ReservedProgram.builder()
-            .title(program.getTitle())
-            .content(program.getContent())
-            .durationMinutes(program.getDurationMinutes())
-            .price(program.getPrice())
-            .build();
-    }
-
 }
