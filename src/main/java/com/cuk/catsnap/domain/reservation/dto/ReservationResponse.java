@@ -1,6 +1,5 @@
 package com.cuk.catsnap.domain.reservation.dto;
 
-import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.global.jsonformat.deserialize.HoursMinutesListSerializer;
 import com.cuk.catsnap.global.jsonformat.serializer.HoursMinutesListDeserializer;
@@ -9,7 +8,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -58,26 +56,6 @@ public class ReservationResponse {
         private LocalDate reservationDate;
         @Schema(description = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED")
         private ReservationState reservationState;
-    }
-
-    @Getter
-    @Builder
-    public static class PhotographerReservationInformationList {
-
-        List<PhotographerReservationInformation> photographerReservationInformationList;
-    }
-
-    @Getter
-    @Builder
-    public static class PhotographerReservationInformation {
-
-        private Long reservationId;
-        private MemberTinyInformationResponse memberTinyInformationResponse;
-        private Location location;
-        private LocalDateTime startTime;
-        private ReservedProgram reservedProgram;
-        @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
-        private ReservationState state;
     }
 
     @Getter

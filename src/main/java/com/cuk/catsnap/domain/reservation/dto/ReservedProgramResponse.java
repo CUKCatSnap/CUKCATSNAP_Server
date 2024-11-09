@@ -1,4 +1,4 @@
-package com.cuk.catsnap.domain.reservation.dto.member.response;
+package com.cuk.catsnap.domain.reservation.dto;
 
 import com.cuk.catsnap.domain.reservation.entity.Program;
 

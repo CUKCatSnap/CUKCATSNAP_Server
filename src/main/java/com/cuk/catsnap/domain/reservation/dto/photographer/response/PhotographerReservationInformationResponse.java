@@ -1,6 +1,6 @@
-package com.cuk.catsnap.domain.reservation.dto.member.response;
+package com.cuk.catsnap.domain.reservation.dto.photographer.response;
 
-import com.cuk.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
+import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationLocation;
 import com.cuk.catsnap.domain.reservation.dto.ReservedProgramResponse;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
@@ -8,20 +8,20 @@ import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 
-public record MemberReservationInformationResponse(
+public record PhotographerReservationInformationResponse(
     Long reservationId,
-    PhotographerTinyInformationResponse photographerTinyInformationResponse,
+    MemberTinyInformationResponse memberTinyInformationResponse,
     ReservationLocation reservationLocation,
     LocalDateTime startTime,
     ReservedProgramResponse reservedProgramResponse,
-    @Schema(description = "예약의 상태를 나타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
+    @Schema(description = "예약의 상태를 타냅니다.", nullable = false, example = "PENDING, APPROVED, REJECTED, MEMBER_CANCELLED, PHOTOGRAPHY_CANCELLED 중 한개의 값")
     ReservationState state
 ) {
 
-    public static MemberReservationInformationResponse from(Reservation reservation) {
-        return new MemberReservationInformationResponse(
+    public static PhotographerReservationInformationResponse from(Reservation reservation) {
+        return new PhotographerReservationInformationResponse(
             reservation.getId(),
-            PhotographerTinyInformationResponse.from(reservation.getPhotographer()),
+            MemberTinyInformationResponse.from(reservation.getMember()),
             ReservationLocation.of(reservation.getLocation().getX(),
                 reservation.getLocation().getY(), reservation.getLocationName()),
             reservation.getStartTime(),

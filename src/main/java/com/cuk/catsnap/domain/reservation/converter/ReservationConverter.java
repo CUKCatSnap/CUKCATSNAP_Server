@@ -1,7 +1,6 @@
 package com.cuk.catsnap.domain.reservation.converter;
 
 import com.cuk.catsnap.domain.member.converter.MemberConverter;
-import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
@@ -94,19 +93,6 @@ public class ReservationConverter {
             .toList();
         return ReservationResponse.MonthReservationCheckList.builder()
             .monthReservationCheckList(monthReservationCheckList)
-            .build();
-    }
-
-    public ReservationResponse.PhotographerReservationInformation toPhotographerReservationInformation(
-        Reservation reservation) {
-        return ReservationResponse.PhotographerReservationInformation.builder()
-            .reservationId(reservation.getId())
-            .memberTinyInformationResponse(
-                MemberTinyInformationResponse.from(reservation.getMember()))
-            .location(toLocation(reservation))
-            .startTime(reservation.getStartTime())
-            .reservedProgram(toReservedProgram(reservation.getProgram()))
-            .state(reservation.getReservationState())
             .build();
     }
 

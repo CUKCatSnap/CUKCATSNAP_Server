@@ -4,6 +4,7 @@ import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -63,15 +64,15 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/day")
-    public ResultResponse<ReservationResponse.PhotographerReservationInformationList> getMyDayReservation(
+    public ResultResponse<PhotographerReservationInformationListResponse> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
         LocalDate reservationDay
     ) {
-        ReservationResponse.PhotographerReservationInformationList photographerReservationInformationList = photographerReservationService.getReservationDetailListByDay(
+        PhotographerReservationInformationListResponse photographerReservationInformationListResponse = photographerReservationService.getReservationDetailListByDay(
             reservationDay);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            photographerReservationInformationList);
+            photographerReservationInformationListResponse);
     }
 
     @Operation(summary = "작가가 자신의 예약 상태를 변경(구현 완료)",

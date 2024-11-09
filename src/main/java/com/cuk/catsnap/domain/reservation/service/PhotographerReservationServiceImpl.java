@@ -6,7 +6,8 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -23,7 +24,6 @@ import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -175,27 +175,21 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(
+    public PhotographerReservationInformationListResponse getReservationDetailListByDay(
         LocalDate day) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
             day.getDayOfMonth(), 0, 0, 0);
         LocalDateTime endOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
             day.getDayOfMonth(), 23, 59, 59);
+
         List<Reservation> reservationList = reservationRepository.findAllReservationWithEagerByPhotographerIdAndStartTimeBetween(
             photographerId, startOfDay, endOfDay);
 
-        List<ReservationResponse.PhotographerReservationInformation> photographerReservationInformationList = new ArrayList<>();
-        reservationList.stream()
-            .map(reservation -> {
-
-                return reservationConverter.toPhotographerReservationInformation(reservation);
-            })
-            .forEach(photographerReservationInformationList::add);
-
-        return ReservationResponse.PhotographerReservationInformationList.builder()
-            .photographerReservationInformationList(photographerReservationInformationList)
-            .build();
+        return PhotographerReservationInformationListResponse.from(
+            reservationList.stream()
+                .map(PhotographerReservationInformationResponse::from)
+                .toList());
     }
 
     /*

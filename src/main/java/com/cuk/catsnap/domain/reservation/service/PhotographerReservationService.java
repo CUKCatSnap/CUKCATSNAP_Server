@@ -3,7 +3,7 @@ package com.cuk.catsnap.domain.reservation.service;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -35,8 +35,7 @@ public interface PhotographerReservationService {
 
     List<Reservation> getReservationListByMonth(LocalDate month);
 
-    ReservationResponse.PhotographerReservationInformationList getReservationDetailListByDay(
-        LocalDate day);
+    PhotographerReservationInformationListResponse getReservationDetailListByDay(LocalDate day);
 
     void changeReservationState(Long reservationId, ReservationState reservationState);
 }
