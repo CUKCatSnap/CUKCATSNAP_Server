@@ -1,9 +1,9 @@
 package com.cuk.catsnap.domain.reservation.converter;
 
 import com.cuk.catsnap.domain.member.converter.MemberConverter;
-import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformation;
+import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
-import com.cuk.catsnap.domain.photographer.dto.response.PhotographerTinyInformation;
+import com.cuk.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -102,7 +102,8 @@ public class ReservationConverter {
         Reservation reservation) {
         return ReservationResponse.PhotographerReservationInformation.builder()
             .reservationId(reservation.getId())
-            .memberTinyInformation(MemberTinyInformation.from(reservation.getMember()))
+            .memberTinyInformationResponse(
+                MemberTinyInformationResponse.from(reservation.getMember()))
             .location(toLocation(reservation))
             .startTime(reservation.getStartTime())
             .reservedProgram(toReservedProgram(reservation.getProgram()))
@@ -174,8 +175,8 @@ public class ReservationConverter {
         List<ReservationResponse.MemberReservationInformation> memberReservationInformationList = reservationList.stream()
             .map(reservation -> ReservationResponse.MemberReservationInformation.builder()
                 .reservationId(reservation.getId())
-                .photographerTinyInformation(
-                    PhotographerTinyInformation.from(reservation.getPhotographer()))
+                .photographerTinyInformationResponse(
+                    PhotographerTinyInformationResponse.from(reservation.getPhotographer()))
                 .location(toLocation(reservation))
                 .startTime(reservation.getStartTime())
                 .reservedProgram(toReservedProgram(reservation.getProgram()))
