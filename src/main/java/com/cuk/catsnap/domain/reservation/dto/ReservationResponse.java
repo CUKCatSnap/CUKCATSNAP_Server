@@ -29,16 +29,6 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    public static class PhotographerReservationGuidance {
-
-        @Schema(description = "작가가 설정한 예약 가능한 장소입니다. 주소 형태가 아니라 문자열 형태입니다.")
-        private String photographerLocation;
-        @Schema(description = "작가가 설정한 예약전 주의사항입니다.")
-        private String photographerNotification;
-    }
-
-    @Getter
-    @Builder
     public static class ReservationBookResult {
 
         private Long reservationId;

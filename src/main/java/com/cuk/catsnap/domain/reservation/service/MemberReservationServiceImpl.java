@@ -13,12 +13,12 @@ import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -173,7 +173,7 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     }
 
     @Override
-    public ReservationResponse.PhotographerReservationGuidance getPhotographerReservationGuidance(
+    public PhotographerReservationGuidanceResponse getPhotographerReservationGuidance(
         Long photographerId) {
         String photographerNotification = "";
         String photographerLocation = "";
@@ -185,10 +185,8 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         } catch (NullPointerException e) {
             throw new OwnershipNotFoundException("해당 작가의 예약 전 주의사항 또는 예약 가능한 장소가 존재하지 않습니다.");
         }
-        return ReservationResponse.PhotographerReservationGuidance.builder()
-            .photographerNotification(photographerNotification)
-            .photographerLocation(photographerLocation)
-            .build();
+        return PhotographerReservationGuidanceResponse.of(photographerLocation,
+            photographerNotification);
     }
 
     @Override

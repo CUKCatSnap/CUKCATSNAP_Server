@@ -2,10 +2,10 @@ package com.cuk.catsnap.domain.reservation.service;
 
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.global.result.SlicedData;
@@ -21,7 +21,7 @@ public interface MemberReservationService {
 
     PhotographerProgramListResponse getPhotographerProgram(Long photographerId);
 
-    ReservationResponse.PhotographerReservationGuidance getPhotographerReservationGuidance(
+    PhotographerReservationGuidanceResponse getPhotographerReservationGuidance(
         Long photographerId);
 
     SlicedData<MemberReservationInformationListResponse> getMyReservation(

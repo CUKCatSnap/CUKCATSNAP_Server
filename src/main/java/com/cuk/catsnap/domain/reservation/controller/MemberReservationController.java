@@ -7,6 +7,7 @@ import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
@@ -133,14 +134,14 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "404 EO000", description = "해당 게시물의 소유권을 찾을 수 없습니다."),
     })
     @GetMapping("/photographer/guidance")
-    public ResultResponse<ReservationResponse.PhotographerReservationGuidance> getPhotographerReservationGuidance(
+    public ResultResponse<PhotographerReservationGuidanceResponse> getPhotographerReservationGuidance(
         @RequestParam("photographerId")
         Long photographerId
     ) {
-        ReservationResponse.PhotographerReservationGuidance photographerReservationGuidanceDto = memberReservationService.getPhotographerReservationGuidance(
+        PhotographerReservationGuidanceResponse photographerReservationGuidance = memberReservationService.getPhotographerReservationGuidance(
             photographerId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_GUIDANCE_LOOK_UP,
-            photographerReservationGuidanceDto);
+            photographerReservationGuidance);
     }
 
     @Operation(summary = "새로운 예약을 생성하는 API(구현 완료)", description = "새로운 예약을 만드는 API입니다.")
