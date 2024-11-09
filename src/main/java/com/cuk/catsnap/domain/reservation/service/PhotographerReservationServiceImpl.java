@@ -14,6 +14,8 @@ import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTi
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
@@ -96,9 +98,15 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
     }
 
     @Override
-    public List<ReservationTimeFormat> getMyReservationTimeFormatList() {
+    public ReservationTimeFormatListResponse getMyReservationTimeFormatList() {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        return reservationTimeFormatRepository.findByPhotographerId(photographerId);
+        List<ReservationTimeFormat> reservationTimeFormatList = reservationTimeFormatRepository.findByPhotographerId(
+            photographerId);
+        return ReservationTimeFormatListResponse.from(
+            reservationTimeFormatList.stream()
+                .map(ReservationTimeFormatResponse::from)
+                .toList());
+
     }
 
     @Override
