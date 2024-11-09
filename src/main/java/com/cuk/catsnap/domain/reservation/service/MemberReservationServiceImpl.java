@@ -11,6 +11,8 @@ import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -29,6 +31,7 @@ import com.cuk.catsnap.global.Exception.reservation.NotFoundProgramException;
 import com.cuk.catsnap.global.Exception.reservation.NotFoundStartTimeException;
 import com.cuk.catsnap.global.Exception.reservation.OverLappingTimeException;
 import com.cuk.catsnap.global.geography.converter.GeographyConverter;
+import com.cuk.catsnap.global.result.SlicedData;
 import com.cuk.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -153,24 +156,33 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     }
 
     @Override
-    public Slice<Reservation> getMyReservation(ReservationQueryType reservationQueryType,
+    public SlicedData<MemberReservationInformationListResponse> getMyReservation(
+        ReservationQueryType reservationQueryType,
         Pageable pageable) {
         Long memberId = GetAuthenticationInfo.getUserId();
+        Slice<Reservation> reservationSlice = null;
 
         if (reservationQueryType.equals(ReservationQueryType.ALL)) {
-            return reservationRepository.findAllByMemberIdOrderByCreatedAtDesc(memberId, pageable);
+            reservationSlice = reservationRepository.findAllByMemberIdOrderByCreatedAtDesc(memberId,
+                pageable);
         } else if (reservationQueryType.equals(ReservationQueryType.UPCOMING)) {
             LocalDateTime now = LocalDateTime.now()
                 .withHour(0)
                 .withMinute(0)
                 .withSecond(0)
                 .withNano(0);
-            return reservationRepository.findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(
+            reservationSlice = reservationRepository.findAllByMemberIdAndStartTimeAfterAndReservationStateInOrderByStartTimeAsc(
                 memberId, now, List.of(ReservationState.APPROVED, ReservationState.PENDING),
                 pageable);
         }
 
-        throw new IllegalArgumentException("올바른 예약 조회 타입이 아닙니다.");
+        MemberReservationInformationListResponse memberReservationInformationListResponse = MemberReservationInformationListResponse.from(
+            reservationSlice.getContent()
+                .stream()
+                .map(MemberReservationInformationResponse::from)
+                .toList());
+        return SlicedData.of(memberReservationInformationListResponse, reservationSlice.isFirst(),
+            reservationSlice.isLast());
     }
 
     @Override
@@ -185,7 +197,7 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     }
 
     @Override
-    public ReservationResponse.MemberReservationInformationList getReservationDetailListByDay(
+    public MemberReservationInformationListResponse getReservationDetailListByDay(
         LocalDate day) {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
@@ -194,8 +206,10 @@ public class MemberReservationServiceImpl implements MemberReservationService {
             day.getDayOfMonth(), 23, 59, 59);
         List<Reservation> reservationList = reservationRepository.findAllReservationWithEagerByMemberIdAndStartTimeBetween(
             memberId, startOfDay, endOfDay);
-
-        return reservationConverter.toMemberReservationInformationList(reservationList);
+        List<MemberReservationInformationResponse> reservationListResponse = reservationList.stream()
+            .map(MemberReservationInformationResponse::from)
+            .toList();
+        return MemberReservationInformationListResponse.from(reservationListResponse);
     }
 
     /*

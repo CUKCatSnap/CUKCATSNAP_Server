@@ -3,7 +3,6 @@ package com.cuk.catsnap.domain.reservation.converter;
 import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
-import com.cuk.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -170,23 +169,4 @@ public class ReservationConverter {
             .build();
     }
 
-    public ReservationResponse.MemberReservationInformationList toMemberReservationInformationList(
-        List<Reservation> reservationList) {
-        List<ReservationResponse.MemberReservationInformation> memberReservationInformationList = reservationList.stream()
-            .map(reservation -> ReservationResponse.MemberReservationInformation.builder()
-                .reservationId(reservation.getId())
-                .photographerTinyInformationResponse(
-                    PhotographerTinyInformationResponse.from(reservation.getPhotographer()))
-                .location(toLocation(reservation))
-                .startTime(reservation.getStartTime())
-                .reservedProgram(toReservedProgram(reservation.getProgram()))
-                .state(reservation.getReservationState())
-                .build()
-            )
-            .toList();
-
-        return ReservationResponse.MemberReservationInformationList.builder()
-            .memberReservationInformationList(memberReservationInformationList)
-            .build();
-    }
 }

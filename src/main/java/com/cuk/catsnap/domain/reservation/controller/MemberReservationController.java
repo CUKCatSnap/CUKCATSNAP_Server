@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.reservation.controller;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
+import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -21,7 +22,6 @@ import java.time.YearMonth;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,18 +44,16 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다."),
     })
     @GetMapping("/member/my")
-    public ResultResponse<SlicedData<ReservationResponse.MemberReservationInformationList>> getMyReservation(
+    public ResultResponse<SlicedData<MemberReservationInformationListResponse>> getMyReservation(
         @Parameter(description = "ALL : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) UPCOMING : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴. 예약의 상태가 PENDING, APPROVED 인 것만 보여줌) ")
         @RequestParam("type")
         ReservationQueryType reservationQueryType,
         Pageable pageable) {
-        Slice<Reservation> reservationSlice = memberReservationService.getMyReservation(
+        SlicedData<MemberReservationInformationListResponse> memberReservationInformationList = memberReservationService.getMyReservation(
             reservationQueryType, pageable);
-        ReservationResponse.MemberReservationInformationList memberReservationInformationList = reservationConverter.toMemberReservationInformationList(
-            reservationSlice.getContent());
+
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            SlicedData.of(memberReservationInformationList, reservationSlice.isFirst(),
-                reservationSlice.isLast()));
+            memberReservationInformationList);
     }
 
     @Operation(summary = "특정 월의 예약 유무를 일별로 조회(구현 완료)", description = "특정 월의 예약 유무를 일별로 조회하는 API입니다. 예) 2024년 9월에 예약은 ? -> 2024년 9월 7일, 2024년 9월 13일")
@@ -82,16 +80,16 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/member/my/day")
-    public ResultResponse<ReservationResponse.MemberReservationInformationList> getMyDayReservation(
+    public ResultResponse<MemberReservationInformationListResponse> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate reservationDay
     ) {
-        ReservationResponse.MemberReservationInformationList memberReservationInformationList = memberReservationService.getReservationDetailListByDay(
+        MemberReservationInformationListResponse memberReservationInformationListResponse = memberReservationService.getReservationDetailListByDay(
             reservationDay);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
-            memberReservationInformationList);
+            memberReservationInformationListResponse);
     }
 
     @Operation(summary = "특정 작가의 특정 날짜에 예약 가능한 시간 목록 조회(구현 완료)",

@@ -9,4 +9,7 @@ public record ReservationLocation(
     String locationName
 ) {
 
+    public static ReservationLocation of(Double latitude, Double longitude, String locationName) {
+        return new ReservationLocation(latitude, longitude, locationName);
+    }
 }
