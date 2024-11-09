@@ -1,6 +1,6 @@
 package com.cuk.catsnap.domain.search.dto;
 
-import com.cuk.catsnap.domain.member.dto.MemberResponse;
+import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformation;
 import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -84,7 +84,7 @@ public class SearchResponse {
     public static class PreviewReviewSearch {
 
         private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
-        private MemberResponse.MemberTinyInformation memberFullyInformation;
+        private MemberTinyInformation memberTinyInformation;
 
         @Schema(description = "검색된 리뷰의 id")
         private Long reviewId;
