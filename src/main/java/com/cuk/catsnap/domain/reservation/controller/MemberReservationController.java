@@ -1,8 +1,8 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -161,9 +161,10 @@ public class MemberReservationController {
     public ResultResponse<ReservationResponse.ReservationBookResult> postBookReservation(
         @Parameter(description = "새로운 예약 형식")
         @RequestBody
-        ReservationRequest.ReservationBook reservationBook
+        MemberReservationRequest memberReservationRequest
     ) {
-        Reservation reservation = memberReservationService.createReservation(reservationBook);
+        Reservation reservation = memberReservationService.createReservation(
+            memberReservationRequest);
         ReservationResponse.ReservationBookResult reservationBookResult = reservationConverter.toReservationBookResult(
             reservation);
         return ResultResponse.of(ReservationResultCode.RESERVATION_BOOK_COMPLETE,

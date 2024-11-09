@@ -1,7 +1,7 @@
 package com.cuk.catsnap.domain.reservation.service;
 
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.Slice;
 
 public interface MemberReservationService {
 
-    Reservation createReservation(ReservationRequest.ReservationBook reservationBook);
+    Reservation createReservation(MemberReservationRequest memberReservationRequest);
 
     ReservationResponse.PhotographerAvailableReservationTimeList getAvailableReservationTime(
         LocalDate date, Long photographerId);

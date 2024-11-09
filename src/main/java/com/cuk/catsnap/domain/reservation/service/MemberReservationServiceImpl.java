@@ -9,8 +9,8 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerReservationNot
 import com.cuk.catsnap.domain.photographer.service.PhotographerService;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
-import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -60,13 +60,13 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final PhotographerService photographerService;
 
     @Override
-    public Reservation createReservation(ReservationRequest.ReservationBook reservationBook) {
+    public Reservation createReservation(MemberReservationRequest memberReservationRequest) {
         Long memberId = GetAuthenticationInfo.getUserId();
-        LocalDate startDate = reservationBook.getStartTime().toLocalDate();
-        LocalTime startTime = reservationBook.getStartTime().toLocalTime();
+        LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
+        LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
         Weekday weekday = getWeekday(startDate);
         Program program = programRepository.findByIdAndPhotographerId(
-                reservationBook.getProgramId(), reservationBook.getPhotographerId())
+                memberReservationRequest.programId(), memberReservationRequest.photographerId())
             .orElseThrow(() -> new NotFoundProgramException("해당 작가의 프로그램이 존재하지 않습니다."));
         if (program.getDeleted()) {
             throw new DeletedProgramException("해당 작가의 프로그램이 삭제되었습니다.");
@@ -78,25 +78,26 @@ public class MemberReservationServiceImpl implements MemberReservationService {
          * 3. 해당 일에 사용자가 원하는 예약 시작 시간이 존재하는지 확인
          * 4. 해당 일에 시간이 중복되는지 확인(작가 설정에 따라 중복 가능)
          */
-        isAvailableReservationDate(startDate, reservationBook.getPhotographerId());
-        isAfterNow(reservationBook.getStartTime());
-        isValidStartTimeInTimeFormat(startTime, weekday, reservationBook.getPhotographerId());
-        isNotOverBooking(startDate, startTime, reservationBook.getPhotographerId(),
+        isAvailableReservationDate(startDate, memberReservationRequest.photographerId());
+        isAfterNow(memberReservationRequest.startTime());
+        isValidStartTimeInTimeFormat(startTime, weekday, memberReservationRequest.photographerId());
+        isNotOverBooking(startDate, startTime, memberReservationRequest.photographerId(),
             program.getDurationMinutes());
 
         Member member = memberRepository.getReferenceById(memberId);
         Photographer photographer = photographerRepository.getReferenceById(
-            reservationBook.getPhotographerId());
+            memberReservationRequest.photographerId());
 
         return reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
             .program(program)
-            .location(geographyConverter.toPoint(reservationBook.getLocation().getLatitude(),
-                reservationBook.getLocation().getLongitude()))
-            .locationName(reservationBook.getLocation().getLocationName())
-            .startTime(reservationBook.getStartTime())
-            .endTime(reservationBook.getStartTime().plusMinutes(program.getDurationMinutes()))
+            .location(geographyConverter.toPoint(
+                memberReservationRequest.reservationLocation().latitude(),
+                memberReservationRequest.reservationLocation().longitude()))
+            .locationName(memberReservationRequest.reservationLocation().locationName())
+            .startTime(memberReservationRequest.startTime())
+            .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
             .reservationState(ReservationState.APPROVED) // todo : 작가 설정에 따른 초기 예약 상태 설정 필요
             .build());
     }
