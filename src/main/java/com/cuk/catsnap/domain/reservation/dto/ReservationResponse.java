@@ -1,7 +1,7 @@
 package com.cuk.catsnap.domain.reservation.dto;
 
 import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformation;
-import com.cuk.catsnap.domain.photographer.dto.PhotographerResponse;
+import com.cuk.catsnap.domain.photographer.dto.response.PhotographerTinyInformation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.global.jsonformat.deserialize.HoursMinutesListSerializer;
 import com.cuk.catsnap.global.jsonformat.serializer.HoursMinutesListDeserializer;
@@ -73,7 +73,7 @@ public class ReservationResponse {
     public static class MemberReservationInformation {
 
         private Long reservationId;
-        private PhotographerResponse.PhotographerTinyInformation photographerTinyInformation;
+        private PhotographerTinyInformation photographerTinyInformation;
         private Location location;
         private String locationName;
         private LocalDateTime startTime;

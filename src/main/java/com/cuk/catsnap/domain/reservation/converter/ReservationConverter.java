@@ -3,6 +3,7 @@ package com.cuk.catsnap.domain.reservation.converter;
 import com.cuk.catsnap.domain.member.converter.MemberConverter;
 import com.cuk.catsnap.domain.member.dto.response.MemberTinyInformation;
 import com.cuk.catsnap.domain.photographer.converter.PhotographerConverter;
+import com.cuk.catsnap.domain.photographer.dto.response.PhotographerTinyInformation;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
@@ -173,8 +174,8 @@ public class ReservationConverter {
         List<ReservationResponse.MemberReservationInformation> memberReservationInformationList = reservationList.stream()
             .map(reservation -> ReservationResponse.MemberReservationInformation.builder()
                 .reservationId(reservation.getId())
-                .photographerTinyInformation(photographerConverter.toPhotographerTinyInformation(
-                    reservation.getPhotographer()))
+                .photographerTinyInformation(
+                    PhotographerTinyInformation.from(reservation.getPhotographer()))
                 .location(toLocation(reservation))
                 .startTime(reservation.getStartTime())
                 .reservedProgram(toReservedProgram(reservation.getProgram()))
