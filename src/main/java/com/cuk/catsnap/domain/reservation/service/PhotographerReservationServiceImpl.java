@@ -12,6 +12,7 @@ import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
@@ -139,7 +140,8 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
      * 왜냐하면 기존의 Program을 예약한 고객이 있을 수 있기 때문이다.
      */
     @Override
-    public Long createProgram(ReservationRequest.PhotographerProgram photographerProgram,
+    public photographerProgramIdResponse createProgram(
+        ReservationRequest.PhotographerProgram photographerProgram,
         Long programId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         Photographer photographer = photographerRepository.getReferenceById(photographerId);
@@ -147,7 +149,9 @@ public class PhotographerReservationServiceImpl implements PhotographerReservati
         if (programId != null) {
             softDeleteProgram(programId);
         }
-        return programRepository.save(program).getId();
+        Program savedProgram = programRepository.save(program);
+
+        return photographerProgramIdResponse.from(savedProgram);
     }
 
     @Override

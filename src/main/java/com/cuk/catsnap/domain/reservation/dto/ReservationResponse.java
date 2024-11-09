@@ -35,13 +35,6 @@ public class ReservationResponse {
 
     @Getter
     @Builder
-    public static class PhotographerProgramId {
-
-        private Long photographerProgramId;
-    }
-
-    @Getter
-    @Builder
     public static class PhotographerReservationTimeFormatList {
 
         private List<PhotographerReservationTimeFormat> reservationTimeFormatList;

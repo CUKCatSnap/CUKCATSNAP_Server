@@ -7,6 +7,7 @@ import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
@@ -220,7 +221,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/program")
-    public ResultResponse<ReservationResponse.PhotographerProgramId> postProgram(
+    public ResultResponse<photographerProgramIdResponse> postProgram(
         @Parameter(description = "예약 프로그램", required = true)
         @RequestBody
         ReservationRequest.PhotographerProgram photographerProgram,
@@ -228,11 +229,8 @@ public class PhotographerReservationController {
         @RequestParam(name = "programId", required = false)
         Long programId
     ) {
-        Long photographerProgramId = photographerReservationService.createProgram(
+        photographerProgramIdResponse photographerProgramIdResponse = photographerReservationService.createProgram(
             photographerProgram, programId);
-        ReservationResponse.PhotographerProgramId photographerProgramIdResponse = ReservationResponse.PhotographerProgramId.builder()
-            .photographerProgramId(photographerProgramId)
-            .build();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_POST_PROGRAM,
             photographerProgramIdResponse);
     }

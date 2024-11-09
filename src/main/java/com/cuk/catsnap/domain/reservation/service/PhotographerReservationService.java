@@ -6,6 +6,7 @@ import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import com.cuk.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import java.time.LocalDate;
@@ -27,7 +28,9 @@ public interface PhotographerReservationService {
 
     void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday);
 
-    Long createProgram(ReservationRequest.PhotographerProgram photographerProgram, Long programId);
+    photographerProgramIdResponse createProgram(
+        ReservationRequest.PhotographerProgram photographerProgram,
+        Long programId);
 
     PhotographerProgramListResponse getMyProgramList();
 
