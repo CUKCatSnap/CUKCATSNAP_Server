@@ -19,6 +19,7 @@ import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationI
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
+import com.cuk.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -70,7 +71,8 @@ public class MemberReservationServiceImpl implements MemberReservationService {
     private final PhotographerService photographerService;
 
     @Override
-    public Reservation createReservation(MemberReservationRequest memberReservationRequest) {
+    public ReservationBookResultResponse createReservation(
+        MemberReservationRequest memberReservationRequest) {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
         LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
@@ -98,7 +100,7 @@ public class MemberReservationServiceImpl implements MemberReservationService {
         Photographer photographer = photographerRepository.getReferenceById(
             memberReservationRequest.photographerId());
 
-        return reservationRepository.save(Reservation.builder()
+        Reservation reservation = reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
             .program(program)
@@ -110,6 +112,8 @@ public class MemberReservationServiceImpl implements MemberReservationService {
             .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
             .reservationState(ReservationState.APPROVED) // todo : 작가 설정에 따른 초기 예약 상태 설정 필요
             .build());
+
+        return ReservationBookResultResponse.from(reservation);
     }
 
     @Override

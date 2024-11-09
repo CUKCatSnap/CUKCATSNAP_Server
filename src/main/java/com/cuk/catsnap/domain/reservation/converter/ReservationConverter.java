@@ -5,7 +5,6 @@ import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.ReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -53,14 +52,6 @@ public class ReservationConverter {
             .price(photographerProgram.getPrice())
             .durationMinutes(photographerProgram.getDurationMinutes())
             .deleted(false)
-            .build();
-    }
-
-    public ReservationResponse.ReservationBookResult toReservationBookResult(
-        Reservation reservation) {
-        return ReservationResponse.ReservationBookResult.builder()
-            .reservationId(reservation.getId())
-            .reservationState(reservation.getReservationState())
             .build();
     }
 }

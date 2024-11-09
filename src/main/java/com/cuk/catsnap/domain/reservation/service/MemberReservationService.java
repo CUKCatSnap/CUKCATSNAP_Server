@@ -6,7 +6,7 @@ import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRe
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.global.result.SlicedData;
 import java.time.LocalDate;
@@ -14,7 +14,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface MemberReservationService {
 
-    Reservation createReservation(MemberReservationRequest memberReservationRequest);
+    ReservationBookResultResponse createReservation(
+        MemberReservationRequest memberReservationRequest);
 
     PhotographerAvailableReservationTimeListResponse getAvailableReservationTime(
         LocalDate date, Long photographerId);

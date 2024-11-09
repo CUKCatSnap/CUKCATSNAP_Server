@@ -1,6 +1,5 @@
 package com.cuk.catsnap.domain.reservation.dto;
 
-import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.global.jsonformat.deserialize.HoursMinutesListSerializer;
 import com.cuk.catsnap.global.jsonformat.serializer.HoursMinutesListDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -25,15 +24,6 @@ public class ReservationResponse {
         private Double latitude;
         private Double longitude;
         private String locationName;
-    }
-
-    @Getter
-    @Builder
-    public static class ReservationBookResult {
-
-        private Long reservationId;
-        @Schema(description = "예약의 상태를 의미합니다. 작가의 설정에 따라 바로 완료 될 수도 있고, 완료 대기일 수도 있습니다. (PENDING, APPROVED)")
-        private ReservationState reservationState;
     }
 
     @Getter

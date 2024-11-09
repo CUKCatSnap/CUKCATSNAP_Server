@@ -3,12 +3,11 @@ package com.cuk.catsnap.domain.reservation.controller;
 import com.cuk.catsnap.domain.reservation.converter.ReservationConverter;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
-import com.cuk.catsnap.domain.reservation.dto.ReservationResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
-import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationQueryType;
 import com.cuk.catsnap.domain.reservation.service.MemberReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
@@ -155,16 +154,14 @@ public class MemberReservationController {
 
     })
     @PostMapping("/member/book")
-    public ResultResponse<ReservationResponse.ReservationBookResult> postBookReservation(
+    public ResultResponse<ReservationBookResultResponse> postBookReservation(
         @Parameter(description = "새로운 예약 형식")
         @RequestBody
         MemberReservationRequest memberReservationRequest
     ) {
-        Reservation reservation = memberReservationService.createReservation(
+        ReservationBookResultResponse reservationBookResultResponse = memberReservationService.createReservation(
             memberReservationRequest);
-        ReservationResponse.ReservationBookResult reservationBookResult = reservationConverter.toReservationBookResult(
-            reservation);
         return ResultResponse.of(ReservationResultCode.RESERVATION_BOOK_COMPLETE,
-            reservationBookResult);
+            reservationBookResultResponse);
     }
 }
