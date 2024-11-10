@@ -1,77 +1,77 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.4'
-	id 'io.spring.dependency-management' version '1.1.6'
-	id 'jacoco'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'jacoco'
 }
 
 group = 'com.cuk'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 jacoco {
-	toolVersion = "0.8.7"
+    toolVersion = "0.8.7"
 }
 
 jacocoTestReport {
-	reports {
-		html.required = true
-		xml.required = true
-		csv.required = false
-	}
+    reports {
+        html.required = true
+        xml.required = true
+        csv.required = false
+    }
 }
 
 test {
-	finalizedBy jacocoTestReport
+    finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
-	finalizedBy jacocoTestCoverageVerification
+    finalizedBy jacocoTestCoverageVerification
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	// ===  하이버네이트 공간 검색 특화 - 추가됨 ===
-	implementation 'org.hibernate:hibernate-spatial:6.6.1.Final'
-	// === spring docs 의존성 추가 ===
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-	// === spring security 의존성 추가 ===
-	implementation "org.springframework.boot:spring-boot-starter-security"
-	// === spring security oauth2 의존성 추가===
-	implementation 'org.springframework.security:spring-security-oauth2-resource-server'
-	// === JWT 토큰 의존성 추가 ===
-	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
-	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
-	// === XML 파싱 관련 의존성 추가 ===
-	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
-	implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
-	// === 몽고DB 관련 의존성 추가 ===
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // ===  하이버네이트 공간 검색 특화 - 추가됨 ===
+    implementation 'org.hibernate:hibernate-spatial:6.6.1.Final'
+    // === spring docs 의존성 추가 ===
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+    // === spring security 의존성 추가 ===
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    // === spring security oauth2 의존성 추가===
+    implementation 'org.springframework.security:spring-security-oauth2-client'
+    // === JWT 토큰 의존성 추가 ===
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+    // === XML 파싱 관련 의존성 추가 ===
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
+    // === 몽고DB 관련 의존성 추가 ===
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
