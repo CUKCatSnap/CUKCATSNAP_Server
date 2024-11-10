@@ -15,11 +15,12 @@ public class PhotographerReservationNoticeRepository {
 
     private final MongoOperations mongoOperations;
 
-    public PhotographerReservationNotice save(String reservationNoticeContent, Long photographerId) {
+    public PhotographerReservationNotice save(String reservationNoticeContent,
+        Long photographerId) {
         PhotographerReservationNotice photographerReservationNotice = PhotographerReservationNotice.builder()
-                .photographerId(photographerId)
-                .content(reservationNoticeContent)
-                .build();
+            .photographerId(photographerId)
+            .content(reservationNoticeContent)
+            .build();
         return mongoOperations.save(photographerReservationNotice);
     }
 
@@ -28,10 +29,12 @@ public class PhotographerReservationNoticeRepository {
         return mongoOperations.findOne(query, PhotographerReservationNotice.class);
     }
 
-    public UpdateResult updatePhotographerReservationNotice(PhotographerReservationNotice photographerReservationNotice) {
-        Query query = Query.query(Criteria.where("photographerId").is(photographerReservationNotice.getPhotographerId()));
+    public UpdateResult updatePhotographerReservationNotice(
+        PhotographerReservationNotice photographerReservationNotice) {
+        Query query = Query.query(
+            Criteria.where("photographerId").is(photographerReservationNotice.getPhotographerId()));
         Update update = new Update()
-                .set("content", photographerReservationNotice.getContent());
+            .set("content", photographerReservationNotice.getContent());
         return mongoOperations.updateFirst(query, update, PhotographerReservationNotice.class);
     }
 }

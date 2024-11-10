@@ -16,7 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="member_agree")
+@Table(name = "member_agree")
 @Getter
 @Builder
 @AllArgsConstructor
@@ -28,11 +28,11 @@ public class MemberAgree extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="member_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="agree_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "agree_id")
     private Agree agree;
 }

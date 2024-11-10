@@ -16,15 +16,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name="review")
+@Table(name = "review")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -33,29 +32,28 @@ public class Review extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="review_id")
+    @Column(name = "review_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="photographer_id")
+    @JoinColumn(name = "photographer_id")
     private Photographer photographer;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="reservation_id")
+    @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
-    @Column(name="place_score")
+    @Column(name = "place_score")
     private Integer placeScore;
 
-    @Column(name="photographer_score")
+    @Column(name = "photographer_score")
     private Integer photographerScore;
 
     private String content;
-
 
     // OneToMany
 

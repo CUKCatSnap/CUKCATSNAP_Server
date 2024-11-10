@@ -32,7 +32,7 @@ public class WeekdayReservationTimeMapping extends BaseTimeEntity {
 
 
     /*
-   * reservationTimeFormat은 Nosql의 도큐먼트.
+     * reservationTimeFormat은 Nosql의 도큐먼트.
      */
     @Column(name = "reservation_time_format_id")
     private String reservationTimeFormatId;

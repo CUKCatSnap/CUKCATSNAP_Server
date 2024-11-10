@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-
 import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +18,8 @@ import java.util.List;
 public class HoursMinutesListDeserializer extends JsonDeserializer<List<LocalTime>> {
 
     @Override
-    public List<LocalTime> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+    public List<LocalTime> deserialize(JsonParser p, DeserializationContext ctxt)
+        throws IOException, JacksonException {
         List<LocalTime> localTimeList = new ArrayList<>();
         ArrayNode node = p.getCodec().readTree(p);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");

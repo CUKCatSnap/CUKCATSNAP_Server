@@ -2,13 +2,12 @@ package com.cuk.catsnap.domain.member.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDate;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
-import java.util.List;
 
 public class MemberRequest {
 
@@ -37,7 +36,8 @@ public class MemberRequest {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    private static class TermsAgreement{
+    private static class TermsAgreement {
+
         @Schema(description = "동의한 약관의 아이디")
         private String termsId;
         @Schema(description = "동의 여부")

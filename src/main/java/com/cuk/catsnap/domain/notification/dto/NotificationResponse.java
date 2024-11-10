@@ -2,23 +2,24 @@ package com.cuk.catsnap.domain.notification.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Builder;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Builder;
+import lombok.Getter;
 
 public class NotificationResponse {
 
     @Getter
     @Builder
     public static class NotificationList {
+
         List<Notification> notificationList;
     }
 
     @Getter
     @Builder
     public static class Notification {
+
         private Long notificationId;
         private String title;
         private String content;

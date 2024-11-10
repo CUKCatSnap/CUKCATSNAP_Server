@@ -15,12 +15,12 @@ public class GlobalBusinessExceptionHandler {
     private final ErrorRepository errorRepository;
 
     @ExceptionHandler(value = BusinessException.class)
-    public ResponseEntity<Object> handleBusinessException(BusinessException e){
+    public ResponseEntity<Object> handleBusinessException(BusinessException e) {
         ResultCode resultCode = errorRepository.getResultCode(e);
 
         return ResponseEntity
-                .status(HttpStatus.valueOf(resultCode.getStatus()))
-                .body(makeErrorResponse(resultCode));
+            .status(HttpStatus.valueOf(resultCode.getStatus()))
+            .body(makeErrorResponse(resultCode));
     }
 
     private ResultResponse<?> makeErrorResponse(ResultCode resultCode) {

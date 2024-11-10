@@ -11,41 +11,37 @@ import org.springframework.stereotype.Component;
 @Component
 public class PhotographerConverter {
 
-    public Photographer photographerSignUpToPhotographer(PhotographerRequest.PhotographerSignUp photographerSignUp, String encodedPassword) {
+    public Photographer photographerSignUpToPhotographer(
+        PhotographerRequest.PhotographerSignUp photographerSignUp, String encodedPassword) {
         return Photographer.builder()
-                .identifier(photographerSignUp.getIdentifier())
-                .password(encodedPassword)
-                .birthday(photographerSignUp.getBirthday())
-                .nickname(photographerSignUp.getNickname())
-                .phoneNumber(photographerSignUp.getPhoneNumber())
-                .build();
+            .identifier(photographerSignUp.getIdentifier())
+            .password(encodedPassword)
+            .birthday(photographerSignUp.getBirthday())
+            .nickname(photographerSignUp.getNickname())
+            .phoneNumber(photographerSignUp.getPhoneNumber())
+            .build();
     }
 
-    public PhotographerResponse.PhotographerSetting toPhotographerSetting(PhotographerSetting photographerSetting) {
+    public PhotographerResponse.PhotographerSetting toPhotographerSetting(
+        PhotographerSetting photographerSetting) {
         return PhotographerResponse.PhotographerSetting.builder()
-                .autoReservationAccept(photographerSetting.getAutoReservationAccept())
-                .enableOverBooking(photographerSetting.getEnableOverBooking())
-                .preReservationDays(photographerSetting.getPreReservationDays())
-                .build();
+            .autoReservationAccept(photographerSetting.getAutoReservationAccept())
+            .enableOverBooking(photographerSetting.getEnableOverBooking())
+            .preReservationDays(photographerSetting.getPreReservationDays())
+            .build();
     }
 
-    public PhotographerResponse.PhotographerReservationNotice toPhotographerReservationNotice(PhotographerReservationNotice photographerReservationNotice) {
+    public PhotographerResponse.PhotographerReservationNotice toPhotographerReservationNotice(
+        PhotographerReservationNotice photographerReservationNotice) {
         return PhotographerResponse.PhotographerReservationNotice.builder()
-                .content(photographerReservationNotice.getContent())
-                .build();
+            .content(photographerReservationNotice.getContent())
+            .build();
     }
 
-    public PhotographerResponse.PhotographerReservationLocation toPhotographerReservationLocation(PhotographerReservationLocation photographerReservationLocation) {
+    public PhotographerResponse.PhotographerReservationLocation toPhotographerReservationLocation(
+        PhotographerReservationLocation photographerReservationLocation) {
         return PhotographerResponse.PhotographerReservationLocation.builder()
-                .content(photographerReservationLocation.getContent())
-                .build();
-    }
-
-    public PhotographerResponse.PhotographerTinyInformation toPhotographerTinyInformation(Photographer photographer) {
-        return PhotographerResponse.PhotographerTinyInformation.builder()
-                .photographerId(photographer.getId())
-                .nickname(photographer.getNickname())
-                .profilePhotoUrl(photographer.getProfilePhotoUrl())
-                .build();
+            .content(photographerReservationLocation.getContent())
+            .build();
     }
 }

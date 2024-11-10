@@ -18,7 +18,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlaceSubscribeNotification extends Notification {
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="review_id")
+    @JoinColumn(name = "review_id")
     private Review review;
 }

@@ -14,19 +14,18 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import javax.crypto.SecretKey;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -35,19 +34,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final SecretKey secretKey;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+        FilterChain filterChain) throws ServletException, IOException {
         String jwt = request.getHeader("Authorization");
-        if(jwt == null) {
+        if (jwt == null) {
             unsuccessfulAuthentication(request, response, SecurityErrorCode.NOT_AUTHENTICATED);
         } else {
             jwt = parseJwt(jwt);
             try {
                 JwtParser jwtParser = Jwts.parserBuilder()
-                                        .setSigningKey(secretKey)
-                                        .build();
+                    .setSigningKey(secretKey)
+                    .build();
                 Claims claims = jwtParser.parseClaimsJws(jwt)
-                                .getBody();
-
+                    .getBody();
 
                 String identifier = claims.get("identifier", String.class); // 로그인 시 사용하는 id값
                 Long id = claims.get("id", Long.class); // 데이터베이스에서 사용되는 유저의 id값
@@ -55,12 +54,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
                 UsernamePasswordAuthenticationToken authenticationToken;
-                if(authorities.get(0).get("authority").equals("ROLE_MEMBER")) {
+                if (authorities.get(0).get("authority").equals("ROLE_MEMBER")) {
                     grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_MEMBER"));
-                } else if(authorities.get(0).get("authority").equals("ROLE_PHOTOGRAPHER")) {
+                } else if (authorities.get(0).get("authority").equals("ROLE_PHOTOGRAPHER")) {
                     grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_PHOTOGRAPHER"));
                 }
-                authenticationToken = new MemberAuthentication(identifier, null, grantedAuthorities, id);
+                authenticationToken = new MemberAuthentication(identifier, null, grantedAuthorities,
+                    id);
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 filterChain.doFilter(request, response);
@@ -68,28 +68,27 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             /*
              * JWT 토큰 서명이 올바르지 않은 경우
              * Jwt 토큰의 서명이 없는 경우
-             */
-            catch (SignatureException | UnsupportedJwtException | MalformedJwtException e) {
+             */ catch (SignatureException | UnsupportedJwtException | MalformedJwtException e) {
                 unsuccessfulAuthentication(request, response, SecurityErrorCode.WRONG_JWT_TOKEN);
             }
             /*
              * JWT 토큰이 만료된 경우
-             */
-            catch (ExpiredJwtException e) {
+             */ catch (ExpiredJwtException e) {
                 //todo : refresh token을 추출하고 검증하는 로직 추가
             }
         }
     }
 
     /*
-    * JWT 토큰에서 "Bearer "를 제거하는 메서드
-    * */
+     * JWT 토큰에서 "Bearer "를 제거하는 메서드
+     * */
     private String parseJwt(String jwt) {
         return jwt.replace("Bearer ", "");
     }
 
 
-    private void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, SecurityErrorCode securityErrorCode) throws IOException{
+    private void unsuccessfulAuthentication(HttpServletRequest request,
+        HttpServletResponse response, SecurityErrorCode securityErrorCode) throws IOException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         servletSecurityResponse.responseBody(response, securityErrorCode);
     }

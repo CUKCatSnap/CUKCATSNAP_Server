@@ -33,14 +33,14 @@ public class PhotographerController {
 
     @Operation(summary = "작가 회원가입 API(구현 완료)", description = "작가가 회원가입을 할 수 있는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201 SP000", description = "사진작가 회원가입 성공."),
-            @ApiResponse(responseCode = "409 EP000", description = "중복된 ID로 회원가입이 불가능 합니다.")
+        @ApiResponse(responseCode = "201 SP000", description = "사진작가 회원가입 성공."),
+        @ApiResponse(responseCode = "409 EP000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
     @PostMapping("/signup/catsnap")
     public ResultResponse<?> signUp(
-            @Parameter(description = "회원가입 양식", required = true)
-            @RequestBody
-            PhotographerRequest.PhotographerSignUp photographerSignUp
+        @Parameter(description = "회원가입 양식", required = true)
+        @RequestBody
+        PhotographerRequest.PhotographerSignUp photographerSignUp
     ) {
         photographerService.singUp(photographerSignUp);
         return ResultResponse.of(PhotographerResultCode.PHOTOGRAPHER_SIGN_UP);
@@ -52,39 +52,40 @@ public class PhotographerController {
      */
     @Operation(summary = "자체 서비스 API(구현 완료)", description = "작가 로그인은 자체 로그인만 지원합니다. 네이버 로그인 지원 안함.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SY000", description = "로그인 성공"),
-            @ApiResponse(responseCode = "401 EY000", description = "로그인 실패 (아이디 또는 비밀번호가 일치하지 않음)"),
-            @ApiResponse(responseCode = "400 EY001", description = "로그인 실패 (잘못된 로그인 API 요청 형식)"),
+        @ApiResponse(responseCode = "200 SY000", description = "로그인 성공"),
+        @ApiResponse(responseCode = "401 EY000", description = "로그인 실패 (아이디 또는 비밀번호가 일치하지 않음)"),
+        @ApiResponse(responseCode = "400 EY001", description = "로그인 실패 (잘못된 로그인 API 요청 형식)"),
     })
     @PostMapping("/signin/catsnap")
     public ResultResponse<?> signIn(
-            @Parameter(description = "로그인 양식", required = true)
-            @RequestBody
-            SecurityRequest.CatsnapSignInRequest photographerSignIn
+        @Parameter(description = "로그인 양식", required = true)
+        @RequestBody
+        SecurityRequest.CatsnapSignInRequest photographerSignIn
     ) {
         return null;
     }
 
     @Operation(summary = "작가가 자신의 예약 설정을 조회하는 API(구현 완료)", description = "작가가 자신의 예약 설정을 조회하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SP001", description = "사진작가 자신의 환경설정 조회 성공")
+        @ApiResponse(responseCode = "200 SP001", description = "사진작가 자신의 환경설정 조회 성공")
     })
     @GetMapping("/my/setting")
     public ResultResponse<PhotographerResponse.PhotographerSetting> lookUpMySetting() {
-        PhotographerSetting photographerSetting =  photographerService.getPhotographerSetting();
-        PhotographerResponse.PhotographerSetting photographerSettingDto = photographerConverter.toPhotographerSetting(photographerSetting);
+        PhotographerSetting photographerSetting = photographerService.getPhotographerSetting();
+        PhotographerResponse.PhotographerSetting photographerSettingDto = photographerConverter.toPhotographerSetting(
+            photographerSetting);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_MY_SETTING, photographerSettingDto);
     }
 
     @Operation(summary = "작가가 자신의 예약 설정을 수정하는 API(구현 완료)", description = "작가가 자신의 예약 설정을 수정하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201 SP002", description = "사진작가 자신의 환경설정 변경 성공")
+        @ApiResponse(responseCode = "201 SP002", description = "사진작가 자신의 환경설정 변경 성공")
     })
     @PostMapping("/my/setting")
     public ResultResponse<?> updateMySetting(
-            @Parameter(description = "작가의 환경설정", required = true)
-            @RequestBody
-            PhotographerRequest.PhotographerSetting photographerSetting
+        @Parameter(description = "작가의 환경설정", required = true)
+        @RequestBody
+        PhotographerRequest.PhotographerSetting photographerSetting
     ) {
         photographerService.updatePhotographerSetting(photographerSetting);
         return ResultResponse.of(PhotographerResultCode.UPDATE_MY_SETTING);
@@ -92,25 +93,27 @@ public class PhotographerController {
 
     @Operation(summary = "작가가 자신의 예약 전 알림을 조회하는 API(구현 완료)", description = "작가가 자신의 예약 전 알림을 조회하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SP003", description = "사진작가 자신의 예약 전 알림 조회 성공")
+        @ApiResponse(responseCode = "200 SP003", description = "사진작가 자신의 예약 전 알림 조회 성공")
     })
     @GetMapping("/my/reservation/notice")
     public ResultResponse<PhotographerResponse.PhotographerReservationNotice> lookUpMyReservationNotice(
     ) {
         PhotographerReservationNotice photographerReservationNotice = photographerService.getReservationNotice();
-        PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(photographerReservationNotice);
-        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_NOTICE, photographerReservationNoticeDto);
+        PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(
+            photographerReservationNotice);
+        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_NOTICE,
+            photographerReservationNoticeDto);
     }
 
     @Operation(summary = "작가가 자신의 예약 전 알림을 수정하는 API(구현 완료)", description = "작가가 자신의 예약 전 알림을 수정하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201 SP004", description = "사진작가 자신의 예약 전 알림 변경 성공")
+        @ApiResponse(responseCode = "201 SP004", description = "사진작가 자신의 예약 전 알림 변경 성공")
     })
     @PostMapping("/my/reservation/notice")
     public ResultResponse<?> updateMyReservationNotice(
-            @Parameter(description = "작가의 예약 전 알림", required = true)
-            @RequestBody
-            PhotographerRequest.PhotographerReservationNotice photographerReservationNotice
+        @Parameter(description = "작가의 예약 전 알림", required = true)
+        @RequestBody
+        PhotographerRequest.PhotographerReservationNotice photographerReservationNotice
     ) {
         photographerService.updateReservationNotice(photographerReservationNotice);
         return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_NOTICE);
@@ -118,25 +121,27 @@ public class PhotographerController {
 
     @Operation(summary = "작가가 자신이 예약을 받을 장소를 조회하는 API(구현 완료)", description = "작가가 자신이 예약을 받을 장소를 조회하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "200 SP005", description = "사진작가 자신의 예약 전 알림 조회 성공")
+        @ApiResponse(responseCode = "200 SP005", description = "사진작가 자신의 예약 전 알림 조회 성공")
     })
     @GetMapping("/my/reservation/location")
     public ResultResponse<PhotographerResponse.PhotographerReservationLocation> lookUpMyReservationLocation(
     ) {
         PhotographerReservationLocation photographerReservationLocation = photographerService.getReservationLocation();
-        PhotographerResponse.PhotographerReservationLocation photographerReservationLocationDto = photographerConverter.toPhotographerReservationLocation(photographerReservationLocation);
-        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_LOCATION, photographerReservationLocationDto);
+        PhotographerResponse.PhotographerReservationLocation photographerReservationLocationDto = photographerConverter.toPhotographerReservationLocation(
+            photographerReservationLocation);
+        return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_LOCATION,
+            photographerReservationLocationDto);
     }
 
     @Operation(summary = "작가가 자신이 예약을 받을 장소를 수정하는 API(구현 완료)", description = "작가가 자신이 예약을 받을 장소를 수정하는 API입니다.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201 SP006", description = "사진작가 자신의 예약 전 알림 변경 성공")
+        @ApiResponse(responseCode = "201 SP006", description = "사진작가 자신의 예약 전 알림 변경 성공")
     })
     @PostMapping("/my/reservation/location")
     public ResultResponse<?> updateMyReservationLocation(
-            @Parameter(description = "작가의 예약 전 알림", required = true)
-            @RequestBody
-            PhotographerRequest.PhotographerReservationLocation photographerReservationLocation
+        @Parameter(description = "작가의 예약 전 알림", required = true)
+        @RequestBody
+        PhotographerRequest.PhotographerReservationLocation photographerReservationLocation
     ) {
         photographerService.updateReservationLocation(photographerReservationLocation);
         return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_LOCATION);

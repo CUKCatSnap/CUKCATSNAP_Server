@@ -18,7 +18,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FeedLikeNotification extends Notification {
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="feed_like_id")
+    @JoinColumn(name = "feed_like_id")
     private FeedLike feedLike;
 }

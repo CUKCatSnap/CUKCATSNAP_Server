@@ -13,15 +13,15 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI api() {
         SecurityScheme apiKey = new SecurityScheme()
-                .type(SecurityScheme.Type.APIKEY)
-                .in(SecurityScheme.In.HEADER)
-                .name("Authorization");
+            .type(SecurityScheme.Type.APIKEY)
+            .in(SecurityScheme.In.HEADER)
+            .name("Authorization");
 
         SecurityRequirement securityRequirement = new SecurityRequirement()
-                .addList("Bearer Token");
+            .addList("Bearer Token");
 
         return new OpenAPI()
-                .components(new Components().addSecuritySchemes("Bearer Token", apiKey))
-                .addSecurityItem(securityRequirement);
+            .components(new Components().addSecuritySchemes("Bearer Token", apiKey))
+            .addSecurityItem(securityRequirement);
     }
 }

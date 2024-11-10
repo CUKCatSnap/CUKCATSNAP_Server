@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="place_subscribe")
+@Table(name = "place_subscribe")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -26,11 +26,11 @@ public class PlaceSubscribe extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="place_subscribe_id")
+    @Column(name = "place_subscribe_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     private String keyword;

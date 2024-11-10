@@ -1,9 +1,8 @@
 package com.cuk.catsnap.global.security.authentication;
 
+import java.util.Collection;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-
-import java.util.Collection;
 
 public class PhotographerAuthentication extends UsernamePasswordAuthenticationToken {
 
@@ -14,7 +13,8 @@ public class PhotographerAuthentication extends UsernamePasswordAuthenticationTo
         this.photographerId = null;
     }
 
-    public PhotographerAuthentication(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities, Long photographerId) {
+    public PhotographerAuthentication(Object principal, Object credentials,
+        Collection<? extends GrantedAuthority> authorities, Long photographerId) {
         super(principal, credentials, authorities);
         this.photographerId = photographerId;
     }

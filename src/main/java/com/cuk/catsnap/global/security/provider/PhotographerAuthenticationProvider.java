@@ -17,18 +17,19 @@ public class PhotographerAuthenticationProvider implements AuthenticationProvide
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication)
+        throws AuthenticationException {
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
         UserDetails photographerDetails = photographerDetailsService.loadUserByUsername(username);
 
-        if(passwordEncoder.matches(password,photographerDetails.getPassword())){
+        if (passwordEncoder.matches(password, photographerDetails.getPassword())) {
             Long photographerId = photographerDetailsService.getPhotographerId(username);
             return new PhotographerAuthentication(
-                    photographerDetails.getUsername(),
-                    photographerDetails.getPassword(),
-                    photographerDetails.getAuthorities(),
-                    photographerId
+                photographerDetails.getUsername(),
+                photographerDetails.getPassword(),
+                photographerDetails.getAuthorities(),
+                photographerId
             );
         } else {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");

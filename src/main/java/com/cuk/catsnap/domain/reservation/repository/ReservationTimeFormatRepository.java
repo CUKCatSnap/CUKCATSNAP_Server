@@ -3,14 +3,13 @@ package com.cuk.catsnap.domain.reservation.repository;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 
 @Repository
@@ -23,15 +22,15 @@ public class ReservationTimeFormatRepository {
         return mongoOperations.save(reservationTimeFormat);
     }
 
-    public UpdateResult update(ReservationTimeFormat reservationTimeFormat, String reservationTimeFormatId, Long photographerId) {
+    public UpdateResult update(ReservationTimeFormat reservationTimeFormat) {
         Query query = Query.query(Criteria.where("id")
-                .is(reservationTimeFormatId)
-                .and("photographerId")
-                .is(photographerId));
+            .is(reservationTimeFormat.getId())
+            .and("photographerId")
+            .is(reservationTimeFormat.getPhotographerId()));
 
         Update update = new Update()
-                .set("formatName",reservationTimeFormat.getFormatName())
-                .set("startTimeList", reservationTimeFormat.getStartTimeList());
+            .set("formatName", reservationTimeFormat.getFormatName())
+            .set("startTimeList", reservationTimeFormat.getStartTimeList());
 
         return mongoOperations.updateFirst(query, update, ReservationTimeFormat.class);
     }
@@ -43,9 +42,9 @@ public class ReservationTimeFormatRepository {
 
     public DeleteResult deleteById(String reservationTimeFormatId, Long photographerId) {
         Query query = Query.query(Criteria.where("id")
-                .is(reservationTimeFormatId)
-                .and("photographerId")
-                .is(photographerId));
+            .is(reservationTimeFormatId)
+            .and("photographerId")
+            .is(photographerId));
         return mongoOperations.remove(query, ReservationTimeFormat.class);
     }
 

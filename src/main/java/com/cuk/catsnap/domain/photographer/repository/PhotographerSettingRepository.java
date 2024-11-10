@@ -25,11 +25,12 @@ public class PhotographerSettingRepository {
     }
 
     public UpdateResult updatePhotographerSetting(PhotographerSetting photographerSetting) {
-        Query query = Query.query(Criteria.where("photographerId").is(photographerSetting.getPhotographerId()));
+        Query query = Query.query(
+            Criteria.where("photographerId").is(photographerSetting.getPhotographerId()));
         Update update = new Update()
-                .set("autoReservationAccept", photographerSetting.getAutoReservationAccept())
-                .set("enableOverBooking", photographerSetting.getEnableOverBooking())
-                .set("preReservationDays", photographerSetting.getPreReservationDays());
+            .set("autoReservationAccept", photographerSetting.getAutoReservationAccept())
+            .set("enableOverBooking", photographerSetting.getEnableOverBooking())
+            .set("preReservationDays", photographerSetting.getPreReservationDays());
         return mongoOperations.updateFirst(query, update, PhotographerSetting.class);
     }
 }

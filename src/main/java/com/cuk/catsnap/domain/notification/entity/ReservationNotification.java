@@ -22,11 +22,12 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReservationNotification extends Notification {
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="reservation_id")
+    @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="rservation_notification_type")
+    @Column(name = "rservation_notification_type")
     private ReservationState reservationNotificationType;
 }

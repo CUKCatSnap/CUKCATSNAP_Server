@@ -17,18 +17,19 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication)
+        throws AuthenticationException {
         String identifier = authentication.getName();
         String password = (String) authentication.getCredentials();
-        UserDetails memberDetails =  memberDetailsService.loadUserByUsername(identifier);
+        UserDetails memberDetails = memberDetailsService.loadUserByUsername(identifier);
 
         if (passwordEncoder.matches(password, memberDetails.getPassword())) {
             Long memberId = memberDetailsService.getMemberId(identifier);
             return new MemberAuthentication(
-                    memberDetails.getUsername(),
-                    memberDetails.getPassword(),
-                    memberDetails.getAuthorities(),
-                    memberId);
+                memberDetails.getUsername(),
+                memberDetails.getPassword(),
+                memberDetails.getAuthorities(),
+                memberId);
         } else {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
         }
