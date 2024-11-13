@@ -167,14 +167,18 @@ public class PhotographerReservationService {
         );
     }
 
-    public int softDeleteProgram(Long programId) {
+    public void softDeleteProgram(Long programId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        int deletedCount = programRepository.softDeleteByProgramIdAndPhotographerId(programId,
-            photographerId);
-        if (deletedCount == 0) {
-            throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
-        }
-        return deletedCount;
+        programRepository.findById(programId).ifPresentOrElse(
+            p -> {
+                if (p.getPhotographer().getId().equals(photographerId)) {
+                    p.softDelete();
+                } else {
+                    throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
+                }
+            }, () -> {
+                throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
+            });
     }
 
     public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
