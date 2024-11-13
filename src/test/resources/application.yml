@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+
+  security:
+    jwt-key: testessztest123dsaqwgqtestestwqw
