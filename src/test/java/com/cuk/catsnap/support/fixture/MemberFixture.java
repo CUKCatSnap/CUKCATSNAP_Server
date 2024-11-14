@@ -4,9 +4,7 @@ import com.cuk.catsnap.domain.member.entity.Member;
 import com.cuk.catsnap.domain.member.entity.SnsType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import lombok.Setter;
 
-@Setter
 public class MemberFixture {
 
     private Long id;
