@@ -17,6 +17,16 @@ public class ProgramFixture {
         return new ProgramFixture();
     }
 
+    public ProgramFixture photographer(Photographer photographer) {
+        this.photographer = photographer;
+        return this;
+    }
+
+    public ProgramFixture deleted(Boolean deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
     public Program build() {
         return Program.builder()
             .id(this.id)
