@@ -1,12 +1,8 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
-import com.cuk.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import com.cuk.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
-import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
-import com.cuk.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
-import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.service.PhotographerReservationService;
 import com.cuk.catsnap.global.result.ResultResponse;
 import com.cuk.catsnap.global.result.code.ReservationResultCode;
@@ -18,10 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -90,111 +84,5 @@ public class PhotographerReservationController {
     ) {
         photographerReservationService.changeReservationState(reservationId, status);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_STATE_CHANGE);
-    }
-
-    @Operation(summary = "작가가 자신의 예약 시간 형식을 등록(구현 완료)",
-        description = "작가가 자신의 예약 시간 형식을 등록하는 API입니다." +
-            "만약 수정을 원한다면, requestParameter로 timeFormatId 넘겨주어야 합니다." +
-            "timeFormat은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
-    )
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SR006", description = "성공적으로 예약 시간 형식을 등록했습니다."),
-        @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
-    })
-    @PostMapping("/my/timeformat")
-    public ResultResponse<ReservationTimeFormatIdResponse> registerTimeFormat(
-        @Parameter(description = "예약 시간 형식", required = true)
-        @RequestBody
-        ReservationTimeFormatRequest reservationTimeFormatRequest,
-        @Parameter(description = "예약 시간 형식의 이름", required = false)
-        @RequestParam(name = "timeFormatId", required = false)
-        String timeFormatId
-    ) {
-        ReservationTimeFormatIdResponse reservationTimeFormatIdResponse = photographerReservationService.createReservationTimeFormat(
-            reservationTimeFormatRequest, timeFormatId);
-        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT,
-            reservationTimeFormatIdResponse);
-    }
-
-    @Operation(summary = "작가가 자신의 예약 시간 형식을 조회(구현 완료)",
-        description = "작가가 자신의 예약 시간 형식을 조회하는 API입니다." +
-            "예약 시간 형식은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
-    )
-    @ApiResponses(
-        @ApiResponse(responseCode = "200 SR012", description = "성공적으로 예약 시간 형식을 조회했습니다.")
-    )
-    @GetMapping("/my/timeformat")
-    public ResultResponse<ReservationTimeFormatListResponse> getTimeFormat() {
-        ReservationTimeFormatListResponse reservationTimeFormatList = photographerReservationService.getMyReservationTimeFormatList();
-        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP,
-            reservationTimeFormatList);
-    }
-
-    @Operation(summary = "작가가 자신의 예약 시간 형식을 삭제(구현 완료)",
-        description = "작가가 자신의 예약 시간 형식을 삭제하는 API입니다." +
-            "만약 해당 시간 형식을 요일에 등록한 경우, 요일에 등록된 시간 형식도 삭제됩니다." +
-            "timeFormat은 Nosql에 저장되기 때문에 Id가 String 타입입니다."
-    )
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SR007", description = "성공적으로 예약 시간 형식을 삭제했습니다."),
-        @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
-    }
-    )
-    @DeleteMapping("/my/timeformat")
-    public ResultResponse<?> deleteTimeFormat(
-        @Parameter(description = "삭제하고자 하는 예약 시간 형식의 id", required = true)
-        @RequestParam("timeFormatId")
-        String timeFormatId
-    ) {
-        photographerReservationService.deleteReservationTimeFormat(timeFormatId);
-        return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_DELETE);
-    }
-
-    @Operation(
-        summary = "작가가 요일에 자신의 예약 시간 형식을 등록(구현 완료)",
-        description = "작가가 요일에 자신의 예약 시간 형식을 등록하는  API입니다." +
-            "/photographer/timeformat API를 통해 등록한 시간 형식을 요일에 등록합니다." +
-            "만약 기존에 등록한 시간 형식이 있다면 덮어씌웁니다."
-    )
-    @ApiResponses({
-        @ApiResponse(responseCode = "201 SR008", description = "성공적으로 예약 시간 형식을 특정 요일에 등록했습니다."),
-        @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
-    })
-    @PostMapping("/my/weekday/timeformat")
-    public ResultResponse<?> registerProgram(
-        @Parameter(description = "예약 형식을 만들고자 하는 요일" +
-            "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
-            required = true)
-        @RequestParam("weekday")
-        Weekday weekday,
-        @Parameter(description = "등록하고자 하는 예약 시간 형식의 id", required = true)
-        @RequestParam("timeFormatId")
-        String timeFormatId
-    ) {
-        photographerReservationService.mappingWeekdayToReservationTimeFormat(timeFormatId, weekday);
-        return ResultResponse.of(
-            ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_MAPPING_WEEKDAY);
-    }
-
-    @Operation(
-        summary = "작가가 요일에 자신의 예약 시간 형식을 삭제(구현 완료)",
-        description = "작가가 요일에 자신의 예약 시간 형식을 삭제하는 API입니다." +
-            "만약 해당 요일에 등록된 시간 형식이 없다면, 아무런 동작도 하지 않습니다."
-    )
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SR009", description = "성공적으로 특정 요일의 예약 시간 형식의 등록을 삭제했습니다."),
-        @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
-    })
-    @DeleteMapping("/my/weekday/timeformat")
-    public ResultResponse<?> deleteProgram(
-        @Parameter(description = "시간 형식을 삭제하고자 하는 요일" +
-            "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
-            required = true)
-        @RequestParam("weekday")
-        Weekday weekday
-    ) {
-        photographerReservationService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday);
-        return ResultResponse.of(
-            ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_UNMAPPING_WEEKDAY);
     }
 }
