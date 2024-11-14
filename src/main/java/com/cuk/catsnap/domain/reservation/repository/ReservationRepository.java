@@ -4,7 +4,6 @@ import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -18,9 +17,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     @EntityGraph(attributePaths = {"member", "program"})
     List<Reservation> findAllReservationWithEagerByPhotographerIdAndStartTimeBetween(
         Long photographerId, LocalDateTime startTime, LocalDateTime endTime);
-
-    Optional<Reservation> findReservationByIdAndPhotographerId(Long reservationId,
-        Long photographerId);
 
     List<Reservation> findAllByPhotographerIdAndStartTimeBetweenOrderByStartTimeAsc(
         Long photographerId, LocalDateTime startTime, LocalDateTime endTime);

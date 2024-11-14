@@ -1,5 +1,7 @@
 package com.cuk.catsnap.domain.reservation.service;
 
+import com.cuk.catsnap.domain.photographer.entity.Photographer;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
@@ -37,6 +39,7 @@ public class ReservationTimeService {
     private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
     private final ReservationRepository reservationRepository;
     private final WeekdayService weekdayService;
+    private final PhotographerRepository photographerRepository;
 
     public PhotographerAvailableReservationTimeListResponse getAvailableReservationTime(
         LocalDate date, Long photographerId) {
@@ -124,14 +127,18 @@ public class ReservationTimeService {
 
     public void deleteReservationTimeFormat(String reservationTimeFormatId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
+        Photographer photographer = photographerRepository.getReferenceById(photographerId);
         DeleteResult deleteResult = reservationTimeFormatRepository.deleteById(
             reservationTimeFormatId, photographerId);
         if (deleteResult.getDeletedCount() == 0) {
             throw new OwnershipNotFoundException("내가 소유한 예약 시간 형식 중, 해당 예약 시간 형식을 찾을 수 없습니다.");
         }
+
         // 해당 time format을 이용하고 있는 요일의 매핑을 null로 초기화
-        weekdayReservationTimeMappingRepository.updateReservationTimeFormatIdToNull(photographerId,
-            reservationTimeFormatId);
+        List<WeekdayReservationTimeMapping> weekdayReservationTimeMappingList = weekdayReservationTimeMappingRepository.findByPhotographerAndReservationTimeFormatId(
+            photographer, reservationTimeFormatId);
+        weekdayReservationTimeMappingList
+            .forEach(WeekdayReservationTimeMapping::reservationTimeFormatIdToNull);
     }
 
     /*
