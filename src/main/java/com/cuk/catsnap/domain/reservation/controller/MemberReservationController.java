@@ -1,7 +1,6 @@
 package com.cuk.catsnap.domain.reservation.controller;
 
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
-import com.cuk.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
@@ -108,21 +107,6 @@ public class MemberReservationController {
             date, photographerId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_AVAILABLE_TIME_LOOK_UP,
             photographerAvailableReservationTimeListResponse);
-    }
-
-    @Operation(summary = "특정 작가의 예약 가능한 프로그램 조회(구현 완료)", description = "특정 작가의 예약 가능한 프로그램을 조회하는 API입니다.")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SR002", description = "성공적으로 예약 가능한 프로그램을 조회했습니다.")
-    })
-    @GetMapping("/photographer/program")
-    public ResultResponse<PhotographerProgramListResponse> getPhotographerProgram(
-        @RequestParam("photographerId")
-        Long photographerId
-    ) {
-        PhotographerProgramListResponse photographerProgramListResponse = memberReservationService.getPhotographerProgram(
-            photographerId);
-        return ResultResponse.of(ReservationResultCode.RESERVATION_PROGRAM_LOOK_UP,
-            photographerProgramListResponse);
     }
 
     @Operation(summary = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회(구현 완료)", description = "특정 작가의 예약 시 주의사항과 예약 가능한 장소 조회")
