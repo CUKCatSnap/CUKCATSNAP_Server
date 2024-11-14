@@ -44,4 +44,8 @@ public class WeekdayReservationTimeMapping extends BaseTimeEntity {
     public void updateReservationTimeFormatId(String reservationTimeFormatId) {
         this.reservationTimeFormatId = reservationTimeFormatId;
     }
+
+    public void reservationTimeFormatIdToNull() {
+        this.reservationTimeFormatId = null;
+    }
 }
