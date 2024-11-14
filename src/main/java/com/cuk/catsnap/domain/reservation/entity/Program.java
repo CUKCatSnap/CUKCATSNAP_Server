@@ -57,4 +57,8 @@ public class Program extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "program")
     private List<Reservation> reservationList;
+
+    public void softDelete() {
+        this.deleted = true;
+    }
 }
