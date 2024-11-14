@@ -69,9 +69,12 @@ public class MemberReservationService {
         LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
         LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
         Weekday weekday = weekdayService.getWeekday(startDate);
-        Program program = programRepository.findByIdAndPhotographerId(
-                memberReservationRequest.programId(), memberReservationRequest.photographerId())
+        Program program = programRepository.findById(
+                memberReservationRequest.programId())
             .orElseThrow(() -> new NotFoundProgramException("해당 작가의 프로그램이 존재하지 않습니다."));
+        if (!program.getPhotographer().getId().equals(memberReservationRequest.photographerId())) {
+            throw new OwnershipNotFoundException("해당 작가의 프로그램이 아닙니다.");
+        }
         if (program.getDeleted()) {
             throw new DeletedProgramException("해당 작가의 프로그램이 삭제되었습니다.");
         }
