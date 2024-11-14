@@ -1,7 +1,6 @@
 package com.cuk.catsnap.domain.reservation.service;
 
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
-import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.document.ReservationTimeFormat;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
@@ -15,7 +14,6 @@ import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
 import com.cuk.catsnap.domain.reservation.entity.Weekday;
 import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
-import com.cuk.catsnap.domain.reservation.repository.ProgramRepository;
 import com.cuk.catsnap.domain.reservation.repository.ReservationRepository;
 import com.cuk.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import com.cuk.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
@@ -40,8 +38,6 @@ public class PhotographerReservationService {
 
     private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
     private final ReservationTimeFormatRepository reservationTimeFormatRepository;
-    private final ProgramRepository programRepository;
-    private final PhotographerRepository photographerRepository;
     private final ReservationRepository reservationRepository;
 
     /*
