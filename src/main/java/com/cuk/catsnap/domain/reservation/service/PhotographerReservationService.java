@@ -49,7 +49,7 @@ public class PhotographerReservationService {
             .toList();
         weekdayReservationTimeMappingRepository.saveAll(weekdayReservationTimeMappingList);
     }
-    
+
     public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
         Long photographerId = GetAuthenticationInfo.getUserId();
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(), 1, 0,
@@ -91,9 +91,11 @@ public class PhotographerReservationService {
      */
     public void changeReservationState(Long reservationId, ReservationState reservationState) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        reservationRepository.findReservationByIdAndPhotographerId(reservationId, photographerId)
+        reservationRepository.findById(reservationId)
             .ifPresentOrElse(reservation -> {
-                if (isPossibleChangeReservationState(reservation, reservationState)) {
+                if (reservation.getPhotographer().getId().equals(photographerId)) {
+                    throw new OwnershipNotFoundException("내가 소유한 예약 중, 해당 예약을 찾을 수 없습니다.");
+                } else if (isPossibleChangeReservationState(reservation, reservationState)) {
                     reservation.setReservationState(reservationState);
                 } else {
                     throw new CanNotChangeReservationState("예약 상태를 변경할 수 없습니다.");
