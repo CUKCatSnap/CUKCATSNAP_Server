@@ -13,8 +13,6 @@ import com.cuk.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.MemberReservationInformationResponse;
-import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
-import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
 import com.cuk.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import com.cuk.catsnap.domain.reservation.entity.Program;
@@ -41,8 +39,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -65,13 +61,14 @@ public class MemberReservationService {
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final GeographyConverter geographyConverter;
     private final PhotographerService photographerService;
+    private final WeekdayService weekdayService;
 
     public ReservationBookResultResponse createReservation(
         MemberReservationRequest memberReservationRequest) {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
         LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
-        Weekday weekday = getWeekday(startDate);
+        Weekday weekday = weekdayService.getWeekday(startDate);
         Program program = programRepository.findByIdAndPhotographerId(
                 memberReservationRequest.programId(), memberReservationRequest.photographerId())
             .orElseThrow(() -> new NotFoundProgramException("해당 작가의 프로그램이 존재하지 않습니다."));
@@ -109,55 +106,6 @@ public class MemberReservationService {
             .build());
 
         return ReservationBookResultResponse.from(reservation);
-    }
-
-    public PhotographerAvailableReservationTimeListResponse getAvailableReservationTime(
-        LocalDate date, Long photographerId) {
-        Weekday weekday = getWeekday(date);
-        String ReservationTimeFormatId = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
-                photographerId, weekday)
-            .orElseThrow(() -> new OwnershipNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."))
-            .getReservationTimeFormatId();
-        ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
-            ReservationTimeFormatId);
-        if (reservationTimeFormat == null) {
-            return PhotographerAvailableReservationTimeListResponse.from(Collections.emptyList());
-        }
-
-        /*
-         * photographerStartTimeList는 작가가 설정한 예약 가능한 시간 목록입니다.(단 현재 시간 이후만 조회)
-         * ReservationList는 현재까지 작가에게 예약된 예약 목록입니다.
-         * 현재 예약 가능한 시간대를 조회하기 위해 예약된 시간대를 isAvailableReservation을 false로 설정하여 반환합니다.
-         */
-        List<LocalTime> photographerStartTimeList = reservationTimeFormat.getStartTimeList()
-            .stream()
-            .filter(time -> time.atDate(date).isAfter(LocalDateTime.now()))
-            .toList();
-        List<Reservation> reservationList = reservationRepository.findAllReservationByPhotographerIdAndStartTimeBetween(
-            photographerId, LocalDateTime.of(date, LocalTime.MIN),
-            LocalDateTime.of(date, LocalTime.MAX));
-
-        List<PhotographerAvailableReservationTimeResponse> photographerAvailableReservationTimeResponseArrayList = new ArrayList<>();
-        for (LocalTime startTime : photographerStartTimeList) {
-            boolean isAvailableReservation = true;
-            LocalDateTime startDateTime = LocalDateTime.now().toLocalDate().atTime(startTime);
-            for (Reservation reservation : reservationList) {
-                LocalDateTime reservationStartTime = reservation.getStartTime();
-                LocalDateTime reservationEndTime = reservation.getEndTime();
-                if (reservationStartTime.isAfter(startDateTime)
-                    || reservationStartTime.isEqual(startDateTime)
-                    && reservationEndTime.isBefore(startDateTime) || reservationEndTime.isEqual(
-                    startDateTime)) {
-                    isAvailableReservation = false;
-                    break;
-                }
-            }
-            photographerAvailableReservationTimeResponseArrayList.add(
-                PhotographerAvailableReservationTimeResponse.of(startTime, isAvailableReservation));
-        }
-
-        return PhotographerAvailableReservationTimeListResponse.from(
-            photographerAvailableReservationTimeResponseArrayList);
     }
 
     public PhotographerReservationGuidanceResponse getPhotographerReservationGuidance(
@@ -237,14 +185,6 @@ public class MemberReservationService {
             .toList();
         return MemberReservationInformationListResponse.from(reservationListResponse);
     }
-
-    /*
-     * todo : 공휴일을 체크하는 로직이 없음. 공휴일을 체크하는 로직을 추가해야함.
-     */
-    private Weekday getWeekday(LocalDate date) {
-        return Weekday.valueOf(date.getDayOfWeek().name());
-    }
-
 
     /*
      * 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인하는 메소드 입니다.
