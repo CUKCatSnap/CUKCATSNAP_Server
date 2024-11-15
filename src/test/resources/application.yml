@@ -9,6 +9,11 @@ spring:
     hibernate:
       ddl-auto: create
     open-in-view: false
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: catsnap_test
 
   security:
     jwt-key: testessztest123dsaqwgqtestestwqw
