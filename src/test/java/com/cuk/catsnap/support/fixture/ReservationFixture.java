@@ -49,6 +49,11 @@ public class ReservationFixture {
         return this;
     }
 
+    public ReservationFixture reservationState(ReservationState reservationState) {
+        this.reservationState = reservationState;
+        return this;
+    }
+
     public Reservation build() {
         return Reservation.builder()
             .id(this.id)
