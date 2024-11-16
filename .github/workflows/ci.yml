@@ -31,7 +31,7 @@ jobs:
       - name: Start mongodb
         run: |
           docker run --name mongodb-test -d -p 27017:27017 mongo
-          echo 'use catsnap_test' > init.js
+          echo 'mongosh catsnap_test' > init.js
           docker exec -i mongodb-test bash < init.js
 
       - name: Build with Gradle Wrapper
