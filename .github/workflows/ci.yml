@@ -36,7 +36,7 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-        
+
       - name: Build with Gradle Wrapper
         run: ./gradlew --info test
 
@@ -45,6 +45,7 @@ jobs:
         if: always()
         with:
           files: '**/build/test-results/test/TEST-*.xml'
+          token: ${{ secrets.CI_TOKEN }}
 
       - name: Publish test report
         uses: mikepenz/action-junit-report@v4
