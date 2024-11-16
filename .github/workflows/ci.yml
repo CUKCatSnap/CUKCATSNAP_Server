@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      checks: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v4
@@ -31,8 +33,11 @@ jobs:
       - name: Start mongodb
         run: |
           docker run --name mongodb-test -d -p 27017:27017 mongo
-          echo 'use catsnap_test' > init.js
-          docker exec -i mongodb-test mongo < init.js
+          echo 'mongosh catsnap_test' > init.js
+          docker exec -i mongodb-test bash < init.js
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Build with Gradle Wrapper
         run: ./gradlew --info test
