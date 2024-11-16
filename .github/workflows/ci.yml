@@ -4,13 +4,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions: write-all
-
 jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -36,6 +34,9 @@ jobs:
           echo 'mongosh catsnap_test' > init.js
           docker exec -i mongodb-test bash < init.js
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
       - name: Build with Gradle Wrapper
         run: ./gradlew --info test
 
