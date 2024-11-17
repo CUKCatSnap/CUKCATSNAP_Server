@@ -15,5 +15,10 @@ spring:
       port: 27017
       database: catsnap_test
 
+  client:
+    holiday-api:
+      base-url: holiday-api-url
+      secret-key: secret-key
+
   security:
     jwt-key: testessztest123dsaqwgqtestestwqw
