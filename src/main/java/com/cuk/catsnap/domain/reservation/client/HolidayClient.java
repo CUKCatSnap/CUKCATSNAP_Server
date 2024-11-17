@@ -54,7 +54,6 @@ public class HolidayClient {
 
     private List<LocalDate> getHolidaysByYear(YearMonth yearMonth) {
         // 월별 휴일 정보 조회
-        System.out.println("yearMonth = " + yearMonth);
         ResponseSpec responseSpec = restClient.get()
             .uri(
                 uriBuilder -> uriBuilder
