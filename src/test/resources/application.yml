@@ -1,4 +1,5 @@
 spring:
+  env: test
   datasource:
     url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
   jpa:
@@ -14,11 +15,18 @@ spring:
       host: localhost
       port: 27017
       database: catsnap_test
+    redis:
+      host: localhost
+      port: 6379
 
   client:
     holiday-api:
       base-url: holiday-api-url
       secret-key: secret-key
+
+  holiday:
+    schedule:
+      cron: 0 0 11 * * *
 
   security:
     jwt-key: testessztest123dsaqwgqtestestwqw

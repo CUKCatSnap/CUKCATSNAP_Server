@@ -74,6 +74,8 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     // === Redis 의존성 추가 ===
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    // === Redis Test 의존성 추가 ===
+    testImplementation 'it.ozimov:embedded-redis:0.7.2'
 }
 
 tasks.named('test') {
