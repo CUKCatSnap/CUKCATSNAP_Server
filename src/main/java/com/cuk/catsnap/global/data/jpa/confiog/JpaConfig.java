@@ -1,4 +1,4 @@
-package com.cuk.catsnap.global.jpa.confiog;
+package com.cuk.catsnap.global.data.jpa.confiog;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
