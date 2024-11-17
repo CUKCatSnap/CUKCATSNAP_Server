@@ -72,6 +72,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     // === Test 전용  h2데이터 베이스 추가 ===
     runtimeOnly 'com.h2database:h2'
+    // === Redis 의존성 추가 ===
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
