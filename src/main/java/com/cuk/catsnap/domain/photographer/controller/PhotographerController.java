@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +38,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "409 EP000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
     @PostMapping("/signup/catsnap")
-    public ResultResponse<?> signUp(
+    public ResponseEntity<ResultResponse<PhotographerResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody
         PhotographerRequest.PhotographerSignUp photographerSignUp
@@ -70,7 +71,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "200 SP001", description = "사진작가 자신의 환경설정 조회 성공")
     })
     @GetMapping("/my/setting")
-    public ResultResponse<PhotographerResponse.PhotographerSetting> lookUpMySetting() {
+    public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerSetting>> lookUpMySetting() {
         PhotographerSetting photographerSetting = photographerService.getPhotographerSetting();
         PhotographerResponse.PhotographerSetting photographerSettingDto = photographerConverter.toPhotographerSetting(
             photographerSetting);
@@ -82,7 +83,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "201 SP002", description = "사진작가 자신의 환경설정 변경 성공")
     })
     @PostMapping("/my/setting")
-    public ResultResponse<?> updateMySetting(
+    public ResponseEntity<ResultResponse<PhotographerResultCode>> updateMySetting(
         @Parameter(description = "작가의 환경설정", required = true)
         @RequestBody
         PhotographerRequest.PhotographerSetting photographerSetting
@@ -96,7 +97,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "200 SP003", description = "사진작가 자신의 예약 전 알림 조회 성공")
     })
     @GetMapping("/my/reservation/notice")
-    public ResultResponse<PhotographerResponse.PhotographerReservationNotice> lookUpMyReservationNotice(
+    public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerReservationNotice>> lookUpMyReservationNotice(
     ) {
         PhotographerReservationNotice photographerReservationNotice = photographerService.getReservationNotice();
         PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(
@@ -110,7 +111,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "201 SP004", description = "사진작가 자신의 예약 전 알림 변경 성공")
     })
     @PostMapping("/my/reservation/notice")
-    public ResultResponse<?> updateMyReservationNotice(
+    public ResponseEntity<ResultResponse<PhotographerResultCode>> updateMyReservationNotice(
         @Parameter(description = "작가의 예약 전 알림", required = true)
         @RequestBody
         PhotographerRequest.PhotographerReservationNotice photographerReservationNotice
@@ -124,7 +125,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "200 SP005", description = "사진작가 자신의 예약 전 알림 조회 성공")
     })
     @GetMapping("/my/reservation/location")
-    public ResultResponse<PhotographerResponse.PhotographerReservationLocation> lookUpMyReservationLocation(
+    public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerReservationLocation>> lookUpMyReservationLocation(
     ) {
         PhotographerReservationLocation photographerReservationLocation = photographerService.getReservationLocation();
         PhotographerResponse.PhotographerReservationLocation photographerReservationLocationDto = photographerConverter.toPhotographerReservationLocation(
@@ -138,7 +139,7 @@ public class PhotographerController {
         @ApiResponse(responseCode = "201 SP006", description = "사진작가 자신의 예약 전 알림 변경 성공")
     })
     @PostMapping("/my/reservation/location")
-    public ResultResponse<?> updateMyReservationLocation(
+    public ResponseEntity<ResultResponse<PhotographerResultCode>> updateMyReservationLocation(
         @Parameter(description = "작가의 예약 전 알림", required = true)
         @RequestBody
         PhotographerRequest.PhotographerReservationLocation photographerReservationLocation

@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "200 SR002", description = "성공적으로 예약 가능한 프로그램을 조회했습니다.")
     })
     @GetMapping("/photographer/program")
-    public ResultResponse<PhotographerProgramListResponse> getPhotographerProgram(
+    public ResponseEntity<ResultResponse<PhotographerProgramListResponse>> getPhotographerProgram(
         @RequestParam("photographerId")
         Long photographerId
     ) {
@@ -54,7 +55,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/photographer/my/program")
-    public ResultResponse<photographerProgramIdResponse> postProgram(
+    public ResponseEntity<ResultResponse<photographerProgramIdResponse>> postProgram(
         @Parameter(description = "예약 프로그램", required = true)
         @RequestBody
         ProgramRequest programRequest,
@@ -76,7 +77,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "200 SR013", description = "성공적으로가 예약 프로그램을 조회했습니다.")
     )
     @GetMapping("/photographer/my/program")
-    public ResultResponse<PhotographerProgramListResponse> getProgram() {
+    public ResponseEntity<ResultResponse<PhotographerProgramListResponse>> getProgram() {
         PhotographerProgramListResponse photographerProgramListResponse = programService.getMyProgramList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM,
             photographerProgramListResponse);
@@ -91,7 +92,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @DeleteMapping("/photographer/my/program")
-    public ResultResponse<?> deleteProgram(
+    public ResponseEntity<ResultResponse<ReservationResultCode>> deleteProgram(
         @Parameter(description = "삭제하고자 하는 예약 프로그램의 id", required = true)
         @RequestParam("programId")
         Long programId

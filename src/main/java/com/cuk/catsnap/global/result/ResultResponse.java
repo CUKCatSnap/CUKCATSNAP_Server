@@ -3,6 +3,7 @@ package com.cuk.catsnap.global.result;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.http.ResponseEntity;
 
 @Builder
 @Getter
@@ -20,21 +21,25 @@ public class ResultResponse<T> {
     @Schema(description = "api의 데이터 부분입니다.")
     private final T data;
 
-    public static <T> ResultResponse<T> of(ResultCode resultCode, T data) {
-        return ResultResponse.<T>builder()
+    public static <T> ResponseEntity<ResultResponse<T>> of(ResultCode resultCode, T data) {
+        return ResponseEntity
             .status(resultCode.getStatus())
-            .code(resultCode.getCode())
-            .message(resultCode.getMessage())
-            .data(data)
-            .build();
+            .body(ResultResponse.<T>builder()
+                .status(resultCode.getStatus())
+                .code(resultCode.getCode())
+                .message(resultCode.getMessage())
+                .data(data)
+                .build());
     }
 
-    public static <T> ResultResponse<T> of(ResultCode resultCode) {
-        return ResultResponse.<T>builder()
+    public static <T> ResponseEntity<ResultResponse<T>> of(ResultCode resultCode) {
+        return ResponseEntity
             .status(resultCode.getStatus())
-            .code(resultCode.getCode())
-            .message(resultCode.getMessage())
-            .data(null)
-            .build();
+            .body(ResultResponse.<T>builder()
+                .status(resultCode.getStatus())
+                .code(resultCode.getCode())
+                .message(resultCode.getMessage())
+                .data(null)
+                .build());
     }
 }

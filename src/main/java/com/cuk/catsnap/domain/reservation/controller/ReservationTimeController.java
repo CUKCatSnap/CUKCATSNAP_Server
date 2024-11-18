@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
     })
     @GetMapping("/time")
-    public ResultResponse<PhotographerAvailableReservationTimeListResponse> getPhotographerAvailableReservationTimeList(
+    public ResponseEntity<ResultResponse<PhotographerAvailableReservationTimeListResponse>> getPhotographerAvailableReservationTimeList(
         @RequestParam("photographerId")
         Long photographerId,
         @Parameter(description = "예약을 하고 싶은 날", example = "yyyy-MM-dd")
@@ -64,7 +65,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/timeformat")
-    public ResultResponse<ReservationTimeFormatIdResponse> registerTimeFormat(
+    public ResponseEntity<ResultResponse<ReservationTimeFormatIdResponse>> registerTimeFormat(
         @Parameter(description = "예약 시간 형식", required = true)
         @RequestBody
         ReservationTimeFormatRequest reservationTimeFormatRequest,
@@ -86,7 +87,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "200 SR012", description = "성공적으로 예약 시간 형식을 조회했습니다.")
     )
     @GetMapping("/my/timeformat")
-    public ResultResponse<ReservationTimeFormatListResponse> getTimeFormat() {
+    public ResponseEntity<ResultResponse<ReservationTimeFormatListResponse>> getTimeFormat() {
         ReservationTimeFormatListResponse reservationTimeFormatList = reservationTimeService.getMyReservationTimeFormatList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP,
             reservationTimeFormatList);
@@ -103,7 +104,7 @@ public class ReservationTimeController {
     }
     )
     @DeleteMapping("/my/timeformat")
-    public ResultResponse<?> deleteTimeFormat(
+    public ResponseEntity<ResultResponse<ReservationResultCode>> deleteTimeFormat(
         @Parameter(description = "삭제하고자 하는 예약 시간 형식의 id", required = true)
         @RequestParam("timeFormatId")
         String timeFormatId
@@ -123,7 +124,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/weekday/timeformat")
-    public ResultResponse<?> mappingTimeFormatToWeekdays(
+    public ResponseEntity<ResultResponse<ReservationResultCode>> mappingTimeFormatToWeekdays(
         @Parameter(description = "예약 형식을 만들고자 하는 요일" +
             "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
             required = true)
@@ -148,7 +149,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @DeleteMapping("/my/weekday/timeformat")
-    public ResultResponse<?> unmappingTimeFormatToWeekdays(
+    public ResponseEntity<ResultResponse<ReservationResultCode>> unmappingTimeFormatToWeekdays(
         @Parameter(description = "시간 형식을 삭제하고자 하는 요일" +
             "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
             required = true)

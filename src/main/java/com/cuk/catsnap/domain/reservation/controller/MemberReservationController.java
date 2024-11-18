@@ -21,6 +21,7 @@ import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +42,7 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다."),
     })
     @GetMapping("/member/my")
-    public ResultResponse<SlicedData<MemberReservationInformationListResponse>> getMyReservation(
+    public ResponseEntity<ResultResponse<SlicedData<MemberReservationInformationListResponse>>> getMyReservation(
         @Parameter(description = "ALL : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) UPCOMING : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴. 예약의 상태가 PENDING, APPROVED 인 것만 보여줌) ")
         @RequestParam("type")
         ReservationQueryType reservationQueryType,
@@ -58,7 +59,7 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/member/my/month")
-    public ResultResponse<MonthReservationCheckListResponse> getMyMonthReservationCheck(
+    public ResponseEntity<ResultResponse<MonthReservationCheckListResponse>> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
         @DateTimeFormat(pattern = "yyyy-MM")
@@ -75,7 +76,7 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/member/my/day")
-    public ResultResponse<MemberReservationInformationListResponse> getMyDayReservation(
+    public ResponseEntity<ResultResponse<MemberReservationInformationListResponse>> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -93,7 +94,7 @@ public class MemberReservationController {
         @ApiResponse(responseCode = "404 EO000", description = "해당 게시물의 소유권을 찾을 수 없습니다."),
     })
     @GetMapping("/photographer/guidance")
-    public ResultResponse<PhotographerReservationGuidanceResponse> getPhotographerReservationGuidance(
+    public ResponseEntity<ResultResponse<PhotographerReservationGuidanceResponse>> getPhotographerReservationGuidance(
         @RequestParam("photographerId")
         Long photographerId
     ) {
@@ -114,7 +115,7 @@ public class MemberReservationController {
 
     })
     @PostMapping("/member/book")
-    public ResultResponse<ReservationBookResultResponse> postBookReservation(
+    public ResponseEntity<ResultResponse<ReservationBookResultResponse>> postBookReservation(
         @Parameter(description = "새로운 예약 형식")
         @RequestBody
         MemberReservationRequest memberReservationRequest
