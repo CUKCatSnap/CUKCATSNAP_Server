@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/month")
-    public ResultResponse<MonthReservationCheckListResponse> getMyMonthReservationCheck(
+    public ResponseEntity<ResultResponse<MonthReservationCheckListResponse>> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
         YearMonth reservationMonth
@@ -52,7 +53,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/day")
-    public ResultResponse<PhotographerReservationInformationListResponse> getMyDayReservation(
+    public ResponseEntity<ResultResponse<PhotographerReservationInformationListResponse>> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
         LocalDate reservationDay
@@ -74,7 +75,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "400 ER000", description = "해당 예약 상태에서 요청하신 예약상태로 변경할 수 없습니다.")
     })
     @PostMapping("/my/status")
-    public ResultResponse<?> changeReservationStatus(
+    public ResponseEntity<ResultResponse<ReservationResultCode>> changeReservationStatus(
         @Parameter(description = "예약 id", required = true)
         @RequestParam("reservationId")
         long reservationId,
