@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class MemberController {
         @ApiResponse(responseCode = "409 EM000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
     @PostMapping("/signup/catsnap")
-    public ResultResponse<?> signUp(
+    public ResponseEntity<ResultResponse<MemberResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody
         MemberRequest.MemberSignUp memberSignUp
