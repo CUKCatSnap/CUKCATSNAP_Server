@@ -7,6 +7,7 @@ import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.ReservationState;
+import com.cuk.catsnap.global.data.jpa.confiog.JpaConfig;
 import com.cuk.catsnap.support.fixture.MemberFixture;
 import com.cuk.catsnap.support.fixture.PhotographerFixture;
 import com.cuk.catsnap.support.fixture.ProgramFixture;
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -26,6 +28,7 @@ import org.springframework.data.domain.Slice;
 @DataJpaTest
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
+@Import(JpaConfig.class)
 class ReservationRepositoryTest {
 
     @Autowired
