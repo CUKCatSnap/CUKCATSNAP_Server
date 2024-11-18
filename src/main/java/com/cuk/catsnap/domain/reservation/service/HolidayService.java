@@ -28,6 +28,10 @@ public class HolidayService {
         });
     }
 
+    public Boolean isHoliday(LocalDate date) {
+        return holidayRepository.findById(date.toString()).isPresent();
+    }
+
     @PostConstruct
     public void init(
     ) {

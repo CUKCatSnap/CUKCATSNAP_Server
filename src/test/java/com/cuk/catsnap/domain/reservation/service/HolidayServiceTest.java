@@ -10,6 +10,8 @@ import com.cuk.catsnap.domain.reservation.document.Holiday;
 import com.cuk.catsnap.domain.reservation.repository.HolidayRepository;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
@@ -46,4 +48,20 @@ class HolidayServiceTest {
         verify(holidayRepository, times(2)).save(any(Holiday.class));
     }
 
+    @Test
+    void 공휴일_조회_후_레디스에_저장된_공휴일을_조회한다() {
+        // given
+        given(holidayRepository.findById("2021-01-01"))
+            .willReturn(Optional.of(new Holiday(LocalDate.of(2021, 1, 1))));
+
+        given(holidayRepository.findById("2021-01-02"))
+            .willReturn(Optional.empty());
+        // when
+        Boolean holiday = holidayService.isHoliday(LocalDate.of(2021, 1, 1));
+        Boolean notHoliday = holidayService.isHoliday(LocalDate.of(2021, 1, 2));
+
+        // then
+        Assertions.assertThat(holiday).isTrue();
+        Assertions.assertThat(notHoliday).isFalse();
+    }
 }
