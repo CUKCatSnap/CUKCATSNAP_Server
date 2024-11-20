@@ -35,6 +35,7 @@ class AwsS3ClientTest {
         FieldUtils.writeField(awsS3Client, "expirationTime", 1000, true);
         FieldUtils.writeField(awsS3Client, "bucketNameRoot", "bucket-name", true);
         FieldUtils.writeField(awsS3Client, "bucketNameRaw", "raw-bucket", true);
+        FieldUtils.writeField(awsS3Client, "region", "region", true);
     }
 
     @Test
@@ -51,5 +52,19 @@ class AwsS3ClientTest {
             .isEqualTo(new URL("http://test.com"));
         Assertions.assertThat(presignedUrlResponse.uuidFileName())
             .contains("test.jpg");
+    }
+
+    @Test
+    void 사진을_다운로드_할_수_있는_URL을_받아온다() {
+        //given
+        String uuidFileName = "uuid-test.jpg";
+
+        //when
+        URL downloadImageUrl = awsS3Client.getDownloadImageUrl(uuidFileName);
+
+        //then
+        Assertions.assertThat(downloadImageUrl.toString())
+            .isEqualTo(
+                "https://bucket-name.s3." + "region" + ".amazonaws.com/raw-bucket/" + uuidFileName);
     }
 }

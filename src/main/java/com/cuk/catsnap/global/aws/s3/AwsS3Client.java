@@ -4,6 +4,7 @@ import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.cuk.catsnap.global.aws.s3.dto.PresignedUrlResponse;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.UUID;
@@ -26,6 +27,9 @@ public class AwsS3Client implements ImageClient {
     @Value("${spring.aws.s3.bucket-name.raw}")
     private String bucketNameRaw;
 
+    @Value("${spring.aws.s3.region}")
+    private String region;
+
     @Override
     public PresignedUrlResponse getUploadImageUrl(String fileName) {
         String uuidFileName = addUUIDtoFileName(fileName);
@@ -33,6 +37,20 @@ public class AwsS3Client implements ImageClient {
             uuidFileName);
         URL presignedUrl = amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
         return PresignedUrlResponse.of(presignedUrl, uuidFileName);
+    }
+
+    @Override
+    public URL getDownloadImageUrl(String savedFileName) {
+        try {
+            String bucketDirectory = addBucketDirectory(savedFileName);
+            return new URL(
+                "https", // 프로토콜
+                bucketNameRoot + ".s3." + region + ".amazonaws.com", // 호스트
+                "/" + bucketDirectory // 경로 (앞에 '/' 포함)
+            );
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException("올바른 URL 형식이 아닙니다.: " + savedFileName, e);
+        }
     }
 
     private GeneratePresignedUrlRequest generatePresignedUrlRequest(String fileName) {
