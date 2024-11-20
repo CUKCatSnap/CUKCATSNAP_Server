@@ -3,11 +3,11 @@ package com.cuk.catsnap.global.aws.s3;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
+import com.cuk.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import java.net.URL;
 import java.util.Date;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class AwsS3Client implements ImageClient {
 
-    @Autowired
     private final AmazonS3 amazonS3;
 
     @Value("${spring.aws.s3.presigned-url-expiration}")
@@ -28,14 +27,16 @@ public class AwsS3Client implements ImageClient {
     private String bucketNameRaw;
 
     @Override
-    public URL getUploadImageUrl(String fileName) {
+    public PresignedUrlResponse getUploadImageUrl(String fileName) {
+        String uuidFileName = addUUIDtoFileName(fileName);
         GeneratePresignedUrlRequest generatePresignedUrlRequest = generatePresignedUrlRequest(
-            fileName);
-        return amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
+            uuidFileName);
+        URL presignedUrl = amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
+        return PresignedUrlResponse.of(presignedUrl, uuidFileName);
     }
 
     private GeneratePresignedUrlRequest generatePresignedUrlRequest(String fileName) {
-        String objectKey = addBucketDirectory(addUUIDtoFileName(fileName));
+        String objectKey = addBucketDirectory(fileName);
         return new GeneratePresignedUrlRequest(bucketNameRoot, objectKey)
             .withMethod(HttpMethod.PUT)
             .withExpiration(new Date(System.currentTimeMillis() + expirationTime));

@@ -5,6 +5,7 @@ import static org.mockito.BDDMockito.given;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
+import com.cuk.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.apache.commons.lang3.reflect.FieldUtils;
@@ -43,9 +44,12 @@ class AwsS3ClientTest {
             .willReturn(new URL("http://test.com"));
 
         //when
-        URL url = awsS3Client.getUploadImageUrl("test.jpg");
+        PresignedUrlResponse presignedUrlResponse = awsS3Client.getUploadImageUrl("test.jpg");
 
         //then
-        Assertions.assertThat(url).isEqualTo(new URL("http://test.com"));
+        Assertions.assertThat(presignedUrlResponse.presignedURL())
+            .isEqualTo(new URL("http://test.com"));
+        Assertions.assertThat(presignedUrlResponse.uuidFileName())
+            .contains("test.jpg");
     }
 }

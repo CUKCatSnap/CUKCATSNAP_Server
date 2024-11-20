@@ -1,8 +1,8 @@
 package com.cuk.catsnap.global.aws.s3;
 
-import java.net.URL;
+import com.cuk.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 
 public interface ImageClient {
 
-    URL getUploadImageUrl(String fileName);
+    PresignedUrlResponse getUploadImageUrl(String fileName);
 }
