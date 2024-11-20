@@ -76,6 +76,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     // === Redis Test 의존성 추가 ===
     testImplementation 'it.ozimov:embedded-redis:0.7.2'
+    // === Aws S3 의존성 추가 ===
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.529')
+    implementation 'com.amazonaws:aws-java-sdk-s3'
 }
 
 tasks.named('test') {
