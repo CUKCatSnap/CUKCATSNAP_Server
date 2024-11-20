@@ -30,3 +30,14 @@ spring:
 
   security:
     jwt-key: testessztest123dsaqwgqtestestwqw
+
+  aws:
+    s3:
+      access-key: access-key
+      secret-key: secret-key
+      region: region
+      bucket-name:
+        root: bucket-name
+        raw: raw-bucket
+        resized-400: resized-bucket
+      presigned-url-expiration: 1000000
