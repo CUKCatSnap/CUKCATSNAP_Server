@@ -1,7 +1,7 @@
 package com.cuk.catsnap.domain.review.controller;
 
-import com.cuk.catsnap.domain.review.dto.ReviewRequest;
 import com.cuk.catsnap.domain.review.dto.ReviewResponse;
+import com.cuk.catsnap.domain.review.dto.request.PostReview;
 import com.cuk.catsnap.domain.search.dto.SearchResponse;
 import com.cuk.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +30,7 @@ public class ReviewController {
     public ResultResponse<ReviewResponse.ReviewPhotoPresignedURL> postReview(
         @Parameter(description = "새로운 리뷰를 만들 때 작성하는 형식입니다.")
         @RequestBody
-        ReviewRequest.PostReview postReview
+        PostReview postReview
     ) {
         return null;
     }
