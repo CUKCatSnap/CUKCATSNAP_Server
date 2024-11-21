@@ -115,7 +115,7 @@ public class SecurityConfig {
     public SecurityFilterChain signInUpConfig(HttpSecurity http) throws Exception {
         http
             .securityMatcher("/member/signup/catsnap", "/photographer/signup/catsnap",
-                "/member/signin/catsnap, /photographer/signin/catsnap")
+                "/member/signin/catsnap", "/photographer/signin/catsnap")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
