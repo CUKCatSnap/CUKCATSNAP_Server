@@ -13,4 +13,8 @@ public record ReviewPhotoPresignedURLResponse(
     List<URL> photoURL
 ) {
 
+    public static ReviewPhotoPresignedURLResponse of(Long reviewId, List<URL> presignedURL,
+        List<URL> photoURL) {
+        return new ReviewPhotoPresignedURLResponse(reviewId, presignedURL, photoURL);
+    }
 }

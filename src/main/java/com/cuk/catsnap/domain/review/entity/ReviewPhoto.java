@@ -31,5 +31,10 @@ public class ReviewPhoto {
     @JoinColumn(name = "review_id")
     private Review review;
 
-    private String PhotoUrl;
+    private String photoFileName;
+
+    public ReviewPhoto(Review review, String photoFileName) {
+        this.review = review;
+        this.photoFileName = photoFileName;
+    }
 }

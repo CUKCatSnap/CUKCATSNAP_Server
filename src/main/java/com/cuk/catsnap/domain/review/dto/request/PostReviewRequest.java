@@ -1,9 +1,13 @@
 package com.cuk.catsnap.domain.review.dto.request;
 
+import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.domain.photographer.entity.Photographer;
+import com.cuk.catsnap.domain.reservation.entity.Reservation;
+import com.cuk.catsnap.domain.review.entity.Review;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
-public record PostReviewResponse(
+public record PostReviewRequest(
     @Schema(description = "리뷰를 남기고자 하는 예약의 Id")
     Long reservationId,
     @Schema(description = "장소에 대한 점수. 1점부터 5점까지 가능. 정수로만 가능")
@@ -16,4 +20,15 @@ public record PostReviewResponse(
     List<String> photoFileNameList
 ) {
 
+    public Review toReviewEntity(Member member, Photographer photographer,
+        Reservation reservation) {
+        return Review.builder()
+            .member(member)
+            .photographer(photographer)
+            .reservation(reservation)
+            .placeScore(placeScore)
+            .photographerScore(photographerScore)
+            .content(content)
+            .build();
+    }
 }
