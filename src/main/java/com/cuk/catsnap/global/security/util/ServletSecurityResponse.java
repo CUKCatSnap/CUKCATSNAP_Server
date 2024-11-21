@@ -22,7 +22,8 @@ public class ServletSecurityResponse {
      */
     public void responseBody(HttpServletResponse response, ResultCode resultCode)
         throws IOException {
-        String jsonResponse = objectMapper.writeValueAsString(ResultResponse.of(resultCode));
+        String jsonResponse = objectMapper.writeValueAsString(
+            ResultResponse.ofNotEntity(resultCode));
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         response.getWriter().write(jsonResponse);

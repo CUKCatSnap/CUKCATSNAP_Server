@@ -2,6 +2,7 @@ package com.cuk.catsnap.global.security;
 
 import com.cuk.catsnap.domain.member.repository.MemberRepository;
 import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
+import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import com.cuk.catsnap.global.security.filter.JwtAuthenticationFilter;
 import com.cuk.catsnap.global.security.filter.MemberSignInAuthenticationFilter;
 import com.cuk.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
@@ -151,7 +152,7 @@ public class SecurityConfig {
                 .configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .anyRequest().hasRole("PHOTOGRAPHER")
+                    .anyRequest().hasAuthority(CatsnapAuthority.PHOTOGRAPHER.name())
             );
         return http.build();
     }
@@ -173,7 +174,7 @@ public class SecurityConfig {
                 .configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .anyRequest().hasRole("MEMBER")
+                    .anyRequest().hasAuthority(CatsnapAuthority.MEMBER.name())
             );
         return http.build();
     }

@@ -2,6 +2,7 @@ package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
 import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -18,12 +19,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -50,14 +49,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 String identifier = claims.get("identifier", String.class); // 로그인 시 사용하는 id값
                 Long id = claims.get("id", Long.class); // 데이터베이스에서 사용되는 유저의 id값
-                List<Map<String, String>> authorities = claims.get("authorities", List.class);
+                List<String> authorities = claims.get("authorities", List.class);
 
                 Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
                 UsernamePasswordAuthenticationToken authenticationToken;
-                if (authorities.get(0).get("authority").equals("ROLE_MEMBER")) {
-                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_MEMBER"));
-                } else if (authorities.get(0).get("authority").equals("ROLE_PHOTOGRAPHER")) {
-                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_PHOTOGRAPHER"));
+                if (authorities.get(0).equals(CatsnapAuthority.MEMBER.name())) {
+                    grantedAuthorities.add(CatsnapAuthority.MEMBER);
+                } else if (authorities.get(0).equals(CatsnapAuthority.PHOTOGRAPHER.name())) {
+                    grantedAuthorities.add(CatsnapAuthority.PHOTOGRAPHER);
                 }
                 authenticationToken = new MemberAuthentication(identifier, null, grantedAuthorities,
                     id);
