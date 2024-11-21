@@ -1,6 +1,7 @@
 package com.cuk.catsnap.domain.review.entity;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.domain.photographer.entity.Photographer;
 import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,4 +37,8 @@ public class ReviewLike extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photographer_id")
+    private Photographer photographer;
 }
