@@ -115,7 +115,7 @@ public class SecurityConfig {
     public SecurityFilterChain signInUpConfig(HttpSecurity http) throws Exception {
         http
             .securityMatcher("/member/signup/catsnap", "/photographer/signup/catsnap",
-                "/member/signin/catsnap, /photographer/signin/catsnap")
+                "/member/signin/catsnap", "/photographer/signin/catsnap")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
@@ -162,7 +162,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain authenticatedMemberConfig(HttpSecurity http) throws Exception {
         http
-            .securityMatcher("/reservation/member/my/**", "/reservation/member/book")
+            .securityMatcher("/reservation/member/my/**", "/reservation/member/book", "/review")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)

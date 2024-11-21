@@ -24,6 +24,11 @@ public class ReservationFixture {
         return new ReservationFixture();
     }
 
+    public ReservationFixture id(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ReservationFixture member(Member member) {
         this.member = member;
         return this;

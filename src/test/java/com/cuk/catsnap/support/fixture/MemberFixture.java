@@ -22,6 +22,11 @@ public class MemberFixture {
         return new MemberFixture();
     }
 
+    public MemberFixture id(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public Member build() {
         return Member.builder()
             .id(this.id)
