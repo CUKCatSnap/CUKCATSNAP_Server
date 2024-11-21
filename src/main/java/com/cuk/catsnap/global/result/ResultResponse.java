@@ -42,4 +42,16 @@ public class ResultResponse<T> {
                 .data(null)
                 .build());
     }
+
+    /*
+     * 스프링 컨테이너 내부에서 응답하지 않는 경우에 사용하는 메서드 (ex : 시큐리티 필터)
+     */
+    public static <T> ResultResponse<T> ofNotEntity(ResultCode resultCode) {
+        return ResultResponse.<T>builder()
+            .status(resultCode.getStatus())
+            .code(resultCode.getCode())
+            .message(resultCode.getMessage())
+            .data(null)
+            .build();
+    }
 }

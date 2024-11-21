@@ -1,11 +1,11 @@
 package com.cuk.catsnap.global.security.userdetail;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import java.util.Collection;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class MemberDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_MEMBER"));
+        return List.of(CatsnapAuthority.MEMBER);
     }
 
     @Override
