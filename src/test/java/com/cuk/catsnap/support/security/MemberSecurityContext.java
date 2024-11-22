@@ -1,8 +1,8 @@
 package com.cuk.catsnap.support.security;
 
 import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import java.util.List;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -16,7 +16,7 @@ public class MemberSecurityContext {
             new MemberAuthentication(
                 "test",
                 "test",
-                List.of(new SimpleGrantedAuthority("ROLE_MEMBER")),
+                List.of(CatsnapAuthority.MEMBER),
                 MEMBER_ID
             ));
         SecurityContextHolder.setContext(securityContext);
