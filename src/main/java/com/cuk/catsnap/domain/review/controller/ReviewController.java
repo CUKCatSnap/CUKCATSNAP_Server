@@ -44,17 +44,18 @@ public class ReviewController {
         return ResultResponse.of(ReviewResultCode.POST_REVIEW, dto);
     }
 
-    @Operation(summary = "리뷰에 좋아요를 토글하는 API", description = "리뷰에 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
+    @Operation(summary = "리뷰에 좋아요를 토글하는 API(구현 완료)", description = "리뷰에 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SV001", description = "리뷰 좋아요를 토글했습니다.")
     })
     @PostMapping("/like/{reviewId}")
-    public ResultResponse<?> reviewLikeToggle(
+    public ResponseEntity<ResultResponse<ReviewResultCode>> reviewLikeToggle(
         @Parameter(description = "리뷰 id")
         @RequestParam("reviewId")
         Long reviewId
     ) {
-        return null;
+        reviewService.toggleReviewLike(reviewId);
+        return ResultResponse.of(ReviewResultCode.REVIEW_LIKE_TOGGLE);
     }
 
     @Operation(summary = "리뷰 1개를 피드 Id로 조회하는 API", description = "피드 1개를 피드 Id로 조회하는 API입니다.")

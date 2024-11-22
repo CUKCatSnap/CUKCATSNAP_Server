@@ -41,4 +41,26 @@ public class ReviewLike extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "photographer_id")
     private Photographer photographer;
+
+    private Boolean liked = true;
+
+    /*
+     * 사용자가 리뷰에 좋아요를 누르는 경우
+     */
+    public ReviewLike(Review review, Member member) {
+        this.review = review;
+        this.member = member;
+    }
+
+    /*
+     * 작가가 리뷰에 좋아요를 누르는 경우
+     */
+    public ReviewLike(Review review, Photographer photographer) {
+        this.review = review;
+        this.photographer = photographer;
+    }
+
+    public void toggleLike() {
+        this.liked = !this.liked;
+    }
 }
