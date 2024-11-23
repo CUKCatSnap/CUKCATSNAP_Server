@@ -83,6 +83,7 @@ public class PhotographerSignInAuthenticationFilter extends AbstractAuthenticati
         accessTokenCookie.setMaxAge(30 * 24 * 60 * 60); //쿠키 만료 시간. 단위 : s, 30일(일 * 시간 * 분 * 초)
         accessTokenCookie.setHttpOnly(true); // 클라이언트 측에서 쿠키 접근 금지
         accessTokenCookie.setSecure(true); // https에서만 쿠키 전송
+        accessTokenCookie.setPath("/refresh/access-token");
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.setHeader("Authorization", "Bearer " + accessToken);
