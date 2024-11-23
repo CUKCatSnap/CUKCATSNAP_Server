@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-public class MemberSecurityContext {
+public class PhotographerSecurityContext {
 
-    public static final Long MEMBER_ID = 9876543210L;
+    public static final Long Photographer_ID = 9876543210L;
 
     public static void setContext() {
         SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
@@ -16,8 +16,8 @@ public class MemberSecurityContext {
             new MemberAuthentication(
                 "test",
                 "test",
-                List.of(CatsnapAuthority.MEMBER),
-                MEMBER_ID
+                List.of(CatsnapAuthority.PHOTOGRAPHER),
+                Photographer_ID
             ));
         SecurityContextHolder.setContext(securityContext);
     }

@@ -8,6 +8,7 @@ import com.cuk.catsnap.domain.reservation.entity.Program;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import com.cuk.catsnap.domain.review.entity.Review;
+import com.cuk.catsnap.domain.review.entity.ReviewLike;
 import com.cuk.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -72,4 +73,7 @@ public class Photographer extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "photographer")
     private List<Program> programList;
+
+    @OneToMany(mappedBy = "photographer")
+    private List<ReviewLike> reviewLikeList;
 }

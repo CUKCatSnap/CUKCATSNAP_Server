@@ -7,11 +7,16 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.cuk.catsnap.domain.member.entity.Member;
+import com.cuk.catsnap.domain.member.repository.MemberRepository;
 import com.cuk.catsnap.domain.photographer.entity.Photographer;
+import com.cuk.catsnap.domain.photographer.repository.PhotographerRepository;
 import com.cuk.catsnap.domain.reservation.entity.Reservation;
 import com.cuk.catsnap.domain.reservation.repository.ReservationRepository;
 import com.cuk.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
 import com.cuk.catsnap.domain.review.dto.request.PostReviewRequest;
+import com.cuk.catsnap.domain.review.entity.Review;
+import com.cuk.catsnap.domain.review.entity.ReviewLike;
+import com.cuk.catsnap.domain.review.repository.ReviewLikeRepository;
 import com.cuk.catsnap.domain.review.repository.ReviewPhotoRepository;
 import com.cuk.catsnap.domain.review.repository.ReviewRepository;
 import com.cuk.catsnap.global.Exception.authority.OwnershipNotFoundException;
@@ -22,7 +27,10 @@ import com.cuk.catsnap.support.fixture.PhotographerFixture;
 import com.cuk.catsnap.support.fixture.PostReviewRequestFixture;
 import com.cuk.catsnap.support.fixture.PresignedUrlResponseFixture;
 import com.cuk.catsnap.support.fixture.ReservationFixture;
+import com.cuk.catsnap.support.fixture.ReviewFixture;
+import com.cuk.catsnap.support.fixture.ReviewLikeFixture;
 import com.cuk.catsnap.support.security.MemberSecurityContext;
+import com.cuk.catsnap.support.security.PhotographerSecurityContext;
 import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -52,19 +60,25 @@ class ReviewServiceTest {
     ReservationRepository reservationRepository;
     @Mock
     ReviewPhotoRepository reviewPhotoRepository;
-
-    @BeforeEach
-    void beforeEach() {
-        MemberSecurityContext.setContext();
-    }
-
-    @AfterEach
-    void afterEach() {
-        MemberSecurityContext.clearContext();
-    }
+    @Mock
+    ReviewLikeRepository reviewLikeRepository;
+    @Mock
+    MemberRepository memberRepository;
+    @Mock
+    PhotographerRepository photographerRepository;
 
     @Nested
     class 리뷰_작성_테스트 {
+
+        @BeforeEach
+        void beforeEach() {
+            MemberSecurityContext.setContext();
+        }
+
+        @AfterEach
+        void afterEach() {
+            MemberSecurityContext.clearContext();
+        }
 
         @Test
         void 리뷰_작성_완료() {
@@ -146,6 +160,191 @@ class ReviewServiceTest {
             // when, then
             Assertions.assertThatThrownBy(() -> reviewService.postReview(postReviewRequest))
                 .isInstanceOf(OwnershipNotFoundException.class);
+        }
+    }
+
+    @Nested
+    class 리뷰_좋아요_토글 {
+
+        @Nested
+        class 사용자_좋아요_토글 {
+
+            @BeforeEach
+            void beforeEach() {
+                MemberSecurityContext.setContext();
+            }
+
+            @AfterEach
+            void afterEach() {
+                MemberSecurityContext.clearContext();
+            }
+
+            @Test
+            void 사용자_좋아요_최초_클릭() {
+                // given
+                Member member = MemberFixture.member()
+                    .id(MemberSecurityContext.MEMBER_ID)
+                    .build();
+                Review review = ReviewFixture.review()
+                    .id(1L)
+                    .build();
+
+                // 좋아요를 처음 누르는 경우
+                given(reviewLikeRepository.findByIdAndMemberId(review.getId(), member.getId()))
+                    .willReturn(Optional.empty());
+                given(memberRepository.getReferenceById(member.getId()))
+                    .willReturn(member);
+                given(reviewRepository.findById(1L))
+                    .willReturn(Optional.of(review));
+
+                //when
+                reviewService.toggleReviewLike(review.getId());
+
+                //then
+                verify(reviewLikeRepository, times(1)).save(any());
+            }
+
+            @Test
+            void 사용자_좋아요_2번째_클릭_좋아요_취소() {
+                // given
+                Member member = MemberFixture.member()
+                    .id(MemberSecurityContext.MEMBER_ID)
+                    .build();
+                Review review = ReviewFixture.review()
+                    .id(1L)
+                    .build();
+                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
+                    .id(1L)
+                    .build();
+
+                // 좋아요를 누른 적 있는 경우
+                given(reviewLikeRepository.findByIdAndMemberId(review.getId(), member.getId()))
+                    .willReturn(Optional.of(reviewLike));
+
+                //when
+                reviewService.toggleReviewLike(review.getId());
+
+                //then
+                Assertions.assertThat(reviewLike.getLiked()).isFalse();
+                verify(reviewLikeRepository, times(0)).save(reviewLike);
+            }
+
+            @Test
+            void 사용자_좋아요_3번째_클릭() {
+                Member member = MemberFixture.member()
+                    .id(MemberSecurityContext.MEMBER_ID)
+                    .build();
+                Review review = ReviewFixture.review()
+                    .id(1L)
+                    .build();
+                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
+                    .id(1L)
+                    .liked(false)
+                    .build();
+
+                // 좋아요를 누른 적 있는 경우
+                given(reviewLikeRepository.findByIdAndMemberId(review.getId(), member.getId()))
+                    .willReturn(Optional.of(reviewLike));
+
+                //when
+                reviewService.toggleReviewLike(review.getId());
+
+                //then
+                Assertions.assertThat(reviewLike.getLiked()).isTrue();
+                verify(reviewLikeRepository, times(0)).save(reviewLike);
+            }
+        }
+
+        @Nested
+        class 사진_작가_좋아요_토글 {
+
+            @BeforeEach
+            void beforeEach() {
+                PhotographerSecurityContext.setContext();
+            }
+
+            @AfterEach
+            void afterEach() {
+                PhotographerSecurityContext.clearContext();
+            }
+
+            @Test
+            void 사진작가_좋아요_최초_클릭() {
+                // given
+                Photographer photographer = PhotographerFixture.photographer()
+                    .id(PhotographerSecurityContext.Photographer_ID)
+                    .build();
+                Review review = ReviewFixture.review()
+                    .id(1L)
+                    .build();
+
+                // 좋아요를 처음 누르는 경우
+                given(reviewLikeRepository.findByIdAndPhotographerId(review.getId(),
+                    photographer.getId()))
+                    .willReturn(Optional.empty());
+                given(photographerRepository.getReferenceById(photographer.getId()))
+                    .willReturn(photographer);
+                given(reviewRepository.findById(1L))
+                    .willReturn(Optional.of(review));
+
+                //when
+                reviewService.toggleReviewLike(review.getId());
+
+                //then
+                verify(reviewLikeRepository, times(1)).save(any());
+            }
+
+            @Test
+            void 사용자_좋아요_2번째_클릭_좋아요_취소() {
+                // given
+                Photographer photographer = PhotographerFixture.photographer()
+                    .id(PhotographerSecurityContext.Photographer_ID)
+                    .build();
+                Review review = ReviewFixture.review()
+                    .id(1L)
+                    .build();
+                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
+                    .id(1L)
+                    .build();
+
+                // 좋아요를 누른 적 있는 경우
+                given(reviewLikeRepository.findByIdAndPhotographerId(review.getId(),
+                    photographer.getId()))
+                    .willReturn(Optional.of(reviewLike));
+
+                //when
+                reviewService.toggleReviewLike(review.getId());
+
+                //then
+                Assertions.assertThat(reviewLike.getLiked()).isFalse();
+                verify(reviewLikeRepository, times(0)).save(reviewLike);
+            }
+
+            @Test
+            void 사용자_좋아요_3번째_클릭() {
+                Photographer photographer = PhotographerFixture.photographer()
+                    .id(PhotographerSecurityContext.Photographer_ID)
+                    .build();
+                Review review = ReviewFixture.review()
+                    .id(1L)
+                    .build();
+                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
+                    .id(1L)
+                    .liked(false)
+                    .build();
+
+                // 좋아요를 누른 적 있는 경우
+                given(reviewLikeRepository.findByIdAndPhotographerId(review.getId(),
+                    photographer.getId()))
+                    .willReturn(Optional.of(reviewLike));
+
+                //when
+                reviewService.toggleReviewLike(review.getId());
+
+                //then
+                Assertions.assertThat(reviewLike.getLiked()).isTrue();
+                verify(reviewLikeRepository, times(0)).save(reviewLike);
+            }
         }
     }
 }

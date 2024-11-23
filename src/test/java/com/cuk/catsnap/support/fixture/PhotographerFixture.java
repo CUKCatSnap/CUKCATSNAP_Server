@@ -17,6 +17,11 @@ public class PhotographerFixture {
         return new PhotographerFixture();
     }
 
+    public PhotographerFixture id(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public Photographer build() {
         return Photographer.builder()
             .id(this.id)
