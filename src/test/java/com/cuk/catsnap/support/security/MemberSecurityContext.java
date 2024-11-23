@@ -1,6 +1,6 @@
 package com.cuk.catsnap.support.security;
 
-import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
 import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import java.util.List;
 import org.springframework.security.core.context.SecurityContext;
@@ -13,7 +13,7 @@ public class MemberSecurityContext {
     public static void setContext() {
         SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
         securityContext.setAuthentication(
-            new MemberAuthentication(
+            new MemberAuthenticationToken(
                 "test",
                 "test",
                 List.of(CatsnapAuthority.MEMBER),
