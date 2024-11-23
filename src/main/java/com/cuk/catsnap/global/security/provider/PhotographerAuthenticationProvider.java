@@ -1,6 +1,6 @@
 package com.cuk.catsnap.global.security.provider;
 
-import com.cuk.catsnap.global.security.authentication.PhotographerAuthentication;
+import com.cuk.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
 import com.cuk.catsnap.global.security.service.PhotographerDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -25,7 +25,7 @@ public class PhotographerAuthenticationProvider implements AuthenticationProvide
 
         if (passwordEncoder.matches(password, photographerDetails.getPassword())) {
             Long photographerId = photographerDetailsService.getPhotographerId(username);
-            return new PhotographerAuthentication(
+            return new PhotographerAuthenticationToken(
                 photographerDetails.getUsername(),
                 photographerDetails.getPassword(),
                 photographerDetails.getAuthorities(),
@@ -39,6 +39,6 @@ public class PhotographerAuthenticationProvider implements AuthenticationProvide
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return PhotographerAuthentication.class.isAssignableFrom(authentication);
+        return PhotographerAuthenticationToken.class.isAssignableFrom(authentication);
     }
 }

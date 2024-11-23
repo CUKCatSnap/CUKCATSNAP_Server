@@ -1,7 +1,9 @@
 package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
-import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
 import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import io.jsonwebtoken.Claims;
@@ -21,7 +23,6 @@ import java.util.Collection;
 import java.util.List;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -52,14 +53,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 List<String> authorities = claims.get("authorities", List.class);
 
                 Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-                UsernamePasswordAuthenticationToken authenticationToken;
+                CatsnapAuthenticationToken authenticationToken = null;
                 if (authorities.get(0).equals(CatsnapAuthority.MEMBER.name())) {
                     grantedAuthorities.add(CatsnapAuthority.MEMBER);
+                    authenticationToken = new MemberAuthenticationToken(identifier, null,
+                        grantedAuthorities,
+                        id);
                 } else if (authorities.get(0).equals(CatsnapAuthority.PHOTOGRAPHER.name())) {
                     grantedAuthorities.add(CatsnapAuthority.PHOTOGRAPHER);
+                    authenticationToken = new PhotographerAuthenticationToken(identifier, null,
+                        grantedAuthorities,
+                        id);
+                } else {
+                    unsuccessfulAuthentication(request, response,
+                        SecurityErrorCode.WRONG_JWT_TOKEN);
                 }
-                authenticationToken = new MemberAuthentication(identifier, null, grantedAuthorities,
-                    id);
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 filterChain.doFilter(request, response);
