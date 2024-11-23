@@ -1,4 +1,4 @@
-package com.cuk.catsnap.global.security.authentication;
+package com.cuk.catsnap.global.security.authenticationToken;
 
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;

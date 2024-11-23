@@ -1,6 +1,6 @@
 package com.cuk.catsnap.global.security.provider;
 
-import com.cuk.catsnap.global.security.authentication.MemberAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
 import com.cuk.catsnap.global.security.service.MemberDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;

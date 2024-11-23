@@ -1,6 +1,6 @@
 package com.cuk.catsnap.global.security.provider;
 
-import com.cuk.catsnap.global.security.authentication.PhotographerAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
 import com.cuk.catsnap.global.security.service.PhotographerDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;

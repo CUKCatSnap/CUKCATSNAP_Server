@@ -1,9 +1,9 @@
 package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
-import com.cuk.catsnap.global.security.authentication.CatsnapAuthenticationToken;
-import com.cuk.catsnap.global.security.authentication.MemberAuthenticationToken;
-import com.cuk.catsnap.global.security.authentication.PhotographerAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
 import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import io.jsonwebtoken.Claims;

@@ -2,8 +2,8 @@ package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.code.SecurityResultCode;
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
-import com.cuk.catsnap.global.security.authentication.CatsnapAuthenticationToken;
-import com.cuk.catsnap.global.security.authentication.PhotographerAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
 import com.cuk.catsnap.global.security.dto.SecurityRequest;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,6 +1,6 @@
 package com.cuk.catsnap.support.security;
 
-import com.cuk.catsnap.global.security.authentication.MemberAuthenticationToken;
+import com.cuk.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
 import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import java.util.List;
 import org.springframework.security.core.context.SecurityContext;
