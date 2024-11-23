@@ -2,6 +2,7 @@ package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.code.SecurityResultCode;
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
+import com.cuk.catsnap.global.security.authentication.CatsnapAuthenticationToken;
 import com.cuk.catsnap.global.security.authentication.PhotographerAuthenticationToken;
 import com.cuk.catsnap.global.security.dto.SecurityRequest;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
@@ -53,10 +54,11 @@ public class PhotographerSignInAuthenticationFilter extends AbstractAuthenticati
 
         String identifier = catsnapSignInRequest.getIdentifier();
         String password = catsnapSignInRequest.getPassword();
-        Authentication beforeAuthentication = new PhotographerAuthenticationToken(identifier,
+        CatsnapAuthenticationToken beforeAuthenticationToken = new PhotographerAuthenticationToken(
+            identifier,
             password);
         AuthenticationManager authenticationManager = this.getAuthenticationManager();
-        return authenticationManager.authenticate(beforeAuthentication);
+        return authenticationManager.authenticate(beforeAuthenticationToken);
     }
 
     @Override
