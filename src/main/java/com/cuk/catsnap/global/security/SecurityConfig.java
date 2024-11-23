@@ -6,10 +6,12 @@ import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import com.cuk.catsnap.global.security.filter.JwtAuthenticationFilter;
 import com.cuk.catsnap.global.security.filter.MemberSignInAuthenticationFilter;
 import com.cuk.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
+import com.cuk.catsnap.global.security.filter.RefreshAccessTokenFilter;
 import com.cuk.catsnap.global.security.provider.MemberAuthenticationProvider;
 import com.cuk.catsnap.global.security.provider.PhotographerAuthenticationProvider;
 import com.cuk.catsnap.global.security.service.MemberDetailsService;
 import com.cuk.catsnap.global.security.service.PhotographerDetailsService;
+import com.cuk.catsnap.global.security.util.JwtTokenAuthentication;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
@@ -83,6 +85,11 @@ public class SecurityConfig {
     }
 
     @Bean
+    public JwtTokenAuthentication jwtTokenAuthentication() {
+        return new JwtTokenAuthentication(secretKey);
+    }
+
+    @Bean
     public MemberSignInAuthenticationFilter memberSignInAuthenticationFilter() throws Exception {
         return new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper,
             servletSecurityResponse);
@@ -116,15 +123,24 @@ public class SecurityConfig {
     public SecurityFilterChain signInUpConfig(HttpSecurity http) throws Exception {
         http
             .securityMatcher("/member/signup/catsnap", "/photographer/signup/catsnap",
-                "/member/signin/catsnap", "/photographer/signin/catsnap")
+                "/member/signin/catsnap", "/photographer/signin/catsnap", "/refresh/access-token")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
-            .addFilterAt(new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper,
-                servletSecurityResponse), BasicAuthenticationFilter.class)
+            .addFilterAt(
+                new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper,
+                    servletSecurityResponse),
+                BasicAuthenticationFilter.class
+            )
             .addFilterAt(
                 new PhotographerSignInAuthenticationFilter(authenticationManager(), objectMapper,
-                    servletSecurityResponse), BasicAuthenticationFilter.class)
+                    servletSecurityResponse),
+                BasicAuthenticationFilter.class
+            )
+            .addFilterAt(
+                new RefreshAccessTokenFilter(servletSecurityResponse, jwtTokenAuthentication()),
+                BasicAuthenticationFilter.class
+            )
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors
                 .configurationSource(corsConfigurationSource()))
@@ -145,7 +161,8 @@ public class SecurityConfig {
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
-            .addFilterAt(new JwtAuthenticationFilter(servletSecurityResponse, secretKey),
+            .addFilterAt(
+                new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
                 BasicAuthenticationFilter.class)
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors
@@ -167,7 +184,8 @@ public class SecurityConfig {
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
-            .addFilterAt(new JwtAuthenticationFilter(servletSecurityResponse, secretKey),
+            .addFilterAt(
+                new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
                 BasicAuthenticationFilter.class)
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors
@@ -189,7 +207,8 @@ public class SecurityConfig {
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
-            .addFilterAt(new JwtAuthenticationFilter(servletSecurityResponse, secretKey),
+            .addFilterAt(
+                new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
                 BasicAuthenticationFilter.class)
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors
