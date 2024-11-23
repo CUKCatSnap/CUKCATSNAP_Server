@@ -180,6 +180,29 @@ public class SecurityConfig {
     }
 
     /*
+     * Photographer 또는 Member 계정으로 로그인 후 접근해야 하는 리소스에 대한 필터 설정
+     */
+    @Bean
+    public SecurityFilterChain authenticatedUserConfig(HttpSecurity http) throws Exception {
+        http
+            .securityMatcher("/review/like/*")
+            .formLogin(FormLoginConfigurer::disable)
+            .httpBasic(HttpBasicConfigurer::disable)
+            .logout(LogoutConfigurer::disable)
+            .addFilterAt(new JwtAuthenticationFilter(servletSecurityResponse, secretKey),
+                BasicAuthenticationFilter.class)
+            .csrf(AbstractHttpConfigurer::disable)
+            .cors(cors -> cors
+                .configurationSource(corsConfigurationSource()))
+            .authorizeHttpRequests(authorizeRequests ->
+                authorizeRequests
+                    .anyRequest().hasAnyAuthority(CatsnapAuthority.MEMBER.name(),
+                        CatsnapAuthority.PHOTOGRAPHER.name())
+            );
+        return http.build();
+    }
+
+    /*
      * 로그인 없이 접근 가능한 리소스에 대한 필터 설정
      */
     @Bean
