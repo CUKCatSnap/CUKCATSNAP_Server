@@ -12,6 +12,7 @@ public enum SecurityErrorCode implements ResultCode {
     NOT_AUTHENTICATED(401, "EY002", "인증되지 않은 사용자입니다."),
     WRONG_JWT_TOKEN(400, "EY003", "JWT 토큰 서명이 올바르지 않습니다."),
     EXPIRED_JWT_TOKEN(401, "EY004", "JWT 토큰이 만료되었습니다."),
+    EXPIRED_REFRESH_TOKEN(401, "EY005", "리프레시 토큰이 만료되었습니다."),
     ;
 
     private final int status;
