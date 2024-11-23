@@ -2,7 +2,7 @@ package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.code.SecurityResultCode;
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
-import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authentication.MemberAuthenticationToken;
 import com.cuk.catsnap.global.security.dto.SecurityRequest;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,7 +53,7 @@ public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProc
 
         String identifier = catsnapSignInRequest.getIdentifier();
         String password = catsnapSignInRequest.getPassword();
-        Authentication beforeAuthentication = new MemberAuthentication(identifier, password);
+        Authentication beforeAuthentication = new MemberAuthenticationToken(identifier, password);
         AuthenticationManager authenticationManager = this.getAuthenticationManager();
         return authenticationManager.authenticate(beforeAuthentication);
     }

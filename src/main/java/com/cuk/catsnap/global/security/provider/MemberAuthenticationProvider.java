@@ -1,6 +1,6 @@
 package com.cuk.catsnap.global.security.provider;
 
-import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authentication.MemberAuthenticationToken;
 import com.cuk.catsnap.global.security.service.MemberDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -25,7 +25,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 
         if (passwordEncoder.matches(password, memberDetails.getPassword())) {
             Long memberId = memberDetailsService.getMemberId(identifier);
-            return new MemberAuthentication(
+            return new MemberAuthenticationToken(
                 memberDetails.getUsername(),
                 memberDetails.getPassword(),
                 memberDetails.getAuthorities(),
@@ -37,6 +37,6 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return MemberAuthentication.class.isAssignableFrom(authentication);
+        return MemberAuthenticationToken.class.isAssignableFrom(authentication);
     }
 }

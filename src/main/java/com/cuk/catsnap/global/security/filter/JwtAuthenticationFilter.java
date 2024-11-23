@@ -1,7 +1,7 @@
 package com.cuk.catsnap.global.security.filter;
 
 import com.cuk.catsnap.global.result.errorcode.SecurityErrorCode;
-import com.cuk.catsnap.global.security.authentication.MemberAuthentication;
+import com.cuk.catsnap.global.security.authentication.MemberAuthenticationToken;
 import com.cuk.catsnap.global.security.authority.CatsnapAuthority;
 import com.cuk.catsnap.global.security.util.ServletSecurityResponse;
 import io.jsonwebtoken.Claims;
@@ -58,7 +58,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 } else if (authorities.get(0).equals(CatsnapAuthority.PHOTOGRAPHER.name())) {
                     grantedAuthorities.add(CatsnapAuthority.PHOTOGRAPHER);
                 }
-                authenticationToken = new MemberAuthentication(identifier, null, grantedAuthorities,
+                authenticationToken = new MemberAuthenticationToken(identifier, null,
+                    grantedAuthorities,
                     id);
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
