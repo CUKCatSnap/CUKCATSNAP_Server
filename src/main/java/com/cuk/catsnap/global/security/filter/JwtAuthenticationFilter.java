@@ -73,7 +73,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             /*
              * JWT 토큰이 만료된 경우
              */ catch (ExpiredJwtException e) {
-                //todo : refresh token을 추출하고 검증하는 로직 추가
+                unsuccessfulAuthentication(request, response, SecurityErrorCode.EXPIRED_JWT_TOKEN);
             }
         }
     }
