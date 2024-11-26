@@ -1,14 +1,14 @@
 package net.catsnap.domain.search.dto;
 
-import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
-import net.catsnap.domain.photographer.dto.PhotographerResponse;
-import net.catsnap.domain.reservation.dto.ReservationResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
+import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
+import net.catsnap.domain.photographer.dto.response.PhotographerFullyInformationResponse;
+import net.catsnap.domain.reservation.dto.ReservationResponse;
 
 public class SearchResponse {
 
@@ -23,7 +23,7 @@ public class SearchResponse {
     @Builder
     public static class PreviewFeedSearch {
 
-        private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
+        private PhotographerFullyInformationResponse photographerFullyInformation;
 
         @Schema(description = "검색된 피드의 id")
         private Long feedId;
@@ -50,7 +50,7 @@ public class SearchResponse {
     @Builder
     public static class DetailFeedSearch {
 
-        private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
+        private PhotographerFullyInformationResponse photographerFullyInformation;
 
         @Schema(description = "글 작성 시간")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -83,7 +83,7 @@ public class SearchResponse {
     @Builder
     public static class PreviewReviewSearch {
 
-        private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
+        private PhotographerFullyInformationResponse photographerFullyInformation;
         private MemberTinyInformationResponse memberTinyInformationResponse;
 
         @Schema(description = "검색된 리뷰의 id")
@@ -117,7 +117,7 @@ public class SearchResponse {
     @Builder
     public static class DetailReviewSearch {
 
-        private PhotographerResponse.PhotographerFullyInformation photographerFullyInformation;
+        private PhotographerFullyInformationResponse photographerFullyInformation;
 
         @Schema(description = "글 작성 시간")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
