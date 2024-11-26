@@ -1,5 +1,9 @@
 package net.catsnap.domain.review.service;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.member.repository.MemberRepository;
 import net.catsnap.domain.photographer.entity.Photographer;
@@ -15,14 +19,11 @@ import net.catsnap.domain.review.repository.ReviewLikeRepository;
 import net.catsnap.domain.review.repository.ReviewPhotoRepository;
 import net.catsnap.domain.review.repository.ReviewRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.aws.s3.ImageClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,7 +47,7 @@ public class ReviewService {
         Reservation reservation = reservationRepository.findById(
                 postReviewRequest.reservationId()
             )
-            .orElseThrow(() -> new OwnershipNotFoundException("예약 정보를 찾을 수 없습니다."));
+            .orElseThrow(() -> new ResourceNotFoundException("예약 정보를 찾을 수 없습니다."));
         if (!reservation.getMember().getId().equals(memberId)) {
             throw new OwnershipNotFoundException("예약 정보를 찾을 수 없습니다.");
         }
@@ -77,7 +78,7 @@ public class ReviewService {
                 () -> {
                     Member member = memberRepository.getReferenceById(memberId);
                     Review review = reviewRepository.findById(reviewId)
-                        .orElseThrow(() -> new OwnershipNotFoundException("리뷰 정보를 찾을 수 없습니다."));
+                        .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
                     ReviewLike reviewLike = new ReviewLike(
                         review,
                         member
@@ -96,7 +97,7 @@ public class ReviewService {
                     Photographer photographer = photographerRepository.getReferenceById(
                         photographerId);
                     Review review = reviewRepository.findById(reviewId)
-                        .orElseThrow(() -> new OwnershipNotFoundException("리뷰 정보를 찾을 수 없습니다."));
+                        .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
                     ReviewLike reviewLike = new ReviewLike(
                         review,
                         photographer

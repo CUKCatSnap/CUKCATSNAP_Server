@@ -6,6 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.util.Optional;
 import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.member.repository.MemberRepository;
 import net.catsnap.domain.photographer.entity.Photographer;
@@ -20,6 +21,7 @@ import net.catsnap.domain.review.repository.ReviewLikeRepository;
 import net.catsnap.domain.review.repository.ReviewPhotoRepository;
 import net.catsnap.domain.review.repository.ReviewRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.aws.s3.ImageClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import net.catsnap.support.fixture.MemberFixture;
@@ -31,7 +33,6 @@ import net.catsnap.support.fixture.ReviewFixture;
 import net.catsnap.support.fixture.ReviewLikeFixture;
 import net.catsnap.support.security.MemberSecurityContext;
 import net.catsnap.support.security.PhotographerSecurityContext;
-import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -138,7 +139,7 @@ class ReviewServiceTest {
 
             // when, then
             Assertions.assertThatThrownBy(() -> reviewService.postReview(postReviewRequest))
-                .isInstanceOf(OwnershipNotFoundException.class);
+                .isInstanceOf(ResourceNotFoundException.class);
         }
 
         @Test
@@ -156,6 +157,9 @@ class ReviewServiceTest {
                 .build();
             PostReviewRequest postReviewRequest = PostReviewRequestFixture.postReviewRequest()
                 .build();
+
+            given(reservationRepository.findById(reservation.getId()))
+                .willReturn(Optional.of(reservation));
 
             // when, then
             Assertions.assertThatThrownBy(() -> reviewService.postReview(postReviewRequest))

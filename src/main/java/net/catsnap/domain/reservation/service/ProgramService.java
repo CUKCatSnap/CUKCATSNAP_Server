@@ -1,5 +1,8 @@
 package net.catsnap.domain.reservation.service;
 
+import jakarta.transaction.Transactional;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
@@ -9,10 +12,8 @@ import net.catsnap.domain.reservation.dto.photographer.response.photographerProg
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
-import jakarta.transaction.Transactional;
-import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -59,7 +60,7 @@ public class ProgramService {
                     throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
                 }
             }, () -> {
-                throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
+                throw new ResourceNotFoundException("해당 프로그램을 찾을 수 없습니다.");
             });
     }
 
