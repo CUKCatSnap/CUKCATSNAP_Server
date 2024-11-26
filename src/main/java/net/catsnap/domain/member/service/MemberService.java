@@ -1,11 +1,13 @@
 package net.catsnap.domain.member.service;
 
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.member.converter.MemberConverter;
 import net.catsnap.domain.member.dto.MemberRequest;
+import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.member.repository.MemberRepository;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,13 @@ public class MemberService {
     //약관 동의 상태와 필수 약관 동의 여부 확인
     private void userTermsAgreement() {
 
+    }
+
+    public MemberTinyInformationResponse getMemberTinyInformation(Long memberId) {
+        Member member = memberRepository.findById(memberId)
+            .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
+
+        return MemberTinyInformationResponse.from(member);
     }
 
 }
