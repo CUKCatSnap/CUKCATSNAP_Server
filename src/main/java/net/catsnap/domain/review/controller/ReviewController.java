@@ -1,18 +1,18 @@
 package net.catsnap.domain.review.controller;
 
 
-import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
-import net.catsnap.domain.review.dto.request.PostReviewRequest;
-import net.catsnap.domain.review.service.ReviewService;
-import net.catsnap.domain.search.dto.SearchResponse;
-import net.catsnap.global.result.ResultResponse;
-import net.catsnap.global.result.code.ReviewResultCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
+import net.catsnap.domain.review.dto.request.PostReviewRequest;
+import net.catsnap.domain.review.service.ReviewService;
+import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
+import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.ReviewResultCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,7 +63,7 @@ public class ReviewController {
         @ApiResponse(responseCode = "200 SV002", description = "리뷰를 성공적으로 조회했습니다.")
     })
     @GetMapping("/{reviewId}")
-    public ResultResponse<SearchResponse.DetailReviewSearch> getReview(
+    public ResultResponse<ReviewSearchResponse> getReview(
         @Parameter(description = "리뷰 id")
         @PathVariable("reviewId")
         Long reviewId
