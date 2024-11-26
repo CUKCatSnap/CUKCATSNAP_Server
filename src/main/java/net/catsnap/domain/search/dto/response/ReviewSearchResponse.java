@@ -5,11 +5,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
-import net.catsnap.domain.photographer.dto.response.PhotographerFullyInformationResponse;
+import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
+import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
 
 public record ReviewSearchResponse(
-    PhotographerFullyInformationResponse photographerFullyInformation,
+    MemberTinyInformationResponse memberTinyInformation,
+    PhotographerTinyInformationResponse photographerTinyInformation,
 
     @Schema(description = "글 작성 시간")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
