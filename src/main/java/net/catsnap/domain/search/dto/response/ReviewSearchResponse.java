@@ -6,7 +6,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
 import net.catsnap.domain.photographer.dto.response.PhotographerFullyInformationResponse;
-import net.catsnap.domain.reservation.dto.ReservationResponse;
+import net.catsnap.domain.reservation.dto.ReservationLocation;
 
 public record ReviewSearchResponse(
     PhotographerFullyInformationResponse photographerFullyInformation,
@@ -16,7 +16,7 @@ public record ReviewSearchResponse(
     LocalDateTime createdAt,
 
     @Schema(description = "위치 정보")
-    ReservationResponse.Location location,
+    ReservationLocation reservationLocation,
 
     @Schema(description = "리뷰의 내용")
     String content,

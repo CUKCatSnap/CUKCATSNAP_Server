@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.photographer.dto.response.PhotographerFullyInformationResponse;
-import net.catsnap.domain.reservation.dto.ReservationResponse;
+import net.catsnap.domain.reservation.dto.ReservationLocation;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
 
 public class SearchResponse {
@@ -30,7 +30,7 @@ public class SearchResponse {
         private Long feedId;
 
         @Schema(description = "위치 정보")
-        private ReservationResponse.Location location;
+        private ReservationLocation reservationLocation;
 
         @Schema(description = "검색에 보여줄 이미지 1장")
         private String firstPhotoUrl;
@@ -58,7 +58,7 @@ public class SearchResponse {
         private LocalDateTime createdAt;
 
         @Schema(description = "위치 정보")
-        private ReservationResponse.Location location;
+        private ReservationLocation reservationLocation;
 
         @Schema(description = "피드의 내용")
         private String content;
@@ -91,7 +91,7 @@ public class SearchResponse {
         private Long reviewId;
 
         @Schema(description = "위치 정보")
-        private ReservationResponse.Location location;
+        private ReservationLocation reservationLocation;
 
         @Schema(description = "검색에 보여줄 이미지 1장")
         private String firstPhotoUrl;
