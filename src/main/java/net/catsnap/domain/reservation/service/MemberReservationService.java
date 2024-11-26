@@ -1,5 +1,11 @@
 package net.catsnap.domain.reservation.service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.member.repository.MemberRepository;
 import net.catsnap.domain.photographer.entity.Photographer;
@@ -26,6 +32,7 @@ import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotReserveAfterDeadline;
 import net.catsnap.global.Exception.reservation.CanNotStartTimeBeforeNow;
 import net.catsnap.global.Exception.reservation.DeletedProgramException;
@@ -35,12 +42,6 @@ import net.catsnap.global.Exception.reservation.OverLappingTimeException;
 import net.catsnap.global.geography.converter.GeographyConverter;
 import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -121,7 +122,7 @@ public class MemberReservationService {
             photographerLocation = photographerReservationLocationRepository.findByPhotographerId(
                 photographerId).getContent();
         } catch (NullPointerException e) {
-            throw new OwnershipNotFoundException("해당 작가의 예약 전 주의사항 또는 예약 가능한 장소가 존재하지 않습니다.");
+            throw new ResourceNotFoundException("해당 작가의 예약 전 주의사항 또는 예약 가능한 장소가 존재하지 않습니다.");
         }
         return PhotographerReservationGuidanceResponse.of(photographerLocation,
             photographerNotification);
@@ -212,7 +213,7 @@ public class MemberReservationService {
         WeekdayReservationTimeMapping weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
                 photographerId, weekday)
             .orElseThrow(
-                () -> new OwnershipNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."));
+                () -> new ResourceNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."));
         String reservationTimeFormatId = weekdayReservationTimeMapping.getReservationTimeFormatId();
         /*
          * 해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않으면 예외 발생
