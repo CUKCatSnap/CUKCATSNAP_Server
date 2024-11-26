@@ -1,7 +1,10 @@
 package net.catsnap.global.result.errorcode;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import net.catsnap.global.Exception.BusinessException;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import net.catsnap.global.Exception.reservation.CanNotChangeReservationState;
@@ -12,8 +15,6 @@ import net.catsnap.global.Exception.reservation.NotFoundProgramException;
 import net.catsnap.global.Exception.reservation.NotFoundStartTimeException;
 import net.catsnap.global.Exception.reservation.OverLappingTimeException;
 import net.catsnap.global.result.ResultCode;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -36,6 +37,7 @@ public class ErrorRepository {
             ReservationErrorCode.CANNOT_RESERVATION_BEFORE_NOW);
         errorMap.put(CanNotReserveAfterDeadline.class,
             ReservationErrorCode.CANNOT_RESERVATION_AFTER_DEADLINE);
+        errorMap.put(ResourceNotFoundException.class, OwnershipErrorCode.NOT_FOUND_RESOURCE);
     }
 
     public ResultCode getResultCode(BusinessException e) {
