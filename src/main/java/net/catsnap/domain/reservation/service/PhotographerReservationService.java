@@ -1,5 +1,10 @@
 package net.catsnap.domain.reservation.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
@@ -13,13 +18,9 @@ import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotChangeReservationState;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -101,7 +102,7 @@ public class PhotographerReservationService {
                     throw new CanNotChangeReservationState("예약 상태를 변경할 수 없습니다.");
                 }
             }, () -> {
-                throw new OwnershipNotFoundException("내가 소유한 예약 중, 해당 예약을 찾을 수 없습니다.");
+                throw new ResourceNotFoundException("해당 예약 정보를 찾을 수 없습니다.");
             });
     }
 
