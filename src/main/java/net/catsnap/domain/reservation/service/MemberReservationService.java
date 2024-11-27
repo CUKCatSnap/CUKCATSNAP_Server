@@ -262,14 +262,31 @@ public class MemberReservationService {
         reservationRepositoryList.add(
             Reservation.builder().startTime(LocalDateTime.MAX).endTime(LocalDateTime.MAX).build());
 
+        //겹치는 시간 자체가 없어야 한다.
+        LocalDateTime wantToReservationDateTime = LocalDateTime.of(wantToReservationDate,
+            wantToReservationTime);
+        LocalDateTime wantToReservationDateTimeEnd = wantToReservationDateTime.plusMinutes(
+            programDurationMinutes);
+        for (Reservation reservation : reservationRepositoryList) {
+            if (reservation.getStartTime().isAfter(wantToReservationDateTime)
+                && reservation.getEndTime().isBefore(wantToReservationDateTimeEnd)) {
+                throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
+            }
+            if (reservation.getStartTime().isEqual(wantToReservationDateTime)) {
+                throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
+            }
+        }
+
+        //reservationRepositoryList에서 종료 시간이 startTime보다 작은 값 중 가장 큰 값을 찾아야 한다.
+        //reservationRepositoryList에서 시작 시간이 endTime보다 큰 값 중 가장 작은 값을 찾아야 한다.
         for (Reservation reservation : reservationRepositoryList) {
             if (reservation.getEndTime().isBefore(startTime)) {
                 if (lastEndingBeforeStart.getEndTime().isBefore(reservation.getEndTime())) {
                     lastEndingBeforeStart = reservation;
                 }
             }
-            if (reservation.getStartTime().isAfter(endTime) && !firstStartingAfterEnd.getStartTime()
-                .isEqual(LocalDateTime.MAX)) {
+            if (reservation.getStartTime().isAfter(endTime)
+                && !firstStartingAfterEnd.getStartTime().isEqual(LocalDateTime.MAX)) {
                 firstStartingAfterEnd = reservation;
             }
         }
