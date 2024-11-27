@@ -291,8 +291,8 @@ public class MemberReservationService {
             }
         }
 
-        Duration duration = Duration.between(firstStartingAfterEnd.getEndTime(),
-            lastEndingBeforeStart.getStartTime());
+        Duration duration = Duration.between(lastEndingBeforeStart.getEndTime(),
+            firstStartingAfterEnd.getStartTime());
         if (duration.toMinutes() >= programDurationMinutes) {
             return true;
         } else {
