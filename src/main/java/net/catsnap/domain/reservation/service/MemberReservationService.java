@@ -96,6 +96,11 @@ public class MemberReservationService {
         Photographer photographer = photographerRepository.getReferenceById(
             memberReservationRequest.photographerId());
 
+        boolean isAutoReservationAccept = photographerService.findPhotographerSetting(
+            memberReservationRequest.photographerId()).getAutoReservationAccept();
+        ReservationState reservationState =
+            isAutoReservationAccept ? ReservationState.APPROVED : ReservationState.PENDING;
+
         Reservation reservation = reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
@@ -106,7 +111,7 @@ public class MemberReservationService {
             .locationName(memberReservationRequest.reservationLocation().locationName())
             .startTime(memberReservationRequest.startTime())
             .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
-            .reservationState(ReservationState.APPROVED) // todo : 작가 설정에 따른 초기 예약 상태 설정 필요
+            .reservationState(reservationState)
             .build());
 
         return ReservationBookResultResponse.from(reservation);
