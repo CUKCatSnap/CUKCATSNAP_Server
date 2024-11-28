@@ -94,7 +94,9 @@ public class MemberReservationService {
             photographerSetting)) {
             throw new CanNotReserveAfterDeadline("해당 작가는 해당 일에 예약을 받을 수 없습니다.");
         }
-        isAfterNow(memberReservationRequest.startTime());
+        if (!reservationValidatorService.isAfterNow(memberReservationRequest.startTime())) {
+            throw new CanNotStartTimeBeforeNow("현재 시간 이전의 예약은 불가능합니다.");
+        }
         isValidStartTimeInTimeFormat(startTime, weekday, memberReservationRequest.photographerId());
         isNotOverBooking(startDate, startTime, memberReservationRequest.photographerId(),
             program.getDurationMinutes());
@@ -295,14 +297,6 @@ public class MemberReservationService {
             return true;
         } else {
             throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
-        }
-    }
-
-    private boolean isAfterNow(LocalDateTime startTime) {
-        if (startTime.isAfter(LocalDateTime.now())) {
-            return true;
-        } else {
-            throw new CanNotStartTimeBeforeNow("현재 시간 이전의 예약은 불가능합니다.");
         }
     }
 }
