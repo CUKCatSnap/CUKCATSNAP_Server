@@ -14,7 +14,6 @@ import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.photographer.service.PhotographerService;
-import net.catsnap.domain.reservation.document.ReservationTimeFormat;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import net.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
@@ -26,12 +25,8 @@ import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.ReservationQueryType;
 import net.catsnap.domain.reservation.entity.ReservationState;
-import net.catsnap.domain.reservation.entity.Weekday;
-import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
-import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
-import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotReserveAfterDeadline;
@@ -53,8 +48,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberReservationService {
 
-    private final WeekdayReservationTimeMappingRepository weekdayReservationTimeMappingRepository;
-    private final ReservationTimeFormatRepository reservationTimeFormatRepository;
     private final ProgramRepository programRepository;
     private final ReservationRepository reservationRepository;
     private final MemberRepository memberRepository;
@@ -63,7 +56,6 @@ public class MemberReservationService {
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final GeographyConverter geographyConverter;
     private final PhotographerService photographerService;
-    private final WeekdayService weekdayService;
     private final ReservationValidatorService reservationValidatorService;
 
     public ReservationBookResultResponse createReservation(
@@ -71,7 +63,6 @@ public class MemberReservationService {
         Long memberId = GetAuthenticationInfo.getUserId();
         LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
         LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
-        Weekday weekday = weekdayService.getWeekday(startDate);
         PhotographerSetting photographerSetting = photographerService.findPhotographerSetting(
             memberReservationRequest.photographerId());
         Program program = programRepository.findById(
@@ -97,7 +88,10 @@ public class MemberReservationService {
         if (!reservationValidatorService.isAfterNow(memberReservationRequest.startTime())) {
             throw new CanNotStartTimeBeforeNow("현재 시간 이전의 예약은 불가능합니다.");
         }
-        isValidStartTimeInTimeFormat(startTime, weekday, memberReservationRequest.photographerId());
+        if (!reservationValidatorService.isValidStartTimeInTimeFormat(
+            memberReservationRequest.startTime(), memberReservationRequest.photographerId())) {
+            throw new NotFoundStartTimeException("해당 작가의 해당 요일에 해당 시간이 존재하지 않습니다.");
+        }
         isNotOverBooking(startDate, startTime, memberReservationRequest.photographerId(),
             program.getDurationMinutes());
 
@@ -202,36 +196,6 @@ public class MemberReservationService {
             .map(MemberReservationInformationResponse::from)
             .toList();
         return MemberReservationInformationListResponse.from(reservationListResponse);
-    }
-
-    /*
-     * 해당 일에 사용자가 원하는 예약 시작 시간이 작가의 예약 시간 테이블에 존재하는지 확인하는 메소드 입니다.
-     * wantToReservationTime는 HH:mm형식으로 들어옵니다.
-     */
-    private boolean isValidStartTimeInTimeFormat(LocalTime wantToReservationTime, Weekday weekday,
-        Long photographerId) {
-        WeekdayReservationTimeMapping weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
-                photographerId, weekday)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."));
-        String reservationTimeFormatId = weekdayReservationTimeMapping.getReservationTimeFormatId();
-        /*
-         * 해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않으면 예외 발생
-         */
-        if (reservationTimeFormatId == null) {
-            throw new NotFoundStartTimeException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다.");
-        }
-
-        ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
-            reservationTimeFormatId);
-        List<LocalTime> photographerStartTimeList = reservationTimeFormat.getStartTimeList();
-        /*
-         * 작가가 설정한 시작 시간과 일치하지 않으면 예외 발생
-         */
-        if (!photographerStartTimeList.contains(wantToReservationTime)) {
-            throw new NotFoundStartTimeException("해당 작가의 해당 요일에 해당 시간이 존재하지 않습니다.");
-        }
-        return true;
     }
 
     /*
