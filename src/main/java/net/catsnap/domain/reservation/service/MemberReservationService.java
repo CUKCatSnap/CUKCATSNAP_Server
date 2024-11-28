@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.member.repository.MemberRepository;
+import net.catsnap.domain.photographer.document.PhotographerSetting;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
@@ -63,6 +64,7 @@ public class MemberReservationService {
     private final GeographyConverter geographyConverter;
     private final PhotographerService photographerService;
     private final WeekdayService weekdayService;
+    private final ReservationValidatorService reservationValidatorService;
 
     public ReservationBookResultResponse createReservation(
         MemberReservationRequest memberReservationRequest) {
@@ -70,6 +72,8 @@ public class MemberReservationService {
         LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
         LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
         Weekday weekday = weekdayService.getWeekday(startDate);
+        PhotographerSetting photographerSetting = photographerService.findPhotographerSetting(
+            memberReservationRequest.photographerId());
         Program program = programRepository.findById(
                 memberReservationRequest.programId())
             .orElseThrow(() -> new NotFoundProgramException("해당 작가의 프로그램이 존재하지 않습니다."));
@@ -86,7 +90,10 @@ public class MemberReservationService {
          * 3. 해당 일에 사용자가 원하는 예약 시작 시간이 존재하는지 확인
          * 4. 해당 일에 시간이 중복되는지 확인(작가 설정에 따라 중복 가능)
          */
-        isAvailableReservationDate(startDate, memberReservationRequest.photographerId());
+        if (!reservationValidatorService.isWithinAllowedDays(memberReservationRequest.startTime(),
+            photographerSetting)) {
+            throw new CanNotReserveAfterDeadline("해당 작가는 해당 일에 예약을 받을 수 없습니다.");
+        }
         isAfterNow(memberReservationRequest.startTime());
         isValidStartTimeInTimeFormat(startTime, weekday, memberReservationRequest.photographerId());
         isNotOverBooking(startDate, startTime, memberReservationRequest.photographerId(),
@@ -193,20 +200,6 @@ public class MemberReservationService {
             .map(MemberReservationInformationResponse::from)
             .toList();
         return MemberReservationInformationListResponse.from(reservationListResponse);
-    }
-
-    /*
-     * 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인하는 메소드 입니다.
-     */
-    private boolean isAvailableReservationDate(LocalDate wantToReservationDate,
-        Long photographerId) {
-        Long preReservationDays = photographerService.findPhotographerSetting(photographerId)
-            .getPreReservationDays();
-        if (wantToReservationDate.isAfter(LocalDate.now().plusDays(preReservationDays))) {
-            throw new CanNotReserveAfterDeadline(
-                "해당 작가는 " + preReservationDays + "이후 까지만 예약이 가능합니다.");
-        }
-        return true;
     }
 
     /*
