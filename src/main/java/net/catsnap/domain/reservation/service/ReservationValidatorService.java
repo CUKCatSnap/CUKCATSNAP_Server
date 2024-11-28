@@ -15,7 +15,6 @@ import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
-import net.catsnap.global.Exception.reservation.NotFoundStartTimeException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,7 +58,7 @@ public class ReservationValidatorService {
          * 해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않으면 예외 발생
          */
         if (reservationTimeFormatId == null) {
-            throw new NotFoundStartTimeException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다.");
+            return false;
         }
 
         ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
