@@ -1,6 +1,5 @@
 package net.catsnap.domain.reservation.service;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -78,52 +77,29 @@ public class ReservationValidatorService {
         LocalDateTime previousReservationDay = reservationDateTime.minusDays(dayOfBothSide);
         LocalDateTime nextReservationDay = reservationDateTime.plusDays(dayOfBothSide);
 
-        List<Reservation> reservationRepositoryList = reservationRepository.findAllByPhotographerIdAndStartTimeBetweenOrderByStartTimeAsc(
+        List<Reservation> reservedReservation = reservationRepository.findAllByPhotographerIdAndStartTimeBetweenOrderByStartTimeAsc(
             photographerId, previousReservationDay, nextReservationDay);
-
-        //reservationRepositoryList에서 종료 시간이 startTime보다 작은 값 중 가장 큰 값을 찾아야 한다.
-        //reservationRepositoryList에서 시작 시간이 endTime보다 큰 값 중 가장 작은 값을 찾아야 한다.
-        Reservation lastEndingBeforeStart = Reservation.builder().startTime(LocalDateTime.MIN)
-            .endTime(LocalDateTime.MIN).build();
-        Reservation firstStartingAfterEnd = Reservation.builder().startTime(LocalDateTime.MAX)
-            .endTime(LocalDateTime.MAX).build();
-
-        //처음과 마직막에 더미 데이터를 넣어준다.
-        reservationRepositoryList.add(0,
-            Reservation.builder().startTime(LocalDateTime.MIN).endTime(LocalDateTime.MIN)
-                .build()); //불편...
-        reservationRepositoryList.add(
-            Reservation.builder().startTime(LocalDateTime.MAX).endTime(LocalDateTime.MAX).build());
 
         //겹치는 시간 자체가 없어야 한다.
         LocalDateTime wantToReservationDateTimeEnd = reservationDateTime.plusMinutes(
             programDurationMinutes);
-        for (Reservation reservation : reservationRepositoryList) {
-            if (reservation.getStartTime().isAfter(reservationDateTime)
-                && reservation.getEndTime().isBefore(wantToReservationDateTimeEnd)) {
-                return false;
-            }
+        for (Reservation reservation : reservedReservation) {
             if (reservation.getStartTime().isEqual(reservationDateTime)) {
                 return false;
             }
-        }
-
-        //reservationRepositoryList에서 종료 시간이 startTime보다 작은 값 중 가장 큰 값을 찾아야 한다.
-        //reservationRepositoryList에서 시작 시간이 endTime보다 큰 값 중 가장 작은 값을 찾아야 한다.
-        for (Reservation reservation : reservationRepositoryList) {
-            if (reservation.getEndTime().isBefore(previousReservationDay)) {
-                if (lastEndingBeforeStart.getEndTime().isBefore(reservation.getEndTime())) {
-                    lastEndingBeforeStart = reservation;
-                }
+            if (reservation.getStartTime().isBefore(reservationDateTime)
+                && reservation.getEndTime().isAfter(reservationDateTime)) {
+                return false;
             }
-            if (reservation.getStartTime().isAfter(nextReservationDay)
-                && !firstStartingAfterEnd.getStartTime().isEqual(LocalDateTime.MAX)) {
-                firstStartingAfterEnd = reservation;
+            if (reservation.getEndTime().isEqual(wantToReservationDateTimeEnd)) {
+                return false;
+            }
+            if (reservation.getStartTime().isBefore(wantToReservationDateTimeEnd)
+                && reservation.getEndTime().isAfter(wantToReservationDateTimeEnd)) {
+                return false;
             }
         }
 
-        Duration duration = Duration.between(lastEndingBeforeStart.getEndTime(),
-            firstStartingAfterEnd.getStartTime());
-        return duration.toMinutes() >= programDurationMinutes;
+        return true;
     }
 }
