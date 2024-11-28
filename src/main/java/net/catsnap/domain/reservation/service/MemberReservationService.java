@@ -1,9 +1,7 @@
 package net.catsnap.domain.reservation.service;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.member.entity.Member;
@@ -61,8 +59,6 @@ public class MemberReservationService {
     public ReservationBookResultResponse createReservation(
         MemberReservationRequest memberReservationRequest) {
         Long memberId = GetAuthenticationInfo.getUserId();
-        LocalDate startDate = memberReservationRequest.startTime().toLocalDate();
-        LocalTime startTime = memberReservationRequest.startTime().toLocalTime();
         PhotographerSetting photographerSetting = photographerService.findPhotographerSetting(
             memberReservationRequest.photographerId());
         Program program = programRepository.findById(
@@ -92,8 +88,11 @@ public class MemberReservationService {
             memberReservationRequest.startTime(), memberReservationRequest.photographerId())) {
             throw new NotFoundStartTimeException("해당 작가의 해당 요일에 해당 시간이 존재하지 않습니다.");
         }
-        isNotOverBooking(startDate, startTime, memberReservationRequest.photographerId(),
-            program.getDurationMinutes());
+        if (!reservationValidatorService.isNotOverBooking(memberReservationRequest.startTime(),
+            memberReservationRequest.photographerId(),
+            program.getDurationMinutes())) {
+            throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
+        }
 
         Member member = memberRepository.getReferenceById(memberId);
         Photographer photographer = photographerRepository.getReferenceById(
@@ -196,71 +195,5 @@ public class MemberReservationService {
             .map(MemberReservationInformationResponse::from)
             .toList();
         return MemberReservationInformationListResponse.from(reservationListResponse);
-    }
-
-    /*
-     * 해당 일에 해당 작가의 예약을 조회하고, 시간이 겹치는지 확인하는 메소드 입니다.
-     */
-    private boolean isNotOverBooking(LocalDate wantToReservationDate,
-        LocalTime wantToReservationTime, Long photographerId, Long programDurationMinutes) {
-        final int dayOfBothSide = 1;//만약, 예약 시간이 00시 이면, 전날도 고려해야 하므로 하루 전 예약 또한 고려 해야 한다.
-        LocalDateTime startTime = LocalDateTime.of(wantToReservationDate.minusDays(dayOfBothSide),
-            wantToReservationTime);
-        LocalDateTime endTime = LocalDateTime.of(wantToReservationDate.plusDays(dayOfBothSide),
-            wantToReservationTime);
-
-        List<Reservation> reservationRepositoryList = reservationRepository.findAllByPhotographerIdAndStartTimeBetweenOrderByStartTimeAsc(
-            photographerId, startTime, endTime);
-
-        //reservationRepositoryList에서 종료 시간이 startTime보다 작은 값 중 가장 큰 값을 찾아야 한다.
-        //reservationRepositoryList에서 시작 시간이 endTime보다 큰 값 중 가장 작은 값을 찾아야 한다.
-        Reservation lastEndingBeforeStart = Reservation.builder().startTime(LocalDateTime.MIN)
-            .endTime(LocalDateTime.MIN).build();
-        Reservation firstStartingAfterEnd = Reservation.builder().startTime(LocalDateTime.MAX)
-            .endTime(LocalDateTime.MAX).build();
-
-        //처음과 마직막에 더미 데이터를 넣어준다.
-        reservationRepositoryList.add(0,
-            Reservation.builder().startTime(LocalDateTime.MIN).endTime(LocalDateTime.MIN)
-                .build()); //불편...
-        reservationRepositoryList.add(
-            Reservation.builder().startTime(LocalDateTime.MAX).endTime(LocalDateTime.MAX).build());
-
-        //겹치는 시간 자체가 없어야 한다.
-        LocalDateTime wantToReservationDateTime = LocalDateTime.of(wantToReservationDate,
-            wantToReservationTime);
-        LocalDateTime wantToReservationDateTimeEnd = wantToReservationDateTime.plusMinutes(
-            programDurationMinutes);
-        for (Reservation reservation : reservationRepositoryList) {
-            if (reservation.getStartTime().isAfter(wantToReservationDateTime)
-                && reservation.getEndTime().isBefore(wantToReservationDateTimeEnd)) {
-                throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
-            }
-            if (reservation.getStartTime().isEqual(wantToReservationDateTime)) {
-                throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
-            }
-        }
-
-        //reservationRepositoryList에서 종료 시간이 startTime보다 작은 값 중 가장 큰 값을 찾아야 한다.
-        //reservationRepositoryList에서 시작 시간이 endTime보다 큰 값 중 가장 작은 값을 찾아야 한다.
-        for (Reservation reservation : reservationRepositoryList) {
-            if (reservation.getEndTime().isBefore(startTime)) {
-                if (lastEndingBeforeStart.getEndTime().isBefore(reservation.getEndTime())) {
-                    lastEndingBeforeStart = reservation;
-                }
-            }
-            if (reservation.getStartTime().isAfter(endTime)
-                && !firstStartingAfterEnd.getStartTime().isEqual(LocalDateTime.MAX)) {
-                firstStartingAfterEnd = reservation;
-            }
-        }
-
-        Duration duration = Duration.between(lastEndingBeforeStart.getEndTime(),
-            firstStartingAfterEnd.getStartTime());
-        if (duration.toMinutes() >= programDurationMinutes) {
-            return true;
-        } else {
-            throw new OverLappingTimeException("해당 시간대는 예약 중복으로 인해 예약이 불가능합니다.");
-        }
     }
 }
