@@ -1,5 +1,12 @@
 package net.catsnap.global.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import javax.crypto.SecretKey;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.member.repository.MemberRepository;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.global.security.authority.CatsnapAuthority;
@@ -13,13 +20,6 @@ import net.catsnap.global.security.service.MemberDetailsService;
 import net.catsnap.global.security.service.PhotographerDetailsService;
 import net.catsnap.global.security.util.JwtTokenAuthentication;
 import net.catsnap.global.security.util.ServletSecurityResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import javax.crypto.SecretKey;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -236,6 +236,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
                     .anyRequest().permitAll()
+            )
+            .anonymous(
+                anonymousConfigurer -> anonymousConfigurer
+                    .principal("anonymous")
+                    .authorities(List.of(CatsnapAuthority.ANONYMOUS))
             );
         return http.build();
     }
