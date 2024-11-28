@@ -19,4 +19,8 @@ public class ReservationValidatorService {
         LocalDate reservationDate = reservationDateTime.toLocalDate();
         return !reservationDate.isAfter(LocalDate.now().plusDays(preReservationDays));
     }
+
+    public boolean isAfterNow(LocalDateTime reservationDateTime) {
+        return reservationDateTime.isAfter(LocalDateTime.now());
+    }
 }
