@@ -80,7 +80,7 @@ public class ReviewService {
 
     private void memberReviewLike(Long reviewId) {
         Long memberId = GetAuthenticationInfo.getUserId();
-        reviewLikeRepository.findByIdAndMemberId(reviewId, memberId)
+        reviewLikeRepository.findByReviewIdAndMemberId(reviewId, memberId)
             .ifPresentOrElse(
                 ReviewLike::toggleLike,
                 () -> {
@@ -98,7 +98,7 @@ public class ReviewService {
 
     private void photographerReviewLike(Long reviewId) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        reviewLikeRepository.findByIdAndPhotographerId(reviewId, photographerId)
+        reviewLikeRepository.findByReviewIdAndPhotographerId(reviewId, photographerId)
             .ifPresentOrElse(
                 ReviewLike::toggleLike,
                 () -> {

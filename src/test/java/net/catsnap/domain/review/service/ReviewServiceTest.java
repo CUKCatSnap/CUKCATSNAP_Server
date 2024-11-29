@@ -194,7 +194,8 @@ class ReviewServiceTest {
                     .build();
 
                 // 좋아요를 처음 누르는 경우
-                given(reviewLikeRepository.findByIdAndMemberId(review.getId(), member.getId()))
+                given(
+                    reviewLikeRepository.findByReviewIdAndMemberId(review.getId(), member.getId()))
                     .willReturn(Optional.empty());
                 given(memberRepository.getReferenceById(member.getId()))
                     .willReturn(member);
@@ -222,7 +223,8 @@ class ReviewServiceTest {
                     .build();
 
                 // 좋아요를 누른 적 있는 경우
-                given(reviewLikeRepository.findByIdAndMemberId(review.getId(), member.getId()))
+                given(
+                    reviewLikeRepository.findByReviewIdAndMemberId(review.getId(), member.getId()))
                     .willReturn(Optional.of(reviewLike));
 
                 //when
@@ -247,7 +249,8 @@ class ReviewServiceTest {
                     .build();
 
                 // 좋아요를 누른 적 있는 경우
-                given(reviewLikeRepository.findByIdAndMemberId(review.getId(), member.getId()))
+                given(
+                    reviewLikeRepository.findByReviewIdAndMemberId(review.getId(), member.getId()))
                     .willReturn(Optional.of(reviewLike));
 
                 //when
@@ -283,7 +286,7 @@ class ReviewServiceTest {
                     .build();
 
                 // 좋아요를 처음 누르는 경우
-                given(reviewLikeRepository.findByIdAndPhotographerId(review.getId(),
+                given(reviewLikeRepository.findByReviewIdAndPhotographerId(review.getId(),
                     photographer.getId()))
                     .willReturn(Optional.empty());
                 given(photographerRepository.getReferenceById(photographer.getId()))
@@ -312,7 +315,7 @@ class ReviewServiceTest {
                     .build();
 
                 // 좋아요를 누른 적 있는 경우
-                given(reviewLikeRepository.findByIdAndPhotographerId(review.getId(),
+                given(reviewLikeRepository.findByReviewIdAndPhotographerId(review.getId(),
                     photographer.getId()))
                     .willReturn(Optional.of(reviewLike));
 
@@ -338,7 +341,7 @@ class ReviewServiceTest {
                     .build();
 
                 // 좋아요를 누른 적 있는 경우
-                given(reviewLikeRepository.findByIdAndPhotographerId(review.getId(),
+                given(reviewLikeRepository.findByReviewIdAndPhotographerId(review.getId(),
                     photographer.getId()))
                     .willReturn(Optional.of(reviewLike));
 
