@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
+import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 
 public class PhotographerResponse {
 
@@ -11,19 +12,7 @@ public class PhotographerResponse {
     @Builder
     public static class PhotographerTinyInformationList {
 
-        List<PhotographerFullyInformation> PhotographerTinyInformationList;
-    }
-
-    @Getter
-    @Builder
-    @Schema(description = "작가의 Id와 닉네임", nullable = false)
-    public static class PhotographerFullyInformation {
-
-        private Long photographerId;
-        private String nickname;
-        private String profilePhotoUrl;
-        private Double photographerRating;
-        private Integer recentReservation;
+        List<PhotographerTinyInformationResponse> PhotographerTinyInformationList;
     }
 
     @Getter

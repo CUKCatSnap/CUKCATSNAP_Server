@@ -1,12 +1,11 @@
 package net.catsnap.domain.reservation.service;
 
-import net.catsnap.domain.reservation.client.HolidayClient;
-import net.catsnap.domain.reservation.document.Holiday;
-import net.catsnap.domain.reservation.repository.HolidayRepository;
-import jakarta.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.reservation.client.HolidayClient;
+import net.catsnap.domain.reservation.document.Holiday;
+import net.catsnap.domain.reservation.repository.HolidayRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -30,13 +29,5 @@ public class HolidayService {
 
     public Boolean isHoliday(LocalDate date) {
         return holidayRepository.findById(date.toString()).isPresent();
-    }
-
-    @PostConstruct
-    public void init(
-    ) {
-        if (!env.equals("test")) {
-            saveHolidays();
-        }
     }
 }

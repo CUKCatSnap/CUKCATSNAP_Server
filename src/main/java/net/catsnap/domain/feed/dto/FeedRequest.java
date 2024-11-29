@@ -1,10 +1,10 @@
 package net.catsnap.domain.feed.dto;
 
-import net.catsnap.domain.reservation.dto.ReservationResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.catsnap.domain.reservation.dto.ReservationLocation;
 
 public class FeedRequest {
 
@@ -24,7 +24,7 @@ public class FeedRequest {
     public static class PostFeed {
 
         @Schema(description = "작가가 피드 사진을 찍은 위치")
-        private ReservationResponse.Location location;
+        private ReservationLocation location;
         @Schema(description = "피드 내용")
         private String content;
         @Schema(description = "업로드 하고자 하는 사진 파일의 이름")

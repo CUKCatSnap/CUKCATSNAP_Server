@@ -34,6 +34,11 @@ public class ReviewFixture {
         return this;
     }
 
+    public ReviewFixture reservation(Reservation reservation) {
+        this.reservation = reservation;
+        return this;
+    }
+
     public Review build() {
         return Review.builder()
             .id(id)

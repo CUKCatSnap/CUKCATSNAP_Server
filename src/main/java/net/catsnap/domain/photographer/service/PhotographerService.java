@@ -1,19 +1,21 @@
 package net.catsnap.domain.photographer.service;
 
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.photographer.converter.PhotographerConverter;
 import net.catsnap.domain.photographer.document.PhotographerReservationLocation;
 import net.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import net.catsnap.domain.photographer.document.PhotographerSetting;
 import net.catsnap.domain.photographer.dto.PhotographerRequest;
+import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.photographer.repository.PhotographerSettingRepository;
 import net.catsnap.domain.reservation.service.PhotographerReservationService;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -122,4 +124,10 @@ public class PhotographerService {
         return photographerSettingRepository.findByPhotographerId(photographerId);
     }
 
+    public PhotographerTinyInformationResponse getPhotographerTinyInformation(Long photographerId) {
+        Photographer photographer = photographerRepository.findById(photographerId)
+            .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 작가입니다."));
+
+        return PhotographerTinyInformationResponse.from(photographer);
+    }
 }
