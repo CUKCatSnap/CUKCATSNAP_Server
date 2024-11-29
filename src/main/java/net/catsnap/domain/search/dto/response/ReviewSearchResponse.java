@@ -2,12 +2,13 @@ package net.catsnap.domain.search.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
 import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
+import net.catsnap.domain.reservation.entity.Reservation;
+import net.catsnap.domain.review.entity.Review;
 
 public record ReviewSearchResponse(
     MemberTinyInformationResponse memberTinyInformation,
@@ -24,13 +25,13 @@ public record ReviewSearchResponse(
     String content,
 
     @Schema(description = "리뷰 사진 URL")
-    List<URL> photoUrlList,
+    List<String> photoUrlList,
 
     @Schema(description = "작가에 대한 별점")
-    Double photographerRating,
+    Integer photographerScore,
 
     @Schema(description = "장소에 대한 별점")
-    Double placeRating,
+    Integer placeScore,
 
     @Schema(description = "좋아요 수")
     Long likeCount,
@@ -38,5 +39,28 @@ public record ReviewSearchResponse(
     @Schema(description = "내가 좋아요를 눌렀는지")
     Boolean isMeLiked
 ) {
+
+    public static ReviewSearchResponse of(
+        MemberTinyInformationResponse memberTinyInformation,
+        PhotographerTinyInformationResponse photographerTinyInformation,
+        Review review,
+        Reservation reservation,
+        List<String> photoUrlList,
+        Long likeCount,
+        Boolean isMeLiked
+    ) {
+        return new ReviewSearchResponse(
+            memberTinyInformation,
+            photographerTinyInformation,
+            review.getCreatedAt(),
+            ReservationLocation.of(reservation),
+            review.getContent(),
+            photoUrlList,
+            review.getPhotographerScore(),
+            review.getPlaceScore(),
+            likeCount,
+            isMeLiked
+        );
+    }
 
 }

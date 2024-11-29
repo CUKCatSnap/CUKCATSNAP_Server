@@ -63,11 +63,12 @@ public class ReviewController {
         @ApiResponse(responseCode = "200 SV002", description = "리뷰를 성공적으로 조회했습니다.")
     })
     @GetMapping("/{reviewId}")
-    public ResultResponse<ReviewSearchResponse> getReview(
+    public ResponseEntity<ResultResponse<ReviewSearchResponse>> getReview(
         @Parameter(description = "리뷰 id")
         @PathVariable("reviewId")
         Long reviewId
     ) {
-        return null;
+        ReviewSearchResponse reviewSearchResponse = reviewService.getReview(reviewId);
+        return ResultResponse.of(ReviewResultCode.GET_REVIEW, reviewSearchResponse);
     }
 }
