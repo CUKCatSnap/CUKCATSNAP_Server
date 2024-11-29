@@ -1,6 +1,5 @@
 package net.catsnap.domain.reservation.service;
 
-import jakarta.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -30,17 +29,5 @@ public class HolidayService {
 
     public Boolean isHoliday(LocalDate date) {
         return holidayRepository.findById(date.toString()).isPresent();
-    }
-
-    @PostConstruct
-    public void init(
-    ) {
-        if (!env.equals("test")) {
-            try {
-                saveHolidays();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
