@@ -22,6 +22,11 @@ public class ReviewLikeFixture {
         return this;
     }
 
+    public ReviewLikeFixture review(Review review) {
+        this.review = review;
+        return this;
+    }
+
     public ReviewLikeFixture member(Member member) {
         this.member = member;
         return this;
