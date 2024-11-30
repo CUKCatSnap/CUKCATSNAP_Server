@@ -1,13 +1,14 @@
 package net.catsnap;
 
+import java.time.LocalDateTime;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class JenkinsTest {
+public class HealthCheckController {
 
     @GetMapping
-    public String test() {
-        return "Hello Jenkins!";
+    public String healthCheck() {
+        return LocalDateTime.now().toString();
     }
 }
