@@ -3,24 +3,11 @@ package net.catsnap.domain.photographer.converter;
 import net.catsnap.domain.photographer.document.PhotographerReservationLocation;
 import net.catsnap.domain.photographer.document.PhotographerReservationNotice;
 import net.catsnap.domain.photographer.document.PhotographerSetting;
-import net.catsnap.domain.photographer.dto.PhotographerRequest;
 import net.catsnap.domain.photographer.dto.PhotographerResponse;
-import net.catsnap.domain.photographer.entity.Photographer;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PhotographerConverter {
-
-    public Photographer photographerSignUpToPhotographer(
-        PhotographerRequest.PhotographerSignUp photographerSignUp, String encodedPassword) {
-        return Photographer.builder()
-            .identifier(photographerSignUp.getIdentifier())
-            .password(encodedPassword)
-            .birthday(photographerSignUp.getBirthday())
-            .nickname(photographerSignUp.getNickname())
-            .phoneNumber(photographerSignUp.getPhoneNumber())
-            .build();
-    }
 
     public PhotographerResponse.PhotographerSetting toPhotographerSetting(
         PhotographerSetting photographerSetting) {

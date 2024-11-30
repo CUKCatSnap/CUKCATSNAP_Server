@@ -1,10 +1,10 @@
-package net.catsnap.domain.token.controller;
+package net.catsnap.domain.auth.controller;
 
-import net.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.catsnap.global.result.ResultResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "리프레시 토큰 발행", description = "리프레시 토큰을 발행하는 API입니다.")
 @RestController
-public class RefreshToken {
+public class RefreshTokenController {
 
     /*
      * 해당 API는 작동하지 않습니다. API 명세만을 위한 것입니다.

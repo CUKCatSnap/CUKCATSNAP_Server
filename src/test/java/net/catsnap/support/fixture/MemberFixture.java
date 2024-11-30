@@ -1,9 +1,9 @@
 package net.catsnap.support.fixture;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.entity.SnsType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import net.catsnap.domain.member.entity.Member;
+import net.catsnap.domain.member.entity.SnsType;
 
 public class MemberFixture {
 
@@ -24,6 +24,11 @@ public class MemberFixture {
 
     public MemberFixture id(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public MemberFixture identifier(String identifier) {
+        this.identifier = identifier;
         return this;
     }
 
