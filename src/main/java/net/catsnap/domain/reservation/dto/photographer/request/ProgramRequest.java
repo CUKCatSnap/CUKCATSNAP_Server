@@ -1,8 +1,8 @@
 package net.catsnap.domain.reservation.dto.photographer.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.entity.Program;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 public record ProgramRequest(
     String title,
@@ -19,6 +19,7 @@ public record ProgramRequest(
             .content(content)
             .price(price)
             .durationMinutes(durationMinutes)
+            .deleted(false)
             .build();
     }
 }
