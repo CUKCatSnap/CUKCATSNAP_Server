@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.service.MemberAuthService;
 import net.catsnap.domain.member.dto.MemberRequest;
-import net.catsnap.domain.member.service.MemberService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.MemberResultCode;
 import net.catsnap.global.security.dto.SecurityRequest;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MemberAuthController {
 
-    private final MemberService memberService;
+    private final MemberAuthService memberAuthService;
 
 
     @Operation(summary = "회원가입 API(구현 완료)", description = "회원가입을 할 수 있는 API입니다.")
@@ -37,7 +37,7 @@ public class MemberAuthController {
         @RequestBody
         MemberRequest.MemberSignUp memberSignUp
     ) {
-        memberService.singUp(memberSignUp);
+        memberAuthService.singUp(memberSignUp);
         return ResultResponse.of(MemberResultCode.MEMBER_SIGN_UP);
     }
 
