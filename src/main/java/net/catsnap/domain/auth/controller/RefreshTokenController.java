@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "리프레시 토큰 발행", description = "리프레시 토큰을 발행하는 API입니다.")
 @RestController
-public class RefreshToken {
+public class RefreshTokenController {
 
     /*
      * 해당 API는 작동하지 않습니다. API 명세만을 위한 것입니다.
