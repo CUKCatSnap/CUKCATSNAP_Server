@@ -1,7 +1,7 @@
 package net.catsnap.support.fixture;
 
-import net.catsnap.domain.photographer.entity.Photographer;
 import java.time.LocalDate;
+import net.catsnap.domain.photographer.entity.Photographer;
 
 public class PhotographerFixture {
 
@@ -19,6 +19,11 @@ public class PhotographerFixture {
 
     public PhotographerFixture id(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public PhotographerFixture identifier(String identifier) {
+        this.identifier = identifier;
         return this;
     }
 
