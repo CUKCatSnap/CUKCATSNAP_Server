@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.dto.member.request.MemberSignUpRequest;
 import net.catsnap.domain.auth.service.MemberAuthService;
-import net.catsnap.domain.member.dto.MemberRequest;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.MemberResultCode;
 import net.catsnap.global.security.dto.SecurityRequest;
@@ -35,9 +35,9 @@ public class MemberAuthController {
     public ResponseEntity<ResultResponse<MemberResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody
-        MemberRequest.MemberSignUp memberSignUp
+        MemberSignUpRequest memberSignUpRequest
     ) {
-        memberAuthService.singUp(memberSignUp);
+        memberAuthService.singUp(memberSignUpRequest);
         return ResultResponse.of(MemberResultCode.MEMBER_SIGN_UP);
     }
 
