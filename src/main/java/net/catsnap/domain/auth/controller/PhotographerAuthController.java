@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.service.PhotographerAuthService;
 import net.catsnap.domain.photographer.dto.PhotographerRequest;
-import net.catsnap.domain.photographer.service.PhotographerService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.PhotographerResultCode;
 import net.catsnap.global.security.dto.SecurityRequest;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PhotographerAuthController {
 
-    private final PhotographerService photographerService;
+    private final PhotographerAuthService photographerAuthService;
 
     @Operation(summary = "작가 회원가입 API(구현 완료)", description = "작가가 회원가입을 할 수 있는 API입니다.")
     @ApiResponses({
@@ -36,7 +36,7 @@ public class PhotographerAuthController {
         @RequestBody
         PhotographerRequest.PhotographerSignUp photographerSignUp
     ) {
-        photographerService.singUp(photographerSignUp);
+        photographerAuthService.singUp(photographerSignUp);
         return ResultResponse.of(PhotographerResultCode.PHOTOGRAPHER_SIGN_UP);
     }
 
