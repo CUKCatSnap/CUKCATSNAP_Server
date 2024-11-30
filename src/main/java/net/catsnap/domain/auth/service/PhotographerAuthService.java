@@ -1,9 +1,8 @@
 package net.catsnap.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.photographer.converter.PhotographerConverter;
+import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
 import net.catsnap.domain.photographer.document.PhotographerSetting;
-import net.catsnap.domain.photographer.dto.PhotographerRequest;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
@@ -22,22 +21,20 @@ public class PhotographerAuthService {
     private final PasswordEncoder passwordEncoder;
     private final PhotographerRepository photographerRepository;
     private final PhotographerSettingRepository photographerSettingRepository;
-    private final PhotographerConverter photographerConverter;
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
 
     private final PhotographerReservationService photographerReservationService;
 
     @Transactional
-    public void singUp(PhotographerRequest.PhotographerSignUp photographerSignUp) {
-        photographerRepository.findByIdentifier(photographerSignUp.getIdentifier())
+    public void singUp(PhotographerSignUpRequest photographerSignUpRequest) {
+        photographerRepository.findByIdentifier(photographerSignUpRequest.identifier())
             .ifPresent(Photographer -> {
                 throw new DuplicatedPhotographerException("이미 존재하는 아이디입니다.");
             });
 
-        String encodedPassword = passwordEncoder.encode(photographerSignUp.getPassword());
-        Photographer photographer = photographerConverter.photographerSignUpToPhotographer(
-            photographerSignUp, encodedPassword);
+        String encodedPassword = passwordEncoder.encode(photographerSignUpRequest.password());
+        Photographer photographer = photographerSignUpRequest.toEntity(encodedPassword);
         photographerRepository.save(photographer);
 
         /*

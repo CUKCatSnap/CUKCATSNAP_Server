@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
 import net.catsnap.domain.auth.service.PhotographerAuthService;
-import net.catsnap.domain.photographer.dto.PhotographerRequest;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.PhotographerResultCode;
 import net.catsnap.global.security.dto.SecurityRequest;
@@ -34,9 +34,9 @@ public class PhotographerAuthController {
     public ResponseEntity<ResultResponse<PhotographerResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody
-        PhotographerRequest.PhotographerSignUp photographerSignUp
+        PhotographerSignUpRequest photographerSignUpRequest
     ) {
-        photographerAuthService.singUp(photographerSignUp);
+        photographerAuthService.singUp(photographerSignUpRequest);
         return ResultResponse.of(PhotographerResultCode.PHOTOGRAPHER_SIGN_UP);
     }
 
