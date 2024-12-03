@@ -6,10 +6,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
 import net.catsnap.domain.reservation.client.HolidayClient;
 import net.catsnap.domain.reservation.document.Holiday;
+import net.catsnap.domain.reservation.dto.HolidayListResponse;
 import net.catsnap.domain.reservation.repository.HolidayRepository;
 import net.catsnap.support.fixture.HolidayFixture;
 import org.assertj.core.api.Assertions;
@@ -75,5 +77,25 @@ class HolidayServiceTest {
         // then
         Assertions.assertThat(IsHoliday).isTrue();
         Assertions.assertThat(IsNotHoliday).isFalse();
+    }
+
+    @Test
+    void 특정_달의_공휴일을_조회한다() {
+        // given
+        Holiday holiday1 = HolidayFixture.Holiday()
+            .id(LocalDate.of(2024, 1, 1))
+            .holidayName("신정")
+            .build();
+        Holiday holiday2 = HolidayFixture.Holiday()
+            .id(LocalDate.of(2024, 12, 25))
+            .holidayName("크리스마스")
+            .build();
+        given(holidayRepository.findAll()).willReturn(List.of(holiday1, holiday2));
+
+        // when
+        HolidayListResponse holidayListResponse = holidayService.getHoliday(YearMonth.of(2024, 1));
+
+        // then
+        Assertions.assertThat(holidayListResponse.holidayList().size()).isEqualTo(1);
     }
 }
