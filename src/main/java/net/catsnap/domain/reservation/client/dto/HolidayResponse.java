@@ -1,6 +1,9 @@
 package net.catsnap.domain.reservation.client.dto;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import net.catsnap.domain.reservation.document.Holiday;
 
 // RootResponse.java
 public record HolidayResponse(
@@ -41,5 +44,16 @@ public record HolidayResponse(
                 }
             }
         }
+    }
+
+    public List<Holiday> toEntity() {
+        return response.body.items.item.stream()
+            .map(item -> new Holiday(parseDate(item.locdate.toString()), item.dateName))
+            .toList();
+    }
+
+    private LocalDate parseDate(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        return LocalDate.parse(dateString, formatter);
     }
 }

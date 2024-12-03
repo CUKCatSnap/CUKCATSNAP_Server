@@ -1,10 +1,13 @@
 package net.catsnap.domain.reservation.service;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.reservation.client.HolidayClient;
-import net.catsnap.domain.reservation.document.Holiday;
+import net.catsnap.domain.reservation.dto.HolidayListResponse;
+import net.catsnap.domain.reservation.dto.HolidayResponse;
 import net.catsnap.domain.reservation.repository.HolidayRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,13 +24,21 @@ public class HolidayService {
 
     @Scheduled(cron = "${spring.holiday.schedule.cron}")
     public void saveHolidays() {
-        List<LocalDate> holidays = holidayClient.getHolidays();
-        holidays.forEach(holiday -> {
-            holidayRepository.save(new Holiday(holiday));
-        });
+        holidayRepository.saveAll(holidayClient.getHolidays());
     }
 
     public Boolean isHoliday(LocalDate date) {
         return holidayRepository.findById(date.toString()).isPresent();
+    }
+
+    public HolidayListResponse getHoliday(YearMonth date) {
+        List<HolidayResponse> holidayResponseList = new ArrayList<>();
+        holidayRepository.findAll()
+            .forEach(holiday -> {
+                if (holiday.getId().contains(date.toString())) {
+                    holidayResponseList.add(HolidayResponse.from(holiday));
+                }
+            });
+        return new HolidayListResponse(holidayResponseList);
     }
 }
