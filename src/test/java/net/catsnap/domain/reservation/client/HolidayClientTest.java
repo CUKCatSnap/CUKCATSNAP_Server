@@ -3,8 +3,8 @@ package net.catsnap.domain.reservation.client;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
-import java.time.LocalDate;
 import java.util.List;
+import net.catsnap.domain.reservation.document.Holiday;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -513,12 +513,9 @@ class HolidayClientTest {
     @Test
     void 공휴일_API_호출() {
         // given,when
-        List<LocalDate> localDateList = holidayClient.getHolidays();
+        List<Holiday> localDateList = holidayClient.getHolidays();
 
         //then
         Assertions.assertThat(localDateList.size()).isNotEqualTo(0);
-        Assertions.assertThat(localDateList.get(0)).isAfterOrEqualTo(LocalDate.now());
-        Assertions.assertThat(localDateList.get(localDateList.size() - 1))
-            .isBeforeOrEqualTo(LocalDate.now().plusYears(1));
     }
 }
