@@ -9,7 +9,6 @@ import net.catsnap.domain.reservation.client.HolidayClient;
 import net.catsnap.domain.reservation.dto.HolidayListResponse;
 import net.catsnap.domain.reservation.dto.HolidayResponse;
 import net.catsnap.domain.reservation.repository.HolidayRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +18,6 @@ public class HolidayService {
 
     private final HolidayRepository holidayRepository;
     private final HolidayClient holidayClient;
-    @Value("${spring.env}")
-    String env;
 
     @Scheduled(cron = "${spring.holiday.schedule.cron}")
     public void saveHolidays() {
