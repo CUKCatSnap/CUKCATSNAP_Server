@@ -1,8 +1,8 @@
 package net.catsnap.global.result.code;
 
-import net.catsnap.global.result.ResultCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.global.result.ResultCode;
 
 @Getter
 @RequiredArgsConstructor
@@ -23,6 +23,8 @@ public enum ReservationResultCode implements ResultCode {
     PHOTOGRAPHER_DELETE_PROGRAM(200, "SR011", "성공적으로 예약 프로그램을 삭제했습니다."),
     PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP(200, "SR012", "성공적으로 예약 시간 형식을 조회했습니다."),
     PHOTOGRAPHER_LOOK_UP_PROGRAM(200, "SR013", "성공적으로 예약 프로그램을 조회회했습니다."),
+    HOLIDAY_UPDATE(200, "SR014", "성공적으로 휴일 정보를 업데이트했습니다."),
+    HOLIDAY_LOOK_UP(200, "SR015", "성공적으로 휴일 정보를 조회했습니다."),
     ;
 
     private final int status;
