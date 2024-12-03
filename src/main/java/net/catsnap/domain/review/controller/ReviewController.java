@@ -58,7 +58,7 @@ public class ReviewController {
         return ResultResponse.of(ReviewResultCode.REVIEW_LIKE_TOGGLE);
     }
 
-    @Operation(summary = "리뷰 1개를 피드 Id로 조회하는 API", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
+    @Operation(summary = "리뷰 1개를 피드 Id로 조회하는 API(구현 완료)", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SV002", description = "리뷰를 성공적으로 조회했습니다.")
     })
