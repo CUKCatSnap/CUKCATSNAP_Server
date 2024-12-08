@@ -136,9 +136,7 @@ public class ReviewService {
     public ReviewSearchResponse getReview(Long reviewId) {
         Review review = reviewRepository.findById(reviewId)
             .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
-        List<String> photoUrlList = reviewPhotoRepository.findAllByReviewId(reviewId)
-            .stream()
-            .map(ReviewPhoto::getPhotoFileName)
+        List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
             .map(imageClient::getDownloadImageUrl)
             .map(URL::toString)
             .toList();

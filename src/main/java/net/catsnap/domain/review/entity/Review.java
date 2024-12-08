@@ -1,10 +1,5 @@
 package net.catsnap.domain.review.entity;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.notification.entity.PlaceSubscribeNotification;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.reservation.entity.Reservation;
-import net.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,6 +16,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.catsnap.domain.member.entity.Member;
+import net.catsnap.domain.notification.entity.PlaceSubscribeNotification;
+import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.reservation.entity.Reservation;
+import net.catsnap.global.entity.BaseTimeEntity;
 
 @Entity
 @Table(name = "review")
@@ -65,4 +65,10 @@ public class Review extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "review")
     private List<PlaceSubscribeNotification> placeSubscribeNotificationList;
+
+    public List<String> getReivewPhotoFileNameList() {
+        return reviewPhotoList.stream()
+            .map(ReviewPhoto::getPhotoFileName)
+            .toList();
+    }
 }
