@@ -4,14 +4,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.member.repository.MemberRepository;
-import net.catsnap.domain.member.service.MemberService;
-import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
-import net.catsnap.domain.photographer.service.PhotographerService;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
@@ -43,8 +39,6 @@ public class ReviewService {
     private final ReviewLikeRepository reviewLikeRepository;
     private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
-    private final MemberService memberService;
-    private final PhotographerService photographerService;
     private final ReviewLikeService reviewLikeService;
 
     @Transactional
@@ -139,25 +133,17 @@ public class ReviewService {
         );
     }
 
+    @Transactional
     public ReviewSearchResponse getReview(Long reviewId) {
         Review review = reviewRepository.findById(reviewId)
             .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
-        List<String> photoUrlList = reviewPhotoRepository.findAllByReviewId(reviewId)
-            .stream()
-            .map(ReviewPhoto::getPhotoFileName)
+        List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
             .map(imageClient::getDownloadImageUrl)
             .map(URL::toString)
             .toList();
 
-        MemberTinyInformationResponse memberTinyInformation = memberService.getMemberTinyInformation(
-            review.getMember().getId());
-        PhotographerTinyInformationResponse photographerTinyInformation = photographerService.getPhotographerTinyInformation(
-            review.getPhotographer().getId());
         Long likeCount = reviewLikeService.getReviewLikeCount(reviewId);
         Boolean isMeLiked = reviewLikeService.isMeReviewLiked(reviewId);
-        return ReviewSearchResponse.of(
-            memberTinyInformation, photographerTinyInformation, review, review.getReservation(),
-            photoUrlList, likeCount, isMeLiked
-        );
+        return ReviewSearchResponse.of(review, photoUrlList, likeCount, isMeLiked);
     }
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
-import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.review.entity.Review;
 
 public record ReviewSearchResponse(
@@ -41,19 +40,16 @@ public record ReviewSearchResponse(
 ) {
 
     public static ReviewSearchResponse of(
-        MemberTinyInformationResponse memberTinyInformation,
-        PhotographerTinyInformationResponse photographerTinyInformation,
         Review review,
-        Reservation reservation,
         List<String> photoUrlList,
         Long likeCount,
         Boolean isMeLiked
     ) {
         return new ReviewSearchResponse(
-            memberTinyInformation,
-            photographerTinyInformation,
+            MemberTinyInformationResponse.from(review.getMember()),
+            PhotographerTinyInformationResponse.from(review.getPhotographer()),
             review.getCreatedAt(),
-            ReservationLocation.of(reservation),
+            ReservationLocation.of(review.getReservation()),
             review.getContent(),
             photoUrlList,
             review.getPhotographerScore(),
