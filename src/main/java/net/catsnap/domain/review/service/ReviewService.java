@@ -133,6 +133,7 @@ public class ReviewService {
         );
     }
 
+    @Transactional
     public ReviewSearchResponse getReview(Long reviewId) {
         Review review = reviewRepository.findById(reviewId)
             .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
