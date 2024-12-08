@@ -41,8 +41,6 @@ public record ReviewSearchResponse(
 ) {
 
     public static ReviewSearchResponse of(
-        MemberTinyInformationResponse memberTinyInformation,
-        PhotographerTinyInformationResponse photographerTinyInformation,
         Review review,
         Reservation reservation,
         List<String> photoUrlList,
@@ -50,8 +48,8 @@ public record ReviewSearchResponse(
         Boolean isMeLiked
     ) {
         return new ReviewSearchResponse(
-            memberTinyInformation,
-            photographerTinyInformation,
+            MemberTinyInformationResponse.from(review.getMember()),
+            PhotographerTinyInformationResponse.from(review.getPhotographer()),
             review.getCreatedAt(),
             ReservationLocation.of(reservation),
             review.getContent(),
