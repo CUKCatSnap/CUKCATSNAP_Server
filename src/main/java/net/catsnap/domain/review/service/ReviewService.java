@@ -143,8 +143,6 @@ public class ReviewService {
 
         Long likeCount = reviewLikeService.getReviewLikeCount(reviewId);
         Boolean isMeLiked = reviewLikeService.isMeReviewLiked(reviewId);
-        return ReviewSearchResponse.of(
-            review, review.getReservation(), photoUrlList, likeCount, isMeLiked
-        );
+        return ReviewSearchResponse.of(review, photoUrlList, likeCount, isMeLiked);
     }
 }
