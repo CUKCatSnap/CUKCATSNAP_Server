@@ -50,4 +50,12 @@ public class GlobalBusinessExceptionHandler {
         logService.log(Level.INFO, e, request);
         return ResultResponse.of(CommonErrorCode.INVALID_REQUEST_BODY);
     }
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<ResultResponse<ResultCode>> handleException(Exception e,
+        HttpServletRequest request)
+        throws IOException {
+        logService.log(Level.ERROR, e, request);
+        return ResultResponse.of(CommonErrorCode.INTERNAL_SERVER_ERROR);
+    }
 }
