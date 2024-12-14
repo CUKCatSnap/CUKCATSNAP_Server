@@ -157,7 +157,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain authenticatedPhotographerConfig(HttpSecurity http) throws Exception {
         http
-            .securityMatcher("/reservation/photographer/my/**")
+            .securityMatcher("/reservation/photographer/my/**", "/photographer/my/**")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
