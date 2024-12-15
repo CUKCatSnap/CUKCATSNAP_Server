@@ -1,5 +1,14 @@
 package net.catsnap.domain.reservation.service;
 
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.reservation.document.ReservationTimeFormat;
@@ -16,17 +25,8 @@ import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
-import com.mongodb.client.result.DeleteResult;
-import com.mongodb.client.result.UpdateResult;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,7 +46,7 @@ public class ReservationTimeService {
         Weekday weekday = weekdayService.getWeekday(date);
         String ReservationTimeFormatId = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
                 photographerId, weekday)
-            .orElseThrow(() -> new OwnershipNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."))
+            .orElseThrow(() -> new ResourceNotFoundException("해당 작가의 해당 요일에 예약 시간 설정이 존재하지 않습니다."))
             .getReservationTimeFormatId();
         ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
             ReservationTimeFormatId);
@@ -147,21 +147,37 @@ public class ReservationTimeService {
     public void mappingWeekdayToReservationTimeFormat(String reservationTimeFormatId,
         Weekday weekday) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
-            photographerId, weekday);
-        weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
-                mapping.updateReservationTimeFormatId(reservationTimeFormatId),
-            () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
-        );
+        weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,
+                weekday)
+            .ifPresentOrElse(mapping ->
+                    mapping.updateReservationTimeFormatId(reservationTimeFormatId),
+                () -> {
+                    weekdayReservationTimeMappingRepository.save(
+                        WeekdayReservationTimeMapping.builder()
+                            .photographer(photographerRepository.getReferenceById(photographerId))
+                            .weekday(weekday)
+                            .reservationTimeFormatId(reservationTimeFormatId)
+                            .build()
+                    );
+                }
+            );
     }
 
     public void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday) {
         Long photographerId = GetAuthenticationInfo.getUserId();
-        Optional<WeekdayReservationTimeMapping> weekdayReservationTimeMapping = weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(
-            photographerId, weekday);
-        weekdayReservationTimeMapping.ifPresentOrElse(mapping ->
-                mapping.updateReservationTimeFormatId(null),
-            () -> new OwnershipNotFoundException("내가 소유한 요일 중, 해당 요일을 찾을 수 없습니다.")
-        );
+        weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,
+                weekday)
+            .ifPresentOrElse(mapping ->
+                    mapping.updateReservationTimeFormatId(null),
+                () -> {
+                    weekdayReservationTimeMappingRepository.save(
+                        WeekdayReservationTimeMapping.builder()
+                            .photographer(photographerRepository.getReferenceById(photographerId))
+                            .weekday(weekday)
+                            .reservationTimeFormatId(null)
+                            .build()
+                    );
+                }
+            );
     }
 }

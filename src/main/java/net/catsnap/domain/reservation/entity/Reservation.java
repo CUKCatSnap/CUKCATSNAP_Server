@@ -1,10 +1,5 @@
 package net.catsnap.domain.reservation.entity;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.notification.entity.ReservationNotification;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.review.entity.Review;
-import net.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,6 +19,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.catsnap.domain.member.entity.Member;
+import net.catsnap.domain.notification.entity.ReservationNotification;
+import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.review.entity.Review;
+import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.entity.BaseTimeEntity;
 import org.locationtech.jts.geom.Point;
 
 @Entity
@@ -77,5 +78,17 @@ public class Reservation extends BaseTimeEntity {
 
     public void setReservationState(ReservationState reservationState) {
         this.reservationState = reservationState;
+    }
+
+    public void checkPhotographerOwnership(Long photographerId) {
+        if (!this.photographer.getId().equals(photographerId)) {
+            throw new OwnershipNotFoundException("해당 예약은 작가의 것이 아닙니다.");
+        }
+    }
+
+    public void checkMemberOwnership(Long memberId) {
+        if (!this.member.getId().equals(memberId)) {
+            throw new OwnershipNotFoundException("해당 예약은 회원의 것이 아닙니다.");
+        }
     }
 }

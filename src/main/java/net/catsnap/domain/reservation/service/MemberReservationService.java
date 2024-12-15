@@ -25,7 +25,6 @@ import net.catsnap.domain.reservation.entity.ReservationQueryType;
 import net.catsnap.domain.reservation.entity.ReservationState;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
-import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotReserveAfterDeadline;
 import net.catsnap.global.Exception.reservation.CanNotStartTimeBeforeNow;
@@ -64,9 +63,7 @@ public class MemberReservationService {
         Program program = programRepository.findById(
                 memberReservationRequest.programId())
             .orElseThrow(() -> new NotFoundProgramException("해당 작가의 프로그램이 존재하지 않습니다."));
-        if (!program.getPhotographer().getId().equals(memberReservationRequest.photographerId())) {
-            throw new OwnershipNotFoundException("해당 작가의 프로그램이 아닙니다.");
-        }
+        program.checkOwnership(memberReservationRequest.photographerId());
         if (program.getDeleted()) {
             throw new DeletedProgramException("해당 작가의 프로그램이 삭제되었습니다.");
         }
