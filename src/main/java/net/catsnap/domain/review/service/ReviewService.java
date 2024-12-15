@@ -19,7 +19,6 @@ import net.catsnap.domain.review.repository.ReviewLikeRepository;
 import net.catsnap.domain.review.repository.ReviewPhotoRepository;
 import net.catsnap.domain.review.repository.ReviewRepository;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
-import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.aws.s3.ImageClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
@@ -50,10 +49,7 @@ public class ReviewService {
                 postReviewRequest.reservationId()
             )
             .orElseThrow(() -> new ResourceNotFoundException("예약 정보를 찾을 수 없습니다."));
-        if (!reservation.getMember().getId().equals(memberId)) {
-            throw new OwnershipNotFoundException("예약 정보를 찾을 수 없습니다.");
-        }
-
+        reservation.checkMemberOwnership(memberId);
         Review review = postReviewRequest.toReviewEntity(reservation.getMember(),
             reservation.getPhotographer(),
             reservation);

@@ -17,7 +17,6 @@ import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
-import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotChangeReservationState;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
@@ -94,9 +93,8 @@ public class PhotographerReservationService {
         Long photographerId = GetAuthenticationInfo.getUserId();
         reservationRepository.findById(reservationId)
             .ifPresentOrElse(reservation -> {
-                if (reservation.getPhotographer().getId().equals(photographerId)) {
-                    throw new OwnershipNotFoundException("내가 소유한 예약 중, 해당 예약을 찾을 수 없습니다.");
-                } else if (isPossibleChangeReservationState(reservation, reservationState)) {
+                reservation.checkPhotographerOwnership(photographerId);
+                if (isPossibleChangeReservationState(reservation, reservationState)) {
                     reservation.setReservationState(reservationState);
                 } else {
                     throw new CanNotChangeReservationState("예약 상태를 변경할 수 없습니다.");
