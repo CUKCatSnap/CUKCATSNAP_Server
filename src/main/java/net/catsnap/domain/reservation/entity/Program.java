@@ -1,7 +1,5 @@
 package net.catsnap.domain.reservation.entity;
 
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +14,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
+import net.catsnap.global.entity.BaseTimeEntity;
 
 
 /*
@@ -60,5 +61,11 @@ public class Program extends BaseTimeEntity {
 
     public void softDelete() {
         this.deleted = true;
+    }
+    
+    public void checkOwnership(Long photographerId) {
+        if (!this.photographer.getId().equals(photographerId)) {
+            throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
+        }
     }
 }
