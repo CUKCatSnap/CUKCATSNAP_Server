@@ -11,7 +11,6 @@ import net.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
 import net.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
-import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.stereotype.Service;
@@ -54,11 +53,8 @@ public class ProgramService {
         Long photographerId = GetAuthenticationInfo.getUserId();
         programRepository.findById(programId).ifPresentOrElse(
             p -> {
-                if (p.getPhotographer().getId().equals(photographerId)) {
-                    p.softDelete();
-                } else {
-                    throw new OwnershipNotFoundException("내가 소유한 프로그램 중, 해당 프로그램을 찾을 수 없습니다.");
-                }
+                p.checkOwnership(photographerId);
+                p.softDelete();
             }, () -> {
                 throw new ResourceNotFoundException("해당 프로그램을 찾을 수 없습니다.");
             });
