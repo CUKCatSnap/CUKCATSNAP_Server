@@ -12,12 +12,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 @Component
 public class LogService {
 
     private final String LOG_FORMAT
-        = "\n[ERROR]\n{}: {} \n[REQUEST URL] ({} {})\n[QUERY STRING] {} \n[REQUEST BODY] {}  \n[USER TYPE] {} \n[User DB Id] {} \n[CALLED BY] \n{}";
+        = "\n[ERROR]\n{}: {} \n[REQUEST URL] ({} {})\n[QUERY STRING] {} \n[REQUEST BODY] \n{}  \n[USER TYPE] {} \n[User DB Id] {} \n[CALLED BY] \n{}";
     private final Logger logger = LoggerFactory.getLogger("ErrorLogger");
 
     private final Map<Level, LogFunction> logFunctions = Map.of(
@@ -43,15 +44,20 @@ public class LogService {
     }
 
     private String getRequestBody(HttpServletRequest request) throws IOException {
-        try (InputStream inputStream = request.getInputStream(); Scanner scanner = new Scanner(
-            inputStream,
-            StandardCharsets.UTF_8)) {
-            if (scanner.useDelimiter("\\A").hasNext()) {
-                return scanner.next();
-            } else {
-                return "null";
+        ContentCachingRequestWrapper cachedRequest = (ContentCachingRequestWrapper) request;
+        String requestBody = new String(cachedRequest.getContentAsByteArray(), "UTF-8");
+        if (requestBody.isEmpty()) {
+            try (InputStream inputStream = request.getInputStream(); Scanner scanner = new Scanner(
+                inputStream,
+                StandardCharsets.UTF_8)) {
+                if (scanner.useDelimiter("\\A").hasNext()) {
+                    requestBody = scanner.next();
+                } else {
+                    requestBody = "null";
+                }
             }
         }
+        return requestBody;
     }
 
     @FunctionalInterface
