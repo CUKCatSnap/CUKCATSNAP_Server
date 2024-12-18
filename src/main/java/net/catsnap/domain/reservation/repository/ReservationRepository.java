@@ -1,13 +1,15 @@
 package net.catsnap.domain.reservation.repository;
 
-import net.catsnap.domain.reservation.entity.Reservation;
-import net.catsnap.domain.reservation.entity.ReservationState;
 import java.time.LocalDateTime;
 import java.util.List;
+import net.catsnap.domain.reservation.entity.Reservation;
+import net.catsnap.domain.reservation.entity.ReservationState;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
@@ -35,4 +37,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
         "program"}, type = EntityGraph.EntityGraphType.FETCH)
     List<Reservation> findAllReservationWithEagerByMemberIdAndStartTimeBetween(Long memberId,
         LocalDateTime startTime, LocalDateTime endTime);
+
+    @Query(value = "SELECT pg_advisory_xact_lock(:photographerId)", nativeQuery = true)
+    void acquireReservationLock(@Param("photographerId") Long photographerId);
 }
