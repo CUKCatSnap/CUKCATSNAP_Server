@@ -68,6 +68,8 @@ public class MemberReservationService {
             throw new DeletedProgramException("해당 작가의 프로그램이 삭제되었습니다.");
         }
 
+        reservationRepository.acquireReservationLock(memberReservationRequest.photographerId());
+        
         /*
          * 1. 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인
          * 2. 예약 시작 시간이 현재 시간보다 이후인지 확인
