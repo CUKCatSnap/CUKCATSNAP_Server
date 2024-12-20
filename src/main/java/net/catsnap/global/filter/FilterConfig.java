@@ -13,8 +13,8 @@ public class FilterConfig {
         FilterRegistrationBean<RequestWrappingFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new RequestWrappingFilter());
         // OrderedFilter.REQUEST_WRAPPER_FILTER_MAX_ORDER-100은 FilterChainProxy의 Order입니다.
-        // 따라서 FilterChainProxy 이전에 실행되도록 이보다 1낮은 값으로 설정합니다.
-        registrationBean.setOrder(OrderedFilter.REQUEST_WRAPPER_FILTER_MAX_ORDER - 101);
+        // FilterChainProxy가 나중에 실행되도록 설정합니다.
+        registrationBean.setOrder(OrderedFilter.REQUEST_WRAPPER_FILTER_MAX_ORDER - 99);
         return registrationBean;
     }
 }
