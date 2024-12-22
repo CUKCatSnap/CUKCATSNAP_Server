@@ -90,19 +90,6 @@ public class SecurityConfig {
     }
 
     @Bean
-    public MemberSignInAuthenticationFilter memberSignInAuthenticationFilter() throws Exception {
-        return new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper,
-            servletSecurityResponse);
-    }
-
-    @Bean
-    public PhotographerSignInAuthenticationFilter photographerSignInAuthenticationFilter()
-        throws Exception {
-        return new PhotographerSignInAuthenticationFilter(authenticationManager(), objectMapper,
-            servletSecurityResponse);
-    }
-
-    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(
