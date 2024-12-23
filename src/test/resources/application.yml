@@ -43,3 +43,9 @@ spring:
         raw: raw-bucket
         resized-400: resized-bucket
       presigned-url-expiration: 1000000
+
+naver:
+  client-id: client-id
+  client-secret: client-secret
+  reverse-geocoding:
+    url: https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc
