@@ -67,7 +67,7 @@ public record ReverseGeocodingResponse(
     public LegalAddress toLegalAddress() {
         return new LegalAddress(
             results.get(0).region.area1.name,
-            results.get(0).region.area1.name,
+            results.get(0).region.area2.name,
             results.get(0).region.area3.name
         );
     }
