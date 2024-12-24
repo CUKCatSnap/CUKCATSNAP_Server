@@ -14,6 +14,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
+/*
+ * 시군구명을 저장하는 테이블입니다. (ex, 강남구, 종로구)
+ */
 @Entity
 @Table(name = "district_level")
 @Getter

@@ -14,6 +14,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
+/*
+ * 시도명을 저장하는 테이블입니다. (ex, 서울특별시, 경기도)
+ */
 @Entity
 @Table(name = "city_level")
 @Getter

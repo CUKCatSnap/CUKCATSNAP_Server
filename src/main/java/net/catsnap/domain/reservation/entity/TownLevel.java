@@ -14,6 +14,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
+/*
+ * 읍면동명을 저장하는 테이블입니다. (ex, 역삼동, 신사동)
+ */
 @Entity
 @Table(name = "town_level")
 @Getter
