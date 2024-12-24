@@ -27,7 +27,7 @@ public class TownLevel {
     private Long id;
 
     private String code;
-    private String CityName;
+    private String TownName;
 
     @Column(columnDefinition = "geometry(Point, 4326)")
     private Point center;

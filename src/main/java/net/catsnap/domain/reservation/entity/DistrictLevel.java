@@ -27,7 +27,7 @@ public class DistrictLevel {
     private Long id;
 
     private String code;
-    private String CityName;
+    private String DistrictName;
 
     @Column(columnDefinition = "geometry(Point, 4326)")
     private Point center;
