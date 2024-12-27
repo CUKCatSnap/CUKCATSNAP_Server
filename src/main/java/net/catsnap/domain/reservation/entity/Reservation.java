@@ -68,18 +68,6 @@ public class Reservation extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private ReservationState reservationState;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_level_id")
-    private CityLevel cityLevel;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "district_level_id")
-    private DistrictLevel districtLevel;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "town_level_id")
-    private TownLevel townLevel;
-
     //OneToMany
 
     @OneToMany(mappedBy = "reservation")

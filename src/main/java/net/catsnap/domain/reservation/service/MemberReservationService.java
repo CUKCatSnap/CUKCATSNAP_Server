@@ -12,7 +12,6 @@ import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.photographer.service.PhotographerService;
-import net.catsnap.domain.reservation.dto.LegalAddressEntity;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import net.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
@@ -55,7 +54,6 @@ public class MemberReservationService {
     private final GeographyConverter geographyConverter;
     private final PhotographerService photographerService;
     private final ReservationValidatorService reservationValidatorService;
-    private final LocationService locationService;
 
     public ReservationBookResultResponse createReservation(
         MemberReservationRequest memberReservationRequest) {
@@ -71,7 +69,7 @@ public class MemberReservationService {
         }
 
         reservationRepository.acquireReservationLock(memberReservationRequest.photographerId());
-
+        
         /*
          * 1. 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인
          * 2. 예약 시작 시간이 현재 시간보다 이후인지 확인
@@ -104,11 +102,6 @@ public class MemberReservationService {
         ReservationState reservationState =
             isAutoReservationAccept ? ReservationState.APPROVED : ReservationState.PENDING;
 
-        LegalAddressEntity legalAddressEntity = locationService.getLegalAddressEntity(
-            memberReservationRequest.reservationLocation().latitude(),
-            memberReservationRequest.reservationLocation().longitude()
-        );
-
         Reservation reservation = reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
@@ -120,9 +113,6 @@ public class MemberReservationService {
             .startTime(memberReservationRequest.startTime())
             .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
             .reservationState(reservationState)
-            .cityLevel(legalAddressEntity.cityLevel())
-            .districtLevel(legalAddressEntity.districtLevel())
-            .townLevel(legalAddressEntity.townLevel())
             .build());
 
         return ReservationBookResultResponse.from(reservation);
