@@ -120,9 +120,9 @@ class ReverseGeocodingClientTest {
         LegalAddress legalAddress = reverseGeocodingClient.getLegalAddress(latitude, longitude);
 
         // then
-        Assertions.assertThat(legalAddress.getLevel0()).isEqualTo("서울특별시");
-        Assertions.assertThat(legalAddress.getLevel1()).isEqualTo("종로구");
-        Assertions.assertThat(legalAddress.getLevel2()).isEqualTo("세종로");
+        Assertions.assertThat(legalAddress.getCityName()).isEqualTo("서울특별시");
+        Assertions.assertThat(legalAddress.getDistrictName()).isEqualTo("종로구");
+        Assertions.assertThat(legalAddress.getTownName()).isEqualTo("세종로");
     }
 
     @Test
