@@ -68,22 +68,20 @@ public class ReservationTimeService {
             LocalDateTime.of(date, LocalTime.MAX));
 
         List<PhotographerAvailableReservationTimeResponse> photographerAvailableReservationTimeResponseArrayList = new ArrayList<>();
+
         for (LocalTime startTime : photographerStartTimeList) {
             boolean isAvailableReservation = true;
-            LocalDateTime startDateTime = LocalDateTime.now().toLocalDate().atTime(startTime);
             for (Reservation reservation : reservationList) {
-                LocalDateTime reservationStartTime = reservation.getStartTime();
-                LocalDateTime reservationEndTime = reservation.getEndTime();
-                if (reservationStartTime.isAfter(startDateTime)
-                    || reservationStartTime.isEqual(startDateTime)
-                    && reservationEndTime.isBefore(startDateTime) || reservationEndTime.isEqual(
-                    startDateTime)) {
+                if (reservation.getStartTime().toLocalTime().equals(startTime)
+                    || reservation.getEndTime().toLocalTime().isAfter(startTime)
+                    && reservation.getStartTime().toLocalTime().isBefore(startTime)) {
                     isAvailableReservation = false;
                     break;
                 }
             }
             photographerAvailableReservationTimeResponseArrayList.add(
-                PhotographerAvailableReservationTimeResponse.of(startTime, isAvailableReservation));
+                PhotographerAvailableReservationTimeResponse.of(startTime, isAvailableReservation)
+            );
         }
 
         return PhotographerAvailableReservationTimeListResponse.from(
