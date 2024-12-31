@@ -3,7 +3,6 @@ package net.catsnap.domain.client;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
-import net.catsnap.domain.client.dto.LegalAddress;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -117,12 +116,10 @@ class ReverseGeocodingClientTest {
             .andRespond(withSuccess(expectedResult, MediaType.APPLICATION_JSON));
 
         // when
-        LegalAddress legalAddress = reverseGeocodingClient.getLegalAddress(latitude, longitude);
+        String legalAddressCode = reverseGeocodingClient.getLegalAddressCode(latitude, longitude);
 
         // then
-        Assertions.assertThat(legalAddress.getLevel0()).isEqualTo("서울특별시");
-        Assertions.assertThat(legalAddress.getLevel1()).isEqualTo("종로구");
-        Assertions.assertThat(legalAddress.getLevel2()).isEqualTo("세종로");
+        Assertions.assertThat(legalAddressCode).isEqualTo("1111011900");
     }
 
     @Test
@@ -147,7 +144,7 @@ class ReverseGeocodingClientTest {
 
         // when, then
         Assertions.assertThatThrownBy(
-            () -> reverseGeocodingClient.getLegalAddress(latitude, longitude)
+            () -> reverseGeocodingClient.getLegalAddressCode(latitude, longitude)
         ).isInstanceOf(RuntimeException.class);
     }
 }
