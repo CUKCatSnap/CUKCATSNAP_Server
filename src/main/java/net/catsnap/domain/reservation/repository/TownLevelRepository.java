@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TownLevelRepository extends JpaRepository<TownLevel, Long> {
 
     Optional<TownLevel> findTownLevelByTownName(String townName);
+
+    Optional<TownLevel> findTownLevelsByCode(String code);
 }

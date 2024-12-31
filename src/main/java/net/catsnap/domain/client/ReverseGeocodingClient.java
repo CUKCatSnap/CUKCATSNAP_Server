@@ -1,9 +1,7 @@
 package net.catsnap.domain.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.catsnap.domain.client.dto.LegalAddress;
 import net.catsnap.domain.client.dto.response.ReverseGeocodingResponse;
-import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -37,14 +35,8 @@ public class ReverseGeocodingClient {
         this.objectMapper = objectMapper;
     }
 
-    public LegalAddress getLegalAddress(Point point) {
-        // 위도, 경도를 주소로 변환
-        return getLegalAddress(point.getY(), point.getX());
-    }
-
-    //위도, 경도를 주소로 변환
-    public LegalAddress getLegalAddress(double latitude, double longitude) {
-        return getAddress(latitude, longitude).toLegalAddress();
+    public String getLegalAddressCode(double latitude, double longitude) {
+        return getAddress(latitude, longitude).getLegalCode();
     }
 
     private ReverseGeocodingResponse getAddress(double latitude, double longitude) {

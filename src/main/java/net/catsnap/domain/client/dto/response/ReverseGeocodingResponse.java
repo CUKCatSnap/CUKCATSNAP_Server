@@ -71,4 +71,8 @@ public record ReverseGeocodingResponse(
             results.get(0).region.area3.name
         );
     }
+
+    public String getLegalCode() {
+        return results.get(0).code.id;
+    }
 }
