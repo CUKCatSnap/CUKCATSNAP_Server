@@ -2,9 +2,11 @@ package net.catsnap.domain.reservation.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -35,7 +37,13 @@ public class DistrictLevel {
     @Column(columnDefinition = "geometry(Point, 4326)")
     private Point center;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private CityLevel cityLevel;
+
     // ManyToOne
     @OneToMany(mappedBy = "districtLevel")
     private List<Reservation> reservationList;
+
+    @OneToMany(mappedBy = "districtLevel")
+    private List<TownLevel> townLevelList;
 }

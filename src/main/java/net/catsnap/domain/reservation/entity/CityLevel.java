@@ -38,4 +38,7 @@ public class CityLevel {
     // ManyToOne
     @OneToMany(mappedBy = "cityLevel")
     private List<Reservation> reservationList;
+
+    @OneToMany(mappedBy = "cityLevel")
+    private List<DistrictLevel> districtLevelList;
 }
