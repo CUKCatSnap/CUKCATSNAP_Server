@@ -9,8 +9,6 @@ import net.catsnap.domain.reservation.dto.LegalAddressEntity;
 import net.catsnap.domain.reservation.entity.CityLevel;
 import net.catsnap.domain.reservation.entity.DistrictLevel;
 import net.catsnap.domain.reservation.entity.TownLevel;
-import net.catsnap.domain.reservation.repository.CityLevelRepository;
-import net.catsnap.domain.reservation.repository.DistrictLevelRepository;
 import net.catsnap.domain.reservation.repository.TownLevelRepository;
 import net.catsnap.support.fixture.CityLevelFixture;
 import net.catsnap.support.fixture.DistrictLevelFixture;
@@ -36,10 +34,6 @@ class LocationServiceTest {
     @Mock
     private ReverseGeocodingClient reverseGeocodingClient;
     @Mock
-    private CityLevelRepository cityLevelRepository;
-    @Mock
-    private DistrictLevelRepository districtLevelRepository;
-    @Mock
     private TownLevelRepository townLevelRepository;
 
 
@@ -55,19 +49,15 @@ class LocationServiceTest {
             .build();
         DistrictLevel districtLevel = DistrictLevelFixture.DistrictLevel()
             .id(1L)
+            .cityLevel(cityLevel)
             .build();
         TownLevel townLevel = TownLevelFixture.TownLevel()
             .id(1L)
+            .districtLevel(districtLevel)
             .build();
-        given(reverseGeocodingClient.getLegalAddress(latitude, longitude))
-            .willReturn(legalAddress);
-        given(cityLevelRepository.findCityLevelByCityName(cityLevel.getCityName()))
-            .willReturn(Optional.of(cityLevel));
-        given(districtLevelRepository.findDistrictLevelByDistrictName(
-            districtLevel.getDistrictName())
-        )
-            .willReturn(Optional.of(districtLevel));
-        given(townLevelRepository.findTownLevelByTownName(townLevel.getTownName()))
+        given(reverseGeocodingClient.getLegalAddressCode(latitude, longitude))
+            .willReturn(townLevel.getCode());
+        given(townLevelRepository.findTownLevelsByCode(townLevel.getCode()))
             .willReturn(Optional.of(townLevel));
 
         // when

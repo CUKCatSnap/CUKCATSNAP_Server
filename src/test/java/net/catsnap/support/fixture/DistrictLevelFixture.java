@@ -1,5 +1,6 @@
 package net.catsnap.support.fixture;
 
+import net.catsnap.domain.reservation.entity.CityLevel;
 import net.catsnap.domain.reservation.entity.DistrictLevel;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -13,6 +14,7 @@ public class DistrictLevelFixture {
     private String districtName = "강남구";
     private Point center = new GeometryFactory(new PrecisionModel(), 4326).createPoint(
         new Coordinate(127.04743, 37.5173));
+    private CityLevel cityLevel = CityLevelFixture.CityLevel().build();
 
     public static DistrictLevelFixture DistrictLevel() {
         return new DistrictLevelFixture();
@@ -23,12 +25,18 @@ public class DistrictLevelFixture {
         return this;
     }
 
+    public DistrictLevelFixture cityLevel(CityLevel cityLevel) {
+        this.cityLevel = cityLevel;
+        return this;
+    }
+
     public DistrictLevel build() {
         return DistrictLevel.builder()
             .id(id)
             .code(code)
             .districtName(districtName)
             .center(center)
+            .cityLevel(cityLevel)
             .build();
     }
 }
