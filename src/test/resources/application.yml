@@ -1,0 +1,51 @@
+spring:
+  web:
+    resources:
+      add-mappings: false
+  datasource:
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: catsnap_test
+    redis:
+      host: localhost
+      port: 6379
+
+  client:
+    holiday-api:
+      base-url: holiday-api-url
+      secret-key: secret-key
+
+  holiday:
+    schedule:
+      cron: 0 0 11 * * *
+
+  security:
+    jwt-key: testessztest123dsaqwgqtestestwqw
+
+  aws:
+    s3:
+      access-key: access-key
+      secret-key: secret-key
+      region: region
+      bucket-name:
+        root: bucket-name
+        raw: raw-bucket
+        resized-400: resized-bucket
+      presigned-url-expiration: 1000000
+
+naver:
+  client-id: client-id
+  client-secret: client-secret
+  reverse-geocoding:
+    url: https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc

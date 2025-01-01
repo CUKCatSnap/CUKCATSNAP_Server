@@ -5,7 +5,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'com.cuk'
+group = 'net'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -70,6 +70,15 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.0'
     // === 몽고DB 관련 의존성 추가 ===
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    // === Test 전용  h2데이터 베이스 추가 ===
+    runtimeOnly 'com.h2database:h2'
+    // === Redis 의존성 추가 ===
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    // === Redis Test 의존성 추가 ===
+    testImplementation 'it.ozimov:embedded-redis:0.7.2'
+    // === Aws S3 의존성 추가 ===
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.529')
+    implementation 'com.amazonaws:aws-java-sdk-s3'
 }
 
 tasks.named('test') {
