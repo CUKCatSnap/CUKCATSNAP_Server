@@ -1,0 +1,7310 @@
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1, '청운동', 1111010100, ST_GeomFromText('POINT(126.969292 37.589187)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2, '신교동', 1111010200, ST_GeomFromText('POINT(126.9678 37.5845)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3, '궁정동', 1111010300, ST_GeomFromText('POINT(126.972674 37.584679)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (4, '효자동', 1111010400, ST_GeomFromText('POINT(126.971921 37.582649)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (5, '창성동', 1111010500, ST_GeomFromText('POINT(126.9721 37.5806)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (6, '통의동', 1111010600, ST_GeomFromText('POINT(126.972638 37.5784)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (7, '적선동', 1111010700, ST_GeomFromText('POINT(126.973759 37.575303)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (8, '통인동', 1111010800, ST_GeomFromText('POINT(126.970187 37.580143)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (9, '누상동', 1111010900, ST_GeomFromText('POINT(126.9623 37.5804)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (10, '누하동', 1111011000, ST_GeomFromText('POINT(126.968175 37.579183)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (11, '옥인동', 1111011100, ST_GeomFromText('POINT(126.9625 37.5836)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (12, '체부동', 1111011200, ST_GeomFromText('POINT(126.9707 37.578)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (13, '필운동', 1111011300, ST_GeomFromText('POINT(126.968113 37.577281)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (14, '내자동', 1111011400, ST_GeomFromText('POINT(126.9716 37.5754)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (15, '사직동', 1111011500, ST_GeomFromText('POINT(126.965925 37.575393)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (16, '도렴동', 1111011600, ST_GeomFromText('POINT(126.974727 37.573105)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (17, '당주동', 1111011700, ST_GeomFromText('POINT(126.973982 37.57157)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (18, '내수동', 1111011800, ST_GeomFromText('POINT(126.9722 37.572942)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (19, '세종로', 1111011900, ST_GeomFromText('POINT(126.976757 37.580285)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (20, '신문로1가', 1111012000, ST_GeomFromText('POINT(126.97389 37.570172)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (21, '신문로2가', 1111012100, ST_GeomFromText('POINT(126.967737 37.570768)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (22, '청진동', 1111012200, ST_GeomFromText('POINT(126.980147 37.571432)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (23, '서린동', 1111012300, ST_GeomFromText('POINT(126.980388 37.569504)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (24, '수송동', 1111012400, ST_GeomFromText('POINT(126.9806 37.5737)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (25, '중학동', 1111012500, ST_GeomFromText('POINT(126.979646 37.575294)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (26, '종로1가', 1111012600, ST_GeomFromText('POINT(126.979683 37.570415)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (27, '공평동', 1111012700, ST_GeomFromText('POINT(126.9828 37.5711)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (28, '관훈동', 1111012800, ST_GeomFromText('POINT(126.98465 37.573917)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (29, '견지동', 1111012900, ST_GeomFromText('POINT(126.982981 37.573504)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (30, '와룡동', 1111013000, ST_GeomFromText('POINT(126.993 37.582)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (31, '권농동', 1111013100, ST_GeomFromText('POINT(126.991734 37.577505)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (32, '운니동', 1111013200, ST_GeomFromText('POINT(126.9883 37.5764)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (33, '익선동', 1111013300, ST_GeomFromText('POINT(126.9894 37.574567)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (34, '경운동', 1111013400, ST_GeomFromText('POINT(126.98595 37.575067)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (35, '관철동', 1111013500, ST_GeomFromText('POINT(126.985973 37.569107)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (36, '인사동', 1111013600, ST_GeomFromText('POINT(126.986 37.5717)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (37, '낙원동', 1111013700, ST_GeomFromText('POINT(126.9885 37.5725)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (38, '종로2가', 1111013800, ST_GeomFromText('POINT(126.986903 37.57044)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (39, '팔판동', 1111013900, ST_GeomFromText('POINT(126.9804 37.582817)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (40, '삼청동', 1111014000, ST_GeomFromText('POINT(126.981836 37.585013)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (41, '안국동', 1111014100, ST_GeomFromText('POINT(126.9829 37.5773)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (42, '소격동', 1111014200, ST_GeomFromText('POINT(126.980775 37.5795)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (43, '화동', 1111014300, ST_GeomFromText('POINT(126.9828 37.5806)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (44, '사간동', 1111014400, ST_GeomFromText('POINT(126.980368 37.577264)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (45, '송현동', 1111014500, ST_GeomFromText('POINT(126.9817 37.5768)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (46, '가회동', 1111014600, ST_GeomFromText('POINT(126.9848 37.580078)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (47, '재동', 1111014700, ST_GeomFromText('POINT(126.985125 37.5781)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (48, '계동', 1111014800, ST_GeomFromText('POINT(126.987 37.5804)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (49, '원서동', 1111014900, ST_GeomFromText('POINT(126.988231 37.583906)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (50, '훈정동', 1111015000, ST_GeomFromText('POINT(126.9943 37.5742)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (51, '묘동', 1111015100, ST_GeomFromText('POINT(126.991711 37.572418)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (52, '봉익동', 1111015200, ST_GeomFromText('POINT(126.992966 37.572176)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (53, '돈의동', 1111015300, ST_GeomFromText('POINT(126.99071 37.571963)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (54, '장사동', 1111015400, ST_GeomFromText('POINT(126.994012 37.56922)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (55, '관수동', 1111015500, ST_GeomFromText('POINT(126.9906 37.5691)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (56, '종로3가', 1111015600, ST_GeomFromText('POINT(126.992321 37.57039)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (57, '인의동', 1111015700, ST_GeomFromText('POINT(126.9979 37.5725)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (58, '예지동', 1111015800, ST_GeomFromText('POINT(126.998276 37.569619)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (59, '원남동', 1111015900, ST_GeomFromText('POINT(126.997562 37.575458)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (60, '연지동', 1111016000, ST_GeomFromText('POINT(127.0002 37.5737)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (61, '종로4가', 1111016100, ST_GeomFromText('POINT(126.997921 37.570654)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (62, '효제동', 1111016200, ST_GeomFromText('POINT(127.003038 37.57295)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (63, '종로5가', 1111016300, ST_GeomFromText('POINT(127.0036 37.570633)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (64, '종로6가', 1111016400, ST_GeomFromText('POINT(127.0076 37.5719)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (65, '이화동', 1111016500, ST_GeomFromText('POINT(127.004338 37.577008)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (66, '연건동', 1111016600, ST_GeomFromText('POINT(126.9995 37.5786)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (67, '충신동', 1111016700, ST_GeomFromText('POINT(127.006125 37.574842)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (68, '동숭동', 1111016800, ST_GeomFromText('POINT(127.005 37.5813)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (69, '혜화동', 1111016900, ST_GeomFromText('POINT(127.000576 37.586919)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (70, '명륜1가', 1111017000, ST_GeomFromText('POINT(126.9975 37.5891)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (71, '명륜2가', 1111017100, ST_GeomFromText('POINT(126.9988 37.5846)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (72, '명륜4가', 1111017200, ST_GeomFromText('POINT(126.9998 37.582142)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (73, '명륜3가', 1111017300, ST_GeomFromText('POINT(126.9931 37.5875)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (74, '창신동', 1111017400, ST_GeomFromText('POINT(127.016363 37.570758)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (75, '숭인동', 1111017500, ST_GeomFromText('POINT(127.015627 37.577805)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (76, '교남동', 1111017600, ST_GeomFromText('POINT(126.964438 37.568527)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (77, '평동', 1111017700, ST_GeomFromText('POINT(126.9668 37.567967)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (78, '송월동', 1111017800, ST_GeomFromText('POINT(126.965186 37.570062)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (79, '홍파동', 1111017900, ST_GeomFromText('POINT(126.963954 37.571132)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (80, '교북동', 1111018000, ST_GeomFromText('POINT(126.961426 37.57152)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (81, '행촌동', 1111018100, ST_GeomFromText('POINT(126.9621 37.573608)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (82, '구기동', 1111018200, ST_GeomFromText('POINT(126.9574 37.6179)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (83, '평창동', 1111018300, ST_GeomFromText('POINT(126.968187 37.606317)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (84, '부암동', 1111018400, ST_GeomFromText('POINT(126.9641 37.592479)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (85, '홍지동', 1111018500, ST_GeomFromText('POINT(126.9564 37.6006)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (86, '신영동', 1111018600, ST_GeomFromText('POINT(126.9621 37.60294)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (87, '무악동', 1111018700, ST_GeomFromText('POINT(126.958148 37.576003)', 4326), 1);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (88, '무교동', 1114010100, ST_GeomFromText('POINT(126.978978 37.568139)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (89, '다동', 1114010200, ST_GeomFromText('POINT(126.980913 37.568133)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (90, '태평로1가', 1114010300, ST_GeomFromText('POINT(126.977248 37.567685)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (91, '을지로1가', 1114010400, ST_GeomFromText('POINT(126.980553 37.565969)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (92, '을지로2가', 1114010500, ST_GeomFromText('POINT(126.985638 37.56585)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (93, '남대문로1가', 1114010600, ST_GeomFromText('POINT(126.982828 37.567562)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (94, '삼각동', 1114010700, ST_GeomFromText('POINT(126.984219 37.56808)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (95, '수하동', 1114010800, ST_GeomFromText('POINT(126.984609 37.567266)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (96, '장교동', 1114010900, ST_GeomFromText('POINT(126.986953 37.567431)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (97, '수표동', 1114011000, ST_GeomFromText('POINT(126.989037 37.567142)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (98, '소공동', 1114011100, ST_GeomFromText('POINT(126.980053 37.56405)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (99, '남창동', 1114011200, ST_GeomFromText('POINT(126.977437 37.5581)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (100, '북창동', 1114011300, ST_GeomFromText('POINT(126.9783 37.5623)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (101, '태평로2가', 1114011400, ST_GeomFromText('POINT(126.976356 37.562989)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (102, '남대문로2가', 1114011500, ST_GeomFromText('POINT(126.982086 37.563936)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (103, '남대문로3가', 1114011600, ST_GeomFromText('POINT(126.97956 37.561682)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (104, '남대문로4가', 1114011700, ST_GeomFromText('POINT(126.975609 37.560594)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (105, '남대문로5가', 1114011800, ST_GeomFromText('POINT(126.975 37.556092)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (106, '봉래동1가', 1114011900, ST_GeomFromText('POINT(126.972741 37.559081)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (107, '봉래동2가', 1114012000, ST_GeomFromText('POINT(126.970975 37.556575)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (108, '회현동1가', 1114012100, ST_GeomFromText('POINT(126.9813 37.5572)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (109, '회현동2가', 1114012200, ST_GeomFromText('POINT(126.982902 37.558744)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (110, '회현동3가', 1114012300, ST_GeomFromText('POINT(126.984045 37.56015)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (111, '충무로1가', 1114012400, ST_GeomFromText('POINT(126.982338 37.561008)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (112, '충무로2가', 1114012500, ST_GeomFromText('POINT(126.986308 37.561461)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (113, '명동1가', 1114012600, ST_GeomFromText('POINT(126.984631 37.564284)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (114, '명동2가', 1114012700, ST_GeomFromText('POINT(126.985175 37.562667)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (115, '남산동1가', 1114012800, ST_GeomFromText('POINT(126.984566 37.559329)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (116, '남산동2가', 1114012900, ST_GeomFromText('POINT(126.9858 37.558333)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (117, '남산동3가', 1114013000, ST_GeomFromText('POINT(126.987419 37.560154)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (118, '저동1가', 1114013100, ST_GeomFromText('POINT(126.987773 37.564411)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (119, '충무로4가', 1114013200, ST_GeomFromText('POINT(126.995875 37.562233)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (120, '충무로5가', 1114013300, ST_GeomFromText('POINT(126.999612 37.562825)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (121, '인현동2가', 1114013400, ST_GeomFromText('POINT(126.996238 37.564125)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (122, '예관동', 1114013500, ST_GeomFromText('POINT(126.998186 37.564217)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (123, '묵정동', 1114013600, ST_GeomFromText('POINT(127.000525 37.561308)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (124, '필동1가', 1114013700, ST_GeomFromText('POINT(126.992437 37.560758)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (125, '필동2가', 1114013800, ST_GeomFromText('POINT(126.9944 37.5586)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (126, '필동3가', 1114013900, ST_GeomFromText('POINT(126.99699 37.558498)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (127, '남학동', 1114014000, ST_GeomFromText('POINT(126.990797 37.560557)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (128, '주자동', 1114014100, ST_GeomFromText('POINT(126.989371 37.560642)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (129, '예장동', 1114014200, ST_GeomFromText('POINT(126.9898 37.5553)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (130, '장충동1가', 1114014300, ST_GeomFromText('POINT(127.007688 37.560758)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (131, '장충동2가', 1114014400, ST_GeomFromText('POINT(127.001075 37.555517)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (132, '광희동1가', 1114014500, ST_GeomFromText('POINT(127.0051 37.565)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (133, '광희동2가', 1114014600, ST_GeomFromText('POINT(127.008212 37.564058)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (134, '쌍림동', 1114014700, ST_GeomFromText('POINT(127.0041 37.5638)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (135, '을지로6가', 1114014800, ST_GeomFromText('POINT(127.006938 37.567717)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (136, '을지로7가', 1114014900, ST_GeomFromText('POINT(127.010437 37.566325)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (137, '을지로4가', 1114015000, ST_GeomFromText('POINT(126.9968 37.5663)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (138, '을지로5가', 1114015100, ST_GeomFromText('POINT(127.002662 37.566517)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (139, '주교동', 1114015200, ST_GeomFromText('POINT(126.999344 37.568251)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (140, '방산동', 1114015300, ST_GeomFromText('POINT(127.0032 37.5687)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (141, '오장동', 1114015400, ST_GeomFromText('POINT(127.000713 37.564875)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (142, '을지로3가', 1114015500, ST_GeomFromText('POINT(126.99215 37.566217)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (143, '입정동', 1114015600, ST_GeomFromText('POINT(126.992891 37.5678)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (144, '산림동', 1114015700, ST_GeomFromText('POINT(126.9957 37.5676)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (145, '충무로3가', 1114015800, ST_GeomFromText('POINT(126.991714 37.562368)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (146, '초동', 1114015900, ST_GeomFromText('POINT(126.992325 37.56465)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (147, '인현동1가', 1114016000, ST_GeomFromText('POINT(126.9944 37.5646)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (148, '저동2가', 1114016100, ST_GeomFromText('POINT(126.989513 37.564275)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (149, '신당동', 1114016200, ST_GeomFromText('POINT(127.014548 37.562097)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (150, '흥인동', 1114016300, ST_GeomFromText('POINT(127.016463 37.567675)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (151, '무학동', 1114016400, ST_GeomFromText('POINT(127.015255 37.564356)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (152, '황학동', 1114016500, ST_GeomFromText('POINT(127.021281 37.567345)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (153, '서소문동', 1114016600, ST_GeomFromText('POINT(126.973425 37.563275)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (154, '정동', 1114016700, ST_GeomFromText('POINT(126.972925 37.5664)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (155, '순화동', 1114016800, ST_GeomFromText('POINT(126.970438 37.562758)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (156, '의주로1가', 1114016900, ST_GeomFromText('POINT(126.968481 37.564007)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (157, '충정로1가', 1114017000, ST_GeomFromText('POINT(126.968226 37.566482)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (158, '중림동', 1114017100, ST_GeomFromText('POINT(126.966731 37.558898)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (159, '의주로2가', 1114017200, ST_GeomFromText('POINT(126.96959 37.560718)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (160, '만리동1가', 1114017300, ST_GeomFromText('POINT(126.967263 37.555917)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (161, '만리동2가', 1114017400, ST_GeomFromText('POINT(126.964 37.5544)', 4326), 2);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (162, '후암동', 1117010100, ST_GeomFromText('POINT(126.978134 37.548638)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (163, '용산동2가', 1117010200, ST_GeomFromText('POINT(126.98405 37.54295)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (164, '용산동4가', 1117010300, ST_GeomFromText('POINT(126.9854 37.5306)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (165, '갈월동', 1117010400, ST_GeomFromText('POINT(126.971763 37.542533)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (166, '남영동', 1117010500, ST_GeomFromText('POINT(126.973331 37.542843)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (167, '용산동1가', 1117010600, ST_GeomFromText('POINT(126.977 37.5401)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (168, '동자동', 1117010700, ST_GeomFromText('POINT(126.9724 37.552053)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (169, '서계동', 1117010800, ST_GeomFromText('POINT(126.9664 37.552458)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (170, '청파동1가', 1117010900, ST_GeomFromText('POINT(126.9674 37.5488)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (171, '청파동2가', 1117011000, ST_GeomFromText('POINT(126.9667 37.5462)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (172, '청파동3가', 1117011100, ST_GeomFromText('POINT(126.9668 37.5432)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (173, '원효로1가', 1117011200, ST_GeomFromText('POINT(126.967362 37.5398)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (174, '원효로2가', 1117011300, ST_GeomFromText('POINT(126.963225 37.536775)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (175, '신창동', 1117011400, ST_GeomFromText('POINT(126.9547 37.535842)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (176, '산천동', 1117011500, ST_GeomFromText('POINT(126.9513 37.5353)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (177, '청암동', 1117011600, ST_GeomFromText('POINT(126.946632 37.534478)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (178, '원효로3가', 1117011700, ST_GeomFromText('POINT(126.9581 37.5344)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (179, '원효로4가', 1117011800, ST_GeomFromText('POINT(126.9504 37.5328)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (180, '효창동', 1117011900, ST_GeomFromText('POINT(126.96185 37.542457)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (181, '도원동', 1117012000, ST_GeomFromText('POINT(126.9561 37.5388)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (182, '용문동', 1117012100, ST_GeomFromText('POINT(126.95966 37.537641)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (183, '문배동', 1117012200, ST_GeomFromText('POINT(126.969088 37.537)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (184, '신계동', 1117012300, ST_GeomFromText('POINT(126.9667 37.5358)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (185, '한강로1가', 1117012400, ST_GeomFromText('POINT(126.973488 37.5362)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (186, '한강로2가', 1117012500, ST_GeomFromText('POINT(126.968725 37.531667)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (187, '용산동3가', 1117012600, ST_GeomFromText('POINT(126.9768 37.532)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (188, '용산동5가', 1117012700, ST_GeomFromText('POINT(126.9747 37.5257)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (189, '한강로3가', 1117012800, ST_GeomFromText('POINT(126.9602 37.5278)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (190, '이촌동', 1117012900, ST_GeomFromText('POINT(126.9732 37.521417)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (191, '이태원동', 1117013000, ST_GeomFromText('POINT(126.995038 37.532523)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (192, '한남동', 1117013100, ST_GeomFromText('POINT(127.0005 37.53455)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (193, '동빙고동', 1117013200, ST_GeomFromText('POINT(126.9957 37.5237)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (194, '서빙고동', 1117013300, ST_GeomFromText('POINT(126.994663 37.520458)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (195, '주성동', 1117013400, ST_GeomFromText('POINT(126.999566 37.521478)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (196, '용산동6가', 1117013500, ST_GeomFromText('POINT(126.984 37.5169)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (197, '보광동', 1117013600, ST_GeomFromText('POINT(127.000182 37.526326)', 4326), 3);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (198, '상왕십리동', 1120010100, ST_GeomFromText('POINT(127.024538 37.568375)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (199, '하왕십리동', 1120010200, ST_GeomFromText('POINT(127.02875 37.564158)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (200, '홍익동', 1120010300, ST_GeomFromText('POINT(127.031975 37.56695)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (201, '도선동', 1120010400, ST_GeomFromText('POINT(127.033725 37.563542)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (202, '마장동', 1120010500, ST_GeomFromText('POINT(127.045388 37.566325)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (203, '사근동', 1120010600, ST_GeomFromText('POINT(127.045331 37.561485)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (204, '행당동', 1120010700, ST_GeomFromText('POINT(127.036188 37.558567)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (205, '응봉동', 1120010800, ST_GeomFromText('POINT(127.033436 37.553164)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (206, '금호동1가', 1120010900, ST_GeomFromText('POINT(127.0263 37.553)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (207, '금호동2가', 1120011000, ST_GeomFromText('POINT(127.01885 37.553808)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (208, '금호동3가', 1120011100, ST_GeomFromText('POINT(127.0193 37.5498)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (209, '금호동4가', 1120011200, ST_GeomFromText('POINT(127.024116 37.545386)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (210, '옥수동', 1120011300, ST_GeomFromText('POINT(127.013462 37.543639)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (211, '성수동1가', 1120011400, ST_GeomFromText('POINT(127.04965 37.542108)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (212, '성수동2가', 1120011500, ST_GeomFromText('POINT(127.056888 37.539817)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (213, '송정동', 1120011800, ST_GeomFromText('POINT(127.0696 37.554522)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (214, '용답동', 1120012200, ST_GeomFromText('POINT(127.055551 37.564062)', 4326), 4);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (215, '중곡동', 1121510100, ST_GeomFromText('POINT(127.080038 37.560675)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (216, '능동', 1121510200, ST_GeomFromText('POINT(127.080499 37.55378)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (217, '구의동', 1121510300, ST_GeomFromText('POINT(127.085676 37.542492)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (218, '광장동', 1121510400, ST_GeomFromText('POINT(127.103025 37.546892)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (219, '자양동', 1121510500, ST_GeomFromText('POINT(127.082438 37.534508)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (220, '화양동', 1121510700, ST_GeomFromText('POINT(127.071315 37.546542)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (221, '군자동', 1121510900, ST_GeomFromText('POINT(127.075349 37.555485)', 4326), 5);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (222, '신설동', 1123010100, ST_GeomFromText('POINT(127.025525 37.574934)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (223, '용두동', 1123010200, ST_GeomFromText('POINT(127.037201 37.575888)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (224, '제기동', 1123010300, ST_GeomFromText('POINT(127.037855 37.583161)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (225, '전농동', 1123010400, ST_GeomFromText('POINT(127.047757 37.577998)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (226, '답십리동', 1123010500, ST_GeomFromText('POINT(127.051268 37.571796)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (227, '장안동', 1123010600, ST_GeomFromText('POINT(127.066375 37.567842)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (228, '청량리동', 1123010700, ST_GeomFromText('POINT(127.048435 37.583177)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (229, '회기동', 1123010800, ST_GeomFromText('POINT(127.055313 37.590808)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (230, '휘경동', 1123010900, ST_GeomFromText('POINT(127.065725 37.592932)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (231, '이문동', 1123011000, ST_GeomFromText('POINT(127.06545 37.597849)', 4326), 6);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (232, '면목동', 1126010100, ST_GeomFromText('POINT(127.087423 37.587359)', 4326), 7);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (233, '상봉동', 1126010200, ST_GeomFromText('POINT(127.0872 37.59988)', 4326), 7);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (234, '중화동', 1126010300, ST_GeomFromText('POINT(127.080623 37.601175)', 4326), 7);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (235, '묵동', 1126010400, ST_GeomFromText('POINT(127.078473 37.612373)', 4326), 7);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (236, '망우동', 1126010500, ST_GeomFromText('POINT(127.1073 37.600899)', 4326), 7);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (237, '신내동', 1126010600, ST_GeomFromText('POINT(127.099538 37.605882)', 4326), 7);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (238, '성북동', 1129010100, ST_GeomFromText('POINT(127.003288 37.591124)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (239, '성북동1가', 1129010200, ST_GeomFromText('POINT(127.0038 37.5894)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (240, '돈암동', 1129010300, ST_GeomFromText('POINT(127.027761 37.6026)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (241, '동소문동1가', 1129010400, ST_GeomFromText('POINT(127.007163 37.590199)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (242, '동소문동2가', 1129010500, ST_GeomFromText('POINT(127.008232 37.588702)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (243, '동소문동3가', 1129010600, ST_GeomFromText('POINT(127.011221 37.590369)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (244, '동소문동4가', 1129010700, ST_GeomFromText('POINT(127.010624 37.591739)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (245, '동소문동5가', 1129010800, ST_GeomFromText('POINT(127.015354 37.591621)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (246, '동소문동6가', 1129010900, ST_GeomFromText('POINT(127.014213 37.59359)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (247, '동소문동7가', 1129011000, ST_GeomFromText('POINT(127.0142 37.5964)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (248, '삼선동1가', 1129011100, ST_GeomFromText('POINT(127.0082 37.5845)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (249, '삼선동2가', 1129011200, ST_GeomFromText('POINT(127.0114 37.584)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (250, '삼선동3가', 1129011300, ST_GeomFromText('POINT(127.013 37.586557)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (251, '삼선동4가', 1129011400, ST_GeomFromText('POINT(127.013135 37.590006)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (252, '삼선동5가', 1129011500, ST_GeomFromText('POINT(127.015775 37.588549)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (253, '동선동1가', 1129011600, ST_GeomFromText('POINT(127.0184 37.592307)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (254, '동선동2가', 1129011700, ST_GeomFromText('POINT(127.020075 37.590249)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (255, '동선동3가', 1129011800, ST_GeomFromText('POINT(127.02045 37.593915)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (256, '동선동4가', 1129011900, ST_GeomFromText('POINT(127.018639 37.595221)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (257, '동선동5가', 1129012000, ST_GeomFromText('POINT(127.0166 37.5962)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (258, '안암동1가', 1129012100, ST_GeomFromText('POINT(127.022074 37.588688)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (259, '안암동2가', 1129012200, ST_GeomFromText('POINT(127.023 37.586732)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (260, '안암동3가', 1129012300, ST_GeomFromText('POINT(127.0231 37.583882)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (261, '안암동4가', 1129012400, ST_GeomFromText('POINT(127.024663 37.580392)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (262, '안암동5가', 1129012500, ST_GeomFromText('POINT(127.0301 37.58889)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (263, '보문동4가', 1129012600, ST_GeomFromText('POINT(127.021335 37.5829)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (264, '보문동5가', 1129012700, ST_GeomFromText('POINT(127.020049 37.582404)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (265, '보문동6가', 1129012800, ST_GeomFromText('POINT(127.018832 37.580497)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (266, '보문동7가', 1129012900, ST_GeomFromText('POINT(127.02205 37.5797)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (267, '보문동1가', 1129013000, ST_GeomFromText('POINT(127.019635 37.58648)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (268, '보문동2가', 1129013100, ST_GeomFromText('POINT(127.018183 37.585752)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (269, '보문동3가', 1129013200, ST_GeomFromText('POINT(127.015812 37.583932)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (270, '정릉동', 1129013300, ST_GeomFromText('POINT(127.016615 37.601451)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (271, '길음동', 1129013400, ST_GeomFromText('POINT(127.019392 37.610486)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (272, '종암동', 1129013500, ST_GeomFromText('POINT(127.035157 37.599008)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (273, '하월곡동', 1129013600, ST_GeomFromText('POINT(127.0387 37.604407)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (274, '상월곡동', 1129013700, ST_GeomFromText('POINT(127.046963 37.606099)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (275, '장위동', 1129013800, ST_GeomFromText('POINT(127.043713 37.614125)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (276, '석관동', 1129013900, ST_GeomFromText('POINT(127.061413 37.612957)', 4326), 8);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (277, '미아동', 1130510100, ST_GeomFromText('POINT(127.026979 37.627074)', 4326), 9);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (278, '번동', 1130510200, ST_GeomFromText('POINT(127.028847 37.637891)', 4326), 9);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (279, '수유동', 1130510300, ST_GeomFromText('POINT(127.017601 37.630087)', 4326), 9);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (280, '우이동', 1130510400, ST_GeomFromText('POINT(127.002 37.6633)', 4326), 9);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (281, '쌍문동', 1132010500, ST_GeomFromText('POINT(127.026114 37.648028)', 4326), 10);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (282, '방학동', 1132010600, ST_GeomFromText('POINT(127.040725 37.664176)', 4326), 10);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (283, '창동', 1132010700, ST_GeomFromText('POINT(127.043868 37.648305)', 4326), 10);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (284, '도봉동', 1132010800, ST_GeomFromText('POINT(127.043437 37.678691)', 4326), 10);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (285, '월계동', 1135010200, ST_GeomFromText('POINT(127.063016 37.61992)', 4326), 11);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (286, '공릉동', 1135010300, ST_GeomFromText('POINT(127.073838 37.624874)', 4326), 11);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (287, '하계동', 1135010400, ST_GeomFromText('POINT(127.072585 37.640537)', 4326), 11);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (288, '상계동', 1135010500, ST_GeomFromText('POINT(127.054978 37.679901)', 4326), 11);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (289, '중계동', 1135010600, ST_GeomFromText('POINT(127.077528 37.652599)', 4326), 11);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (290, '수색동', 1138010100, ST_GeomFromText('POINT(126.893666 37.583519)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (291, '녹번동', 1138010200, ST_GeomFromText('POINT(126.929825 37.602194)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (292, '불광동', 1138010300, ST_GeomFromText('POINT(126.932075 37.610388)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (293, '갈현동', 1138010400, ST_GeomFromText('POINT(126.916675 37.623707)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (294, '구산동', 1138010500, ST_GeomFromText('POINT(126.910389 37.611746)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (295, '대조동', 1138010600, ST_GeomFromText('POINT(126.920813 37.614165)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (296, '응암동', 1138010700, ST_GeomFromText('POINT(126.926813 37.600688)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (297, '역촌동', 1138010800, ST_GeomFromText('POINT(126.915114 37.604405)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (298, '신사동', 1138010900, ST_GeomFromText('POINT(126.911774 37.597845)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (299, '증산동', 1138011000, ST_GeomFromText('POINT(126.90704 37.584306)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (300, '진관동', 1138011400, ST_GeomFromText('POINT(126.921051 37.634983)', 4326), 12);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (301, '충정로2가', 1141010100, ST_GeomFromText('POINT(126.964613 37.565025)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (302, '충정로3가', 1141010200, ST_GeomFromText('POINT(126.9621 37.5623)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (303, '합동', 1141010300, ST_GeomFromText('POINT(126.9659 37.5614)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (304, '미근동', 1141010400, ST_GeomFromText('POINT(126.967 37.563533)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (305, '냉천동', 1141010500, ST_GeomFromText('POINT(126.9628 37.5672)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (306, '천연동', 1141010600, ST_GeomFromText('POINT(126.959404 37.567888)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (307, '옥천동', 1141010700, ST_GeomFromText('POINT(126.959096 37.569332)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (308, '영천동', 1141010800, ST_GeomFromText('POINT(126.95755 37.570442)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (309, '현저동', 1141010900, ST_GeomFromText('POINT(126.954 37.574)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (310, '북아현동', 1141011000, ST_GeomFromText('POINT(126.957025 37.5595)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (311, '홍제동', 1141011100, ST_GeomFromText('POINT(126.944878 37.587699)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (312, '대현동', 1141011200, ST_GeomFromText('POINT(126.94655 37.561117)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (313, '대신동', 1141011300, ST_GeomFromText('POINT(126.945975 37.565502)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (314, '신촌동', 1141011400, ST_GeomFromText('POINT(126.941811 37.564092)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (315, '봉원동', 1141011500, ST_GeomFromText('POINT(126.9471 37.5727)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (316, '창천동', 1141011600, ST_GeomFromText('POINT(126.9342 37.5586)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (317, '연희동', 1141011700, ST_GeomFromText('POINT(126.935175 37.573908)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (318, '홍은동', 1141011800, ST_GeomFromText('POINT(126.947111 37.598906)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (319, '북가좌동', 1141011900, ST_GeomFromText('POINT(126.910194 37.57429)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (320, '남가좌동', 1141012000, ST_GeomFromText('POINT(126.919723 37.573295)', 4326), 13);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (321, '아현동', 1144010100, ST_GeomFromText('POINT(126.9561 37.5546)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (322, '공덕동', 1144010200, ST_GeomFromText('POINT(126.960025 37.550192)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (323, '신공덕동', 1144010300, ST_GeomFromText('POINT(126.955825 37.54415)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (324, '도화동', 1144010400, ST_GeomFromText('POINT(126.94988 37.541512)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (325, '용강동', 1144010500, ST_GeomFromText('POINT(126.942677 37.542212)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (326, '토정동', 1144010600, ST_GeomFromText('POINT(126.939688 37.5385)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (327, '마포동', 1144010700, ST_GeomFromText('POINT(126.943975 37.537192)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (328, '대흥동', 1144010800, ST_GeomFromText('POINT(126.944028 37.552063)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (329, '염리동', 1144010900, ST_GeomFromText('POINT(126.94565 37.547083)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (330, '노고산동', 1144011000, ST_GeomFromText('POINT(126.938 37.5541)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (331, '신수동', 1144011100, ST_GeomFromText('POINT(126.935188 37.547118)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (332, '현석동', 1144011200, ST_GeomFromText('POINT(126.9345 37.5419)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (333, '구수동', 1144011300, ST_GeomFromText('POINT(126.932532 37.545743)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (334, '창전동', 1144011400, ST_GeomFromText('POINT(126.93 37.5501)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (335, '상수동', 1144011500, ST_GeomFromText('POINT(126.9241 37.5469)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (336, '하중동', 1144011600, ST_GeomFromText('POINT(126.927768 37.543573)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (337, '신정동', 1144011700, ST_GeomFromText('POINT(126.930513 37.543392)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (338, '당인동', 1144011800, ST_GeomFromText('POINT(126.919987 37.542586)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (339, '서교동', 1144012000, ST_GeomFromText('POINT(126.914663 37.555147)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (340, '동교동', 1144012100, ST_GeomFromText('POINT(126.925119 37.557576)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (341, '합정동', 1144012200, ST_GeomFromText('POINT(126.911889 37.551656)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (342, '망원동', 1144012300, ST_GeomFromText('POINT(126.905597 37.555622)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (343, '연남동', 1144012400, ST_GeomFromText('POINT(126.922027 37.564501)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (344, '성산동', 1144012500, ST_GeomFromText('POINT(126.90785 37.563408)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (345, '중동', 1144012600, ST_GeomFromText('POINT(126.9055 37.571725)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (346, '상암동', 1144012700, ST_GeomFromText('POINT(126.894688 37.578325)', 4326), 14);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (347, '신정동', 1147010100, ST_GeomFromText('POINT(126.854264 37.518529)', 4326), 15);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (348, '목동', 1147010200, ST_GeomFromText('POINT(126.871232 37.530378)', 4326), 15);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (349, '신월동', 1147010300, ST_GeomFromText('POINT(126.831487 37.532808)', 4326), 15);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (350, '염창동', 1150010100, ST_GeomFromText('POINT(126.870978 37.553751)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (351, '등촌동', 1150010200, ST_GeomFromText('POINT(126.858929 37.555815)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (352, '화곡동', 1150010300, ST_GeomFromText('POINT(126.847725 37.544075)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (353, '가양동', 1150010400, ST_GeomFromText('POINT(126.84471 37.569524)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (354, '마곡동', 1150010500, ST_GeomFromText('POINT(126.8304 37.5738)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (355, '내발산동', 1150010600, ST_GeomFromText('POINT(126.8354 37.5535)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (356, '외발산동', 1150010700, ST_GeomFromText('POINT(126.8207 37.5494)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (357, '공항동', 1150010800, ST_GeomFromText('POINT(126.810144 37.55883)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (358, '방화동', 1150010900, ST_GeomFromText('POINT(126.813325 37.577333)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (359, '개화동', 1150011000, ST_GeomFromText('POINT(126.8068 37.5874)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (360, '과해동', 1150011100, ST_GeomFromText('POINT(126.7872 37.5662)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (361, '오곡동', 1150011200, ST_GeomFromText('POINT(126.784 37.5534)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (362, '오쇠동', 1150011300, ST_GeomFromText('POINT(126.7984 37.5435)', 4326), 16);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (363, '신도림동', 1153010100, ST_GeomFromText('POINT(126.880583 37.507766)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (364, '구로동', 1153010200, ST_GeomFromText('POINT(126.875758 37.493043)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (365, '가리봉동', 1153010300, ST_GeomFromText('POINT(126.889749 37.482556)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (366, '고척동', 1153010600, ST_GeomFromText('POINT(126.86286 37.500463)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (367, '개봉동', 1153010700, ST_GeomFromText('POINT(126.851126 37.500332)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (368, '오류동', 1153010800, ST_GeomFromText('POINT(126.845201 37.497009)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (369, '궁동', 1153010900, ST_GeomFromText('POINT(126.8277 37.5009)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (370, '온수동', 1153011000, ST_GeomFromText('POINT(126.8207 37.4938)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (371, '천왕동', 1153011100, ST_GeomFromText('POINT(126.839439 37.479842)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (372, '항동', 1153011200, ST_GeomFromText('POINT(126.822313 37.479048)', 4326), 17);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (373, '가산동', 1154510100, ST_GeomFromText('POINT(126.891733 37.476909)', 4326), 18);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (374, '독산동', 1154510200, ST_GeomFromText('POINT(126.897041 37.470245)', 4326), 18);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (375, '시흥동', 1154510300, ST_GeomFromText('POINT(126.903263 37.453541)', 4326), 18);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (376, '영등포동', 1156010100, ST_GeomFromText('POINT(126.9061 37.5134)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (377, '영등포동1가', 1156010200, ST_GeomFromText('POINT(126.912836 37.517607)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (378, '영등포동2가', 1156010300, ST_GeomFromText('POINT(126.9117 37.5208)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (379, '영등포동3가', 1156010400, ST_GeomFromText('POINT(126.9082 37.518)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (380, '영등포동4가', 1156010500, ST_GeomFromText('POINT(126.903625 37.518)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (381, '영등포동5가', 1156010600, ST_GeomFromText('POINT(126.9066 37.5211)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (382, '영등포동6가', 1156010700, ST_GeomFromText('POINT(126.9032 37.5216)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (383, '영등포동7가', 1156010800, ST_GeomFromText('POINT(126.907 37.5242)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (384, '영등포동8가', 1156010900, ST_GeomFromText('POINT(126.9053 37.5289)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (385, '여의도동', 1156011000, ST_GeomFromText('POINT(126.929425 37.528317)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (386, '당산동1가', 1156011100, ST_GeomFromText('POINT(126.8985 37.5216)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (387, '당산동2가', 1156011200, ST_GeomFromText('POINT(126.8936 37.5225)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (388, '당산동3가', 1156011300, ST_GeomFromText('POINT(126.8971 37.5261)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (389, '당산동4가', 1156011400, ST_GeomFromText('POINT(126.8991 37.529)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (390, '당산동5가', 1156011500, ST_GeomFromText('POINT(126.9009 37.5323)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (391, '당산동6가', 1156011600, ST_GeomFromText('POINT(126.9024 37.535)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (392, '당산동', 1156011700, ST_GeomFromText('POINT(126.9065 37.5347)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (393, '도림동', 1156011800, ST_GeomFromText('POINT(126.89595 37.509475)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (394, '문래동1가', 1156011900, ST_GeomFromText('POINT(126.897068 37.512284)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (395, '문래동2가', 1156012000, ST_GeomFromText('POINT(126.8929 37.5126)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (396, '문래동3가', 1156012100, ST_GeomFromText('POINT(126.895338 37.517008)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (397, '문래동4가', 1156012200, ST_GeomFromText('POINT(126.889875 37.51455)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (398, '문래동5가', 1156012300, ST_GeomFromText('POINT(126.8849 37.5161)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (399, '문래동6가', 1156012400, ST_GeomFromText('POINT(126.8845 37.5201)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (400, '양평동1가', 1156012500, ST_GeomFromText('POINT(126.8886 37.5232)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (401, '양평동2가', 1156012600, ST_GeomFromText('POINT(126.883563 37.523067)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (402, '양평동3가', 1156012700, ST_GeomFromText('POINT(126.8918 37.5296)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (403, '양평동4가', 1156012800, ST_GeomFromText('POINT(126.89605 37.53635)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (404, '양평동5가', 1156012900, ST_GeomFromText('POINT(126.8925 37.539)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (405, '양평동6가', 1156013000, ST_GeomFromText('POINT(126.889838 37.541883)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (406, '양화동', 1156013100, ST_GeomFromText('POINT(126.8883 37.5488)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (407, '신길동', 1156013200, ST_GeomFromText('POINT(126.921428 37.511267)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (408, '대림동', 1156013300, ST_GeomFromText('POINT(126.905818 37.495469)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (409, '양평동', 1156013400, ST_GeomFromText('POINT(126.888566 37.538695)', 4326), 19);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (410, '노량진동', 1159010100, ST_GeomFromText('POINT(126.942013 37.512308)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (411, '상도동', 1159010200, ST_GeomFromText('POINT(126.953089 37.4981)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (412, '상도1동', 1159010300, ST_GeomFromText('POINT(126.9499 37.5033)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (413, '본동', 1159010400, ST_GeomFromText('POINT(126.953629 37.512428)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (414, '흑석동', 1159010500, ST_GeomFromText('POINT(126.966612 37.505862)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (415, '동작동', 1159010600, ST_GeomFromText('POINT(126.973847 37.4992)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (416, '사당동', 1159010700, ST_GeomFromText('POINT(126.978668 37.483064)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (417, '대방동', 1159010800, ST_GeomFromText('POINT(126.92635 37.508133)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (418, '신대방동', 1159010900, ST_GeomFromText('POINT(126.91005 37.488943)', 4326), 20);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (419, '봉천동', 1162010100, ST_GeomFromText('POINT(126.95346 37.477962)', 4326), 21);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (420, '신림동', 1162010200, ST_GeomFromText('POINT(126.927075 37.487426)', 4326), 21);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (421, '남현동', 1162010300, ST_GeomFromText('POINT(126.977837 37.474539)', 4326), 21);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (422, '방배동', 1165010100, ST_GeomFromText('POINT(126.988785 37.494145)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (423, '양재동', 1165010200, ST_GeomFromText('POINT(127.039888 37.470101)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (424, '우면동', 1165010300, ST_GeomFromText('POINT(127.0169 37.466)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (425, '원지동', 1165010400, ST_GeomFromText('POINT(127.0476 37.4452)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (426, '잠원동', 1165010600, ST_GeomFromText('POINT(127.014077 37.514962)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (427, '반포동', 1165010700, ST_GeomFromText('POINT(126.986822 37.502144)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (428, '서초동', 1165010800, ST_GeomFromText('POINT(127.019508 37.490119)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (429, '내곡동', 1165010900, ST_GeomFromText('POINT(127.076678 37.458103)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (430, '염곡동', 1165011000, ST_GeomFromText('POINT(127.054288 37.462035)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (431, '신원동', 1165011100, ST_GeomFromText('POINT(127.0641 37.4448)', 4326), 22);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (432, '역삼동', 1168010100, ST_GeomFromText('POINT(127.033357 37.495484)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (433, '개포동', 1168010300, ST_GeomFromText('POINT(127.055737 37.482741)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (434, '청담동', 1168010400, ST_GeomFromText('POINT(127.049291 37.525107)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (435, '삼성동', 1168010500, ST_GeomFromText('POINT(127.062532 37.514442)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (436, '대치동', 1168010600, ST_GeomFromText('POINT(127.056705 37.493182)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (437, '신사동', 1168010700, ST_GeomFromText('POINT(127.022781 37.52401)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (438, '논현동', 1168010800, ST_GeomFromText('POINT(127.028461 37.511571)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (439, '압구정동', 1168011000, ST_GeomFromText('POINT(127.030713 37.530642)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (440, '세곡동', 1168011100, ST_GeomFromText('POINT(127.104355 37.464368)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (441, '자곡동', 1168011200, ST_GeomFromText('POINT(127.098913 37.475193)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (442, '율현동', 1168011300, ST_GeomFromText('POINT(127.1114 37.4717)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (443, '일원동', 1168011400, ST_GeomFromText('POINT(127.081638 37.487485)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (444, '수서동', 1168011500, ST_GeomFromText('POINT(127.105401 37.486747)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (445, '도곡동', 1168011800, ST_GeomFromText('POINT(127.039025 37.488238)', 4326), 23);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (446, '잠실동', 1171010100, ST_GeomFromText('POINT(127.083204 37.506072)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (447, '신천동', 1171010200, ST_GeomFromText('POINT(127.098941 37.523908)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (448, '풍납동', 1171010300, ST_GeomFromText('POINT(127.122075 37.538092)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (449, '송파동', 1171010400, ST_GeomFromText('POINT(127.109339 37.50626)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (450, '석촌동', 1171010500, ST_GeomFromText('POINT(127.1037 37.503592)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (451, '삼전동', 1171010600, ST_GeomFromText('POINT(127.092535 37.502714)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (452, '가락동', 1171010700, ST_GeomFromText('POINT(127.121786 37.495557)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (453, '문정동', 1171010800, ST_GeomFromText('POINT(127.124172 37.490098)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (454, '장지동', 1171010900, ST_GeomFromText('POINT(127.1354 37.4785)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (455, '방이동', 1171011100, ST_GeomFromText('POINT(127.123925 37.510933)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (456, '오금동', 1171011200, ST_GeomFromText('POINT(127.128149 37.503053)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (457, '거여동', 1171011300, ST_GeomFromText('POINT(127.143232 37.496964)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (458, '마천동', 1171011400, ST_GeomFromText('POINT(127.149972 37.49602)', 4326), 24);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (459, '명일동', 1174010100, ST_GeomFromText('POINT(127.144366 37.551245)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (460, '고덕동', 1174010200, ST_GeomFromText('POINT(127.151538 37.557259)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (461, '상일동', 1174010300, ST_GeomFromText('POINT(127.168301 37.550583)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (462, '길동', 1174010500, ST_GeomFromText('POINT(127.142679 37.53456)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (463, '둔촌동', 1174010600, ST_GeomFromText('POINT(127.136647 37.523454)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (464, '암사동', 1174010700, ST_GeomFromText('POINT(127.132663 37.551508)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (465, '성내동', 1174010800, ST_GeomFromText('POINT(127.122425 37.530442)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (466, '천호동', 1174010900, ST_GeomFromText('POINT(127.136807 37.545016)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (467, '강일동', 1174011000, ST_GeomFromText('POINT(127.173909 37.564978)', 4326), 25);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (468, '영주동', 2611010100, ST_GeomFromText('POINT(129.035015 35.11112)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (469, '대창동1가', 2611010200, ST_GeomFromText('POINT(129.036114 35.107838)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (470, '대창동2가', 2611010300, ST_GeomFromText('POINT(129.037416 35.110684)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (471, '중앙동1가', 2611010400, ST_GeomFromText('POINT(129.035748 35.100774)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (472, '중앙동2가', 2611010500, ST_GeomFromText('POINT(129.035556 35.102133)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (473, '중앙동3가', 2611010600, ST_GeomFromText('POINT(129.035518 35.103433)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (474, '중앙동4가', 2611010700, ST_GeomFromText('POINT(129.0389 35.1076)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (475, '중앙동5가', 2611010800, ST_GeomFromText('POINT(129.037138 35.102249)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (476, '중앙동6가', 2611010900, ST_GeomFromText('POINT(129.037113 35.099749)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (477, '중앙동7가', 2611011000, ST_GeomFromText('POINT(129.0365 35.0974)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (478, '동광동1가', 2611011100, ST_GeomFromText('POINT(129.035695 35.09913)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (479, '동광동2가', 2611011200, ST_GeomFromText('POINT(129.034321 35.100223)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (480, '동광동3가', 2611011300, ST_GeomFromText('POINT(129.034018 35.101689)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (481, '동광동4가', 2611011400, ST_GeomFromText('POINT(129.034217 35.10331)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (482, '동광동5가', 2611011500, ST_GeomFromText('POINT(129.0339 35.1072)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (483, '대청동1가', 2611011600, ST_GeomFromText('POINT(129.0329 35.1044)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (484, '대청동2가', 2611011700, ST_GeomFromText('POINT(129.031017 35.10301)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (485, '대청동3가', 2611011800, ST_GeomFromText('POINT(129.028918 35.103019)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (486, '대청동4가', 2611011900, ST_GeomFromText('POINT(129.0297 35.1061)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (487, '보수동1가', 2611012000, ST_GeomFromText('POINT(129.0256 35.1066)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (488, '보수동2가', 2611012100, ST_GeomFromText('POINT(129.022725 35.105482)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (489, '보수동3가', 2611012200, ST_GeomFromText('POINT(129.022462 35.10449)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (490, '부평동1가', 2611012300, ST_GeomFromText('POINT(129.02711 35.100751)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (491, '부평동2가', 2611012400, ST_GeomFromText('POINT(129.025755 35.100608)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (492, '부평동3가', 2611012500, ST_GeomFromText('POINT(129.02454 35.101388)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (493, '부평동4가', 2611012600, ST_GeomFromText('POINT(129.023 35.1019)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (494, '신창동1가', 2611012700, ST_GeomFromText('POINT(129.030368 35.101342)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (495, '신창동2가', 2611012800, ST_GeomFromText('POINT(129.029453 35.101276)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (496, '신창동3가', 2611012900, ST_GeomFromText('POINT(129.028846 35.101329)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (497, '신창동4가', 2611013000, ST_GeomFromText('POINT(129.02823 35.101279)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (498, '창선동1가', 2611013100, ST_GeomFromText('POINT(129.030309 35.099538)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (499, '창선동2가', 2611013200, ST_GeomFromText('POINT(129.028611 35.099575)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (500, '광복동1가', 2611013300, ST_GeomFromText('POINT(129.034458 35.098751)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (501, '광복동2가', 2611013400, ST_GeomFromText('POINT(129.0324 35.1)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (502, '광복동3가', 2611013500, ST_GeomFromText('POINT(129.03134 35.100595)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (503, '남포동1가', 2611013600, ST_GeomFromText('POINT(129.034901 35.097299)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (504, '남포동2가', 2611013700, ST_GeomFromText('POINT(129.032479 35.098305)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (505, '남포동3가', 2611013800, ST_GeomFromText('POINT(129.029255 35.098955)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (506, '남포동4가', 2611013900, ST_GeomFromText('POINT(129.032225 35.097615)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (507, '남포동5가', 2611014000, ST_GeomFromText('POINT(129.0292 35.0977)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (508, '남포동6가', 2611014100, ST_GeomFromText('POINT(129.027138 35.097232)', 4326), 26);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (509, '동대신동1가', 2614010100, ST_GeomFromText('POINT(129.021975 35.11009)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (510, '동대신동2가', 2614010200, ST_GeomFromText('POINT(129.0234 35.1135)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (511, '동대신동3가', 2614010300, ST_GeomFromText('POINT(129.0224 35.1247)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (512, '서대신동1가', 2614010400, ST_GeomFromText('POINT(129.0147 35.1074)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (513, '서대신동2가', 2614010500, ST_GeomFromText('POINT(129.0114 35.1094)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (514, '서대신동3가', 2614010600, ST_GeomFromText('POINT(129.0107 35.1255)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (515, '부용동1가', 2614010700, ST_GeomFromText('POINT(129.0212 35.1067)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (516, '부용동2가', 2614010800, ST_GeomFromText('POINT(129.0173 35.1066)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (517, '부민동1가', 2614010900, ST_GeomFromText('POINT(129.020592 35.103586)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (518, '부민동2가', 2614011000, ST_GeomFromText('POINT(129.019325 35.103683)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (519, '부민동3가', 2614011100, ST_GeomFromText('POINT(129.0161 35.1039)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (520, '토성동1가', 2614011200, ST_GeomFromText('POINT(129.0233 35.0998)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (521, '토성동2가', 2614011300, ST_GeomFromText('POINT(129.021506 35.100237)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (522, '토성동3가', 2614011400, ST_GeomFromText('POINT(129.020325 35.100277)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (523, '아미동1가', 2614011500, ST_GeomFromText('POINT(129.019122 35.100411)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (524, '아미동2가', 2614011600, ST_GeomFromText('POINT(129.013025 35.100282)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (525, '토성동4가', 2614011700, ST_GeomFromText('POINT(129.023506 35.097438)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (526, '토성동5가', 2614011800, ST_GeomFromText('POINT(129.021735 35.097517)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (527, '초장동', 2614011900, ST_GeomFromText('POINT(129.020294 35.096003)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (528, '충무동1가', 2614012000, ST_GeomFromText('POINT(129.0246 35.0956)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (529, '충무동2가', 2614012100, ST_GeomFromText('POINT(129.022274 35.095299)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (530, '충무동3가', 2614012200, ST_GeomFromText('POINT(129.022239 35.093889)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (531, '남부민동', 2614012300, ST_GeomFromText('POINT(129.023299 35.092759)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (532, '암남동', 2614012400, ST_GeomFromText('POINT(129.02098 35.079849)', 4326), 27);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (533, '초량동', 2617010100, ST_GeomFromText('POINT(129.036958 35.113931)', 4326), 28);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (534, '수정동', 2617010200, ST_GeomFromText('POINT(129.042276 35.125399)', 4326), 28);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (535, '좌천동', 2617010300, ST_GeomFromText('POINT(129.049156 35.131433)', 4326), 28);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (536, '범일동', 2617010400, ST_GeomFromText('POINT(129.049128 35.141315)', 4326), 28);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (537, '대교동1가', 2620010100, ST_GeomFromText('POINT(129.0379 35.0932)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (538, '대교동2가', 2620010200, ST_GeomFromText('POINT(129.041004 35.091707)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (539, '대평동1가', 2620010300, ST_GeomFromText('POINT(129.034963 35.09144)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (540, '대평동2가', 2620010400, ST_GeomFromText('POINT(129.0331 35.092665)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (541, '남항동1가', 2620010500, ST_GeomFromText('POINT(129.0393 35.0902)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (542, '남항동2가', 2620010600, ST_GeomFromText('POINT(129.0372 35.0883)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (543, '남항동3가', 2620010700, ST_GeomFromText('POINT(129.0375 35.0851)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (544, '영선동1가', 2620010800, ST_GeomFromText('POINT(129.0437 35.0905)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (545, '영선동2가', 2620010900, ST_GeomFromText('POINT(129.0426 35.0884)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (546, '영선동3가', 2620011000, ST_GeomFromText('POINT(129.041163 35.08589)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (547, '영선동4가', 2620011100, ST_GeomFromText('POINT(129.047 35.0791)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (548, '신선동1가', 2620011200, ST_GeomFromText('POINT(129.0468 35.0905)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (549, '신선동2가', 2620011300, ST_GeomFromText('POINT(129.0476 35.0864)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (550, '신선동3가', 2620011400, ST_GeomFromText('POINT(129.0495 35.0819)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (551, '봉래동1가', 2620011500, ST_GeomFromText('POINT(129.039925 35.094299)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (552, '봉래동2가', 2620011600, ST_GeomFromText('POINT(129.042819 35.094501)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (553, '봉래동3가', 2620011700, ST_GeomFromText('POINT(129.0447 35.0938)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (554, '봉래동4가', 2620011800, ST_GeomFromText('POINT(129.0487 35.0925)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (555, '봉래동5가', 2620011900, ST_GeomFromText('POINT(129.0524 35.0933)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (556, '청학동', 2620012000, ST_GeomFromText('POINT(129.058401 35.096882)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (557, '동삼동', 2620012100, ST_GeomFromText('POINT(129.068425 35.074895)', 4326), 29);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (558, '양정동', 2623010100, ST_GeomFromText('POINT(129.068734 35.172168)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (559, '전포동', 2623010200, ST_GeomFromText('POINT(129.067383 35.154418)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (560, '부전동', 2623010300, ST_GeomFromText('POINT(129.063001 35.163524)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (561, '범천동', 2623010400, ST_GeomFromText('POINT(129.061013 35.147034)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (562, '범전동', 2623010500, ST_GeomFromText('POINT(129.0601 35.1674)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (563, '연지동', 2623010600, ST_GeomFromText('POINT(129.052775 35.172791)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (564, '초읍동', 2623010700, ST_GeomFromText('POINT(129.047353 35.18149)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (565, '부암동', 2623010800, ST_GeomFromText('POINT(129.048549 35.163312)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (566, '당감동', 2623010900, ST_GeomFromText('POINT(129.035642 35.164467)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (567, '가야동', 2623011000, ST_GeomFromText('POINT(129.034248 35.153272)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (568, '개금동', 2623011100, ST_GeomFromText('POINT(129.021951 35.152616)', 4326), 30);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (569, '명장동', 2626010100, ST_GeomFromText('POINT(129.104205 35.204735)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (570, '안락동', 2626010200, ST_GeomFromText('POINT(129.098571 35.19715)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (571, '칠산동', 2626010300, ST_GeomFromText('POINT(129.0931 35.2051)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (572, '낙민동', 2626010400, ST_GeomFromText('POINT(129.092312 35.197001)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (573, '복천동', 2626010500, ST_GeomFromText('POINT(129.0885 35.2071)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (574, '수안동', 2626010600, ST_GeomFromText('POINT(129.0844 35.1989)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (575, '명륜동', 2626010700, ST_GeomFromText('POINT(129.081523 35.212492)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (576, '온천동', 2626010800, ST_GeomFromText('POINT(129.0801 35.220071)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (577, '사직동', 2626010900, ST_GeomFromText('POINT(129.061867 35.199021)', 4326), 31);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (578, '대연동', 2629010600, ST_GeomFromText('POINT(129.091799 35.132965)', 4326), 32);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (579, '용호동', 2629010700, ST_GeomFromText('POINT(129.109025 35.12081)', 4326), 32);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (580, '용당동', 2629010800, ST_GeomFromText('POINT(129.095025 35.117669)', 4326), 32);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (581, '문현동', 2629010900, ST_GeomFromText('POINT(129.071319 35.142542)', 4326), 32);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (582, '우암동', 2629011000, ST_GeomFromText('POINT(129.076906 35.125012)', 4326), 32);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (583, '감만동', 2629011100, ST_GeomFromText('POINT(129.080622 35.116825)', 4326), 32);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (584, '금곡동', 2632010100, ST_GeomFromText('POINT(129.012768 35.250096)', 4326), 33);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (585, '화명동', 2632010200, ST_GeomFromText('POINT(129.013817 35.232756)', 4326), 33);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (586, '만덕동', 2632010300, ST_GeomFromText('POINT(129.036402 35.213514)', 4326), 33);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (587, '덕천동', 2632010400, ST_GeomFromText('POINT(129.016658 35.212469)', 4326), 33);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (588, '구포동', 2632010500, ST_GeomFromText('POINT(129.001146 35.206395)', 4326), 33);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (589, '반송동', 2635010100, ST_GeomFromText('POINT(129.147884 35.225175)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (590, '석대동', 2635010200, ST_GeomFromText('POINT(129.1331 35.2259)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (591, '반여동', 2635010300, ST_GeomFromText('POINT(129.11893 35.201148)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (592, '재송동', 2635010400, ST_GeomFromText('POINT(129.125102 35.184617)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (593, '우동', 2635010500, ST_GeomFromText('POINT(129.158088 35.162929)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (594, '중동', 2635010600, ST_GeomFromText('POINT(129.164251 35.162562)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (595, '좌동', 2635010700, ST_GeomFromText('POINT(129.174187 35.170909)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (596, '송정동', 2635010800, ST_GeomFromText('POINT(129.203635 35.183688)', 4326), 34);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (597, '괴정동', 2638010100, ST_GeomFromText('POINT(128.989365 35.099655)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (598, '당리동', 2638010200, ST_GeomFromText('POINT(128.974569 35.104012)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (599, '하단동', 2638010300, ST_GeomFromText('POINT(128.96424 35.104008)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (600, '신평동', 2638010400, ST_GeomFromText('POINT(128.973241 35.089248)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (601, '장림동', 2638010500, ST_GeomFromText('POINT(128.96689 35.083072)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (602, '다대동', 2638010600, ST_GeomFromText('POINT(128.971329 35.05917)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (603, '구평동', 2638010700, ST_GeomFromText('POINT(128.987782 35.081929)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (604, '감천동', 2638010800, ST_GeomFromText('POINT(129.002831 35.088417)', 4326), 35);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (605, '두구동', 2641010100, ST_GeomFromText('POINT(129.1135 35.2877)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (606, '노포동', 2641010200, ST_GeomFromText('POINT(129.0891 35.2895)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (607, '청룡동', 2641010300, ST_GeomFromText('POINT(129.0691 35.2831)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (608, '남산동', 2641010400, ST_GeomFromText('POINT(129.092264 35.271672)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (609, '선동', 2641010500, ST_GeomFromText('POINT(129.1139 35.2724)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (610, '오륜동', 2641010600, ST_GeomFromText('POINT(129.1174 35.2464)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (611, '구서동', 2641010700, ST_GeomFromText('POINT(129.086871 35.24516)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (612, '장전동', 2641010800, ST_GeomFromText('POINT(129.084502 35.238217)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (613, '부곡동', 2641010900, ST_GeomFromText('POINT(129.092143 35.22446)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (614, '서동', 2641011000, ST_GeomFromText('POINT(129.099138 35.218343)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (615, '금사동', 2641011100, ST_GeomFromText('POINT(129.11265 35.221818)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (616, '회동동', 2641011200, ST_GeomFromText('POINT(129.128 35.2391)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (617, '금성동', 2641011300, ST_GeomFromText('POINT(129.056137 35.250335)', 4326), 36);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (618, '대저1동', 2644010100, ST_GeomFromText('POINT(128.976825 35.21547)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (619, '대저2동', 2644010200, ST_GeomFromText('POINT(128.956467 35.178581)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (620, '강동동', 2644010300, ST_GeomFromText('POINT(128.935235 35.214548)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (621, '명지동', 2644010400, ST_GeomFromText('POINT(128.90705 35.100134)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (622, '죽림동', 2644010500, ST_GeomFromText('POINT(128.8999 35.1996)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (623, '식만동', 2644010600, ST_GeomFromText('POINT(128.9073 35.2125)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (624, '죽동동', 2644010700, ST_GeomFromText('POINT(128.88325 35.198385)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (625, '봉림동', 2644010800, ST_GeomFromText('POINT(128.896312 35.165482)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (626, '송정동', 2644010900, ST_GeomFromText('POINT(128.852621 35.105577)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (627, '화전동', 2644011000, ST_GeomFromText('POINT(128.8695 35.1033)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (628, '녹산동', 2644011100, ST_GeomFromText('POINT(128.879638 35.118699)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (629, '생곡동', 2644011200, ST_GeomFromText('POINT(128.8796 35.132)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (630, '구랑동', 2644011300, ST_GeomFromText('POINT(128.8523 35.1277)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (631, '지사동', 2644011400, ST_GeomFromText('POINT(128.8277 35.1445)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (632, '미음동', 2644011500, ST_GeomFromText('POINT(128.856313 35.152899)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (633, '범방동', 2644011600, ST_GeomFromText('POINT(128.8809 35.1558)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (634, '신호동', 2644011700, ST_GeomFromText('POINT(128.8786 35.0922)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (635, '동선동', 2644011800, ST_GeomFromText('POINT(128.8355 35.0443)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (636, '성북동', 2644011900, ST_GeomFromText('POINT(128.8338 35.0849)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (637, '눌차동', 2644012000, ST_GeomFromText('POINT(128.844451 35.066878)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (638, '천성동', 2644012100, ST_GeomFromText('POINT(128.821646 35.031715)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (639, '대항동', 2644012200, ST_GeomFromText('POINT(128.828814 35.011183)', 4326), 37);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (640, '거제동', 2647010100, ST_GeomFromText('POINT(129.075622 35.191857)', 4326), 38);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (641, '연산동', 2647010200, ST_GeomFromText('POINT(129.090439 35.190042)', 4326), 38);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (642, '망미동', 2650010100, ST_GeomFromText('POINT(129.104951 35.173471)', 4326), 39);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (643, '수영동', 2650010200, ST_GeomFromText('POINT(129.116019 35.170508)', 4326), 39);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (644, '민락동', 2650010300, ST_GeomFromText('POINT(129.125399 35.157289)', 4326), 39);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (645, '광안동', 2650010400, ST_GeomFromText('POINT(129.112438 35.162893)', 4326), 39);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (646, '남천동', 2650010500, ST_GeomFromText('POINT(129.110324 35.142702)', 4326), 39);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (647, '삼락동', 2653010100, ST_GeomFromText('POINT(128.977725 35.176942)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (648, '모라동', 2653010200, ST_GeomFromText('POINT(128.989962 35.18698)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (649, '덕포동', 2653010300, ST_GeomFromText('POINT(128.985701 35.169402)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (650, '괘법동', 2653010400, ST_GeomFromText('POINT(128.987171 35.163764)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (651, '감전동', 2653010500, ST_GeomFromText('POINT(128.979442 35.154336)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (652, '주례동', 2653010600, ST_GeomFromText('POINT(129.001174 35.151389)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (653, '학장동', 2653010700, ST_GeomFromText('POINT(128.987336 35.14411)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (654, '엄궁동', 2653010800, ST_GeomFromText('POINT(128.972129 35.128703)', 4326), 40);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (655, '동인동1가', 2711010100, ST_GeomFromText('POINT(128.60349 35.872512)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (656, '동인동2가', 2711010200, ST_GeomFromText('POINT(128.603263 35.869132)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (657, '동인동3가', 2711010300, ST_GeomFromText('POINT(128.609925 35.872157)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (658, '동인동4가', 2711010400, ST_GeomFromText('POINT(128.6103 35.8677)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (659, '삼덕동1가', 2711010500, ST_GeomFromText('POINT(128.598362 35.866299)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (660, '삼덕동2가', 2711010600, ST_GeomFromText('POINT(128.602613 35.86559)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (661, '삼덕동3가', 2711010700, ST_GeomFromText('POINT(128.609287 35.864557)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (662, '봉산동', 2711010800, ST_GeomFromText('POINT(128.5973 35.8631)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (663, '장관동', 2711010900, ST_GeomFromText('POINT(128.590557 35.868835)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (664, '상서동', 2711011000, ST_GeomFromText('POINT(128.589956 35.870464)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (665, '수동', 2711011100, ST_GeomFromText('POINT(128.589133 35.869709)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (666, '덕산동', 2711011200, ST_GeomFromText('POINT(128.593292 35.866086)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (667, '종로1가', 2711011300, ST_GeomFromText('POINT(128.591152 35.870314)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (668, '종로2가', 2711011400, ST_GeomFromText('POINT(128.591977 35.868355)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (669, '사일동', 2711011500, ST_GeomFromText('POINT(128.594367 35.871141)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (670, '동일동', 2711011600, ST_GeomFromText('POINT(128.592774 35.86972)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (671, '남일동', 2711011700, ST_GeomFromText('POINT(128.594222 35.86939)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (672, '전동', 2711011800, ST_GeomFromText('POINT(128.592821 35.870737)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (673, '동성로3가', 2711011900, ST_GeomFromText('POINT(128.593887 35.86769)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (674, '동문동', 2711012000, ST_GeomFromText('POINT(128.598476 35.871987)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (675, '문화동', 2711012100, ST_GeomFromText('POINT(128.597329 35.871274)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (676, '공평동', 2711012200, ST_GeomFromText('POINT(128.597925 35.869665)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (677, '동성로2가', 2711012300, ST_GeomFromText('POINT(128.595608 35.870074)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (678, '태평로1가', 2711012400, ST_GeomFromText('POINT(128.598128 35.874719)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (679, '교동', 2711012500, ST_GeomFromText('POINT(128.598857 35.873369)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (680, '용덕동', 2711012600, ST_GeomFromText('POINT(128.596694 35.873964)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (681, '상덕동', 2711012700, ST_GeomFromText('POINT(128.597778 35.873767)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (682, '완전동', 2711012800, ST_GeomFromText('POINT(128.599257 35.872549)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (683, '도원동', 2711012900, ST_GeomFromText('POINT(128.583325 35.876572)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (684, '수창동', 2711013000, ST_GeomFromText('POINT(128.584738 35.875265)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (685, '태평로3가', 2711013100, ST_GeomFromText('POINT(128.587437 35.876815)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (686, '인교동', 2711013200, ST_GeomFromText('POINT(128.584003 35.872906)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (687, '서야동', 2711013300, ST_GeomFromText('POINT(128.585737 35.873264)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (688, '서성로1가', 2711013400, ST_GeomFromText('POINT(128.587168 35.872443)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (689, '시장북로', 2711013500, ST_GeomFromText('POINT(128.582441 35.872115)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (690, '하서동', 2711013600, ST_GeomFromText('POINT(128.588042 35.870209)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (691, '남성로', 2711013700, ST_GeomFromText('POINT(128.59069 35.8679)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (692, '계산동1가', 2711013800, ST_GeomFromText('POINT(128.58635 35.86927)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (693, '계산동2가', 2711013900, ST_GeomFromText('POINT(128.58825 35.867724)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (694, '동산동', 2711014000, ST_GeomFromText('POINT(128.5843 35.8685)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (695, '서문로2가', 2711014100, ST_GeomFromText('POINT(128.586321 35.870906)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (696, '서성로2가', 2711014200, ST_GeomFromText('POINT(128.587198 35.870084)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (697, '포정동', 2711014300, ST_GeomFromText('POINT(128.592911 35.871904)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (698, '서문로1가', 2711014400, ST_GeomFromText('POINT(128.589237 35.871643)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (699, '서내동', 2711014500, ST_GeomFromText('POINT(128.588648 35.872683)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (700, '북성로2가', 2711014600, ST_GeomFromText('POINT(128.589198 35.873938)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (701, '대안동', 2711014700, ST_GeomFromText('POINT(128.591381 35.873131)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (702, '동성로1가', 2711014800, ST_GeomFromText('POINT(128.595716 35.873092)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (703, '태평로2가', 2711014900, ST_GeomFromText('POINT(128.592494 35.875595)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (704, '북성로1가', 2711015000, ST_GeomFromText('POINT(128.593646 35.874334)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (705, '화전동', 2711015100, ST_GeomFromText('POINT(128.594805 35.873172)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (706, '향촌동', 2711015200, ST_GeomFromText('POINT(128.593683 35.873316)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (707, '북내동', 2711015300, ST_GeomFromText('POINT(128.589647 35.872982)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (708, '대신동', 2711015400, ST_GeomFromText('POINT(128.576268 35.865545)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (709, '달성동', 2711015500, ST_GeomFromText('POINT(128.579075 35.875949)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (710, '남산동', 2711015600, ST_GeomFromText('POINT(128.590427 35.859336)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (711, '대봉동', 2711015700, ST_GeomFromText('POINT(128.6043 35.861649)', 4326), 42);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (712, '신암동', 2714010100, ST_GeomFromText('POINT(128.616355 35.884307)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (713, '신천동', 2714010200, ST_GeomFromText('POINT(128.623575 35.872757)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (714, '효목동', 2714010300, ST_GeomFromText('POINT(128.644888 35.881621)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (715, '평광동', 2714010400, ST_GeomFromText('POINT(128.7081 35.9306)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (716, '봉무동', 2714010500, ST_GeomFromText('POINT(128.6438 35.926735)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (717, '불로동', 2714010600, ST_GeomFromText('POINT(128.6334 35.9056)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (718, '도동', 2714010700, ST_GeomFromText('POINT(128.6669 35.9258)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (719, '지저동', 2714010800, ST_GeomFromText('POINT(128.638318 35.893439)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (720, '입석동', 2714010900, ST_GeomFromText('POINT(128.6535 35.8986)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (721, '검사동', 2714011000, ST_GeomFromText('POINT(128.6641 35.8958)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (722, '방촌동', 2714011100, ST_GeomFromText('POINT(128.665247 35.880056)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (723, '둔산동', 2714011200, ST_GeomFromText('POINT(128.689375 35.908099)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (724, '부동', 2714011300, ST_GeomFromText('POINT(128.6897 35.8912)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (725, '신평동', 2714011400, ST_GeomFromText('POINT(128.6863 35.883)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (726, '서호동', 2714011500, ST_GeomFromText('POINT(128.7106 35.8652)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (727, '동호동', 2714011600, ST_GeomFromText('POINT(128.717525 35.866749)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (728, '신기동', 2714011700, ST_GeomFromText('POINT(128.7052 35.865457)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (729, '율하동', 2714011800, ST_GeomFromText('POINT(128.691 35.866824)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (730, '용계동', 2714011900, ST_GeomFromText('POINT(128.686239 35.87355)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (731, '율암동', 2714012000, ST_GeomFromText('POINT(128.704463 35.880399)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (732, '상매동', 2714012100, ST_GeomFromText('POINT(128.711925 35.907799)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (733, '매여동', 2714012200, ST_GeomFromText('POINT(128.7283 35.9114)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (734, '각산동', 2714012300, ST_GeomFromText('POINT(128.717 35.8841)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (735, '신서동', 2714012400, ST_GeomFromText('POINT(128.7312 35.8865)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (736, '동내동', 2714012500, ST_GeomFromText('POINT(128.7419 35.89)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (737, '괴전동', 2714012600, ST_GeomFromText('POINT(128.737775 35.871557)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (738, '금강동', 2714012700, ST_GeomFromText('POINT(128.737112 35.85854)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (739, '대림동', 2714012800, ST_GeomFromText('POINT(128.7452 35.8686)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (740, '사복동', 2714012900, ST_GeomFromText('POINT(128.7531 35.8714)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (741, '숙천동', 2714013000, ST_GeomFromText('POINT(128.75 35.8806)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (742, '내곡동', 2714013100, ST_GeomFromText('POINT(128.7532 35.8987)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (743, '능성동', 2714013200, ST_GeomFromText('POINT(128.7357 35.9674)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (744, '진인동', 2714013300, ST_GeomFromText('POINT(128.7158 35.96)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (745, '도학동', 2714013400, ST_GeomFromText('POINT(128.713205 35.986511)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (746, '백안동', 2714013500, ST_GeomFromText('POINT(128.6954 35.9555)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (747, '미곡동', 2714013600, ST_GeomFromText('POINT(128.688563 35.965435)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (748, '용수동', 2714013700, ST_GeomFromText('POINT(128.690913 35.991126)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (749, '신무동', 2714013800, ST_GeomFromText('POINT(128.6677 35.9975)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (750, '미대동', 2714013900, ST_GeomFromText('POINT(128.66985 35.954785)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (751, '내동', 2714014000, ST_GeomFromText('POINT(128.657 35.966)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (752, '신용동', 2714014100, ST_GeomFromText('POINT(128.6508 35.9849)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (753, '중대동', 2714014200, ST_GeomFromText('POINT(128.6344 35.9874)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (754, '송정동', 2714014300, ST_GeomFromText('POINT(128.625075 35.993951)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (755, '덕곡동', 2714014400, ST_GeomFromText('POINT(128.6111 35.9897)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (756, '지묘동', 2714014500, ST_GeomFromText('POINT(128.6415 35.9523)', 4326), 43);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (757, '내당동', 2717010100, ST_GeomFromText('POINT(128.560741 35.860623)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (758, '비산동', 2717010200, ST_GeomFromText('POINT(128.568946 35.881192)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (759, '평리동', 2717010300, ST_GeomFromText('POINT(128.563204 35.875607)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (760, '상리동', 2717010400, ST_GeomFromText('POINT(128.5261 35.8767)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (761, '중리동', 2717010500, ST_GeomFromText('POINT(128.539013 35.862915)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (762, '이현동', 2717010600, ST_GeomFromText('POINT(128.539575 35.87589)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (763, '원대동1가', 2717010700, ST_GeomFromText('POINT(128.5768 35.881615)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (764, '원대동2가', 2717010800, ST_GeomFromText('POINT(128.580025 35.884232)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (765, '원대동3가', 2717010900, ST_GeomFromText('POINT(128.575637 35.885724)', 4326), 44);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (766, '이천동', 2720010100, ST_GeomFromText('POINT(128.599425 35.853711)', 4326), 45);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (767, '봉덕동', 2720010200, ST_GeomFromText('POINT(128.596437 35.845294)', 4326), 45);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (768, '대명동', 2720010300, ST_GeomFromText('POINT(128.573555 35.841747)', 4326), 45);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (769, '칠성동1가', 2723010100, ST_GeomFromText('POINT(128.605012 35.875665)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (770, '칠성동2가', 2723010200, ST_GeomFromText('POINT(128.596325 35.880515)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (771, '고성동1가', 2723010300, ST_GeomFromText('POINT(128.585209 35.878813)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (772, '고성동2가', 2723010400, ST_GeomFromText('POINT(128.582875 35.880365)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (773, '고성동3가', 2723010500, ST_GeomFromText('POINT(128.585463 35.882574)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (774, '침산동', 2723010600, ST_GeomFromText('POINT(128.581175 35.890332)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (775, '노원동1가', 2723010700, ST_GeomFromText('POINT(128.579838 35.889057)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (776, '노원동2가', 2723010800, ST_GeomFromText('POINT(128.5737 35.891115)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (777, '노원동3가', 2723010900, ST_GeomFromText('POINT(128.5674 35.8964)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (778, '대현동', 2723011000, ST_GeomFromText('POINT(128.605823 35.882169)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (779, '산격동', 2723011100, ST_GeomFromText('POINT(128.596973 35.900382)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (780, '복현동', 2723011200, ST_GeomFromText('POINT(128.61855 35.893749)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (781, '검단동', 2723011300, ST_GeomFromText('POINT(128.629715 35.913794)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (782, '동변동', 2723011400, ST_GeomFromText('POINT(128.60605 35.921725)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (783, '서변동', 2723011500, ST_GeomFromText('POINT(128.5922 35.9256)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (784, '조야동', 2723011600, ST_GeomFromText('POINT(128.5759 35.916215)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (785, '노곡동', 2723011700, ST_GeomFromText('POINT(128.5604 35.9109)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (786, '읍내동', 2723011800, ST_GeomFromText('POINT(128.550536 35.945939)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (787, '동호동', 2723011900, ST_GeomFromText('POINT(128.5667 35.9662)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (788, '학정동', 2723012000, ST_GeomFromText('POINT(128.566763 35.95381)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (789, '도남동', 2723012100, ST_GeomFromText('POINT(128.5911 35.9706)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (790, '국우동', 2723012200, ST_GeomFromText('POINT(128.579341 35.951639)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (791, '구암동', 2723012300, ST_GeomFromText('POINT(128.565966 35.938903)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (792, '동천동', 2723012400, ST_GeomFromText('POINT(128.558073 35.937216)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (793, '관음동', 2723012500, ST_GeomFromText('POINT(128.547249 35.944259)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (794, '태전동', 2723012600, ST_GeomFromText('POINT(128.543189 35.924058)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (795, '매천동', 2723012700, ST_GeomFromText('POINT(128.5377 35.9123)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (796, '팔달동', 2723012800, ST_GeomFromText('POINT(128.540475 35.89844)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (797, '금호동', 2723012900, ST_GeomFromText('POINT(128.5257 35.9044)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (798, '사수동', 2723013000, ST_GeomFromText('POINT(128.5131 35.9015)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (799, '연경동', 2723013100, ST_GeomFromText('POINT(128.6126 35.9606)', 4326), 46);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (800, '범어동', 2726010100, ST_GeomFromText('POINT(128.622035 35.855566)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (801, '만촌동', 2726010200, ST_GeomFromText('POINT(128.639966 35.866311)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (802, '수성동1가', 2726010300, ST_GeomFromText('POINT(128.611 35.855)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (803, '수성동2가', 2726010400, ST_GeomFromText('POINT(128.6151 35.854832)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (804, '수성동3가', 2726010500, ST_GeomFromText('POINT(128.618988 35.854853)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (805, '수성동4가', 2726010600, ST_GeomFromText('POINT(128.615825 35.86359)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (806, '황금동', 2726010700, ST_GeomFromText('POINT(128.63815 35.843957)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (807, '중동', 2726010800, ST_GeomFromText('POINT(128.615035 35.847374)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (808, '상동', 2726010900, ST_GeomFromText('POINT(128.615404 35.832107)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (809, '파동', 2726011000, ST_GeomFromText('POINT(128.615131 35.815448)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (810, '두산동', 2726011100, ST_GeomFromText('POINT(128.617541 35.835242)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (811, '지산동', 2726011200, ST_GeomFromText('POINT(128.637046 35.824958)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (812, '범물동', 2726011300, ST_GeomFromText('POINT(128.645963 35.817792)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (813, '시지동', 2726011400, ST_GeomFromText('POINT(128.69265 35.84324)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (814, '매호동', 2726011500, ST_GeomFromText('POINT(128.708675 35.850757)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (815, '성동', 2726011600, ST_GeomFromText('POINT(128.720813 35.849932)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (816, '사월동', 2726011700, ST_GeomFromText('POINT(128.7193 35.8394)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (817, '신매동', 2726011800, ST_GeomFromText('POINT(128.712137 35.835357)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (818, '욱수동', 2726011900, ST_GeomFromText('POINT(128.70285 35.812333)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (819, '노변동', 2726012000, ST_GeomFromText('POINT(128.6961 35.831175)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (820, '삼덕동', 2726012200, ST_GeomFromText('POINT(128.6675 35.8282)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (821, '연호동', 2726012300, ST_GeomFromText('POINT(128.676712 35.841874)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (822, '이천동', 2726012400, ST_GeomFromText('POINT(128.6604 35.8434)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (823, '고모동', 2726012500, ST_GeomFromText('POINT(128.671937 35.863532)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (824, '가천동', 2726012600, ST_GeomFromText('POINT(128.686163 35.851682)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (825, '대흥동', 2726012700, ST_GeomFromText('POINT(128.68445 35.825208)', 4326), 47);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (826, '성당동', 2729010100, ST_GeomFromText('POINT(128.553099 35.840586)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (827, '두류동', 2729010200, ST_GeomFromText('POINT(128.5617 35.8541)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (828, '파호동', 2729010400, ST_GeomFromText('POINT(128.474512 35.845549)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (829, '호림동', 2729010500, ST_GeomFromText('POINT(128.4789 35.8347)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (830, '갈산동', 2729010600, ST_GeomFromText('POINT(128.499462 35.84219)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (831, '신당동', 2729010700, ST_GeomFromText('POINT(128.498813 35.858965)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (832, '이곡동', 2729010800, ST_GeomFromText('POINT(128.510638 35.851657)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (833, '장동', 2729010900, ST_GeomFromText('POINT(128.512387 35.840849)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (834, '장기동', 2729011000, ST_GeomFromText('POINT(128.5299 35.843407)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (835, '용산동', 2729011100, ST_GeomFromText('POINT(128.531169 35.856681)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (836, '죽전동', 2729011200, ST_GeomFromText('POINT(128.539067 35.856587)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (837, '감삼동', 2729011300, ST_GeomFromText('POINT(128.540694 35.849186)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (838, '본리동', 2729011400, ST_GeomFromText('POINT(128.543159 35.840994)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (839, '상인동', 2729011500, ST_GeomFromText('POINT(128.544958 35.814259)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (840, '도원동', 2729011600, ST_GeomFromText('POINT(128.532177 35.807454)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (841, '진천동', 2729011700, ST_GeomFromText('POINT(128.522817 35.812213)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (842, '유천동', 2729011800, ST_GeomFromText('POINT(128.5132 35.8155)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (843, '대천동', 2729011900, ST_GeomFromText('POINT(128.493862 35.825275)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (844, '월성동', 2729012000, ST_GeomFromText('POINT(128.522881 35.819556)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (845, '월암동', 2729012100, ST_GeomFromText('POINT(128.510563 35.82875)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (846, '송현동', 2729012200, ST_GeomFromText('POINT(128.554704 35.829258)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (847, '대곡동', 2729012300, ST_GeomFromText('POINT(128.528775 35.7986)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (848, '본동', 2729012400, ST_GeomFromText('POINT(128.541038 35.834457)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (849, '호산동', 2729012500, ST_GeomFromText('POINT(128.4823 35.8537)', 4326), 48);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (850, '중앙동1가', 2811010100, ST_GeomFromText('POINT(126.620428 37.473435)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (851, '중앙동2가', 2811010200, ST_GeomFromText('POINT(126.621707 37.472769)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (852, '중앙동3가', 2811010300, ST_GeomFromText('POINT(126.622849 37.471976)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (853, '중앙동4가', 2811010400, ST_GeomFromText('POINT(126.624078 37.471285)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (854, '해안동1가', 2811010500, ST_GeomFromText('POINT(126.619919 37.472823)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (855, '해안동2가', 2811010600, ST_GeomFromText('POINT(126.621159 37.472154)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (856, '해안동3가', 2811010700, ST_GeomFromText('POINT(126.62227 37.471334)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (857, '해안동4가', 2811010800, ST_GeomFromText('POINT(126.623473 37.470643)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (858, '관동1가', 2811010900, ST_GeomFromText('POINT(126.621549 37.473677)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (859, '관동2가', 2811011000, ST_GeomFromText('POINT(126.623495 37.472721)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (860, '관동3가', 2811011100, ST_GeomFromText('POINT(126.624749 37.472038)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (861, '항동1가', 2811011200, ST_GeomFromText('POINT(126.61674 37.473879)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (862, '항동2가', 2811011300, ST_GeomFromText('POINT(126.617748 37.472598)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (863, '항동3가', 2811011400, ST_GeomFromText('POINT(126.619293 37.472113)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (864, '항동4가', 2811011500, ST_GeomFromText('POINT(126.620485 37.471382)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (865, '항동5가', 2811011600, ST_GeomFromText('POINT(126.621693 37.470689)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (866, '항동6가', 2811011700, ST_GeomFromText('POINT(126.622866 37.470012)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (867, '항동7가', 2811011800, ST_GeomFromText('POINT(126.602213 37.45381)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (868, '송학동1가', 2811011900, ST_GeomFromText('POINT(126.622436 37.474606)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (869, '송학동2가', 2811012000, ST_GeomFromText('POINT(126.624599 37.473932)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (870, '송학동3가', 2811012100, ST_GeomFromText('POINT(126.625954 37.473416)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (871, '사동', 2811012200, ST_GeomFromText('POINT(126.625662 37.46886)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (872, '신생동', 2811012300, ST_GeomFromText('POINT(126.627988 37.466985)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (873, '신포동', 2811012400, ST_GeomFromText('POINT(126.626655 37.471057)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (874, '답동', 2811012500, ST_GeomFromText('POINT(126.629538 37.470085)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (875, '신흥동1가', 2811012600, ST_GeomFromText('POINT(126.631488 37.467476)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (876, '신흥동2가', 2811012700, ST_GeomFromText('POINT(126.633488 37.46636)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (877, '신흥동3가', 2811012800, ST_GeomFromText('POINT(126.6262 37.4478)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (878, '선화동', 2811012900, ST_GeomFromText('POINT(126.637271 37.465647)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (879, '유동', 2811013000, ST_GeomFromText('POINT(126.63695 37.46936)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (880, '율목동', 2811013100, ST_GeomFromText('POINT(126.633375 37.470135)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (881, '도원동', 2811013200, ST_GeomFromText('POINT(126.637901 37.468094)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (882, '내동', 2811013300, ST_GeomFromText('POINT(126.628187 37.47331)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (883, '경동', 2811013400, ST_GeomFromText('POINT(126.63283 37.472099)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (884, '용동', 2811013500, ST_GeomFromText('POINT(126.6314 37.4732)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (885, '인현동', 2811013600, ST_GeomFromText('POINT(126.6315 37.475468)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (886, '전동', 2811013700, ST_GeomFromText('POINT(126.6268 37.4772)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (887, '북성동1가', 2811013800, ST_GeomFromText('POINT(126.605342 37.473538)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (888, '북성동2가', 2811013900, ST_GeomFromText('POINT(126.6182 37.4766)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (889, '북성동3가', 2811014000, ST_GeomFromText('POINT(126.6209 37.4762)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (890, '선린동', 2811014100, ST_GeomFromText('POINT(126.618205 37.474531)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (891, '송월동1가', 2811014200, ST_GeomFromText('POINT(126.623087 37.480035)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (892, '송월동2가', 2811014300, ST_GeomFromText('POINT(126.61939 37.479131)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (893, '송월동3가', 2811014400, ST_GeomFromText('POINT(126.621051 37.478042)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (894, '중산동', 2811014500, ST_GeomFromText('POINT(126.5616 37.4974)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (895, '운남동', 2811014600, ST_GeomFromText('POINT(126.53 37.4863)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (896, '운서동', 2811014700, ST_GeomFromText('POINT(126.488459 37.493418)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (897, '운북동', 2811014800, ST_GeomFromText('POINT(126.517925 37.514117)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (898, '을왕동', 2811014900, ST_GeomFromText('POINT(126.369663 37.45971)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (899, '남북동', 2811015000, ST_GeomFromText('POINT(126.413012 37.45026)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (900, '덕교동', 2811015100, ST_GeomFromText('POINT(126.4142 37.4183)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (901, '무의동', 2811015200, ST_GeomFromText('POINT(126.42491 37.389369)', 4326), 51);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (902, '만석동', 2814010100, ST_GeomFromText('POINT(126.625536 37.483248)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (903, '화수동', 2814010200, ST_GeomFromText('POINT(126.630825 37.485201)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (904, '송현동', 2814010300, ST_GeomFromText('POINT(126.642225 37.486851)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (905, '화평동', 2814010400, ST_GeomFromText('POINT(126.62991 37.481569)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (906, '창영동', 2814010500, ST_GeomFromText('POINT(126.64025 37.470635)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (907, '금곡동', 2814010600, ST_GeomFromText('POINT(126.6401 37.4724)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (908, '송림동', 2814010700, ST_GeomFromText('POINT(126.639533 37.473733)', 4326), 52);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (909, '숭의동', 2817710100, ST_GeomFromText('POINT(126.650287 37.463985)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (910, '용현동', 2817710200, ST_GeomFromText('POINT(126.6470628 37.4508653)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (911, '학익동', 2817710300, ST_GeomFromText('POINT(126.664089 37.439841)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (912, '도화동', 2817710400, ST_GeomFromText('POINT(126.673893 37.460936)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (913, '주안동', 2817710500, ST_GeomFromText('POINT(126.676525 37.463776)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (914, '관교동', 2817710600, ST_GeomFromText('POINT(126.696813 37.444183)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (915, '문학동', 2817710700, ST_GeomFromText('POINT(126.685012 37.437697)', 4326), 53);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (916, '옥련동', 2818510100, ST_GeomFromText('POINT(126.655102 37.427388)', 4326), 54);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (917, '선학동', 2818510200, ST_GeomFromText('POINT(126.70131 37.422522)', 4326), 54);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (918, '연수동', 2818510300, ST_GeomFromText('POINT(126.681235 37.422265)', 4326), 54);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (919, '청학동', 2818510400, ST_GeomFromText('POINT(126.666802 37.426614)', 4326), 54);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (920, '동춘동', 2818510500, ST_GeomFromText('POINT(126.670751 37.409643)', 4326), 54);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (921, '송도동', 2818510600, ST_GeomFromText('POINT(126.652035 37.391047)', 4326), 54);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (922, '구월동', 2820010100, ST_GeomFromText('POINT(126.712493 37.447651)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (923, '간석동', 2820010200, ST_GeomFromText('POINT(126.705345 37.45861)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (924, '만수동', 2820010300, ST_GeomFromText('POINT(126.731991 37.448775)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (925, '장수동', 2820010400, ST_GeomFromText('POINT(126.7603 37.4586)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (926, '서창동', 2820010500, ST_GeomFromText('POINT(126.749675 37.434401)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (927, '운연동', 2820010600, ST_GeomFromText('POINT(126.7633 37.439976)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (928, '남촌동', 2820010700, ST_GeomFromText('POINT(126.7127 37.4241)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (929, '수산동', 2820010800, ST_GeomFromText('POINT(126.7257 37.4373)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (930, '도림동', 2820010900, ST_GeomFromText('POINT(126.7259 37.4192)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (931, '논현동', 2820011000, ST_GeomFromText('POINT(126.729308 37.405755)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (932, '고잔동', 2820011100, ST_GeomFromText('POINT(126.7001 37.3967)', 4326), 55);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (933, '부평동', 2823710100, ST_GeomFromText('POINT(126.720071 37.494216)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (934, '십정동', 2823710200, ST_GeomFromText('POINT(126.696059 37.475851)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (935, '산곡동', 2823710300, ST_GeomFromText('POINT(126.703712 37.5066)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (936, '청천동', 2823710400, ST_GeomFromText('POINT(126.701964 37.519812)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (937, '삼산동', 2823710500, ST_GeomFromText('POINT(126.737601 37.518475)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (938, '갈산동', 2823710600, ST_GeomFromText('POINT(126.727199 37.517675)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (939, '부개동', 2823710700, ST_GeomFromText('POINT(126.737086 37.484852)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (940, '일신동', 2823710800, ST_GeomFromText('POINT(126.746956 37.484534)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (941, '구산동', 2823710900, ST_GeomFromText('POINT(126.7561 37.4746)', 4326), 56);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (942, '효성동', 2824510100, ST_GeomFromText('POINT(126.712156 37.532453)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (943, '계산동', 2824510200, ST_GeomFromText('POINT(126.721334 37.539611)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (944, '작전동', 2824510300, ST_GeomFromText('POINT(126.729707 37.530797)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (945, '서운동', 2824510400, ST_GeomFromText('POINT(126.754112 37.530317)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (946, '임학동', 2824510500, ST_GeomFromText('POINT(126.735138 37.546825)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (947, '용종동', 2824510600, ST_GeomFromText('POINT(126.7448 37.5409)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (948, '병방동', 2824510700, ST_GeomFromText('POINT(126.743422 37.547591)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (949, '방축동', 2824510800, ST_GeomFromText('POINT(126.732125 37.5548)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (950, '박촌동', 2824510900, ST_GeomFromText('POINT(126.7469 37.5548)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (951, '동양동', 2824511000, ST_GeomFromText('POINT(126.7592 37.5571)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (952, '귤현동', 2824511100, ST_GeomFromText('POINT(126.7505 37.5668)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (953, '상야동', 2824511200, ST_GeomFromText('POINT(126.77065 37.575217)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (954, '하야동', 2824511300, ST_GeomFromText('POINT(126.7853 37.5807)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (955, '평동', 2824511400, ST_GeomFromText('POINT(126.7726 37.5831)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (956, '노오지동', 2824511500, ST_GeomFromText('POINT(126.7583 37.5795)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (957, '선주지동', 2824511600, ST_GeomFromText('POINT(126.7471 37.579)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (958, '이화동', 2824511700, ST_GeomFromText('POINT(126.739738 37.586599)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (959, '오류동', 2824511800, ST_GeomFromText('POINT(126.726825 37.585899)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (960, '갈현동', 2824511900, ST_GeomFromText('POINT(126.7223 37.5808)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (961, '둑실동', 2824512000, ST_GeomFromText('POINT(126.697025 37.580492)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (962, '목상동', 2824512100, ST_GeomFromText('POINT(126.706613 37.56835)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (963, '다남동', 2824512200, ST_GeomFromText('POINT(126.7219 37.5632)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (964, '장기동', 2824512300, ST_GeomFromText('POINT(126.736625 37.578783)', 4326), 57);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (965, '백석동', 2826010100, ST_GeomFromText('POINT(126.67 37.5792)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (966, '시천동', 2826010200, ST_GeomFromText('POINT(126.6923 37.5699)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (967, '검암동', 2826010300, ST_GeomFromText('POINT(126.6745 37.5641)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (968, '경서동', 2826010400, ST_GeomFromText('POINT(126.654773 37.5595)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (969, '공촌동', 2826010500, ST_GeomFromText('POINT(126.6964 37.550917)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (970, '연희동', 2826010600, ST_GeomFromText('POINT(126.678211 37.548931)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (971, '심곡동', 2826010700, ST_GeomFromText('POINT(126.681413 37.54125)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (972, '가정동', 2826010800, ST_GeomFromText('POINT(126.6760465 37.5212975)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (973, '신현동', 2826010900, ST_GeomFromText('POINT(126.6672 37.5186)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (974, '석남동', 2826011000, ST_GeomFromText('POINT(126.674756 37.511185)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (975, '원창동', 2826011100, ST_GeomFromText('POINT(126.634213 37.513315)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (976, '가좌동', 2826011200, ST_GeomFromText('POINT(126.672601 37.494372)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (977, '마전동', 2826011300, ST_GeomFromText('POINT(126.673676 37.595396)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (978, '당하동', 2826011400, ST_GeomFromText('POINT(126.674613 37.592069)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (979, '원당동', 2826011500, ST_GeomFromText('POINT(126.701708 37.595158)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (980, '대곡동', 2826011700, ST_GeomFromText('POINT(126.6684 37.6248)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (981, '금곡동', 2826011800, ST_GeomFromText('POINT(126.6418 37.6159)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (982, '오류동', 2826011900, ST_GeomFromText('POINT(126.6141 37.5927)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (983, '왕길동', 2826012000, ST_GeomFromText('POINT(126.6496 37.5917)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (984, '불로동', 2826012100, ST_GeomFromText('POINT(126.6919 37.6104)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (985, '청라동', 2826012200, ST_GeomFromText('POINT(126.653744 37.532678)', 4326), 58);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (986, '대인동', 2911010100, ST_GeomFromText('POINT(126.9154 35.154)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (987, '금남로5가', 2911010200, ST_GeomFromText('POINT(126.9122 35.152782)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (988, '충장로5가', 2911010300, ST_GeomFromText('POINT(126.911243 35.151348)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (989, '수기동', 2911010400, ST_GeomFromText('POINT(126.909723 35.150501)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (990, '대의동', 2911010500, ST_GeomFromText('POINT(126.9202 35.1492)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (991, '궁동', 2911010600, ST_GeomFromText('POINT(126.9184 35.1507)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (992, '장동', 2911010700, ST_GeomFromText('POINT(126.9231 35.1489)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (993, '동명동', 2911010800, ST_GeomFromText('POINT(126.92515 35.151182)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (994, '계림동', 2911010900, ST_GeomFromText('POINT(126.919657 35.158559)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (995, '산수동', 2911011000, ST_GeomFromText('POINT(126.930725 35.157315)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (996, '지산동', 2911011100, ST_GeomFromText('POINT(126.93273 35.149023)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (997, '남동', 2911011200, ST_GeomFromText('POINT(126.9201 35.1442)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (998, '광산동', 2911011300, ST_GeomFromText('POINT(126.9208 35.1471)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (999, '금동', 2911011400, ST_GeomFromText('POINT(126.917393 35.14334)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1000, '호남동', 2911011500, ST_GeomFromText('POINT(126.9129 35.1475)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1001, '불로동', 2911011600, ST_GeomFromText('POINT(126.9151 35.145374)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1002, '황금동', 2911011700, ST_GeomFromText('POINT(126.915571 35.147302)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1003, '서석동', 2911011800, ST_GeomFromText('POINT(126.9306 35.1422)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1004, '소태동', 2911011900, ST_GeomFromText('POINT(126.9436 35.1189)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1005, '용연동', 2911012000, ST_GeomFromText('POINT(126.9732 35.1054)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1006, '운림동', 2911012100, ST_GeomFromText('POINT(126.967 35.1283)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1007, '학동', 2911012200, ST_GeomFromText('POINT(126.922786 35.136061)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1008, '월남동', 2911012300, ST_GeomFromText('POINT(126.9416 35.1025)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1009, '선교동', 2911012400, ST_GeomFromText('POINT(126.9525 35.0847)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1010, '내남동', 2911012500, ST_GeomFromText('POINT(126.9348 35.0871)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1011, '용산동', 2911012600, ST_GeomFromText('POINT(126.9244 35.1128)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1012, '충장로1가', 2911012700, ST_GeomFromText('POINT(126.917821 35.147121)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1013, '충장로2가', 2911012800, ST_GeomFromText('POINT(126.916518 35.148027)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1014, '충장로3가', 2911012900, ST_GeomFromText('POINT(126.91516 35.148865)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1015, '충장로4가', 2911013000, ST_GeomFromText('POINT(126.913473 35.149526)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1016, '금남로1가', 2911013100, ST_GeomFromText('POINT(126.919122 35.147827)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1017, '금남로2가', 2911013200, ST_GeomFromText('POINT(126.91746 35.148764)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1018, '금남로3가', 2911013300, ST_GeomFromText('POINT(126.916333 35.149921)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1019, '금남로4가', 2911013400, ST_GeomFromText('POINT(126.9149 35.1508)', 4326), 61);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1020, '양동', 2914010400, ST_GeomFromText('POINT(126.901011 35.15481)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1021, '농성동', 2914010600, ST_GeomFromText('POINT(126.889763 35.156671)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1022, '광천동', 2914011500, ST_GeomFromText('POINT(126.88035 35.164324)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1023, '유촌동', 2914011600, ST_GeomFromText('POINT(126.853775 35.166465)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1024, '덕흥동', 2914011700, ST_GeomFromText('POINT(126.8356 35.1666)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1025, '쌍촌동', 2914011800, ST_GeomFromText('POINT(126.871 35.167)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1026, '화정동', 2914011900, ST_GeomFromText('POINT(126.877725 35.156374)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1027, '치평동', 2914012000, ST_GeomFromText('POINT(126.843325 35.14994)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1028, '내방동', 2914012100, ST_GeomFromText('POINT(126.8729 35.159)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1029, '서창동', 2914012500, ST_GeomFromText('POINT(126.824738 35.108818)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1030, '세하동', 2914012600, ST_GeomFromText('POINT(126.8337 35.1196)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1031, '용두동', 2914012700, ST_GeomFromText('POINT(126.816 35.1001)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1032, '풍암동', 2914012800, ST_GeomFromText('POINT(126.878681 35.124777)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1033, '벽진동', 2914012900, ST_GeomFromText('POINT(126.829175 35.132142)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1034, '금호동', 2914013000, ST_GeomFromText('POINT(126.857138 35.13519)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1035, '마륵동', 2914013100, ST_GeomFromText('POINT(126.8418 35.1428)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1036, '매월동', 2914013200, ST_GeomFromText('POINT(126.853675 35.118458)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1037, '동천동', 2914013300, ST_GeomFromText('POINT(126.864723 35.170882)', 4326), 62);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1038, '사동', 2915510100, ST_GeomFromText('POINT(126.9127 35.1436)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1039, '구동', 2915510200, ST_GeomFromText('POINT(126.9098 35.1469)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1040, '서동', 2915510300, ST_GeomFromText('POINT(126.9069 35.1439)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1041, '월산동', 2915510400, ST_GeomFromText('POINT(126.902613 35.14754)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1042, '백운동', 2915510500, ST_GeomFromText('POINT(126.9039 35.13829)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1043, '주월동', 2915510600, ST_GeomFromText('POINT(126.893357 35.131953)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1044, '노대동', 2915510700, ST_GeomFromText('POINT(126.9073 35.0995)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1045, '진월동', 2915510800, ST_GeomFromText('POINT(126.9026 35.1152)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1046, '덕남동', 2915510900, ST_GeomFromText('POINT(126.9002 35.0891)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1047, '행암동', 2915511000, ST_GeomFromText('POINT(126.8871 35.0993)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1048, '임암동', 2915511100, ST_GeomFromText('POINT(126.87 35.1016)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1049, '송하동', 2915511200, ST_GeomFromText('POINT(126.8835 35.1098)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1050, '양림동', 2915511300, ST_GeomFromText('POINT(126.916429 35.14049)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1051, '방림동', 2915511400, ST_GeomFromText('POINT(126.918263 35.134349)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1052, '봉선동', 2915511500, ST_GeomFromText('POINT(126.906683 35.129315)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1053, '구소동', 2915511600, ST_GeomFromText('POINT(126.808 35.0562)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1054, '양촌동', 2915511700, ST_GeomFromText('POINT(126.788875 35.0653)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1055, '도금동', 2915511800, ST_GeomFromText('POINT(126.845587 35.0761)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1056, '승촌동', 2915511900, ST_GeomFromText('POINT(126.7754 35.061)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1057, '지석동', 2915512000, ST_GeomFromText('POINT(126.835 35.0825)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1058, '압촌동', 2915512100, ST_GeomFromText('POINT(126.8324 35.0905)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1059, '화장동', 2915512200, ST_GeomFromText('POINT(126.8002 35.0831)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1060, '칠석동', 2915512300, ST_GeomFromText('POINT(126.837 35.0703)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1061, '석정동', 2915512400, ST_GeomFromText('POINT(126.8173 35.0852)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1062, '신장동', 2915512500, ST_GeomFromText('POINT(126.8163 35.0586)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1063, '양과동', 2915512600, ST_GeomFromText('POINT(126.879 35.0874)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1064, '이장동', 2915512700, ST_GeomFromText('POINT(126.8566 35.089)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1065, '대지동', 2915512800, ST_GeomFromText('POINT(126.821 35.0729)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1066, '원산동', 2915512900, ST_GeomFromText('POINT(126.8473 35.0927)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1067, '월성동', 2915513000, ST_GeomFromText('POINT(126.8067 35.0658)', 4326), 63);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1068, '중흥동', 2917010100, ST_GeomFromText('POINT(126.91406 35.169154)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1069, '유동', 2917010200, ST_GeomFromText('POINT(126.9048 35.1591)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1070, '누문동', 2917010300, ST_GeomFromText('POINT(126.9063 35.1541)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1071, '북동', 2917010400, ST_GeomFromText('POINT(126.9096 35.1559)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1072, '임동', 2917010500, ST_GeomFromText('POINT(126.8942 35.16584)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1073, '신안동', 2917010600, ST_GeomFromText('POINT(126.898777 35.167458)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1074, '용봉동', 2917010700, ST_GeomFromText('POINT(126.901201 35.180442)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1075, '동림동', 2917010800, ST_GeomFromText('POINT(126.866552 35.187042)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1076, '운암동', 2917010900, ST_GeomFromText('POINT(126.87445 35.17486)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1077, '우산동', 2917011000, ST_GeomFromText('POINT(126.919775 35.171116)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1078, '풍향동', 2917011100, ST_GeomFromText('POINT(126.923132 35.164437)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1079, '문흥동', 2917011200, ST_GeomFromText('POINT(126.9216 35.186776)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1080, '각화동', 2917011300, ST_GeomFromText('POINT(126.940325 35.183485)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1081, '두암동', 2917011400, ST_GeomFromText('POINT(126.92895 35.171035)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1082, '오치동', 2917011500, ST_GeomFromText('POINT(126.908138 35.189126)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1083, '삼각동', 2917011600, ST_GeomFromText('POINT(126.8995 35.199301)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1084, '매곡동', 2917011700, ST_GeomFromText('POINT(126.892038 35.189643)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1085, '충효동', 2917011800, ST_GeomFromText('POINT(127.006 35.1773)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1086, '덕의동', 2917011900, ST_GeomFromText('POINT(126.987464 35.18015)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1087, '금곡동', 2917012000, ST_GeomFromText('POINT(126.9952 35.1497)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1088, '망월동', 2917012100, ST_GeomFromText('POINT(126.951714 35.201783)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1089, '청풍동', 2917012200, ST_GeomFromText('POINT(126.961875 35.171992)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1090, '화암동', 2917012300, ST_GeomFromText('POINT(126.9685 35.1509)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1091, '장등동', 2917012400, ST_GeomFromText('POINT(126.9289 35.2124)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1092, '운정동', 2917012500, ST_GeomFromText('POINT(126.9437 35.2253)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1093, '본촌동', 2917012600, ST_GeomFromText('POINT(126.882 35.222251)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1094, '일곡동', 2917012700, ST_GeomFromText('POINT(126.897268 35.20604)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1095, '양산동', 2917012800, ST_GeomFromText('POINT(126.879706 35.209221)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1096, '연제동', 2917012900, ST_GeomFromText('POINT(126.866339 35.198542)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1097, '신용동', 2917013000, ST_GeomFromText('POINT(126.8639 35.215)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1098, '용두동', 2917013100, ST_GeomFromText('POINT(126.8717 35.2218)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1099, '지야동', 2917013200, ST_GeomFromText('POINT(126.8808 35.2335)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1100, '태령동', 2917013300, ST_GeomFromText('POINT(126.927 35.2476)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1101, '수곡동', 2917013400, ST_GeomFromText('POINT(126.9258 35.2422)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1102, '효령동', 2917013500, ST_GeomFromText('POINT(126.913814 35.238333)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1103, '용전동', 2917013600, ST_GeomFromText('POINT(126.8932 35.2413)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1104, '용강동', 2917013700, ST_GeomFromText('POINT(126.902 35.251292)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1105, '생용동', 2917013800, ST_GeomFromText('POINT(126.904239 35.227992)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1106, '월출동', 2917013900, ST_GeomFromText('POINT(126.866175 35.2411)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1107, '대촌동', 2917014000, ST_GeomFromText('POINT(126.8621 35.2287)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1108, '오룡동', 2917014100, ST_GeomFromText('POINT(126.8513 35.2257)', 4326), 64);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1109, '송정동', 2920010100, ST_GeomFromText('POINT(126.798691 35.14071)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1110, '도산동', 2920010200, ST_GeomFromText('POINT(126.791624 35.129455)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1111, '도호동', 2920010300, ST_GeomFromText('POINT(126.8052 35.1201)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1112, '신촌동', 2920010400, ST_GeomFromText('POINT(126.816 35.134)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1113, '서봉동', 2920010500, ST_GeomFromText('POINT(126.7514 35.1572)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1114, '운수동', 2920010600, ST_GeomFromText('POINT(126.7738 35.1622)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1115, '선암동', 2920010700, ST_GeomFromText('POINT(126.773513 35.150699)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1116, '소촌동', 2920010800, ST_GeomFromText('POINT(126.7963 35.1544)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1117, '우산동', 2920010900, ST_GeomFromText('POINT(126.807012 35.160272)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1118, '황룡동', 2920011000, ST_GeomFromText('POINT(126.7881 35.1175)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1119, '박호동', 2920011100, ST_GeomFromText('POINT(126.7523 35.1711)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1120, '비아동', 2920011200, ST_GeomFromText('POINT(126.824443 35.222242)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1121, '도천동', 2920011300, ST_GeomFromText('POINT(126.8214 35.2128)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1122, '수완동', 2920011400, ST_GeomFromText('POINT(126.825554 35.197027)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1123, '월계동', 2920011500, ST_GeomFromText('POINT(126.8379 35.2134)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1124, '쌍암동', 2920011600, ST_GeomFromText('POINT(126.8477 35.2191)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1125, '산월동', 2920011700, ST_GeomFromText('POINT(126.849813 35.205301)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1126, '신창동', 2920011800, ST_GeomFromText('POINT(126.840719 35.195582)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1127, '신가동', 2920011900, ST_GeomFromText('POINT(126.836002 35.179845)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1128, '운남동', 2920012000, ST_GeomFromText('POINT(126.82192 35.173272)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1129, '안청동', 2920012100, ST_GeomFromText('POINT(126.8042 35.215)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1130, '진곡동', 2920012200, ST_GeomFromText('POINT(126.7888 35.2125)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1131, '장덕동', 2920012300, ST_GeomFromText('POINT(126.8083 35.194751)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1132, '흑석동', 2920012400, ST_GeomFromText('POINT(126.8079 35.1827)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1133, '하남동', 2920012500, ST_GeomFromText('POINT(126.799844 35.179519)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1134, '장수동', 2920012600, ST_GeomFromText('POINT(126.7822 35.1822)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1135, '산정동', 2920012700, ST_GeomFromText('POINT(126.7948 35.172)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1136, '월곡동', 2920012800, ST_GeomFromText('POINT(126.809725 35.171885)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1137, '등임동', 2920012900, ST_GeomFromText('POINT(126.7624 35.1845)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1138, '산막동', 2920013000, ST_GeomFromText('POINT(126.765463 35.198876)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1139, '고룡동', 2920013100, ST_GeomFromText('POINT(126.7794 35.1999)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1140, '신룡동', 2920013200, ST_GeomFromText('POINT(126.7769 35.2205)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1141, '두정동', 2920013300, ST_GeomFromText('POINT(126.7612 35.2231)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1142, '임곡동', 2920013400, ST_GeomFromText('POINT(126.744788 35.219626)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1143, '광산동', 2920013500, ST_GeomFromText('POINT(126.7467 35.2414)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1144, '오산동', 2920013600, ST_GeomFromText('POINT(126.7297 35.2358)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1145, '사호동', 2920013700, ST_GeomFromText('POINT(126.7282 35.2145)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1146, '하산동', 2920013800, ST_GeomFromText('POINT(126.765 35.0984)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1147, '유계동', 2920013900, ST_GeomFromText('POINT(126.788 35.0957)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1148, '본덕동', 2920014000, ST_GeomFromText('POINT(126.779 35.0852)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1149, '용봉동', 2920014100, ST_GeomFromText('POINT(126.776538 35.0769)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1150, '요기동', 2920014200, ST_GeomFromText('POINT(126.7613 35.1055)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1151, '복룡동', 2920014300, ST_GeomFromText('POINT(126.7817 35.1126)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1152, '송대동', 2920014400, ST_GeomFromText('POINT(126.795 35.1068)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1153, '옥동', 2920014500, ST_GeomFromText('POINT(126.7612 35.128115)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1154, '월전동', 2920014600, ST_GeomFromText('POINT(126.7737 35.1219)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1155, '장록동', 2920014700, ST_GeomFromText('POINT(126.7751 35.1342)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1156, '송촌동', 2920014800, ST_GeomFromText('POINT(126.775988 35.14119)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1157, '지죽동', 2920014900, ST_GeomFromText('POINT(126.7555 35.1426)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1158, '용동', 2920015000, ST_GeomFromText('POINT(126.751 35.1343)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1159, '용곡동', 2920015100, ST_GeomFromText('POINT(126.735673 35.130335)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1160, '지정동', 2920015200, ST_GeomFromText('POINT(126.7171 35.1373)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1161, '명화동', 2920015300, ST_GeomFromText('POINT(126.7203 35.1255)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1162, '동산동', 2920015400, ST_GeomFromText('POINT(126.7174 35.1211)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1163, '연산동', 2920015500, ST_GeomFromText('POINT(126.7502 35.1135)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1164, '도덕동', 2920015600, ST_GeomFromText('POINT(126.7045 35.1553)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1165, '송산동', 2920015700, ST_GeomFromText('POINT(126.7212 35.1637)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1166, '지평동', 2920015800, ST_GeomFromText('POINT(126.728633 35.15122)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1167, '오운동', 2920015900, ST_GeomFromText('POINT(126.6923 35.1516)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1168, '삼거동', 2920016000, ST_GeomFromText('POINT(126.6728 35.1598)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1169, '양동', 2920016100, ST_GeomFromText('POINT(126.6603 35.1553)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1170, '내산동', 2920016200, ST_GeomFromText('POINT(126.6606 35.1303)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1171, '대산동', 2920016300, ST_GeomFromText('POINT(126.6725 35.1374)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1172, '송학동', 2920016400, ST_GeomFromText('POINT(126.6769 35.1156)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1173, '신동', 2920016500, ST_GeomFromText('POINT(126.6994 35.1152)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1174, '삼도동', 2920016600, ST_GeomFromText('POINT(126.69085 35.126399)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1175, '남산동', 2920016700, ST_GeomFromText('POINT(126.726 35.1783)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1176, '송치동', 2920016800, ST_GeomFromText('POINT(126.7363 35.1803)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1177, '산수동', 2920016900, ST_GeomFromText('POINT(126.7474 35.1865)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1178, '선동', 2920017000, ST_GeomFromText('POINT(126.7457 35.2002)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1179, '지산동', 2920017100, ST_GeomFromText('POINT(126.7327 35.1954)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1180, '왕동', 2920017200, ST_GeomFromText('POINT(126.7137 35.2002)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1181, '북산동', 2920017300, ST_GeomFromText('POINT(126.7124 35.1805)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1182, '명도동', 2920017400, ST_GeomFromText('POINT(126.7012 35.1814)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1183, '동호동', 2920017500, ST_GeomFromText('POINT(126.6876 35.1804)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1184, '덕림동', 2920017600, ST_GeomFromText('POINT(126.6708 35.1815)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1185, '양산동', 2920017700, ST_GeomFromText('POINT(126.6897 35.1985)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1186, '동림동', 2920017800, ST_GeomFromText('POINT(126.6914 35.2075)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1187, '오선동', 2920020200, ST_GeomFromText('POINT(126.7998 35.2021)', 4326), 65);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1188, '원동', 3011010100, ST_GeomFromText('POINT(127.43445 36.327167)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1189, '인동', 3011010200, ST_GeomFromText('POINT(127.438299 36.32217)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1190, '효동', 3011010300, ST_GeomFromText('POINT(127.4417865 36.3170977)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1191, '천동', 3011010400, ST_GeomFromText('POINT(127.445988 36.314125)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1192, '가오동', 3011010500, ST_GeomFromText('POINT(127.455362 36.307317)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1193, '신흥동', 3011010600, ST_GeomFromText('POINT(127.443764 36.322973)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1194, '판암동', 3011010700, ST_GeomFromText('POINT(127.4685 36.3124)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1195, '삼정동', 3011010800, ST_GeomFromText('POINT(127.468725 36.322358)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1196, '용운동', 3011010900, ST_GeomFromText('POINT(127.461497 36.328169)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1197, '대동', 3011011000, ST_GeomFromText('POINT(127.442807 36.330062)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1198, '자양동', 3011011100, ST_GeomFromText('POINT(127.448587 36.335503)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1199, '신안동', 3011011200, ST_GeomFromText('POINT(127.437788 36.329542)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1200, '소제동', 3011011300, ST_GeomFromText('POINT(127.438362 36.334711)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1201, '가양동', 3011011400, ST_GeomFromText('POINT(127.44141 36.347013)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1202, '용전동', 3011011500, ST_GeomFromText('POINT(127.432396 36.357717)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1203, '성남동', 3011011600, ST_GeomFromText('POINT(127.437445 36.344555)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1204, '홍도동', 3011011700, ST_GeomFromText('POINT(127.425651 36.348999)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1205, '삼성동', 3011011800, ST_GeomFromText('POINT(127.422203 36.340582)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1206, '정동', 3011011900, ST_GeomFromText('POINT(127.433275 36.332283)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1207, '중동', 3011012000, ST_GeomFromText('POINT(127.4296 36.331583)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1208, '추동', 3011012100, ST_GeomFromText('POINT(127.470425 36.374542)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1209, '비룡동', 3011012200, ST_GeomFromText('POINT(127.478464 36.344675)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1210, '주산동', 3011012300, ST_GeomFromText('POINT(127.477237 36.358324)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1211, '용계동', 3011012400, ST_GeomFromText('POINT(127.4868 36.3724)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1212, '마산동', 3011012500, ST_GeomFromText('POINT(127.483039 36.386958)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1213, '효평동', 3011012600, ST_GeomFromText('POINT(127.46465 36.397724)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1214, '직동', 3011012700, ST_GeomFromText('POINT(127.484563 36.416099)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1215, '세천동', 3011012800, ST_GeomFromText('POINT(127.490838 36.324575)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1216, '신상동', 3011012900, ST_GeomFromText('POINT(127.501688 36.353157)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1217, '신하동', 3011013000, ST_GeomFromText('POINT(127.499712 36.364374)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1218, '신촌동', 3011013100, ST_GeomFromText('POINT(127.508764 36.372817)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1219, '사성동', 3011013200, ST_GeomFromText('POINT(127.516164 36.381033)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1220, '내탑동', 3011013300, ST_GeomFromText('POINT(127.5112 36.3995)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1221, '오동', 3011013400, ST_GeomFromText('POINT(127.530175 36.415199)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1222, '주촌동', 3011013500, ST_GeomFromText('POINT(127.52985 36.399883)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1223, '낭월동', 3011013600, ST_GeomFromText('POINT(127.477475 36.283225)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1224, '대별동', 3011013700, ST_GeomFromText('POINT(127.460488 36.286608)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1225, '이사동', 3011013800, ST_GeomFromText('POINT(127.441913 36.281383)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1226, '대성동', 3011013900, ST_GeomFromText('POINT(127.464937 36.29745)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1227, '장척동', 3011014000, ST_GeomFromText('POINT(127.439512 36.254067)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1228, '소호동', 3011014100, ST_GeomFromText('POINT(127.438487 36.265908)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1229, '구도동', 3011014200, ST_GeomFromText('POINT(127.470539 36.269733)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1230, '삼괴동', 3011014300, ST_GeomFromText('POINT(127.479463 36.2569)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1231, '상소동', 3011014400, ST_GeomFromText('POINT(127.456988 36.225185)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1232, '하소동', 3011014500, ST_GeomFromText('POINT(127.438975 36.213535)', 4326), 66);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1233, '은행동', 3014010100, ST_GeomFromText('POINT(127.4263 36.330108)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1234, '선화동', 3014010200, ST_GeomFromText('POINT(127.418812 36.3315)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1235, '목동', 3014010300, ST_GeomFromText('POINT(127.408438 36.335906)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1236, '중촌동', 3014010400, ST_GeomFromText('POINT(127.412446 36.33893)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1237, '대흥동', 3014010500, ST_GeomFromText('POINT(127.424202 36.323402)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1238, '문창동', 3014010600, ST_GeomFromText('POINT(127.437905 36.316245)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1239, '석교동', 3014010700, ST_GeomFromText('POINT(127.438505 36.305899)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1240, '호동', 3014010800, ST_GeomFromText('POINT(127.436038 36.299025)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1241, '옥계동', 3014010900, ST_GeomFromText('POINT(127.451837 36.298275)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1242, '대사동', 3014011000, ST_GeomFromText('POINT(127.424837 36.316518)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1243, '부사동', 3014011100, ST_GeomFromText('POINT(127.433667 36.314248)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1244, '용두동', 3014011200, ST_GeomFromText('POINT(127.410355 36.325224)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1245, '오류동', 3014011300, ST_GeomFromText('POINT(127.403845 36.325514)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1246, '태평동', 3014011400, ST_GeomFromText('POINT(127.397367 36.327916)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1247, '유천동', 3014011500, ST_GeomFromText('POINT(127.395304 36.315014)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1248, '문화동', 3014011600, ST_GeomFromText('POINT(127.40653 36.315348)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1249, '산성동', 3014011700, ST_GeomFromText('POINT(127.386096 36.305349)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1250, '사정동', 3014011800, ST_GeomFromText('POINT(127.396013 36.293775)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1251, '안영동', 3014011900, ST_GeomFromText('POINT(127.3778 36.2815)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1252, '무수동', 3014012000, ST_GeomFromText('POINT(127.407975 36.2796)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1253, '구완동', 3014012100, ST_GeomFromText('POINT(127.4256 36.277267)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1254, '침산동', 3014012200, ST_GeomFromText('POINT(127.395037 36.277058)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1255, '목달동', 3014012300, ST_GeomFromText('POINT(127.407588 36.266742)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1256, '정생동', 3014012400, ST_GeomFromText('POINT(127.402937 36.249535)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1257, '어남동', 3014012500, ST_GeomFromText('POINT(127.415588 36.222335)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1258, '금동', 3014012600, ST_GeomFromText('POINT(127.4271 36.240735)', 4326), 67);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1259, '복수동', 3017010100, ST_GeomFromText('POINT(127.379003 36.300018)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1260, '변동', 3017010200, ST_GeomFromText('POINT(127.386761 36.325831)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1261, '도마동', 3017010300, ST_GeomFromText('POINT(127.381154 36.315993)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1262, '정림동', 3017010400, ST_GeomFromText('POINT(127.366794 36.304533)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1263, '용문동', 3017010500, ST_GeomFromText('POINT(127.39157 36.338868)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1264, '탄방동', 3017010600, ST_GeomFromText('POINT(127.39541 36.346688)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1265, '괴정동', 3017010800, ST_GeomFromText('POINT(127.382042 36.337168)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1266, '가장동', 3017010900, ST_GeomFromText('POINT(127.385251 36.33172)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1267, '내동', 3017011000, ST_GeomFromText('POINT(127.377307 36.332255)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1268, '갈마동', 3017011100, ST_GeomFromText('POINT(127.367834 36.350845)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1269, '둔산동', 3017011200, ST_GeomFromText('POINT(127.386049 36.35252)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1270, '월평동', 3017011300, ST_GeomFromText('POINT(127.357601 36.354685)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1271, '가수원동', 3017011400, ST_GeomFromText('POINT(127.34943 36.303513)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1272, '도안동', 3017011500, ST_GeomFromText('POINT(127.346745 36.323651)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1273, '관저동', 3017011600, ST_GeomFromText('POINT(127.337361 36.303951)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1274, '흑석동', 3017011700, ST_GeomFromText('POINT(127.347625 36.265108)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1275, '매노동', 3017011800, ST_GeomFromText('POINT(127.340325 36.245785)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1276, '산직동', 3017011900, ST_GeomFromText('POINT(127.349912 36.24146)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1277, '장안동', 3017012000, ST_GeomFromText('POINT(127.341312 36.203351)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1278, '평촌동', 3017012100, ST_GeomFromText('POINT(127.31915 36.238368)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1279, '오동', 3017012200, ST_GeomFromText('POINT(127.319113 36.22401)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1280, '우명동', 3017012300, ST_GeomFromText('POINT(127.287938 36.238593)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1281, '원정동', 3017012400, ST_GeomFromText('POINT(127.299075 36.2582)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1282, '용촌동', 3017012500, ST_GeomFromText('POINT(127.316971 36.25318)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1283, '봉곡동', 3017012600, ST_GeomFromText('POINT(127.322456 36.26954)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1284, '괴곡동', 3017012700, ST_GeomFromText('POINT(127.3491 36.280775)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1285, '만년동', 3017012800, ST_GeomFromText('POINT(127.375039 36.367537)', 4326), 68);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1286, '원내동', 3020010100, ST_GeomFromText('POINT(127.3177 36.2991)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1287, '교촌동', 3020010200, ST_GeomFromText('POINT(127.3117 36.3066)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1288, '대정동', 3020010300, ST_GeomFromText('POINT(127.318538 36.315742)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1289, '용계동', 3020010400, ST_GeomFromText('POINT(127.3241 36.3262)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1290, '학하동', 3020010500, ST_GeomFromText('POINT(127.3138 36.336232)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1291, '계산동', 3020010600, ST_GeomFromText('POINT(127.2912 36.334)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1292, '성북동', 3020010700, ST_GeomFromText('POINT(127.2896 36.3093)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1293, '세동', 3020010800, ST_GeomFromText('POINT(127.269601 36.304122)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1294, '송정동', 3020010900, ST_GeomFromText('POINT(127.2574 36.2889)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1295, '방동', 3020011000, ST_GeomFromText('POINT(127.297038 36.279592)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1296, '봉명동', 3020011100, ST_GeomFromText('POINT(127.343825 36.353349)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1297, '구암동', 3020011200, ST_GeomFromText('POINT(127.3216 36.356207)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1298, '덕명동', 3020011300, ST_GeomFromText('POINT(127.3012 36.3455)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1299, '원신흥동', 3020011400, ST_GeomFromText('POINT(127.34329 36.342166)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1300, '상대동', 3020011500, ST_GeomFromText('POINT(127.334288 36.342591)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1301, '복용동', 3020011600, ST_GeomFromText('POINT(127.319812 36.341274)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1302, '장대동', 3020011700, ST_GeomFromText('POINT(127.3314 36.3622)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1303, '갑동', 3020011800, ST_GeomFromText('POINT(127.2911 36.3661)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1304, '노은동', 3020011900, ST_GeomFromText('POINT(127.318459 36.368901)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1305, '지족동', 3020012000, ST_GeomFromText('POINT(127.305525 36.381799)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1306, '죽동', 3020012100, ST_GeomFromText('POINT(127.3345 36.3758)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1307, '궁동', 3020012200, ST_GeomFromText('POINT(127.343738 36.368549)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1308, '어은동', 3020012300, ST_GeomFromText('POINT(127.3541 36.3705)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1309, '구성동', 3020012400, ST_GeomFromText('POINT(127.3661 36.370724)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1310, '신성동', 3020012500, ST_GeomFromText('POINT(127.350227 36.384082)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1311, '가정동', 3020012600, ST_GeomFromText('POINT(127.3689 36.3818)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1312, '도룡동', 3020012700, ST_GeomFromText('POINT(127.382775 36.382099)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1313, '장동', 3020012800, ST_GeomFromText('POINT(127.3617 36.3951)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1314, '방현동', 3020012900, ST_GeomFromText('POINT(127.3632 36.4108)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1315, '화암동', 3020013000, ST_GeomFromText('POINT(127.3806 36.4047)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1316, '덕진동', 3020013100, ST_GeomFromText('POINT(127.3687 36.4251)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1317, '하기동', 3020013200, ST_GeomFromText('POINT(127.3333 36.3905)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1318, '추목동', 3020013300, ST_GeomFromText('POINT(127.3439 36.4194)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1319, '자운동', 3020013400, ST_GeomFromText('POINT(127.345 36.4015)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1320, '신봉동', 3020013500, ST_GeomFromText('POINT(127.3339 36.4084)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1321, '수남동', 3020013600, ST_GeomFromText('POINT(127.3165 36.4162)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1322, '안산동', 3020013700, ST_GeomFromText('POINT(127.2921 36.4099)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1323, '외삼동', 3020013800, ST_GeomFromText('POINT(127.3112 36.4022)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1324, '반석동', 3020013900, ST_GeomFromText('POINT(127.2988 36.3943)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1325, '문지동', 3020014000, ST_GeomFromText('POINT(127.3965 36.3919)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1326, '전민동', 3020014100, ST_GeomFromText('POINT(127.400375 36.399982)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1327, '원촌동', 3020014200, ST_GeomFromText('POINT(127.4005 36.3818)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1328, '탑립동', 3020014300, ST_GeomFromText('POINT(127.4112 36.4165)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1329, '용산동', 3020014400, ST_GeomFromText('POINT(127.399593 36.420509)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1330, '봉산동', 3020014500, ST_GeomFromText('POINT(127.3826 36.4462)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1331, '관평동', 3020014600, ST_GeomFromText('POINT(127.388746 36.423072)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1332, '송강동', 3020014700, ST_GeomFromText('POINT(127.381663 36.429926)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1333, '금고동', 3020014800, ST_GeomFromText('POINT(127.387375 36.466301)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1334, '대동', 3020014900, ST_GeomFromText('POINT(127.3935 36.4804)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1335, '금탄동', 3020015000, ST_GeomFromText('POINT(127.383663 36.492576)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1336, '신동', 3020015100, ST_GeomFromText('POINT(127.3718 36.4766)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1337, '둔곡동', 3020015200, ST_GeomFromText('POINT(127.3648 36.4596)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1338, '구룡동', 3020015300, ST_GeomFromText('POINT(127.3575 36.4415)', 4326), 69);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1339, '오정동', 3023010100, ST_GeomFromText('POINT(127.409821 36.353897)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1340, '대화동', 3023010200, ST_GeomFromText('POINT(127.411406 36.36649)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1341, '읍내동', 3023010300, ST_GeomFromText('POINT(127.422288 36.377365)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1342, '연축동', 3023010400, ST_GeomFromText('POINT(127.429125 36.390682)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1343, '신대동', 3023010500, ST_GeomFromText('POINT(127.4156 36.3935)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1344, '와동', 3023010600, ST_GeomFromText('POINT(127.4276 36.4076)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1345, '송촌동', 3023010700, ST_GeomFromText('POINT(127.439876 36.365771)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1346, '법동', 3023010800, ST_GeomFromText('POINT(127.426785 36.370775)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1347, '중리동', 3023010900, ST_GeomFromText('POINT(127.426412 36.360615)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1348, '비래동', 3023011000, ST_GeomFromText('POINT(127.449969 36.354881)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1349, '석봉동', 3023011100, ST_GeomFromText('POINT(127.423209 36.450795)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1350, '목상동', 3023011200, ST_GeomFromText('POINT(127.412252 36.4485)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1351, '문평동', 3023011300, ST_GeomFromText('POINT(127.398775 36.446935)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1352, '신일동', 3023011400, ST_GeomFromText('POINT(127.405888 36.436051)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1353, '덕암동', 3023011500, ST_GeomFromText('POINT(127.426812 36.440292)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1354, '상서동', 3023011600, ST_GeomFromText('POINT(127.422338 36.424168)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1355, '평촌동', 3023011700, ST_GeomFromText('POINT(127.434388 36.431376)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1356, '장동', 3023011800, ST_GeomFromText('POINT(127.446113 36.402874)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1357, '용호동', 3023011900, ST_GeomFromText('POINT(127.449175 36.435035)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1358, '이현동', 3023012000, ST_GeomFromText('POINT(127.461787 36.413365)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1359, '갈전동', 3023012100, ST_GeomFromText('POINT(127.468963 36.427751)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1360, '부수동', 3023012200, ST_GeomFromText('POINT(127.4772 36.4398)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1361, '황호동', 3023012300, ST_GeomFromText('POINT(127.4909 36.4465)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1362, '삼정동', 3023012400, ST_GeomFromText('POINT(127.467063 36.443001)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1363, '미호동', 3023012500, ST_GeomFromText('POINT(127.47125 36.462476)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1364, '신탄진동', 3023012600, ST_GeomFromText('POINT(127.429006 36.452055)', 4326), 70);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1365, '학성동', 3111010100, ST_GeomFromText('POINT(129.334694 35.55537)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1366, '학산동', 3111010200, ST_GeomFromText('POINT(129.3284 35.5554)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1367, '복산동', 3111010300, ST_GeomFromText('POINT(129.32705 35.563075)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1368, '북정동', 3111010400, ST_GeomFromText('POINT(129.320387 35.560198)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1369, '옥교동', 3111010500, ST_GeomFromText('POINT(129.324004 35.553803)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1370, '성남동', 3111010600, ST_GeomFromText('POINT(129.317507 35.553022)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1371, '교동', 3111010700, ST_GeomFromText('POINT(129.316 35.562908)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1372, '우정동', 3111010800, ST_GeomFromText('POINT(129.312518 35.555269)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1373, '성안동', 3111010900, ST_GeomFromText('POINT(129.30969 35.574379)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1374, '유곡동', 3111011000, ST_GeomFromText('POINT(129.2938 35.5675)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1375, '태화동', 3111011100, ST_GeomFromText('POINT(129.3045 35.556542)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1376, '다운동', 3111011200, ST_GeomFromText('POINT(129.275675 35.556292)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1377, '동동', 3111011300, ST_GeomFromText('POINT(129.348621 35.576524)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1378, '서동', 3111011400, ST_GeomFromText('POINT(129.343063 35.578483)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1379, '남외동', 3111011500, ST_GeomFromText('POINT(129.3474 35.5682)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1380, '장현동', 3111011600, ST_GeomFromText('POINT(129.3376 35.5913)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1381, '약사동', 3111011700, ST_GeomFromText('POINT(129.337088 35.570492)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1382, '반구동', 3111011800, ST_GeomFromText('POINT(129.341625 35.556422)', 4326), 71);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1383, '무거동', 3114010100, ST_GeomFromText('POINT(129.260725 35.551008)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1384, '옥동', 3114010200, ST_GeomFromText('POINT(129.293858 35.535273)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1385, '두왕동', 3114010300, ST_GeomFromText('POINT(129.2998 35.5082)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1386, '신정동', 3114010400, ST_GeomFromText('POINT(129.306488 35.541408)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1387, '달동', 3114010500, ST_GeomFromText('POINT(129.3165 35.5364)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1388, '삼산동', 3114010600, ST_GeomFromText('POINT(129.338944 35.546513)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1389, '여천동', 3114010700, ST_GeomFromText('POINT(129.3554 35.5252)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1390, '야음동', 3114010800, ST_GeomFromText('POINT(129.3296 35.5245)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1391, '선암동', 3114010900, ST_GeomFromText('POINT(129.338326 35.514947)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1392, '상개동', 3114011000, ST_GeomFromText('POINT(129.3169 35.5004)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1393, '부곡동', 3114011100, ST_GeomFromText('POINT(129.3349 35.4984)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1394, '고사동', 3114011200, ST_GeomFromText('POINT(129.3558 35.5001)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1395, '성암동', 3114011300, ST_GeomFromText('POINT(129.3466 35.4827)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1396, '황성동', 3114011400, ST_GeomFromText('POINT(129.3613 35.4669)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1397, '용연동', 3114011500, ST_GeomFromText('POINT(129.3626 35.4823)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1398, '남화동', 3114011600, ST_GeomFromText('POINT(129.3771 35.4756)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1399, '용잠동', 3114011700, ST_GeomFromText('POINT(129.3762 35.4894)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1400, '장생포동', 3114011800, ST_GeomFromText('POINT(129.373 35.5052)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1401, '매암동', 3114011900, ST_GeomFromText('POINT(129.3749 35.512933)', 4326), 72);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1402, '방어동', 3117010100, ST_GeomFromText('POINT(129.423935 35.486207)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1403, '화정동', 3117010200, ST_GeomFromText('POINT(129.422604 35.495956)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1404, '일산동', 3117010300, ST_GeomFromText('POINT(129.431282 35.499159)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1405, '전하동', 3117010400, ST_GeomFromText('POINT(129.4322 35.513175)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1406, '미포동', 3117010500, ST_GeomFromText('POINT(129.4434 35.5361)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1407, '주전동', 3117010600, ST_GeomFromText('POINT(129.4491 35.5577)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1408, '동부동', 3117010700, ST_GeomFromText('POINT(129.4248 35.5513)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1409, '서부동', 3117010800, ST_GeomFromText('POINT(129.420914 35.531258)', 4326), 73);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1410, '창평동', 3120010100, ST_GeomFromText('POINT(129.3671 35.6164)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1411, '호계동', 3120010200, ST_GeomFromText('POINT(129.3643 35.6275)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1412, '매곡동', 3120010300, ST_GeomFromText('POINT(129.3701 35.6512)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1413, '가대동', 3120010400, ST_GeomFromText('POINT(129.3069 35.6058)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1414, '신천동', 3120010500, ST_GeomFromText('POINT(129.3475 35.6381)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1415, '중산동', 3120010600, ST_GeomFromText('POINT(129.3509 35.6622)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1416, '상안동', 3120010700, ST_GeomFromText('POINT(129.3349 35.6182)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1417, '천곡동', 3120010800, ST_GeomFromText('POINT(129.3219 35.6493)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1418, '달천동', 3120010900, ST_GeomFromText('POINT(129.312662 35.632999)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1419, '시례동', 3120011000, ST_GeomFromText('POINT(129.333275 35.603799)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1420, '무룡동', 3120011100, ST_GeomFromText('POINT(129.4078 35.6179)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1421, '구유동', 3120011200, ST_GeomFromText('POINT(129.4518 35.6044)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1422, '정자동', 3120011300, ST_GeomFromText('POINT(129.4432 35.6158)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1423, '신명동', 3120011400, ST_GeomFromText('POINT(129.4373 35.647)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1424, '대안동', 3120011500, ST_GeomFromText('POINT(129.4054 35.6482)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1425, '당사동', 3120011600, ST_GeomFromText('POINT(129.451 35.5931)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1426, '신현동', 3120011700, ST_GeomFromText('POINT(129.41885 35.595599)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1427, '산하동', 3120011800, ST_GeomFromText('POINT(129.4276 35.628058)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1428, '어물동', 3120011900, ST_GeomFromText('POINT(129.426175 35.5759)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1429, '명촌동', 3120012000, ST_GeomFromText('POINT(129.3625 35.5491)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1430, '진장동', 3120012100, ST_GeomFromText('POINT(129.3567 35.568192)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1431, '연암동', 3120012200, ST_GeomFromText('POINT(129.376925 35.583017)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1432, '효문동', 3120012300, ST_GeomFromText('POINT(129.376618 35.567097)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1433, '양정동', 3120012400, ST_GeomFromText('POINT(129.385325 35.548642)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1434, '화봉동', 3120012500, ST_GeomFromText('POINT(129.3766 35.5926)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1435, '송정동', 3120012600, ST_GeomFromText('POINT(129.3644 35.603649)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1436, '염포동', 3120012700, ST_GeomFromText('POINT(129.394336 35.53074)', 4326), 74);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1437, '반곡동', 3611010100, ST_GeomFromText('POINT(127.311484 36.491997 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1438, '소담동', 3611010200, ST_GeomFromText('POINT(127.300415 36.483956 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1439, '보람동', 3611010300, ST_GeomFromText('POINT(127.290643 36.478916 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1440, '대평동', 3611010400, ST_GeomFromText('POINT(127.279515 36.471141 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1441, '가람동', 3611010500, ST_GeomFromText('POINT(127.246218 36.470355 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1442, '한솔동', 3611010600, ST_GeomFromText('POINT(127.254686 36.479087 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1443, '나성동', 3611010700, ST_GeomFromText('POINT(127.264327 36.489088 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1444, '새롬동', 3611010800, ST_GeomFromText('POINT(127.251805 36.484856 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1445, '다정동', 3611010900, ST_GeomFromText('POINT(127.245153 36.494607 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1446, '어진동', 3611011000, ST_GeomFromText('POINT(127.256684 36.501957 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1447, '종촌동', 3611011100, ST_GeomFromText('POINT(127.246912 36.50453 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1448, '고운동', 3611011200, ST_GeomFromText('POINT(127.236668 36.519747 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1449, '아름동', 3611011300, ST_GeomFromText('POINT(127.2469 36.51222 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1450, '도담동', 3611011400, ST_GeomFromText('POINT(127.261734 36.515446 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1451, '산울동', 3611011500, ST_GeomFromText('POINT(127.256425 36.533612 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1452, '해밀동', 3611011600, ST_GeomFromText('POINT(127.268185 36.526839 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1453, '합강동', 3611011700, ST_GeomFromText('POINT(127.330386 36.525099 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1454, '집현동', 3611011800, ST_GeomFromText('POINT(127.329206 36.499228 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1455, '세종동', 3611011900, ST_GeomFromText('POINT(127.290738 36.503522 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1456, '누리동', 3611012000, ST_GeomFromText('POINT(127.291952 36.528882 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1457, '한별동', 3611012100, ST_GeomFromText('POINT(127.275579 36.535249 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1458, '다솜동', 3611012200, ST_GeomFromText('POINT(127.321422 36.53467 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1459, '용호동', 3611012300, ST_GeomFromText('POINT(127.309153 36.538978 nan)', 4326), 76);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1460, '파장동', 4111112900, ST_GeomFromText('POINT(126.997384 37.310287)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1461, '정자동', 4111113000, ST_GeomFromText('POINT(126.991288 37.3022)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1462, '이목동', 4111113100, ST_GeomFromText('POINT(126.9787 37.3182)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1463, '율전동', 4111113200, ST_GeomFromText('POINT(126.968875 37.30185)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1464, '천천동', 4111113300, ST_GeomFromText('POINT(126.978263 37.295833)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1465, '영화동', 4111113400, ST_GeomFromText('POINT(127.013931 37.293189)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1466, '송죽동', 4111113500, ST_GeomFromText('POINT(127.007011 37.300519)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1467, '조원동', 4111113600, ST_GeomFromText('POINT(127.016432 37.301873)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1468, '연무동', 4111113700, ST_GeomFromText('POINT(127.021552 37.290583)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1469, '상광교동', 4111113800, ST_GeomFromText('POINT(127.0183 37.3349)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1470, '하광교동', 4111113900, ST_GeomFromText('POINT(127.0255 37.3169)', 4326), 78);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1471, '세류동', 4111312600, ST_GeomFromText('POINT(127.007977 37.262265)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1472, '평동', 4111312700, ST_GeomFromText('POINT(126.994163 37.258033)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1473, '고색동', 4111312800, ST_GeomFromText('POINT(126.9806 37.2449)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1474, '오목천동', 4111312900, ST_GeomFromText('POINT(126.96445 37.24296)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1475, '평리동', 4111313000, ST_GeomFromText('POINT(126.993963 37.240926)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1476, '서둔동', 4111313100, ST_GeomFromText('POINT(126.986054 37.27258)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1477, '구운동', 4111313200, ST_GeomFromText('POINT(126.97143 37.277063)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1478, '탑동', 4111313300, ST_GeomFromText('POINT(126.9757 37.2645)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1479, '금곡동', 4111313400, ST_GeomFromText('POINT(126.952182 37.27274)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1480, '호매실동', 4111313500, ST_GeomFromText('POINT(126.957087 37.266209)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1481, '곡반정동', 4111313600, ST_GeomFromText('POINT(127.030087 37.238226)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1482, '권선동', 4111313700, ST_GeomFromText('POINT(127.024568 37.257788)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1483, '장지동', 4111313800, ST_GeomFromText('POINT(127.0064 37.237)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1484, '대황교동', 4111313900, ST_GeomFromText('POINT(127.0128 37.2317)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1485, '입북동', 4111314000, ST_GeomFromText('POINT(126.959513 37.293233)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1486, '당수동', 4111314100, ST_GeomFromText('POINT(126.941 37.2901)', 4326), 79);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1487, '팔달로1가', 4111512000, ST_GeomFromText('POINT(127.016325 37.280442)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1488, '팔달로2가', 4111512100, ST_GeomFromText('POINT(127.017113 37.2787)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1489, '팔달로3가', 4111512200, ST_GeomFromText('POINT(127.015213 37.276133)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1490, '남창동', 4111512300, ST_GeomFromText('POINT(127.012988 37.279767)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1491, '영동', 4111512400, ST_GeomFromText('POINT(127.018505 37.276285)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1492, '중동', 4111512500, ST_GeomFromText('POINT(127.01652 37.273774)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1493, '구천동', 4111512600, ST_GeomFromText('POINT(127.018 37.2737)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1494, '남수동', 4111512700, ST_GeomFromText('POINT(127.019337 37.27985)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1495, '매향동', 4111512800, ST_GeomFromText('POINT(127.019925 37.285617)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1496, '북수동', 4111512900, ST_GeomFromText('POINT(127.0167 37.2854)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1497, '신풍동', 4111513000, ST_GeomFromText('POINT(127.0126 37.2834)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1498, '장안동', 4111513100, ST_GeomFromText('POINT(127.012975 37.286933)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1499, '교동', 4111513200, ST_GeomFromText('POINT(127.013537 37.271617)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1500, '매교동', 4111513300, ST_GeomFromText('POINT(127.016603 37.271083)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1501, '매산로1가', 4111513400, ST_GeomFromText('POINT(127.000963 37.266908)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1502, '매산로2가', 4111513500, ST_GeomFromText('POINT(127.005088 37.267617)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1503, '매산로3가', 4111513600, ST_GeomFromText('POINT(127.009613 37.271133)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1504, '고등동', 4111513700, ST_GeomFromText('POINT(127.001127 37.273466)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1505, '화서동', 4111513800, ST_GeomFromText('POINT(126.994878 37.276571)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1506, '지동', 4111513900, ST_GeomFromText('POINT(127.024681 37.281533)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1507, '우만동', 4111514000, ST_GeomFromText('POINT(127.029471 37.285393)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1508, '인계동', 4111514100, ST_GeomFromText('POINT(127.030143 37.268052)', 4326), 80);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1509, '매탄동', 4111710100, ST_GeomFromText('POINT(127.040499 37.270515)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1510, '원천동', 4111710200, ST_GeomFromText('POINT(127.053217 37.273479)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1511, '이의동', 4111710300, ST_GeomFromText('POINT(127.047816 37.30158)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1512, '하동', 4111710400, ST_GeomFromText('POINT(127.071383 37.286377)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1513, '영통동', 4111710500, ST_GeomFromText('POINT(127.08057 37.266349)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1514, '신동', 4111710600, ST_GeomFromText('POINT(127.048695 37.24835)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1515, '망포동', 4111710700, ST_GeomFromText('POINT(127.060818 37.237756)', 4326), 81);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1516, '신흥동', 4113110100, ST_GeomFromText('POINT(127.141172 37.443038)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1517, '태평동', 4113110200, ST_GeomFromText('POINT(127.126152 37.44074)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1518, '수진동', 4113110300, ST_GeomFromText('POINT(127.139015 37.438569)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1519, '단대동', 4113110400, ST_GeomFromText('POINT(127.155387 37.449409)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1520, '산성동', 4113110500, ST_GeomFromText('POINT(127.150125 37.452305)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1521, '양지동', 4113110600, ST_GeomFromText('POINT(127.161025 37.454868)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1522, '복정동', 4113110700, ST_GeomFromText('POINT(127.127081 37.465827)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1523, '창곡동', 4113110800, ST_GeomFromText('POINT(127.1495 37.4664)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1524, '신촌동', 4113110900, ST_GeomFromText('POINT(127.108725 37.458101)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1525, '오야동', 4113111000, ST_GeomFromText('POINT(127.1104 37.4522)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1526, '심곡동', 4113111100, ST_GeomFromText('POINT(127.10305 37.447226)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1527, '고등동', 4113111200, ST_GeomFromText('POINT(127.101369 37.428299)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1528, '상적동', 4113111300, ST_GeomFromText('POINT(127.0647 37.4278)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1529, '둔전동', 4113111400, ST_GeomFromText('POINT(127.1127 37.4323)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1530, '시흥동', 4113111500, ST_GeomFromText('POINT(127.107954 37.421983)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1531, '금토동', 4113111600, ST_GeomFromText('POINT(127.0701 37.4113)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1532, '사송동', 4113111700, ST_GeomFromText('POINT(127.1123 37.412782)', 4326), 83);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1533, '성남동', 4113310100, ST_GeomFromText('POINT(127.138391 37.435067)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1534, '금광동', 4113310300, ST_GeomFromText('POINT(127.162403 37.445026)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1535, '은행동', 4113310400, ST_GeomFromText('POINT(127.168906 37.452113)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1536, '상대원동', 4113310500, ST_GeomFromText('POINT(127.164376 37.433226)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1537, '여수동', 4113310600, ST_GeomFromText('POINT(127.132125 37.421918)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1538, '도촌동', 4113310700, ST_GeomFromText('POINT(127.152812 37.41632)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1539, '갈현동', 4113310800, ST_GeomFromText('POINT(127.173775 37.423651)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1540, '하대원동', 4113310900, ST_GeomFromText('POINT(127.146322 37.428299)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1541, '중앙동', 4113313200, ST_GeomFromText('POINT(127.156156 37.442984)', 4326), 84);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1542, '분당동', 4113510100, ST_GeomFromText('POINT(127.131099 37.370237)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1543, '수내동', 4113510200, ST_GeomFromText('POINT(127.117874 37.375581)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1544, '정자동', 4113510300, ST_GeomFromText('POINT(127.111533 37.36145)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1545, '율동', 4113510400, ST_GeomFromText('POINT(127.1617 37.3856)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1546, '서현동', 4113510500, ST_GeomFromText('POINT(127.1348 37.381382)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1547, '이매동', 4113510600, ST_GeomFromText('POINT(127.127146 37.399524)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1548, '야탑동', 4113510700, ST_GeomFromText('POINT(127.130218 37.411983)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1549, '판교동', 4113510800, ST_GeomFromText('POINT(127.098619 37.389844)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1550, '삼평동', 4113510900, ST_GeomFromText('POINT(127.116392 37.406078)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1551, '백현동', 4113511000, ST_GeomFromText('POINT(127.11083 37.388549)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1552, '금곡동', 4113511100, ST_GeomFromText('POINT(127.107052 37.351647)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1553, '궁내동', 4113511200, ST_GeomFromText('POINT(127.09165 37.370132)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1554, '동원동', 4113511300, ST_GeomFromText('POINT(127.099398 37.345156)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1555, '구미동', 4113511400, ST_GeomFromText('POINT(127.122637 37.340254)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1556, '운중동', 4113511500, ST_GeomFromText('POINT(127.077775 37.390642)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1557, '대장동', 4113511600, ST_GeomFromText('POINT(127.0654 37.3691)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1558, '석운동', 4113511700, ST_GeomFromText('POINT(127.0407 37.378)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1559, '하산운동', 4113511800, ST_GeomFromText('POINT(127.075983 37.380899)', 4326), 85);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1560, '의정부동', 4115010100, ST_GeomFromText('POINT(127.049116 37.732255)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1561, '호원동', 4115010200, ST_GeomFromText('POINT(127.048765 37.71203)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1562, '장암동', 4115010300, ST_GeomFromText('POINT(127.054254 37.726407)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1563, '신곡동', 4115010400, ST_GeomFromText('POINT(127.056222 37.733095)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1564, '용현동', 4115010500, ST_GeomFromText('POINT(127.0807 37.7315)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1565, '민락동', 4115010600, ST_GeomFromText('POINT(127.099838 37.745201)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1566, '낙양동', 4115010700, ST_GeomFromText('POINT(127.1093 37.7572)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1567, '자일동', 4115010800, ST_GeomFromText('POINT(127.0943 37.7664)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1568, '금오동', 4115010900, ST_GeomFromText('POINT(127.0664 37.7572)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1569, '가능동', 4115011000, ST_GeomFromText('POINT(127.038488 37.750541)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1570, '녹양동', 4115011100, ST_GeomFromText('POINT(127.032273 37.760047)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1571, '고산동', 4115011200, ST_GeomFromText('POINT(127.10807 37.731499)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1572, '산곡동', 4115011300, ST_GeomFromText('POINT(127.109 37.7182)', 4326), 86);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1573, '안양동', 4117110100, ST_GeomFromText('POINT(126.925908 37.398992)', 4326), 88);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1574, '석수동', 4117110200, ST_GeomFromText('POINT(126.910535 37.419684)', 4326), 88);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1575, '박달동', 4117110300, ST_GeomFromText('POINT(126.909108 37.403697)', 4326), 88);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1576, '비산동', 4117310100, ST_GeomFromText('POINT(126.933741 37.399791)', 4326), 89);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1577, '관양동', 4117310200, ST_GeomFromText('POINT(126.961402 37.406214)', 4326), 89);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1578, '평촌동', 4117310300, ST_GeomFromText('POINT(126.977077 37.394679)', 4326), 89);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1579, '호계동', 4117310400, ST_GeomFromText('POINT(126.958359 37.370918)', 4326), 89);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1580, '원미동', 4119210100, ST_GeomFromText('POINT(126.788627 37.494426)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1581, '심곡동', 4119210200, ST_GeomFromText('POINT(126.780647 37.490976)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1582, '춘의동', 4119210300, ST_GeomFromText('POINT(126.785889 37.502721)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1583, '도당동', 4119210400, ST_GeomFromText('POINT(126.785936 37.516321)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1584, '약대동', 4119210500, ST_GeomFromText('POINT(126.771287 37.513291)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1585, '소사동', 4119210600, ST_GeomFromText('POINT(126.794593 37.485888)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1586, '역곡동', 4119210700, ST_GeomFromText('POINT(126.816765 37.48924)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1587, '중동', 4119210800, ST_GeomFromText('POINT(126.768185 37.487812)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1588, '상동', 4119210900, ST_GeomFromText('POINT(126.760825 37.494944)', 4326), 91);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1589, '소사본동', 4119410100, ST_GeomFromText('POINT(126.792146 37.476233)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1590, '심곡본동', 4119410200, ST_GeomFromText('POINT(126.780043 37.480739)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1591, '범박동', 4119410300, ST_GeomFromText('POINT(126.809723 37.470581)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1592, '괴안동', 4119410400, ST_GeomFromText('POINT(126.806906 37.478412)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1593, '송내동', 4119410500, ST_GeomFromText('POINT(126.756132 37.484052)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1594, '옥길동', 4119410600, ST_GeomFromText('POINT(126.82268 37.467037)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1595, '계수동', 4119410700, ST_GeomFromText('POINT(126.808871 37.463748)', 4326), 92);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1596, '오정동', 4119610100, ST_GeomFromText('POINT(126.790836 37.528903)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1597, '여월동', 4119610200, ST_GeomFromText('POINT(126.797574 37.513866)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1598, '작동', 4119610300, ST_GeomFromText('POINT(126.815 37.5136)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1599, '원종동', 4119610400, ST_GeomFromText('POINT(126.805473 37.525894)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1600, '고강동', 4119610500, ST_GeomFromText('POINT(126.824808 37.527035)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1601, '대장동', 4119610600, ST_GeomFromText('POINT(126.7765 37.5442)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1602, '삼정동', 4119610700, ST_GeomFromText('POINT(126.766401 37.52449)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1603, '내동', 4119610800, ST_GeomFromText('POINT(126.7826 37.5212)', 4326), 93);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1604, '광명동', 4121010100, ST_GeomFromText('POINT(126.862675 37.488631)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1605, '철산동', 4121010200, ST_GeomFromText('POINT(126.867896 37.490816)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1606, '하안동', 4121010300, ST_GeomFromText('POINT(126.869145 37.465127)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1607, '소하동', 4121010400, ST_GeomFromText('POINT(126.884897 37.452269)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1608, '노온사동', 4121010500, ST_GeomFromText('POINT(126.852 37.4411)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1609, '일직동', 4121010600, ST_GeomFromText('POINT(126.8816 37.4206)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1610, '가학동', 4121010700, ST_GeomFromText('POINT(126.85785 37.416457)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1611, '옥길동', 4121010800, ST_GeomFromText('POINT(126.836689 37.466377)', 4326), 94);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1612, '서정동', 4122010100, ST_GeomFromText('POINT(127.054675 37.067783)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1613, '장당동', 4122010200, ST_GeomFromText('POINT(127.06053 37.047456)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1614, '모곡동', 4122010300, ST_GeomFromText('POINT(127.0777 37.0334)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1615, '칠괴동', 4122010400, ST_GeomFromText('POINT(127.0914 37.0328)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1616, '칠원동', 4122010500, ST_GeomFromText('POINT(127.1077 37.0259)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1617, '도일동', 4122010600, ST_GeomFromText('POINT(127.110263 37.051058)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1618, '가재동', 4122010700, ST_GeomFromText('POINT(127.0847 37.044)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1619, '장안동', 4122010800, ST_GeomFromText('POINT(127.08465 37.058725)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1620, '이충동', 4122010900, ST_GeomFromText('POINT(127.0689 37.0594)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1621, '지산동', 4122011000, ST_GeomFromText('POINT(127.057596 37.077422)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1622, '독곡동', 4122011100, ST_GeomFromText('POINT(127.0695 37.087)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1623, '신장동', 4122011200, ST_GeomFromText('POINT(127.052407 37.08403)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1624, '평택동', 4122011300, ST_GeomFromText('POINT(127.084592 36.989791)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1625, '통복동', 4122011400, ST_GeomFromText('POINT(127.087202 37.000815)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1626, '군문동', 4122011500, ST_GeomFromText('POINT(127.0884 36.9813)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1627, '유천동', 4122011600, ST_GeomFromText('POINT(127.1115 36.9755)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1628, '합정동', 4122011700, ST_GeomFromText('POINT(127.1036 36.985)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1629, '비전동', 4122011800, ST_GeomFromText('POINT(127.1022 37.0026)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1630, '동삭동', 4122011900, ST_GeomFromText('POINT(127.0965 37.0152)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1631, '세교동', 4122012000, ST_GeomFromText('POINT(127.081127 37.008606)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1632, '지제동', 4122012100, ST_GeomFromText('POINT(127.0669 37.018)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1633, '신대동', 4122012200, ST_GeomFromText('POINT(127.065012 37.001575)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1634, '소사동', 4122012300, ST_GeomFromText('POINT(127.12735 36.985101)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1635, '용이동', 4122012400, ST_GeomFromText('POINT(127.133731 36.997572)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1636, '월곡동', 4122012500, ST_GeomFromText('POINT(127.14 37.0224)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1637, '청룡동', 4122012600, ST_GeomFromText('POINT(127.1227 37.0253)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1638, '죽백동', 4122012700, ST_GeomFromText('POINT(127.125 37.0075)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1639, '고덕동', 4122012800, ST_GeomFromText('POINT(127.050617 37.040587)', 4326), 95);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1640, '송내동', 4125010100, ST_GeomFromText('POINT(127.067465 37.878545)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1641, '지행동', 4125010200, ST_GeomFromText('POINT(127.0644 37.8895)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1642, '생연동', 4125010300, ST_GeomFromText('POINT(127.065919 37.907395)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1643, '광암동', 4125010400, ST_GeomFromText('POINT(127.0954 37.9026)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1644, '걸산동', 4125010500, ST_GeomFromText('POINT(127.0959 37.9277)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1645, '보산동', 4125010600, ST_GeomFromText('POINT(127.061321 37.917648)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1646, '동두천동', 4125010700, ST_GeomFromText('POINT(127.0586 37.9331)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1647, '안흥동', 4125010800, ST_GeomFromText('POINT(127.0317 37.9325)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1648, '상봉암동', 4125010900, ST_GeomFromText('POINT(127.0582 37.9484)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1649, '하봉암동', 4125011000, ST_GeomFromText('POINT(127.0681 37.9642)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1650, '탑동동', 4125011100, ST_GeomFromText('POINT(127.1168 37.8873)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1651, '상패동', 4125011200, ST_GeomFromText('POINT(127.044357 37.905373)', 4326), 96);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1652, '일동', 4127110100, ST_GeomFromText('POINT(126.866129 37.31036)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1653, '이동', 4127110200, ST_GeomFromText('POINT(126.860863 37.305375)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1654, '사동', 4127110300, ST_GeomFromText('POINT(126.850991 37.297091)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1655, '본오동', 4127110400, ST_GeomFromText('POINT(126.86427 37.285106)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1656, '팔곡이동', 4127110500, ST_GeomFromText('POINT(126.88975 37.2901)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1657, '양상동', 4127110600, ST_GeomFromText('POINT(126.845725 37.353282)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1658, '부곡동', 4127110700, ST_GeomFromText('POINT(126.861089 37.331945)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1659, '성포동', 4127110800, ST_GeomFromText('POINT(126.849381 37.320766)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1660, '월피동', 4127110900, ST_GeomFromText('POINT(126.845563 37.336215)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1661, '팔곡일동', 4127111000, ST_GeomFromText('POINT(126.889788 37.307075)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1662, '건건동', 4127111100, ST_GeomFromText('POINT(126.9082 37.306758)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1663, '사사동', 4127111200, ST_GeomFromText('POINT(126.921775 37.293833)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1664, '수암동', 4127111300, ST_GeomFromText('POINT(126.879288 37.362374)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1665, '장상동', 4127111400, ST_GeomFromText('POINT(126.877375 37.35369)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1666, '장하동', 4127111500, ST_GeomFromText('POINT(126.85735 37.352549)', 4326), 98);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1667, '고잔동', 4127310100, ST_GeomFromText('POINT(126.819153 37.327111)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1668, '와동', 4127310200, ST_GeomFromText('POINT(126.825676 37.34165)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1669, '신길동', 4127310300, ST_GeomFromText('POINT(126.783137 37.334841)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1670, '성곡동', 4127310400, ST_GeomFromText('POINT(126.747175 37.315492)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1671, '원시동', 4127310500, ST_GeomFromText('POINT(126.787462 37.309942)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1672, '목내동', 4127310600, ST_GeomFromText('POINT(126.77315 37.309667)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1673, '초지동', 4127310700, ST_GeomFromText('POINT(126.816808 37.309967)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1674, '원곡동', 4127310800, ST_GeomFromText('POINT(126.790838 37.333255)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1675, '선부동', 4127310900, ST_GeomFromText('POINT(126.804413 37.334217)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1676, '대부동동', 4127311000, ST_GeomFromText('POINT(126.603312 37.250758)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1677, '대부북동', 4127311100, ST_GeomFromText('POINT(126.579825 37.2901)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1678, '대부남동', 4127311200, ST_GeomFromText('POINT(126.548063 37.206943)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1679, '선감동', 4127311300, ST_GeomFromText('POINT(126.638978 37.218894)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1680, '풍도동', 4127311400, ST_GeomFromText('POINT(126.387063 37.109535)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1681, '화정동', 4127311500, ST_GeomFromText('POINT(126.832113 37.356899)', 4326), 99);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1682, '주교동', 4128110100, ST_GeomFromText('POINT(126.82963 37.659432)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1683, '원당동', 4128110200, ST_GeomFromText('POINT(126.86 37.6709)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1684, '신원동', 4128110300, ST_GeomFromText('POINT(126.8775 37.672)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1685, '원흥동', 4128110400, ST_GeomFromText('POINT(126.869 37.6468)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1686, '도내동', 4128110500, ST_GeomFromText('POINT(126.862439 37.622701)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1687, '성사동', 4128110600, ST_GeomFromText('POINT(126.8514 37.6486)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1688, '북한동', 4128110700, ST_GeomFromText('POINT(126.972 37.6457)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1689, '효자동', 4128110800, ST_GeomFromText('POINT(126.972128 37.670638)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1690, '지축동', 4128110900, ST_GeomFromText('POINT(126.911623 37.649744)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1691, '오금동', 4128111000, ST_GeomFromText('POINT(126.9138 37.6674)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1692, '삼송동', 4128111100, ST_GeomFromText('POINT(126.893704 37.652583)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1693, '동산동', 4128111200, ST_GeomFromText('POINT(126.896533 37.641318)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1694, '용두동', 4128111300, ST_GeomFromText('POINT(126.8913 37.6261)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1695, '벽제동', 4128111400, ST_GeomFromText('POINT(126.9071 37.7217)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1696, '선유동', 4128111500, ST_GeomFromText('POINT(126.9117 37.6937)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1697, '고양동', 4128111600, ST_GeomFromText('POINT(126.903703 37.703366)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1698, '대자동', 4128111700, ST_GeomFromText('POINT(126.8858 37.6977)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1699, '관산동', 4128111800, ST_GeomFromText('POINT(126.862562 37.688032)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1700, '내유동', 4128111900, ST_GeomFromText('POINT(126.8558 37.7219)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1701, '토당동', 4128112000, ST_GeomFromText('POINT(126.816 37.6236)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1702, '내곡동', 4128112100, ST_GeomFromText('POINT(126.803367 37.638504)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1703, '대장동', 4128112200, ST_GeomFromText('POINT(126.8174 37.6349)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1704, '화정동', 4128112300, ST_GeomFromText('POINT(126.833511 37.644688)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1705, '강매동', 4128112400, ST_GeomFromText('POINT(126.8431 37.6019)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1706, '행주내동', 4128112500, ST_GeomFromText('POINT(126.8291 37.604)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1707, '행주외동', 4128112600, ST_GeomFromText('POINT(126.8153 37.6046)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1708, '신평동', 4128112700, ST_GeomFromText('POINT(126.7859 37.6205)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1709, '행신동', 4128112800, ST_GeomFromText('POINT(126.835916 37.622317)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1710, '화전동', 4128112900, ST_GeomFromText('POINT(126.872672 37.600042)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1711, '현천동', 4128113000, ST_GeomFromText('POINT(126.8489 37.5911)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1712, '덕은동', 4128113100, ST_GeomFromText('POINT(126.8709 37.587)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1713, '향동동', 4128113200, ST_GeomFromText('POINT(126.8925 37.6005)', 4326), 101);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1714, '식사동', 4128510100, ST_GeomFromText('POINT(126.813738 37.677304)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1715, '중산동', 4128510200, ST_GeomFromText('POINT(126.780452 37.69182)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1716, '정발산동', 4128510300, ST_GeomFromText('POINT(126.779852 37.672484)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1717, '장항동', 4128510400, ST_GeomFromText('POINT(126.770533 37.641607)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1718, '마두동', 4128510500, ST_GeomFromText('POINT(126.789816 37.655819)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1719, '백석동', 4128510600, ST_GeomFromText('POINT(126.792511 37.649679)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1720, '풍동', 4128510700, ST_GeomFromText('POINT(126.7955 37.6694)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1721, '산황동', 4128510800, ST_GeomFromText('POINT(126.8076 37.6511)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1722, '사리현동', 4128510900, ST_GeomFromText('POINT(126.8426 37.7)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1723, '지영동', 4128511000, ST_GeomFromText('POINT(126.8305 37.7167)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1724, '설문동', 4128511100, ST_GeomFromText('POINT(126.8058 37.7221)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1725, '문봉동', 4128511200, ST_GeomFromText('POINT(126.8263 37.7007)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1726, '성석동', 4128511300, ST_GeomFromText('POINT(126.7964 37.7019)', 4326), 102);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1727, '일산동', 4128710100, ST_GeomFromText('POINT(126.768639 37.687225)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1728, '주엽동', 4128710200, ST_GeomFromText('POINT(126.763263 37.670141)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1729, '탄현동', 4128710300, ST_GeomFromText('POINT(126.768429 37.694331)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1730, '대화동', 4128710400, ST_GeomFromText('POINT(126.755177 37.682977)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1731, '덕이동', 4128710500, ST_GeomFromText('POINT(126.754305 37.69091)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1732, '가좌동', 4128710600, ST_GeomFromText('POINT(126.72087 37.684459)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1733, '구산동', 4128710700, ST_GeomFromText('POINT(126.6897 37.6822)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1734, '법곳동', 4128710800, ST_GeomFromText('POINT(126.7119 37.664949)', 4326), 103);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1735, '관문동', 4129010100, ST_GeomFromText('POINT(126.9882 37.4426)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1736, '문원동', 4129010200, ST_GeomFromText('POINT(127.00184 37.426406)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1737, '갈현동', 4129010300, ST_GeomFromText('POINT(126.979334 37.414783)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1738, '막계동', 4129010400, ST_GeomFromText('POINT(127.0262 37.4268)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1739, '과천동', 4129010500, ST_GeomFromText('POINT(126.995426 37.448432)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1740, '주암동', 4129010600, ST_GeomFromText('POINT(127.025 37.4519)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1741, '중앙동', 4129010700, ST_GeomFromText('POINT(126.993374 37.43319)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1742, '원문동', 4129010800, ST_GeomFromText('POINT(126.991325 37.422176)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1743, '별양동', 4129010900, ST_GeomFromText('POINT(126.993799 37.424247)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1744, '부림동', 4129011000, ST_GeomFromText('POINT(126.998601 37.433539)', 4326), 104);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1745, '갈매동', 4131010100, ST_GeomFromText('POINT(127.117798 37.63143)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1746, '사노동', 4131010200, ST_GeomFromText('POINT(127.1391 37.6351)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1747, '인창동', 4131010300, ST_GeomFromText('POINT(127.134958 37.604492)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1748, '교문동', 4131010400, ST_GeomFromText('POINT(127.130347 37.597875)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1749, '수택동', 4131010500, ST_GeomFromText('POINT(127.141961 37.600362)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1750, '아천동', 4131010600, ST_GeomFromText('POINT(127.116463 37.569925)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1751, '토평동', 4131010700, ST_GeomFromText('POINT(127.153 37.5805)', 4326), 105);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1752, '호평동', 4136010100, ST_GeomFromText('POINT(127.24865 37.654904)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1753, '평내동', 4136010200, ST_GeomFromText('POINT(127.236075 37.648312)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1754, '금곡동', 4136010300, ST_GeomFromText('POINT(127.202187 37.63317)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1755, '일패동', 4136010400, ST_GeomFromText('POINT(127.1851 37.6205)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1756, '이패동', 4136010500, ST_GeomFromText('POINT(127.195775 37.609449)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1757, '삼패동', 4136010600, ST_GeomFromText('POINT(127.1978 37.5956)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1758, '수석동', 4136010800, ST_GeomFromText('POINT(127.171088 37.58824)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1759, '지금동', 4136010900, ST_GeomFromText('POINT(127.163825 37.602619)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1760, '도농동', 4136011000, ST_GeomFromText('POINT(127.15221 37.602026)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1761, '별내동', 4136011100, ST_GeomFromText('POINT(127.122004 37.646179)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1762, '다산동', 4136011200, ST_GeomFromText('POINT(127.155453 37.613982)', 4326), 106);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1763, '오산동', 4137010100, ST_GeomFromText('POINT(127.0669 37.148157)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1764, '부산동', 4137010200, ST_GeomFromText('POINT(127.088125 37.152724)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1765, '원동', 4137010300, ST_GeomFromText('POINT(127.08405 37.140449)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1766, '궐동', 4137010400, ST_GeomFromText('POINT(127.057038 37.161699)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1767, '청학동', 4137010500, ST_GeomFromText('POINT(127.0558 37.152349)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1768, '가장동', 4137010600, ST_GeomFromText('POINT(127.034725 37.162615)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1769, '금암동', 4137010700, ST_GeomFromText('POINT(127.045723 37.173543)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1770, '수청동', 4137010800, ST_GeomFromText('POINT(127.0646 37.1683)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1771, '은계동', 4137010900, ST_GeomFromText('POINT(127.074025 37.16159)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1772, '내삼미동', 4137011000, ST_GeomFromText('POINT(127.0611 37.1779)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1773, '외삼미동', 4137011100, ST_GeomFromText('POINT(127.0565 37.1916)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1774, '양산동', 4137011200, ST_GeomFromText('POINT(127.0164 37.1886)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1775, '세교동', 4137011300, ST_GeomFromText('POINT(127.040297 37.189279)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1776, '지곶동', 4137011400, ST_GeomFromText('POINT(127.0257 37.1773)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1777, '서랑동', 4137011500, ST_GeomFromText('POINT(127.008625 37.174818)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1778, '서동', 4137011600, ST_GeomFromText('POINT(127.038412 37.150449)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1779, '벌음동', 4137011700, ST_GeomFromText('POINT(127.038 37.1413)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1780, '두곡동', 4137011800, ST_GeomFromText('POINT(127.0457 37.1314)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1781, '탑동', 4137011900, ST_GeomFromText('POINT(127.0481 37.1355)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1782, '누읍동', 4137012000, ST_GeomFromText('POINT(127.056425 37.138765)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1783, '가수동', 4137012100, ST_GeomFromText('POINT(127.054962 37.146607)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1784, '고현동', 4137012200, ST_GeomFromText('POINT(127.0839 37.133)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1785, '청호동', 4137012300, ST_GeomFromText('POINT(127.0851 37.1294)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1786, '갈곶동', 4137012400, ST_GeomFromText('POINT(127.0726 37.1309)', 4326), 107);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1787, '대야동', 4139010100, ST_GeomFromText('POINT(126.78486 37.448611)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1788, '신천동', 4139010200, ST_GeomFromText('POINT(126.781779 37.435399)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1789, '방산동', 4139010300, ST_GeomFromText('POINT(126.765975 37.416074)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1790, '포동', 4139010400, ST_GeomFromText('POINT(126.776825 37.405549)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1791, '미산동', 4139010500, ST_GeomFromText('POINT(126.7902 37.41876)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1792, '은행동', 4139010600, ST_GeomFromText('POINT(126.79793 37.43645)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1793, '안현동', 4139010700, ST_GeomFromText('POINT(126.815288 37.429451)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1794, '매화동', 4139010800, ST_GeomFromText('POINT(126.815351 37.418057)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1795, '도창동', 4139010900, ST_GeomFromText('POINT(126.8183 37.406515)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1796, '금이동', 4139011000, ST_GeomFromText('POINT(126.838 37.4009)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1797, '과림동', 4139011200, ST_GeomFromText('POINT(126.832852 37.436875)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1798, '계수동', 4139011300, ST_GeomFromText('POINT(126.8118 37.451468)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1799, '화정동', 4139011700, ST_GeomFromText('POINT(126.817481 37.361581)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1800, '능곡동', 4139011800, ST_GeomFromText('POINT(126.815741 37.366288)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1801, '하중동', 4139011900, ST_GeomFromText('POINT(126.804843 37.398715)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1802, '하상동', 4139012000, ST_GeomFromText('POINT(126.813525 37.395157)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1803, '광석동', 4139012100, ST_GeomFromText('POINT(126.813737 37.37974)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1804, '물왕동', 4139012200, ST_GeomFromText('POINT(126.8353 37.3838)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1805, '산현동', 4139012300, ST_GeomFromText('POINT(126.8384 37.3751)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1806, '조남동', 4139012400, ST_GeomFromText('POINT(126.864937 37.374115)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1807, '논곡동', 4139012500, ST_GeomFromText('POINT(126.855838 37.395307)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1808, '목감동', 4139012600, ST_GeomFromText('POINT(126.870275 37.391765)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1809, '거모동', 4139012700, ST_GeomFromText('POINT(126.7741 37.3549)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1810, '군자동', 4139012800, ST_GeomFromText('POINT(126.794739 37.360913)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1811, '장현동', 4139012900, ST_GeomFromText('POINT(126.7989 37.379957)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1812, '장곡동', 4139013000, ST_GeomFromText('POINT(126.788079 37.377449)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1813, '월곶동', 4139013100, ST_GeomFromText('POINT(126.742512 37.388999)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1814, '정왕동', 4139013200, ST_GeomFromText('POINT(126.746051 37.349301)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1815, '죽율동', 4139013300, ST_GeomFromText('POINT(126.76205 37.349315)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1816, '무지내동', 4139013400, ST_GeomFromText('POINT(126.838037 37.41524)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1817, '배곧동', 4139013500, ST_GeomFromText('POINT(126.722265 37.367672)', 4326), 108);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1818, '당동', 4141010100, ST_GeomFromText('POINT(126.9426 37.349965)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1819, '당정동', 4141010200, ST_GeomFromText('POINT(126.954888 37.349415)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1820, '부곡동', 4141010300, ST_GeomFromText('POINT(126.935429 37.32962)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1821, '산본동', 4141010400, ST_GeomFromText('POINT(126.938588 37.373382)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1822, '금정동', 4141010500, ST_GeomFromText('POINT(126.939362 37.365462)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1823, '둔대동', 4141010600, ST_GeomFromText('POINT(126.894 37.3276)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1824, '속달동', 4141010700, ST_GeomFromText('POINT(126.89915 37.343807)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1825, '대야미동', 4141010800, ST_GeomFromText('POINT(126.9195 37.3288)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1826, '도마교동', 4141010900, ST_GeomFromText('POINT(126.9226 37.3128)', 4326), 109);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1827, '고천동', 4143010100, ST_GeomFromText('POINT(126.966087 37.345066)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1828, '이동', 4143010200, ST_GeomFromText('POINT(126.9593 37.3363)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1829, '삼동', 4143010300, ST_GeomFromText('POINT(126.956875 37.322625)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1830, '왕곡동', 4143010400, ST_GeomFromText('POINT(126.9938 37.3404)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1831, '오전동', 4143010500, ST_GeomFromText('POINT(126.971603 37.353539)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1832, '학의동', 4143010600, ST_GeomFromText('POINT(127.012 37.374665)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1833, '내손동', 4143010700, ST_GeomFromText('POINT(126.975689 37.378395)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1834, '청계동', 4143010800, ST_GeomFromText('POINT(127.018188 37.400132)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1835, '포일동', 4143010900, ST_GeomFromText('POINT(126.987862 37.39379)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1836, '월암동', 4143011000, ST_GeomFromText('POINT(126.957675 37.310425)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1837, '초평동', 4143011100, ST_GeomFromText('POINT(126.9391 37.3117)', 4326), 110);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1838, '천현동', 4145010100, ST_GeomFromText('POINT(127.216725 37.5264)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1839, '하산곡동', 4145010200, ST_GeomFromText('POINT(127.232575 37.509542)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1840, '창우동', 4145010300, ST_GeomFromText('POINT(127.2319 37.5353)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1841, '배알미동', 4145010400, ST_GeomFromText('POINT(127.27035 37.525667)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1842, '상산곡동', 4145010500, ST_GeomFromText('POINT(127.2353 37.492385)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1843, '신장동', 4145010600, ST_GeomFromText('POINT(127.2095 37.538776)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1844, '당정동', 4145010700, ST_GeomFromText('POINT(127.225025 37.556617)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1845, '덕풍동', 4145010800, ST_GeomFromText('POINT(127.198445 37.535144)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1846, '망월동', 4145010900, ST_GeomFromText('POINT(127.188062 37.569608)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1847, '풍산동', 4145011000, ST_GeomFromText('POINT(127.1906 37.5499)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1848, '미사동', 4145011100, ST_GeomFromText('POINT(127.206812 37.566758)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1849, '선동', 4145011200, ST_GeomFromText('POINT(127.1887 37.583)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1850, '감북동', 4145011300, ST_GeomFromText('POINT(127.161688 37.516208)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1851, '감일동', 4145011400, ST_GeomFromText('POINT(127.146688 37.5102)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1852, '감이동', 4145011500, ST_GeomFromText('POINT(127.163613 37.499118)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1853, '학암동', 4145011600, ST_GeomFromText('POINT(127.162437 37.477918)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1854, '교산동', 4145011700, ST_GeomFromText('POINT(127.205063 37.52085)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1855, '춘궁동', 4145011800, ST_GeomFromText('POINT(127.19415 37.522175)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1856, '하사창동', 4145011900, ST_GeomFromText('POINT(127.2062 37.509583)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1857, '상사창동', 4145012000, ST_GeomFromText('POINT(127.1978 37.4952)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1858, '항동', 4145012100, ST_GeomFromText('POINT(127.1831 37.5003)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1859, '초일동', 4145012200, ST_GeomFromText('POINT(127.181175 37.537992)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1860, '초이동', 4145012300, ST_GeomFromText('POINT(127.170855 37.536625)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1861, '광암동', 4145012400, ST_GeomFromText('POINT(127.17325 37.518508)', 4326), 111);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1862, '김량장동', 4146110100, ST_GeomFromText('POINT(127.202678 37.236733)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1863, '역북동', 4146110200, ST_GeomFromText('POINT(127.1904 37.2401)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1864, '삼가동', 4146110300, ST_GeomFromText('POINT(127.165525 37.240251)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1865, '남동', 4146110400, ST_GeomFromText('POINT(127.1999 37.2219)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1866, '유방동', 4146110500, ST_GeomFromText('POINT(127.2057 37.256)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1867, '고림동', 4146110600, ST_GeomFromText('POINT(127.225038 37.250417)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1868, '마평동', 4146110700, ST_GeomFromText('POINT(127.2298 37.229043)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1869, '운학동', 4146110800, ST_GeomFromText('POINT(127.2394 37.2123)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1870, '호동', 4146110900, ST_GeomFromText('POINT(127.2497 37.1932)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1871, '해곡동', 4146111000, ST_GeomFromText('POINT(127.2781 37.1833)', 4326), 113);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1872, '신갈동', 4146310100, ST_GeomFromText('POINT(127.107056 37.272653)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1873, '구갈동', 4146310200, ST_GeomFromText('POINT(127.12762 37.272484)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1874, '상갈동', 4146310300, ST_GeomFromText('POINT(127.107612 37.266573)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1875, '하갈동', 4146310400, ST_GeomFromText('POINT(127.0929 37.2506)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1876, '보라동', 4146310500, ST_GeomFromText('POINT(127.108287 37.253951)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1877, '지곡동', 4146310600, ST_GeomFromText('POINT(127.1395 37.2396)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1878, '공세동', 4146310700, ST_GeomFromText('POINT(127.112675 37.237843)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1879, '고매동', 4146310800, ST_GeomFromText('POINT(127.1135 37.225618)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1880, '농서동', 4146310900, ST_GeomFromText('POINT(127.0831 37.2267)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1881, '서천동', 4146311000, ST_GeomFromText('POINT(127.0738 37.2394)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1882, '영덕동', 4146311100, ST_GeomFromText('POINT(127.074527 37.27785)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1883, '언남동', 4146311200, ST_GeomFromText('POINT(127.1266 37.2922)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1884, '마북동', 4146311300, ST_GeomFromText('POINT(127.117501 37.301657)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1885, '청덕동', 4146311400, ST_GeomFromText('POINT(127.1514 37.2954)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1886, '동백동', 4146311500, ST_GeomFromText('POINT(127.160066 37.288587)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1887, '중동', 4146311600, ST_GeomFromText('POINT(127.1577 37.2704)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1888, '상하동', 4146311700, ST_GeomFromText('POINT(127.138385 37.270584)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1889, '보정동', 4146311800, ST_GeomFromText('POINT(127.112962 37.320165)', 4326), 114);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1890, '풍덕천동', 4146510100, ST_GeomFromText('POINT(127.094929 37.32795)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1891, '죽전동', 4146510200, ST_GeomFromText('POINT(127.113871 37.331005)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1892, '동천동', 4146510300, ST_GeomFromText('POINT(127.099308 37.341894)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1893, '고기동', 4146510400, ST_GeomFromText('POINT(127.0436 37.3582)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1894, '신봉동', 4146510500, ST_GeomFromText('POINT(127.083554 37.320666)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1895, '성복동', 4146510600, ST_GeomFromText('POINT(127.069013 37.316416)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1896, '상현동', 4146510700, ST_GeomFromText('POINT(127.081122 37.304611)', 4326), 115);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1897, '금촌동', 4148010100, ST_GeomFromText('POINT(126.769325 37.760475)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1898, '아동동', 4148010200, ST_GeomFromText('POINT(126.7847 37.7667)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1899, '야동동', 4148010400, ST_GeomFromText('POINT(126.7642 37.7763)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1900, '검산동', 4148010500, ST_GeomFromText('POINT(126.7434 37.7825)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1901, '맥금동', 4148010600, ST_GeomFromText('POINT(126.7286 37.7785)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1902, '교하동', 4148010700, ST_GeomFromText('POINT(126.746866 37.753037)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1903, '야당동', 4148010800, ST_GeomFromText('POINT(126.761118 37.715553)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1904, '다율동', 4148010900, ST_GeomFromText('POINT(126.726923 37.736792)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1905, '오도동', 4148011000, ST_GeomFromText('POINT(126.725664 37.748446)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1906, '상지석동', 4148011100, ST_GeomFromText('POINT(126.7812 37.729018)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1907, '산남동', 4148011200, ST_GeomFromText('POINT(126.698634 37.699644)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1908, '동패동', 4148011300, ST_GeomFromText('POINT(126.7256 37.7137)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1909, '당하동', 4148011400, ST_GeomFromText('POINT(126.745019 37.742969)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1910, '문발동', 4148011500, ST_GeomFromText('POINT(126.69307 37.720563)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1911, '송촌동', 4148011600, ST_GeomFromText('POINT(126.701056 37.75545)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1912, '목동동', 4148011700, ST_GeomFromText('POINT(126.733202 37.725367)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1913, '하지석동', 4148011800, ST_GeomFromText('POINT(126.7471 37.758867)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1914, '서패동', 4148011900, ST_GeomFromText('POINT(126.697308 37.712013)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1915, '신촌동', 4148012000, ST_GeomFromText('POINT(126.695406 37.735611)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1916, '연다산동', 4148012100, ST_GeomFromText('POINT(126.7114 37.7458)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1917, '와동동', 4148012200, ST_GeomFromText('POINT(126.758772 37.736505)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1918, '금릉동', 4148012300, ST_GeomFromText('POINT(126.7875 37.7522)', 4326), 116);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1919, '창전동', 4150010100, ST_GeomFromText('POINT(127.44106 37.282904)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1920, '관고동', 4150010200, ST_GeomFromText('POINT(127.437881 37.282395)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1921, '중리동', 4150010300, ST_GeomFromText('POINT(127.441627 37.277997)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1922, '증일동', 4150010400, ST_GeomFromText('POINT(127.427825 37.260458)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1923, '율현동', 4150010500, ST_GeomFromText('POINT(127.44685 37.261475)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1924, '진리동', 4150010600, ST_GeomFromText('POINT(127.45265 37.268058)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1925, '안흥동', 4150010700, ST_GeomFromText('POINT(127.4604 37.275358)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1926, '갈산동', 4150010800, ST_GeomFromText('POINT(127.465175 37.286658)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1927, '증포동', 4150010900, ST_GeomFromText('POINT(127.452483 37.290378)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1928, '송정동', 4150011000, ST_GeomFromText('POINT(127.439587 37.296283)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1929, '사음동', 4150011100, ST_GeomFromText('POINT(127.419637 37.294908)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1930, '단월동', 4150011200, ST_GeomFromText('POINT(127.4545 37.224526)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1931, '대포동', 4150011300, ST_GeomFromText('POINT(127.459225 37.209568)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1932, '고담동', 4150011400, ST_GeomFromText('POINT(127.45985 37.239676)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1933, '장록동', 4150011500, ST_GeomFromText('POINT(127.458925 37.2564)', 4326), 117);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1934, '봉산동', 4155010100, ST_GeomFromText('POINT(127.279562 37.00705)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1935, '숭인동', 4155010200, ST_GeomFromText('POINT(127.274829 37.010597)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1936, '영동', 4155010300, ST_GeomFromText('POINT(127.273675 37.006458)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1937, '봉남동', 4155010400, ST_GeomFromText('POINT(127.276437 37.009192)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1938, '구포동', 4155010500, ST_GeomFromText('POINT(127.272413 37.011367)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1939, '동본동', 4155010600, ST_GeomFromText('POINT(127.271839 37.007025)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1940, '명륜동', 4155010700, ST_GeomFromText('POINT(127.2763 37.0145)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1941, '옥천동', 4155010800, ST_GeomFromText('POINT(127.275345 37.0032)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1942, '낙원동', 4155010900, ST_GeomFromText('POINT(127.274638 37.00461)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1943, '창전동', 4155011000, ST_GeomFromText('POINT(127.271757 37.004419)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1944, '성남동', 4155011100, ST_GeomFromText('POINT(127.272013 37.002622)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1945, '신흥동', 4155011200, ST_GeomFromText('POINT(127.269434 37.002777)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1946, '인지동', 4155011300, ST_GeomFromText('POINT(127.2675 37.004425)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1947, '금산동', 4155011400, ST_GeomFromText('POINT(127.26915 37.012925)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1948, '연지동', 4155011500, ST_GeomFromText('POINT(127.270813 37.010367)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1949, '대천동', 4155011600, ST_GeomFromText('POINT(127.270087 37.008042)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1950, '서인동', 4155011700, ST_GeomFromText('POINT(127.2698 37.006217)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1951, '석정동', 4155011800, ST_GeomFromText('POINT(127.2594 37.0099)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1952, '아양동', 4155011900, ST_GeomFromText('POINT(127.260975 37.004908)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1953, '금석동', 4155012000, ST_GeomFromText('POINT(127.26965 37.031067)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1954, '계동', 4155012100, ST_GeomFromText('POINT(127.266188 36.989068)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1955, '옥산동', 4155012200, ST_GeomFromText('POINT(127.248913 37.0071)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1956, '사곡동', 4155012300, ST_GeomFromText('POINT(127.26495 37.039425)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1957, '도기동', 4155012400, ST_GeomFromText('POINT(127.259663 36.997201)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1958, '당왕동', 4155012500, ST_GeomFromText('POINT(127.2718 37.0204)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1959, '가사동', 4155012600, ST_GeomFromText('POINT(127.2883 37.0155)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1960, '가현동', 4155012700, ST_GeomFromText('POINT(127.2873 37.0062)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1961, '신건지동', 4155012800, ST_GeomFromText('POINT(127.246237 37.016208)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1962, '신소현동', 4155012900, ST_GeomFromText('POINT(127.2568 37.02175)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1963, '신모산동', 4155013000, ST_GeomFromText('POINT(127.246625 37.022125)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1964, '현수동', 4155013100, ST_GeomFromText('POINT(127.2825 36.9978)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1965, '발화동', 4155013200, ST_GeomFromText('POINT(127.2819 36.99)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1966, '중리동', 4155013300, ST_GeomFromText('POINT(127.2818 36.977)', 4326), 118);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1967, '북변동', 4157010100, ST_GeomFromText('POINT(126.7129 37.6248)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1968, '걸포동', 4157010200, ST_GeomFromText('POINT(126.7161 37.6419)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1969, '운양동', 4157010300, ST_GeomFromText('POINT(126.683033 37.651356)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1970, '장기동', 4157010400, ST_GeomFromText('POINT(126.671329 37.639775)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1971, '감정동', 4157010500, ST_GeomFromText('POINT(126.6937 37.6243)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1972, '사우동', 4157010600, ST_GeomFromText('POINT(126.716725 37.61934)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1973, '풍무동', 4157010700, ST_GeomFromText('POINT(126.722039 37.602219)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1974, '마산동', 4157010800, ST_GeomFromText('POINT(126.641284 37.643652)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1975, '구래동', 4157010900, ST_GeomFromText('POINT(126.62368 37.646479)', 4326), 119);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1976, '진안동', 4159011600, ST_GeomFromText('POINT(127.034953 37.213342)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1977, '병점동', 4159011700, ST_GeomFromText('POINT(127.037349 37.206918)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1978, '능동', 4159011800, ST_GeomFromText('POINT(127.060275 37.208943)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1979, '기산동', 4159011900, ST_GeomFromText('POINT(127.046038 37.221726)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1980, '반월동', 4159012000, ST_GeomFromText('POINT(127.060564 37.233161)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1981, '반정동', 4159012100, ST_GeomFromText('POINT(127.037837 37.232443)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1982, '황계동', 4159012200, ST_GeomFromText('POINT(127.0144 37.2207)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1983, '배양동', 4159012300, ST_GeomFromText('POINT(126.9966 37.2226)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1984, '기안동', 4159012400, ST_GeomFromText('POINT(126.980737 37.223626)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1985, '송산동', 4159012500, ST_GeomFromText('POINT(127.0122 37.212)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1986, '안녕동', 4159012600, ST_GeomFromText('POINT(127.004175 37.201501)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1987, '반송동', 4159012700, ST_GeomFromText('POINT(127.071501 37.197449)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1988, '석우동', 4159012800, ST_GeomFromText('POINT(127.0766 37.2095)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1989, '오산동', 4159012900, ST_GeomFromText('POINT(127.097913 37.192201)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1990, '청계동', 4159013000, ST_GeomFromText('POINT(127.109616 37.196876)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1991, '영천동', 4159013100, ST_GeomFromText('POINT(127.0979 37.2123)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1992, '중동', 4159013200, ST_GeomFromText('POINT(127.131688 37.207001)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1993, '신동', 4159013300, ST_GeomFromText('POINT(127.141696 37.18278)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1994, '목동', 4159013400, ST_GeomFromText('POINT(127.1244 37.1874)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1995, '산척동', 4159013500, ST_GeomFromText('POINT(127.11 37.170381)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1996, '장지동', 4159013600, ST_GeomFromText('POINT(127.1138 37.1538)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1997, '송동', 4159013700, ST_GeomFromText('POINT(127.093363 37.16584)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1998, '방교동', 4159013800, ST_GeomFromText('POINT(127.089449 37.177226)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (1999, '금곡동', 4159013900, ST_GeomFromText('POINT(127.0783 37.1761)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2000, '새솔동', 4159014000, ST_GeomFromText('POINT(126.818772 37.281295)', 4326), 120);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2001, '경안동', 4161010100, ST_GeomFromText('POINT(127.257337 37.410936)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2002, '쌍령동', 4161010200, ST_GeomFromText('POINT(127.272325 37.402682)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2003, '송정동', 4161010300, ST_GeomFromText('POINT(127.258218 37.425845)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2004, '회덕동', 4161010400, ST_GeomFromText('POINT(127.2436 37.4407)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2005, '탄벌동', 4161010500, ST_GeomFromText('POINT(127.2365 37.4182)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2006, '목현동', 4161010600, ST_GeomFromText('POINT(127.2161 37.432576)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2007, '삼동', 4161010700, ST_GeomFromText('POINT(127.198013 37.415099)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2008, '중대동', 4161010800, ST_GeomFromText('POINT(127.2131 37.406)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2009, '직동', 4161010900, ST_GeomFromText('POINT(127.1894 37.4015)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2010, '태전동', 4161011000, ST_GeomFromText('POINT(127.219613 37.389299)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2011, '장지동', 4161011100, ST_GeomFromText('POINT(127.2408 37.3964)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2012, '역동', 4161011200, ST_GeomFromText('POINT(127.251488 37.400024)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2013, '목동', 4161011300, ST_GeomFromText('POINT(127.1989 37.3817)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2014, '고산동', 4161011400, ST_GeomFromText('POINT(127.2234 37.3742)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2015, '신현동', 4161011500, ST_GeomFromText('POINT(127.170177 37.363136)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2016, '능평동', 4161011600, ST_GeomFromText('POINT(127.155835 37.351526)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2017, '문형동', 4161011700, ST_GeomFromText('POINT(127.2065 37.3494)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2018, '추자동', 4161011800, ST_GeomFromText('POINT(127.2238 37.3623)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2019, '매산동', 4161011900, ST_GeomFromText('POINT(127.262164 37.356157)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2020, '양벌동', 4161012000, ST_GeomFromText('POINT(127.260577 37.38331)', 4326), 121);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2021, '유양동', 4163010100, ST_GeomFromText('POINT(127.0266 37.7898)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2022, '어둔동', 4163010200, ST_GeomFromText('POINT(127.0122 37.7744)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2023, '남방동', 4163010300, ST_GeomFromText('POINT(127.0374 37.7752)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2024, '마전동', 4163010400, ST_GeomFromText('POINT(127.055086 37.7755)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2025, '산북동', 4163010500, ST_GeomFromText('POINT(127.038 37.8029)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2026, '광사동', 4163010600, ST_GeomFromText('POINT(127.0729 37.7834)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2027, '만송동', 4163010700, ST_GeomFromText('POINT(127.09535 37.788382)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2028, '삼숭동', 4163010800, ST_GeomFromText('POINT(127.1015 37.8022)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2029, '고읍동', 4163010900, ST_GeomFromText('POINT(127.076 37.8055)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2030, '덕정동', 4163011000, ST_GeomFromText('POINT(127.0668 37.8451)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2031, '봉양동', 4163011100, ST_GeomFromText('POINT(127.0777 37.8596)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2032, '회암동', 4163011200, ST_GeomFromText('POINT(127.1029 37.85)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2033, '율정동', 4163011300, ST_GeomFromText('POINT(127.1085 37.8268)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2034, '옥정동', 4163011400, ST_GeomFromText('POINT(127.085838 37.8217)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2035, '고암동', 4163011500, ST_GeomFromText('POINT(127.0688 37.8254)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2036, '덕계동', 4163011600, ST_GeomFromText('POINT(127.044113 37.818783)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2037, '회정동', 4163011700, ST_GeomFromText('POINT(127.0506 37.8398)', 4326), 122);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2038, '신읍동', 4165010100, ST_GeomFromText('POINT(127.200383 37.895056)', 4326), 123);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2039, '어룡동', 4165010200, ST_GeomFromText('POINT(127.1819 37.8848)', 4326), 123);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2040, '자작동', 4165010300, ST_GeomFromText('POINT(127.1671 37.8778)', 4326), 123);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2041, '선단동', 4165010400, ST_GeomFromText('POINT(127.159133 37.854253)', 4326), 123);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2042, '설운동', 4165010500, ST_GeomFromText('POINT(127.1432 37.8585)', 4326), 123);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2043, '동교동', 4165010600, ST_GeomFromText('POINT(127.1275 37.85)', 4326), 123);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2044, '상동', 4167010100, ST_GeomFromText('POINT(127.64695 37.2921)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2045, '홍문동', 4167010200, ST_GeomFromText('POINT(127.638989 37.285066)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2046, '창동', 4167010300, ST_GeomFromText('POINT(127.632525 37.294283)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2047, '우만동', 4167010400, ST_GeomFromText('POINT(127.679 37.2537)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2048, '단현동', 4167010500, ST_GeomFromText('POINT(127.67785 37.270417)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2049, '신진동', 4167010600, ST_GeomFromText('POINT(127.671587 37.274025)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2050, '하동', 4167010700, ST_GeomFromText('POINT(127.619197 37.302495)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2051, '교동', 4167010800, ST_GeomFromText('POINT(127.630525 37.280258)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2052, '월송동', 4167010900, ST_GeomFromText('POINT(127.6084 37.2849)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2053, '가업동', 4167011000, ST_GeomFromText('POINT(127.617338 37.269025)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2054, '연라동', 4167011100, ST_GeomFromText('POINT(127.611402 37.257006)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2055, '상거동', 4167011200, ST_GeomFromText('POINT(127.627713 37.244243)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2056, '하거동', 4167011300, ST_GeomFromText('POINT(127.630325 37.23411)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2057, '삼교동', 4167011400, ST_GeomFromText('POINT(127.660888 37.23466)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2058, '점봉동', 4167011500, ST_GeomFromText('POINT(127.646263 37.256117)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2059, '능현동', 4167011600, ST_GeomFromText('POINT(127.6564 37.263733)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2060, '멱곡동', 4167011700, ST_GeomFromText('POINT(127.66505 37.249285)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2061, '연양동', 4167011800, ST_GeomFromText('POINT(127.665437 37.288158)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2062, '매룡동', 4167011900, ST_GeomFromText('POINT(127.656425 37.282983)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2063, '천송동', 4167012000, ST_GeomFromText('POINT(127.662025 37.3052)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2064, '오학동', 4167012100, ST_GeomFromText('POINT(127.654399 37.31497)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2065, '현암동', 4167012200, ST_GeomFromText('POINT(127.633112 37.31555)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2066, '오금동', 4167012300, ST_GeomFromText('POINT(127.647938 37.334799)', 4326), 124);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2067, '영동', 4311110100, ST_GeomFromText('POINT(127.486812 36.640665)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2068, '북문로1가', 4311110200, ST_GeomFromText('POINT(127.48875 36.635232)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2069, '북문로2가', 4311110300, ST_GeomFromText('POINT(127.4889 36.6389)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2070, '북문로3가', 4311110400, ST_GeomFromText('POINT(127.4881 36.643357)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2071, '남문로1가', 4311110500, ST_GeomFromText('POINT(127.489 36.629874)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2072, '남문로2가', 4311110600, ST_GeomFromText('POINT(127.48845 36.63279)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2073, '문화동', 4311110700, ST_GeomFromText('POINT(127.491963 36.63419)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2074, '서운동', 4311110800, ST_GeomFromText('POINT(127.492763 36.630065)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2075, '서문동', 4311110900, ST_GeomFromText('POINT(127.48575 36.63414)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2076, '남주동', 4311111000, ST_GeomFromText('POINT(127.485787 36.630557)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2077, '석교동', 4311111100, ST_GeomFromText('POINT(127.492025 36.626274)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2078, '수동', 4311111200, ST_GeomFromText('POINT(127.495063 36.643674)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2079, '탑동', 4311111700, ST_GeomFromText('POINT(127.498225 36.628774)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2080, '대성동', 4311111800, ST_GeomFromText('POINT(127.497912 36.63529)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2081, '영운동', 4311111900, ST_GeomFromText('POINT(127.498898 36.61801)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2082, '금천동', 4311112000, ST_GeomFromText('POINT(127.499203 36.6244204)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2083, '용담동', 4311112100, ST_GeomFromText('POINT(127.5061 36.639582)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2084, '명암동', 4311112200, ST_GeomFromText('POINT(127.519025 36.654315)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2085, '산성동', 4311112300, ST_GeomFromText('POINT(127.5433 36.6573)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2086, '용암동', 4311112400, ST_GeomFromText('POINT(127.526112 36.620449)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2087, '용정동', 4311112500, ST_GeomFromText('POINT(127.522725 36.633815)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2088, '방서동', 4311112600, ST_GeomFromText('POINT(127.504262 36.603282)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2089, '평촌동', 4311112700, ST_GeomFromText('POINT(127.4994 36.5954)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2090, '지북동', 4311112800, ST_GeomFromText('POINT(127.509875 36.59384)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2091, '운동동', 4311112900, ST_GeomFromText('POINT(127.525695 36.606148)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2092, '월오동', 4311113000, ST_GeomFromText('POINT(127.5458 36.624707)', 4326), 129);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2093, '사직동', 4311210100, ST_GeomFromText('POINT(127.481111 36.6402)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2094, '사창동', 4311210200, ST_GeomFromText('POINT(127.458925 36.63359)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2095, '모충동', 4311210300, ST_GeomFromText('POINT(127.476818 36.627759)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2096, '산남동', 4311210400, ST_GeomFromText('POINT(127.466625 36.613249)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2097, '미평동', 4311210500, ST_GeomFromText('POINT(127.46625 36.603115)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2098, '분평동', 4311210600, ST_GeomFromText('POINT(127.489051 36.608731)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2099, '수곡동', 4311210700, ST_GeomFromText('POINT(127.479925 36.618277)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2100, '성화동', 4311210800, ST_GeomFromText('POINT(127.451225 36.607832)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2101, '개신동', 4311210900, ST_GeomFromText('POINT(127.458 36.622949)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2102, '죽림동', 4311211000, ST_GeomFromText('POINT(127.437587 36.606132)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2103, '장성동', 4311211100, ST_GeomFromText('POINT(127.482025 36.595857)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2104, '장암동', 4311211200, ST_GeomFromText('POINT(127.4892 36.5898)', 4326), 130);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2105, '운천동', 4311310400, ST_GeomFromText('POINT(127.475675 36.649282)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2106, '신봉동', 4311310500, ST_GeomFromText('POINT(127.466662 36.65459)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2107, '가경동', 4311311300, ST_GeomFromText('POINT(127.433029 36.628867)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2108, '복대동', 4311311400, ST_GeomFromText('POINT(127.432573 36.635505)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2109, '봉명동', 4311311500, ST_GeomFromText('POINT(127.45961 36.640428)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2110, '송정동', 4311311600, ST_GeomFromText('POINT(127.442613 36.645174)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2111, '강서동', 4311311700, ST_GeomFromText('POINT(127.416825 36.618824)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2112, '석곡동', 4311311800, ST_GeomFromText('POINT(127.426475 36.604249)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2113, '휴암동', 4311311900, ST_GeomFromText('POINT(127.4062 36.617565)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2114, '신전동', 4311312000, ST_GeomFromText('POINT(127.401375 36.605007)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2115, '현암동', 4311312100, ST_GeomFromText('POINT(127.391637 36.594357)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2116, '동막동', 4311312200, ST_GeomFromText('POINT(127.377262 36.596682)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2117, '수의동', 4311312300, ST_GeomFromText('POINT(127.3841 36.614224)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2118, '지동동', 4311312400, ST_GeomFromText('POINT(127.407714 36.642289)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2119, '서촌동', 4311312500, ST_GeomFromText('POINT(127.396325 36.651332)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2120, '신성동', 4311312600, ST_GeomFromText('POINT(127.414687 36.654974)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2121, '평동', 4311312700, ST_GeomFromText('POINT(127.415488 36.660265)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2122, '신대동', 4311312800, ST_GeomFromText('POINT(127.406075 36.677085)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2123, '남촌동', 4311312900, ST_GeomFromText('POINT(127.4177 36.663)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2124, '내곡동', 4311313000, ST_GeomFromText('POINT(127.421525 36.668693)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2125, '상신동', 4311313100, ST_GeomFromText('POINT(127.434038 36.665757)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2126, '원평동', 4311313200, ST_GeomFromText('POINT(127.435663 36.672376)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2127, '문암동', 4311313300, ST_GeomFromText('POINT(127.44915 36.67071)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2128, '송절동', 4311313400, ST_GeomFromText('POINT(127.45015 36.661882)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2129, '화계동', 4311313500, ST_GeomFromText('POINT(127.442337 36.659957)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2130, '외북동', 4311313600, ST_GeomFromText('POINT(127.43235 36.656315)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2131, '향정동', 4311313700, ST_GeomFromText('POINT(127.4306 36.649932)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2132, '비하동', 4311313800, ST_GeomFromText('POINT(127.41635 36.634815)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2133, '석소동', 4311313900, ST_GeomFromText('POINT(127.3803 36.623324)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2134, '정봉동', 4311314000, ST_GeomFromText('POINT(127.380662 36.649724)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2135, '신촌동', 4311314100, ST_GeomFromText('POINT(127.387088 36.656415)', 4326), 131);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2136, '우암동', 4311410100, ST_GeomFromText('POINT(127.486804 36.649167)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2137, '내덕동', 4311410200, ST_GeomFromText('POINT(127.48275 36.658415)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2138, '율량동', 4311410300, ST_GeomFromText('POINT(127.51425 36.661765)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2139, '사천동', 4311410400, ST_GeomFromText('POINT(127.475262 36.66996)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2140, '주성동', 4311410500, ST_GeomFromText('POINT(127.50445 36.676851)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2141, '주중동', 4311410600, ST_GeomFromText('POINT(127.487413 36.683843)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2142, '정상동', 4311410700, ST_GeomFromText('POINT(127.469375 36.679101)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2143, '정하동', 4311410800, ST_GeomFromText('POINT(127.46105 36.674951)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2144, '정북동', 4311410900, ST_GeomFromText('POINT(127.465275 36.686776)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2145, '오동동', 4311411000, ST_GeomFromText('POINT(127.473875 36.691751)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2146, '외남동', 4311411100, ST_GeomFromText('POINT(127.4865 36.698733)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2147, '외평동', 4311411200, ST_GeomFromText('POINT(127.4844 36.70616)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2148, '외하동', 4311411300, ST_GeomFromText('POINT(127.482363 36.714626)', 4326), 132);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2149, '성내동', 4313010100, ST_GeomFromText('POINT(127.933838 36.973443)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2150, '성남동', 4313010200, ST_GeomFromText('POINT(127.936275 36.968476)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2151, '성서동', 4313010300, ST_GeomFromText('POINT(127.932276 36.971435)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2152, '충인동', 4313010400, ST_GeomFromText('POINT(127.932162 36.974026)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2153, '교현동', 4313010500, ST_GeomFromText('POINT(127.9405 36.9727)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2154, '용산동', 4313010600, ST_GeomFromText('POINT(127.938748 36.964253)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2155, '호암동', 4313010700, ST_GeomFromText('POINT(127.9329 36.952)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2156, '직동', 4313010800, ST_GeomFromText('POINT(127.9631 36.9427)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2157, '단월동', 4313010900, ST_GeomFromText('POINT(127.905137 36.945276)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2158, '풍동', 4313011000, ST_GeomFromText('POINT(127.912525 36.928501)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2159, '가주동', 4313011100, ST_GeomFromText('POINT(127.8872 36.934001)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2160, '용관동', 4313011200, ST_GeomFromText('POINT(127.885113 36.95181)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2161, '용두동', 4313011300, ST_GeomFromText('POINT(127.884775 36.967518)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2162, '달천동', 4313011400, ST_GeomFromText('POINT(127.9034 36.9602)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2163, '봉방동', 4313011500, ST_GeomFromText('POINT(127.919402 36.973611)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2164, '칠금동', 4313011600, ST_GeomFromText('POINT(127.908862 36.984601)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2165, '연수동', 4313011800, ST_GeomFromText('POINT(127.934108 36.986832)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2166, '목행동', 4313011900, ST_GeomFromText('POINT(127.917004 37.011578)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2167, '용탄동', 4313012000, ST_GeomFromText('POINT(127.917004 37.011578)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2168, '종민동', 4313012100, ST_GeomFromText('POINT(127.9889 36.9913)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2169, '안림동', 4313012200, ST_GeomFromText('POINT(127.962075 36.974276)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2170, '목벌동', 4313012300, ST_GeomFromText('POINT(127.9979 36.9616)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2171, '충의동', 4313012400, ST_GeomFromText('POINT(127.929463 36.97451)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2172, '지현동', 4313012500, ST_GeomFromText('POINT(127.932204 36.96819)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2173, '문화동', 4313012700, ST_GeomFromText('POINT(127.925513 36.971743)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2174, '금릉동', 4313012800, ST_GeomFromText('POINT(127.9187 36.9948)', 4326), 133);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2175, '의림동', 4315010100, ST_GeomFromText('POINT(128.207762 37.14149)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2176, '서부동', 4315010200, ST_GeomFromText('POINT(128.202425 37.136532)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2177, '동현동', 4315010300, ST_GeomFromText('POINT(128.220208 37.13102)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2178, '남천동', 4315010400, ST_GeomFromText('POINT(128.216675 37.134749)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2179, '교동', 4315010500, ST_GeomFromText('POINT(128.219126 37.140026)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2180, '중앙로1가', 4315010600, ST_GeomFromText('POINT(128.211763 37.13684)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2181, '중앙로2가', 4315010700, ST_GeomFromText('POINT(128.213188 37.141382)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2182, '명동', 4315010800, ST_GeomFromText('POINT(128.2069 37.1351)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2183, '화산동', 4315010900, ST_GeomFromText('POINT(128.215011 37.127181)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2184, '영천동', 4315011000, ST_GeomFromText('POINT(128.2022 37.1275)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2185, '하소동', 4315011100, ST_GeomFromText('POINT(128.1942 37.1397)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2186, '신월동', 4315011200, ST_GeomFromText('POINT(128.190363 37.165399)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2187, '청전동', 4315011300, ST_GeomFromText('POINT(128.214438 37.148965)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2188, '모산동', 4315011400, ST_GeomFromText('POINT(128.2064 37.1797)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2189, '고암동', 4315011500, ST_GeomFromText('POINT(128.2325 37.1637)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2190, '장락동', 4315011600, ST_GeomFromText('POINT(128.229175 37.149957)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2191, '흑석동', 4315011700, ST_GeomFromText('POINT(128.2496 37.1425)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2192, '두학동', 4315011800, ST_GeomFromText('POINT(128.274675 37.133882)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2193, '고명동', 4315011900, ST_GeomFromText('POINT(128.2509 37.1144)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2194, '신백동', 4315012000, ST_GeomFromText('POINT(128.223281 37.128363)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2195, '강제동', 4315012100, ST_GeomFromText('POINT(128.2183 37.1162)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2196, '명지동', 4315012200, ST_GeomFromText('POINT(128.199863 37.111357)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2197, '산곡동', 4315012300, ST_GeomFromText('POINT(128.1928 37.0979)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2198, '왕암동', 4315012400, ST_GeomFromText('POINT(128.16515 37.148099)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2199, '천남동', 4315012500, ST_GeomFromText('POINT(128.1847 37.1256)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2200, '신동', 4315012600, ST_GeomFromText('POINT(128.1651 37.1228)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2201, '자작동', 4315012700, ST_GeomFromText('POINT(128.2924 37.1151)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2202, '대랑동', 4315012800, ST_GeomFromText('POINT(128.2501 37.0926)', 4326), 134);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2203, '대흥동', 4413110100, ST_GeomFromText('POINT(127.147375 36.808233)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2204, '성황동', 4413110200, ST_GeomFromText('POINT(127.152237 36.814492)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2205, '문화동', 4413110300, ST_GeomFromText('POINT(127.151187 36.809425)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2206, '사직동', 4413110400, ST_GeomFromText('POINT(127.14845 36.801008)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2207, '영성동', 4413110500, ST_GeomFromText('POINT(127.151625 36.800017)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2208, '오룡동', 4413110600, ST_GeomFromText('POINT(127.150375 36.80535)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2209, '원성동', 4413110700, ST_GeomFromText('POINT(127.160937 36.8078)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2210, '구성동', 4413110800, ST_GeomFromText('POINT(127.170287 36.797167)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2211, '청수동', 4413110900, ST_GeomFromText('POINT(127.1543 36.7921)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2212, '삼룡동', 4413111000, ST_GeomFromText('POINT(127.174913 36.779742)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2213, '청당동', 4413111100, ST_GeomFromText('POINT(127.1529 36.7809)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2214, '유량동', 4413111200, ST_GeomFromText('POINT(127.185725 36.8156)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2215, '봉명동', 4413111300, ST_GeomFromText('POINT(127.139424 36.805798)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2216, '다가동', 4413111400, ST_GeomFromText('POINT(127.149575 36.795042)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2217, '용곡동', 4413111500, ST_GeomFromText('POINT(127.1393 36.788283)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2218, '신방동', 4413111600, ST_GeomFromText('POINT(127.122438 36.785854)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2219, '쌍용동', 4413111700, ST_GeomFromText('POINT(127.132631 36.802727)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2220, '신부동', 4413111800, ST_GeomFromText('POINT(127.163925 36.825483)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2221, '안서동', 4413111900, ST_GeomFromText('POINT(127.184025 36.837474)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2222, '구룡동', 4413112000, ST_GeomFromText('POINT(127.15 36.764842)', 4326), 144);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2223, '와촌동', 4413310100, ST_GeomFromText('POINT(127.144363 36.807775)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2224, '성정동', 4413310200, ST_GeomFromText('POINT(127.141369 36.818019)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2225, '백석동', 4413310300, ST_GeomFromText('POINT(127.115112 36.819844)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2226, '두정동', 4413310400, ST_GeomFromText('POINT(127.1422 36.83185)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2227, '성성동', 4413310500, ST_GeomFromText('POINT(127.126713 36.845124)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2228, '차암동', 4413310600, ST_GeomFromText('POINT(127.1116 36.8482)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2229, '쌍용동', 4413310700, ST_GeomFromText('POINT(127.130508 36.804047)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2230, '불당동', 4413310800, ST_GeomFromText('POINT(127.113722 36.805942)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2231, '업성동', 4413310900, ST_GeomFromText('POINT(127.13295 36.856949)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2232, '신당동', 4413311000, ST_GeomFromText('POINT(127.159825 36.857024)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2233, '부대동', 4413311100, ST_GeomFromText('POINT(127.1499 36.847382)', 4326), 145);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2234, '반죽동', 4415010100, ST_GeomFromText('POINT(127.1194 36.4539)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2235, '봉황동', 4415010200, ST_GeomFromText('POINT(127.1191 36.4478)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2236, '중학동', 4415010300, ST_GeomFromText('POINT(127.1248 36.4475)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2237, '중동', 4415010400, ST_GeomFromText('POINT(127.1257 36.453968)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2238, '산성동', 4415010500, ST_GeomFromText('POINT(127.1257 36.4586)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2239, '교동', 4415010600, ST_GeomFromText('POINT(127.117813 36.46001)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2240, '웅진동', 4415010700, ST_GeomFromText('POINT(127.1048 36.4562)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2241, '금성동', 4415010800, ST_GeomFromText('POINT(127.122225 36.465685)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2242, '옥룡동', 4415010900, ST_GeomFromText('POINT(127.136257 36.457601)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2243, '금학동', 4415011000, ST_GeomFromText('POINT(127.119409 36.438847)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2244, '봉정동', 4415011100, ST_GeomFromText('POINT(127.0966 36.4359)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2245, '주미동', 4415011200, ST_GeomFromText('POINT(127.106512 36.425626)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2246, '태봉동', 4415011300, ST_GeomFromText('POINT(127.0906 36.4111)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2247, '오곡동', 4415011400, ST_GeomFromText('POINT(127.1151 36.4035)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2248, '신기동', 4415011500, ST_GeomFromText('POINT(127.1477 36.42966)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2249, '소학동', 4415011600, ST_GeomFromText('POINT(127.151462 36.446243)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2250, '상왕동', 4415011700, ST_GeomFromText('POINT(127.1781 36.4317)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2251, '무릉동', 4415011800, ST_GeomFromText('POINT(127.1728 36.4608)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2252, '월송동', 4415011900, ST_GeomFromText('POINT(127.154948 36.471432)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2253, '신관동', 4415012000, ST_GeomFromText('POINT(127.132574 36.472264)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2254, '금흥동', 4415012100, ST_GeomFromText('POINT(127.1464 36.4834)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2255, '쌍신동', 4415012200, ST_GeomFromText('POINT(127.121575 36.483651)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2256, '월미동', 4415012300, ST_GeomFromText('POINT(127.1135 36.4906)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2257, '검상동', 4415012400, ST_GeomFromText('POINT(127.071 36.4352)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2258, '석장리동', 4415012500, ST_GeomFromText('POINT(127.191305 36.454939)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2259, '송선동', 4415012600, ST_GeomFromText('POINT(127.16724 36.487847)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2260, '동현동', 4415012700, ST_GeomFromText('POINT(127.181599 36.478623)', 4326), 146);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2261, '대천동', 4418010100, ST_GeomFromText('POINT(126.579662 36.353965)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2262, '죽정동', 4418010200, ST_GeomFromText('POINT(126.61095 36.369082)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2263, '화산동', 4418010300, ST_GeomFromText('POINT(126.626562 36.364057)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2264, '동대동', 4418010400, ST_GeomFromText('POINT(126.61715 36.352132)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2265, '명천동', 4418010500, ST_GeomFromText('POINT(126.6153 36.3335)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2266, '궁촌동', 4418010600, ST_GeomFromText('POINT(126.5963 36.338699)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2267, '내항동', 4418010700, ST_GeomFromText('POINT(126.5814 36.339024)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2268, '남곡동', 4418010800, ST_GeomFromText('POINT(126.558712 36.336224)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2269, '요암동', 4418010900, ST_GeomFromText('POINT(126.5532 36.3265)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2270, '신흑동', 4418011000, ST_GeomFromText('POINT(126.5218 36.3135)', 4326), 147);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2271, '온천동', 4420010100, ST_GeomFromText('POINT(127.001 36.7878)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2272, '실옥동', 4420010200, ST_GeomFromText('POINT(126.985525 36.793508)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2273, '방축동', 4420010300, ST_GeomFromText('POINT(126.9834 36.775)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2274, '기산동', 4420010400, ST_GeomFromText('POINT(126.9629 36.7512)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2275, '초사동', 4420010500, ST_GeomFromText('POINT(126.9814 36.745085)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2276, '신인동', 4420010600, ST_GeomFromText('POINT(126.986 36.7559)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2277, '법곡동', 4420010700, ST_GeomFromText('POINT(127.0054 36.7601)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2278, '장존동', 4420010800, ST_GeomFromText('POINT(127.0089 36.7501)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2279, '좌부동', 4420010900, ST_GeomFromText('POINT(127.027325 36.754858)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2280, '읍내동', 4420011000, ST_GeomFromText('POINT(127.0192 36.762308)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2281, '풍기동', 4420011100, ST_GeomFromText('POINT(127.0233 36.7722)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2282, '용화동', 4420011200, ST_GeomFromText('POINT(127.0018 36.7703)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2283, '모종동', 4420011300, ST_GeomFromText('POINT(127.021 36.7836)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2284, '권곡동', 4420011400, ST_GeomFromText('POINT(127.0144 36.7914)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2285, '배미동', 4420011500, ST_GeomFromText('POINT(126.97 36.7944)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2286, '득산동', 4420011600, ST_GeomFromText('POINT(126.97 36.7805)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2287, '점양동', 4420011700, ST_GeomFromText('POINT(126.9695 36.7677)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2288, '신동', 4420011800, ST_GeomFromText('POINT(127.0365 36.7839)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2289, '남동', 4420011900, ST_GeomFromText('POINT(127.036028 36.770254)', 4326), 148);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2290, '읍내동', 4421010100, ST_GeomFromText('POINT(126.44525 36.784308)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2291, '동문동', 4421010200, ST_GeomFromText('POINT(126.459819 36.785859)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2292, '갈산동', 4421010300, ST_GeomFromText('POINT(126.4331 36.7947)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2293, '온석동', 4421010400, ST_GeomFromText('POINT(126.4681 36.7993)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2294, '잠홍동', 4421010500, ST_GeomFromText('POINT(126.4827 36.78875)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2295, '수석동', 4421010600, ST_GeomFromText('POINT(126.489714 36.767334)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2296, '석림동', 4421010700, ST_GeomFromText('POINT(126.4663 36.7709)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2297, '석남동', 4421010800, ST_GeomFromText('POINT(126.453472 36.763841)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2298, '예천동', 4421010900, ST_GeomFromText('POINT(126.440237 36.7674)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2299, '죽성동', 4421011000, ST_GeomFromText('POINT(126.4437 36.7476)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2300, '양대동', 4421011100, ST_GeomFromText('POINT(126.4507 36.7303)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2301, '오남동', 4421011200, ST_GeomFromText('POINT(126.4805 36.7495)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2302, '장동', 4421011300, ST_GeomFromText('POINT(126.4777 36.7347)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2303, '덕지천동', 4421011400, ST_GeomFromText('POINT(126.4982 36.7367)', 4326), 149);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2304, '화지동', 4423010100, ST_GeomFromText('POINT(127.083119 36.206414)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2305, '반월동', 4423010200, ST_GeomFromText('POINT(127.089029 36.20569)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2306, '대교동', 4423010300, ST_GeomFromText('POINT(127.0849 36.209235)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2307, '부창동', 4423010400, ST_GeomFromText('POINT(127.087146 36.199276)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2308, '취암동', 4423010500, ST_GeomFromText('POINT(127.095031 36.198251)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2309, '등화동', 4423010600, ST_GeomFromText('POINT(127.07515 36.184401)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2310, '지산동', 4423010700, ST_GeomFromText('POINT(127.112762 36.200701)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2311, '덕지동', 4423010800, ST_GeomFromText('POINT(127.107838 36.212751)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2312, '내동', 4423010900, ST_GeomFromText('POINT(127.102862 36.183193)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2313, '강산동', 4423011000, ST_GeomFromText('POINT(127.081562 36.186618)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2314, '관촉동', 4423011100, ST_GeomFromText('POINT(127.118237 36.190735)', 4326), 150);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2315, '금암동', 4425010100, ST_GeomFromText('POINT(127.2464 36.272767)', 4326), 151);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2316, '읍내동', 4427010100, ST_GeomFromText('POINT(126.635585 36.894229)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2317, '채운동', 4427010200, ST_GeomFromText('POINT(126.6159 36.8914)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2318, '우두동', 4427010300, ST_GeomFromText('POINT(126.6277 36.9158)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2319, '원당동', 4427010400, ST_GeomFromText('POINT(126.6504 36.9092)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2320, '시곡동', 4427010500, ST_GeomFromText('POINT(126.6713 36.8967)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2321, '수청동', 4427010600, ST_GeomFromText('POINT(126.651987 36.890421)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2322, '대덕동', 4427010700, ST_GeomFromText('POINT(126.6442 36.8767)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2323, '행정동', 4427010800, ST_GeomFromText('POINT(126.6128 36.8787)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2324, '용연동', 4427010900, ST_GeomFromText('POINT(126.6308 36.8604)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2325, '사기소동', 4427011000, ST_GeomFromText('POINT(126.623 36.8471)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2326, '구룡동', 4427011100, ST_GeomFromText('POINT(126.6117 36.8251)', 4326), 152);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2327, '용당동', 4611010100, ST_GeomFromText('POINT(126.391687 34.806)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2328, '산정동', 4611010200, ST_GeomFromText('POINT(126.386575 34.809166)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2329, '연산동', 4611010300, ST_GeomFromText('POINT(126.377144 34.813004)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2330, '대성동', 4611010400, ST_GeomFromText('POINT(126.383689 34.799238)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2331, '양동', 4611010500, ST_GeomFromText('POINT(126.3811 34.7964)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2332, '북교동', 4611010600, ST_GeomFromText('POINT(126.3784 34.7939)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2333, '남교동', 4611010700, ST_GeomFromText('POINT(126.3817 34.7938)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2334, '호남동', 4611010800, ST_GeomFromText('POINT(126.3879 34.7939)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2335, '대안동', 4611010900, ST_GeomFromText('POINT(126.384985 34.792402)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2336, '창평동', 4611011000, ST_GeomFromText('POINT(126.384118 34.793179)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2337, '명륜동', 4611011100, ST_GeomFromText('POINT(126.385729 34.791785)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2338, '죽동', 4611011200, ST_GeomFromText('POINT(126.3819 34.7915)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2339, '무안동', 4611011300, ST_GeomFromText('POINT(126.384371 34.788923)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2340, '측후동', 4611011400, ST_GeomFromText('POINT(126.382418 34.789155)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2341, '상락동1가', 4611011500, ST_GeomFromText('POINT(126.387066 34.789199)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2342, '상락동2가', 4611011600, ST_GeomFromText('POINT(126.385913 34.789694)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2343, '복만동', 4611011700, ST_GeomFromText('POINT(126.385455 34.787896)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2344, '동명동', 4611011800, ST_GeomFromText('POINT(126.39205 34.790958)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2345, '광동1가', 4611011900, ST_GeomFromText('POINT(126.390251 34.787912)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2346, '광동2가', 4611012000, ST_GeomFromText('POINT(126.389116 34.788499)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2347, '광동3가', 4611012100, ST_GeomFromText('POINT(126.388508 34.789272)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2348, '영해동1가', 4611012200, ST_GeomFromText('POINT(126.386673 34.785851)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2349, '영해동2가', 4611012300, ST_GeomFromText('POINT(126.385534 34.786659)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2350, '행복동1가', 4611012400, ST_GeomFromText('POINT(126.387368 34.7865)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2351, '행복동2가', 4611012500, ST_GeomFromText('POINT(126.386227 34.787285)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2352, '축복동1가', 4611012600, ST_GeomFromText('POINT(126.389396 34.787381)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2353, '축복동2가', 4611012700, ST_GeomFromText('POINT(126.388458 34.788075)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2354, '축복동3가', 4611012800, ST_GeomFromText('POINT(126.387736 34.788628)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2355, '보광동1가', 4611012900, ST_GeomFromText('POINT(126.388574 34.786788)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2356, '보광동2가', 4611013000, ST_GeomFromText('POINT(126.387708 34.787399)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2357, '보광동3가', 4611013100, ST_GeomFromText('POINT(126.386977 34.787954)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2358, '유달동', 4611013200, ST_GeomFromText('POINT(126.379236 34.786387)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2359, '대의동1가', 4611013300, ST_GeomFromText('POINT(126.384559 34.786928)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2360, '대의동2가', 4611013400, ST_GeomFromText('POINT(126.3826 34.7875)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2361, '대의동3가', 4611013500, ST_GeomFromText('POINT(126.380707 34.786712)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2362, '중앙동1가', 4611013600, ST_GeomFromText('POINT(126.383778 34.786208)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2363, '중앙동2가', 4611013700, ST_GeomFromText('POINT(126.38229 34.78616)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2364, '중앙동3가', 4611013800, ST_GeomFromText('POINT(126.380433 34.786056)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2365, '만호동', 4611013900, ST_GeomFromText('POINT(126.384605 34.785169)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2366, '수강동1가', 4611014000, ST_GeomFromText('POINT(126.386123 34.785344)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2367, '수강동2가', 4611014100, ST_GeomFromText('POINT(126.385005 34.786188)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2368, '해안동1가', 4611014200, ST_GeomFromText('POINT(126.38267 34.781407)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2369, '해안동2가', 4611014300, ST_GeomFromText('POINT(126.381886 34.782121)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2370, '해안동3가', 4611014400, ST_GeomFromText('POINT(126.381133 34.781863)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2371, '해안동4가', 4611014500, ST_GeomFromText('POINT(126.380099 34.78156)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2372, '항동', 4611014600, ST_GeomFromText('POINT(126.384513 34.7831)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2373, '중동1가', 4611014700, ST_GeomFromText('POINT(126.383022 34.78493)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2374, '중동2가', 4611014800, ST_GeomFromText('POINT(126.381104 34.78489)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2375, '유동', 4611014900, ST_GeomFromText('POINT(126.381797 34.783529)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2376, '금동1가', 4611015000, ST_GeomFromText('POINT(126.382975 34.784387)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2377, '금동2가', 4611015100, ST_GeomFromText('POINT(126.381536 34.784233)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2378, '경동1가', 4611015200, ST_GeomFromText('POINT(126.38244 34.785517)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2379, '경동2가', 4611015300, ST_GeomFromText('POINT(126.380176 34.785398)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2380, '서산동', 4611015400, ST_GeomFromText('POINT(126.3761 34.7823)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2381, '금화동', 4611015500, ST_GeomFromText('POINT(126.377483 34.780926)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2382, '온금동', 4611015600, ST_GeomFromText('POINT(126.3756 34.7849)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2383, '죽교동', 4611015700, ST_GeomFromText('POINT(126.375114 34.79985)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2384, '상동', 4611015800, ST_GeomFromText('POINT(126.414172 34.813824)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2385, '용해동', 4611015900, ST_GeomFromText('POINT(126.399361 34.816555)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2386, '석현동', 4611016000, ST_GeomFromText('POINT(126.425237 34.8233)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2387, '달동', 4611016100, ST_GeomFromText('POINT(126.35585 34.754075)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2388, '율도동', 4611016200, ST_GeomFromText('POINT(126.325714 34.801863)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2389, '대양동', 4611016300, ST_GeomFromText('POINT(126.4133 34.8343)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2390, '옥암동', 4611016400, ST_GeomFromText('POINT(126.429858 34.81015)', 4326), 160);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2391, '종화동', 4613010100, ST_GeomFromText('POINT(127.7479 34.739)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2392, '수정동', 4613010200, ST_GeomFromText('POINT(127.753998 34.743438)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2393, '공화동', 4613010300, ST_GeomFromText('POINT(127.7434 34.7471)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2394, '관문동', 4613010400, ST_GeomFromText('POINT(127.7425 34.742635)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2395, '고소동', 4613010500, ST_GeomFromText('POINT(127.740975 34.739626)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2396, '동산동', 4613010600, ST_GeomFromText('POINT(127.7376 34.746)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2397, '중앙동', 4613010700, ST_GeomFromText('POINT(127.738142 34.738899)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2398, '교동', 4613010800, ST_GeomFromText('POINT(127.732418 34.739977)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2399, '군자동', 4613010900, ST_GeomFromText('POINT(127.7343 34.7437)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2400, '충무동', 4613011000, ST_GeomFromText('POINT(127.7309 34.7428)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2401, '연등동', 4613011100, ST_GeomFromText('POINT(127.7306 34.7516)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2402, '광무동', 4613011200, ST_GeomFromText('POINT(127.7223 34.7491)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2403, '서교동', 4613011300, ST_GeomFromText('POINT(127.7269 34.7412)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2404, '봉강동', 4613011400, ST_GeomFromText('POINT(127.7196 34.7416)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2405, '봉산동', 4613011500, ST_GeomFromText('POINT(127.7244 34.7353)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2406, '남산동', 4613011600, ST_GeomFromText('POINT(127.7308 34.7343)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2407, '국동', 4613011700, ST_GeomFromText('POINT(127.719252 34.729966)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2408, '신월동', 4613011800, ST_GeomFromText('POINT(127.697575 34.731485)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2409, '여서동', 4613011900, ST_GeomFromText('POINT(127.708854 34.750726)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2410, '문수동', 4613012000, ST_GeomFromText('POINT(127.702729 34.75456)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2411, '오림동', 4613012100, ST_GeomFromText('POINT(127.7216 34.7595)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2412, '미평동', 4613012200, ST_GeomFromText('POINT(127.704363 34.768942)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2413, '둔덕동', 4613012300, ST_GeomFromText('POINT(127.694557 34.769357)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2414, '오천동', 4613012400, ST_GeomFromText('POINT(127.750522 34.795132)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2415, '만흥동', 4613012500, ST_GeomFromText('POINT(127.7307 34.7762)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2416, '덕충동', 4613012600, ST_GeomFromText('POINT(127.7405 34.7566)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2417, '경호동', 4613012700, ST_GeomFromText('POINT(127.7233 34.7106)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2418, '학동', 4613012800, ST_GeomFromText('POINT(127.6625 34.7623)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2419, '학용동', 4613012900, ST_GeomFromText('POINT(127.6702 34.7681)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2420, '안산동', 4613013000, ST_GeomFromText('POINT(127.6498 34.7552)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2421, '소호동', 4613013100, ST_GeomFromText('POINT(127.6424 34.737)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2422, '시전동', 4613013200, ST_GeomFromText('POINT(127.68445 34.7606)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2423, '신기동', 4613013300, ST_GeomFromText('POINT(127.673613 34.760558)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2424, '웅천동', 4613013400, ST_GeomFromText('POINT(127.681595 34.747342)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2425, '선원동', 4613013500, ST_GeomFromText('POINT(127.656288 34.7727)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2426, '여천동', 4613013600, ST_GeomFromText('POINT(127.668238 34.7772)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2427, '화장동', 4613013700, ST_GeomFromText('POINT(127.644013 34.778233)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2428, '주삼동', 4613013800, ST_GeomFromText('POINT(127.663031 34.78759)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2429, '봉계동', 4613013900, ST_GeomFromText('POINT(127.6799 34.7836)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2430, '해산동', 4613014000, ST_GeomFromText('POINT(127.6401 34.8007)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2431, '화치동', 4613014100, ST_GeomFromText('POINT(127.6488 34.816)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2432, '월하동', 4613014200, ST_GeomFromText('POINT(127.6639 34.8107)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2433, '평여동', 4613014300, ST_GeomFromText('POINT(127.6799 34.8098)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2434, '중흥동', 4613014400, ST_GeomFromText('POINT(127.6865 34.8303)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2435, '적량동', 4613014500, ST_GeomFromText('POINT(127.7086 34.8452)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2436, '월내동', 4613014600, ST_GeomFromText('POINT(127.7299 34.8481)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2437, '묘도동', 4613014700, ST_GeomFromText('POINT(127.709549 34.874681)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2438, '낙포동', 4613014800, ST_GeomFromText('POINT(127.7598 34.8475)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2439, '신덕동', 4613014900, ST_GeomFromText('POINT(127.7564 34.819)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2440, '상암동', 4613015000, ST_GeomFromText('POINT(127.7358 34.8275)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2441, '호명동', 4613015100, ST_GeomFromText('POINT(127.7199 34.8041)', 4326), 161);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2442, '삼거동', 4615010100, ST_GeomFromText('POINT(127.4239 34.9869)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2443, '와룡동', 4615010200, ST_GeomFromText('POINT(127.452 34.9589)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2444, '영동', 4615010300, ST_GeomFromText('POINT(127.482257 34.953967)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2445, '옥천동', 4615010400, ST_GeomFromText('POINT(127.472 34.9518)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2446, '행동', 4615010500, ST_GeomFromText('POINT(127.483088 34.955326)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2447, '금곡동', 4615010600, ST_GeomFromText('POINT(127.4676 34.9613)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2448, '매곡동', 4615010700, ST_GeomFromText('POINT(127.482783 34.963967)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2449, '석현동', 4615010800, ST_GeomFromText('POINT(127.4557 34.9848)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2450, '가곡동', 4615010900, ST_GeomFromText('POINT(127.4791 34.9848)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2451, '용당동', 4615011000, ST_GeomFromText('POINT(127.4977 34.9714)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2452, '조곡동', 4615011100, ST_GeomFromText('POINT(127.498747 34.950064)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2453, '생목동', 4615011200, ST_GeomFromText('POINT(127.508 34.954)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2454, '덕암동', 4615011300, ST_GeomFromText('POINT(127.5069 34.9457)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2455, '연향동', 4615011400, ST_GeomFromText('POINT(127.5221 34.9403)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2456, '풍덕동', 4615011500, ST_GeomFromText('POINT(127.497313 34.94186)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2457, '남정동', 4615011600, ST_GeomFromText('POINT(127.4843 34.9397)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2458, '인제동', 4615011700, ST_GeomFromText('POINT(127.4752 34.942)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2459, '저전동', 4615011800, ST_GeomFromText('POINT(127.484056 34.948078)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2460, '장천동', 4615011900, ST_GeomFromText('POINT(127.486756 34.948478)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2461, '남내동', 4615012000, ST_GeomFromText('POINT(127.485195 34.954036)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2462, '중앙동', 4615012100, ST_GeomFromText('POINT(127.484879 34.956085)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2463, '동외동', 4615012200, ST_GeomFromText('POINT(127.4877 34.957)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2464, '교량동', 4615012300, ST_GeomFromText('POINT(127.512625 34.903557)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2465, '대룡동', 4615012400, ST_GeomFromText('POINT(127.4913 34.9062)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2466, '홍내동', 4615012500, ST_GeomFromText('POINT(127.5088 34.9167)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2467, '오천동', 4615012600, ST_GeomFromText('POINT(127.4975 34.9285)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2468, '덕월동', 4615012700, ST_GeomFromText('POINT(127.4803 34.9273)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2469, '야흥동', 4615012800, ST_GeomFromText('POINT(127.4825 34.9133)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2470, '인월동', 4615012900, ST_GeomFromText('POINT(127.4815 34.8915)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2471, '안풍동', 4615013000, ST_GeomFromText('POINT(127.494925 34.887607)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2472, '대대동', 4615013100, ST_GeomFromText('POINT(127.5099 34.8907)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2473, '왕지동', 4615013200, ST_GeomFromText('POINT(127.538 34.975)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2474, '조례동', 4615013300, ST_GeomFromText('POINT(127.524 34.9618)', 4326), 162);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2475, '토계동', 4617010100, ST_GeomFromText('POINT(126.7311 35.0143)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2476, '송월동', 4617010200, ST_GeomFromText('POINT(126.717069 35.017178)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2477, '안창동', 4617010300, ST_GeomFromText('POINT(126.6838 35.0101)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2478, '삼영동', 4617010400, ST_GeomFromText('POINT(126.7036 35.0067)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2479, '교동', 4617010500, ST_GeomFromText('POINT(126.711889 35.032192)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2480, '서내동', 4617010600, ST_GeomFromText('POINT(126.714028 35.033132)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2481, '산정동', 4617010700, ST_GeomFromText('POINT(126.714575 35.036617)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2482, '경현동', 4617010800, ST_GeomFromText('POINT(126.699 35.0396)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2483, '보산동', 4617010900, ST_GeomFromText('POINT(126.6875 35.0313)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2484, '금계동', 4617011000, ST_GeomFromText('POINT(126.7148 35.0308)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2485, '금성동', 4617011100, ST_GeomFromText('POINT(126.716722 35.029038)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2486, '남내동', 4617011200, ST_GeomFromText('POINT(126.7207 35.0314)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2487, '과원동', 4617011300, ST_GeomFromText('POINT(126.7164 35.0345)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2488, '성북동', 4617011400, ST_GeomFromText('POINT(126.719382 35.034993)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2489, '중앙동', 4617011500, ST_GeomFromText('POINT(126.72045 35.032558)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2490, '대호동', 4617011600, ST_GeomFromText('POINT(126.7173 35.0497)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2491, '송촌동', 4617011700, ST_GeomFromText('POINT(126.7268 35.0603)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2492, '석현동', 4617011800, ST_GeomFromText('POINT(126.737514 35.052883)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2493, '청동', 4617011900, ST_GeomFromText('POINT(126.730964 35.046967)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2494, '남외동', 4617012000, ST_GeomFromText('POINT(126.7221 35.0263)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2495, '죽림동', 4617012100, ST_GeomFromText('POINT(126.7245 35.0307)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2496, '삼도동', 4617012200, ST_GeomFromText('POINT(126.7316 35.0305)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2497, '영산동', 4617012300, ST_GeomFromText('POINT(126.713975 34.999726)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2498, '용산동', 4617012400, ST_GeomFromText('POINT(126.7216 34.992)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2499, '관정동', 4617012500, ST_GeomFromText('POINT(126.742212 34.991635)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2500, '평산동', 4617012600, ST_GeomFromText('POINT(126.752925 34.985701)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2501, '부덕동', 4617012700, ST_GeomFromText('POINT(126.7323 34.9814)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2502, '이창동', 4617012800, ST_GeomFromText('POINT(126.710525 34.997635)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2503, '대기동', 4617012900, ST_GeomFromText('POINT(126.7198 34.9784)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2504, '운곡동', 4617013000, ST_GeomFromText('POINT(126.6922 34.9899)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2505, '동수동', 4617013100, ST_GeomFromText('POINT(126.6857 34.9794)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2506, '오량동', 4617013200, ST_GeomFromText('POINT(126.6649 34.9815)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2507, '진포동', 4617013300, ST_GeomFromText('POINT(126.6734 34.9947)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2508, '빛가람동', 4617013400, ST_GeomFromText('POINT(126.790193 35.02188)', 4326), 163);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2509, '황금동', 4623010100, ST_GeomFromText('POINT(127.6266 34.9204)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2510, '황길동', 4623010200, ST_GeomFromText('POINT(127.6514 34.9217)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2511, '도이동', 4623010300, ST_GeomFromText('POINT(127.6854 34.9236)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2512, '성황동', 4623010400, ST_GeomFromText('POINT(127.674663 34.950685)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2513, '중군동', 4623010500, ST_GeomFromText('POINT(127.6614 34.9626)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2514, '중동', 4623010600, ST_GeomFromText('POINT(127.6938 34.9364)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2515, '마동', 4623010700, ST_GeomFromText('POINT(127.71 34.9495)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2516, '광영동', 4623010800, ST_GeomFromText('POINT(127.72517 34.963075)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2517, '태인동', 4623010900, ST_GeomFromText('POINT(127.749676 34.943478)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2518, '금호동', 4623011000, ST_GeomFromText('POINT(127.723185 34.937703)', 4326), 164);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2519, '상도동', 4711110100, ST_GeomFromText('POINT(129.3519 36.0116)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2520, '대도동', 4711110200, ST_GeomFromText('POINT(129.3635 36.0159)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2521, '해도동', 4711110300, ST_GeomFromText('POINT(129.371447 36.023286)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2522, '송도동', 4711110400, ST_GeomFromText('POINT(129.3786677 36.0361131)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2523, '청림동', 4711110500, ST_GeomFromText('POINT(129.405709 35.997327)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2524, '일월동', 4711110600, ST_GeomFromText('POINT(129.4222 35.9892)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2525, '송정동', 4711110700, ST_GeomFromText('POINT(129.3944 36.0261)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2526, '송내동', 4711110800, ST_GeomFromText('POINT(129.3843 36.0089)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2527, '괴동동', 4711110900, ST_GeomFromText('POINT(129.374413 35.997251)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2528, '동촌동', 4711111000, ST_GeomFromText('POINT(129.394718 36.001943)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2529, '장흥동', 4711111100, ST_GeomFromText('POINT(129.3725 35.9799)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2530, '인덕동', 4711111200, ST_GeomFromText('POINT(129.3975 35.987185)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2531, '호동', 4711111300, ST_GeomFromText('POINT(129.3867 35.9821)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2532, '효자동', 4711111400, ST_GeomFromText('POINT(129.3316 36.0082)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2533, '지곡동', 4711111500, ST_GeomFromText('POINT(129.320775 36.0244)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2534, '대잠동', 4711111600, ST_GeomFromText('POINT(129.339563 36.018075)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2535, '이동', 4711111700, ST_GeomFromText('POINT(129.334 36.033)', 4326), 183);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2536, '대흥동', 4711310100, ST_GeomFromText('POINT(129.3613 36.036608)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2537, '신흥동', 4711310200, ST_GeomFromText('POINT(129.3627 36.04)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2538, '남빈동', 4711310300, ST_GeomFromText('POINT(129.365483 36.036567)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2539, '상원동', 4711310400, ST_GeomFromText('POINT(129.365834 36.038757)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2540, '여천동', 4711310500, ST_GeomFromText('POINT(129.3681 36.0398)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2541, '중앙동', 4711310600, ST_GeomFromText('POINT(129.3674 36.037872)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2542, '덕산동', 4711310700, ST_GeomFromText('POINT(129.3657 36.042)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2543, '덕수동', 4711310800, ST_GeomFromText('POINT(129.3642 36.045583)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2544, '대신동', 4711310900, ST_GeomFromText('POINT(129.3671 36.0475)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2545, '동빈1가', 4711311000, ST_GeomFromText('POINT(129.3701 36.0453)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2546, '동빈2가', 4711311100, ST_GeomFromText('POINT(129.3697 36.0411)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2547, '학산동', 4711311200, ST_GeomFromText('POINT(129.3703 36.0542)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2548, '항구동', 4711311300, ST_GeomFromText('POINT(129.3754 36.0537)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2549, '득량동', 4711311400, ST_GeomFromText('POINT(129.3424 36.0307)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2550, '학잠동', 4711311500, ST_GeomFromText('POINT(129.344443 36.034867)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2551, '죽도동', 4711311600, ST_GeomFromText('POINT(129.363192 36.031232)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2552, '용흥동', 4711311700, ST_GeomFromText('POINT(129.357663 36.038331)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2553, '우현동', 4711311800, ST_GeomFromText('POINT(129.355 36.059)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2554, '창포동', 4711311900, ST_GeomFromText('POINT(129.3597 36.07)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2555, '두호동', 4711312000, ST_GeomFromText('POINT(129.380073 36.06092)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2556, '장성동', 4711312100, ST_GeomFromText('POINT(129.3787 36.0762)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2557, '양덕동', 4711312200, ST_GeomFromText('POINT(129.388 36.0725)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2558, '환호동', 4711312300, ST_GeomFromText('POINT(129.3958 36.0702)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2559, '여남동', 4711312400, ST_GeomFromText('POINT(129.4107 36.077)', 4326), 184);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2560, '동부동', 4713010100, ST_GeomFromText('POINT(129.212 35.8458)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2561, '서부동', 4713010200, ST_GeomFromText('POINT(129.2085 35.847)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2562, '북부동', 4713010300, ST_GeomFromText('POINT(129.2121 35.8487)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2563, '성동동', 4713010400, ST_GeomFromText('POINT(129.2178 35.8486)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2564, '황오동', 4713010500, ST_GeomFromText('POINT(129.2184 35.8414)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2565, '노동동', 4713010600, ST_GeomFromText('POINT(129.2119 35.8422)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2566, '노서동', 4713010700, ST_GeomFromText('POINT(129.2054 35.8414)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2567, '성건동', 4713010800, ST_GeomFromText('POINT(129.20735 35.850824)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2568, '사정동', 4713010900, ST_GeomFromText('POINT(129.2059 35.8322)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2569, '황남동', 4713011000, ST_GeomFromText('POINT(129.2141 35.8333)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2570, '교동', 4713011100, ST_GeomFromText('POINT(129.2171 35.8282)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2571, '인왕동', 4713011200, ST_GeomFromText('POINT(129.2254 35.8279)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2572, '탑동', 4713011300, ST_GeomFromText('POINT(129.2122 35.8182)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2573, '충효동', 4713011400, ST_GeomFromText('POINT(129.1716 35.8485)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2574, '서악동', 4713011500, ST_GeomFromText('POINT(129.1871 35.827633)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2575, '효현동', 4713011600, ST_GeomFromText('POINT(129.1623 35.8254)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2576, '광명동', 4713011700, ST_GeomFromText('POINT(129.1429 35.8387)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2577, '동방동', 4713011800, ST_GeomFromText('POINT(129.2625 35.8096)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2578, '도지동', 4713011900, ST_GeomFromText('POINT(129.271 35.7981)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2579, '남산동', 4713012000, ST_GeomFromText('POINT(129.24 35.7917)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2580, '배반동', 4713012100, ST_GeomFromText('POINT(129.2489 35.8187)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2581, '구황동', 4713012200, ST_GeomFromText('POINT(129.2372 35.8349)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2582, '보문동', 4713012300, ST_GeomFromText('POINT(129.2554 35.8348)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2583, '황성동', 4713012400, ST_GeomFromText('POINT(129.219185 35.872229)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2584, '용강동', 4713012500, ST_GeomFromText('POINT(129.223187 35.864257)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2585, '동천동', 4713012600, ST_GeomFromText('POINT(129.222622 35.854172)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2586, '평동', 4713012700, ST_GeomFromText('POINT(129.2635 35.7791)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2587, '조양동', 4713012800, ST_GeomFromText('POINT(129.281 35.7813)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2588, '시동', 4713012900, ST_GeomFromText('POINT(129.269475 35.7562)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2589, '시래동', 4713013000, ST_GeomFromText('POINT(129.298 35.7698)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2590, '구정동', 4713013100, ST_GeomFromText('POINT(129.2998 35.7853)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2591, '마동', 4713013200, ST_GeomFromText('POINT(129.3176 35.7888)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2592, '하동', 4713013300, ST_GeomFromText('POINT(129.3188 35.8062)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2593, '진현동', 4713013400, ST_GeomFromText('POINT(129.3394 35.7886)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2594, '천군동', 4713013500, ST_GeomFromText('POINT(129.2875 35.8205)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2595, '신평동', 4713013600, ST_GeomFromText('POINT(129.2899 35.8439)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2596, '덕동', 4713013700, ST_GeomFromText('POINT(129.3217 35.8386)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2597, '암곡동', 4713013800, ST_GeomFromText('POINT(129.3331 35.8734)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2598, '황용동', 4713013900, ST_GeomFromText('POINT(129.353 35.8296)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2599, '북군동', 4713014000, ST_GeomFromText('POINT(129.2603 35.8605)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2600, '손곡동', 4713014100, ST_GeomFromText('POINT(129.2934 35.858)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2601, '율동', 4713014200, ST_GeomFromText('POINT(129.1815 35.8049)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2602, '배동', 4713014300, ST_GeomFromText('POINT(129.2149 35.8013)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2603, '석장동', 4713014400, ST_GeomFromText('POINT(129.1874 35.8589)', 4326), 185);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2604, '감호동', 4715010100, ST_GeomFromText('POINT(128.129425 36.120832)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2605, '용두동', 4715010200, ST_GeomFromText('POINT(128.128194 36.120199)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2606, '모암동', 4715010300, ST_GeomFromText('POINT(128.1257 36.124)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2607, '성내동', 4715010400, ST_GeomFromText('POINT(128.120702 36.123536)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2608, '평화동', 4715010500, ST_GeomFromText('POINT(128.111623 36.125564)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2609, '남산동', 4715010600, ST_GeomFromText('POINT(128.1133 36.115)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2610, '황금동', 4715010700, ST_GeomFromText('POINT(128.120775 36.113082)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2611, '신음동', 4715010800, ST_GeomFromText('POINT(128.1219 36.1377)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2612, '교동', 4715010900, ST_GeomFromText('POINT(128.1033 36.1435)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2613, '삼락동', 4715011000, ST_GeomFromText('POINT(128.0793 36.1419)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2614, '문당동', 4715011100, ST_GeomFromText('POINT(128.0901 36.1565)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2615, '다수동', 4715011200, ST_GeomFromText('POINT(128.0627 36.1212)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2616, '백옥동', 4715011300, ST_GeomFromText('POINT(128.0745 36.1143)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2617, '부곡동', 4715011400, ST_GeomFromText('POINT(128.0961 36.1182)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2618, '지좌동', 4715011500, ST_GeomFromText('POINT(128.142378 36.120002)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2619, '덕곡동', 4715011600, ST_GeomFromText('POINT(128.1543 36.1188)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2620, '대광동', 4715011700, ST_GeomFromText('POINT(128.1431 36.1444)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2621, '응명동', 4715011800, ST_GeomFromText('POINT(128.1212 36.1497)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2622, '양천동', 4715011900, ST_GeomFromText('POINT(128.1054 36.0939)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2623, '율곡동', 4715012000, ST_GeomFromText('POINT(128.183747 36.121372)', 4326), 186);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2624, '삼산동', 4717010100, ST_GeomFromText('POINT(128.731296 36.565728)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2625, '서부동', 4717010200, ST_GeomFromText('POINT(128.728974 36.565913)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2626, '북문동', 4717010300, ST_GeomFromText('POINT(128.731329 36.567389)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2627, '명륜동', 4717010400, ST_GeomFromText('POINT(128.7295 36.5699)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2628, '신안동', 4717010500, ST_GeomFromText('POINT(128.7364 36.5738)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2629, '율세동', 4717010600, ST_GeomFromText('POINT(128.7354 36.5698)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2630, '옥정동', 4717010700, ST_GeomFromText('POINT(128.735151 36.567352)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2631, '신세동', 4717010800, ST_GeomFromText('POINT(128.7393 36.568)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2632, '법흥동', 4717010900, ST_GeomFromText('POINT(128.742 36.5647)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2633, '용상동', 4717011000, ST_GeomFromText('POINT(128.749587 36.55915)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2634, '동문동', 4717011100, ST_GeomFromText('POINT(128.735663 36.565253)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2635, '동부동', 4717011200, ST_GeomFromText('POINT(128.7337 36.5654)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2636, '운흥동', 4717011300, ST_GeomFromText('POINT(128.7309 36.561)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2637, '천리동', 4717011400, ST_GeomFromText('POINT(128.72745 36.562983)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2638, '남부동', 4717011500, ST_GeomFromText('POINT(128.731018 36.563929)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2639, '남문동', 4717011600, ST_GeomFromText('POINT(128.7286 36.5644)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2640, '안흥동', 4717011700, ST_GeomFromText('POINT(128.7253 36.5622)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2641, '대석동', 4717011800, ST_GeomFromText('POINT(128.725563 36.566049)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2642, '옥야동', 4717011900, ST_GeomFromText('POINT(128.7226 36.5599)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2643, '광석동', 4717012000, ST_GeomFromText('POINT(128.722535 36.565942)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2644, '당북동', 4717012100, ST_GeomFromText('POINT(128.7188 36.5624)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2645, '태화동', 4717012200, ST_GeomFromText('POINT(128.713933 36.561126)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2646, '화성동', 4717012300, ST_GeomFromText('POINT(128.727174 36.569661)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2647, '목성동', 4717012400, ST_GeomFromText('POINT(128.728127 36.567071)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2648, '법상동', 4717012500, ST_GeomFromText('POINT(128.724912 36.570842)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2649, '금곡동', 4717012600, ST_GeomFromText('POINT(128.720937 36.569742)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2650, '평화동', 4717012700, ST_GeomFromText('POINT(128.718073 36.567774)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2651, '안기동', 4717012800, ST_GeomFromText('POINT(128.714295 36.582986)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2652, '운안동', 4717012900, ST_GeomFromText('POINT(128.7099 36.5735)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2653, '성곡동', 4717013000, ST_GeomFromText('POINT(128.7674 36.5711)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2654, '상아동', 4717013100, ST_GeomFromText('POINT(128.7519 36.5798)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2655, '안막동', 4717013200, ST_GeomFromText('POINT(128.7282 36.5858)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2656, '옥동', 4717013300, ST_GeomFromText('POINT(128.70175 36.561542)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2657, '이천동', 4717013400, ST_GeomFromText('POINT(128.7095 36.5988)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2658, '노하동', 4717013500, ST_GeomFromText('POINT(128.6851 36.5877)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2659, '송현동', 4717013600, ST_GeomFromText('POINT(128.700763 36.5766)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2660, '송천동', 4717013700, ST_GeomFromText('POINT(128.798225 36.5485)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2661, '석동동', 4717013800, ST_GeomFromText('POINT(128.7976 36.573)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2662, '정상동', 4717013900, ST_GeomFromText('POINT(128.75235 36.5436)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2663, '정하동', 4717014000, ST_GeomFromText('POINT(128.7292 36.5438)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2664, '수상동', 4717014100, ST_GeomFromText('POINT(128.706125 36.539883)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2665, '수하동', 4717014200, ST_GeomFromText('POINT(128.6816 36.5459)', 4326), 187);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2666, '원평동', 4719010100, ST_GeomFromText('POINT(128.339921 36.127055)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2667, '지산동', 4719010200, ST_GeomFromText('POINT(128.345813 36.139432)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2668, '도량동', 4719010300, ST_GeomFromText('POINT(128.332575 36.14054)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2669, '봉곡동', 4719010400, ST_GeomFromText('POINT(128.31185 36.152049)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2670, '부곡동', 4719010500, ST_GeomFromText('POINT(128.2956 36.157357)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2671, '선기동', 4719010600, ST_GeomFromText('POINT(128.3038 36.1354)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2672, '수점동', 4719010700, ST_GeomFromText('POINT(128.2842 36.1129)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2673, '남통동', 4719010800, ST_GeomFromText('POINT(128.307 36.1093)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2674, '형곡동', 4719010900, ST_GeomFromText('POINT(128.334438 36.114007)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2675, '송정동', 4719011000, ST_GeomFromText('POINT(128.347242 36.118504)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2676, '신평동', 4719011100, ST_GeomFromText('POINT(128.359275 36.120907)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2677, '비산동', 4719011200, ST_GeomFromText('POINT(128.377695 36.122866)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2678, '공단동', 4719011300, ST_GeomFromText('POINT(128.3798 36.0993)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2679, '광평동', 4719011400, ST_GeomFromText('POINT(128.366042 36.104713)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2680, '사곡동', 4719011500, ST_GeomFromText('POINT(128.3533 36.1002)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2681, '상모동', 4719011600, ST_GeomFromText('POINT(128.3451 36.0867)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2682, '임은동', 4719011700, ST_GeomFromText('POINT(128.3642 36.0869)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2683, '오태동', 4719011800, ST_GeomFromText('POINT(128.3659 36.0722)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2684, '신동', 4719011900, ST_GeomFromText('POINT(128.4651 36.0966)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2685, '구평동', 4719012000, ST_GeomFromText('POINT(128.4449 36.0896)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2686, '황상동', 4719012100, ST_GeomFromText('POINT(128.4401 36.1159)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2687, '인의동', 4719012200, ST_GeomFromText('POINT(128.4353 36.1068)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2688, '진평동', 4719012300, ST_GeomFromText('POINT(128.4236 36.0949)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2689, '시미동', 4719012400, ST_GeomFromText('POINT(128.4111 36.092015)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2690, '임수동', 4719012500, ST_GeomFromText('POINT(128.4042 36.115)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2691, '양호동', 4719012600, ST_GeomFromText('POINT(128.3784 36.1377)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2692, '거의동', 4719012700, ST_GeomFromText('POINT(128.401 36.1419)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2693, '옥계동', 4719012800, ST_GeomFromText('POINT(128.4183 36.145374)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2694, '구포동', 4719012900, ST_GeomFromText('POINT(128.4159 36.1279)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2695, '금전동', 4719013000, ST_GeomFromText('POINT(128.4533 36.1244)', 4326), 188);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2696, '영주동', 4721010100, ST_GeomFromText('POINT(128.623704 36.828253)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2697, '상망동', 4721010200, ST_GeomFromText('POINT(128.64589 36.842746)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2698, '하망동', 4721010300, ST_GeomFromText('POINT(128.630352 36.823899)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2699, '휴천동', 4721010400, ST_GeomFromText('POINT(128.62639 36.820783)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2700, '가흥동', 4721010500, ST_GeomFromText('POINT(128.6014 36.8216)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2701, '문정동', 4721010600, ST_GeomFromText('POINT(128.6064 36.796)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2702, '고현동', 4721010700, ST_GeomFromText('POINT(128.6155 36.8505)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2703, '창진동', 4721010800, ST_GeomFromText('POINT(128.5976 36.8452)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2704, '상줄동', 4721010900, ST_GeomFromText('POINT(128.580875 36.8317)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2705, '조와동', 4721011000, ST_GeomFromText('POINT(128.6338 36.8673)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2706, '조암동', 4721011100, ST_GeomFromText('POINT(128.6419 36.8)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2707, '적서동', 4721011200, ST_GeomFromText('POINT(128.6209 36.7823)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2708, '아지동', 4721011300, ST_GeomFromText('POINT(128.5982 36.8585)', 4326), 189);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2709, '조교동', 4723010100, ST_GeomFromText('POINT(128.9601 35.9742)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2710, '망정동', 4723010200, ST_GeomFromText('POINT(128.955363 35.984601)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2711, '야사동', 4723010300, ST_GeomFromText('POINT(128.9455 35.9833)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2712, '문내동', 4723010400, ST_GeomFromText('POINT(128.9313 35.9732)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2713, '문외동', 4723010500, ST_GeomFromText('POINT(128.936775 35.973301)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2714, '창구동', 4723010600, ST_GeomFromText('POINT(128.9279 35.9741)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2715, '교촌동', 4723010700, ST_GeomFromText('POINT(128.9258 35.9693)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2716, '과전동', 4723010800, ST_GeomFromText('POINT(128.930582 35.96605)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2717, '성내동', 4723010900, ST_GeomFromText('POINT(128.9242 35.9622)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2718, '화룡동', 4723011000, ST_GeomFromText('POINT(128.916375 35.972185)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2719, '도동', 4723011100, ST_GeomFromText('POINT(128.9338 35.9417)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2720, '금노동', 4723011200, ST_GeomFromText('POINT(128.9305 35.9545)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2721, '완산동', 4723011300, ST_GeomFromText('POINT(128.946883 35.964136)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2722, '범어동', 4723011400, ST_GeomFromText('POINT(128.971188 35.953001)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2723, '작산동', 4723011500, ST_GeomFromText('POINT(128.9506 35.9447)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2724, '봉동', 4723011600, ST_GeomFromText('POINT(128.9557 35.9321)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2725, '본촌동', 4723011700, ST_GeomFromText('POINT(128.9601 35.9206)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2726, '채신동', 4723011800, ST_GeomFromText('POINT(128.9537 35.9059)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2727, '괴연동', 4723011900, ST_GeomFromText('POINT(128.9619 35.8945)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2728, '대전동', 4723012000, ST_GeomFromText('POINT(128.9141 35.9851)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2729, '녹전동', 4723012100, ST_GeomFromText('POINT(128.9149 36.0029)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2730, '도림동', 4723012200, ST_GeomFromText('POINT(128.9438 36.0224)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2731, '오미동', 4723012300, ST_GeomFromText('POINT(128.9317 35.9962)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2732, '오수동', 4723012400, ST_GeomFromText('POINT(128.9146 35.9565)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2733, '쌍계동', 4723012500, ST_GeomFromText('POINT(128.9086 35.9638)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2734, '도남동', 4723012600, ST_GeomFromText('POINT(128.9358 35.9303)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2735, '매산동', 4723012700, ST_GeomFromText('POINT(128.917825 36.0222)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2736, '언하동', 4723012800, ST_GeomFromText('POINT(128.9599 35.9951)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2737, '신기동', 4723012900, ST_GeomFromText('POINT(128.9519 36.0036)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2738, '서산동', 4723013000, ST_GeomFromText('POINT(128.8921 35.9791)', 4326), 190);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2739, '성하동', 4725010100, ST_GeomFromText('POINT(128.163795 36.415591)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2740, '성동동', 4725010200, ST_GeomFromText('POINT(128.1702 36.4109)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2741, '인봉동', 4725010300, ST_GeomFromText('POINT(128.1642 36.4174)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2742, '복룡동', 4725010400, ST_GeomFromText('POINT(128.1842 36.4223)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2743, '냉림동', 4725010500, ST_GeomFromText('POINT(128.1631 36.4239)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2744, '서성동', 4725010600, ST_GeomFromText('POINT(128.160988 36.417668)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2745, '남성동', 4725010700, ST_GeomFromText('POINT(128.159425 36.411399)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2746, '서문동', 4725010800, ST_GeomFromText('POINT(128.156713 36.417701)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2747, '무양동', 4725010900, ST_GeomFromText('POINT(128.1531 36.4214)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2748, '낙양동', 4725011000, ST_GeomFromText('POINT(128.147 36.4101)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2749, '개운동', 4725011100, ST_GeomFromText('POINT(128.13 36.3898)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2750, '신봉동', 4725011200, ST_GeomFromText('POINT(128.157 36.3973)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2751, '가장동', 4725011300, ST_GeomFromText('POINT(128.145 36.3793)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2752, '양촌동', 4725011400, ST_GeomFromText('POINT(128.1494 36.3558)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2753, '지천동', 4725011500, ST_GeomFromText('POINT(128.163625 36.35724)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2754, '오대동', 4725011600, ST_GeomFromText('POINT(128.1691 36.3702)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2755, '흥각동', 4725011700, ST_GeomFromText('POINT(128.1668 36.3859)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2756, '거동동', 4725011800, ST_GeomFromText('POINT(128.1842 36.376)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2757, '인평동', 4725011900, ST_GeomFromText('POINT(128.1756 36.3932)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2758, '서곡동', 4725012000, ST_GeomFromText('POINT(128.1861 36.4007)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2759, '화개동', 4725012100, ST_GeomFromText('POINT(128.1893 36.4108)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2760, '외답동', 4725012200, ST_GeomFromText('POINT(128.1987 36.4129)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2761, '헌신동', 4725012300, ST_GeomFromText('POINT(128.2124 36.4175)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2762, '병성동', 4725012400, ST_GeomFromText('POINT(128.2226 36.4313)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2763, '도남동', 4725012500, ST_GeomFromText('POINT(128.2526 36.4452)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2764, '낙상동', 4725012600, ST_GeomFromText('POINT(128.198525 36.447301)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2765, '중덕동', 4725012700, ST_GeomFromText('POINT(128.184975 36.447901)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2766, '초산동', 4725012800, ST_GeomFromText('POINT(128.1718 36.4558)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2767, '화산동', 4725012900, ST_GeomFromText('POINT(128.1772 36.4346)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2768, '계산동', 4725013000, ST_GeomFromText('POINT(128.1682 36.4282)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2769, '부원동', 4725013100, ST_GeomFromText('POINT(128.153 36.4547)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2770, '죽전동', 4725013200, ST_GeomFromText('POINT(128.1671 36.4438)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2771, '만산동', 4725013300, ST_GeomFromText('POINT(128.1515 36.433)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2772, '연원동', 4725013400, ST_GeomFromText('POINT(128.1322 36.4304)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2773, '남장동', 4725013500, ST_GeomFromText('POINT(128.1156 36.4197)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2774, '남적동', 4725013600, ST_GeomFromText('POINT(128.1521 36.463751)', 4326), 191);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2775, '점촌동', 4728010100, ST_GeomFromText('POINT(128.197773 36.598631)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2776, '영신동', 4728010200, ST_GeomFromText('POINT(128.213 36.5828)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2777, '흥덕동', 4728010300, ST_GeomFromText('POINT(128.2071 36.6036)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2778, '우지동', 4728010400, ST_GeomFromText('POINT(128.1967 36.6193)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2779, '창동', 4728010500, ST_GeomFromText('POINT(128.1937 36.636)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2780, '신기동', 4728010600, ST_GeomFromText('POINT(128.1673 36.6343)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2781, '불정동', 4728010700, ST_GeomFromText('POINT(128.133 36.6349)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2782, '유곡동', 4728010800, ST_GeomFromText('POINT(128.1563 36.6191)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2783, '공평동', 4728010900, ST_GeomFromText('POINT(128.170625 36.611099)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2784, '모전동', 4728011000, ST_GeomFromText('POINT(128.187363 36.591499)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2785, '윤직동', 4728011100, ST_GeomFromText('POINT(128.2012 36.5857)', 4326), 192);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2786, '삼남동', 4729010100, ST_GeomFromText('POINT(128.7386 35.8149)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2787, '삼북동', 4729010200, ST_GeomFromText('POINT(128.7397 35.8191)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2788, '서상동', 4729010300, ST_GeomFromText('POINT(128.734888 35.8171)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2789, '신교동', 4729010400, ST_GeomFromText('POINT(128.74 35.8131)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2790, '상방동', 4729010500, ST_GeomFromText('POINT(128.7441 35.8152)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2791, '백천동', 4729010600, ST_GeomFromText('POINT(128.7442 35.7987)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2792, '옥곡동', 4729010700, ST_GeomFromText('POINT(128.7271 35.8081)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2793, '사정동', 4729010800, ST_GeomFromText('POINT(128.7217 35.816917)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2794, '옥산동', 4729010900, ST_GeomFromText('POINT(128.7184 35.8228)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2795, '중산동', 4729011000, ST_GeomFromText('POINT(128.7207 35.8313)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2796, '정평동', 4729011100, ST_GeomFromText('POINT(128.728125 35.835099)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2797, '대평동', 4729011200, ST_GeomFromText('POINT(128.7328 35.8402)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2798, '대정동', 4729011300, ST_GeomFromText('POINT(128.7334 35.8487)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2799, '임당동', 4729011400, ST_GeomFromText('POINT(128.747 35.8425)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2800, '대동', 4729011500, ST_GeomFromText('POINT(128.751778 35.834944)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2801, '계양동', 4729011600, ST_GeomFromText('POINT(128.7467 35.8248)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2802, '중방동', 4729011700, ST_GeomFromText('POINT(128.733925 35.827058)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2803, '조영동', 4729011800, ST_GeomFromText('POINT(128.7549 35.8415)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2804, '남방동', 4729011900, ST_GeomFromText('POINT(128.7929 35.8099)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2805, '내동', 4729012000, ST_GeomFromText('POINT(128.78855 35.8038)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2806, '여천동', 4729012100, ST_GeomFromText('POINT(128.789 35.7925)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2807, '유곡동', 4729012200, ST_GeomFromText('POINT(128.7779 35.7909)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2808, '신천동', 4729012300, ST_GeomFromText('POINT(128.7825 35.8134)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2809, '점촌동', 4729012400, ST_GeomFromText('POINT(128.769813 35.795041)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2810, '평산동', 4729012500, ST_GeomFromText('POINT(128.7634 35.8007)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2811, '사동', 4729012600, ST_GeomFromText('POINT(128.7533 35.8092)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2812, '삼풍동', 4729012700, ST_GeomFromText('POINT(128.7556 35.824)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2813, '갑제동', 4729012800, ST_GeomFromText('POINT(128.7703 35.8244)', 4326), 193);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2814, '북동', 4812110100, ST_GeomFromText('POINT(128.6214 35.2662)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2815, '중동', 4812110200, ST_GeomFromText('POINT(128.6261 35.2559)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2816, '서상동', 4812110300, ST_GeomFromText('POINT(128.6209 35.261)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2817, '소답동', 4812110400, ST_GeomFromText('POINT(128.6274 35.2673)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2818, '도계동', 4812110500, ST_GeomFromText('POINT(128.638313 35.258375)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2819, '동정동', 4812110600, ST_GeomFromText('POINT(128.6097 35.2671)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2820, '소계동', 4812110700, ST_GeomFromText('POINT(128.5954 35.2624)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2821, '용동', 4812110800, ST_GeomFromText('POINT(128.7087 35.2417)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2822, '덕정동', 4812111200, ST_GeomFromText('POINT(128.641909 35.231134)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2823, '지귀동', 4812111300, ST_GeomFromText('POINT(128.6583 35.2501)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2824, '서곡동', 4812111400, ST_GeomFromText('POINT(128.6536 35.2522)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2825, '봉림동', 4812111600, ST_GeomFromText('POINT(128.667571 35.25196)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2826, '퇴촌동', 4812111700, ST_GeomFromText('POINT(128.693363 35.2526)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2827, '명곡동', 4812111800, ST_GeomFromText('POINT(128.654295 35.255056)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2828, '반계동', 4812111900, ST_GeomFromText('POINT(128.6143 35.2408)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2829, '사화동', 4812112000, ST_GeomFromText('POINT(128.635946 35.242743)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2830, '차용동', 4812112100, ST_GeomFromText('POINT(128.63219 35.232102)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2831, '내리동', 4812112200, ST_GeomFromText('POINT(128.6226 35.2263)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2832, '명서동', 4812112400, ST_GeomFromText('POINT(128.6445 35.2452)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2833, '사림동', 4812112500, ST_GeomFromText('POINT(128.685113 35.242526)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2834, '봉곡동', 4812112700, ST_GeomFromText('POINT(128.6631 35.2462)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2835, '팔용동', 4812112900, ST_GeomFromText('POINT(128.6265 35.2416)', 4326), 207);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2836, '토월동', 4812310100, ST_GeomFromText('POINT(128.709651 35.233061)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2837, '사파정동', 4812310200, ST_GeomFromText('POINT(128.7135 35.2209)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2838, '가음정동', 4812310300, ST_GeomFromText('POINT(128.686592 35.208593)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2839, '외동', 4812310400, ST_GeomFromText('POINT(128.67489 35.212616)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2840, '대방동', 4812310500, ST_GeomFromText('POINT(128.7161 35.2097)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2841, '남산동', 4812310600, ST_GeomFromText('POINT(128.695963 35.198101)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2842, '삼정자동', 4812310700, ST_GeomFromText('POINT(128.720136 35.200488)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2843, '천선동', 4812310800, ST_GeomFromText('POINT(128.7142 35.1735)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2844, '불모산동', 4812310900, ST_GeomFromText('POINT(128.73405 35.188568)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2845, '안민동', 4812311000, ST_GeomFromText('POINT(128.6856 35.1797)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2846, '내동', 4812311100, ST_GeomFromText('POINT(128.6608 35.2189)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2847, '남지동', 4812311200, ST_GeomFromText('POINT(128.676 35.1857)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2848, '상복동', 4812311300, ST_GeomFromText('POINT(128.6634 35.1909)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2849, '완암동', 4812311400, ST_GeomFromText('POINT(128.6525 35.1939)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2850, '창곡동', 4812311500, ST_GeomFromText('POINT(128.646586 35.197342)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2851, '월림동', 4812311600, ST_GeomFromText('POINT(128.6428 35.2097)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2852, '적현동', 4812311700, ST_GeomFromText('POINT(128.615 35.2019)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2853, '양곡동', 4812311800, ST_GeomFromText('POINT(128.630444 35.194325)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2854, '반송동', 4812311900, ST_GeomFromText('POINT(128.672128 35.239469)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2855, '귀산동', 4812312000, ST_GeomFromText('POINT(128.612912 35.166685)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2856, '귀곡동', 4812312100, ST_GeomFromText('POINT(128.5959 35.1862)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2857, '귀현동', 4812312200, ST_GeomFromText('POINT(128.6108 35.1901)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2858, '신촌동', 4812312300, ST_GeomFromText('POINT(128.6038 35.2046)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2859, '반지동', 4812312400, ST_GeomFromText('POINT(128.6602 35.2414)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2860, '중앙동', 4812312500, ST_GeomFromText('POINT(128.673695 35.221098)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2861, '반림동', 4812312600, ST_GeomFromText('POINT(128.668 35.238)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2862, '상남동', 4812312700, ST_GeomFromText('POINT(128.687217 35.216266)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2863, '성주동', 4812312800, ST_GeomFromText('POINT(128.69502 35.189741)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2864, '웅남동', 4812312900, ST_GeomFromText('POINT(128.65612 35.211256)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2865, '사파동', 4812313000, ST_GeomFromText('POINT(128.699303 35.223438)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2866, '가음동', 4812313100, ST_GeomFromText('POINT(128.69798 35.207314)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2867, '성산동', 4812313200, ST_GeomFromText('POINT(128.6721 35.2026)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2868, '남양동', 4812313300, ST_GeomFromText('POINT(128.703 35.2093)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2869, '용지동', 4812313400, ST_GeomFromText('POINT(128.6805 35.231928)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2870, '용호동', 4812313500, ST_GeomFromText('POINT(128.681995 35.23439)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2871, '신월동', 4812313600, ST_GeomFromText('POINT(128.6902 35.2279)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2872, '대원동', 4812313700, ST_GeomFromText('POINT(128.6468 35.2289)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2873, '두대동', 4812313800, ST_GeomFromText('POINT(128.6604 35.2353)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2874, '삼동동', 4812313900, ST_GeomFromText('POINT(128.657563 35.227401)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2875, '덕정동', 4812314000, ST_GeomFromText('POINT(128.646229 35.231529)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2876, '퇴촌동', 4812314100, ST_GeomFromText('POINT(128.678287 35.241375)', 4326), 208);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2877, '가포동', 4812510100, ST_GeomFromText('POINT(128.57205 35.169568)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2878, '교방동', 4812510200, ST_GeomFromText('POINT(128.566238 35.214335)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2879, '교원동', 4812510300, ST_GeomFromText('POINT(128.5687 35.2145)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2880, '남성동', 4812510400, ST_GeomFromText('POINT(128.577 35.2028)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2881, '대내동', 4812510500, ST_GeomFromText('POINT(128.557261 35.182933)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2882, '대성동1가', 4812510600, ST_GeomFromText('POINT(128.561187 35.192238)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2883, '대성동2가', 4812510700, ST_GeomFromText('POINT(128.56243 35.193779)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2884, '대외동', 4812510800, ST_GeomFromText('POINT(128.558471 35.184619)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2885, '대창동', 4812510900, ST_GeomFromText('POINT(128.554614 35.186208)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2886, '덕동동', 4812511000, ST_GeomFromText('POINT(128.5817 35.1413)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2887, '동성동', 4812511100, ST_GeomFromText('POINT(128.578307 35.204683)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2888, '두월동1가', 4812511200, ST_GeomFromText('POINT(128.561196 35.187866)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2889, '두월동2가', 4812511300, ST_GeomFromText('POINT(128.560453 35.186616)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2890, '두월동3가', 4812511400, ST_GeomFromText('POINT(128.559944 35.185434)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2891, '문화동', 4812511500, ST_GeomFromText('POINT(128.556862 35.187955)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2892, '반월동', 4812511600, ST_GeomFromText('POINT(128.560438 35.19)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2893, '부림동', 4812511700, ST_GeomFromText('POINT(128.5724 35.205768)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2894, '산호동', 4812511800, ST_GeomFromText('POINT(128.58599 35.2161)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2895, '상남동', 4812511900, ST_GeomFromText('POINT(128.5746 35.2128)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2896, '서성동', 4812512000, ST_GeomFromText('POINT(128.5699 35.2026)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2897, '성호동', 4812512100, ST_GeomFromText('POINT(128.5698 35.2097)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2898, '수성동', 4812512200, ST_GeomFromText('POINT(128.574152 35.204125)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2899, '신월동', 4812512300, ST_GeomFromText('POINT(128.5574 35.1927)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2900, '신창동', 4812512400, ST_GeomFromText('POINT(128.559834 35.187471)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2901, '신포동1가', 4812512500, ST_GeomFromText('POINT(128.5724 35.197)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2902, '신포동2가', 4812512600, ST_GeomFromText('POINT(128.573 35.2011)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2903, '신흥동', 4812512700, ST_GeomFromText('POINT(128.564746 35.194274)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2904, '완월동', 4812512800, ST_GeomFromText('POINT(128.564137 35.199526)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2905, '월남동1가', 4812512900, ST_GeomFromText('POINT(128.5638 35.1865)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2906, '월남동2가', 4812513000, ST_GeomFromText('POINT(128.562025 35.186079)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2907, '월남동3가', 4812513100, ST_GeomFromText('POINT(128.56054 35.184798)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2908, '월남동4가', 4812513200, ST_GeomFromText('POINT(128.55939 35.182576)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2909, '월남동5가', 4812513300, ST_GeomFromText('POINT(128.559081 35.180999)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2910, '월영동', 4812513400, ST_GeomFromText('POINT(128.558101 35.174201)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2911, '월포동', 4812513500, ST_GeomFromText('POINT(128.566162 35.190968)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2912, '예곡동', 4812513600, ST_GeomFromText('POINT(128.5356 35.1752)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2913, '오동동', 4812513700, ST_GeomFromText('POINT(128.5812 35.2063)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2914, '우산동', 4812513800, ST_GeomFromText('POINT(128.551 35.1571)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2915, '유록동', 4812513900, ST_GeomFromText('POINT(128.555972 35.185133)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2916, '자산동', 4812514000, ST_GeomFromText('POINT(128.565446 35.205538)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2917, '장군동1가', 4812514100, ST_GeomFromText('POINT(128.562136 35.191327)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2918, '장군동2가', 4812514200, ST_GeomFromText('POINT(128.563369 35.193387)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2919, '장군동3가', 4812514300, ST_GeomFromText('POINT(128.564307 35.195774)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2920, '장군동4가', 4812514400, ST_GeomFromText('POINT(128.565113 35.19821)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2921, '장군동5가', 4812514500, ST_GeomFromText('POINT(128.56618 35.200587)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2922, '중성동', 4812514600, ST_GeomFromText('POINT(128.574662 35.208643)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2923, '중앙동1가', 4812514700, ST_GeomFromText('POINT(128.562738 35.189626)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2924, '중앙동2가', 4812514800, ST_GeomFromText('POINT(128.5673 35.1948)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2925, '중앙동3가', 4812514900, ST_GeomFromText('POINT(128.567762 35.198901)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2926, '창동', 4812515000, ST_GeomFromText('POINT(128.5744 35.2065)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2927, '창포동1가', 4812515100, ST_GeomFromText('POINT(128.562238 35.184733)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2928, '창포동2가', 4812515200, ST_GeomFromText('POINT(128.561486 35.183648)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2929, '창포동3가', 4812515300, ST_GeomFromText('POINT(128.5607 35.182)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2930, '청계동', 4812515400, ST_GeomFromText('POINT(128.557469 35.18487)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2931, '추산동', 4812515500, ST_GeomFromText('POINT(128.570687 35.206401)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2932, '평화동', 4812515600, ST_GeomFromText('POINT(128.558677 35.187359)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2933, '화영동', 4812515700, ST_GeomFromText('POINT(128.554489 35.184449)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2934, '해운동', 4812515800, ST_GeomFromText('POINT(128.562338 35.18026)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2935, '현동', 4812515900, ST_GeomFromText('POINT(128.553791 35.149898)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2936, '홍문동', 4812516000, ST_GeomFromText('POINT(128.559141 35.184247)', 4326), 209);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2937, '구암동', 4812710100, ST_GeomFromText('POINT(128.595028 35.249959)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2938, '두척동', 4812710200, ST_GeomFromText('POINT(128.5407 35.2334)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2939, '봉암동', 4812710300, ST_GeomFromText('POINT(128.602462 35.217595)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2940, '석전동', 4812710400, ST_GeomFromText('POINT(128.573103 35.230297)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2941, '양덕동', 4812710500, ST_GeomFromText('POINT(128.586212 35.23231)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2942, '합성동', 4812710600, ST_GeomFromText('POINT(128.583989 35.242217)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2943, '회성동', 4812710700, ST_GeomFromText('POINT(128.561637 35.233076)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2944, '회원동', 4812710800, ST_GeomFromText('POINT(128.574247 35.218263)', 4326), 210);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2945, '동상동', 4812910100, ST_GeomFromText('POINT(128.654928 35.154314)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2946, '도천동', 4812910200, ST_GeomFromText('POINT(128.654 35.1529)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2947, '도만동', 4812910300, ST_GeomFromText('POINT(128.654525 35.14969)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2948, '신흥동', 4812910400, ST_GeomFromText('POINT(128.656727 35.145143)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2949, '현동', 4812910500, ST_GeomFromText('POINT(128.6412 35.1561)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2950, '비봉동', 4812910600, ST_GeomFromText('POINT(128.618 35.1488)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2951, '태평동', 4812910700, ST_GeomFromText('POINT(128.663472 35.14574)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2952, '충의동', 4812910800, ST_GeomFromText('POINT(128.662952 35.145204)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2953, '무송동', 4812910900, ST_GeomFromText('POINT(128.665788 35.144463)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2954, '인의동', 4812911000, ST_GeomFromText('POINT(128.657998 35.14322)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2955, '숭인동', 4812911100, ST_GeomFromText('POINT(128.659552 35.144954)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2956, '대영동', 4812911200, ST_GeomFromText('POINT(128.659085 35.144392)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2957, '남빈동', 4812911300, ST_GeomFromText('POINT(128.658583 35.143996)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2958, '앵곡동', 4812911400, ST_GeomFromText('POINT(128.6612 35.1402)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2959, '제황산동', 4812911500, ST_GeomFromText('POINT(128.6699 35.148)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2960, '속천동', 4812911600, ST_GeomFromText('POINT(128.669572 35.142424)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2961, '대죽동', 4812911700, ST_GeomFromText('POINT(128.6668 35.1412)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2962, '안곡동', 4812911800, ST_GeomFromText('POINT(128.6678 35.0589)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2963, '수송동', 4812911900, ST_GeomFromText('POINT(128.656205 35.151072)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2964, '회현동', 4812912000, ST_GeomFromText('POINT(128.65697 35.150377)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2965, '익선동', 4812912100, ST_GeomFromText('POINT(128.657529 35.149763)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2966, '창선동', 4812912200, ST_GeomFromText('POINT(128.658192 35.149587)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2967, '대천동', 4812912300, ST_GeomFromText('POINT(128.658951 35.149475)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2968, '광화동', 4812912400, ST_GeomFromText('POINT(128.659775 35.148332)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2969, '통신동', 4812912500, ST_GeomFromText('POINT(128.660556 35.149251)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2970, '중앙동', 4812912600, ST_GeomFromText('POINT(128.661432 35.149205)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2971, '부흥동', 4812912700, ST_GeomFromText('POINT(128.662193 35.147027)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2972, '중평동', 4812912800, ST_GeomFromText('POINT(128.659733 35.147448)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2973, '근화동', 4812912900, ST_GeomFromText('POINT(128.660587 35.146803)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2974, '송죽동', 4812913000, ST_GeomFromText('POINT(128.65708 35.147742)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2975, '화천동', 4812913100, ST_GeomFromText('POINT(128.661486 35.151776)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2976, '송학동', 4812913200, ST_GeomFromText('POINT(128.661766 35.15115)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2977, '대흥동', 4812913300, ST_GeomFromText('POINT(128.661316 35.15064)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2978, '평안동', 4812913400, ST_GeomFromText('POINT(128.659783 35.150116)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2979, '충무동', 4812913500, ST_GeomFromText('POINT(128.666401 35.151989)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2980, '인사동', 4812913600, ST_GeomFromText('POINT(128.667 35.15)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2981, '여좌동', 4812913700, ST_GeomFromText('POINT(128.660315 35.158549)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2982, '태백동', 4812913800, ST_GeomFromText('POINT(128.6654 35.1674)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2983, '경화동', 4812913900, ST_GeomFromText('POINT(128.686838 35.154357)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2984, '석동', 4812914000, ST_GeomFromText('POINT(128.698318 35.16028)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2985, '이동', 4812914100, ST_GeomFromText('POINT(128.699912 35.149342)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2986, '자은동', 4812914200, ST_GeomFromText('POINT(128.705653 35.147039)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2987, '덕산동', 4812914300, ST_GeomFromText('POINT(128.6948 35.1428)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2988, '풍호동', 4812914400, ST_GeomFromText('POINT(128.707313 35.137599)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2989, '장천동', 4812914500, ST_GeomFromText('POINT(128.7116 35.1276)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2990, '행암동', 4812914600, ST_GeomFromText('POINT(128.700988 35.112607)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2991, '북부동', 4812914700, ST_GeomFromText('POINT(128.7395 35.1288)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2992, '성내동', 4812914800, ST_GeomFromText('POINT(128.7598 35.1157)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2993, '서중동', 4812914900, ST_GeomFromText('POINT(128.739 35.1121)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2994, '남문동', 4812915000, ST_GeomFromText('POINT(128.7539 35.1032)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2995, '제덕동', 4812915100, ST_GeomFromText('POINT(128.7387 35.1025)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2996, '수도동', 4812915200, ST_GeomFromText('POINT(128.7441 35.0763)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2997, '연도동', 4812915300, ST_GeomFromText('POINT(128.7661 35.0746)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2998, '명동', 4812915400, ST_GeomFromText('POINT(128.731135 35.095227)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (2999, '죽곡동', 4812915500, ST_GeomFromText('POINT(128.7253 35.1136)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3000, '원포동', 4812915600, ST_GeomFromText('POINT(128.71195 35.110749)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3001, '남양동', 4812915700, ST_GeomFromText('POINT(128.7747 35.1124)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3002, '마천동', 4812915800, ST_GeomFromText('POINT(128.793387 35.139299)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3003, '소사동', 4812915900, ST_GeomFromText('POINT(128.756113 35.14244)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3004, '대장동', 4812916000, ST_GeomFromText('POINT(128.777713 35.15034)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3005, '두동', 4812916100, ST_GeomFromText('POINT(128.805757 35.123995)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3006, '청안동', 4812916200, ST_GeomFromText('POINT(128.7986 35.1038)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3007, '안골동', 4812916300, ST_GeomFromText('POINT(128.804725 35.094105)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3008, '용원동', 4812916400, ST_GeomFromText('POINT(128.8206 35.1029)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3009, '가주동', 4812916500, ST_GeomFromText('POINT(128.827924 35.116651)', 4326), 211);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3010, '망경동', 4817010100, ST_GeomFromText('POINT(128.080713 35.182035)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3011, '주약동', 4817010200, ST_GeomFromText('POINT(128.0848 35.1706)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3012, '강남동', 4817010300, ST_GeomFromText('POINT(128.0873 35.1839)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3013, '칠암동', 4817010400, ST_GeomFromText('POINT(128.093387 35.18291)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3014, '본성동', 4817010500, ST_GeomFromText('POINT(128.0822 35.1906)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3015, '동성동', 4817010600, ST_GeomFromText('POINT(128.0852 35.191551)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3016, '남성동', 4817010700, ST_GeomFromText('POINT(128.077213 35.18896)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3017, '인사동', 4817010800, ST_GeomFromText('POINT(128.0741 35.1911)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3018, '대안동', 4817010900, ST_GeomFromText('POINT(128.0839 35.1948)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3019, '평안동', 4817011000, ST_GeomFromText('POINT(128.083188 35.197618)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3020, '중안동', 4817011100, ST_GeomFromText('POINT(128.081263 35.193593)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3021, '계동', 4817011200, ST_GeomFromText('POINT(128.080807 35.196684)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3022, '봉곡동', 4817011300, ST_GeomFromText('POINT(128.075063 35.194818)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3023, '상봉동', 4817011400, ST_GeomFromText('POINT(128.074948 35.199575)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3024, '봉래동', 4817011500, ST_GeomFromText('POINT(128.0845 35.202)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3025, '수정동', 4817011600, ST_GeomFromText('POINT(128.0856 35.1978)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3026, '장대동', 4817011700, ST_GeomFromText('POINT(128.0881 35.1932)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3027, '옥봉동', 4817011800, ST_GeomFromText('POINT(128.093408 35.194412)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3028, '상대동', 4817011900, ST_GeomFromText('POINT(128.111759 35.180097)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3029, '하대동', 4817012000, ST_GeomFromText('POINT(128.127387 35.189391)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3030, '상평동', 4817012100, ST_GeomFromText('POINT(128.109087 35.176151)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3031, '초전동', 4817012200, ST_GeomFromText('POINT(128.1168 35.206)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3032, '장재동', 4817012300, ST_GeomFromText('POINT(128.1018 35.2152)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3033, '하촌동', 4817012400, ST_GeomFromText('POINT(128.0815 35.2178)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3034, '신안동', 4817012500, ST_GeomFromText('POINT(128.068982 35.184485)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3035, '평거동', 4817012600, ST_GeomFromText('POINT(128.065425 35.17381)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3036, '이현동', 4817012700, ST_GeomFromText('POINT(128.061745 35.192784)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3037, '유곡동', 4817012800, ST_GeomFromText('POINT(128.058888 35.203801)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3038, '판문동', 4817012900, ST_GeomFromText('POINT(128.040325 35.187693)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3039, '귀곡동', 4817013000, ST_GeomFromText('POINT(128.0163 35.1687)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3040, '가좌동', 4817013100, ST_GeomFromText('POINT(128.1033 35.1561)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3041, '호탄동', 4817013200, ST_GeomFromText('POINT(128.1233 35.1645)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3042, '충무공동', 4817013700, ST_GeomFromText('POINT(128.150337 35.1749)', 4326), 212);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3043, '도천동', 4822010100, ST_GeomFromText('POINT(128.410185 34.842356)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3044, '서호동', 4822010200, ST_GeomFromText('POINT(128.419 34.8421)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3045, '명정동', 4822010300, ST_GeomFromText('POINT(128.413015 34.85168)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3046, '항남동', 4822010400, ST_GeomFromText('POINT(128.4229 34.842)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3047, '중앙동', 4822010500, ST_GeomFromText('POINT(128.422873 34.844871)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3048, '문화동', 4822010600, ST_GeomFromText('POINT(128.421 34.848415)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3049, '태평동', 4822010700, ST_GeomFromText('POINT(128.4257 34.8476)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3050, '동호동', 4822010800, ST_GeomFromText('POINT(128.4292 34.8421)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3051, '정량동', 4822010900, ST_GeomFromText('POINT(128.437201 34.847979)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3052, '북신동', 4822011000, ST_GeomFromText('POINT(128.425565 34.856984)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3053, '무전동', 4822011100, ST_GeomFromText('POINT(128.429039 34.858955)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3054, '평림동', 4822011200, ST_GeomFromText('POINT(128.3936 34.8544)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3055, '인평동', 4822011300, ST_GeomFromText('POINT(128.3749 34.8478)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3056, '당동', 4822011400, ST_GeomFromText('POINT(128.4066 34.8352)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3057, '미수동', 4822011500, ST_GeomFromText('POINT(128.406089 34.830423)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3058, '봉평동', 4822011600, ST_GeomFromText('POINT(128.4147 34.8225)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3059, '도남동', 4822011700, ST_GeomFromText('POINT(128.4291 34.8253)', 4326), 213);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3060, '동동', 4824010100, ST_GeomFromText('POINT(128.0679 34.9369)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3061, '서동', 4824010200, ST_GeomFromText('POINT(128.065513 34.932968)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3062, '선구동', 4824010300, ST_GeomFromText('POINT(128.072114 34.929757)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3063, '동금동', 4824010400, ST_GeomFromText('POINT(128.081025 34.931043)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3064, '서금동', 4824010500, ST_GeomFromText('POINT(128.0746 34.9254)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3065, '동림동', 4824010600, ST_GeomFromText('POINT(128.0723 34.9468)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3066, '좌룡동', 4824010700, ST_GeomFromText('POINT(128.0809 34.9558)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3067, '벌리동', 4824010800, ST_GeomFromText('POINT(128.084575 34.939943)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3068, '용강동', 4824010900, ST_GeomFromText('POINT(128.092 34.9534)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3069, '와룡동', 4824011000, ST_GeomFromText('POINT(128.1079 34.970801)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3070, '봉남동', 4824011100, ST_GeomFromText('POINT(128.104 34.9444)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3071, '이금동', 4824011200, ST_GeomFromText('POINT(128.1093 34.9508)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3072, '이홀동', 4824011300, ST_GeomFromText('POINT(128.1226 34.9594)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3073, '궁지동', 4824011400, ST_GeomFromText('POINT(128.118812 34.940326)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3074, '사등동', 4824011500, ST_GeomFromText('POINT(128.1088 34.9274)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3075, '향촌동', 4824011600, ST_GeomFromText('POINT(128.093462 34.93386)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3076, '대방동', 4824011700, ST_GeomFromText('POINT(128.055 34.9355)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3077, '실안동', 4824011800, ST_GeomFromText('POINT(128.0528 34.9472)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3078, '마도동', 4824011900, ST_GeomFromText('POINT(128.0312 34.9359)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3079, '늑도동', 4824012000, ST_GeomFromText('POINT(128.0376 34.9231)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3080, '신수동', 4824012100, ST_GeomFromText('POINT(128.076 34.8987)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3081, '백천동', 4824012200, ST_GeomFromText('POINT(128.0911 34.9927)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3082, '신벽동', 4824012300, ST_GeomFromText('POINT(128.0748 34.9852)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3083, '노룡동', 4824012400, ST_GeomFromText('POINT(128.053 34.9853)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3084, '대포동', 4824012500, ST_GeomFromText('POINT(128.046625 34.988901)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3085, '송포동', 4824012600, ST_GeomFromText('POINT(128.0553 34.9658)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3086, '죽림동', 4824012700, ST_GeomFromText('POINT(128.0787 34.968)', 4326), 214);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3087, '동상동', 4825010100, ST_GeomFromText('POINT(128.883463 35.236826)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3088, '서상동', 4825010200, ST_GeomFromText('POINT(128.880736 35.236674)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3089, '부원동', 4825010300, ST_GeomFromText('POINT(128.886565 35.228715)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3090, '봉황동', 4825010400, ST_GeomFromText('POINT(128.8772 35.2292)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3091, '대성동', 4825010500, ST_GeomFromText('POINT(128.8797 35.2408)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3092, '구산동', 4825010600, ST_GeomFromText('POINT(128.8747 35.2494)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3093, '삼계동', 4825010700, ST_GeomFromText('POINT(128.865163 35.2732)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3094, '내동', 4825010800, ST_GeomFromText('POINT(128.8622 35.2424)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3095, '외동', 4825010900, ST_GeomFromText('POINT(128.8595 35.2336)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3096, '흥동', 4825011000, ST_GeomFromText('POINT(128.8584 35.2157)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3097, '풍유동', 4825011100, ST_GeomFromText('POINT(128.8469 35.2143)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3098, '명법동', 4825011200, ST_GeomFromText('POINT(128.8376 35.2012)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3099, '이동', 4825011300, ST_GeomFromText('POINT(128.844237 35.189301)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3100, '화목동', 4825011400, ST_GeomFromText('POINT(128.8619 35.192251)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3101, '전하동', 4825011500, ST_GeomFromText('POINT(128.8706 35.2136)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3102, '강동', 4825011600, ST_GeomFromText('POINT(128.8818 35.2163)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3103, '삼정동', 4825011700, ST_GeomFromText('POINT(128.9 35.2264)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3104, '어방동', 4825011800, ST_GeomFromText('POINT(128.9033 35.2378)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3105, '삼방동', 4825011900, ST_GeomFromText('POINT(128.9056 35.257)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3106, '안동', 4825012000, ST_GeomFromText('POINT(128.9137 35.2355)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3107, '지내동', 4825012100, ST_GeomFromText('POINT(128.923438 35.231468)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3108, '불암동', 4825012200, ST_GeomFromText('POINT(128.926561 35.221932)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3109, '유하동', 4825012300, ST_GeomFromText('POINT(128.8166 35.2145)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3110, '내덕동', 4825012400, ST_GeomFromText('POINT(128.8233 35.2057)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3111, '부곡동', 4825012500, ST_GeomFromText('POINT(128.7956 35.2141)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3112, '무계동', 4825012600, ST_GeomFromText('POINT(128.818262 35.200725)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3113, '신문동', 4825012700, ST_GeomFromText('POINT(128.8247 35.1888)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3114, '삼문동', 4825012800, ST_GeomFromText('POINT(128.792813 35.197585)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3115, '대청동', 4825012900, ST_GeomFromText('POINT(128.7761 35.1863)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3116, '관동동', 4825013000, ST_GeomFromText('POINT(128.794506 35.173185)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3117, '율하동', 4825013100, ST_GeomFromText('POINT(128.8075 35.1676)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3118, '장유동', 4825013200, ST_GeomFromText('POINT(128.830781 35.165946)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3119, '응달동', 4825013300, ST_GeomFromText('POINT(128.84202 35.175658)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3120, '수가동', 4825013400, ST_GeomFromText('POINT(128.8721 35.1673)', 4326), 215);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3121, '내일동', 4827010100, ST_GeomFromText('POINT(128.754263 35.493713)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3122, '내이동', 4827010200, ST_GeomFromText('POINT(128.746163 35.497101)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3123, '교동', 4827010300, ST_GeomFromText('POINT(128.757172 35.510963)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3124, '삼문동', 4827010400, ST_GeomFromText('POINT(128.748685 35.481729)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3125, '남포동', 4827010500, ST_GeomFromText('POINT(128.7884 35.4667)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3126, '용평동', 4827010600, ST_GeomFromText('POINT(128.7707 35.4924)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3127, '활성동', 4827010700, ST_GeomFromText('POINT(128.8055 35.483)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3128, '가곡동', 4827010800, ST_GeomFromText('POINT(128.764563 35.478743)', 4326), 216);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3129, '능포동', 4831010100, ST_GeomFromText('POINT(128.734566 34.879199)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3130, '장승포동', 4831010200, ST_GeomFromText('POINT(128.727216 34.867375)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3131, '두모동', 4831010300, ST_GeomFromText('POINT(128.723 34.877)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3132, '아양동', 4831010400, ST_GeomFromText('POINT(128.707812 34.865565)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3133, '아주동', 4831010500, ST_GeomFromText('POINT(128.690564 34.862204)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3134, '옥포동', 4831010600, ST_GeomFromText('POINT(128.692684 34.890985)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3135, '덕포동', 4831010700, ST_GeomFromText('POINT(128.7032 34.9152)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3136, '장평동', 4831010800, ST_GeomFromText('POINT(128.609332 34.889397)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3137, '고현동', 4831010900, ST_GeomFromText('POINT(128.618473 34.88219)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3138, '상동동', 4831011000, ST_GeomFromText('POINT(128.629985 34.865778)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3139, '문동동', 4831011100, ST_GeomFromText('POINT(128.655387 34.858103)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3140, '삼거동', 4831011200, ST_GeomFromText('POINT(128.654124 34.838838)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3141, '양정동', 4831011300, ST_GeomFromText('POINT(128.647199 34.879199)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3142, '수월동', 4831011400, ST_GeomFromText('POINT(128.660308 34.889402)', 4326), 217);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3143, '다방동', 4833010100, ST_GeomFromText('POINT(129.0462 35.3324)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3144, '남부동', 4833010200, ST_GeomFromText('POINT(129.0304 35.3343)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3145, '중부동', 4833010300, ST_GeomFromText('POINT(129.0306 35.339707)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3146, '북부동', 4833010400, ST_GeomFromText('POINT(129.041 35.3466)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3147, '명곡동', 4833010500, ST_GeomFromText('POINT(129.0791 35.3464)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3148, '신기동', 4833010600, ST_GeomFromText('POINT(129.056125 35.350499)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3149, '북정동', 4833010700, ST_GeomFromText('POINT(129.0494 35.3621)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3150, '산막동', 4833010800, ST_GeomFromText('POINT(129.0561 35.3733)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3151, '호계동', 4833010900, ST_GeomFromText('POINT(129.0775 35.3694)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3152, '교동', 4833011000, ST_GeomFromText('POINT(129.0174 35.3511)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3153, '유산동', 4833011100, ST_GeomFromText('POINT(129.027 35.3659)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3154, '어곡동', 4833011200, ST_GeomFromText('POINT(129.0047 35.3945)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3155, '용당동', 4833011300, ST_GeomFromText('POINT(129.1956 35.4196)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3156, '삼호동', 4833011400, ST_GeomFromText('POINT(129.1837 35.407)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3157, '명동', 4833011500, ST_GeomFromText('POINT(129.1764 35.3971)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3158, '주남동', 4833011600, ST_GeomFromText('POINT(129.1511 35.4298)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3159, '소주동', 4833011700, ST_GeomFromText('POINT(129.157743 35.407485)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3160, '주진동', 4833011800, ST_GeomFromText('POINT(129.1422 35.3961)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3161, '평산동', 4833011900, ST_GeomFromText('POINT(129.146989 35.381689)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3162, '덕계동', 4833012000, ST_GeomFromText('POINT(129.149157 35.375129)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3163, '매곡동', 4833012100, ST_GeomFromText('POINT(129.1839 35.3689)', 4326), 218);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3164, '일도일동', 5011010100, ST_GeomFromText('POINT(126.526327 33.515048)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3165, '일도이동', 5011010200, ST_GeomFromText('POINT(126.538342 33.511572)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3166, '이도일동', 5011010300, ST_GeomFromText('POINT(126.526896 33.506851)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3167, '이도이동', 5011010400, ST_GeomFromText('POINT(126.535398 33.497088)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3168, '삼도일동', 5011010500, ST_GeomFromText('POINT(126.517395 33.504081)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3169, '삼도이동', 5011010600, ST_GeomFromText('POINT(126.522528 33.511712)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3170, '건입동', 5011010700, ST_GeomFromText('POINT(126.531543 33.515029)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3171, '용담일동', 5011010800, ST_GeomFromText('POINT(126.513338 33.509107)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3172, '용담이동', 5011010900, ST_GeomFromText('POINT(126.511691 33.511483)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3173, '용담삼동', 5011011000, ST_GeomFromText('POINT(126.496333 33.516513)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3174, '화북일동', 5011011100, ST_GeomFromText('POINT(126.564517 33.519122)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3175, '화북이동', 5011011200, ST_GeomFromText('POINT(126.566 33.5012)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3176, '삼양일동', 5011011300, ST_GeomFromText('POINT(126.594 33.523292)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3177, '삼양이동', 5011011400, ST_GeomFromText('POINT(126.584725 33.5213)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3178, '삼양삼동', 5011011500, ST_GeomFromText('POINT(126.5772 33.5245)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3179, '봉개동', 5011011600, ST_GeomFromText('POINT(126.59467 33.491674)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3180, '아라일동', 5011011700, ST_GeomFromText('POINT(126.5615 33.4286)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3181, '아라이동', 5011011800, ST_GeomFromText('POINT(126.5547 33.477)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3182, '오라일동', 5011011900, ST_GeomFromText('POINT(126.5171 33.4948)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3183, '오라이동', 5011012000, ST_GeomFromText('POINT(126.5182 33.4312)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3184, '오라삼동', 5011012100, ST_GeomFromText('POINT(126.504525 33.493001)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3185, '노형동', 5011012200, ST_GeomFromText('POINT(126.477175 33.483085)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3186, '외도일동', 5011012300, ST_GeomFromText('POINT(126.431 33.4831)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3187, '외도이동', 5011012400, ST_GeomFromText('POINT(126.428835 33.493306)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3188, '이호일동', 5011012500, ST_GeomFromText('POINT(126.4586 33.4982)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3189, '이호이동', 5011012600, ST_GeomFromText('POINT(126.4609 33.4917)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3190, '도두일동', 5011012700, ST_GeomFromText('POINT(126.4722 33.5009)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3191, '도두이동', 5011012800, ST_GeomFromText('POINT(126.485163 33.5027)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3192, '도남동', 5011012900, ST_GeomFromText('POINT(126.5245 33.488)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3193, '도련일동', 5011013000, ST_GeomFromText('POINT(126.5868 33.5062)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3194, '도련이동', 5011013100, ST_GeomFromText('POINT(126.5966 33.5123)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3195, '용강동', 5011013200, ST_GeomFromText('POINT(126.5972 33.4454)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3196, '회천동', 5011013300, ST_GeomFromText('POINT(126.624313 33.482643)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3197, '오등동', 5011013400, ST_GeomFromText('POINT(126.5472 33.4205)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3198, '월평동', 5011013500, ST_GeomFromText('POINT(126.59001 33.428871)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3199, '영평동', 5011013600, ST_GeomFromText('POINT(126.5736 33.4449)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3200, '연동', 5011013700, ST_GeomFromText('POINT(126.496844 33.488182)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3201, '도평동', 5011013800, ST_GeomFromText('POINT(126.4521 33.4791)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3202, '해안동', 5011013900, ST_GeomFromText('POINT(126.4678 33.4194)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3203, '내도동', 5011014000, ST_GeomFromText('POINT(126.443 33.4906)', 4326), 229);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3204, '서귀동', 5013010100, ST_GeomFromText('POINT(126.562997 33.246894)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3205, '법환동', 5013010200, ST_GeomFromText('POINT(126.51065 33.242764)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3206, '서호동', 5013010300, ST_GeomFromText('POINT(126.517488 33.28775)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3207, '호근동', 5013010400, ST_GeomFromText('POINT(126.5318 33.273783)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3208, '동홍동', 5013010500, ST_GeomFromText('POINT(126.568919 33.257821)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3209, '서홍동', 5013010600, ST_GeomFromText('POINT(126.560139 33.255988)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3210, '상효동', 5013010700, ST_GeomFromText('POINT(126.5743 33.3146)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3211, '하효동', 5013010800, ST_GeomFromText('POINT(126.6166 33.254292)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3212, '신효동', 5013010900, ST_GeomFromText('POINT(126.60895 33.26575)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3213, '보목동', 5013011000, ST_GeomFromText('POINT(126.599422 33.230377)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3214, '토평동', 5013011100, ST_GeomFromText('POINT(126.585813 33.275625)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3215, '중문동', 5013011200, ST_GeomFromText('POINT(126.433671 33.253344)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3216, '회수동', 5013011300, ST_GeomFromText('POINT(126.445425 33.2764)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3217, '대포동', 5013011400, ST_GeomFromText('POINT(126.4533 33.2822)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3218, '월평동', 5013011500, ST_GeomFromText('POINT(126.464438 33.243318)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3219, '강정동', 5013011600, ST_GeomFromText('POINT(126.4927 33.254)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3220, '도순동', 5013011700, ST_GeomFromText('POINT(126.478 33.2993)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3221, '하원동', 5013011800, ST_GeomFromText('POINT(126.4652 33.3003)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3222, '색달동', 5013011900, ST_GeomFromText('POINT(126.415688 33.3005)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3223, '상예동', 5013012000, ST_GeomFromText('POINT(126.3844 33.2715)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3224, '하예동', 5013012100, ST_GeomFromText('POINT(126.3804 33.2394)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3225, '영남동', 5013012200, ST_GeomFromText('POINT(126.503675 33.32)', 4326), 230);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3226, '봉의동', 5111010100, ST_GeomFromText('POINT(127.7299 37.886)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3227, '요선동', 5111010200, ST_GeomFromText('POINT(127.727563 37.882907)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3228, '낙원동', 5111010300, ST_GeomFromText('POINT(127.724238 37.879174)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3229, '중앙로1가', 5111010400, ST_GeomFromText('POINT(127.729103 37.882519)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3230, '중앙로2가', 5111010500, ST_GeomFromText('POINT(127.725957 37.878999)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3231, '중앙로3가', 5111010600, ST_GeomFromText('POINT(127.721712 37.875549)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3232, '옥천동', 5111010700, ST_GeomFromText('POINT(127.732472 37.884236)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3233, '조양동', 5111010800, ST_GeomFromText('POINT(127.730313 37.879807)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3234, '죽림동', 5111010900, ST_GeomFromText('POINT(127.7268 37.877457)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3235, '운교동', 5111011000, ST_GeomFromText('POINT(127.7324 37.876907)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3236, '약사동', 5111011100, ST_GeomFromText('POINT(127.7244 37.8744)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3237, '효자동', 5111011200, ST_GeomFromText('POINT(127.727574 37.872177)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3238, '소양로1가', 5111011300, ST_GeomFromText('POINT(127.7298 37.8918)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3239, '소양로2가', 5111011400, ST_GeomFromText('POINT(127.7248 37.8866)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3240, '소양로3가', 5111011500, ST_GeomFromText('POINT(127.7233 37.8818)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3241, '소양로4가', 5111011600, ST_GeomFromText('POINT(127.720325 37.878007)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3242, '근화동', 5111011700, ST_GeomFromText('POINT(127.71215 37.88064)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3243, '우두동', 5111011800, ST_GeomFromText('POINT(127.7392 37.9088)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3244, '사농동', 5111011900, ST_GeomFromText('POINT(127.72185 37.915774)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3245, '후평동', 5111012000, ST_GeomFromText('POINT(127.745421 37.886042)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3246, '온의동', 5111012100, ST_GeomFromText('POINT(127.7153 37.8583)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3247, '교동', 5111012200, ST_GeomFromText('POINT(127.736189 37.880642)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3248, '퇴계동', 5111012300, ST_GeomFromText('POINT(127.7293557 37.8622597)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3249, '석사동', 5111012400, ST_GeomFromText('POINT(127.742347 37.858523)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3250, '삼천동', 5111012500, ST_GeomFromText('POINT(127.6935 37.8671)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3251, '칠전동', 5111012600, ST_GeomFromText('POINT(127.6962 37.8445)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3252, '송암동', 5111012700, ST_GeomFromText('POINT(127.688275 37.857374)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3253, '신동', 5111012800, ST_GeomFromText('POINT(127.7263 37.9317)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3254, '중도동', 5111012900, ST_GeomFromText('POINT(127.7007 37.8906)', 4326), 231);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3255, '중앙동', 5113010100, ST_GeomFromText('POINT(127.950526 37.349768)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3256, '평원동', 5113010200, ST_GeomFromText('POINT(127.9531 37.3503)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3257, '원동', 5113010300, ST_GeomFromText('POINT(127.9468 37.3442)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3258, '인동', 5113010400, ST_GeomFromText('POINT(127.9544 37.346107)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3259, '개운동', 5113010500, ST_GeomFromText('POINT(127.960247 37.341277)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3260, '명륜동', 5113010600, ST_GeomFromText('POINT(127.953288 37.341249)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3261, '단구동', 5113010700, ST_GeomFromText('POINT(127.952256 37.327103)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3262, '일산동', 5113010800, ST_GeomFromText('POINT(127.9421 37.34969)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3263, '학성동', 5113010900, ST_GeomFromText('POINT(127.944163 37.353499)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3264, '단계동', 5113011000, ST_GeomFromText('POINT(127.934456 37.3526)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3265, '우산동', 5113011100, ST_GeomFromText('POINT(127.940063 37.371461)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3266, '태장동', 5113011200, ST_GeomFromText('POINT(127.963347 37.363638)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3267, '봉산동', 5113011300, ST_GeomFromText('POINT(127.956969 37.347542)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3268, '행구동', 5113011400, ST_GeomFromText('POINT(127.983847 37.342578)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3269, '무실동', 5113011500, ST_GeomFromText('POINT(127.929225 37.338196)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3270, '관설동', 5113011600, ST_GeomFromText('POINT(127.986 37.3069)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3271, '반곡동', 5113011700, ST_GeomFromText('POINT(127.995 37.3256)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3272, '가현동', 5113011800, ST_GeomFromText('POINT(127.9249 37.3876)', 4326), 232);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3273, '홍제동', 5115010100, ST_GeomFromText('POINT(128.883631 37.74832)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3274, '남문동', 5115010200, ST_GeomFromText('POINT(128.8882 37.7493)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3275, '명주동', 5115010300, ST_GeomFromText('POINT(128.891343 37.750892)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3276, '성내동', 5115010400, ST_GeomFromText('POINT(128.893365 37.752428)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3277, '임당동', 5115010500, ST_GeomFromText('POINT(128.8943 37.7558)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3278, '금학동', 5115010600, ST_GeomFromText('POINT(128.8957 37.753508)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3279, '용강동', 5115010700, ST_GeomFromText('POINT(128.8908 37.7537)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3280, '성남동', 5115010800, ST_GeomFromText('POINT(128.8984 37.7522)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3281, '옥천동', 5115010900, ST_GeomFromText('POINT(128.90295 37.760175)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3282, '교동', 5115011000, ST_GeomFromText('POINT(128.874369 37.765614)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3283, '포남동', 5115011100, ST_GeomFromText('POINT(128.90815 37.765982)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3284, '초당동', 5115011200, ST_GeomFromText('POINT(128.915963 37.791883)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3285, '강문동', 5115011300, ST_GeomFromText('POINT(128.9172 37.7939)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3286, '송정동', 5115011400, ST_GeomFromText('POINT(128.927577 37.774472)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3287, '견소동', 5115011500, ST_GeomFromText('POINT(128.941225 37.7732)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3288, '내곡동', 5115011600, ST_GeomFromText('POINT(128.880953 37.739085)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3289, '회산동', 5115011700, ST_GeomFromText('POINT(128.8648 37.7374)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3290, '장현동', 5115011800, ST_GeomFromText('POINT(128.8939 37.7285)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3291, '박월동', 5115011900, ST_GeomFromText('POINT(128.9119 37.7232)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3292, '담산동', 5115012000, ST_GeomFromText('POINT(128.9007 37.7204)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3293, '노암동', 5115012100, ST_GeomFromText('POINT(128.903638 37.743585)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3294, '유산동', 5115012200, ST_GeomFromText('POINT(128.9134 37.7369)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3295, '월호평동', 5115012300, ST_GeomFromText('POINT(128.9424 37.7441)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3296, '신석동', 5115012400, ST_GeomFromText('POINT(128.9232 37.7302)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3297, '입암동', 5115012500, ST_GeomFromText('POINT(128.9178 37.7589)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3298, '청량동', 5115012600, ST_GeomFromText('POINT(128.9247 37.7451)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3299, '두산동', 5115012700, ST_GeomFromText('POINT(128.9287 37.7645)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3300, '학동', 5115012800, ST_GeomFromText('POINT(128.9319 37.7548)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3301, '병산동', 5115012900, ST_GeomFromText('POINT(128.94215 37.7597)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3302, '남항진동', 5115013000, ST_GeomFromText('POINT(128.9544 37.7593)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3303, '유천동', 5115013100, ST_GeomFromText('POINT(128.8582 37.7671)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3304, '지변동', 5115013200, ST_GeomFromText('POINT(128.8719 37.7739)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3305, '죽헌동', 5115013300, ST_GeomFromText('POINT(128.8698 37.7822)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3306, '대전동', 5115013400, ST_GeomFromText('POINT(128.8526 37.7927)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3307, '운정동', 5115013500, ST_GeomFromText('POINT(128.8966 37.7892)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3308, '난곡동', 5115013600, ST_GeomFromText('POINT(128.8764 37.7907)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3309, '저동', 5115013700, ST_GeomFromText('POINT(128.8926 37.7984)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3310, '안현동', 5115013800, ST_GeomFromText('POINT(128.8987 37.8063)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3311, '운산동', 5115013900, ST_GeomFromText('POINT(128.935 37.7275)', 4326), 233);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3312, '천곡동', 5117010100, ST_GeomFromText('POINT(129.116225 37.5229)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3313, '평릉동', 5117010200, ST_GeomFromText('POINT(129.0991 37.5321)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3314, '송정동', 5117010300, ST_GeomFromText('POINT(129.128603 37.499735)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3315, '용정동', 5117010400, ST_GeomFromText('POINT(129.1204 37.5069)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3316, '지흥동', 5117010500, ST_GeomFromText('POINT(129.0869 37.505)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3317, '효가동', 5117010600, ST_GeomFromText('POINT(129.1102 37.4981)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3318, '동회동', 5117010700, ST_GeomFromText('POINT(129.1007 37.4934)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3319, '나안동', 5117010800, ST_GeomFromText('POINT(129.1131 37.4856)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3320, '쇄운동', 5117010900, ST_GeomFromText('POINT(129.0751 37.4783)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3321, '부곡동', 5117011000, ST_GeomFromText('POINT(129.106293 37.535775)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3322, '발한동', 5117011100, ST_GeomFromText('POINT(129.107967 37.548492)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3323, '북평동', 5117011200, ST_GeomFromText('POINT(129.125004 37.483762)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3324, '구미동', 5117011300, ST_GeomFromText('POINT(129.1307 37.4838)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3325, '추암동', 5117011400, ST_GeomFromText('POINT(129.1518 37.4743)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3326, '구호동', 5117011500, ST_GeomFromText('POINT(129.1438 37.4809)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3327, '단봉동', 5117011600, ST_GeomFromText('POINT(129.1184 37.4686)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3328, '지가동', 5117011700, ST_GeomFromText('POINT(129.1048 37.4675)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3329, '이도동', 5117011800, ST_GeomFromText('POINT(129.0985 37.4778)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3330, '귀운동', 5117011900, ST_GeomFromText('POINT(129.0872 37.4686)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3331, '대구동', 5117012000, ST_GeomFromText('POINT(129.1334 37.4699)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3332, '호현동', 5117012100, ST_GeomFromText('POINT(129.1258 37.4644)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3333, '내동', 5117012200, ST_GeomFromText('POINT(129.1293 37.4585)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3334, '묵호진동', 5117012300, ST_GeomFromText('POINT(129.1146 37.5555)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3335, '삼화동', 5117012400, ST_GeomFromText('POINT(128.97377 37.448589)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3336, '이기동', 5117012500, ST_GeomFromText('POINT(129.007 37.4827)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3337, '이로동', 5117012600, ST_GeomFromText('POINT(129.052 37.4998)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3338, '어달동', 5117012700, ST_GeomFromText('POINT(129.1128 37.5658)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3339, '대진동', 5117012800, ST_GeomFromText('POINT(129.1115 37.5753)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3340, '망상동', 5117012900, ST_GeomFromText('POINT(129.087775 37.588115)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3341, '심곡동', 5117013000, ST_GeomFromText('POINT(129.0807 37.5804)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3342, '초구동', 5117013100, ST_GeomFromText('POINT(129.0907 37.5705)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3343, '괴란동', 5117013200, ST_GeomFromText('POINT(129.0614 37.5712)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3344, '만우동', 5117013300, ST_GeomFromText('POINT(129.0673 37.5545)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3345, '신흥동', 5117013400, ST_GeomFromText('POINT(129.0004 37.5175)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3346, '비천동', 5117013500, ST_GeomFromText('POINT(129.0467 37.528)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3347, '달방동', 5117013600, ST_GeomFromText('POINT(129.0155 37.502)', 4326), 234);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3348, '황지동', 5119010100, ST_GeomFromText('POINT(128.987948 37.174935)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3349, '장성동', 5119010200, ST_GeomFromText('POINT(129.008202 37.100471)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3350, '금천동', 5119010300, ST_GeomFromText('POINT(128.9746 37.0919)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3351, '철암동', 5119010400, ST_GeomFromText('POINT(129.039786 37.117287)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3352, '문곡동', 5119010500, ST_GeomFromText('POINT(128.9982 37.1244)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3353, '동점동', 5119010600, ST_GeomFromText('POINT(129.0428 37.0897)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3354, '소도동', 5119010700, ST_GeomFromText('POINT(128.9598 37.1244)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3355, '혈동', 5119010800, ST_GeomFromText('POINT(128.901 37.1115)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3356, '화전동', 5119010900, ST_GeomFromText('POINT(128.9408 37.198026)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3357, '적각동', 5119011000, ST_GeomFromText('POINT(128.9984 37.221418)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3358, '창죽동', 5119011100, ST_GeomFromText('POINT(128.9553 37.2342)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3359, '통동', 5119011200, ST_GeomFromText('POINT(129.0224 37.1745)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3360, '백산동', 5119011300, ST_GeomFromText('POINT(129.0495 37.1466)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3361, '원동', 5119011400, ST_GeomFromText('POINT(128.9527 37.2684)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3362, '상사미동', 5119011500, ST_GeomFromText('POINT(128.9931 37.270683)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3363, '하사미동', 5119011600, ST_GeomFromText('POINT(128.9863 37.3142)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3364, '조탄동', 5119011700, ST_GeomFromText('POINT(128.967 37.3215)', 4326), 235);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3365, '영랑동', 5121010100, ST_GeomFromText('POINT(128.592638 38.215809)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3366, '동명동', 5121010200, ST_GeomFromText('POINT(128.595725 38.212693)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3367, '중앙동', 5121010300, ST_GeomFromText('POINT(128.5906 38.2059)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3368, '금호동', 5121010400, ST_GeomFromText('POINT(128.578479 38.210381)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3369, '청학동', 5121010500, ST_GeomFromText('POINT(128.5841 38.2029)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3370, '교동', 5121010600, ST_GeomFromText('POINT(128.573841 38.2019)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3371, '노학동', 5121010700, ST_GeomFromText('POINT(128.529777 38.190598)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3372, '조양동', 5121010800, ST_GeomFromText('POINT(128.590788 38.187618)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3373, '청호동', 5121010900, ST_GeomFromText('POINT(128.595509 38.197983)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3374, '대포동', 5121011000, ST_GeomFromText('POINT(128.5952 38.1731)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3375, '도문동', 5121011100, ST_GeomFromText('POINT(128.5557 38.1687)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3376, '설악동', 5121011200, ST_GeomFromText('POINT(128.5039 38.1614)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3377, '장사동', 5121011300, ST_GeomFromText('POINT(128.557752 38.214082)', 4326), 236);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3378, '성내동', 5123010100, ST_GeomFromText('POINT(129.1614 37.4422)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3379, '성북동', 5123010200, ST_GeomFromText('POINT(129.157 37.4435)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3380, '읍상동', 5123010300, ST_GeomFromText('POINT(129.16189 37.439721)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3381, '읍중동', 5123010400, ST_GeomFromText('POINT(129.163113 37.441398)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3382, '당저동', 5123010500, ST_GeomFromText('POINT(129.162021 37.446143)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3383, '교동', 5123010600, ST_GeomFromText('POINT(129.1646 37.447935)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3384, '갈천동', 5123010700, ST_GeomFromText('POINT(129.1624 37.4639)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3385, '증산동', 5123010800, ST_GeomFromText('POINT(129.1576 37.4707)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3386, '우지동', 5123010900, ST_GeomFromText('POINT(129.1457 37.4575)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3387, '마달동', 5123011000, ST_GeomFromText('POINT(129.1572 37.454)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3388, '자원동', 5123011100, ST_GeomFromText('POINT(129.1401 37.4428)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3389, '평전동', 5123011200, ST_GeomFromText('POINT(129.1325 37.4497)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3390, '등봉동', 5123011300, ST_GeomFromText('POINT(129.1196 37.4491)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3391, '도경동', 5123011400, ST_GeomFromText('POINT(129.1005 37.4468)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3392, '마평동', 5123011500, ST_GeomFromText('POINT(129.1341 37.423)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3393, '오사동', 5123011600, ST_GeomFromText('POINT(129.141 37.4356)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3394, '건지동', 5123011700, ST_GeomFromText('POINT(129.1472 37.4286)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3395, '원당동', 5123011800, ST_GeomFromText('POINT(129.1501 37.4424)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3396, '성남동', 5123011900, ST_GeomFromText('POINT(129.1559 37.4324)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3397, '남양동', 5123012000, ST_GeomFromText('POINT(129.16845 37.442568)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3398, '사직동', 5123012100, ST_GeomFromText('POINT(129.1718 37.4263)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3399, '오분동', 5123012200, ST_GeomFromText('POINT(129.1896 37.4222)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3400, '적노동', 5123012300, ST_GeomFromText('POINT(129.1767 37.4133)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3401, '조비동', 5123012400, ST_GeomFromText('POINT(129.1536 37.3987)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3402, '정상동', 5123012500, ST_GeomFromText('POINT(129.1776 37.4399)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3403, '정하동', 5123012600, ST_GeomFromText('POINT(129.1891 37.4414)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3404, '근산동', 5123012700, ST_GeomFromText('POINT(129.1453 37.418)', 4326), 237);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3405, '중앙동1가', 5211110100, ST_GeomFromText('POINT(127.142277 35.816687)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3406, '중앙동2가', 5211110200, ST_GeomFromText('POINT(127.143695 35.817158)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3407, '중앙동3가', 5211110300, ST_GeomFromText('POINT(127.145164 35.817628)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3408, '중앙동4가', 5211110400, ST_GeomFromText('POINT(127.144912 35.815229)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3409, '경원동1가', 5211110500, ST_GeomFromText('POINT(127.1475 35.8176)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3410, '경원동2가', 5211110600, ST_GeomFromText('POINT(127.14946 35.818055)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3411, '경원동3가', 5211110700, ST_GeomFromText('POINT(127.149 35.8209)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3412, '풍남동1가', 5211110800, ST_GeomFromText('POINT(127.150996 35.818535)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3413, '풍남동2가', 5211110900, ST_GeomFromText('POINT(127.152552 35.818824)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3414, '풍남동3가', 5211111000, ST_GeomFromText('POINT(127.1528 35.8159)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3415, '전동', 5211111100, ST_GeomFromText('POINT(127.148275 35.813667)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3416, '전동3가', 5211111200, ST_GeomFromText('POINT(127.144904 35.813153)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3417, '다가동1가', 5211111300, ST_GeomFromText('POINT(127.141953 35.814822)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3418, '다가동2가', 5211111400, ST_GeomFromText('POINT(127.140513 35.81411)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3419, '다가동3가', 5211111500, ST_GeomFromText('POINT(127.139912 35.8171)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3420, '다가동4가', 5211111600, ST_GeomFromText('POINT(127.13865 35.819717)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3421, '고사동', 5211111700, ST_GeomFromText('POINT(127.143 35.8203)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3422, '교동', 5211111800, ST_GeomFromText('POINT(127.1612 35.8122)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3423, '태평동', 5211111900, ST_GeomFromText('POINT(127.137489 35.824117)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3424, '중노송동', 5211112000, ST_GeomFromText('POINT(127.1563 35.823375)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3425, '남노송동', 5211112100, ST_GeomFromText('POINT(127.159714 35.819125)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3426, '동완산동', 5211112200, ST_GeomFromText('POINT(127.1438 35.8081)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3427, '서완산동1가', 5211112300, ST_GeomFromText('POINT(127.1394 35.8105)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3428, '서완산동2가', 5211112400, ST_GeomFromText('POINT(127.13665 35.8109)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3429, '동서학동', 5211112500, ST_GeomFromText('POINT(127.1522 35.809508)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3430, '서서학동', 5211112600, ST_GeomFromText('POINT(127.148675 35.805733)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3431, '중화산동1가', 5211112700, ST_GeomFromText('POINT(127.132164 35.816017)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3432, '중화산동2가', 5211112800, ST_GeomFromText('POINT(127.121325 35.816358)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3433, '서신동', 5211112900, ST_GeomFromText('POINT(127.115549 35.831085)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3434, '석구동', 5211113000, ST_GeomFromText('POINT(127.132014 35.764083)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3435, '원당동', 5211113100, ST_GeomFromText('POINT(127.1109 35.7639)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3436, '평화동1가', 5211113200, ST_GeomFromText('POINT(127.139013 35.7954)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3437, '평화동2가', 5211113300, ST_GeomFromText('POINT(127.133538 35.784683)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3438, '평화동3가', 5211113400, ST_GeomFromText('POINT(127.1231 35.7803)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3439, '중인동', 5211113500, ST_GeomFromText('POINT(127.0891 35.7566)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3440, '용복동', 5211113600, ST_GeomFromText('POINT(127.0796 35.7728)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3441, '삼천동1가', 5211113700, ST_GeomFromText('POINT(127.1201 35.795592)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3442, '삼천동2가', 5211113800, ST_GeomFromText('POINT(127.0986 35.785717)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3443, '삼천동3가', 5211113900, ST_GeomFromText('POINT(127.078875 35.79625)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3444, '효자동1가', 5211114000, ST_GeomFromText('POINT(127.12545 35.805925)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3445, '효자동2가', 5211114100, ST_GeomFromText('POINT(127.098712 35.806867)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3446, '효자동3가', 5211114200, ST_GeomFromText('POINT(127.096125 35.824142)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3447, '대성동', 5211114300, ST_GeomFromText('POINT(127.1728 35.7926)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3448, '색장동', 5211114400, ST_GeomFromText('POINT(127.1963 35.7926)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3449, '상림동', 5211114500, ST_GeomFromText('POINT(127.0738 35.818)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3450, '서노송동', 5211114700, ST_GeomFromText('POINT(127.14575 35.826042)', 4326), 250);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3451, '진북동', 5211310200, ST_GeomFromText('POINT(127.131493 35.827789)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3452, '인후동1가', 5211310300, ST_GeomFromText('POINT(127.157989 35.831342)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3453, '인후동2가', 5211310400, ST_GeomFromText('POINT(127.146 35.839933)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3454, '덕진동1가', 5211310500, ST_GeomFromText('POINT(127.12525 35.846583)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3455, '덕진동2가', 5211310600, ST_GeomFromText('POINT(127.113 35.8456)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3456, '금암동', 5211310700, ST_GeomFromText('POINT(127.133088 35.837424)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3457, '팔복동1가', 5211310800, ST_GeomFromText('POINT(127.107775 35.856974)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3458, '팔복동2가', 5211310900, ST_GeomFromText('POINT(127.0961 35.854865)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3459, '팔복동3가', 5211311000, ST_GeomFromText('POINT(127.09295 35.847275)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3460, '산정동', 5211311100, ST_GeomFromText('POINT(127.1725 35.8425)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3461, '금상동', 5211311200, ST_GeomFromText('POINT(127.1935 35.8424)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3462, '우아동1가', 5211311300, ST_GeomFromText('POINT(127.2001 35.817)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3463, '우아동2가', 5211311400, ST_GeomFromText('POINT(127.1711 35.8331)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3464, '우아동3가', 5211311500, ST_GeomFromText('POINT(127.15955 35.848082)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3465, '호성동1가', 5211311600, ST_GeomFromText('POINT(127.1543 35.8626)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3466, '호성동2가', 5211311700, ST_GeomFromText('POINT(127.148575 35.876617)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3467, '호성동3가', 5211311800, ST_GeomFromText('POINT(127.1401 35.8912)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3468, '전미동1가', 5211311900, ST_GeomFromText('POINT(127.124 35.8904)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3469, '전미동2가', 5211312000, ST_GeomFromText('POINT(127.105275 35.887058)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3470, '송천동1가', 5211312100, ST_GeomFromText('POINT(127.125463 35.859349)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3471, '송천동2가', 5211312200, ST_GeomFromText('POINT(127.1212 35.871733)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3472, '반월동', 5211312300, ST_GeomFromText('POINT(127.070139 35.881183)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3473, '화전동', 5211312400, ST_GeomFromText('POINT(127.05485 35.892432)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3474, '용정동', 5211312500, ST_GeomFromText('POINT(127.0528 35.8786)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3475, '성덕동', 5211312600, ST_GeomFromText('POINT(127.036 35.8782)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3476, '원동', 5211312700, ST_GeomFromText('POINT(127.0364 35.8631)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3477, '고랑동', 5211312900, ST_GeomFromText('POINT(127.0844 35.883)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3478, '여의동', 5211313000, ST_GeomFromText('POINT(127.073638 35.85929)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3479, '만성동', 5211313100, ST_GeomFromText('POINT(127.078325 35.838574)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3480, '장동', 5211313200, ST_GeomFromText('POINT(127.059025 35.854065)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3481, '팔복동4가', 5211313300, ST_GeomFromText('POINT(127.100464 35.866533)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3482, '도도동', 5211313400, ST_GeomFromText('POINT(127.0147 35.8822)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3483, '강흥동', 5211313500, ST_GeomFromText('POINT(127.0103 35.8905)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3484, '도덕동', 5211313600, ST_GeomFromText('POINT(127.0256 35.89)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3485, '남정동', 5211313700, ST_GeomFromText('POINT(127.0162 35.8703)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3486, '중동', 5211313800, ST_GeomFromText('POINT(127.06365 35.836299)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3487, '여의동2가', 5211313900, ST_GeomFromText('POINT(127.085087 35.867938)', 4326), 251);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3488, '해망동', 5213010100, ST_GeomFromText('POINT(126.6994 35.9886)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3489, '신흥동', 5213010200, ST_GeomFromText('POINT(126.7038 35.9872)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3490, '금동', 5213010300, ST_GeomFromText('POINT(126.7067 35.9905)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3491, '월명동', 5213010400, ST_GeomFromText('POINT(126.709017 35.986415)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3492, '신창동', 5213010500, ST_GeomFromText('POINT(126.711038 35.986018)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3493, '오룡동', 5213010600, ST_GeomFromText('POINT(126.708447 35.978776)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3494, '금광동', 5213010700, ST_GeomFromText('POINT(126.7067 35.9817)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3495, '신풍동', 5213010800, ST_GeomFromText('POINT(126.7035 35.9802)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3496, '송풍동', 5213010900, ST_GeomFromText('POINT(126.6988 35.9802)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3497, '문화동', 5213011000, ST_GeomFromText('POINT(126.7034 35.9738)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3498, '삼학동', 5213011100, ST_GeomFromText('POINT(126.712688 35.97676)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3499, '선양동', 5213011200, ST_GeomFromText('POINT(126.7123 35.9809)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3500, '둔율동', 5213011300, ST_GeomFromText('POINT(126.71511 35.981631)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3501, '창성동', 5213011400, ST_GeomFromText('POINT(126.713188 35.983257)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3502, '명산동', 5213011500, ST_GeomFromText('POINT(126.7103 35.984)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3503, '송창동', 5213011600, ST_GeomFromText('POINT(126.710721 35.982246)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3504, '개복동', 5213011700, ST_GeomFromText('POINT(126.7134 35.9847)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3505, '중앙로1가', 5213011800, ST_GeomFromText('POINT(126.712 35.986934)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3506, '영화동', 5213011900, ST_GeomFromText('POINT(126.7112 35.9893)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3507, '장미동', 5213012000, ST_GeomFromText('POINT(126.7145 35.9897)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3508, '중앙로2가', 5213012100, ST_GeomFromText('POINT(126.7167 35.983)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3509, '영동', 5213012200, ST_GeomFromText('POINT(126.715729 35.985511)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3510, '신영동', 5213012300, ST_GeomFromText('POINT(126.719499 35.985339)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3511, '죽성동', 5213012400, ST_GeomFromText('POINT(126.716983 35.986008)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3512, '평화동', 5213012500, ST_GeomFromText('POINT(126.7186 35.9839)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3513, '중앙로3가', 5213012600, ST_GeomFromText('POINT(126.718566 35.980916)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3514, '대명동', 5213012700, ST_GeomFromText('POINT(126.721913 35.97906)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3515, '장재동', 5213012800, ST_GeomFromText('POINT(126.7189 35.9786)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3516, '미원동', 5213012900, ST_GeomFromText('POINT(126.716714 35.98035)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3517, '중동', 5213013000, ST_GeomFromText('POINT(126.7246 35.984093)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3518, '금암동', 5213013100, ST_GeomFromText('POINT(126.7214 35.9855)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3519, '동흥남동', 5213013200, ST_GeomFromText('POINT(126.720527 35.9753)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3520, '서흥남동', 5213013300, ST_GeomFromText('POINT(126.7127 35.9732)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3521, '조촌동', 5213013400, ST_GeomFromText('POINT(126.737225 35.974425)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3522, '경장동', 5213013500, ST_GeomFromText('POINT(126.7313 35.971)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3523, '경암동', 5213013600, ST_GeomFromText('POINT(126.7298219 35.9796392)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3524, '구암동', 5213013700, ST_GeomFromText('POINT(126.744013 35.985808)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3525, '내흥동', 5213013800, ST_GeomFromText('POINT(126.759514 35.997067)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3526, '개정동', 5213013900, ST_GeomFromText('POINT(126.754374 35.964409)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3527, '사정동', 5213014000, ST_GeomFromText('POINT(126.750525 35.96341)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3528, '수송동', 5213014100, ST_GeomFromText('POINT(126.717553 35.964879)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3529, '미장동', 5213014200, ST_GeomFromText('POINT(126.7287 35.9645)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3530, '지곡동', 5213014300, ST_GeomFromText('POINT(126.7097 35.9522)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3531, '나운동', 5213014400, ST_GeomFromText('POINT(126.694791 35.96679)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3532, '미룡동', 5213014500, ST_GeomFromText('POINT(126.6895 35.9479)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3533, '소룡동', 5213014600, ST_GeomFromText('POINT(126.683909 35.973916)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3534, '오식도동', 5213014700, ST_GeomFromText('POINT(126.548051 35.958517)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3535, '비응도동', 5213014800, ST_GeomFromText('POINT(126.5311 35.9463)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3536, '신관동', 5213014900, ST_GeomFromText('POINT(126.67 35.9422)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3537, '개사동', 5213015000, ST_GeomFromText('POINT(126.6595 35.936)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3538, '산북동', 5213015100, ST_GeomFromText('POINT(126.6537 35.9622)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3539, '내초동', 5213015200, ST_GeomFromText('POINT(126.605 35.9541)', 4326), 252);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3540, '창인동1가', 5214010100, ST_GeomFromText('POINT(126.9509 35.9418)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3541, '창인동2가', 5214010200, ST_GeomFromText('POINT(126.9453 35.9404)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3542, '중앙동1가', 5214010300, ST_GeomFromText('POINT(126.948 35.939593)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3543, '중앙동2가', 5214010400, ST_GeomFromText('POINT(126.947863 35.93786)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3544, '중앙동3가', 5214010500, ST_GeomFromText('POINT(126.9502 35.9381)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3545, '평화동', 5214010600, ST_GeomFromText('POINT(126.94535 35.932316)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3546, '갈산동', 5214010700, ST_GeomFromText('POINT(126.9529 35.937)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3547, '주현동', 5214010800, ST_GeomFromText('POINT(126.957337 35.935526)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3548, '인화동1가', 5214010900, ST_GeomFromText('POINT(126.9492 35.9312)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3549, '인화동2가', 5214011000, ST_GeomFromText('POINT(126.9494 35.9232)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3550, '동산동', 5214011100, ST_GeomFromText('POINT(126.972569 35.928615)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3551, '마동', 5214011200, ST_GeomFromText('POINT(126.959126 35.937918)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3552, '남중동', 5214011300, ST_GeomFromText('POINT(126.959029 35.951109)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3553, '모현동1가', 5214011400, ST_GeomFromText('POINT(126.9409 35.9485)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3554, '모현동2가', 5214011500, ST_GeomFromText('POINT(126.9421 35.958)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3555, '송학동', 5214011600, ST_GeomFromText('POINT(126.940294 35.938486)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3556, '목천동', 5214011700, ST_GeomFromText('POINT(126.9265 35.9237)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3557, '만석동', 5214011800, ST_GeomFromText('POINT(126.9239 35.9723)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3558, '현영동', 5214011900, ST_GeomFromText('POINT(126.9349 35.9726)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3559, '신용동', 5214012000, ST_GeomFromText('POINT(126.9518 35.9766)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3560, '신동', 5214012100, ST_GeomFromText('POINT(126.961288 35.959818)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3561, '영등동', 5214012200, ST_GeomFromText('POINT(126.972578 35.952341)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3562, '어양동', 5214012300, ST_GeomFromText('POINT(126.984311 35.955342)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3563, '신흥동', 5214012400, ST_GeomFromText('POINT(126.9879 35.9389)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3564, '금강동', 5214012500, ST_GeomFromText('POINT(126.9855 35.9259)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3565, '석탄동', 5214012600, ST_GeomFromText('POINT(126.9707 35.9087)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3566, '팔봉동', 5214012700, ST_GeomFromText('POINT(127.011714 35.96522)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3567, '덕기동', 5214012800, ST_GeomFromText('POINT(127.0416 35.9726)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3568, '석왕동', 5214012900, ST_GeomFromText('POINT(127.0178 35.9767)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3569, '은기동', 5214013000, ST_GeomFromText('POINT(127.0172 35.9864)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3570, '정족동', 5214013100, ST_GeomFromText('POINT(126.9951 35.9847)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3571, '임상동', 5214013200, ST_GeomFromText('POINT(126.9731 35.9829)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3572, '월성동', 5214013300, ST_GeomFromText('POINT(126.9698 35.994)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3573, '부송동', 5214013400, ST_GeomFromText('POINT(126.9967 35.9664)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3574, '용제동', 5214013500, ST_GeomFromText('POINT(127.00215 35.947068)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3575, '석암동', 5214013600, ST_GeomFromText('POINT(127.0108 35.9415)', 4326), 253);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3576, '수성동', 5218010100, ST_GeomFromText('POINT(126.850382 35.569567)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3577, '장명동', 5218010200, ST_GeomFromText('POINT(126.856577 35.5676)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3578, '상동', 5218010300, ST_GeomFromText('POINT(126.8711 35.5612)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3579, '시기동', 5218010400, ST_GeomFromText('POINT(126.849363 35.565492)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3580, '연지동', 5218010500, ST_GeomFromText('POINT(126.845339 35.568395)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3581, '농소동', 5218010600, ST_GeomFromText('POINT(126.843901 35.58781)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3582, '하모동', 5218010700, ST_GeomFromText('POINT(126.8281 35.5715)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3583, '상평동', 5218010800, ST_GeomFromText('POINT(126.8257 35.5602)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3584, '과교동', 5218010900, ST_GeomFromText('POINT(126.837 35.547)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3585, '삼산동', 5218011000, ST_GeomFromText('POINT(126.8171 35.5487)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3586, '진산동', 5218011100, ST_GeomFromText('POINT(126.8313 35.5345)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3587, '금붕동', 5218011200, ST_GeomFromText('POINT(126.8904 35.5436)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3588, '송산동', 5218011300, ST_GeomFromText('POINT(126.8735 35.542)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3589, '신월동', 5218011400, ST_GeomFromText('POINT(126.8632 35.531442)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3590, '용산동', 5218011500, ST_GeomFromText('POINT(126.8626 35.5113)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3591, '교암동', 5218011600, ST_GeomFromText('POINT(126.845 35.5335)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3592, '부전동', 5218011700, ST_GeomFromText('POINT(126.9248 35.5331)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3593, '쌍암동', 5218011800, ST_GeomFromText('POINT(126.887 35.5131)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3594, '내장동', 5218011900, ST_GeomFromText('POINT(126.9074 35.497618)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3595, '영파동', 5218012000, ST_GeomFromText('POINT(126.8511 35.6071)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3596, '하북동', 5218012100, ST_GeomFromText('POINT(126.863488 35.594457)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3597, '구룡동', 5218012200, ST_GeomFromText('POINT(126.8803 35.5706)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3598, '흑암동', 5218012300, ST_GeomFromText('POINT(126.8152 35.601)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3599, '용계동', 5218012400, ST_GeomFromText('POINT(126.8109 35.5932)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3600, '공평동', 5218012500, ST_GeomFromText('POINT(126.8253 35.5798)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3601, '망제동', 5218012600, ST_GeomFromText('POINT(126.8358 35.6052)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3602, '신정동', 5218012700, ST_GeomFromText('POINT(126.8522 35.4893)', 4326), 254);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3603, '동충동', 5219010100, ST_GeomFromText('POINT(127.38295 35.41104)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3604, '하정동', 5219010200, ST_GeomFromText('POINT(127.3795 35.4078)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3605, '죽항동', 5219010300, ST_GeomFromText('POINT(127.38455 35.407599)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3606, '쌍교동', 5219010400, ST_GeomFromText('POINT(127.3828 35.4045)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3607, '천거동', 5219010500, ST_GeomFromText('POINT(127.3785 35.402)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3608, '금동', 5219010600, ST_GeomFromText('POINT(127.375418 35.402446)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3609, '조산동', 5219010700, ST_GeomFromText('POINT(127.3634 35.3951)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3610, '왕정동', 5219010800, ST_GeomFromText('POINT(127.36975 35.408257)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3611, '신정동', 5219010900, ST_GeomFromText('POINT(127.3609 35.4127)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3612, '화정동', 5219011000, ST_GeomFromText('POINT(127.346413 35.414799)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3613, '향교동', 5219011100, ST_GeomFromText('POINT(127.384247 35.418075)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3614, '용정동', 5219011200, ST_GeomFromText('POINT(127.3817 35.4326)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3615, '광치동', 5219011300, ST_GeomFromText('POINT(127.3775 35.4529)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3616, '내척동', 5219011400, ST_GeomFromText('POINT(127.3584 35.442)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3617, '산곡동', 5219011500, ST_GeomFromText('POINT(127.3647 35.4257)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3618, '도통동', 5219011600, ST_GeomFromText('POINT(127.40005 35.419843)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3619, '월락동', 5219011700, ST_GeomFromText('POINT(127.3997 35.4271)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3620, '고죽동', 5219011800, ST_GeomFromText('POINT(127.4027 35.4397)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3621, '식정동', 5219011900, ST_GeomFromText('POINT(127.4278 35.4462)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3622, '갈치동', 5219012000, ST_GeomFromText('POINT(127.4123 35.4558)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3623, '노암동', 5219012100, ST_GeomFromText('POINT(127.38025 35.399615)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3624, '어현동', 5219012200, ST_GeomFromText('POINT(127.3907 35.3903)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3625, '신촌동', 5219012300, ST_GeomFromText('POINT(127.400138 35.408857)', 4326), 255);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3626, '요촌동', 5221010100, ST_GeomFromText('POINT(126.891464 35.805192)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3627, '신풍동', 5221010200, ST_GeomFromText('POINT(126.897885 35.796018)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3628, '용동', 5221010300, ST_GeomFromText('POINT(126.8943 35.7853)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3629, '검산동', 5221010400, ST_GeomFromText('POINT(126.903688 35.803303)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3630, '순동', 5221010500, ST_GeomFromText('POINT(126.9225 35.8151)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3631, '백학동', 5221010600, ST_GeomFromText('POINT(126.939325 35.807383)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3632, '서암동', 5221010700, ST_GeomFromText('POINT(126.8767 35.8072)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3633, '신곡동', 5221010800, ST_GeomFromText('POINT(126.8685 35.8185)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3634, '교동', 5221010900, ST_GeomFromText('POINT(126.8737 35.7957)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3635, '옥산동', 5221011000, ST_GeomFromText('POINT(126.883 35.7938)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3636, '갈공동', 5221011100, ST_GeomFromText('POINT(126.8635 35.8102)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3637, '하동', 5221011200, ST_GeomFromText('POINT(126.8897 35.8178)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3638, '흥사동', 5221011300, ST_GeomFromText('POINT(126.9064 35.8298)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3639, '상동동', 5221011400, ST_GeomFromText('POINT(126.9269 35.8284)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3640, '월성동', 5221011500, ST_GeomFromText('POINT(126.9088 35.7664)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3641, '황산동', 5221011600, ST_GeomFromText('POINT(126.9255 35.7806)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3642, '난봉동', 5221011700, ST_GeomFromText('POINT(126.9345 35.7883)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3643, '오정동', 5221011800, ST_GeomFromText('POINT(126.9111 35.7764)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3644, '복죽동', 5221011900, ST_GeomFromText('POINT(126.8438 35.8072)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3645, '입석동', 5221012000, ST_GeomFromText('POINT(126.8769 35.7855)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3646, '장화동', 5221012100, ST_GeomFromText('POINT(126.8612 35.7721)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3647, '신덕동', 5221012200, ST_GeomFromText('POINT(126.8484 35.7663)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3648, '월봉동', 5221012300, ST_GeomFromText('POINT(126.8743 35.7668)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3649, '신월동', 5221012400, ST_GeomFromText('POINT(126.8919 35.7635)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3650, '연정동', 5221012500, ST_GeomFromText('POINT(126.8582 35.79)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3651, '명덕동', 5221012600, ST_GeomFromText('POINT(126.8438 35.7948)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3652, '제월동', 5221012700, ST_GeomFromText('POINT(126.8886 35.777)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3653, '도장동', 5221012800, ST_GeomFromText('POINT(126.9421 35.7689)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3654, '서정동', 5221012900, ST_GeomFromText('POINT(126.9268 35.76)', 4326), 256);
+INSERT INTO town_level (id, town_name, code, center, district_level_id) 
+        VALUES (3655, '양전동', 5221013000, ST_GeomFromText('POINT(126.9047 35.7531)', 4326), 256);
