@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "회원(모델)의 로그인 관련 API", description = "회원(모델)의 회원가입, 로그인 관련 API입니다")
 @RestController
-@RequestMapping("/member")
+@RequestMapping()
 @RequiredArgsConstructor
 public class MemberAuthController {
 
@@ -31,7 +31,7 @@ public class MemberAuthController {
         @ApiResponse(responseCode = "201 SM000", description = "성공적으로 회원가입을 했습니다."),
         @ApiResponse(responseCode = "409 EM000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
-    @PostMapping("/signup/catsnap")
+    @PostMapping("/member/signup/catsnap")
     public ResponseEntity<ResultResponse<MemberResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody
@@ -54,11 +54,23 @@ public class MemberAuthController {
         @ApiResponse(responseCode = "401 EY000", description = "로그인 실패 (아이디 또는 비밀번호가 일치하지 않음)"),
         @ApiResponse(responseCode = "400 EY001", description = "로그인 실패 (잘못된 로그인 API 요청 형식)"),
     })
-    @PostMapping("/signin/catsnap")
+    @PostMapping("/member/signin/catsnap")
     public ResultResponse<?> signIn(
         @Parameter(description = "로그인 양식", required = true)
         @RequestBody
         SecurityRequest.CatsnapSignInRequest memberSignIn
+    ) {
+        return null;
+    }
+
+    @Operation(summary = "네이버 소셜로그인 API(구현 완료)", description =
+        "네이버 소셜로그인으로 회원가입과 로그인을 할 수 있는 API입니다. " +
+            "단순하게 소셜로그인을 하면 헤더에 accessToken: Bearer {accessToken}과 쿠키에 refreshToken: {refreshToken}을 담아서 반환합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "201 SM000", description = "성공적으로 회원가입(로그인)을 했습니다."),
+    })
+    @PostMapping("/oauth2/authorization/naver")
+    public ResultResponse<?> oAuthSignUp(
     ) {
         return null;
     }
