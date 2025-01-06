@@ -14,9 +14,11 @@ import net.catsnap.global.security.filter.JwtAuthenticationFilter;
 import net.catsnap.global.security.filter.MemberSignInAuthenticationFilter;
 import net.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
 import net.catsnap.global.security.filter.RefreshAccessTokenFilter;
+import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.MemberAuthenticationProvider;
 import net.catsnap.global.security.provider.PhotographerAuthenticationProvider;
 import net.catsnap.global.security.service.MemberDetailsService;
+import net.catsnap.global.security.service.MemberOAuth2UserService;
 import net.catsnap.global.security.service.PhotographerDetailsService;
 import net.catsnap.global.security.util.JwtTokenAuthentication;
 import net.catsnap.global.security.util.ServletSecurityResponse;
@@ -49,6 +51,7 @@ public class SecurityConfig {
     private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
     private final SecretKey secretKey;
+    private final MemberOAuth2UserService memberOAuth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -102,6 +105,10 @@ public class SecurityConfig {
         return source;
     }
 
+    @Bean
+    public OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler() {
+        return new OAuth2LoginSuccessHandler(servletSecurityResponse);
+    }
 
     /*
      * 로그인, 회원가입 관련 필터 설정
@@ -110,7 +117,8 @@ public class SecurityConfig {
     public SecurityFilterChain signInUpConfig(HttpSecurity http) throws Exception {
         http
             .securityMatcher("/member/signup/catsnap", "/photographer/signup/catsnap",
-                "/member/signin/catsnap", "/photographer/signin/catsnap", "/refresh/access-token")
+                "/member/signin/catsnap", "/photographer/signin/catsnap", "/refresh/access-token",
+                "/oauth2/authorization/naver", "/login/oauth2/code/naver")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
@@ -127,6 +135,12 @@ public class SecurityConfig {
             .addFilterAt(
                 new RefreshAccessTokenFilter(servletSecurityResponse, jwtTokenAuthentication()),
                 BasicAuthenticationFilter.class
+            )
+            .oauth2Login((oauth2) -> oauth2
+                .userInfoEndpoint(userInfo -> userInfo
+                    .userService(memberOAuth2UserService)
+                )
+                .successHandler(oAuth2LoginSuccessHandler())
             )
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors
