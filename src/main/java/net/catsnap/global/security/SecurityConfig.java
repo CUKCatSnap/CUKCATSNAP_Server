@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.user.member.repository.MemberRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
+import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.filter.JwtAuthenticationFilter;
 import net.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
@@ -17,7 +17,7 @@ import net.catsnap.global.security.filter.SignInAuthenticationFilter;
 import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
 import net.catsnap.global.security.provider.PhotographerAuthenticationProvider;
-import net.catsnap.global.security.service.MemberDetailsService;
+import net.catsnap.global.security.service.CatsnapUserDetailsService;
 import net.catsnap.global.security.service.MemberOAuth2UserService;
 import net.catsnap.global.security.service.PhotographerDetailsService;
 import net.catsnap.global.security.util.JwtTokenAuthentication;
@@ -48,10 +48,10 @@ public class SecurityConfig {
 
     private final ObjectMapper objectMapper;
     private final ServletSecurityResponse servletSecurityResponse;
-    private final MemberRepository memberRepository;
     private final PhotographerRepository photographerRepository;
     private final SecretKey secretKey;
     private final MemberOAuth2UserService memberOAuth2UserService;
+    private final UserRepository userRepository;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -59,8 +59,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public MemberDetailsService memberDetailsService() {
-        return new MemberDetailsService(memberRepository);
+    public CatsnapUserDetailsService memberDetailsService() {
+        return new CatsnapUserDetailsService(userRepository);
     }
 
     @Bean

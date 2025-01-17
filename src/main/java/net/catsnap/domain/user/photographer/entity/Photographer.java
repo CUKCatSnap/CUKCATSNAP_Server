@@ -3,6 +3,7 @@ package net.catsnap.domain.user.photographer.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +19,8 @@ import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.review.entity.ReviewLike;
 import net.catsnap.domain.user.entity.User;
+import net.catsnap.global.security.authority.CatsnapAuthority;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "photograph")
@@ -55,4 +58,9 @@ public class Photographer extends User {
 
     @OneToMany(mappedBy = "photographer")
     private List<ReviewLike> reviewLikeList;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(CatsnapAuthority.PHOTOGRAPHER);
+    }
 }
