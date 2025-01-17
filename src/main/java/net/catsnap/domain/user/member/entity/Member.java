@@ -1,21 +1,16 @@
 package net.catsnap.domain.user.member.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import net.catsnap.domain.feed.entity.FeedComment;
 import net.catsnap.domain.feed.entity.FeedLike;
 import net.catsnap.domain.notification.entity.Notification;
@@ -25,40 +20,20 @@ import net.catsnap.domain.review.entity.ReviewLike;
 import net.catsnap.domain.social.entity.PhotographerBlock;
 import net.catsnap.domain.social.entity.PhotographerSubscribe;
 import net.catsnap.domain.social.entity.PlaceSubscribe;
-import net.catsnap.global.entity.BaseTimeEntity;
+import net.catsnap.domain.user.entity.User;
 
 @Entity
-@Table(name = "member")
+@Table(name = "model")
 @Getter
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member extends BaseTimeEntity {
+public class Member extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
-    private Long id;
-
-    private String identifier;
-    private String password;
-    private String nickname;
-    private LocalDate birthday;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "profile_photo_url")
-    private String profilePhotoUrl;
-
-    @Column(name = "sns_type")
     @Enumerated(EnumType.STRING)
     private SnsType snstype;
 
-    @Column(name = "sns_id")
     private String snsId;
-
-    @Column(name = "sns_connect_date")
     private LocalDateTime snsConnectDate;
 
     // OneToMany

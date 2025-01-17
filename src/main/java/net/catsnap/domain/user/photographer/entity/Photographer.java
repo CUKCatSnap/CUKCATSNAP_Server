@@ -1,5 +1,13 @@
 package net.catsnap.domain.user.photographer.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import net.catsnap.domain.feed.entity.Feed;
 import net.catsnap.domain.feed.entity.FeedComment;
 import net.catsnap.domain.feed.entity.FeedLike;
@@ -9,44 +17,15 @@ import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.review.entity.ReviewLike;
-import net.catsnap.global.entity.BaseTimeEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import java.time.LocalDate;
-import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import net.catsnap.domain.user.entity.User;
 
 @Entity
 @Table(name = "photograph")
 @Getter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Photographer extends BaseTimeEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "photographer_id")
-    private Long id;
-
-    private String identifier;
-    private String password;
-    private String nickname;
-    private LocalDate birthday;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "profile_photo_url")
-    private String profilePhotoUrl;
+public class Photographer extends User {
 
     // OneToMany
 
