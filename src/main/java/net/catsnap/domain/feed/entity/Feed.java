@@ -1,7 +1,7 @@
 package net.catsnap.domain.feed.entity;
 
 import net.catsnap.domain.notification.entity.PhotographerSubscribeNotification;
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

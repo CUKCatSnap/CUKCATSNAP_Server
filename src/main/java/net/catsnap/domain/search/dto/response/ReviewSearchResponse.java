@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import java.util.List;
-import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
-import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
 import net.catsnap.domain.review.entity.Review;
+import net.catsnap.domain.user.member.dto.response.MemberTinyInformationResponse;
+import net.catsnap.domain.user.photographer.dto.response.PhotographerTinyInformationResponse;
 
 public record ReviewSearchResponse(
     MemberTinyInformationResponse memberTinyInformation,

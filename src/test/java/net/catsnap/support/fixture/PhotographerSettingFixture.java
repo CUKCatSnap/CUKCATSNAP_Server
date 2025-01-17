@@ -1,6 +1,6 @@
 package net.catsnap.support.fixture;
 
-import net.catsnap.domain.photographer.document.PhotographerSetting;
+import net.catsnap.domain.user.photographer.document.PhotographerSetting;
 
 public class PhotographerSettingFixture {
 

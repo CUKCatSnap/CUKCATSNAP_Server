@@ -1,8 +1,8 @@
 package net.catsnap.domain.reservation.repository;
 
 
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.support.fixture.PhotographerFixture;
 import net.catsnap.support.fixture.ProgramFixture;

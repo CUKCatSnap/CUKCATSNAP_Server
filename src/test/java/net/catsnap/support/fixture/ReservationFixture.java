@@ -1,11 +1,11 @@
 package net.catsnap.support.fixture;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.photographer.entity.Photographer;
+import java.time.LocalDateTime;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.ReservationState;
-import java.time.LocalDateTime;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import org.locationtech.jts.geom.Point;
 
 public class ReservationFixture {

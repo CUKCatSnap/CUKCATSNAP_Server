@@ -1,19 +1,19 @@
 package net.catsnap.domain.reservation.repository;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.ReservationState;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.data.jpa.confiog.JpaConfig;
 import net.catsnap.support.fixture.MemberFixture;
 import net.catsnap.support.fixture.PhotographerFixture;
 import net.catsnap.support.fixture.ProgramFixture;
 import net.catsnap.support.fixture.ReservationFixture;
-import java.time.LocalDateTime;
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;

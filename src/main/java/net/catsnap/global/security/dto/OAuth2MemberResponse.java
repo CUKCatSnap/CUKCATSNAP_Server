@@ -3,8 +3,8 @@ package net.catsnap.global.security.dto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.entity.SnsType;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.entity.SnsType;
 
 public record OAuth2MemberResponse(
     String snsId,

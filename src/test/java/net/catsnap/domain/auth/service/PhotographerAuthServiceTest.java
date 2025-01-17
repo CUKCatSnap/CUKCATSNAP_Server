@@ -9,11 +9,11 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
-import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
-import net.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
-import net.catsnap.domain.photographer.repository.PhotographerSettingRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerSettingRepository;
 import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import net.catsnap.support.fixture.PhotographerSignUpRequestFixture;

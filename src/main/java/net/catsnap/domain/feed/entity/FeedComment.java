@@ -1,9 +1,5 @@
 package net.catsnap.domain.feed.entity;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.notification.entity.FeedCommentNotification;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,6 +15,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.catsnap.domain.notification.entity.FeedCommentNotification;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.global.entity.BaseTimeEntity;
 
 @Entity
 @Table(name = "feed_comment")

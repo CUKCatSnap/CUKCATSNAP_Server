@@ -1,16 +1,16 @@
 package net.catsnap.domain.review.repository;
 
 import java.util.Optional;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.review.entity.ReviewLike;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.support.fixture.MemberFixture;
 import net.catsnap.support.fixture.PhotographerFixture;
 import net.catsnap.support.fixture.ProgramFixture;
@@ -46,7 +46,7 @@ class ReviewLikeRepositoryTest {
 
     @Autowired
     private ReviewRepository reviewRepository;
-    
+
     @Test
     void 특정_리뷰에_좋아요_수를_조회() {
         //given

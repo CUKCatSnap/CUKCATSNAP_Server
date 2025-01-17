@@ -4,14 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
-import net.catsnap.domain.photographer.document.PhotographerSetting;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
-import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
-import net.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
-import net.catsnap.domain.photographer.service.PhotographerService;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import net.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
@@ -25,6 +17,14 @@ import net.catsnap.domain.reservation.entity.ReservationQueryType;
 import net.catsnap.domain.reservation.entity.ReservationState;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
+import net.catsnap.domain.user.photographer.document.PhotographerSetting;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
+import net.catsnap.domain.user.photographer.service.PhotographerService;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotReserveAfterDeadline;
 import net.catsnap.global.Exception.reservation.CanNotStartTimeBeforeNow;
@@ -69,7 +69,7 @@ public class MemberReservationService {
         }
 
         reservationRepository.acquireReservationLock(memberReservationRequest.photographerId());
-        
+
         /*
          * 1. 해당 작가가 해당 일에 예약을 받을 수 있게 했는지 확인
          * 2. 예약 시작 시간이 현재 시간보다 이후인지 확인

@@ -2,8 +2,8 @@ package net.catsnap.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.member.request.MemberSignUpRequest;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

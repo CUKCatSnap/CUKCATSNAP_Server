@@ -1,6 +1,6 @@
 package net.catsnap.support.fixture;
 
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.entity.Program;
 
 public class ProgramFixture {

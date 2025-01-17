@@ -1,12 +1,12 @@
 package net.catsnap.domain.reservation.dto.photographer.response;
 
-import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDateTime;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
 import net.catsnap.domain.reservation.dto.ReservedProgramResponse;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.ReservationState;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.LocalDateTime;
+import net.catsnap.domain.user.member.dto.response.MemberTinyInformationResponse;
 
 public record PhotographerReservationInformationResponse(
     Long reservationId,
