@@ -2,8 +2,8 @@ package net.catsnap.global.security.service;
 
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
 import net.catsnap.global.security.dto.OAuth2MemberResponse;
 import net.catsnap.global.security.oauth2user.MemberOAuth2User;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

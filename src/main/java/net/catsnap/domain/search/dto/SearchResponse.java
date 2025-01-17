@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
-import net.catsnap.domain.member.dto.response.MemberTinyInformationResponse;
-import net.catsnap.domain.photographer.dto.response.PhotographerFullyInformationResponse;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
+import net.catsnap.domain.user.member.dto.response.MemberTinyInformationResponse;
+import net.catsnap.domain.user.photographer.dto.response.PhotographerFullyInformationResponse;
 
 public class SearchResponse {
 

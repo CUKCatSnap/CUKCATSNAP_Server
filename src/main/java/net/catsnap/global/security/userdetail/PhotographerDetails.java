@@ -1,6 +1,6 @@
 package net.catsnap.global.security.userdetail;
 
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import java.util.Collection;
 import java.util.List;

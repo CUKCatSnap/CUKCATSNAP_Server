@@ -1,7 +1,7 @@
 package net.catsnap.support.fixture;
 
 import java.time.LocalDate;
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 
 public class PhotographerFixture {
 

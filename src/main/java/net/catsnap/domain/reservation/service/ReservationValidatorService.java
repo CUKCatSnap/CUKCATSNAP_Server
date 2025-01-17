@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.photographer.document.PhotographerSetting;
+import net.catsnap.domain.user.photographer.document.PhotographerSetting;
 import net.catsnap.domain.reservation.document.ReservationTimeFormat;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.Weekday;

@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
 import java.util.List;
 import net.catsnap.domain.auth.dto.TermsAgreementRequest;
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 
 public record PhotographerSignUpRequest(
     String identifier,

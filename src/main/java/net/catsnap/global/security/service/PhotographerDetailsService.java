@@ -1,7 +1,7 @@
 package net.catsnap.global.security.service;
 
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.security.userdetail.PhotographerDetails;
 import jakarta.transaction.Transactional;
 import java.util.Optional;

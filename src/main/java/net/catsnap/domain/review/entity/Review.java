@@ -16,10 +16,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.member.entity.Member;
 import net.catsnap.domain.notification.entity.PlaceSubscribeNotification;
-import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.entity.Reservation;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.entity.BaseTimeEntity;
 
 @Entity

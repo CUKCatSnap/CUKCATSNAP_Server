@@ -1,7 +1,7 @@
 package net.catsnap.domain.reservation.dto.photographer.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.entity.Program;
 
 public record ProgramRequest(

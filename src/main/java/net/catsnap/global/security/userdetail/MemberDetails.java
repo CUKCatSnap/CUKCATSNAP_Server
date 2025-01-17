@@ -1,10 +1,10 @@
 package net.catsnap.global.security.userdetail;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.global.security.authority.CatsnapAuthority;
 import java.util.Collection;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.global.security.authority.CatsnapAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

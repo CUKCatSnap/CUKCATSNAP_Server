@@ -8,8 +8,8 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 import net.catsnap.domain.auth.dto.member.request.MemberSignUpRequest;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import net.catsnap.support.fixture.MemberFixture;
 import net.catsnap.support.fixture.MemberSignUpRequestFixture;

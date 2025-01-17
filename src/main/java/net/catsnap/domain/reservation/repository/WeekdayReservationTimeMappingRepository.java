@@ -1,6 +1,6 @@
 package net.catsnap.domain.reservation.repository;
 
-import net.catsnap.domain.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.entity.Weekday;
 import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import java.util.List;

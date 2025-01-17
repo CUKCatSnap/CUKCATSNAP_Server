@@ -1,6 +1,6 @@
 package net.catsnap.domain.social.controller;
 
-import net.catsnap.domain.photographer.dto.PhotographerResponse;
+import net.catsnap.domain.user.photographer.dto.PhotographerResponse;
 import net.catsnap.domain.social.dto.SocialResponse;
 import net.catsnap.global.result.PagedData;
 import net.catsnap.global.result.ResultResponse;

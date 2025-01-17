@@ -2,12 +2,12 @@ package net.catsnap.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
-import net.catsnap.domain.photographer.document.PhotographerSetting;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.photographer.repository.PhotographerRepository;
-import net.catsnap.domain.photographer.repository.PhotographerReservationLocationRepository;
-import net.catsnap.domain.photographer.repository.PhotographerReservationNoticeRepository;
-import net.catsnap.domain.photographer.repository.PhotographerSettingRepository;
+import net.catsnap.domain.user.photographer.document.PhotographerSetting;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
+import net.catsnap.domain.user.photographer.repository.PhotographerSettingRepository;
 import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import org.springframework.security.crypto.password.PasswordEncoder;

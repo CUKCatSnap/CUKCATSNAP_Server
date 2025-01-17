@@ -1,11 +1,11 @@
 package net.catsnap.domain.review.dto.request;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.photographer.entity.Photographer;
-import net.catsnap.domain.reservation.entity.Reservation;
-import net.catsnap.domain.review.entity.Review;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
+import net.catsnap.domain.reservation.entity.Reservation;
+import net.catsnap.domain.review.entity.Review;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 
 public record PostReviewRequest(
     @Schema(description = "리뷰를 남기고자 하는 예약의 Id")

@@ -5,8 +5,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
 import java.util.List;
 import net.catsnap.domain.auth.dto.TermsAgreementRequest;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.entity.SnsType;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.entity.SnsType;
 
 public record MemberSignUpRequest(
     String identifier,

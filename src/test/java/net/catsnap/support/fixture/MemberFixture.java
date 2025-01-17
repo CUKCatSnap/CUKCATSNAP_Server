@@ -2,8 +2,8 @@ package net.catsnap.support.fixture;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.entity.SnsType;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.entity.SnsType;
 
 public class MemberFixture {
 

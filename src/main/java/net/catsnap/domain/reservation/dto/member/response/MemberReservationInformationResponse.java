@@ -3,7 +3,7 @@ package net.catsnap.domain.reservation.dto.member.response;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
-import net.catsnap.domain.photographer.dto.response.PhotographerTinyInformationResponse;
+import net.catsnap.domain.user.photographer.dto.response.PhotographerTinyInformationResponse;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
 import net.catsnap.domain.reservation.dto.ReservedProgramResponse;
 import net.catsnap.domain.reservation.entity.Reservation;

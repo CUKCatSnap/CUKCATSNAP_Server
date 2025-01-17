@@ -1,9 +1,9 @@
 package net.catsnap.support.fixture;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.photographer.entity.Photographer;
 import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.review.entity.ReviewLike;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 
 public class ReviewLikeFixture {
 

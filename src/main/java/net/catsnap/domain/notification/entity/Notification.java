@@ -1,7 +1,5 @@
 package net.catsnap.domain.notification.entity;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.photographer.entity.Photographer;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -20,6 +18,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 

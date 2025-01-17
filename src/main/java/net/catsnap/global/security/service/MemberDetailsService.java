@@ -1,11 +1,11 @@
 package net.catsnap.global.security.service;
 
-import net.catsnap.domain.member.entity.Member;
-import net.catsnap.domain.member.repository.MemberRepository;
-import net.catsnap.global.security.userdetail.MemberDetails;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.domain.user.member.repository.MemberRepository;
+import net.catsnap.global.security.userdetail.MemberDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
