@@ -15,7 +15,7 @@ import net.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter
 import net.catsnap.global.security.filter.RefreshAccessTokenFilter;
 import net.catsnap.global.security.filter.SignInAuthenticationFilter;
 import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
-import net.catsnap.global.security.provider.MemberAuthenticationProvider;
+import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
 import net.catsnap.global.security.provider.PhotographerAuthenticationProvider;
 import net.catsnap.global.security.service.MemberDetailsService;
 import net.catsnap.global.security.service.MemberOAuth2UserService;
@@ -69,8 +69,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public MemberAuthenticationProvider memberAuthenticationProvider() {
-        return new MemberAuthenticationProvider(memberDetailsService(), passwordEncoder());
+    public CatsnapAuthenticationProvider memberAuthenticationProvider() {
+        return new CatsnapAuthenticationProvider(memberDetailsService(), passwordEncoder());
     }
 
     @Bean

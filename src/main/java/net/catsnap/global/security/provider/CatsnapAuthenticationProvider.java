@@ -1,8 +1,9 @@
 package net.catsnap.global.security.provider;
 
+import lombok.RequiredArgsConstructor;
+import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
 import net.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
 import net.catsnap.global.security.service.MemberDetailsService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -11,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RequiredArgsConstructor
-public class MemberAuthenticationProvider implements AuthenticationProvider {
+public class CatsnapAuthenticationProvider implements AuthenticationProvider {
 
     private final MemberDetailsService memberDetailsService;
     private final PasswordEncoder passwordEncoder;
@@ -37,6 +38,6 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return MemberAuthenticationToken.class.isAssignableFrom(authentication);
+        return CatsnapAuthenticationToken.class.isAssignableFrom(authentication);
     }
 }
