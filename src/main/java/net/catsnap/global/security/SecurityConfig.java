@@ -7,19 +7,15 @@ import java.util.Collections;
 import java.util.List;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.filter.JwtAuthenticationFilter;
-import net.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
 import net.catsnap.global.security.filter.RefreshAccessTokenFilter;
 import net.catsnap.global.security.filter.SignInAuthenticationFilter;
 import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
-import net.catsnap.global.security.provider.PhotographerAuthenticationProvider;
 import net.catsnap.global.security.service.CatsnapUserDetailsService;
 import net.catsnap.global.security.service.MemberOAuth2UserService;
-import net.catsnap.global.security.service.PhotographerDetailsService;
 import net.catsnap.global.security.util.JwtTokenAuthentication;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.context.annotation.Bean;
@@ -48,7 +44,6 @@ public class SecurityConfig {
 
     private final ObjectMapper objectMapper;
     private final ServletSecurityResponse servletSecurityResponse;
-    private final PhotographerRepository photographerRepository;
     private final SecretKey secretKey;
     private final MemberOAuth2UserService memberOAuth2UserService;
     private final UserRepository userRepository;
@@ -59,31 +54,19 @@ public class SecurityConfig {
     }
 
     @Bean
-    public CatsnapUserDetailsService memberDetailsService() {
+    public CatsnapUserDetailsService catsnapUserDetailsService() {
         return new CatsnapUserDetailsService(userRepository);
     }
 
     @Bean
-    public PhotographerDetailsService photographerDetailsService() {
-        return new PhotographerDetailsService(photographerRepository);
-    }
-
-    @Bean
-    public CatsnapAuthenticationProvider memberAuthenticationProvider() {
-        return new CatsnapAuthenticationProvider(memberDetailsService(), passwordEncoder());
-    }
-
-    @Bean
-    public PhotographerAuthenticationProvider photographerAuthenticationProvider() {
-        return new PhotographerAuthenticationProvider(photographerDetailsService(),
-            passwordEncoder());
+    public CatsnapAuthenticationProvider CatsnapAuthenticationProvider() {
+        return new CatsnapAuthenticationProvider(catsnapUserDetailsService(), passwordEncoder());
     }
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
         List<AuthenticationProvider> providers = new ArrayList<>();
-        providers.add(memberAuthenticationProvider());
-        providers.add(photographerAuthenticationProvider());
+        providers.add(CatsnapAuthenticationProvider());
         return new ProviderManager(providers);
     }
 
@@ -124,11 +107,6 @@ public class SecurityConfig {
             .logout(LogoutConfigurer::disable)
             .addFilterAt(
                 new SignInAuthenticationFilter(authenticationManager(), objectMapper,
-                    servletSecurityResponse),
-                BasicAuthenticationFilter.class
-            )
-            .addFilterAt(
-                new PhotographerSignInAuthenticationFilter(authenticationManager(), objectMapper,
                     servletSecurityResponse),
                 BasicAuthenticationFilter.class
             )
