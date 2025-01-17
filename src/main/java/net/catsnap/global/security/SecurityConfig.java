@@ -126,6 +126,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
                     .anyRequest().permitAll()
+            )
+            .anonymous(
+                anonymousConfigurer -> anonymousConfigurer
+                    .principal("anonymous")
+                    .authorities(List.of(CatsnapAuthority.ANONYMOUS))
             );
         return http.build();
     }
