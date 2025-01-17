@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StreamUtils;
 
 public class SignInAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
@@ -27,7 +28,7 @@ public class SignInAuthenticationFilter extends AbstractAuthenticationProcessing
 
     public SignInAuthenticationFilter(AuthenticationManager authenticationManager,
         ObjectMapper objectMapper, ServletSecurityResponse servletSecurityResponse) {
-        super("/member/signin/catsnap", authenticationManager);
+        super(new AntPathRequestMatcher("/*/signin/catsnap"), authenticationManager);
         this.objectMapper = objectMapper;
         this.servletSecurityResponse = servletSecurityResponse;
     }
