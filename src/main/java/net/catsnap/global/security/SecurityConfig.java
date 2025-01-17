@@ -11,9 +11,9 @@ import net.catsnap.domain.user.member.repository.MemberRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.filter.JwtAuthenticationFilter;
-import net.catsnap.global.security.filter.MemberSignInAuthenticationFilter;
 import net.catsnap.global.security.filter.PhotographerSignInAuthenticationFilter;
 import net.catsnap.global.security.filter.RefreshAccessTokenFilter;
+import net.catsnap.global.security.filter.SignInAuthenticationFilter;
 import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.MemberAuthenticationProvider;
 import net.catsnap.global.security.provider.PhotographerAuthenticationProvider;
@@ -123,7 +123,7 @@ public class SecurityConfig {
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
             .addFilterAt(
-                new MemberSignInAuthenticationFilter(authenticationManager(), objectMapper,
+                new SignInAuthenticationFilter(authenticationManager(), objectMapper,
                     servletSecurityResponse),
                 BasicAuthenticationFilter.class
             )
