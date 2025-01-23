@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.member.request.MemberSignUpRequest;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.member.repository.MemberRepository;
+import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberAuthService {
 
+    private final UserRepository userRepository;
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void singUp(MemberSignUpRequest memberSignUpRequest) {
-        memberRepository.findByIdentifier(memberSignUpRequest.identifier())
-            .ifPresent(member -> {
+        userRepository.findByIdentifier(memberSignUpRequest.identifier())
+            .ifPresent(user -> {
                 throw new DuplicatedMemberIdException("이미 존재하는 아이디입니다.");
             });
         String hashedPassword = passwordEncoder.encode(memberSignUpRequest.password());

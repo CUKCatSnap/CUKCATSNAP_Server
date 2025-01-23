@@ -6,6 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,8 @@ import net.catsnap.domain.social.entity.PhotographerBlock;
 import net.catsnap.domain.social.entity.PhotographerSubscribe;
 import net.catsnap.domain.social.entity.PlaceSubscribe;
 import net.catsnap.domain.user.entity.User;
+import net.catsnap.global.security.authority.CatsnapAuthority;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "model")
@@ -67,4 +70,9 @@ public class Member extends User {
 
     @OneToMany(mappedBy = "member")
     private List<Notification> notificationList;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(CatsnapAuthority.MEMBER);
+    }
 }
