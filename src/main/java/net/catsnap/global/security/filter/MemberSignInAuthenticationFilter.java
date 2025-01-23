@@ -1,5 +1,11 @@
 package net.catsnap.global.security.filter;
 
+import net.catsnap.global.result.code.SecurityResultCode;
+import net.catsnap.global.result.errorcode.SecurityErrorCode;
+import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import net.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
+import net.catsnap.global.security.dto.SecurityRequest;
+import net.catsnap.global.security.util.ServletSecurityResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -9,26 +15,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import net.catsnap.global.result.code.SecurityResultCode;
-import net.catsnap.global.result.errorcode.SecurityErrorCode;
-import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
-import net.catsnap.global.security.dto.SecurityRequest;
-import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StreamUtils;
 
-public class SignInAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+public class MemberSignInAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private final ObjectMapper objectMapper;
     private final ServletSecurityResponse servletSecurityResponse;
 
-    public SignInAuthenticationFilter(AuthenticationManager authenticationManager,
+    public MemberSignInAuthenticationFilter(AuthenticationManager authenticationManager,
         ObjectMapper objectMapper, ServletSecurityResponse servletSecurityResponse) {
-        super(new AntPathRequestMatcher("/*/signin/catsnap"), authenticationManager);
+        super("/member/signin/catsnap", authenticationManager);
         this.objectMapper = objectMapper;
         this.servletSecurityResponse = servletSecurityResponse;
     }
@@ -54,7 +54,7 @@ public class SignInAuthenticationFilter extends AbstractAuthenticationProcessing
 
         String identifier = catsnapSignInRequest.getIdentifier();
         String password = catsnapSignInRequest.getPassword();
-        CatsnapAuthenticationToken beforeAuthenticationToken = new CatsnapAuthenticationToken(
+        CatsnapAuthenticationToken beforeAuthenticationToken = new MemberAuthenticationToken(
             identifier, password);
         AuthenticationManager authenticationManager = this.getAuthenticationManager();
         return authenticationManager.authenticate(beforeAuthenticationToken);

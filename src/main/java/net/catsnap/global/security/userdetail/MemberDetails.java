@@ -1,29 +1,31 @@
 package net.catsnap.global.security.userdetail;
 
 import java.util.Collection;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.user.entity.User;
+import net.catsnap.domain.user.member.entity.Member;
+import net.catsnap.global.security.authority.CatsnapAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @RequiredArgsConstructor
-public class CatsnapUserDetails implements UserDetails {
+public class MemberDetails implements UserDetails {
 
-    private final User user;
+    private final Member member;
 
     @Override
     public String getUsername() {
-        return user.getIdentifier();
+        return member.getIdentifier();
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getAuthorities();
+        return List.of(CatsnapAuthority.MEMBER);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class CatsnapUserDetails implements UserDetails {
         return true;
     }
 
-    public Long getDatabaseId() {
-        return user.getId();
+    public Long memberId() {
+        return member.getId();
     }
 }

@@ -2,14 +2,13 @@ package net.catsnap.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
-import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.domain.user.photographer.document.PhotographerSetting;
 import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerSettingRepository;
-import net.catsnap.domain.user.repository.UserRepository;
+import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PhotographerAuthService {
 
-    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final PhotographerRepository photographerRepository;
     private final PhotographerSettingRepository photographerSettingRepository;
@@ -30,8 +28,8 @@ public class PhotographerAuthService {
 
     @Transactional
     public void singUp(PhotographerSignUpRequest photographerSignUpRequest) {
-        userRepository.findByIdentifier(photographerSignUpRequest.identifier())
-            .ifPresent(user -> {
+        photographerRepository.findByIdentifier(photographerSignUpRequest.identifier())
+            .ifPresent(Photographer -> {
                 throw new DuplicatedPhotographerException("이미 존재하는 아이디입니다.");
             });
 
