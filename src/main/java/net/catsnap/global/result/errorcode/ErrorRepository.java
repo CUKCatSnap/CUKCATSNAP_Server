@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import net.catsnap.global.Exception.BusinessException;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
+import net.catsnap.global.Exception.authority.UnauthorizedAccessException;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import net.catsnap.global.Exception.reservation.CanNotChangeReservationState;
@@ -38,6 +39,7 @@ public class ErrorRepository {
         errorMap.put(CanNotReserveAfterDeadline.class,
             ReservationErrorCode.CANNOT_RESERVATION_AFTER_DEADLINE);
         errorMap.put(ResourceNotFoundException.class, OwnershipErrorCode.NOT_FOUND_RESOURCE);
+        errorMap.put(UnauthorizedAccessException.class, SecurityErrorCode.NOT_AUTHENTICATED);
     }
 
     public ResultCode getResultCode(BusinessException e) {
