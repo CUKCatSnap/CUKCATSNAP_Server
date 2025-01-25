@@ -1,9 +1,5 @@
 package net.catsnap.global.security.filter;
 
-import net.catsnap.global.result.errorcode.SecurityErrorCode;
-import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
-import net.catsnap.global.security.util.ServletSecurityResponse;
-import net.catsnap.global.security.util.TokenAuthentication;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
@@ -14,6 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.global.result.errorcode.SecurityErrorCode;
+import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import net.catsnap.global.security.util.ServletSecurityResponse;
+import net.catsnap.global.security.util.TokenAuthentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -28,7 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         FilterChain filterChain) throws ServletException, IOException {
         String jwt = request.getHeader("Authorization");
         if (jwt == null) {
-            unsuccessfulAuthentication(request, response, SecurityErrorCode.NOT_AUTHENTICATED);
+            filterChain.doFilter(request, response);
         } else {
             jwt = parseJwt(jwt);
             try {

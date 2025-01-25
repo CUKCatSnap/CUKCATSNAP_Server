@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.member.request.MemberSignUpRequest;
+import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.service.MemberAuthService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.MemberResultCode;
@@ -32,6 +33,7 @@ public class MemberAuthController {
         @ApiResponse(responseCode = "409 EM000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
     @PostMapping("/member/signup/catsnap")
+    @AnyUser
     public ResponseEntity<ResultResponse<MemberResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody

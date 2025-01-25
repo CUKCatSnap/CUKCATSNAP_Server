@@ -93,18 +93,16 @@ public class SecurityConfig {
         return new OAuth2LoginSuccessHandler(servletSecurityResponse);
     }
 
-    /*
-     * 로그인, 회원가입 관련 필터 설정
-     */
     @Bean
-    public SecurityFilterChain signInUpConfig(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .securityMatcher("/member/signup/catsnap", "/photographer/signup/catsnap",
-                "/member/signin/catsnap", "/photographer/signin/catsnap", "/refresh/access-token",
-                "/oauth2/authorization/naver", "/login/oauth2/code/naver")
+            .securityMatcher("/**")
             .formLogin(FormLoginConfigurer::disable)
             .httpBasic(HttpBasicConfigurer::disable)
             .logout(LogoutConfigurer::disable)
+            .csrf(AbstractHttpConfigurer::disable)
+            .cors(cors -> cors
+                .configurationSource(corsConfigurationSource()))
             .addFilterAt(
                 new SignInAuthenticationFilter(authenticationManager(), objectMapper,
                     servletSecurityResponse),
@@ -120,103 +118,9 @@ public class SecurityConfig {
                 )
                 .successHandler(oAuth2LoginSuccessHandler())
             )
-            .csrf(AbstractHttpConfigurer::disable)
-            .cors(cors -> cors
-                .configurationSource(corsConfigurationSource()))
-            .authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
-                    .anyRequest().permitAll()
-            )
-            .anonymous(
-                anonymousConfigurer -> anonymousConfigurer
-                    .principal("anonymous")
-                    .authorities(List.of(CatsnapAuthority.ANONYMOUS))
-            );
-        return http.build();
-    }
-
-    /*
-     * Photographer 계정으로 로그인 후 접근해야 하는 리소스에 대한 필터 설정
-     */
-    @Bean
-    public SecurityFilterChain authenticatedPhotographerConfig(HttpSecurity http) throws Exception {
-        http
-            .securityMatcher("/reservation/photographer/my/**", "/photographer/my/**")
-            .formLogin(FormLoginConfigurer::disable)
-            .httpBasic(HttpBasicConfigurer::disable)
-            .logout(LogoutConfigurer::disable)
             .addFilterAt(
                 new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
                 BasicAuthenticationFilter.class)
-            .csrf(AbstractHttpConfigurer::disable)
-            .cors(cors -> cors
-                .configurationSource(corsConfigurationSource()))
-            .authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
-                    .anyRequest().hasAuthority(CatsnapAuthority.PHOTOGRAPHER.name())
-            );
-        return http.build();
-    }
-
-    /*
-     * Member 계정으로 로그인 후 접근해야 하는 리소스에 대한 필터 설정
-     */
-    @Bean
-    public SecurityFilterChain authenticatedMemberConfig(HttpSecurity http) throws Exception {
-        http
-            .securityMatcher("/reservation/member/my/**", "/reservation/member/book", "/review")
-            .formLogin(FormLoginConfigurer::disable)
-            .httpBasic(HttpBasicConfigurer::disable)
-            .logout(LogoutConfigurer::disable)
-            .addFilterAt(
-                new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
-                BasicAuthenticationFilter.class)
-            .csrf(AbstractHttpConfigurer::disable)
-            .cors(cors -> cors
-                .configurationSource(corsConfigurationSource()))
-            .authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
-                    .anyRequest().hasAuthority(CatsnapAuthority.MEMBER.name())
-            );
-        return http.build();
-    }
-
-    /*
-     * Photographer 또는 Member 계정으로 로그인 후 접근해야 하는 리소스에 대한 필터 설정
-     */
-    @Bean
-    public SecurityFilterChain authenticatedUserConfig(HttpSecurity http) throws Exception {
-        http
-            .securityMatcher("/review/like/*")
-            .formLogin(FormLoginConfigurer::disable)
-            .httpBasic(HttpBasicConfigurer::disable)
-            .logout(LogoutConfigurer::disable)
-            .addFilterAt(
-                new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
-                BasicAuthenticationFilter.class)
-            .csrf(AbstractHttpConfigurer::disable)
-            .cors(cors -> cors
-                .configurationSource(corsConfigurationSource()))
-            .authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
-                    .anyRequest().hasAnyAuthority(CatsnapAuthority.MEMBER.name(),
-                        CatsnapAuthority.PHOTOGRAPHER.name())
-            );
-        return http.build();
-    }
-
-    /*
-     * 로그인 없이 접근 가능한 리소스에 대한 필터 설정
-     */
-    @Bean
-    public SecurityFilterChain publicResourceConfig(HttpSecurity http) throws Exception {
-        http.securityMatcher("/**")
-            .formLogin(FormLoginConfigurer::disable)
-            .httpBasic(HttpBasicConfigurer::disable)
-            .logout(LogoutConfigurer::disable)
-            .csrf(AbstractHttpConfigurer::disable)
-            .cors(cors -> cors
-                .configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
                     .anyRequest().permitAll()

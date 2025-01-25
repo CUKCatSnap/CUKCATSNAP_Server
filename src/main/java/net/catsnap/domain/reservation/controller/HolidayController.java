@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.reservation.dto.HolidayListResponse;
 import net.catsnap.domain.reservation.service.HolidayService;
 import net.catsnap.global.result.ResultResponse;
@@ -31,6 +32,7 @@ public class HolidayController {
         @ApiResponse(responseCode = "200 SR014", description = "성공적으로 휴일 정보를 업데이트했습니다."),
     })
     @PostMapping
+    @AnyUser
     public ResponseEntity<ResultResponse<ReservationResultCode>> saveHolidays() {
         holidayService.saveHolidays();
         return ResultResponse.of(ReservationResultCode.HOLIDAY_UPDATE);
@@ -41,6 +43,7 @@ public class HolidayController {
         @ApiResponse(responseCode = "200 SR015", description = "성공적으로 휴일 정보를 조회했습니다."),
     })
     @GetMapping
+    @AnyUser
     public ResponseEntity<ResultResponse<HolidayListResponse>> getHoliday(
         @RequestParam("yearMonth")
         @Parameter(description = "공휴일 조회하고 싶은 달", example = "yyyy-MM")

@@ -1,17 +1,19 @@
 package net.catsnap.domain.reservation.controller;
 
-import net.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
-import net.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
-import net.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
-import net.catsnap.domain.reservation.service.ProgramService;
-import net.catsnap.global.result.ResultResponse;
-import net.catsnap.global.result.code.ReservationResultCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.interceptor.AnyUser;
+import net.catsnap.domain.auth.interceptor.LoginPhotographer;
+import net.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
+import net.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
+import net.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
+import net.catsnap.domain.reservation.service.ProgramService;
+import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.ReservationResultCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "200 SR002", description = "성공적으로 예약 가능한 프로그램을 조회했습니다.")
     })
     @GetMapping("/photographer/program")
+    @AnyUser
     public ResponseEntity<ResultResponse<PhotographerProgramListResponse>> getPhotographerProgram(
         @RequestParam("photographerId")
         Long photographerId
@@ -55,6 +58,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/photographer/my/program")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<photographerProgramIdResponse>> postProgram(
         @Parameter(description = "예약 프로그램", required = true)
         @RequestBody
@@ -77,6 +81,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "200 SR013", description = "성공적으로가 예약 프로그램을 조회했습니다.")
     )
     @GetMapping("/photographer/my/program")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<PhotographerProgramListResponse>> getProgram() {
         PhotographerProgramListResponse photographerProgramListResponse = programService.getMyProgramList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM,
@@ -92,6 +97,7 @@ public class ProgramController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @DeleteMapping("/photographer/my/program")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationResultCode>> deleteProgram(
         @Parameter(description = "삭제하고자 하는 예약 프로그램의 id", required = true)
         @RequestParam("programId")
