@@ -1,7 +1,5 @@
 package net.catsnap.domain.auth.argumentresolver;
 
-import net.catsnap.domain.auth.annotation.LoginPhotographer;
-import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -11,14 +9,11 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 @Component
-public class LoginPhotographerArgumentResolver implements HandlerMethodArgumentResolver {
+public class UserIdArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        boolean isLoginMemberAnnotation = parameter.hasParameterAnnotation(LoginPhotographer.class);
-        boolean isPhotographerLogin =
-            GetAuthenticationInfo.getAuthority() == CatsnapAuthority.PHOTOGRAPHER;
-        return isLoginMemberAnnotation && isPhotographerLogin;
+        return parameter.hasParameterAnnotation(UserId.class);
     }
 
     @Override
