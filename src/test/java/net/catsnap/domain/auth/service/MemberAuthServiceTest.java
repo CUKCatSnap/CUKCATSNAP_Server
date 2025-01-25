@@ -10,6 +10,7 @@ import java.util.Optional;
 import net.catsnap.domain.auth.dto.member.request.MemberSignUpRequest;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.member.repository.MemberRepository;
+import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.Exception.member.DuplicatedMemberIdException;
 import net.catsnap.support.fixture.MemberFixture;
 import net.catsnap.support.fixture.MemberSignUpRequestFixture;
@@ -33,9 +34,12 @@ class MemberAuthServiceTest {
     private MemberAuthService memberAuthService;
 
     @Mock
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
     @Mock
     private PasswordEncoder passwordEncoder;
+    @Mock
+    private MemberRepository memberRepository;
+
 
     @Nested
     class 사용자_회웝_가입 {
@@ -46,7 +50,7 @@ class MemberAuthServiceTest {
             MemberSignUpRequest memberSignUpRequest = MemberSignUpRequestFixture.memberSignUpRequest()
                 .password("rawPassword")
                 .build();
-            given(memberRepository.findByIdentifier(memberSignUpRequest.identifier())).willReturn(
+            given(userRepository.findByIdentifier(memberSignUpRequest.identifier())).willReturn(
                 Optional.empty());
             given(passwordEncoder.encode(memberSignUpRequest.password())).willReturn(
                 "hashedPassword");
@@ -68,7 +72,7 @@ class MemberAuthServiceTest {
             Member member = MemberFixture.member()
                 .identifier(memberSignUpRequest.identifier())
                 .build();
-            given(memberRepository.findByIdentifier(memberSignUpRequest.identifier())).willReturn(
+            given(userRepository.findByIdentifier(memberSignUpRequest.identifier())).willReturn(
                 Optional.of(member));
 
             //when, then

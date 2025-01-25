@@ -9,12 +9,13 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
+import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerSettingRepository;
-import net.catsnap.domain.reservation.service.PhotographerReservationService;
+import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import net.catsnap.support.fixture.PhotographerSignUpRequestFixture;
 import org.assertj.core.api.Assertions;
@@ -48,6 +49,8 @@ class PhotographerAuthServiceTest {
     private PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     @Mock
     private PhotographerReservationLocationRepository photographerReservationLocationRepository;
+    @Mock
+    private UserRepository userRepository;
 
     @Nested
     class 작가_회원_가입_테스트 {
@@ -58,7 +61,7 @@ class PhotographerAuthServiceTest {
             PhotographerSignUpRequest photographerSignUpRequest = PhotographerSignUpRequestFixture.photographerSignUpRequest()
                 .password("rawPassword")
                 .build();
-            given(photographerRepository.findByIdentifier(
+            given(userRepository.findByIdentifier(
                 photographerSignUpRequest.identifier())).willReturn(
                 Optional.empty());
             given(passwordEncoder.encode(photographerSignUpRequest.password())).willReturn(
@@ -85,7 +88,7 @@ class PhotographerAuthServiceTest {
                 .identifier(photographerSignUpRequest.identifier())
                 .build();
 
-            given(photographerRepository.findByIdentifier(
+            given(userRepository.findByIdentifier(
                 photographerSignUpRequest.identifier())).willReturn(
                 Optional.of(photographer));
 
