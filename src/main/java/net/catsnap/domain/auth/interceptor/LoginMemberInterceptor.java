@@ -5,10 +5,9 @@ import net.catsnap.global.security.authority.CatsnapAuthority;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginMemberInterceptorAbstract
-    extends AbstractAuthInterceptor<LoginMember, CatsnapAuthority> {
+public class LoginMemberInterceptor extends AbstractAuthInterceptor<LoginMember, CatsnapAuthority> {
 
-    public LoginMemberInterceptorAbstract() {
+    public LoginMemberInterceptor() {
         super(LoginMember.class, List.of(CatsnapAuthority.MEMBER));
     }
 }
