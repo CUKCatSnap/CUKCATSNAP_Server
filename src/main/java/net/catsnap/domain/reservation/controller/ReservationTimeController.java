@@ -1,5 +1,14 @@
 package net.catsnap.domain.reservation.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import java.time.LocalDate;
+import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.interceptor.AnyUser;
+import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import net.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
@@ -8,13 +17,6 @@ import net.catsnap.domain.reservation.entity.Weekday;
 import net.catsnap.domain.reservation.service.ReservationTimeService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.ReservationResultCode;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import java.time.LocalDate;
-import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,6 +43,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "200 SR001", description = "성공적으로 예약 가능한 시간을 조회했습니다.")
     })
     @GetMapping("/time")
+    @AnyUser
     public ResponseEntity<ResultResponse<PhotographerAvailableReservationTimeListResponse>> getPhotographerAvailableReservationTimeList(
         @RequestParam("photographerId")
         Long photographerId,
@@ -65,6 +68,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/timeformat")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationTimeFormatIdResponse>> registerTimeFormat(
         @Parameter(description = "예약 시간 형식", required = true)
         @RequestBody
@@ -87,6 +91,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "200 SR012", description = "성공적으로 예약 시간 형식을 조회했습니다.")
     )
     @GetMapping("/my/timeformat")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationTimeFormatListResponse>> getTimeFormat() {
         ReservationTimeFormatListResponse reservationTimeFormatList = reservationTimeService.getMyReservationTimeFormatList();
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP,
@@ -104,6 +109,7 @@ public class ReservationTimeController {
     }
     )
     @DeleteMapping("/my/timeformat")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationResultCode>> deleteTimeFormat(
         @Parameter(description = "삭제하고자 하는 예약 시간 형식의 id", required = true)
         @RequestParam("timeFormatId")
@@ -124,6 +130,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @PostMapping("/my/weekday/timeformat")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationResultCode>> mappingTimeFormatToWeekdays(
         @Parameter(description = "예약 형식을 만들고자 하는 요일" +
             "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
@@ -149,6 +156,7 @@ public class ReservationTimeController {
         @ApiResponse(responseCode = "404 SO000", description = "해당 게시물의 소유권을 찾을 수 없습니다.")
     })
     @DeleteMapping("/my/weekday/timeformat")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationResultCode>> unmappingTimeFormatToWeekdays(
         @Parameter(description = "시간 형식을 삭제하고자 하는 요일" +
             "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",

@@ -1,11 +1,5 @@
 package net.catsnap.domain.reservation.controller;
 
-import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
-import net.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
-import net.catsnap.domain.reservation.entity.ReservationState;
-import net.catsnap.domain.reservation.service.PhotographerReservationService;
-import net.catsnap.global.result.ResultResponse;
-import net.catsnap.global.result.code.ReservationResultCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,6 +8,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.interceptor.LoginPhotographer;
+import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
+import net.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
+import net.catsnap.domain.reservation.entity.ReservationState;
+import net.catsnap.domain.reservation.service.PhotographerReservationService;
+import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.ReservationResultCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/month")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<MonthReservationCheckListResponse>> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
@@ -53,6 +55,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "200 SR000", description = "성공적으로 예약목록을 조회했습니다.")
     })
     @GetMapping("/my/day")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<PhotographerReservationInformationListResponse>> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
@@ -75,6 +78,7 @@ public class PhotographerReservationController {
         @ApiResponse(responseCode = "400 ER000", description = "해당 예약 상태에서 요청하신 예약상태로 변경할 수 없습니다.")
     })
     @PostMapping("/my/status")
+    @LoginPhotographer
     public ResponseEntity<ResultResponse<ReservationResultCode>> changeReservationStatus(
         @Parameter(description = "예약 id", required = true)
         @RequestParam("reservationId")

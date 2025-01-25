@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
+import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.service.PhotographerAuthService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.PhotographerResultCode;
@@ -31,6 +32,7 @@ public class PhotographerAuthController {
         @ApiResponse(responseCode = "409 EP000", description = "중복된 ID로 회원가입이 불가능 합니다.")
     })
     @PostMapping("/signup/catsnap")
+    @AnyUser
     public ResponseEntity<ResultResponse<PhotographerResultCode>> signUp(
         @Parameter(description = "회원가입 양식", required = true)
         @RequestBody

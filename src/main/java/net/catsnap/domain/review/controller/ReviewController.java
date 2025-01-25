@@ -7,6 +7,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.interceptor.AnyUser;
+import net.catsnap.domain.auth.interceptor.LoginMember;
+import net.catsnap.domain.auth.interceptor.LoginUser;
 import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
 import net.catsnap.domain.review.dto.request.PostReviewRequest;
 import net.catsnap.domain.review.service.ReviewService;
@@ -35,6 +38,7 @@ public class ReviewController {
         @ApiResponse(responseCode = "201 SV000", description = "새로운 리뷰를 업로드 했습니다.")
     })
     @PostMapping
+    @LoginMember
     public ResponseEntity<ResultResponse<ReviewPhotoPresignedURLResponse>> postReview(
         @Parameter(description = "새로운 리뷰를 만들 때 작성하는 형식입니다.")
         @RequestBody
@@ -49,6 +53,7 @@ public class ReviewController {
         @ApiResponse(responseCode = "200 SV001", description = "리뷰 좋아요를 토글했습니다.")
     })
     @PostMapping("/like/{reviewId}")
+    @LoginUser
     public ResponseEntity<ResultResponse<ReviewResultCode>> reviewLikeToggle(
         @Parameter(description = "리뷰 id")
         @RequestParam("reviewId")
@@ -63,6 +68,7 @@ public class ReviewController {
         @ApiResponse(responseCode = "200 SV002", description = "리뷰를 성공적으로 조회했습니다.")
     })
     @GetMapping("/{reviewId}")
+    @AnyUser
     public ResponseEntity<ResultResponse<ReviewSearchResponse>> getReview(
         @Parameter(description = "리뷰 id")
         @PathVariable("reviewId")
