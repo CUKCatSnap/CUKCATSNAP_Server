@@ -93,6 +93,46 @@ public class SecurityConfig {
         return new OAuth2LoginSuccessHandler(servletSecurityResponse);
     }
 
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .securityMatcher("/**")
+            .formLogin(FormLoginConfigurer::disable)
+            .httpBasic(HttpBasicConfigurer::disable)
+            .logout(LogoutConfigurer::disable)
+            .csrf(AbstractHttpConfigurer::disable)
+            .cors(cors -> cors
+                .configurationSource(corsConfigurationSource()))
+            .addFilterAt(
+                new SignInAuthenticationFilter(authenticationManager(), objectMapper,
+                    servletSecurityResponse),
+                BasicAuthenticationFilter.class
+            )
+            .addFilterAt(
+                new RefreshAccessTokenFilter(servletSecurityResponse, jwtTokenAuthentication()),
+                BasicAuthenticationFilter.class
+            )
+            .oauth2Login((oauth2) -> oauth2
+                .userInfoEndpoint(userInfo -> userInfo
+                    .userService(memberOAuth2UserService)
+                )
+                .successHandler(oAuth2LoginSuccessHandler())
+            )
+            .addFilterAt(
+                new JwtAuthenticationFilter(servletSecurityResponse, jwtTokenAuthentication()),
+                BasicAuthenticationFilter.class)
+            .authorizeHttpRequests(authorizeRequests ->
+                authorizeRequests
+                    .anyRequest().permitAll()
+            )
+            .anonymous(
+                anonymousConfigurer -> anonymousConfigurer
+                    .principal("anonymous")
+                    .authorities(List.of(CatsnapAuthority.ANONYMOUS))
+            );
+        return http.build();
+    }
+
     /*
      * 로그인, 회원가입 관련 필터 설정
      */
