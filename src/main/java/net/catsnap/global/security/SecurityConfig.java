@@ -8,7 +8,6 @@ import java.util.List;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.user.repository.UserRepository;
-import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.filter.JwtAuthenticationFilter;
 import net.catsnap.global.security.filter.RefreshAccessTokenFilter;
 import net.catsnap.global.security.filter.SignInAuthenticationFilter;
@@ -124,11 +123,6 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
                     .anyRequest().permitAll()
-            )
-            .anonymous(
-                anonymousConfigurer -> anonymousConfigurer
-                    .principal("anonymous")
-                    .authorities(List.of(CatsnapAuthority.ANONYMOUS))
             );
         return http.build();
     }
