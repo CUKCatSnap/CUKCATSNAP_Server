@@ -17,7 +17,6 @@ import net.catsnap.domain.feed.entity.FeedLike;
 import net.catsnap.domain.notification.entity.Notification;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.review.entity.Review;
-import net.catsnap.domain.review.entity.ReviewLike;
 import net.catsnap.domain.social.entity.PhotographerBlock;
 import net.catsnap.domain.social.entity.PhotographerSubscribe;
 import net.catsnap.domain.social.entity.PlaceSubscribe;
@@ -58,9 +57,6 @@ public class Member extends User {
 
     @OneToMany(mappedBy = "member")
     private List<Review> reviewList;
-
-    @OneToMany(mappedBy = "member")
-    private List<ReviewLike> ReviewLikeList;
 
     @OneToMany(mappedBy = "member")
     private List<FeedLike> feedLikeList;

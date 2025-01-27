@@ -32,7 +32,6 @@ import net.catsnap.support.fixture.ReservationFixture;
 import net.catsnap.support.fixture.ReviewFixture;
 import net.catsnap.support.fixture.ReviewLikeFixture;
 import net.catsnap.support.security.MemberSecurityContext;
-import net.catsnap.support.security.PhotographerSecurityContext;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -195,7 +194,7 @@ class ReviewServiceTest {
 
                 // 좋아요를 처음 누르는 경우
                 given(
-                    reviewLikeRepository.findByReviewIdAndMemberId(review.getId(), member.getId()))
+                    reviewLikeRepository.findByReviewIdAndUserId(review.getId(), member.getId()))
                     .willReturn(Optional.empty());
                 given(memberRepository.getReferenceById(member.getId()))
                     .willReturn(member);
@@ -203,7 +202,7 @@ class ReviewServiceTest {
                     .willReturn(Optional.of(review));
 
                 //when
-                reviewService.toggleReviewLike(review.getId());
+                reviewService.toggleReviewLike(review.getId(), member.getId());
 
                 //then
                 verify(reviewLikeRepository, times(1)).save(any());
@@ -224,134 +223,16 @@ class ReviewServiceTest {
 
                 // 좋아요를 누른 적 있는 경우
                 given(
-                    reviewLikeRepository.findByReviewIdAndMemberId(review.getId(), member.getId()))
+                    reviewLikeRepository.findByReviewIdAndUserId(review.getId(), member.getId()))
                     .willReturn(Optional.of(reviewLike));
 
                 //when
-                reviewService.toggleReviewLike(review.getId());
+                reviewService.toggleReviewLike(review.getId(), member.getId());
 
                 //then
-                Assertions.assertThat(reviewLike.getLiked()).isFalse();
                 verify(reviewLikeRepository, times(0)).save(reviewLike);
             }
 
-            @Test
-            void 사용자_좋아요_3번째_클릭() {
-                Member member = MemberFixture.member()
-                    .id(MemberSecurityContext.MEMBER_ID)
-                    .build();
-                Review review = ReviewFixture.review()
-                    .id(1L)
-                    .build();
-                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
-                    .id(1L)
-                    .liked(false)
-                    .build();
-
-                // 좋아요를 누른 적 있는 경우
-                given(
-                    reviewLikeRepository.findByReviewIdAndMemberId(review.getId(), member.getId()))
-                    .willReturn(Optional.of(reviewLike));
-
-                //when
-                reviewService.toggleReviewLike(review.getId());
-
-                //then
-                Assertions.assertThat(reviewLike.getLiked()).isTrue();
-                verify(reviewLikeRepository, times(0)).save(reviewLike);
-            }
-        }
-
-        @Nested
-        class 사진_작가_좋아요_토글 {
-
-            @BeforeEach
-            void beforeEach() {
-                PhotographerSecurityContext.setContext();
-            }
-
-            @AfterEach
-            void afterEach() {
-                PhotographerSecurityContext.clearContext();
-            }
-
-            @Test
-            void 사진작가_좋아요_최초_클릭() {
-                // given
-                Photographer photographer = PhotographerFixture.photographer()
-                    .id(PhotographerSecurityContext.Photographer_ID)
-                    .build();
-                Review review = ReviewFixture.review()
-                    .id(1L)
-                    .build();
-
-                // 좋아요를 처음 누르는 경우
-                given(reviewLikeRepository.findByReviewIdAndPhotographerId(review.getId(),
-                    photographer.getId()))
-                    .willReturn(Optional.empty());
-                given(photographerRepository.getReferenceById(photographer.getId()))
-                    .willReturn(photographer);
-                given(reviewRepository.findById(1L))
-                    .willReturn(Optional.of(review));
-
-                //when
-                reviewService.toggleReviewLike(review.getId());
-
-                //then
-                verify(reviewLikeRepository, times(1)).save(any());
-            }
-
-            @Test
-            void 사용자_좋아요_2번째_클릭_좋아요_취소() {
-                // given
-                Photographer photographer = PhotographerFixture.photographer()
-                    .id(PhotographerSecurityContext.Photographer_ID)
-                    .build();
-                Review review = ReviewFixture.review()
-                    .id(1L)
-                    .build();
-                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
-                    .id(1L)
-                    .build();
-
-                // 좋아요를 누른 적 있는 경우
-                given(reviewLikeRepository.findByReviewIdAndPhotographerId(review.getId(),
-                    photographer.getId()))
-                    .willReturn(Optional.of(reviewLike));
-
-                //when
-                reviewService.toggleReviewLike(review.getId());
-
-                //then
-                Assertions.assertThat(reviewLike.getLiked()).isFalse();
-                verify(reviewLikeRepository, times(0)).save(reviewLike);
-            }
-
-            @Test
-            void 사용자_좋아요_3번째_클릭() {
-                Photographer photographer = PhotographerFixture.photographer()
-                    .id(PhotographerSecurityContext.Photographer_ID)
-                    .build();
-                Review review = ReviewFixture.review()
-                    .id(1L)
-                    .build();
-                ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
-                    .id(1L)
-                    .liked(false)
-                    .build();
-
-                // 좋아요를 누른 적 있는 경우
-                given(reviewLikeRepository.findByReviewIdAndPhotographerId(review.getId(),
-                    photographer.getId()))
-                    .willReturn(Optional.of(reviewLike));
-
-                //when
-                reviewService.toggleReviewLike(review.getId());
-
-                //then
-                Assertions.assertThat(reviewLike.getLiked()).isTrue();
-                verify(reviewLikeRepository, times(0)).save(reviewLike);
-            }
         }
     }
 }

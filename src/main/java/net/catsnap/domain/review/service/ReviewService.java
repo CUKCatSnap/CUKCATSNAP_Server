@@ -17,12 +17,10 @@ import net.catsnap.domain.review.repository.ReviewRepository;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.member.repository.MemberRepository;
-import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.aws.s3.ImageClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
-import net.catsnap.global.security.authority.CatsnapAuthority;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,46 +57,17 @@ public class ReviewService {
     }
 
     @Transactional
-    public void toggleReviewLike(Long reviewId) {
-        CatsnapAuthority authority = GetAuthenticationInfo.getAuthority();
-        if (authority.equals(CatsnapAuthority.MEMBER)) {
-            memberReviewLike(reviewId);
-        } else if (authority.equals(CatsnapAuthority.PHOTOGRAPHER)) {
-            photographerReviewLike(reviewId);
-        }
-    }
-
-    private void memberReviewLike(Long reviewId) {
-        Long memberId = GetAuthenticationInfo.getUserId();
-        reviewLikeRepository.findByReviewIdAndMemberId(reviewId, memberId)
+    public void toggleReviewLike(Long reviewId, Long userId) {
+        reviewLikeRepository.findByReviewIdAndUserId(reviewId, userId)
             .ifPresentOrElse(
-                ReviewLike::toggleLike,
+                reviewLikeRepository::delete,
                 () -> {
-                    Member member = memberRepository.getReferenceById(memberId);
+                    Member member = memberRepository.getReferenceById(userId);
                     Review review = reviewRepository.findById(reviewId)
                         .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
                     ReviewLike reviewLike = new ReviewLike(
                         review,
                         member
-                    );
-                    reviewLikeRepository.save(reviewLike);
-                }
-            );
-    }
-
-    private void photographerReviewLike(Long reviewId) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
-        reviewLikeRepository.findByReviewIdAndPhotographerId(reviewId, photographerId)
-            .ifPresentOrElse(
-                ReviewLike::toggleLike,
-                () -> {
-                    Photographer photographer = photographerRepository.getReferenceById(
-                        photographerId);
-                    Review review = reviewRepository.findById(reviewId)
-                        .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
-                    ReviewLike reviewLike = new ReviewLike(
-                        review,
-                        photographer
                     );
                     reviewLikeRepository.save(reviewLike);
                 }
@@ -130,7 +99,7 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewSearchResponse getReview(Long reviewId) {
+    public ReviewSearchResponse getReview(Long reviewId, Long userId) {
         Review review = reviewRepository.findById(reviewId)
             .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
         List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
@@ -139,7 +108,7 @@ public class ReviewService {
             .toList();
 
         Long likeCount = reviewLikeService.getReviewLikeCount(reviewId);
-        Boolean isMeLiked = reviewLikeService.isMeReviewLiked(reviewId);
+        Boolean isMeLiked = reviewLikeService.isMeReviewLiked(reviewId, userId);
         return ReviewSearchResponse.of(review, photoUrlList, likeCount, isMeLiked);
     }
 }

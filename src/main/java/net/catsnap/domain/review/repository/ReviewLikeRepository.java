@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReviewLikeRepository extends JpaRepository<ReviewLike, Long> {
 
-    Long countByReviewIdAndLiked(Long reviewId, Boolean liked);
+    Long countByReviewId(Long reviewId);
 
-    Optional<ReviewLike> findByReviewIdAndMemberId(Long reviewId, Long memberId);
-
-    Optional<ReviewLike> findByReviewIdAndPhotographerId(Long reviewId, Long photographerId);
+    Optional<ReviewLike> findByReviewIdAndUserId(Long reviewId, Long userId);
 }

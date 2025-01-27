@@ -76,48 +76,24 @@ class ReviewLikeRepositoryTest {
 
         Member likedMember = MemberFixture.member()
             .build();
-        Member unLikedMember = MemberFixture.member()
-            .build();
         memberRepository.save(likedMember);
-        memberRepository.save(unLikedMember);
         ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
-            .member(likedMember)
-            .photographer(null)
+            .user(likedMember)
             .review(review)
-            .liked(true)
-            .build();
-        ReviewLike reviewUnliked = ReviewLikeFixture.reviewLike()
-            .member(unLikedMember)
-            .photographer(null)
-            .review(review)
-            .liked(false)
             .build();
         reviewLikeRepository.save(reviewLike);
-        reviewLikeRepository.save(reviewUnliked);
 
         Photographer likedPhotographer = PhotographerFixture.photographer()
             .build();
-        Photographer unlikedPhotographer = PhotographerFixture.photographer()
-            .build();
         photographerRepository.save(likedPhotographer);
-        photographerRepository.save(unlikedPhotographer);
         ReviewLike reviewLike2 = ReviewLikeFixture.reviewLike()
-            .member(null)
-            .photographer(likedPhotographer)
+            .user(likedPhotographer)
             .review(review)
-            .liked(true)
-            .build();
-        ReviewLike reviewUnliked2 = ReviewLikeFixture.reviewLike()
-            .member(null)
-            .photographer(unlikedPhotographer)
-            .review(review)
-            .liked(false)
             .build();
         reviewLikeRepository.save(reviewLike2);
-        reviewLikeRepository.save(reviewUnliked2);
 
         //when
-        Long likeCount = reviewLikeRepository.countByReviewIdAndLiked(review.getId(), true);
+        Long likeCount = reviewLikeRepository.countByReviewId(review.getId());
 
         //then
         Assertions.assertThat(likeCount).isEqualTo(2);
@@ -158,16 +134,15 @@ class ReviewLikeRepositoryTest {
         memberRepository.save(likedMember);
         memberRepository.save(unLikedMember);
         ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
-            .member(likedMember)
-            .photographer(null)
+            .user(likedMember)
             .review(review)
             .build();
         reviewLikeRepository.save(reviewLike);
 
         //when
-        Optional<ReviewLike> liked = reviewLikeRepository.findByReviewIdAndMemberId(review.getId(),
+        Optional<ReviewLike> liked = reviewLikeRepository.findByReviewIdAndUserId(review.getId(),
             likedMember.getId());
-        Optional<ReviewLike> unLiked = reviewLikeRepository.findByReviewIdAndMemberId(
+        Optional<ReviewLike> unLiked = reviewLikeRepository.findByReviewIdAndUserId(
             review.getId(),
             unLikedMember.getId());
 
@@ -210,17 +185,16 @@ class ReviewLikeRepositoryTest {
         photographerRepository.save(likedPhotographer);
         photographerRepository.save(unlikedPhotographer);
         ReviewLike reviewLike = ReviewLikeFixture.reviewLike()
-            .member(null)
-            .photographer(likedPhotographer)
+            .user(likedPhotographer)
             .review(review)
             .build();
         reviewLikeRepository.save(reviewLike);
 
         //when
-        Optional<ReviewLike> liked = reviewLikeRepository.findByReviewIdAndPhotographerId(
+        Optional<ReviewLike> liked = reviewLikeRepository.findByReviewIdAndUserId(
             review.getId(),
             likedPhotographer.getId());
-        Optional<ReviewLike> unLiked = reviewLikeRepository.findByReviewIdAndPhotographerId(
+        Optional<ReviewLike> unLiked = reviewLikeRepository.findByReviewIdAndUserId(
             review.getId(),
             unlikedPhotographer.getId());
 

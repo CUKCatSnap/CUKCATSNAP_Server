@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.interceptor.LoginMember;
 import net.catsnap.domain.auth.interceptor.LoginUser;
@@ -55,11 +56,13 @@ public class ReviewController {
     @PostMapping("/like/{reviewId}")
     @LoginUser
     public ResponseEntity<ResultResponse<ReviewResultCode>> reviewLikeToggle(
+        @UserId
+        Long userId,
         @Parameter(description = "리뷰 id")
         @RequestParam("reviewId")
         Long reviewId
     ) {
-        reviewService.toggleReviewLike(reviewId);
+        reviewService.toggleReviewLike(reviewId, userId);
         return ResultResponse.of(ReviewResultCode.REVIEW_LIKE_TOGGLE);
     }
 
@@ -70,11 +73,13 @@ public class ReviewController {
     @GetMapping("/{reviewId}")
     @AnyUser
     public ResponseEntity<ResultResponse<ReviewSearchResponse>> getReview(
+        @UserId
+        Long userId,
         @Parameter(description = "리뷰 id")
         @PathVariable("reviewId")
         Long reviewId
     ) {
-        ReviewSearchResponse reviewSearchResponse = reviewService.getReview(reviewId);
+        ReviewSearchResponse reviewSearchResponse = reviewService.getReview(reviewId, userId);
         return ResultResponse.of(ReviewResultCode.GET_REVIEW, reviewSearchResponse);
     }
 }

@@ -13,8 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.user.member.entity.Member;
-import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.entity.User;
 import net.catsnap.global.entity.BaseTimeEntity;
 
 @Entity
@@ -35,32 +34,11 @@ public class ReviewLike extends BaseTimeEntity {
     private Review review;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "photographer_id")
-    private Photographer photographer;
-
-    private Boolean liked = true;
-
-    /*
-     * 사용자가 리뷰에 좋아요를 누르는 경우
-     */
-    public ReviewLike(Review review, Member member) {
+    public ReviewLike(Review review, User user) {
         this.review = review;
-        this.member = member;
-    }
-
-    /*
-     * 작가가 리뷰에 좋아요를 누르는 경우
-     */
-    public ReviewLike(Review review, Photographer photographer) {
-        this.review = review;
-        this.photographer = photographer;
-    }
-
-    public void toggleLike() {
-        this.liked = !this.liked;
+        this.user = user;
     }
 }
