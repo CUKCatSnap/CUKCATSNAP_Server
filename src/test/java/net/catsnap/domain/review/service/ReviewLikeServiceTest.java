@@ -5,6 +5,7 @@ import static org.mockito.BDDMockito.given;
 import java.util.Optional;
 import net.catsnap.domain.review.entity.ReviewLike;
 import net.catsnap.domain.review.repository.ReviewLikeRepository;
+import net.catsnap.domain.user.fakeuser.entity.FakeUser;
 import net.catsnap.support.fixture.ReviewLikeFixture;
 import net.catsnap.support.security.AnonymousSecurityContext;
 import net.catsnap.support.security.MemberSecurityContext;
@@ -34,7 +35,7 @@ class ReviewLikeServiceTest {
     void 특정_리뷰에_좋아요_개수를_조회한다() {
         // given
         Long reviewId = 1L;
-        given(reviewLikeRepository.countByReviewId(reviewId, true)).willReturn(123L);
+        given(reviewLikeRepository.countByReviewId(reviewId)).willReturn(123L);
 
         // when
         Long likedCount = reviewLikeService.getReviewLikeCount(reviewId);
@@ -52,11 +53,12 @@ class ReviewLikeServiceTest {
             MemberSecurityContext.setContext();
             Long reviewId = 1L;
             ReviewLike reviewLike = ReviewLikeFixture.reviewLike().build();
-            given(reviewLikeRepository.findByReviewIdAndMemberId(reviewId,
+            given(reviewLikeRepository.findByReviewIdAndUserId(reviewId,
                 MemberSecurityContext.MEMBER_ID))
                 .willReturn(Optional.of(reviewLike));
             //when
-            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId);
+            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId,
+                MemberSecurityContext.MEMBER_ID);
 
             //then
             Assertions.assertThat(isLiked).isTrue();
@@ -70,11 +72,12 @@ class ReviewLikeServiceTest {
             // given
             MemberSecurityContext.setContext();
             Long reviewId = 1L;
-            given(reviewLikeRepository.findByReviewIdAndMemberId(reviewId,
+            given(reviewLikeRepository.findByReviewIdAndUserId(reviewId,
                 MemberSecurityContext.MEMBER_ID))
                 .willReturn(Optional.empty());
             //when
-            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId);
+            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId,
+                MemberSecurityContext.MEMBER_ID);
 
             //then
             Assertions.assertThat(isLiked).isFalse();
@@ -89,11 +92,12 @@ class ReviewLikeServiceTest {
             PhotographerSecurityContext.setContext();
             Long reviewId = 1L;
             ReviewLike reviewLike = ReviewLikeFixture.reviewLike().build();
-            given(reviewLikeRepository.findByReviewIdAndPhotographerId(reviewId,
+            given(reviewLikeRepository.findByReviewIdAndUserId(reviewId,
                 PhotographerSecurityContext.Photographer_ID))
                 .willReturn(Optional.of(reviewLike));
             //when
-            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId);
+            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId,
+                PhotographerSecurityContext.Photographer_ID);
 
             //then
             Assertions.assertThat(isLiked).isTrue();
@@ -107,11 +111,12 @@ class ReviewLikeServiceTest {
 // given
             PhotographerSecurityContext.setContext();
             Long reviewId = 1L;
-            given(reviewLikeRepository.findByReviewIdAndPhotographerId(reviewId,
+            given(reviewLikeRepository.findByReviewIdAndUserId(reviewId,
                 PhotographerSecurityContext.Photographer_ID))
                 .willReturn(Optional.empty());
             //when
-            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId);
+            Boolean isLiked = reviewLikeService.isMeReviewLiked(reviewId,
+                PhotographerSecurityContext.Photographer_ID);
 
             //then
             Assertions.assertThat(isLiked).isFalse();
@@ -125,7 +130,7 @@ class ReviewLikeServiceTest {
             // given
             AnonymousSecurityContext.setContext();
             // when
-            Boolean isLiked = reviewLikeService.isMeReviewLiked(1L);
+            Boolean isLiked = reviewLikeService.isMeReviewLiked(1L, FakeUser.fakeUserId);
 
             // then
             Assertions.assertThat(isLiked).isFalse();
