@@ -37,14 +37,8 @@ public class ReviewLike extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Boolean liked = true;
-
     public ReviewLike(Review review, User user) {
         this.review = review;
         this.user = user;
-    }
-
-    public void toggleLike() {
-        this.liked = !this.liked;
     }
 }
