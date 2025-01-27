@@ -17,7 +17,6 @@ import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.review.entity.Review;
-import net.catsnap.domain.review.entity.ReviewLike;
 import net.catsnap.domain.user.entity.User;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import org.springframework.security.core.GrantedAuthority;
@@ -55,9 +54,6 @@ public class Photographer extends User {
 
     @OneToMany(mappedBy = "photographer")
     private List<Program> programList;
-
-    @OneToMany(mappedBy = "photographer")
-    private List<ReviewLike> reviewLikeList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
