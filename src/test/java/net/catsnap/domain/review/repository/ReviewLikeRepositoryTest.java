@@ -117,7 +117,7 @@ class ReviewLikeRepositoryTest {
         reviewLikeRepository.save(reviewUnliked2);
 
         //when
-        Long likeCount = reviewLikeRepository.countByReviewIdAndLiked(review.getId(), true);
+        Long likeCount = reviewLikeRepository.countByReviewId(review.getId(), true);
 
         //then
         Assertions.assertThat(likeCount).isEqualTo(2);

@@ -34,7 +34,7 @@ class ReviewLikeServiceTest {
     void 특정_리뷰에_좋아요_개수를_조회한다() {
         // given
         Long reviewId = 1L;
-        given(reviewLikeRepository.countByReviewIdAndLiked(reviewId, true)).willReturn(123L);
+        given(reviewLikeRepository.countByReviewId(reviewId, true)).willReturn(123L);
 
         // when
         Long likedCount = reviewLikeService.getReviewLikeCount(reviewId);

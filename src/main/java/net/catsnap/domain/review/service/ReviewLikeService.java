@@ -1,10 +1,7 @@
 package net.catsnap.domain.review.service;
 
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.review.entity.ReviewLike;
 import net.catsnap.domain.review.repository.ReviewLikeRepository;
-import net.catsnap.global.security.authority.CatsnapAuthority;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,24 +13,11 @@ public class ReviewLikeService {
 
     @Transactional(readOnly = true)
     Long getReviewLikeCount(Long reviewId) {
-        return reviewLikeRepository.countByReviewIdAndLiked(reviewId, true);
+        return reviewLikeRepository.countByReviewId(reviewId);
     }
 
     @Transactional(readOnly = true)
-    Boolean isMeReviewLiked(Long reviewId) {
-        CatsnapAuthority authority = GetAuthenticationInfo.getAuthority();
-        if (authority == CatsnapAuthority.MEMBER) {
-            Long id = GetAuthenticationInfo.getUserId();
-            return reviewLikeRepository.findByReviewIdAndMemberId(reviewId, id)
-                .map(ReviewLike::getLiked)
-                .orElse(false);
-        } else if (authority == CatsnapAuthority.PHOTOGRAPHER) {
-            Long id = GetAuthenticationInfo.getUserId();
-            return reviewLikeRepository.findByReviewIdAndPhotographerId(reviewId, id)
-                .map(ReviewLike::getLiked)
-                .orElse(false);
-        } else {
-            return false;
-        }
+    Boolean isMeReviewLiked(Long reviewId, Long userId) {
+        return reviewLikeRepository.findByReviewIdAndUserId(reviewId, userId).isPresent();
     }
 }
