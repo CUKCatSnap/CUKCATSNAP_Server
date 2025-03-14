@@ -1,10 +1,5 @@
 package net.catsnap.global.security.filter;
 
-import net.catsnap.global.result.code.SecurityResultCode;
-import net.catsnap.global.result.errorcode.SecurityErrorCode;
-import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
-import net.catsnap.global.security.util.ServletSecurityResponse;
-import net.catsnap.global.security.util.TokenAuthentication;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
@@ -17,6 +12,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.global.result.code.SecurityResultCode;
+import net.catsnap.global.result.errorcode.SecurityErrorCode;
+import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import net.catsnap.global.security.dto.AccessTokenResponse;
+import net.catsnap.global.security.util.ServletSecurityResponse;
+import net.catsnap.global.security.util.TokenAuthentication;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @RequiredArgsConstructor
@@ -69,10 +70,10 @@ public class RefreshAccessTokenFilter extends OncePerRequestFilter {
                 accessTokenCookie.setPath("/refresh/access-token");
 
                 response.setStatus(HttpServletResponse.SC_OK);
-                response.setHeader("Authorization", "Bearer " + accessToken);
                 response.addCookie(accessTokenCookie);
+                AccessTokenResponse accessTokenResponse = AccessTokenResponse.of(accessToken);
                 servletSecurityResponse.responseBody(response,
-                    SecurityResultCode.COMPLETE_REFRESH_TOKEN);
+                    SecurityResultCode.COMPLETE_REFRESH_TOKEN, accessTokenResponse);
             } catch (UnsupportedJwtException | MalformedJwtException e) {
                 unsuccessfulAuthentication(request, response, SecurityErrorCode.WRONG_JWT_TOKEN);
             } catch (ExpiredJwtException e) {

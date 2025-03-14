@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import net.catsnap.global.result.code.SecurityResultCode;
 import net.catsnap.global.result.errorcode.SecurityErrorCode;
 import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import net.catsnap.global.security.dto.AccessTokenResponse;
 import net.catsnap.global.security.dto.SecurityRequest;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -86,9 +87,10 @@ public class SignInAuthenticationFilter extends AbstractAuthenticationProcessing
         accessTokenCookie.setPath("/refresh/access-token");
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.setHeader("Authorization", "Bearer " + accessToken);
         response.addCookie(accessTokenCookie);
-        servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN);
+        AccessTokenResponse accessTokenResponse = new AccessTokenResponse(accessToken);
+        servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN,
+            accessTokenResponse);
     }
 
     @Override

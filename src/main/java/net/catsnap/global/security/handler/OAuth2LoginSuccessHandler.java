@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.global.result.code.SecurityResultCode;
+import net.catsnap.global.security.dto.AccessTokenResponse;
 import net.catsnap.global.security.oauth2user.MemberOAuth2User;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.security.core.Authentication;
@@ -46,8 +47,9 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         accessTokenCookie.setPath("/refresh/access-token");
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.setHeader("Authorization", "Bearer " + accessToken);
         response.addCookie(accessTokenCookie);
-        servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN);
+        AccessTokenResponse accessTokenResponse = new AccessTokenResponse(accessToken);
+        servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN,
+            accessTokenResponse);
     }
 }
