@@ -1,7 +1,5 @@
 package net.catsnap.global.security.util;
 
-import net.catsnap.global.result.ResultCode;
-import net.catsnap.global.result.ResultResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,6 +8,9 @@ import java.util.Date;
 import java.util.Map;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.global.result.ResultCode;
+import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.security.dto.AccessTokenResponse;
 
 @RequiredArgsConstructor
 public class ServletSecurityResponse {
@@ -24,6 +25,16 @@ public class ServletSecurityResponse {
         throws IOException {
         String jsonResponse = objectMapper.writeValueAsString(
             ResultResponse.ofNotEntity(resultCode));
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.getWriter().write(jsonResponse);
+    }
+
+    public void responseBody(HttpServletResponse response, ResultCode resultCode,
+        AccessTokenResponse accessTokenResponse)
+        throws IOException {
+        String jsonResponse = objectMapper.writeValueAsString(
+            ResultResponse.of(resultCode, accessTokenResponse));
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         response.getWriter().write(jsonResponse);

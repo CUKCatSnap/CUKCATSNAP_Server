@@ -11,6 +11,7 @@ import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.service.PhotographerAuthService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.PhotographerResultCode;
+import net.catsnap.global.security.dto.AccessTokenResponse;
 import net.catsnap.global.security.dto.SecurityRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,7 +54,7 @@ public class PhotographerAuthController {
         @ApiResponse(responseCode = "400 EY001", description = "로그인 실패 (잘못된 로그인 API 요청 형식)"),
     })
     @PostMapping("/signin/catsnap")
-    public ResultResponse<?> signIn(
+    public ResponseEntity<ResultResponse<AccessTokenResponse>> signIn(
         @Parameter(description = "로그인 양식", required = true)
         @RequestBody
         SecurityRequest.CatsnapSignInRequest photographerSignIn
