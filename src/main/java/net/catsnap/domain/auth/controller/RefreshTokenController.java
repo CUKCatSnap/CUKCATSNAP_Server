@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.security.dto.AccessTokenResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class RefreshTokenController {
         @ApiResponse(responseCode = "400 EY003", description = "Jwt 토큰 서명이 올바르지 않습니다."),
     })
     @GetMapping("/refresh/access-token")
-    public ResponseEntity<ResultResponse<?>> signUp(
+    public ResponseEntity<ResultResponse<AccessTokenResponse>> signUp(
         @CookieValue(value = "refreshToken", required = true) String refreshToken
     ) {
         return null;

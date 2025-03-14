@@ -11,6 +11,7 @@ import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.service.MemberAuthService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.code.MemberResultCode;
+import net.catsnap.global.security.dto.AccessTokenResponse;
 import net.catsnap.global.security.dto.SecurityRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,17 +48,19 @@ public class MemberAuthController {
      *로그인 처리는 Spring Security의 필터로 처리하므로 해당 메서드는 필요하지 않습니다.
      *해당 컨트롤러는 API 명세만을 위한 것입니다.
      */
-    @Operation(summary = "자체 서비스 API(구현 완료)", description = "자체 서비스 로그인(네이버나 카카오 등의 OAuth 로그인이 아닌 "
-        +
-        "자체 서비스 로그인)을 할 수 있는 API입니다. 로그인 성공 시 헤더에 accessToken: Bearer {accessToken}과 " +
-        "쿠키에 refreshToken: {refreshToken}을 담아서 반환합니다.")
+    @Operation(summary = "자체 서비스 API(구현 완료)",
+        description = """
+            자체 서비스 로그인 API입니다. (네이버, 카카오 등 OAuth 로그인 아님)
+            로그인 성공 시 리프레시 토큰을 쿠키에 담아서 반환합니다.
+            """
+    )
     @ApiResponses({
         @ApiResponse(responseCode = "200 SY000", description = "로그인 성공"),
         @ApiResponse(responseCode = "401 EY000", description = "로그인 실패 (아이디 또는 비밀번호가 일치하지 않음)"),
         @ApiResponse(responseCode = "400 EY001", description = "로그인 실패 (잘못된 로그인 API 요청 형식)"),
     })
     @PostMapping("/member/signin/catsnap")
-    public ResultResponse<?> signIn(
+    public ResponseEntity<ResultResponse<AccessTokenResponse>> signIn(
         @Parameter(description = "로그인 양식", required = true)
         @RequestBody
         SecurityRequest.CatsnapSignInRequest memberSignIn
@@ -65,14 +68,17 @@ public class MemberAuthController {
         return null;
     }
 
-    @Operation(summary = "네이버 소셜로그인 API(구현 완료)", description =
-        "네이버 소셜로그인으로 회원가입과 로그인을 할 수 있는 API입니다. " +
-            "단순하게 소셜로그인을 하면 헤더에 accessToken: Bearer {accessToken}과 쿠키에 refreshToken: {refreshToken}을 담아서 반환합니다.")
+    @Operation(summary = "네이버 소셜로그인 API(구현 완료)",
+        description = """
+            네이버 소셜로그인으로 회원가입과 로그인을 할 수 있는 API입니다.
+            로그인 성공 시 리프레시 토큰을 쿠키에 담아서 반환합니다.
+            """
+    )
     @ApiResponses({
         @ApiResponse(responseCode = "201 SM000", description = "성공적으로 회원가입(로그인)을 했습니다."),
     })
     @PostMapping("/oauth2/authorization/naver")
-    public ResultResponse<?> oAuthSignUp(
+    public ResponseEntity<ResultResponse<AccessTokenResponse>> oAuthSignUp(
     ) {
         return null;
     }
