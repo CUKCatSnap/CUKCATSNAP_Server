@@ -13,7 +13,9 @@ import net.catsnap.global.result.code.SecurityResultCode;
 import net.catsnap.global.result.errorcode.SecurityErrorCode;
 import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
 import net.catsnap.global.security.dto.AccessTokenResponse;
+import net.catsnap.global.security.dto.AuthTokenDTO;
 import net.catsnap.global.security.dto.SecurityRequest;
+import net.catsnap.global.security.util.AuthTokenIssuer;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -26,12 +28,15 @@ public class SignInAuthenticationFilter extends AbstractAuthenticationProcessing
 
     private final ObjectMapper objectMapper;
     private final ServletSecurityResponse servletSecurityResponse;
+    private final AuthTokenIssuer authTokenIssuer;
 
     public SignInAuthenticationFilter(AuthenticationManager authenticationManager,
-        ObjectMapper objectMapper, ServletSecurityResponse servletSecurityResponse) {
+        ObjectMapper objectMapper, ServletSecurityResponse servletSecurityResponse,
+        AuthTokenIssuer authTokenIssuer) {
         super(new AntPathRequestMatcher("/*/signin/catsnap"), authenticationManager);
         this.objectMapper = objectMapper;
         this.servletSecurityResponse = servletSecurityResponse;
+        this.authTokenIssuer = authTokenIssuer;
     }
 
     @Override
@@ -66,21 +71,9 @@ public class SignInAuthenticationFilter extends AbstractAuthenticationProcessing
         HttpServletResponse response, FilterChain chain,
         Authentication authResult) throws IOException {
 
-        /*
-         * accessToken을 생성하는 부분. 1시간 동안 유효(시간 * 분 * 초 * ms)
-         */
-        String accessToken = servletSecurityResponse.setJwtToken("catsnap", "accessToken",
-            authResult.getPrincipal(),
-            authResult.getAuthorities(), authResult.getDetails(), 1L * 60L * 60L * 1000L);
+        AuthTokenDTO authTokenDTO = authTokenIssuer.issueAuthToken(authResult);
 
-        /*
-         * refreshToken을 생성하는 부분. 30일 동안 유효30일(일 * 시간 * 분 * 초 * ms)
-         */
-        String refreshToken = servletSecurityResponse.setJwtToken("catsnap", "refreshToken",
-            authResult.getPrincipal(),
-            authResult.getAuthorities(), authResult.getDetails(), 30L * 24L * 60L * 60L * 1000L);
-
-        Cookie accessTokenCookie = new Cookie("refreshToken", refreshToken);
+        Cookie accessTokenCookie = new Cookie("refreshToken", authTokenDTO.refreshToken());
         accessTokenCookie.setMaxAge(30 * 24 * 60 * 60); //쿠키 만료 시간. 단위 : s, 30일(일 * 시간 * 분 * 초)
         accessTokenCookie.setHttpOnly(true); // 클라이언트 측에서 쿠키 접근 금지
         accessTokenCookie.setSecure(true); // https에서만 쿠키 전송
@@ -88,7 +81,8 @@ public class SignInAuthenticationFilter extends AbstractAuthenticationProcessing
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.addCookie(accessTokenCookie);
-        AccessTokenResponse accessTokenResponse = new AccessTokenResponse(accessToken);
+        AccessTokenResponse accessTokenResponse = new AccessTokenResponse(
+            authTokenDTO.accessToken());
         servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN,
             accessTokenResponse);
     }

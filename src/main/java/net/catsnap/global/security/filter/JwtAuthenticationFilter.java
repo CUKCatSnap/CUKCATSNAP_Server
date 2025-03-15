@@ -15,8 +15,8 @@ import net.catsnap.global.result.errorcode.SecurityErrorCode;
 import net.catsnap.global.security.authenticationToken.AnonymousAuthenticationToken;
 import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
 import net.catsnap.global.security.authority.CatsnapAuthority;
+import net.catsnap.global.security.util.AuthTokenAuthenticator;
 import net.catsnap.global.security.util.ServletSecurityResponse;
-import net.catsnap.global.security.util.TokenAuthentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -25,7 +25,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final ServletSecurityResponse servletSecurityResponse;
-    private final TokenAuthentication tokenAuthentication;
+    private final AuthTokenAuthenticator authTokenAuthenticator;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } else {
             jwt = parseJwt(jwt);
             try {
-                CatsnapAuthenticationToken authenticationToken = tokenAuthentication.authenticate(
+                CatsnapAuthenticationToken authenticationToken = authTokenAuthenticator.authTokenAuthenticate(
                     jwt);
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 filterChain.doFilter(request, response);

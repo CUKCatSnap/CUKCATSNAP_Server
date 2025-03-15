@@ -16,15 +16,18 @@ import net.catsnap.global.result.code.SecurityResultCode;
 import net.catsnap.global.result.errorcode.SecurityErrorCode;
 import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
 import net.catsnap.global.security.dto.AccessTokenResponse;
+import net.catsnap.global.security.dto.AuthTokenDTO;
+import net.catsnap.global.security.util.AuthTokenAuthenticator;
+import net.catsnap.global.security.util.AuthTokenIssuer;
 import net.catsnap.global.security.util.ServletSecurityResponse;
-import net.catsnap.global.security.util.TokenAuthentication;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @RequiredArgsConstructor
 public class RefreshAccessTokenFilter extends OncePerRequestFilter {
 
     private final ServletSecurityResponse servletSecurityResponse;
-    private final TokenAuthentication tokenAuthentication;
+    private final AuthTokenAuthenticator authTokenAuthenticator;
+    private final AuthTokenIssuer authTokenIssuer;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
@@ -39,30 +42,12 @@ public class RefreshAccessTokenFilter extends OncePerRequestFilter {
         } else {
             String refreshToken = refreshTokenCookie.get().getValue();
             try {
-                CatsnapAuthenticationToken authenticationToken = tokenAuthentication.authenticate(
+                CatsnapAuthenticationToken authenticationToken = authTokenAuthenticator.authTokenAuthenticate(
                     refreshToken);
-                /*
-                 * accessToken을 생성하는 부분. 1시간 동안 유효(시간 * 분 * 초 * ms)
-                 */
-                String accessToken = servletSecurityResponse.setJwtToken("catsnap",
-                    "accessToken",
-                    authenticationToken.getPrincipal(),
-                    authenticationToken.getAuthorities(), authenticationToken.getDetails(),
-                    1L * 60L * 60L * 1000L
-                );
 
-                /*
-                 * refreshToken을 생성하는 부분. 30일 동안 유효30일(일 * 시간 * 분 * 초 * ms)
-                 */
-                String newRefreshToken = servletSecurityResponse.setJwtToken("catsnap",
-                    "refreshToken",
-                    authenticationToken.getPrincipal(),
-                    authenticationToken.getAuthorities(),
-                    authenticationToken.getDetails(),
-                    30L * 24L * 60L * 60L * 1000L
-                );
+                AuthTokenDTO authTokenDTO = authTokenIssuer.issueAuthToken(authenticationToken);
 
-                Cookie accessTokenCookie = new Cookie("refreshToken", newRefreshToken);
+                Cookie accessTokenCookie = new Cookie("refreshToken", authTokenDTO.refreshToken());
                 accessTokenCookie.setMaxAge(
                     30 * 24 * 60 * 60); //쿠키 만료 시간. 단위 : s, 30일(일 * 시간 * 분 * 초)
                 accessTokenCookie.setHttpOnly(true); // 클라이언트 측에서 쿠키 접근 금지
@@ -71,7 +56,8 @@ public class RefreshAccessTokenFilter extends OncePerRequestFilter {
 
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.addCookie(accessTokenCookie);
-                AccessTokenResponse accessTokenResponse = AccessTokenResponse.of(accessToken);
+                AccessTokenResponse accessTokenResponse = AccessTokenResponse.of(
+                    authTokenDTO.accessToken());
                 servletSecurityResponse.responseBody(response,
                     SecurityResultCode.COMPLETE_REFRESH_TOKEN, accessTokenResponse);
             } catch (UnsupportedJwtException | MalformedJwtException e) {

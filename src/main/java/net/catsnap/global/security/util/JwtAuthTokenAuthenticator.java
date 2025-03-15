@@ -1,9 +1,5 @@
 package net.catsnap.global.security.util;
 
-import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
-import net.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
-import net.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
-import net.catsnap.global.security.authority.CatsnapAuthority;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtParser;
@@ -16,14 +12,18 @@ import java.util.Collection;
 import java.util.List;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
+import net.catsnap.global.security.authenticationToken.MemberAuthenticationToken;
+import net.catsnap.global.security.authenticationToken.PhotographerAuthenticationToken;
+import net.catsnap.global.security.authority.CatsnapAuthority;
 import org.springframework.security.core.GrantedAuthority;
 
 @RequiredArgsConstructor
-public class JwtTokenAuthentication implements TokenAuthentication {
+public class JwtAuthTokenAuthenticator implements AuthTokenAuthenticator {
 
     private final SecretKey secretKey;
 
-    public CatsnapAuthenticationToken authenticate(String jwt)
+    public CatsnapAuthenticationToken authTokenAuthenticate(String jwt)
         throws SignatureException, UnsupportedJwtException, MalformedJwtException, ExpiredJwtException {
 
         JwtParser jwtParser = Jwts.parserBuilder()

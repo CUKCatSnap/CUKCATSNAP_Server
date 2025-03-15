@@ -8,7 +8,8 @@ import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.global.result.code.SecurityResultCode;
 import net.catsnap.global.security.dto.AccessTokenResponse;
-import net.catsnap.global.security.oauth2user.MemberOAuth2User;
+import net.catsnap.global.security.dto.AuthTokenDTO;
+import net.catsnap.global.security.util.AuthTokenIssuer;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -17,30 +18,15 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private final ServletSecurityResponse servletSecurityResponse;
+    private final AuthTokenIssuer authTokenIssuer;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
         Authentication authentication) throws IOException, ServletException {
 
-        MemberOAuth2User memberOAuth2User = (MemberOAuth2User) authentication.getPrincipal();
+        AuthTokenDTO authTokenDTO = authTokenIssuer.issueAuthToken(authentication);
 
-        /*
-         * accessToken을 생성하는 부분. 1시간 동안 유효(시간 * 분 * 초 * ms)
-         */
-        String accessToken = servletSecurityResponse.setJwtToken("catsnap", "accessToken",
-            memberOAuth2User.getName(),
-            memberOAuth2User.getAuthorities(), memberOAuth2User.getMemberId(),
-            1L * 60L * 60L * 1000L);
-
-        /*
-         * refreshToken을 생성하는 부분. 30일 동안 유효30일(일 * 시간 * 분 * 초 * ms)
-         */
-        String refreshToken = servletSecurityResponse.setJwtToken("catsnap", "refreshToken",
-            memberOAuth2User.getName(),
-            memberOAuth2User.getAuthorities(), memberOAuth2User.getMemberId(),
-            30L * 24L * 60L * 60L * 1000L);
-
-        Cookie accessTokenCookie = new Cookie("refreshToken", refreshToken);
+        Cookie accessTokenCookie = new Cookie("refreshToken", authTokenDTO.refreshToken());
         accessTokenCookie.setMaxAge(30 * 24 * 60 * 60); //쿠키 만료 시간. 단위 : s, 30일(일 * 시간 * 분 * 초)
         accessTokenCookie.setHttpOnly(true); // 클라이언트 측에서 쿠키 접근 금지
         accessTokenCookie.setSecure(true); // https에서만 쿠키 전송
@@ -48,7 +34,8 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.addCookie(accessTokenCookie);
-        AccessTokenResponse accessTokenResponse = new AccessTokenResponse(accessToken);
+        AccessTokenResponse accessTokenResponse = new AccessTokenResponse(
+            authTokenDTO.accessToken());
         servletSecurityResponse.responseBody(response, SecurityResultCode.COMPLETE_SIGN_IN,
             accessTokenResponse);
     }
