@@ -16,7 +16,7 @@ import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
 import net.catsnap.global.security.service.CatsnapUserDetailsService;
 import net.catsnap.global.security.service.MemberOAuth2UserService;
 import net.catsnap.global.security.util.AuthTokenIssuer;
-import net.catsnap.global.security.util.JwtTokenAuthentication;
+import net.catsnap.global.security.util.JwtAuthTokenAuthenticator;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -72,8 +72,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public JwtTokenAuthentication jwtTokenAuthentication() {
-        return new JwtTokenAuthentication(secretKey);
+    public JwtAuthTokenAuthenticator jwtTokenAuthentication() {
+        return new JwtAuthTokenAuthenticator(secretKey);
     }
 
     @Bean

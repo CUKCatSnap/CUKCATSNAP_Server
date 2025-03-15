@@ -17,16 +17,16 @@ import net.catsnap.global.result.errorcode.SecurityErrorCode;
 import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
 import net.catsnap.global.security.dto.AccessTokenResponse;
 import net.catsnap.global.security.dto.AuthTokenDTO;
+import net.catsnap.global.security.util.AuthTokenAuthenticator;
 import net.catsnap.global.security.util.AuthTokenIssuer;
 import net.catsnap.global.security.util.ServletSecurityResponse;
-import net.catsnap.global.security.util.TokenAuthentication;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @RequiredArgsConstructor
 public class RefreshAccessTokenFilter extends OncePerRequestFilter {
 
     private final ServletSecurityResponse servletSecurityResponse;
-    private final TokenAuthentication tokenAuthentication;
+    private final AuthTokenAuthenticator authTokenAuthenticator;
     private final AuthTokenIssuer authTokenIssuer;
 
     @Override
@@ -42,7 +42,7 @@ public class RefreshAccessTokenFilter extends OncePerRequestFilter {
         } else {
             String refreshToken = refreshTokenCookie.get().getValue();
             try {
-                CatsnapAuthenticationToken authenticationToken = tokenAuthentication.authenticate(
+                CatsnapAuthenticationToken authenticationToken = authTokenAuthenticator.authTokenAuthenticate(
                     refreshToken);
 
                 AuthTokenDTO authTokenDTO = authTokenIssuer.issueAuthToken(authenticationToken);

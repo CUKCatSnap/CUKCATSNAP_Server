@@ -2,7 +2,7 @@ package net.catsnap.global.security.util;
 
 import net.catsnap.global.security.authenticationToken.CatsnapAuthenticationToken;
 
-public interface TokenAuthentication {
+public interface AuthTokenAuthenticator {
 
-    CatsnapAuthenticationToken authenticate(String token);
+    CatsnapAuthenticationToken authTokenAuthenticate(String token);
 }
