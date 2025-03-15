@@ -91,7 +91,7 @@ public class SecurityConfig {
 
     @Bean
     public OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler() {
-        return new OAuth2LoginSuccessHandler(servletSecurityResponse);
+        return new OAuth2LoginSuccessHandler(servletSecurityResponse, authTokenIssuer);
     }
 
     @Bean
@@ -110,7 +110,8 @@ public class SecurityConfig {
                 BasicAuthenticationFilter.class
             )
             .addFilterAt(
-                new RefreshAccessTokenFilter(servletSecurityResponse, jwtTokenAuthentication()),
+                new RefreshAccessTokenFilter(servletSecurityResponse, jwtTokenAuthentication(),
+                    authTokenIssuer),
                 BasicAuthenticationFilter.class
             )
             .oauth2Login((oauth2) -> oauth2
