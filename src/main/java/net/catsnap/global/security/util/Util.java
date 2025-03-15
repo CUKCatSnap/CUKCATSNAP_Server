@@ -23,7 +23,7 @@ public class Util {
     }
 
     @Bean
-    public ServletSecurityResponse servletResponse(ObjectMapper objectMapper, SecretKey key) {
-        return new ServletSecurityResponse(objectMapper, key);
+    public ServletSecurityResponse servletResponse(ObjectMapper objectMapper) {
+        return new ServletSecurityResponse(objectMapper);
     }
 }
