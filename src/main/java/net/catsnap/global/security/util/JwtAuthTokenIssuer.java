@@ -28,7 +28,7 @@ public class JwtAuthTokenIssuer implements AuthTokenIssuer {
     }
 
     @Override
-    public AuthTokenDTO issueAccessToken(Authentication authentication) {
+    public AuthTokenDTO issueAuthToken(Authentication authentication) {
         String accessToken = issueJwtToken(
             authentication,
             "accessToken",

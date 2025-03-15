@@ -15,6 +15,7 @@ import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
 import net.catsnap.global.security.service.CatsnapUserDetailsService;
 import net.catsnap.global.security.service.MemberOAuth2UserService;
+import net.catsnap.global.security.util.AuthTokenIssuer;
 import net.catsnap.global.security.util.JwtTokenAuthentication;
 import net.catsnap.global.security.util.ServletSecurityResponse;
 import org.springframework.context.annotation.Bean;
@@ -46,6 +47,7 @@ public class SecurityConfig {
     private final SecretKey secretKey;
     private final MemberOAuth2UserService memberOAuth2UserService;
     private final UserRepository userRepository;
+    private final AuthTokenIssuer authTokenIssuer;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -104,7 +106,7 @@ public class SecurityConfig {
                 .configurationSource(corsConfigurationSource()))
             .addFilterAt(
                 new SignInAuthenticationFilter(authenticationManager(), objectMapper,
-                    servletSecurityResponse),
+                    servletSecurityResponse, authTokenIssuer),
                 BasicAuthenticationFilter.class
             )
             .addFilterAt(

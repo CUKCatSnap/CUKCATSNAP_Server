@@ -5,5 +5,5 @@ import org.springframework.security.core.Authentication;
 
 public interface AuthTokenIssuer {
 
-    AuthTokenDTO issueAccessToken(Authentication authentication);
+    AuthTokenDTO issueAuthToken(Authentication authentication);
 }
