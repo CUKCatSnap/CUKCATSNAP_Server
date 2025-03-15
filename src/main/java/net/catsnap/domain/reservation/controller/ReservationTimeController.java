@@ -7,10 +7,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import net.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
+import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatAllListResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
 import net.catsnap.domain.reservation.entity.Weekday;
@@ -167,5 +169,21 @@ public class ReservationTimeController {
         reservationTimeService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday);
         return ResultResponse.of(
             ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_UNMAPPING_WEEKDAY);
+    }
+
+    @Operation(
+        summary = "작가 자신이 등록한 요일별 예약 시간 형식을 조회(구현 완료)",
+        description = "작가가 자신이 등록한 요일별 예약 시간 형식을 조회하는 API입니다."
+    )
+    @ApiResponses(
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
+    )
+    @GetMapping("/my/weekday/timeformat/all")
+    @LoginPhotographer
+    public ResponseEntity<ResultResponse<ReservationTimeFormatAllListResponse>> getAllWeekdayTimeFormat(
+        @UserId
+        Long photographerId
+    ) {
+        return null;
     }
 }
