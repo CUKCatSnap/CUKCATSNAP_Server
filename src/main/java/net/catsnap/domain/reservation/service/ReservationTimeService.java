@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.reservation.document.ReservationTimeFormat;
@@ -188,6 +189,9 @@ public class ReservationTimeService {
         if (weekdayReservationTimeMappingList.isEmpty()) {
             throw new ResourceNotFoundException("해당 작가의 요일별 예약 시간 형식이 존재하지 않습니다.");
         }
+        weekdayReservationTimeMappingList.sort(Comparator.comparingInt(
+            mapping -> mapping.getWeekday().getWeight()));
+
         List<ReservationTimeFormatAllResponse> reservationTimeFormatAllResponseList = new ArrayList<>();
 
         for (WeekdayReservationTimeMapping weekdayReservationTimeMapping : weekdayReservationTimeMappingList) {

@@ -18,6 +18,7 @@ import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeF
 import net.catsnap.domain.reservation.entity.Weekday;
 import net.catsnap.domain.reservation.service.ReservationTimeService;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.CommonResultCode;
 import net.catsnap.global.result.code.ReservationResultCode;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -184,6 +185,8 @@ public class ReservationTimeController {
         @UserId
         Long photographerId
     ) {
-        return null;
+        ReservationTimeFormatAllListResponse allWeekdayTimeFormat = reservationTimeService.getMyWeekdayTimeFormat(
+            photographerId);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, allWeekdayTimeFormat);
     }
 }
