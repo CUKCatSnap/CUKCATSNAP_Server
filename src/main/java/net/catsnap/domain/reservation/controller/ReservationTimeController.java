@@ -7,15 +7,18 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import net.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
+import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatAllListResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
 import net.catsnap.domain.reservation.entity.Weekday;
 import net.catsnap.domain.reservation.service.ReservationTimeService;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.CommonResultCode;
 import net.catsnap.global.result.code.ReservationResultCode;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -167,5 +170,23 @@ public class ReservationTimeController {
         reservationTimeService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday);
         return ResultResponse.of(
             ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_UNMAPPING_WEEKDAY);
+    }
+
+    @Operation(
+        summary = "작가 자신이 등록한 요일별 예약 시간 형식을 조회(구현 완료)",
+        description = "작가가 자신이 등록한 요일별 예약 시간 형식을 조회하는 API입니다."
+    )
+    @ApiResponses(
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
+    )
+    @GetMapping("/my/weekday/timeformat/all")
+    @LoginPhotographer
+    public ResponseEntity<ResultResponse<ReservationTimeFormatAllListResponse>> getAllWeekdayTimeFormat(
+        @UserId
+        Long photographerId
+    ) {
+        ReservationTimeFormatAllListResponse allWeekdayTimeFormat = reservationTimeService.getMyWeekdayTimeFormat(
+            photographerId);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, allWeekdayTimeFormat);
     }
 }
