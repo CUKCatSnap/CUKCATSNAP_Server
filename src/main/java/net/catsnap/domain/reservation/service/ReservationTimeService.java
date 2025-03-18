@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.user.photographer.entity.Photographer;
-import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.reservation.document.ReservationTimeFormat;
 import net.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeListResponse;
 import net.catsnap.domain.reservation.dto.member.response.PhotographerAvailableReservationTimeResponse;
 import net.catsnap.domain.reservation.dto.photographer.request.ReservationTimeFormatRequest;
+import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatAllListResponse;
+import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatAllResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatIdResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatListResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.ReservationTimeFormatResponse;
@@ -24,6 +24,8 @@ import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
@@ -177,5 +179,29 @@ public class ReservationTimeService {
                     );
                 }
             );
+    }
+
+    public ReservationTimeFormatAllListResponse getMyWeekdayTimeFormat(Long photographerId) {
+        List<WeekdayReservationTimeMapping> weekdayReservationTimeMappingList =
+            weekdayReservationTimeMappingRepository.findAllByPhotographerId(photographerId);
+
+        if (weekdayReservationTimeMappingList.isEmpty()) {
+            throw new ResourceNotFoundException("해당 작가의 요일별 예약 시간 형식이 존재하지 않습니다.");
+        }
+        List<ReservationTimeFormatAllResponse> reservationTimeFormatAllResponseList = new ArrayList<>();
+
+        for (WeekdayReservationTimeMapping weekdayReservationTimeMapping : weekdayReservationTimeMappingList) {
+            if (weekdayReservationTimeMapping.getReservationTimeFormatId() == null) {
+                continue;
+            }
+            ReservationTimeFormat reservationTimeFormat = reservationTimeFormatRepository.findById(
+                weekdayReservationTimeMapping.getReservationTimeFormatId());
+
+            reservationTimeFormatAllResponseList.add(
+                ReservationTimeFormatAllResponse.from(weekdayReservationTimeMapping.getWeekday(),
+                    ReservationTimeFormatResponse.from(reservationTimeFormat))
+            );
+        }
+        return ReservationTimeFormatAllListResponse.of(reservationTimeFormatAllResponseList);
     }
 }

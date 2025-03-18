@@ -7,4 +7,11 @@ public record ReservationTimeFormatAllResponse(
     ReservationTimeFormatResponse reservationTimeFormat
 ) {
 
+    public static ReservationTimeFormatAllResponse from(Weekday weekday,
+        ReservationTimeFormatResponse reservationTimeFormat) {
+        return new ReservationTimeFormatAllResponse(
+            weekday,
+            reservationTimeFormat
+        );
+    }
 }
