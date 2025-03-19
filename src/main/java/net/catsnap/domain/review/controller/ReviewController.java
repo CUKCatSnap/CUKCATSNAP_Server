@@ -14,9 +14,11 @@ import net.catsnap.domain.auth.interceptor.LoginUser;
 import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
 import net.catsnap.domain.review.dto.request.PostReviewRequest;
 import net.catsnap.domain.review.service.ReviewService;
+import net.catsnap.domain.search.dto.response.ReviewSearchListResponse;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
+import net.catsnap.global.result.code.CommonResultCode;
 import net.catsnap.global.result.code.ReviewResultCode;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -57,12 +59,14 @@ public class ReviewController {
     })
     @GetMapping("/my/all")
     @LoginUser
-    public ResponseEntity<ResultResponse<SlicedData<ReviewSearchResponse>>> getMyReview(
+    public ResponseEntity<ResultResponse<SlicedData<ReviewSearchListResponse>>> getMyReview(
         @UserId
         Long userId,
         Pageable pageable
     ) {
-        return null;
+        SlicedData<ReviewSearchListResponse> reviewSearchListResponse = reviewService.getMyReview(
+            userId, pageable);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, reviewSearchListResponse);
     }
 
     @Operation(summary = "리뷰에 좋아요를 토글하는 API(구현 완료)", description = "리뷰에 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
