@@ -18,6 +18,8 @@ import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.result.code.ReservationResultCode;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +82,7 @@ public class PhotographerReservationController {
     public ResponseEntity<ResultResponse<SlicedData<PhotographerReservationInformationListResponse>>> getMyReservation(
         @UserId
         Long photographerId,
+        @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Direction.DESC)
         Pageable pageable
     ) {
         return null;
