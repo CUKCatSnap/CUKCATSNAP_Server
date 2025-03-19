@@ -40,4 +40,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     @Query(value = "SELECT pg_advisory_xact_lock(:photographerId)", nativeQuery = true)
     void acquireReservationLock(@Param("photographerId") Long photographerId);
+
+    Slice<Reservation> findAllByPhotographerId(Long photographerId, Pageable pageable);
 }

@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
@@ -17,9 +16,13 @@ import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.reservation.repository.ReservationTimeFormatRepository;
 import net.catsnap.domain.reservation.repository.WeekdayReservationTimeMappingRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotChangeReservationState;
+import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,6 +85,23 @@ public class PhotographerReservationService {
             reservationList.stream()
                 .map(PhotographerReservationInformationResponse::from)
                 .toList());
+    }
+
+    @Transactional(readOnly = true)
+    public SlicedData<PhotographerReservationInformationListResponse> getMyReservation(
+        Long photographerId, Pageable pageable) {
+
+        Slice<Reservation> slicedReservation = reservationRepository.findAllByPhotographerId(
+            photographerId, pageable);
+
+        List<PhotographerReservationInformationResponse> photographerReservationInformationResponseList
+            = slicedReservation.stream()
+            .map(PhotographerReservationInformationResponse::from)
+            .toList();
+
+        return SlicedData.of(PhotographerReservationInformationListResponse.from(
+                photographerReservationInformationResponseList),
+            slicedReservation.isFirst(), slicedReservation.isLast());
     }
 
     /*

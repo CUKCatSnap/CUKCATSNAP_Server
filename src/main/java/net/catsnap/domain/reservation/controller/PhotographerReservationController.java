@@ -8,13 +8,18 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.photographer.response.PhotographerReservationInformationListResponse;
 import net.catsnap.domain.reservation.entity.ReservationState;
 import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.result.code.ReservationResultCode;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,6 +70,22 @@ public class PhotographerReservationController {
             reservationDay);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
             photographerReservationInformationListResponse);
+    }
+
+    @Operation(summary = "작가의 모든 예약을 조회합니다(구현 완료)",
+        description = "작가 자신으로 예약된 모든 예약 목록을 조회하는 API입니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
+    })
+    @GetMapping("/my/all")
+    @LoginPhotographer
+    public ResponseEntity<ResultResponse<SlicedData<PhotographerReservationInformationListResponse>>> getMyReservation(
+        @UserId
+        Long photographerId,
+        @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Direction.DESC)
+        Pageable pageable
+    ) {
+        return null;
     }
 
     @Operation(summary = "작가가 자신의 예약 상태를 변경(구현 완료)",
