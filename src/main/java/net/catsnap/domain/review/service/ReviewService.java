@@ -14,6 +14,7 @@ import net.catsnap.domain.review.entity.ReviewPhoto;
 import net.catsnap.domain.review.repository.ReviewLikeRepository;
 import net.catsnap.domain.review.repository.ReviewPhotoRepository;
 import net.catsnap.domain.review.repository.ReviewRepository;
+import net.catsnap.domain.search.dto.response.ReviewSearchListResponse;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.member.repository.MemberRepository;
@@ -21,7 +22,10 @@ import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.aws.s3.ImageClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
+import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -110,5 +114,24 @@ public class ReviewService {
         Long likeCount = reviewLikeService.getReviewLikeCount(reviewId);
         Boolean isMeLiked = reviewLikeService.isMeReviewLiked(reviewId, userId);
         return ReviewSearchResponse.of(review, photoUrlList, likeCount, isMeLiked);
+    }
+
+    @Transactional(readOnly = true)
+    public SlicedData<ReviewSearchListResponse> getMyReview(Long memberId, Pageable pageable) {
+        Slice<Review> slicedReviewList = reviewRepository.findAllByMemberId(memberId, pageable);
+        List<ReviewSearchResponse> reviewSearchResponseList = slicedReviewList.stream()
+            .map(review -> {
+                List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
+                    .map(imageClient::getDownloadImageUrl)
+                    .map(URL::toString)
+                    .toList();
+                Long likeCount = reviewLikeService.getReviewLikeCount(review.getId());
+                Boolean isMeLiked = reviewLikeService.isMeReviewLiked(review.getId(), memberId);
+                return ReviewSearchResponse.of(review, photoUrlList, likeCount, isMeLiked);
+            })
+            .toList();
+        return SlicedData.of(ReviewSearchListResponse.of(reviewSearchResponseList),
+            slicedReviewList.isFirst(),
+            slicedReviewList.isLast());
     }
 }
