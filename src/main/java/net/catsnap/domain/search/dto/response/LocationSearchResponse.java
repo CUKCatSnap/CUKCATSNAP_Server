@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
+import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.user.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.user.photographer.dto.response.PhotographerTinyInformationResponse;
 
@@ -38,4 +39,20 @@ public record LocationSearchResponse(
     Integer placeScore
 ) {
 
+    public static LocationSearchResponse from(Review review) {
+        return new LocationSearchResponse(
+            MemberTinyInformationResponse.from(review.getMember()),
+            PhotographerTinyInformationResponse.from(review.getPhotographer()),
+            review.getId(),
+            review.getCreatedAt(),
+            review.getReservation().getStartTime(),
+            review.getReservation().getProgram().getTitle(),
+            ReservationLocation.of(review.getReservation()),
+            (review.getReviewPhotoList() != null && !review.getReviewPhotoList().isEmpty())
+                ? review.getReviewPhotoList().get(0).getPhotoFileName()
+                : null,
+            review.getPhotographerScore(),
+            review.getPlaceScore()
+        );
+    }
 }

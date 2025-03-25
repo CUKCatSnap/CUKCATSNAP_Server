@@ -6,4 +6,11 @@ public record LocationSearchListResponse(
     List<LocationSearchResponse> locationSearchResponseList
 ) {
 
+    public static LocationSearchListResponse from(
+        List<LocationSearchResponse> locationSearchResponseList
+    ) {
+        return new LocationSearchListResponse(
+            locationSearchResponseList
+        );
+    }
 }
