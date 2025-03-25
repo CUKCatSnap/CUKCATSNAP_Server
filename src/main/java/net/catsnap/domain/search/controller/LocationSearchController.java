@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.search.dto.request.LocationSearchRequest;
 import net.catsnap.domain.search.dto.response.LocationSearchListResponse;
@@ -28,9 +27,7 @@ public class LocationSearchController {
     @AnyUser
     public ResponseEntity<ResultResponse<LocationSearchListResponse>> getLocationReview(
         @RequestBody
-        LocationSearchRequest locationSearchRequest,
-        @UserId
-        Long userId
+        LocationSearchRequest locationSearchRequest
     ) {
         return null;
     }

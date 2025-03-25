@@ -35,13 +35,7 @@ public record LocationSearchResponse(
     Integer photographerScore,
 
     @Schema(description = "장소에 대한 별점")
-    Integer placeScore,
-
-    @Schema(description = "좋아요 수")
-    Long likeCount,
-
-    @Schema(description = "내가 좋아요를 눌렀는지")
-    Boolean isMeLiked
+    Integer placeScore
 ) {
 
 }
