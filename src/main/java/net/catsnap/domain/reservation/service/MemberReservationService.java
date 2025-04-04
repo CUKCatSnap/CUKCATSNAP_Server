@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.reservation.dto.LegalAddressEntity;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import net.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
@@ -54,6 +55,7 @@ public class MemberReservationService {
     private final GeographyConverter geographyConverter;
     private final PhotographerService photographerService;
     private final ReservationValidatorService reservationValidatorService;
+    private final LocationService locationService;
 
     public ReservationBookResultResponse createReservation(
         MemberReservationRequest memberReservationRequest) {
@@ -102,6 +104,10 @@ public class MemberReservationService {
         ReservationState reservationState =
             isAutoReservationAccept ? ReservationState.APPROVED : ReservationState.PENDING;
 
+        LegalAddressEntity address = locationService.getLegalAddressEntity(
+            memberReservationRequest.reservationLocation().latitude(),
+            memberReservationRequest.reservationLocation().longitude());
+
         Reservation reservation = reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
@@ -109,6 +115,9 @@ public class MemberReservationService {
             .location(geographyConverter.toPoint(
                 memberReservationRequest.reservationLocation().latitude(),
                 memberReservationRequest.reservationLocation().longitude()))
+            .cityLevel(address.cityLevel())
+            .districtLevel(address.districtLevel())
+            .townLevel(address.townLevel())
             .locationName(memberReservationRequest.reservationLocation().locationName())
             .startTime(memberReservationRequest.startTime())
             .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
