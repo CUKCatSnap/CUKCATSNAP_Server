@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "리뷰 알림 설정 API", description = "내가 구독한 장소에 대한 리뷰 알림을 설정하는 API입니다.")
+@Tag(name = "구독할 장소 설정 API", description = "구독할 장소를 설정하는 API입니다.")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/address")
