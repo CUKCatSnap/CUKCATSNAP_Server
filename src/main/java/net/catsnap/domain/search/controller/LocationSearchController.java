@@ -25,7 +25,7 @@ public class LocationSearchController {
 
     private final LocationSearchService locationSearchService;
 
-    @Operation(summary = "리뷰 1개를 피드 Id로 조회하는 API(구현 완료)", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
+    @Operation(summary = "위치 기반으로 리뷰를 검색하는 API(구현 완료)", description = "위치 기반으로 리뷰를 검색하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
     })
