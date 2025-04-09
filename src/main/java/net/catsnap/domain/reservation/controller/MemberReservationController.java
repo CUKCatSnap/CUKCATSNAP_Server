@@ -17,6 +17,7 @@ import net.catsnap.domain.reservation.dto.member.response.MemberReservationInfor
 import net.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
 import net.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import net.catsnap.domain.reservation.entity.ReservationQueryType;
+import net.catsnap.domain.reservation.service.MemberReservationFacade;
 import net.catsnap.domain.reservation.service.MemberReservationService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
@@ -38,6 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberReservationController {
 
     private final MemberReservationService memberReservationService;
+    private final MemberReservationFacade memberReservationFacade;
 
     @Operation(summary = "예약을 조회하는 API(구현 완료)", description = "예약을 조회하는 API입니다. 쿼리 파라미터 type으로 적절한 유형의 예약을 조회")
     @ApiResponses({
@@ -127,7 +129,7 @@ public class MemberReservationController {
         @RequestBody
         MemberReservationRequest memberReservationRequest
     ) {
-        ReservationBookResultResponse reservationBookResultResponse = memberReservationService.createReservation(
+        ReservationBookResultResponse reservationBookResultResponse = memberReservationFacade.createReservation(
             memberReservationRequest);
         return ResultResponse.of(ReservationResultCode.RESERVATION_BOOK_COMPLETE,
             reservationBookResultResponse);

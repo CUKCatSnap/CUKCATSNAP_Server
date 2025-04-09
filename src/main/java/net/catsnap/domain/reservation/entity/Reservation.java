@@ -103,4 +103,16 @@ public class Reservation extends BaseTimeEntity {
             throw new OwnershipNotFoundException("해당 예약은 회원의 것이 아닙니다.");
         }
     }
+
+    public void updateCityLevel(CityLevel cityLevel) {
+        this.cityLevel = cityLevel;
+    }
+
+    public void updateDistrictLevel(DistrictLevel districtLevel) {
+        this.districtLevel = districtLevel;
+    }
+    
+    public void updateTownLevel(TownLevel townLevel) {
+        this.townLevel = townLevel;
+    }
 }
