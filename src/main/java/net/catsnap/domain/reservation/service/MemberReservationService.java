@@ -4,14 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.reservation.dto.LegalAddressEntity;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckResponse;
 import net.catsnap.domain.reservation.dto.member.request.MemberReservationRequest;
 import net.catsnap.domain.reservation.dto.member.response.MemberReservationInformationListResponse;
 import net.catsnap.domain.reservation.dto.member.response.MemberReservationInformationResponse;
 import net.catsnap.domain.reservation.dto.member.response.PhotographerReservationGuidanceResponse;
-import net.catsnap.domain.reservation.dto.member.response.ReservationBookResultResponse;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.ReservationQueryType;
@@ -55,9 +53,8 @@ public class MemberReservationService {
     private final GeographyConverter geographyConverter;
     private final PhotographerService photographerService;
     private final ReservationValidatorService reservationValidatorService;
-    private final LocationService locationService;
 
-    public ReservationBookResultResponse createReservation(
+    public Reservation createReservation(
         MemberReservationRequest memberReservationRequest) {
         Long memberId = GetAuthenticationInfo.getUserId();
         PhotographerSetting photographerSetting = photographerService.findPhotographerSetting(
@@ -104,10 +101,6 @@ public class MemberReservationService {
         ReservationState reservationState =
             isAutoReservationAccept ? ReservationState.APPROVED : ReservationState.PENDING;
 
-        LegalAddressEntity address = locationService.getLegalAddressEntity(
-            memberReservationRequest.reservationLocation().latitude(),
-            memberReservationRequest.reservationLocation().longitude());
-
         Reservation reservation = reservationRepository.save(Reservation.builder()
             .member(member)
             .photographer(photographer)
@@ -115,16 +108,13 @@ public class MemberReservationService {
             .location(geographyConverter.toPoint(
                 memberReservationRequest.reservationLocation().latitude(),
                 memberReservationRequest.reservationLocation().longitude()))
-            .cityLevel(address.cityLevel())
-            .districtLevel(address.districtLevel())
-            .townLevel(address.townLevel())
             .locationName(memberReservationRequest.reservationLocation().locationName())
             .startTime(memberReservationRequest.startTime())
             .endTime(memberReservationRequest.startTime().plusMinutes(program.getDurationMinutes()))
             .reservationState(reservationState)
             .build());
 
-        return ReservationBookResultResponse.from(reservation);
+        return reservation;
     }
 
     public PhotographerReservationGuidanceResponse getPhotographerReservationGuidance(
