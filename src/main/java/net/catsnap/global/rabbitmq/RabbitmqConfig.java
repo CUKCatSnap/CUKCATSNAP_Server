@@ -27,7 +27,7 @@ public class RabbitmqConfig {
     }
 
     @Bean
-    public MessageListenerAdapter listenerAdaptor(RabbitmqAddressRequestReceiver receiver) {
+    public MessageListenerAdapter listenerAdapter(RabbitmqAddressRequestReceiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveAddressRequest");
     }
 

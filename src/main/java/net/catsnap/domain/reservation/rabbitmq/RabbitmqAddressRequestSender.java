@@ -12,7 +12,7 @@ public class RabbitmqAddressRequestSender implements AddressRequestSender {
     private final RabbitTemplate rabbitTemplate;
 
     @Override
-    public void SendRequestAddress(Long reservationId) {
+    public void sendRequestAddress(Long reservationId) {
         rabbitTemplate.convertAndSend(RabbitmqConfig.ADDRESS_REQUEST_QUEUE, reservationId);
     }
 }

@@ -20,7 +20,7 @@ public class MemberReservationFacade {
 
         Reservation reservation = memberReservationService.createReservation(
             memberReservationRequest);
-        addressRequestSender.SendRequestAddress(reservation.getId());
+        addressRequestSender.sendRequestAddress(reservation.getId());
         return ReservationBookResultResponse.from(reservation);
     }
 }
