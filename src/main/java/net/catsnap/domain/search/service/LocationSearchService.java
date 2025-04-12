@@ -18,10 +18,10 @@ public class LocationSearchService {
 
     @Transactional(readOnly = true)
     public LocationSearchListResponse searchLocation(LocationSearchRequest locationSearchRequest) {
-        double minX = locationSearchRequest.TopLeftCoordinate().latitude();
-        double minY = locationSearchRequest.BottomRightCoordinate().longitude();
-        double maxX = locationSearchRequest.BottomRightCoordinate().latitude();
-        double maxY = locationSearchRequest.TopLeftCoordinate().longitude();
+        double minX = locationSearchRequest.TopLeftCoordinate().longitude();
+        double minY = locationSearchRequest.BottomRightCoordinate().latitude();
+        double maxX = locationSearchRequest.BottomRightCoordinate().longitude();
+        double maxY = locationSearchRequest.TopLeftCoordinate().latitude();
         List<Review> reviewList = reviewRepository.findAllByLocation(minX, minY, maxX, maxY);
         return LocationSearchListResponse.from(
             reviewList.stream()
