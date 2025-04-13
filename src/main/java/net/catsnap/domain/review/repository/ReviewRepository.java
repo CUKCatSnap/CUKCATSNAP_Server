@@ -17,10 +17,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
         FROM review r
         JOIN reservation res
         ON r.reservation_id = res.reservation_id
-        WHERE ST_Contains(
-            ST_MakeEnvelope(:minX, :minY, :maxX, :maxY, 4326),
-            res.location
-        )
+        WHERE res.location &&  ST_MakeEnvelope(:minX, :minY, :maxX, :maxY, 4326)
         """,
         nativeQuery = true)
     List<Review> findAllByLocation(
