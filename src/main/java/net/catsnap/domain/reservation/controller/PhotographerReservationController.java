@@ -16,6 +16,7 @@ import net.catsnap.domain.reservation.entity.ReservationState;
 import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
+import net.catsnap.global.result.code.CommonResultCode;
 import net.catsnap.global.result.code.ReservationResultCode;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -85,7 +86,9 @@ public class PhotographerReservationController {
         @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Direction.DESC)
         Pageable pageable
     ) {
-        return null;
+        SlicedData<PhotographerReservationInformationListResponse> myReservation = photographerReservationService.getMyReservation(
+            photographerId, pageable);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, myReservation);
     }
 
     @Operation(summary = "작가가 자신의 예약 상태를 변경(구현 완료)",
