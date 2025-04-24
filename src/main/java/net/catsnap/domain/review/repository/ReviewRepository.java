@@ -36,7 +36,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
         JOIN r.reservation res
         WHERE res.photographer.id = :photographerId
         """)
-    Double findAvgPhotographerScoreByPhotographerId(Long photographerId);
+    Double findAvgPhotographerScoreByPhotographerId(@Param("photographerId") Long photographerId);
 
     @Query("""
             SELECT COUNT(r)
