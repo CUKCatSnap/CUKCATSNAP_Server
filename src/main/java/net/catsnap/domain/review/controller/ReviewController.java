@@ -70,7 +70,7 @@ public class ReviewController {
         return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, reviewSearchListResponse);
     }
 
-    @Operation(summary = "특정 작가의 리뷰를 조회하는 API", description = "특정 작가의 리뷰를 조회하는 API입니다.")
+    @Operation(summary = "특정 작가의 리뷰를 조회하는 API(구현 완료)", description = "특정 작가의 리뷰를 조회하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
     })
@@ -85,6 +85,8 @@ public class ReviewController {
         @PageableDefault(size = 10, sort = "createdAt")
         Pageable pageable
     ) {
+        SlicedData<ReviewSearchListResponse> reviewSearchListResponse
+            = reviewService.getPhotographerReview(photographerId, userId, pageable);
         return null;
     }
 
