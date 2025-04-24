@@ -26,7 +26,7 @@ public class PhotographerInfoController {
 
     @Operation(summary = "사진작가의 상세 정보를 조회하는 API(구현 완료)", description = "사진작가의 상세 정보를 조회하는 API입니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "200 SC000", description = "사진작가 자신의 환경설정 조회 성공")
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
     })
     @GetMapping("/{photographerId}")
     @AnyUser
