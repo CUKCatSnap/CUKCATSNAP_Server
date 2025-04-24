@@ -1,5 +1,6 @@
 package net.catsnap.domain.review.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import net.catsnap.domain.review.entity.Review;
 import org.springframework.data.domain.Pageable;
@@ -27,5 +28,25 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
         @Param("minY") Double minY,
         @Param("maxX") Double maxX,
         @Param("maxY") Double maxY
+    );
+
+    @Query("""
+        SELECT AVG(r.photographerScore)
+        FROM Review r
+        JOIN r.reservation res
+        WHERE res.photographer.id = :photographerId
+        """)
+    Double findAvgPhotographerScoreByPhotographerId(Long photographerId);
+
+    @Query("""
+            SELECT COUNT(r)
+            FROM Review r
+            JOIN r.reservation res
+            WHERE r.createdAt >= :fromDate
+            AND res.photographer.id = :photographerId
+        """)
+    Long countRecentReviewsByPhotographerId(
+        @Param("fromDate") LocalDateTime fromDate,
+        @Param("photographerId") Long photographerId
     );
 }

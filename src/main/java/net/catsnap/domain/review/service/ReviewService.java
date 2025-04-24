@@ -1,6 +1,7 @@
 package net.catsnap.domain.review.service;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -155,5 +156,16 @@ public class ReviewService {
         return SlicedData.of(ReviewSearchListResponse.of(reviewSearchResponseList),
             slicedReviewList.isFirst(),
             slicedReviewList.isLast());
+    }
+
+    @Transactional(readOnly = true)
+    public Double getPhotographerRating(Long photographerId) {
+        return reviewRepository.findAvgPhotographerScoreByPhotographerId(photographerId);
+    }
+
+    @Transactional(readOnly = true)
+    public Long getRecentReservationCount(Long photographerId) {
+        return reviewRepository.countRecentReviewsByPhotographerId(
+            LocalDateTime.now().minusDays(30), photographerId);
     }
 }

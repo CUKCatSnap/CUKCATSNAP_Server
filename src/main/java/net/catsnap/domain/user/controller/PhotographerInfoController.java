@@ -7,7 +7,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.user.photographer.dto.response.PhotographerFullyInformationResponse;
+import net.catsnap.domain.user.service.PhotographerInfoService;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.CommonResultCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PhotographerInfoController {
 
-    @Operation(summary = "사진작가의 상세 정보를 조회하는 API", description = "사진작가의 상세 정보를 조회하는 API입니다.")
+    private final PhotographerInfoService photographerInfoService;
+
+    @Operation(summary = "사진작가의 상세 정보를 조회하는 API(구현 완료)", description = "사진작가의 상세 정보를 조회하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC000", description = "사진작가 자신의 환경설정 조회 성공")
     })
@@ -29,6 +33,8 @@ public class PhotographerInfoController {
     public ResponseEntity<ResultResponse<PhotographerFullyInformationResponse>> getPhotographerInfo(
         @PathVariable("photographerId") Long photographerId
     ) {
-        return null;
+        PhotographerFullyInformationResponse photographerInfo
+            = photographerInfoService.getPhotographerInfo(photographerId);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, photographerInfo);
     }
 }
