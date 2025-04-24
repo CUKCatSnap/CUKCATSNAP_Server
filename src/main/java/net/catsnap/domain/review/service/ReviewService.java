@@ -134,4 +134,26 @@ public class ReviewService {
             slicedReviewList.isFirst(),
             slicedReviewList.isLast());
     }
+
+    @Transactional(readOnly = true)
+    public SlicedData<ReviewSearchListResponse> getPhotographerReview(Long photographerId,
+        Long memberId, Pageable pageable) {
+        Slice<Review> slicedReviewList = reviewRepository.findAllByReservation_Photographer_Id(
+            photographerId, pageable);
+        List<ReviewSearchResponse> reviewSearchResponseList = slicedReviewList.stream()
+            .map(review -> {
+                List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
+                    .map(imageClient::getDownloadImageUrl)
+                    .map(URL::toString)
+                    .toList();
+                Long likeCount = reviewLikeService.getReviewLikeCount(review.getId());
+                Boolean isMeLiked = reviewLikeService.isMeReviewLiked(review.getId(), memberId);
+                return ReviewSearchResponse.of(review, photoUrlList, likeCount, isMeLiked);
+            })
+            .toList();
+
+        return SlicedData.of(ReviewSearchListResponse.of(reviewSearchResponseList),
+            slicedReviewList.isFirst(),
+            slicedReviewList.isLast());
+    }
 }

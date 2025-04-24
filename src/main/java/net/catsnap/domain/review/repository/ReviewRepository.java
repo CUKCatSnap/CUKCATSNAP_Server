@@ -12,6 +12,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     Slice<Review> findAllByMemberId(Long memberId, Pageable pageable);
 
+    Slice<Review> findAllByReservation_Photographer_Id(Long photographerId, Pageable pageable);
+
     @Query(value = """
         SELECT r.*
         FROM review r

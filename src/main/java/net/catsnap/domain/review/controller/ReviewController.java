@@ -21,6 +21,7 @@ import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.result.code.CommonResultCode;
 import net.catsnap.global.result.code.ReviewResultCode;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,6 +68,26 @@ public class ReviewController {
         SlicedData<ReviewSearchListResponse> reviewSearchListResponse = reviewService.getMyReview(
             userId, pageable);
         return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, reviewSearchListResponse);
+    }
+
+    @Operation(summary = "특정 작가의 리뷰를 조회하는 API(구현 완료)", description = "특정 작가의 리뷰를 조회하는 API입니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
+    })
+    @GetMapping("/{photographerId}")
+    @AnyUser
+    public ResponseEntity<ResultResponse<SlicedData<ReviewSearchListResponse>>> getPhotographerReview(
+        @Parameter(description = "작가 id")
+        @PathVariable("photographerId")
+        Long photographerId,
+        @UserId
+        Long userId,
+        @PageableDefault(size = 10, sort = "createdAt")
+        Pageable pageable
+    ) {
+        SlicedData<ReviewSearchListResponse> reviewSearchListResponse
+            = reviewService.getPhotographerReview(photographerId, userId, pageable);
+        return null;
     }
 
     @Operation(summary = "리뷰에 좋아요를 토글하는 API(구현 완료)", description = "리뷰에 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
