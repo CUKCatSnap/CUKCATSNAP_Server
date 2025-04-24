@@ -87,7 +87,7 @@ public class ReviewController {
     ) {
         SlicedData<ReviewSearchListResponse> reviewSearchListResponse
             = reviewService.getPhotographerReview(photographerId, userId, pageable);
-        return null;
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, reviewSearchListResponse);
     }
 
     @Operation(summary = "리뷰에 좋아요를 토글하는 API(구현 완료)", description = "리뷰에 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
