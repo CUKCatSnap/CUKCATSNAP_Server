@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "리뷰에 관한 API", description = "리뷰에 관한 API입니다.")
@@ -100,7 +99,7 @@ public class ReviewController {
         @UserId
         Long userId,
         @Parameter(description = "리뷰 id")
-        @RequestParam("reviewId")
+        @PathVariable("reviewId")
         Long reviewId
     ) {
         reviewService.toggleReviewLike(reviewId, userId);
