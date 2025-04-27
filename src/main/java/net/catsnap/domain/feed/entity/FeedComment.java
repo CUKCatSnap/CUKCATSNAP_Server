@@ -15,7 +15,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.notification.entity.FeedCommentNotification;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.entity.BaseTimeEntity;
@@ -54,7 +53,4 @@ public class FeedComment extends BaseTimeEntity {
     //OneToMany
     @OneToMany(mappedBy = "parentComment")
     private List<FeedComment> children;
-
-    @OneToMany(mappedBy = "feedComment")
-    private List<FeedCommentNotification> feedCommentNotifications;
 }

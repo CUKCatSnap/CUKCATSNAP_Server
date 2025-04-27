@@ -8,14 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.notification.entity.FeedLikeNotification;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.entity.BaseTimeEntity;
@@ -47,6 +44,4 @@ public class FeedLike extends BaseTimeEntity {
 
     //OneToMany
 
-    @OneToMany(mappedBy = "feedLike")
-    private List<FeedLikeNotification> feedLikeNotifications;
 }

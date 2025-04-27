@@ -10,16 +10,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.notification.entity.ReservationNotification;
 import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.photographer.entity.Photographer;
@@ -81,10 +78,6 @@ public class Reservation extends BaseTimeEntity {
     private TownLevel townLevel;
 
     //OneToMany
-
-    @OneToMany(mappedBy = "reservation")
-    private List<ReservationNotification> reservationNotificationList;
-
     @OneToOne(mappedBy = "reservation")
     private Review review;
 
@@ -111,7 +104,7 @@ public class Reservation extends BaseTimeEntity {
     public void updateDistrictLevel(DistrictLevel districtLevel) {
         this.districtLevel = districtLevel;
     }
-    
+
     public void updateTownLevel(TownLevel townLevel) {
         this.townLevel = townLevel;
     }
