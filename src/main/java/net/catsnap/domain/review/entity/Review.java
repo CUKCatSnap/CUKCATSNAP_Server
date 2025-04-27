@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.notification.entity.PlaceSubscribeNotification;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.photographer.entity.Photographer;
@@ -62,9 +61,6 @@ public class Review extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "review")
     private List<ReviewPhoto> reviewPhotoList;
-
-    @OneToMany(mappedBy = "review")
-    private List<PlaceSubscribeNotification> placeSubscribeNotificationList;
 
     public List<String> getReivewPhotoFileNameList() {
         return reviewPhotoList.stream()
