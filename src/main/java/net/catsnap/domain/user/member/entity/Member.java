@@ -1,5 +1,6 @@
 package net.catsnap.domain.user.member.entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,6 +30,7 @@ import org.springframework.security.core.GrantedAuthority;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@DiscriminatorValue("MEMBER")
 public class Member extends User {
 
     @Enumerated(EnumType.STRING)

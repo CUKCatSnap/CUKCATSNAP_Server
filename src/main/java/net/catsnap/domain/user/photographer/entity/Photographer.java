@@ -1,5 +1,6 @@
 package net.catsnap.domain.user.photographer.entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -26,6 +27,7 @@ import org.springframework.security.core.GrantedAuthority;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@DiscriminatorValue("PHOTOGRAPHER")
 public class Photographer extends User {
 
     // OneToMany
