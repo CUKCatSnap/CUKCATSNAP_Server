@@ -1,5 +1,6 @@
 package net.catsnap.domain.user.fakeuser.entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Getter
 @SuperBuilder
 @AllArgsConstructor
+@DiscriminatorValue("FAKE_USER")
 public class FakeUser extends User {
 
     public static Long fakeUserId = -1L;
