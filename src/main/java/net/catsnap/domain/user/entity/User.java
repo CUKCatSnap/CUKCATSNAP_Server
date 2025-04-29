@@ -2,7 +2,10 @@ package net.catsnap.domain.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,7 +29,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorOptions(force = false)
 @Table(name = "users")
 @Getter
@@ -45,6 +48,10 @@ public abstract class User {
     private LocalDate birthday;
     private String phoneNumber;
     private String profilePhotoUrl;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_type", insertable = false, updatable = false)
+    private UserType userType;
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
