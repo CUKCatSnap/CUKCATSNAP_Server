@@ -51,7 +51,7 @@ public abstract class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type", insertable = false, updatable = false)
-    private UserType dtype;
+    private UserType userType;
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
