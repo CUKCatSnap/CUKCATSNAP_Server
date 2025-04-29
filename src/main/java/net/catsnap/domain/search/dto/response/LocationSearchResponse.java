@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import net.catsnap.domain.reservation.dto.ReservationLocation;
 import net.catsnap.domain.review.entity.Review;
+import net.catsnap.domain.user.entity.UserTinyInformation;
 import net.catsnap.domain.user.member.dto.response.MemberTinyInformationResponse;
 import net.catsnap.domain.user.photographer.dto.response.PhotographerTinyInformationResponse;
 
@@ -39,10 +40,11 @@ public record LocationSearchResponse(
     Integer placeScore
 ) {
 
-    public static LocationSearchResponse from(Review review) {
+    public static LocationSearchResponse from(Review review,
+        UserTinyInformation userTinyInformation) {
         return new LocationSearchResponse(
             MemberTinyInformationResponse.from(review.getMember()),
-            PhotographerTinyInformationResponse.from(review.getPhotographer()),
+            PhotographerTinyInformationResponse.from(userTinyInformation),
             review.getId(),
             review.getCreatedAt(),
             review.getReservation().getStartTime(),

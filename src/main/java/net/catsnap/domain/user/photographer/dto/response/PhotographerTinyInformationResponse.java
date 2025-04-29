@@ -1,5 +1,6 @@
 package net.catsnap.domain.user.photographer.dto.response;
 
+import net.catsnap.domain.user.entity.UserTinyInformation;
 import net.catsnap.domain.user.photographer.entity.Photographer;
 
 public record PhotographerTinyInformationResponse(
@@ -12,5 +13,12 @@ public record PhotographerTinyInformationResponse(
         return new PhotographerTinyInformationResponse(photographer.getId(),
             photographer.getNickname(),
             photographer.getProfilePhotoUrl());
+    }
+
+    public static PhotographerTinyInformationResponse from(
+        UserTinyInformation userTinyInformation) {
+        return new PhotographerTinyInformationResponse(userTinyInformation.getId(),
+            userTinyInformation.getNickname(),
+            userTinyInformation.getProfilePhotoUrl());
     }
 }
