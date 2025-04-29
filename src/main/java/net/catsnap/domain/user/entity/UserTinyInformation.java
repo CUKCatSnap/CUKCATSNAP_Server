@@ -27,4 +27,5 @@ public class UserTinyInformation {
 
     private String nickname;
     private String profilePhotoUrl;
+    private UserType userType;
 }
