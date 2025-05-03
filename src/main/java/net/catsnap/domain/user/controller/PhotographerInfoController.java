@@ -5,7 +5,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
+import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.user.photographer.dto.response.PhotographerFullyInformationResponse;
 import net.catsnap.domain.user.service.PhotographerInfoService;
 import net.catsnap.global.result.ResultResponse;
@@ -24,7 +26,7 @@ public class PhotographerInfoController {
 
     private final PhotographerInfoService photographerInfoService;
 
-    @Operation(summary = "사진작가의 상세 정보를 조회하는 API(구현 완료)", description = "사진작가의 상세 정보를 조회하는 API입니다.")
+    @Operation(summary = "작가의 상세 정보를 조회하는 API(구현 완료)", description = "사진작가의 상세 정보를 조회하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
     })
@@ -32,6 +34,20 @@ public class PhotographerInfoController {
     @AnyUser
     public ResponseEntity<ResultResponse<PhotographerFullyInformationResponse>> getPhotographerInfo(
         @PathVariable("photographerId") Long photographerId
+    ) {
+        PhotographerFullyInformationResponse photographerInfo
+            = photographerInfoService.getPhotographerInfo(photographerId);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, photographerInfo);
+    }
+
+    @Operation(summary = "작가가 자신의 상세 정보를 조회하는 API(구현 완료)", description = "작가가 자신의 상세 정보를 조회하는 API입니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
+    })
+    @GetMapping("/my")
+    @LoginPhotographer
+    public ResponseEntity<ResultResponse<PhotographerFullyInformationResponse>> getMyInfo(
+        @UserId Long photographerId
     ) {
         PhotographerFullyInformationResponse photographerInfo
             = photographerInfoService.getPhotographerInfo(photographerId);
