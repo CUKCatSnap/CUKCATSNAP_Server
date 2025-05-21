@@ -36,7 +36,7 @@ jobs:
 
           echo "Waiting for MongoDB to be ready..."
           for i in {1..10}; do
-            if docker exec mongodb-test mongo --eval "db.adminCommand('ping')" > /dev/null 2>&1; then
+            if docker exec mongodb-test mongosh --eval "db.adminCommand('ping')" > /dev/null 2>&1; then
               echo "MongoDB is ready!"
               break
             fi
@@ -46,7 +46,7 @@ jobs:
 
           echo 'mongosh catsnap_test' > init.js
           docker exec -i mongodb-test bash < init.js
-      
+
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
