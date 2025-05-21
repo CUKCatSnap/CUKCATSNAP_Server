@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "리뷰에 관한 API", description = "리뷰에 관한 API입니다.")
@@ -73,11 +74,11 @@ public class ReviewController {
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
     })
-    @GetMapping("/{photographerId}")
+    @GetMapping
     @AnyUser
     public ResponseEntity<ResultResponse<SlicedData<ReviewSearchListResponse>>> getPhotographerReview(
         @Parameter(description = "작가 id")
-        @PathVariable("photographerId")
+        @RequestParam("photographerId")
         Long photographerId,
         @UserId
         Long userId,
