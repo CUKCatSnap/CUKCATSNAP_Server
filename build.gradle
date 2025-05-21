@@ -82,6 +82,10 @@ dependencies {
     //=== rabbitmq 의존성 추가 ===
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     testImplementation 'org.springframework.amqp:spring-rabbit-test'
+
+    //=== Flyway 의존성 추가 ===
+    implementation 'org.flywaydb:flyway-core'
+    runtimeOnly 'org.flywaydb:flyway-database-postgresql'
 }
 
 tasks.named('test') {
