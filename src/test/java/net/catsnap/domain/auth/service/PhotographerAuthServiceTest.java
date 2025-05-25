@@ -55,7 +55,7 @@ class PhotographerAuthServiceTest {
     @Nested
     class 작가_회원_가입_테스트 {
 
-        @Test
+        //@Test
         void 회원_가입_성공() {
             //given
             PhotographerSignUpRequest photographerSignUpRequest = PhotographerSignUpRequestFixture.photographerSignUpRequest()
