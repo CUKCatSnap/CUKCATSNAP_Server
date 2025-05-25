@@ -31,4 +31,8 @@ public class PhotographerIntroduction extends BaseTimeEntity {
     Photographer photographer;
 
     String content;
+
+    public void updateIntroduction(String content) {
+        this.content = content;
+    }
 }

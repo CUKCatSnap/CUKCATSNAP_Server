@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.user.photographer.entity.PhotographerIntroduction;
 import net.catsnap.domain.user.photographer.repository.PhotographerIntroductionRepository;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,17 @@ public class PhotographerIntroductionService {
             .content("")
             .build();
 
+        photographerIntroductionRepository.save(photographerIntroduction);
+    }
+
+    @Transactional
+    public void updatePhotographerIntroduction(Long photographerId, String introduction) {
+
+        PhotographerIntroduction photographerIntroduction = photographerIntroductionRepository.findByPhotographerId(
+                photographerId)
+            .orElseThrow(() -> new ResourceNotFoundException("해당 사진작가의 자기소개가 존재하지 않습니다."));
+
+        photographerIntroduction.updateIntroduction(introduction);
         photographerIntroductionRepository.save(photographerIntroduction);
     }
 }

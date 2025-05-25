@@ -6,5 +6,5 @@ CREATE TABLE photographer_introduction
     created_at      TIMESTAMP(6) NOT NULL,
     updated_at      TIMESTAMP(6) NOT NULL,
     CONSTRAINT fk_introduction_photographer__photographer
-        FOREIGN KEY (photographer_id) REFERENCES photographer (id)
+        FOREIGN KEY (photographer_id) REFERENCES photograph (id)
 );
