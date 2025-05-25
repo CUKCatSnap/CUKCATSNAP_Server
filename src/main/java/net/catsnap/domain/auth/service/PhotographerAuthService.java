@@ -9,6 +9,7 @@ import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerSettingRepository;
+import net.catsnap.domain.user.photographer.service.PhotographerIntroductionService;
 import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.Exception.photographer.DuplicatedPhotographerException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +28,7 @@ public class PhotographerAuthService {
     private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
 
     private final PhotographerReservationService photographerReservationService;
+    private final PhotographerIntroductionService photographerIntroductionService;
 
     @Transactional
     public void singUp(PhotographerSignUpRequest photographerSignUpRequest) {
@@ -62,5 +64,8 @@ public class PhotographerAuthService {
         photographerSettingRepository.save(photographerSetting);
         photographerReservationNoticeRepository.save("", photographerId);
         photographerReservationLocationRepository.save("", photographerId);
+
+        Photographer photographer = photographerRepository.getReferenceById(photographerId);
+        photographerIntroductionService.initPhotographerIntroduction(photographer);
     }
 }
