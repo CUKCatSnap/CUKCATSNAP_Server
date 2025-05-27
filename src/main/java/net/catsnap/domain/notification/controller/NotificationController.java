@@ -1,16 +1,15 @@
 package net.catsnap.domain.notification.controller;
 
-import net.catsnap.domain.notification.dto.NotificationResponse;
-import net.catsnap.global.result.PagedData;
-import net.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.catsnap.domain.notification.dto.NotificationResponse;
+import net.catsnap.global.result.PagedData;
+import net.catsnap.global.result.ResultResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,18 +28,6 @@ public class NotificationController {
     public ResultResponse<PagedData<NotificationResponse.NotificationList>> getNotification(
         @RequestParam
         Pageable pageable
-    ) {
-        return null;
-    }
-
-    @Operation(summary = "알림을 읽음 처리하는 API", description = "알림을 읽음 처리하는 API입니다.")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SN001", description = "성공적으로 알림을 읽음 처리했습니다.")
-    })
-    @PatchMapping("/{notificationId}")
-    public ResultResponse<?> patchNotificationRead(
-        @PathVariable
-        Long notificationId
     ) {
         return null;
     }
