@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import net.catsnap.domain.notification.dto.NotificationResponse;
+import net.catsnap.domain.notification.dto.response.NotificationListResponse;
 import net.catsnap.global.result.PagedData;
 import net.catsnap.global.result.ResultResponse;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/notification")
 public class NotificationController {
 
-    @Operation(summary = "알림을 조회하는 API", description = "알림을 조회하는 API입니다.")
+    @Operation(summary = "최근(30일 이내) 알림을 조회하는 API", description = "최근(30일 이내) 알림을 조회하는 API입니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "200 SN000", description = "성공적으로 알림을 조회했습니다.")
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다."),
     })
     @GetMapping
-    public ResultResponse<PagedData<NotificationResponse.NotificationList>> getNotification(
+    public ResultResponse<PagedData<NotificationListResponse>> getNotification(
         @RequestParam
         Pageable pageable
     ) {
