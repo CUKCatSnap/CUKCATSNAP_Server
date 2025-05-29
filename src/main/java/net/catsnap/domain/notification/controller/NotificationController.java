@@ -32,6 +32,19 @@ public class NotificationController {
         return null;
     }
 
+    @Operation(summary = "오래된(30일 이후) 알림을 조회하는 API", description = "오래된(30일 이후) 알림을 조회하는 API입니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다."),
+    })
+    @GetMapping
+    public ResultResponse<PagedData<NotificationListResponse>> getOldNotification(
+        @RequestParam
+        Pageable pageable
+    ) {
+        return null;
+    }
+
+
     @Operation(summary = "알림을 삭제하는 API", description = "알림을 삭제하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SN002", description = "성공적으로 알림을 삭제했습니다.")
