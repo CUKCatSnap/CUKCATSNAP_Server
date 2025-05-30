@@ -73,6 +73,19 @@ public class NotificationController {
             notificationListResponseSlicedData);
     }
 
+    @Operation(summary = "읽지 않은 알림의 수를 조회하는 API", description = "읽지 않은 알림의 수를 조회하는 API입니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다."),
+    })
+    @LoginUser
+    @GetMapping("/unread-count")
+    public ResponseEntity<ResultResponse<?>> getUnreadNotificationCount(
+        @UserId
+        Long userId
+    ) {
+        return null;
+    }
+
 
     @Operation(summary = "알림을 삭제하는 API", description = "알림을 삭제하는 API입니다.")
     @ApiResponses({
