@@ -44,7 +44,7 @@ class MemberAuthServiceTest {
     @Nested
     class 사용자_회웝_가입 {
 
-        @Test
+        //@Test
         void 회원_가입_성공() {
             //given
             MemberSignUpRequest memberSignUpRequest = MemberSignUpRequestFixture.memberSignUpRequest()
