@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
 
-    Slice<Notification> findByReceiverAndCreatedAtAfter(Long receiverId,
+    Slice<Notification> findByReceiverIdAndCreatedAtAfter(Long receiverId,
         LocalDateTime createdAt, Pageable pageable);
 
-    Slice<Notification> findByReceiverAndCreatedAtBefore(Long receiverId,
+    Slice<Notification> findByReceiverIdAndCreatedAtBefore(Long receiverId,
         LocalDateTime createdAt, Pageable pageable);
 
     @Modifying

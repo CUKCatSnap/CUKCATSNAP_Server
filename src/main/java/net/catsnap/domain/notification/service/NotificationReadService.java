@@ -26,7 +26,7 @@ public class NotificationReadService {
     public SlicedData<NotificationListResponse> getRecentNotification(Long userId,
         Pageable pageable, LocalDateTime from) {
         readNotification(userId);
-        Slice<Notification> notificationSlice = notificationRepository.findByReceiverAndCreatedAtAfter(
+        Slice<Notification> notificationSlice = notificationRepository.findByReceiverIdAndCreatedAtAfter(
             userId, from, pageable);
         List<NotificationResponse> notificationResponseList = notificationSlice.getContent()
             .stream()
@@ -39,7 +39,7 @@ public class NotificationReadService {
 
     public SlicedData<NotificationListResponse> getOldNotification(Long userId,
         Pageable pageable, LocalDateTime to) {
-        Slice<Notification> notificationSlice = notificationRepository.findByReceiverAndCreatedAtBefore(
+        Slice<Notification> notificationSlice = notificationRepository.findByReceiverIdAndCreatedAtBefore(
             userId, to, pageable);
         List<NotificationResponse> notificationResponseList = notificationSlice.getContent()
             .stream()
