@@ -1,7 +1,10 @@
 package net.catsnap.domain.auth.service;
 
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.dto.photographer.request.PhotographerSignUpRequest;
+import net.catsnap.domain.notification.entity.NotificationLastRead;
+import net.catsnap.domain.notification.repository.NotificationLastReadRepository;
 import net.catsnap.domain.reservation.service.PhotographerReservationService;
 import net.catsnap.domain.user.photographer.document.PhotographerSetting;
 import net.catsnap.domain.user.photographer.entity.Photographer;
@@ -26,6 +29,7 @@ public class PhotographerAuthService {
     private final PhotographerSettingRepository photographerSettingRepository;
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
+    private final NotificationLastReadRepository notificationLastReadRepository;
 
     private final PhotographerReservationService photographerReservationService;
     private final PhotographerIntroductionService photographerIntroductionService;
@@ -67,5 +71,12 @@ public class PhotographerAuthService {
 
         Photographer photographer = photographerRepository.getReferenceById(photographerId);
         photographerIntroductionService.initPhotographerIntroduction(photographer);
+
+        // 알림 마지막 읽은 시간 초기화
+        NotificationLastRead notificationLastRead = NotificationLastRead.builder().
+            user(photographer)
+            .lastReadAt(LocalDateTime.now())
+            .build();
+        notificationLastReadRepository.save(notificationLastRead);
     }
 }
