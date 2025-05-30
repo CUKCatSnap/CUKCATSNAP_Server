@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.LoginUser;
 import net.catsnap.domain.notification.dto.response.NotificationListResponse;
+import net.catsnap.domain.notification.dto.response.NotificationUnReadCountResponse;
 import net.catsnap.domain.notification.service.NotificationReadService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
@@ -73,17 +74,20 @@ public class NotificationController {
             notificationListResponseSlicedData);
     }
 
-    @Operation(summary = "읽지 않은 알림의 수를 조회하는 API", description = "읽지 않은 알림의 수를 조회하는 API입니다.")
+    @Operation(summary = "읽지 않은 알림의 수를 조회하는 API(구현완료)", description = "읽지 않은 알림의 수를 조회하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다."),
     })
     @LoginUser
     @GetMapping("/unread-count")
-    public ResponseEntity<ResultResponse<?>> getUnreadNotificationCount(
+    public ResponseEntity<ResultResponse<NotificationUnReadCountResponse>> getUnreadNotificationCount(
         @UserId
         Long userId
     ) {
-        return null;
+        NotificationUnReadCountResponse notificationUnReadCountResponse
+            = notificationReadService.getNotificationUnReadCount(userId);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP,
+            notificationUnReadCountResponse);
     }
 
 

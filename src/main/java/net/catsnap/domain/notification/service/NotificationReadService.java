@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.notification.dto.response.NotificationListResponse;
 import net.catsnap.domain.notification.dto.response.NotificationResponse;
+import net.catsnap.domain.notification.dto.response.NotificationUnReadCountResponse;
 import net.catsnap.domain.notification.entity.Notification;
 import net.catsnap.domain.notification.entity.NotificationLastRead;
 import net.catsnap.domain.notification.repository.NotificationLastReadRepository;
@@ -47,6 +48,12 @@ public class NotificationReadService {
         return SlicedData.of(NotificationListResponse.from(notificationResponseList),
             notificationSlice.isFirst(),
             notificationSlice.isLast());
+    }
+
+    public NotificationUnReadCountResponse getNotificationUnReadCount(Long userId) {
+        Long notificationUnReadCount = notificationRepository.countByReceiverIdAndReadAtIsNull(
+            userId);
+        return NotificationUnReadCountResponse.of(notificationUnReadCount);
     }
 
     private void readNotification(Long userId) {

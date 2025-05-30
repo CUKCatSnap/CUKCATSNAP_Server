@@ -24,4 +24,6 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
     void updateReadAtAfter(@Param("readAt") LocalDateTime readAt,
         @Param("receiverId") Long receiverId,
         @Param("lastReadAt") LocalDateTime lastReadAt);
+
+    Long countByReceiverIdAndReadAtIsNull(Long receiverId);
 }
