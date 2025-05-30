@@ -33,4 +33,8 @@ public class NotificationLastRead {
     private User user;
 
     private LocalDateTime lastReadAt;
+
+    public void updateLastReadAt(LocalDateTime lastReadAt) {
+        this.lastReadAt = lastReadAt;
+    }
 }
