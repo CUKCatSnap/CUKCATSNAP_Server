@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import net.catsnap.domain.feed.dto.FeedRequest;
 import net.catsnap.domain.feed.dto.FeedResponse;
-import net.catsnap.domain.search.dto.SearchResponse;
+import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
 import net.catsnap.global.result.PagedData;
 import net.catsnap.global.result.ResultResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -102,7 +102,7 @@ public class FeedController {
         @ApiResponse(responseCode = "200 SF006", description = "성공적으로 피드를 조회하였습니다.")
     })
     @GetMapping("/{feedId}")
-    public ResultResponse<SearchResponse.DetailFeedSearch> getFeed(
+    public ResultResponse<FeedDetailResponse> getFeed(
         @PathVariable("feedId")
         Long feedId
     ) {
