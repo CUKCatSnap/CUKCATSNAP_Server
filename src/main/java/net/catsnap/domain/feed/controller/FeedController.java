@@ -1,15 +1,15 @@
 package net.catsnap.domain.feed.controller;
 
-import net.catsnap.domain.feed.dto.FeedRequest;
-import net.catsnap.domain.feed.dto.FeedResponse;
-import net.catsnap.domain.search.dto.SearchResponse;
-import net.catsnap.global.result.PagedData;
-import net.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.catsnap.domain.feed.dto.FeedRequest;
+import net.catsnap.domain.feed.dto.FeedResponse;
+import net.catsnap.domain.search.dto.SearchResponse;
+import net.catsnap.global.result.PagedData;
+import net.catsnap.global.result.ResultResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +27,7 @@ public class FeedController {
     @ApiResponses({
         @ApiResponse(responseCode = "200 SF000", description = "해당 피드의 모든 댓글을 조회했습니다.")
     })
-    @GetMapping("/comment/{feedId}")
+    @GetMapping("/{feedId}/comment")
     public ResultResponse<PagedData<FeedResponse.FeedCommentList>> getFeedComment(
         @Parameter(description = "feed id")
         @PathVariable("feedId")
@@ -51,10 +51,10 @@ public class FeedController {
     @ApiResponses({
         @ApiResponse(responseCode = "200 SF002", description = "성공적으로 피드의 댓글을 삭제하였습니다.")
     })
-    @DeleteMapping("/comment/{feedCommentId}")
+    @DeleteMapping("/comment/{commentId}")
     public ResultResponse<?> deleteFeedComment(
         @Parameter(description = "feed comment id")
-        @PathVariable("feedCommentId")
+        @PathVariable("commentId")
         Long feedCommentId
     ) {
         return null;
@@ -64,9 +64,9 @@ public class FeedController {
     @ApiResponses({
         @ApiResponse(responseCode = "200 SF003", description = "성공적으로 피드 댓글의 좋아요를 토글하였습니다.")
     })
-    @PostMapping("/comment/like/{feedCommentId}")
+    @PostMapping("/comment/{commentId}/like")
     public ResultResponse<?> feedCommentLikeToggle(
-        @PathVariable("feedCommentId")
+        @PathVariable("commentId")
         Long feedCommentId
     ) {
         return null;
@@ -76,7 +76,7 @@ public class FeedController {
     @ApiResponses({
         @ApiResponse(responseCode = "200 SF004", description = "성공적으로 피드의 좋아요를 토글하였습니다.")
     })
-    @PostMapping("/like/{feedId}")
+    @PostMapping("/{feedId}/like")
     public ResultResponse<?> feedLikeToggle(
         @PathVariable("feedId")
         Long feedId
