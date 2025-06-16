@@ -42,13 +42,6 @@ public class SearchResponse {
 
     @Getter
     @Builder
-    public static class DetailFeedSearchList {
-
-        private List<DetailFeedSearch> detailFeedSearchList;
-    }
-
-    @Getter
-    @Builder
     public static class DetailFeedSearch {
 
         private PhotographerFullyInformationResponse photographerFullyInformation;
