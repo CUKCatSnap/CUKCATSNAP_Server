@@ -5,11 +5,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.feed.dto.FeedRequest;
 import net.catsnap.domain.feed.dto.FeedResponse;
 import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
 import net.catsnap.global.result.PagedData;
 import net.catsnap.global.result.ResultResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -101,8 +103,9 @@ public class FeedController {
     @ApiResponses({
         @ApiResponse(responseCode = "200 SF006", description = "성공적으로 피드를 조회하였습니다.")
     })
+    @AnyUser
     @GetMapping("/{feedId}")
-    public ResultResponse<FeedDetailResponse> getFeed(
+    public ResponseEntity<ResultResponse<FeedDetailResponse>> getFeed(
         @PathVariable("feedId")
         Long feedId
     ) {
