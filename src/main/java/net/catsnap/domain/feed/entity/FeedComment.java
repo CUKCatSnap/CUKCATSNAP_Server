@@ -15,8 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.catsnap.domain.user.member.entity.Member;
-import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.entity.User;
 import net.catsnap.global.entity.BaseTimeEntity;
 
 @Entity
@@ -41,12 +40,8 @@ public class FeedComment extends BaseTimeEntity {
     private FeedComment parentComment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "photographer_id")
-    private Photographer photographer;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String content;
 

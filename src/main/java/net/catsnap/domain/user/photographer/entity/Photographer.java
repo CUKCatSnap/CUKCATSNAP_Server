@@ -11,8 +11,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import net.catsnap.domain.feed.entity.Feed;
-import net.catsnap.domain.feed.entity.FeedComment;
-import net.catsnap.domain.feed.entity.FeedLike;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.entity.WeekdayReservationTimeMapping;
@@ -40,12 +38,6 @@ public class Photographer extends User {
 
     @OneToMany(mappedBy = "photographer")
     private List<Feed> feedList;
-
-    @OneToMany(mappedBy = "photographer")
-    private List<FeedLike> feedLikeList;
-
-    @OneToMany(mappedBy = "photographer")
-    private List<FeedComment> feedCommentList;
 
     @OneToMany(mappedBy = "photographer")
     private List<WeekdayReservationTimeMapping> weekdayReservationTimeMappingList;
