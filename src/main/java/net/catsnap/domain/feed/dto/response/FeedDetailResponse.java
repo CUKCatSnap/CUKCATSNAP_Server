@@ -31,9 +31,7 @@ public record FeedDetailResponse(
 
     @Schema(description = "글 작성 시간")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime createdAt,
-
-    CommentListResponse commentListResponse
+    LocalDateTime createdAt
 ) {
 
 }
