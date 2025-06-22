@@ -5,11 +5,11 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.feed.dto.FeedRequest;
 import net.catsnap.domain.feed.dto.FeedResponse;
 import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
-import net.catsnap.global.result.PagedData;
 import net.catsnap.global.result.ResultResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,18 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/feed")
 public class FeedController {
-
-    @Operation(summary = "해당 피드의 모든 댓글을 조회하는 API", description = "해당 피드의 모든 댓글을 조회하는 API입니다.")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SF000", description = "해당 피드의 모든 댓글을 조회했습니다.")
-    })
-    @GetMapping("/{feedId}/comment")
-    public ResultResponse<PagedData<FeedResponse.FeedCommentList>> getFeedComment(
-        @Parameter(description = "feed id")
-        @PathVariable("feedId")
-        Long feedId) {
-        return null;
-    }
 
     @Operation(summary = "피드에 댓글을 작성하는 API", description = "피드에 댓글을 작성하는 API입니다.")
     @ApiResponses({
@@ -107,7 +95,9 @@ public class FeedController {
     @GetMapping("/{feedId}")
     public ResponseEntity<ResultResponse<FeedDetailResponse>> getFeed(
         @PathVariable("feedId")
-        Long feedId
+        Long feedId,
+        @UserId
+        Long userId
     ) {
         return null;
     }
