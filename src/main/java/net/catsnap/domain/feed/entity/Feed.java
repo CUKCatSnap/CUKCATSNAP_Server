@@ -35,6 +35,8 @@ public class Feed extends BaseTimeEntity {
     @JoinColumn(name = "photographer_id")
     private Photographer photographer;
 
+    private String title;
+
     private String content;
 
     //OneToMany
