@@ -13,8 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import net.catsnap.domain.feed.entity.FeedComment;
-import net.catsnap.domain.feed.entity.FeedLike;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.review.entity.Review;
 import net.catsnap.domain.social.entity.PhotographerBlock;
@@ -58,12 +56,6 @@ public class Member extends User {
 
     @OneToMany(mappedBy = "member")
     private List<Review> reviewList;
-
-    @OneToMany(mappedBy = "member")
-    private List<FeedLike> feedLikeList;
-
-    @OneToMany(mappedBy = "member")
-    private List<FeedComment> feedCommentList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
