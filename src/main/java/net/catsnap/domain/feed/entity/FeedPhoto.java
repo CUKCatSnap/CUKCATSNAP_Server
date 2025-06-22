@@ -32,4 +32,8 @@ public class FeedPhoto {
     private Feed feed;
 
     private String photo_url;
+
+    public String toPhotoUrl() {
+        return photo_url;
+    }
 }

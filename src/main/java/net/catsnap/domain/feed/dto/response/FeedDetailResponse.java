@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 import java.util.List;
+import net.catsnap.domain.feed.entity.Feed;
+import net.catsnap.domain.feed.entity.FeedPhoto;
 import net.catsnap.domain.user.photographer.dto.response.PhotographerTinyInformationResponse;
 
 public record FeedDetailResponse(
@@ -34,4 +36,20 @@ public record FeedDetailResponse(
     LocalDateTime createdAt
 ) {
 
+    public static FeedDetailResponse of(Feed feed, Long likeCount, Boolean isMeLiked,
+        Long commentCount) {
+        return new FeedDetailResponse(
+            PhotographerTinyInformationResponse.from(feed.getPhotographer()),
+            feed.getId(),
+            feed.getTitle(),
+            feed.getContent(),
+            feed.getFeedPhotoList().stream()
+                .map(FeedPhoto::toPhotoUrl)
+                .toList(),
+            likeCount,
+            isMeLiked,
+            commentCount,
+            feed.getCreatedAt()
+        );
+    }
 }

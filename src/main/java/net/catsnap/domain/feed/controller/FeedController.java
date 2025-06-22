@@ -5,12 +5,15 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.feed.dto.FeedRequest;
 import net.catsnap.domain.feed.dto.FeedResponse;
 import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
+import net.catsnap.domain.feed.service.FeedService;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.code.CommonResultCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "피드 관련 API", description = "피드와 관련된 API입니다.")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/feed")
 public class FeedController {
+
+    private final FeedService feedService;
 
     @Operation(summary = "피드에 댓글을 작성하는 API", description = "피드에 댓글을 작성하는 API입니다.")
     @ApiResponses({
@@ -87,9 +93,9 @@ public class FeedController {
         return null;
     }
 
-    @Operation(summary = "피드 1개를 피드 Id로 조회하는 API", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
+    @Operation(summary = "피드 1개를 피드 Id로 조회하는 API(구현 완료)", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "200 SF006", description = "성공적으로 피드를 조회하였습니다.")
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
     })
     @AnyUser
     @GetMapping("/{feedId}")
@@ -99,6 +105,7 @@ public class FeedController {
         @UserId
         Long userId
     ) {
-        return null;
+        FeedDetailResponse feedDetailResponse = feedService.getFeedDetail(feedId, userId);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, feedDetailResponse);
     }
 }
