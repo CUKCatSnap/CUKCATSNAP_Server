@@ -3,10 +3,11 @@ package net.catsnap.domain.feed.dto.response;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
-import net.catsnap.domain.user.photographer.dto.response.PhotographerTinyInformationResponse;
+import net.catsnap.domain.feed.entity.FeedComment;
+import net.catsnap.domain.user.dto.response.UserTinyInformationResponse;
 
 public record CommentResponse(
-    PhotographerTinyInformationResponse photographerInformation,
+    UserTinyInformationResponse userTinyInformationResponse,
     String content,
     Long feedCommentId,
 
@@ -21,4 +22,14 @@ public record CommentResponse(
     LocalDateTime createdAt
 ) {
 
+    public static CommentResponse of(FeedComment feedComment, Long likeCount, Boolean isMeLiked) {
+        return new CommentResponse(
+            UserTinyInformationResponse.from(feedComment.getUser()),
+            feedComment.getContent(),
+            feedComment.getId(),
+            likeCount,
+            isMeLiked,
+            feedComment.getCreatedAt()
+        );
+    }
 }
