@@ -10,10 +10,15 @@ import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.feed.dto.FeedRequest;
 import net.catsnap.domain.feed.dto.FeedResponse;
+import net.catsnap.domain.feed.dto.response.CommentListResponse;
 import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
+import net.catsnap.domain.feed.service.FeedCommentService;
 import net.catsnap.domain.feed.service.FeedService;
 import net.catsnap.global.result.ResultResponse;
+import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.result.code.CommonResultCode;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FeedController {
 
     private final FeedService feedService;
+    private final FeedCommentService feedCommentService;
 
     @Operation(summary = "피드에 댓글을 작성하는 API", description = "피드에 댓글을 작성하는 API입니다.")
     @ApiResponses({
@@ -107,5 +113,24 @@ public class FeedController {
     ) {
         FeedDetailResponse feedDetailResponse = feedService.getFeedDetail(feedId, userId);
         return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, feedDetailResponse);
+    }
+
+    @Operation(summary = "특정 피드의 댓글을 조회하는 API(구현 완료)", description = "특정 피드의 댓글을 조회하는 API입니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC000", description = "성공적으로 데이터를 조회했습니다.")
+    })
+    @AnyUser
+    @GetMapping("/{feedId}/comment")
+    public ResponseEntity<ResultResponse<SlicedData<CommentListResponse>>> getFeedComment(
+        @PathVariable("feedId")
+        Long feedId,
+        @UserId
+        Long userId,
+        @PageableDefault(page = 0, size = 10)
+        Pageable pageable
+    ) {
+        SlicedData<CommentListResponse> commentListResponse = feedCommentService.getFeedComments(
+            feedId, userId, pageable);
+        return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, commentListResponse);
     }
 }
