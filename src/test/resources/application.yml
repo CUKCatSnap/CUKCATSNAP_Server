@@ -54,17 +54,23 @@ spring:
     expiration:
       access-token: 30 # 분단위
       refresh-token: 30 # 분단위
-
   aws:
     s3:
       access-key: access-key
       secret-key: secret-key
-      region: region
-      bucket-name:
-        root: bucket-name
-        raw: raw-bucket
-        resized-400: resized-bucket
-      presigned-url-expiration: 1000000
+      region: ap-northeast-2
+      review:
+        region: region
+        bucket-name: bucket-name1
+        raw-image-folder: raw1
+        resized-image-folder: resized
+        presigned-url-expiration: 180000
+      feed:
+        region: ap-northeast-2
+        bucket-name: bucket-name2
+        raw-image-folder: raw2
+        resized-image-folder: resized
+        presigned-url-expiration: 180000
 
 naver:
   client-id: client-id
