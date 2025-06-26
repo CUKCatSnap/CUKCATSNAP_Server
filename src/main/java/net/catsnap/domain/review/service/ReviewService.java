@@ -19,9 +19,9 @@ import net.catsnap.domain.search.dto.response.ReviewSearchListResponse;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.member.repository.MemberRepository;
-import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.aws.s3.ImageClient;
+import net.catsnap.global.aws.s3.ImageUploadClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
@@ -40,8 +40,8 @@ public class ReviewService {
     private final ReviewPhotoRepository reviewPhotoRepository;
     private final ReviewLikeRepository reviewLikeRepository;
     private final MemberRepository memberRepository;
-    private final PhotographerRepository photographerRepository;
     private final ReviewLikeService reviewLikeService;
+    private final ImageUploadClient imageUploadClient;
 
     @Transactional
     public ReviewPhotoPresignedURLResponse postReview(PostReviewRequest postReviewRequest) {
@@ -86,7 +86,8 @@ public class ReviewService {
         List<ReviewPhoto> reviewPhotoList = new ArrayList<>();
 
         photoFileNameList.forEach(fileName -> {
-            PresignedUrlResponse presignedUrlResponse = imageClient.getUploadImageUrl(fileName);
+            PresignedUrlResponse presignedUrlResponse = imageUploadClient.getUploadImageUrl(
+                fileName);
             reviewPhotoList.add(new ReviewPhoto(
                 review,
                 presignedUrlResponse.uuidFileName()

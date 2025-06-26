@@ -3,11 +3,9 @@ package net.catsnap.global.aws.s3;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
-import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -31,15 +29,6 @@ public class AwsS3Client implements ImageClient {
     private String region;
 
     @Override
-    public PresignedUrlResponse getUploadImageUrl(String fileName) {
-        String uuidFileName = addUUIDtoFileName(fileName);
-        GeneratePresignedUrlRequest generatePresignedUrlRequest = generatePresignedUrlRequest(
-            uuidFileName);
-        URL presignedUrl = amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
-        return PresignedUrlResponse.of(presignedUrl, uuidFileName);
-    }
-
-    @Override
     public URL getDownloadImageUrl(String savedFileName) {
         try {
             String bucketDirectory = addBucketDirectory(savedFileName);
@@ -58,10 +47,6 @@ public class AwsS3Client implements ImageClient {
         return new GeneratePresignedUrlRequest(bucketNameRoot, objectKey)
             .withMethod(HttpMethod.PUT)
             .withExpiration(new Date(System.currentTimeMillis() + expirationTime));
-    }
-
-    private String addUUIDtoFileName(String fileName) {
-        return UUID.randomUUID() + fileName;
     }
 
     private String addBucketDirectory(String fileName) {
