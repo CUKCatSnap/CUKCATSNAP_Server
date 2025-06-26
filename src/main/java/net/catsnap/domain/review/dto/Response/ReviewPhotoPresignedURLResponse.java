@@ -10,11 +10,11 @@ public record ReviewPhotoPresignedURLResponse(
     @Schema(description = "AWS s3 presignedURL")
     List<URL> presignedURL,
     @Schema(description = "사진 업로드 완료 후, 사진을 접근할 수 있는 URL")
-    List<URL> photoURL
+    List<String> photoURL
 ) {
 
     public static ReviewPhotoPresignedURLResponse of(Long reviewId, List<URL> presignedURL,
-        List<URL> photoURL) {
+        List<String> photoURL) {
         return new ReviewPhotoPresignedURLResponse(reviewId, presignedURL, photoURL);
     }
 }

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
@@ -19,29 +18,49 @@ import net.catsnap.domain.search.dto.response.ReviewSearchListResponse;
 import net.catsnap.domain.search.dto.response.ReviewSearchResponse;
 import net.catsnap.domain.user.member.entity.Member;
 import net.catsnap.domain.user.member.repository.MemberRepository;
-import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
-import net.catsnap.global.aws.s3.ImageClient;
+import net.catsnap.global.aws.s3.ImageDownloadClient;
+import net.catsnap.global.aws.s3.ImageUploadClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class ReviewService {
 
-    private final ImageClient imageClient;
     private final ReviewRepository reviewRepository;
     private final ReservationRepository reservationRepository;
     private final ReviewPhotoRepository reviewPhotoRepository;
     private final ReviewLikeRepository reviewLikeRepository;
     private final MemberRepository memberRepository;
-    private final PhotographerRepository photographerRepository;
     private final ReviewLikeService reviewLikeService;
+    private final ImageUploadClient imageUploadClient;
+    private final ImageDownloadClient imageDownloadClient;
+
+    public ReviewService(
+        ReviewRepository reviewRepository,
+        ReservationRepository reservationRepository,
+        ReviewPhotoRepository reviewPhotoRepository,
+        ReviewLikeRepository reviewLikeRepository,
+        MemberRepository memberRepository,
+        ReviewLikeService reviewLikeService,
+        @Qualifier("reviewImageUploadClient") ImageUploadClient imageUploadClient,
+        @Qualifier("reviewImageDownloadClient") ImageDownloadClient imageDownloadClient
+    ) {
+        this.reviewRepository = reviewRepository;
+        this.reservationRepository = reservationRepository;
+        this.reviewPhotoRepository = reviewPhotoRepository;
+        this.reviewLikeRepository = reviewLikeRepository;
+        this.memberRepository = memberRepository;
+        this.reviewLikeService = reviewLikeService;
+        this.imageUploadClient = imageUploadClient;
+        this.imageDownloadClient = imageDownloadClient;
+    }
 
     @Transactional
     public ReviewPhotoPresignedURLResponse postReview(PostReviewRequest postReviewRequest) {
@@ -82,17 +101,19 @@ public class ReviewService {
     private ReviewPhotoPresignedURLResponse saveReviewImage(List<String> photoFileNameList,
         Review review) {
         List<URL> presignedURL = new ArrayList<>();
-        List<URL> photoURL = new ArrayList<>();
+        List<String> photoURL = new ArrayList<>();
         List<ReviewPhoto> reviewPhotoList = new ArrayList<>();
 
         photoFileNameList.forEach(fileName -> {
-            PresignedUrlResponse presignedUrlResponse = imageClient.getUploadImageUrl(fileName);
+            PresignedUrlResponse presignedUrlResponse = imageUploadClient.getUploadImageUrl(
+                fileName);
             reviewPhotoList.add(new ReviewPhoto(
                 review,
                 presignedUrlResponse.uuidFileName()
             ));
             presignedURL.add(presignedUrlResponse.presignedURL());
-            photoURL.add(imageClient.getDownloadImageUrl(presignedUrlResponse.uuidFileName()));
+            photoURL.add(
+                imageDownloadClient.getDownloadImageUrl(presignedUrlResponse.uuidFileName()));
         });
         reviewPhotoRepository.saveAll(reviewPhotoList);
 
@@ -108,8 +129,7 @@ public class ReviewService {
         Review review = reviewRepository.findById(reviewId)
             .orElseThrow(() -> new ResourceNotFoundException("리뷰 정보를 찾을 수 없습니다."));
         List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
-            .map(imageClient::getDownloadImageUrl)
-            .map(URL::toString)
+            .map(imageDownloadClient::getDownloadImageUrl)
             .toList();
 
         Long likeCount = reviewLikeService.getReviewLikeCount(reviewId);
@@ -123,8 +143,7 @@ public class ReviewService {
         List<ReviewSearchResponse> reviewSearchResponseList = slicedReviewList.stream()
             .map(review -> {
                 List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
-                    .map(imageClient::getDownloadImageUrl)
-                    .map(URL::toString)
+                    .map(imageDownloadClient::getDownloadImageUrl)
                     .toList();
                 Long likeCount = reviewLikeService.getReviewLikeCount(review.getId());
                 Boolean isMeLiked = reviewLikeService.isMeReviewLiked(review.getId(), memberId);
@@ -144,8 +163,7 @@ public class ReviewService {
         List<ReviewSearchResponse> reviewSearchResponseList = slicedReviewList.stream()
             .map(review -> {
                 List<String> photoUrlList = review.getReivewPhotoFileNameList().stream()
-                    .map(imageClient::getDownloadImageUrl)
-                    .map(URL::toString)
+                    .map(imageDownloadClient::getDownloadImageUrl)
                     .toList();
                 Long likeCount = reviewLikeService.getReviewLikeCount(review.getId());
                 Boolean isMeLiked = reviewLikeService.isMeReviewLiked(review.getId(), memberId);
