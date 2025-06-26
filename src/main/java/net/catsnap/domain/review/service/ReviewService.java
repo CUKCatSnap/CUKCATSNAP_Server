@@ -4,7 +4,6 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.reservation.entity.Reservation;
 import net.catsnap.domain.reservation.repository.ReservationRepository;
 import net.catsnap.domain.review.dto.Response.ReviewPhotoPresignedURLResponse;
@@ -25,13 +24,13 @@ import net.catsnap.global.aws.s3.ImageUploadClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import net.catsnap.global.result.SlicedData;
 import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
@@ -42,6 +41,26 @@ public class ReviewService {
     private final ReviewLikeService reviewLikeService;
     private final ImageUploadClient imageUploadClient;
     private final ImageDownloadClient imageDownloadClient;
+
+    public ReviewService(
+        ReviewRepository reviewRepository,
+        ReservationRepository reservationRepository,
+        ReviewPhotoRepository reviewPhotoRepository,
+        ReviewLikeRepository reviewLikeRepository,
+        MemberRepository memberRepository,
+        ReviewLikeService reviewLikeService,
+        @Qualifier("reviewImageUploadClient") ImageUploadClient imageUploadClient,
+        @Qualifier("reviewImageDownloadClient") ImageDownloadClient imageDownloadClient
+    ) {
+        this.reviewRepository = reviewRepository;
+        this.reservationRepository = reservationRepository;
+        this.reviewPhotoRepository = reviewPhotoRepository;
+        this.reviewLikeRepository = reviewLikeRepository;
+        this.memberRepository = memberRepository;
+        this.reviewLikeService = reviewLikeService;
+        this.imageUploadClient = imageUploadClient;
+        this.imageDownloadClient = imageDownloadClient;
+    }
 
     @Transactional
     public ReviewPhotoPresignedURLResponse postReview(PostReviewRequest postReviewRequest) {
