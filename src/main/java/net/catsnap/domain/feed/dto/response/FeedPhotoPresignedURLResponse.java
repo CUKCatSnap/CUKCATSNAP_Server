@@ -13,4 +13,11 @@ public record FeedPhotoPresignedURLResponse(
     List<String> photoURL
 ) {
 
+    public static FeedPhotoPresignedURLResponse of(
+        Long feedId,
+        List<URL> presignedURL,
+        List<String> photoURL
+    ) {
+        return new FeedPhotoPresignedURLResponse(feedId, presignedURL, photoURL);
+    }
 }
