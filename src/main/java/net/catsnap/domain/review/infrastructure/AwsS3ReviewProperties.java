@@ -3,12 +3,14 @@ package net.catsnap.domain.review.infrastructure;
 import lombok.Getter;
 import lombok.Setter;
 import net.catsnap.global.aws.s3.AwsS3Properties;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @Component
+@Qualifier("awsS3ReviewProperties")
 @ConfigurationProperties(prefix = "spring.aws.s3.review")
 public class AwsS3ReviewProperties implements AwsS3Properties {
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class AwsS3ReviewImageUploadClient extends AwsS3UploadClient {
 
     protected AwsS3ReviewImageUploadClient(AmazonS3 amazonS3,
-        AwsS3Properties awsS3Properties) {
+        @Qualifier("awsS3ReviewProperties") AwsS3Properties awsS3Properties) {
         super(amazonS3, awsS3Properties);
     }
 }

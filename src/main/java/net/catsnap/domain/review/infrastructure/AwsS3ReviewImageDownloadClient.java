@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 @Qualifier("reviewImageDownloadClient")
 public class AwsS3ReviewImageDownloadClient extends AwsS3DownloadClient {
 
-    protected AwsS3ReviewImageDownloadClient(AwsS3Properties awsS3Properties) {
+    protected AwsS3ReviewImageDownloadClient(
+        @Qualifier("awsS3ReviewProperties") AwsS3Properties awsS3Properties) {
         super(awsS3Properties);
     }
 }
