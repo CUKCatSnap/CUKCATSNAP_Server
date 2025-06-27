@@ -8,10 +8,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
+import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.feed.dto.FeedRequest;
-import net.catsnap.domain.feed.dto.FeedResponse;
+import net.catsnap.domain.feed.dto.request.FeedPostRequest;
 import net.catsnap.domain.feed.dto.response.CommentListResponse;
 import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
+import net.catsnap.domain.feed.dto.response.FeedPhotoPresignedURLResponse;
 import net.catsnap.domain.feed.service.FeedCommentService;
 import net.catsnap.domain.feed.service.FeedService;
 import net.catsnap.global.result.ResultResponse;
@@ -88,13 +90,16 @@ public class FeedController {
 
     @Operation(summary = "피드를 작성하는 API", description = "피드를 작성하는 API입니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "201 SF005", description = "성공적으로 피드를 작성하였습니다.")
+        @ApiResponse(responseCode = "200 SC001", description = "성공적으로 피드를 작성하였습니다.")
     })
+    @LoginPhotographer
     @PostMapping
-    public ResultResponse<FeedResponse.FeedPhotoPresignedURL> postFeed(
+    public ResponseEntity<ResultResponse<FeedPhotoPresignedURLResponse>> postFeed(
+        @UserId
+        Long photographerId,
         @Parameter(description = "피드 작성 정보")
         @RequestBody
-        FeedRequest.PostFeed postFeed
+        FeedPostRequest feedPostRequest
     ) {
         return null;
     }
