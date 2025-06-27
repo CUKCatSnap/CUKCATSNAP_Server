@@ -1,4 +1,4 @@
-package net.catsnap.domain.review.infrastructure;
+package net.catsnap.domain.feed.infrastructure;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-@Qualifier("awsS3ReviewProperties")
-@ConfigurationProperties(prefix = "spring.aws.s3.review")
-public class AwsS3ReviewProperties implements AwsS3Properties {
+@Qualifier("awsS3FeedProperties")
+@ConfigurationProperties(prefix = "spring.aws.s3.feed")
+public class AwsS3FeedProperties implements AwsS3Properties {
 
     private String region;
     private String bucketName;

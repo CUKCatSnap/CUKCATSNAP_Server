@@ -33,6 +33,11 @@ public class FeedPhoto {
 
     private String photo_url;
 
+    public FeedPhoto(Feed feed, String photoUrl) {
+        this.feed = feed;
+        this.photo_url = photoUrl;
+    }
+
     public String toPhotoUrl() {
         return photo_url;
     }

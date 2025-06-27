@@ -39,6 +39,12 @@ public class Feed extends BaseTimeEntity {
 
     private String content;
 
+    public Feed(Photographer photographer, String title, String content) {
+        this.photographer = photographer;
+        this.title = title;
+        this.content = content;
+    }
+
     //OneToMany
 
     @OneToMany(mappedBy = "feed")
