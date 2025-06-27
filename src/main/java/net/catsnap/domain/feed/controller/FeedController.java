@@ -88,7 +88,7 @@ public class FeedController {
         return null;
     }
 
-    @Operation(summary = "피드를 작성하는 API", description = "피드를 작성하는 API입니다.")
+    @Operation(summary = "피드를 작성하는 API(구현 완료)", description = "피드를 작성하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC001", description = "성공적으로 피드를 작성하였습니다.")
     })
@@ -101,7 +101,9 @@ public class FeedController {
         @RequestBody
         FeedPostRequest feedPostRequest
     ) {
-        return null;
+        FeedPhotoPresignedURLResponse response = feedService.postFeed(photographerId,
+            feedPostRequest);
+        return ResultResponse.of(CommonResultCode.COMMON_CREATE, response);
     }
 
     @Operation(summary = "피드 1개를 피드 Id로 조회하는 API(구현 완료)", description = "피드 1개를 피드 Id로 조회하는 API입니다.")
