@@ -2,14 +2,17 @@ package net.catsnap.domain.feed.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
-import net.catsnap.domain.feed.dto.FeedRequest;
+import net.catsnap.domain.auth.interceptor.LoginUser;
+import net.catsnap.domain.feed.dto.request.FeedCommentPostRequest;
 import net.catsnap.domain.feed.dto.response.CommentListResponse;
+import net.catsnap.domain.feed.dto.response.FeedCommentResponse;
 import net.catsnap.domain.feed.service.FeedCommentService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "피드 댓글 관련 API", description = "피드의 댓글과 관련된 API입니다.")
@@ -54,12 +58,20 @@ public class FeedCommentController {
 
     @Operation(summary = "피드에 댓글을 작성하는 API", description = "피드에 댓글을 작성하는 API입니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "201 SF001", description = "성공적으로 피드에 댓글을 작성하였습니다.")
+        @ApiResponse(responseCode = "201 SC001", description = "성공적으로 데이터를 생성했습니다.")
     })
-    @PostMapping("/comment")
-    public ResultResponse<?> postFeedComment(
+    @LoginUser
+    @PostMapping("/{feedId}/comment")
+    public ResponseEntity<ResultResponse<FeedCommentResponse>> postFeedComment(
+        @PathVariable("feedId")
+        Long feedId,
+        @UserId
+        Long userId,
+        @Schema(description = "대댓글을 작성할 경우 부모 댓글의 id, 아니라면 null")
+        @RequestParam(value = "parentCommentId", required = false)
+        Long parentCommentId,
         @RequestBody
-        FeedRequest.PostFeedComment postFeedComment
+        FeedCommentPostRequest feedCommentPostRequest
     ) {
         return null;
     }
