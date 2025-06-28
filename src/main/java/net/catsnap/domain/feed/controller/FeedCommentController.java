@@ -56,7 +56,7 @@ public class FeedCommentController {
         return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, commentListResponse);
     }
 
-    @Operation(summary = "피드에 댓글을 작성하는 API", description = "피드에 댓글을 작성하는 API입니다.")
+    @Operation(summary = "피드에 댓글을 작성하는 API(구현 완료)", description = "피드에 댓글을 작성하는 API입니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "201 SC001", description = "성공적으로 데이터를 생성했습니다.")
     })
@@ -73,7 +73,9 @@ public class FeedCommentController {
         @RequestBody
         FeedCommentPostRequest feedCommentPostRequest
     ) {
-        return null;
+        FeedCommentResponse feedCommentResponse = feedCommentService.postFeedComment(
+            feedId, userId, parentCommentId, feedCommentPostRequest);
+        return ResultResponse.of(CommonResultCode.COMMON_CREATE, feedCommentResponse);
     }
 
     @Operation(summary = "피드에 댓글을 삭제하는 API", description = "피드에 댓글을 삭제하는 API입니다.")
