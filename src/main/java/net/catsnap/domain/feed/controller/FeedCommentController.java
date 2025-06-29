@@ -93,24 +93,13 @@ public class FeedCommentController {
 
     @Operation(summary = "피드 댓글의 좋아요를 토글하는 API", description = "피드 댓글의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "200 SF003", description = "성공적으로 피드 댓글의 좋아요를 토글하였습니다.")
+        @ApiResponse(responseCode = "200 SC001", description = "성공적으로 데이터를 생성했습니다.")
     })
+    @LoginUser
     @PostMapping("/comment/{commentId}/like")
-    public ResultResponse<?> feedCommentLikeToggle(
+    public ResponseEntity<ResultResponse<Void>> feedCommentLikeToggle(
         @PathVariable("commentId")
         Long feedCommentId
-    ) {
-        return null;
-    }
-
-    @Operation(summary = "피드에 좋아요를 토글하는 API", description = "피드의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200 SF004", description = "성공적으로 피드의 좋아요를 토글하였습니다.")
-    })
-    @PostMapping("/{feedId}/like")
-    public ResultResponse<?> feedLikeToggle(
-        @PathVariable("feedId")
-        Long feedId
     ) {
         return null;
     }

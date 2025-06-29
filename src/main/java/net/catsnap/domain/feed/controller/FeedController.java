@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.interceptor.LoginPhotographer;
+import net.catsnap.domain.auth.interceptor.LoginUser;
 import net.catsnap.domain.feed.dto.request.FeedPostRequest;
 import net.catsnap.domain.feed.dto.response.FeedDetailResponse;
 import net.catsnap.domain.feed.dto.response.FeedPhotoPresignedURLResponse;
@@ -63,5 +64,18 @@ public class FeedController {
     ) {
         FeedDetailResponse feedDetailResponse = feedService.getFeedDetail(feedId, userId);
         return ResultResponse.of(CommonResultCode.COMMON_LOOK_UP, feedDetailResponse);
+    }
+
+    @Operation(summary = "피드에 좋아요를 토글하는 API", description = "피드의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200 SC001", description = "성공적으로 데이터를 생성했습니다.")
+    })
+    @LoginUser
+    @PostMapping("/{feedId}/like")
+    public ResponseEntity<ResultResponse<Void>> feedLikeToggle(
+        @PathVariable("feedId")
+        Long feedId
+    ) {
+        return null;
     }
 }
