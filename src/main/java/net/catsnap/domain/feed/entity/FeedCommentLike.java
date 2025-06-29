@@ -34,4 +34,9 @@ public class FeedCommentLike {
     @ManyToOne
     @JoinColumn(name = "feed_comment_id")
     private FeedComment feedComment;
+
+    public FeedCommentLike(User likeUser, FeedComment feedComment) {
+        this.likeUser = likeUser;
+        this.feedComment = feedComment;
+    }
 }
