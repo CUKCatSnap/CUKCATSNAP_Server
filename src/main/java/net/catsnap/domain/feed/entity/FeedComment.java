@@ -45,6 +45,13 @@ public class FeedComment extends BaseTimeEntity {
 
     private String content;
 
+    public FeedComment(Feed feed, FeedComment parentComment, User user, String content) {
+        this.feed = feed;
+        this.parentComment = parentComment;
+        this.user = user;
+        this.content = content;
+    }
+
     //OneToMany
     @OneToMany(mappedBy = "parentComment")
     private List<FeedComment> children;

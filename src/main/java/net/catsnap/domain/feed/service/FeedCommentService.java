@@ -4,12 +4,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.feed.dto.request.FeedCommentPostRequest;
 import net.catsnap.domain.feed.dto.response.CommentListResponse;
 import net.catsnap.domain.feed.dto.response.CommentResponse;
+import net.catsnap.domain.feed.dto.response.FeedCommentResponse;
+import net.catsnap.domain.feed.entity.Feed;
 import net.catsnap.domain.feed.entity.FeedComment;
 import net.catsnap.domain.feed.repository.FeedCommentRepository;
+import net.catsnap.domain.feed.repository.FeedRepository;
 import net.catsnap.domain.feed.repository.dto.FeedCommentLikeCountDto;
 import net.catsnap.domain.feed.repository.dto.FeedCommentLikeMeDto;
+import net.catsnap.domain.user.entity.User;
+import net.catsnap.domain.user.repository.UserRepository;
+import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.result.SlicedData;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -22,6 +29,8 @@ public class FeedCommentService {
 
     private final FeedCommentRepository feedCommentRepository;
     private final FeedCommentLikeService feedCommentLikeService;
+    private final FeedRepository feedRepository;
+    private final UserRepository userRepository;
 
     private static final Long DEFAULT_LIKE_COUNT = 0L;
     private static final boolean DEFAULT_IS_LIKED = false;
@@ -72,5 +81,30 @@ public class FeedCommentService {
             commentSlice.isFirst(),
             commentSlice.isLast()
         );
+    }
+
+    @Transactional
+    public FeedCommentResponse postFeedComment(
+        Long feedId,
+        Long userId,
+        Long parentCommentId,
+        FeedCommentPostRequest feedCommentPostRequest
+    ) {
+        Feed feed = feedRepository.findById(feedId)
+            .orElseThrow(() -> new ResourceNotFoundException("해당 피드를 찾을 수 없습니다."));
+
+        FeedComment parentComment = null;
+        if (parentCommentId != null) {
+            parentComment = feedCommentRepository.findById(parentCommentId)
+                .orElseThrow(() -> new ResourceNotFoundException("해당 부모 댓글을 찾을 수 없습니다."));
+        }
+
+        User user = userRepository.getReferenceById(userId);
+
+        FeedComment newComment = new FeedComment(feed, parentComment, user,
+            feedCommentPostRequest.comment());
+        FeedComment savedComment = feedCommentRepository.save(newComment);
+
+        return FeedCommentResponse.of(savedComment.getId());
     }
 }
