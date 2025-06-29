@@ -37,6 +37,11 @@ public class FeedLike extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public FeedLike(Feed feed, User user) {
+        this.feed = feed;
+        this.user = user;
+    }
+
     //OneToMany
 
 }
