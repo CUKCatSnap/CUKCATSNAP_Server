@@ -13,6 +13,7 @@ import net.catsnap.domain.auth.interceptor.LoginUser;
 import net.catsnap.domain.feed.dto.request.FeedCommentPostRequest;
 import net.catsnap.domain.feed.dto.response.CommentListResponse;
 import net.catsnap.domain.feed.dto.response.FeedCommentResponse;
+import net.catsnap.domain.feed.service.FeedCommentLikeService;
 import net.catsnap.domain.feed.service.FeedCommentService;
 import net.catsnap.global.result.ResultResponse;
 import net.catsnap.global.result.SlicedData;
@@ -36,6 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FeedCommentController {
 
     private final FeedCommentService feedCommentService;
+    private final FeedCommentLikeService feedCommentLikeService;
 
     @Operation(summary = "특정 피드의 댓글을 조회하는 API(구현 완료)", description = "특정 피드의 댓글을 조회하는 API입니다.")
     @ApiResponses({
@@ -91,16 +93,19 @@ public class FeedCommentController {
         return null;
     }
 
-    @Operation(summary = "피드 댓글의 좋아요를 토글하는 API", description = "피드 댓글의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
+    @Operation(summary = "피드 댓글의 좋아요를 토글하는 API(구현 완료)", description = "피드 댓글의 좋아요를 토글하는 API입니다. 좋아요가 눌려있으면 취소하고, 눌려있지 않으면 좋아요를 누릅니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200 SC001", description = "성공적으로 데이터를 생성했습니다.")
     })
     @LoginUser
     @PostMapping("/comment/{commentId}/like")
     public ResponseEntity<ResultResponse<Void>> feedCommentLikeToggle(
+        @UserId
+        Long userId,
         @PathVariable("commentId")
         Long feedCommentId
     ) {
-        return null;
+        feedCommentLikeService.toggleFeedCommentLike(feedCommentId, userId);
+        return ResultResponse.of(CommonResultCode.COMMON_CREATE);
     }
 }

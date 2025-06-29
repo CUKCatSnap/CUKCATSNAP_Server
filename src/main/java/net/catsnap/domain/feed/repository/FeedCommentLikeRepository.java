@@ -1,6 +1,7 @@
 package net.catsnap.domain.feed.repository;
 
 import java.util.List;
+import java.util.Optional;
 import net.catsnap.domain.feed.entity.FeedCommentLike;
 import net.catsnap.domain.feed.repository.dto.FeedCommentLikeCountDto;
 import net.catsnap.domain.feed.repository.dto.FeedCommentLikeMeDto;
@@ -30,4 +31,6 @@ public interface FeedCommentLikeRepository extends JpaRepository<FeedCommentLike
         @Param("commentIdList") List<Long> commentIdList,
         @Param("userId") Long userId
     );
+
+    Optional<FeedCommentLike> findByFeedCommentIdAndLikeUserId(Long feedCommentId, Long likeUserId);
 }
