@@ -1,15 +1,17 @@
 package net.catsnap.domain.social.controller;
 
-import net.catsnap.domain.user.photographer.dto.PhotographerResponse;
-import net.catsnap.domain.social.dto.SocialResponse;
-import net.catsnap.global.result.PagedData;
-import net.catsnap.global.result.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.awt.print.Pageable;
+import net.catsnap.domain.auth.interceptor.LoginMember;
+import net.catsnap.domain.social.dto.SocialResponse;
+import net.catsnap.domain.user.photographer.dto.PhotographerResponse;
+import net.catsnap.global.result.PagedData;
+import net.catsnap.global.result.ResultResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,10 +54,11 @@ public class SocialController {
 
     @Operation(summary = "특정 작가를 구독하거나 구독 취소하는 API", description = "특정 작가를 구독하거나 구독을 취소하는 API입니다. 이미 구독중이면 구독을 취소하고, 구독중이 아니면 구독합니다.")
     @ApiResponses({
-        @ApiResponse(responseCode = "200 So001", description = "작가 구독(구독 취소)를 토글 했습니다."),
+        @ApiResponse(responseCode = "201 SC001", description = "성공적으로 데이터를 생성했습니다."),
     })
-    @PostMapping("subscribe/photographer/{photographerId}")
-    public ResultResponse<?> photographerSubscribeToggle(
+    @LoginMember
+    @PostMapping("/subscribe/photographer/{photographerId}")
+    public ResponseEntity<ResultResponse<Void>> photographerSubscribeToggle(
         @Parameter(description = "구독을 토글할 작가의 id")
         @PathVariable
         Long photographerId
