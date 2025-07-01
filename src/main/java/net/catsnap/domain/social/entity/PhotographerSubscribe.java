@@ -37,4 +37,9 @@ public class PhotographerSubscribe extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "photographer_id")
     private Photographer photographer;
+
+    public PhotographerSubscribe(Member member, Photographer photographer) {
+        this.member = member;
+        this.photographer = photographer;
+    }
 }
