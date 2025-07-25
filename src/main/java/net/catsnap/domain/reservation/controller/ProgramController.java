@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
@@ -65,10 +66,12 @@ public class ProgramController {
         ProgramRequest programRequest,
         @Parameter(description = "예약 프로그램의 id, 수정을 할 때만 입력", required = false)
         @RequestParam(name = "programId", required = false)
-        Long programId
+        Long programId,
+        @UserId
+        Long photographerId
     ) {
         photographerProgramIdResponse photographerProgramIdResponse = programService.createProgram(
-            programRequest, programId);
+            programRequest, programId, photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_POST_PROGRAM,
             photographerProgramIdResponse);
     }
@@ -82,8 +85,12 @@ public class ProgramController {
     )
     @GetMapping("/photographer/my/program")
     @LoginPhotographer
-    public ResponseEntity<ResultResponse<PhotographerProgramListResponse>> getProgram() {
-        PhotographerProgramListResponse photographerProgramListResponse = programService.getMyProgramList();
+    public ResponseEntity<ResultResponse<PhotographerProgramListResponse>> getProgram(
+        @UserId
+        Long photographerId
+    ) {
+        PhotographerProgramListResponse photographerProgramListResponse = programService.getMyProgramList(
+            photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_LOOK_UP_PROGRAM,
             photographerProgramListResponse);
     }
@@ -101,9 +108,11 @@ public class ProgramController {
     public ResponseEntity<ResultResponse<ReservationResultCode>> deleteProgram(
         @Parameter(description = "삭제하고자 하는 예약 프로그램의 id", required = true)
         @RequestParam("programId")
-        Long programId
+        Long programId,
+        @UserId
+        Long photographerId
     ) {
-        programService.softDeleteProgram(programId);
+        programService.softDeleteProgram(programId, photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_DELETE_PROGRAM);
     }
 }
