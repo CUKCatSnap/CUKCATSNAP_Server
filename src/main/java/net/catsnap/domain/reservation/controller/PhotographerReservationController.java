@@ -47,10 +47,12 @@ public class PhotographerReservationController {
     public ResponseEntity<ResultResponse<MonthReservationCheckListResponse>> getMyMonthReservationCheck(
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
-        YearMonth reservationMonth
+        YearMonth reservationMonth,
+        @UserId
+        Long photographerId
     ) {
         MonthReservationCheckListResponse monthReservationCheckListResponse = photographerReservationService.getReservationListByMonth(
-            reservationMonth.atDay(1));
+            reservationMonth.atDay(1), photographerId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
             monthReservationCheckListResponse);
     }
@@ -65,10 +67,12 @@ public class PhotographerReservationController {
     public ResponseEntity<ResultResponse<PhotographerReservationInformationListResponse>> getMyDayReservation(
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
-        LocalDate reservationDay
+        LocalDate reservationDay,
+        @UserId
+        Long photographerId
     ) {
         PhotographerReservationInformationListResponse photographerReservationInformationListResponse = photographerReservationService.getReservationDetailListByDay(
-            reservationDay);
+            reservationDay, photographerId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
             photographerReservationInformationListResponse);
     }
@@ -109,9 +113,12 @@ public class PhotographerReservationController {
         long reservationId,
         @Parameter(description = "변경하고자 하는 최종 상태", required = true)
         @RequestParam("status")
-        ReservationState status
+        ReservationState status,
+        @UserId
+        Long photographerId
     ) {
-        photographerReservationService.changeReservationState(reservationId, status);
+        photographerReservationService.changeReservationState(reservationId, status,
+            photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_STATE_CHANGE);
     }
 }

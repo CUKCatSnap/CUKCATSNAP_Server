@@ -78,10 +78,12 @@ public class ReservationTimeController {
         ReservationTimeFormatRequest reservationTimeFormatRequest,
         @Parameter(description = "예약 시간 형식의 이름", required = false)
         @RequestParam(name = "timeFormatId", required = false)
-        String timeFormatId
+        String timeFormatId,
+        @UserId
+        Long photographerId
     ) {
         ReservationTimeFormatIdResponse reservationTimeFormatIdResponse = reservationTimeService.createReservationTimeFormat(
-            reservationTimeFormatRequest, timeFormatId);
+            reservationTimeFormatRequest, timeFormatId, photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT,
             reservationTimeFormatIdResponse);
     }
@@ -95,8 +97,12 @@ public class ReservationTimeController {
     )
     @GetMapping("/my/timeformat")
     @LoginPhotographer
-    public ResponseEntity<ResultResponse<ReservationTimeFormatListResponse>> getTimeFormat() {
-        ReservationTimeFormatListResponse reservationTimeFormatList = reservationTimeService.getMyReservationTimeFormatList();
+    public ResponseEntity<ResultResponse<ReservationTimeFormatListResponse>> getTimeFormat(
+        @UserId
+        Long photographerId
+    ) {
+        ReservationTimeFormatListResponse reservationTimeFormatList = reservationTimeService.getMyReservationTimeFormatList(
+            photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_LOOK_UP,
             reservationTimeFormatList);
     }
@@ -116,9 +122,11 @@ public class ReservationTimeController {
     public ResponseEntity<ResultResponse<ReservationResultCode>> deleteTimeFormat(
         @Parameter(description = "삭제하고자 하는 예약 시간 형식의 id", required = true)
         @RequestParam("timeFormatId")
-        String timeFormatId
+        String timeFormatId,
+        @UserId
+        Long photographerId
     ) {
-        reservationTimeService.deleteReservationTimeFormat(timeFormatId);
+        reservationTimeService.deleteReservationTimeFormat(timeFormatId, photographerId);
         return ResultResponse.of(ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_DELETE);
     }
 
@@ -142,9 +150,12 @@ public class ReservationTimeController {
         Weekday weekday,
         @Parameter(description = "등록하고자 하는 예약 시간 형식의 id", required = true)
         @RequestParam("timeFormatId")
-        String timeFormatId
+        String timeFormatId,
+        @UserId
+        Long photographerId
     ) {
-        reservationTimeService.mappingWeekdayToReservationTimeFormat(timeFormatId, weekday);
+        reservationTimeService.mappingWeekdayToReservationTimeFormat(timeFormatId, weekday,
+            photographerId);
         return ResultResponse.of(
             ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_MAPPING_WEEKDAY);
     }
@@ -165,9 +176,12 @@ public class ReservationTimeController {
             "MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, HOLIDAY 중 1개의 값",
             required = true)
         @RequestParam("weekday")
-        Weekday weekday
+        Weekday weekday,
+        @UserId
+        Long photographerId
     ) {
-        reservationTimeService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday);
+        reservationTimeService.unmappingWeekdayToReservationTimeFormatByWeekday(weekday,
+            photographerId);
         return ResultResponse.of(
             ReservationResultCode.PHOTOGRAPHER_RESERVATION_TIME_FORMAT_UNMAPPING_WEEKDAY);
     }

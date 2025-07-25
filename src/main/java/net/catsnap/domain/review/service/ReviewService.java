@@ -23,7 +23,6 @@ import net.catsnap.global.aws.s3.ImageDownloadClient;
 import net.catsnap.global.aws.s3.ImageUploadClient;
 import net.catsnap.global.aws.s3.dto.PresignedUrlResponse;
 import net.catsnap.global.result.SlicedData;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -63,9 +62,8 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewPhotoPresignedURLResponse postReview(PostReviewRequest postReviewRequest) {
-        Long memberId = GetAuthenticationInfo.getUserId();
-
+    public ReviewPhotoPresignedURLResponse postReview(PostReviewRequest postReviewRequest,
+        long memberId) {
         // 예약 정보가 있는지 확인
         Reservation reservation = reservationRepository.findById(
                 postReviewRequest.reservationId()

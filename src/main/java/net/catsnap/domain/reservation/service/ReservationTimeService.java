@@ -29,7 +29,6 @@ import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.OwnershipNotFoundException;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -92,9 +91,9 @@ public class ReservationTimeService {
     }
 
     public ReservationTimeFormatIdResponse createReservationTimeFormat(
-        ReservationTimeFormatRequest reservationTimeFormatRequest, String reservationTimeFormatId) {
+        ReservationTimeFormatRequest reservationTimeFormatRequest, String reservationTimeFormatId,
+        long photographerId) {
 
-        Long photographerId = GetAuthenticationInfo.getUserId();
         ReservationTimeFormat reservationTimeFormat = null;
 
         /*
@@ -116,8 +115,7 @@ public class ReservationTimeService {
         return ReservationTimeFormatIdResponse.from(reservationTimeFormat);
     }
 
-    public ReservationTimeFormatListResponse getMyReservationTimeFormatList() {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public ReservationTimeFormatListResponse getMyReservationTimeFormatList(long photographerId) {
         List<ReservationTimeFormat> reservationTimeFormatList = reservationTimeFormatRepository.findByPhotographerId(
             photographerId);
         return ReservationTimeFormatListResponse.from(
@@ -126,8 +124,7 @@ public class ReservationTimeService {
                 .toList());
     }
 
-    public void deleteReservationTimeFormat(String reservationTimeFormatId) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public void deleteReservationTimeFormat(String reservationTimeFormatId, long photographerId) {
         Photographer photographer = photographerRepository.getReferenceById(photographerId);
         DeleteResult deleteResult = reservationTimeFormatRepository.deleteById(
             reservationTimeFormatId, photographerId);
@@ -146,8 +143,7 @@ public class ReservationTimeService {
      * 요일을 예약 시간 형식에 매핑시킨다. (요일을 고정. 예약 시간을 요일에 매핑시키는 것이다.)
      */
     public void mappingWeekdayToReservationTimeFormat(String reservationTimeFormatId,
-        Weekday weekday) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+        Weekday weekday, Long photographerId) {
         weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,
                 weekday)
             .ifPresentOrElse(mapping ->
@@ -164,8 +160,8 @@ public class ReservationTimeService {
             );
     }
 
-    public void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public void unmappingWeekdayToReservationTimeFormatByWeekday(Weekday weekday,
+        long photographerId) {
         weekdayReservationTimeMappingRepository.findByPhotographerIdAndWeekday(photographerId,
                 weekday)
             .ifPresentOrElse(mapping ->

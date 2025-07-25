@@ -33,7 +33,6 @@ import net.catsnap.global.Exception.reservation.NotFoundStartTimeException;
 import net.catsnap.global.Exception.reservation.OverLappingTimeException;
 import net.catsnap.global.geography.converter.GeographyConverter;
 import net.catsnap.global.result.SlicedData;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -55,8 +54,7 @@ public class MemberReservationService {
     private final ReservationValidatorService reservationValidatorService;
 
     public Reservation createReservation(
-        MemberReservationRequest memberReservationRequest) {
-        Long memberId = GetAuthenticationInfo.getUserId();
+        MemberReservationRequest memberReservationRequest, long memberId) {
         PhotographerSetting photographerSetting = photographerService.findPhotographerSetting(
             memberReservationRequest.photographerId());
         Program program = programRepository.findById(
@@ -135,8 +133,7 @@ public class MemberReservationService {
 
     public SlicedData<MemberReservationInformationListResponse> getMyReservation(
         ReservationQueryType reservationQueryType,
-        Pageable pageable) {
-        Long memberId = GetAuthenticationInfo.getUserId();
+        Pageable pageable, long memberId) {
         Slice<Reservation> reservationSlice = null;
 
         if (reservationQueryType.equals(ReservationQueryType.ALL)) {
@@ -162,8 +159,8 @@ public class MemberReservationService {
             reservationSlice.isLast());
     }
 
-    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
-        Long memberId = GetAuthenticationInfo.getUserId();
+    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month,
+        long memberId) {
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(), 1, 0,
             0, 0);
         LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(),
@@ -181,8 +178,7 @@ public class MemberReservationService {
     }
 
     public MemberReservationInformationListResponse getReservationDetailListByDay(
-        LocalDate day) {
-        Long memberId = GetAuthenticationInfo.getUserId();
+        LocalDate day, long memberId) {
         LocalDateTime startOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
             day.getDayOfMonth(), 0, 0, 0);
         LocalDateTime endOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),

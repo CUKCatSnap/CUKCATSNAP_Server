@@ -20,7 +20,6 @@ import net.catsnap.domain.user.photographer.entity.Photographer;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
 import net.catsnap.global.Exception.reservation.CanNotChangeReservationState;
 import net.catsnap.global.result.SlicedData;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -53,8 +52,8 @@ public class PhotographerReservationService {
         weekdayReservationTimeMappingRepository.saveAll(weekdayReservationTimeMappingList);
     }
 
-    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public MonthReservationCheckListResponse getReservationListByMonth(LocalDate month,
+        long photographerId) {
         LocalDateTime startOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(), 1, 0,
             0, 0);
         LocalDateTime endOfMonth = LocalDateTime.of(month.getYear(), month.getMonthValue(),
@@ -71,8 +70,7 @@ public class PhotographerReservationService {
     }
 
     public PhotographerReservationInformationListResponse getReservationDetailListByDay(
-        LocalDate day) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+        LocalDate day, long photographerId) {
         LocalDateTime startOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
             day.getDayOfMonth(), 0, 0, 0);
         LocalDateTime endOfDay = LocalDateTime.of(day.getYear(), day.getMonthValue(),
@@ -109,8 +107,8 @@ public class PhotographerReservationService {
      * 작가가 예약을 바꿀 수 있는 경우는 아래와 같다.
      * (PENDING -> APPROVED) (PENDING -> REJECTED) (APPROVED -> PHOTOGRAPHY_CANCELLED)
      */
-    public void changeReservationState(Long reservationId, ReservationState reservationState) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public void changeReservationState(Long reservationId, ReservationState reservationState,
+        long photographerId) {
         reservationRepository.findById(reservationId)
             .ifPresentOrElse(reservation -> {
                 reservation.checkPhotographerOwnership(photographerId);

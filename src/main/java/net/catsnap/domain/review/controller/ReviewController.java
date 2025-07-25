@@ -48,9 +48,11 @@ public class ReviewController {
     public ResponseEntity<ResultResponse<ReviewPhotoPresignedURLResponse>> postReview(
         @Parameter(description = "새로운 리뷰를 만들 때 작성하는 형식입니다.")
         @RequestBody
-        PostReviewRequest postReviewRequest
+        PostReviewRequest postReviewRequest,
+        @UserId
+        Long memberId
     ) {
-        ReviewPhotoPresignedURLResponse dto = reviewService.postReview(postReviewRequest);
+        ReviewPhotoPresignedURLResponse dto = reviewService.postReview(postReviewRequest, memberId);
         return ResultResponse.of(ReviewResultCode.POST_REVIEW, dto);
     }
 

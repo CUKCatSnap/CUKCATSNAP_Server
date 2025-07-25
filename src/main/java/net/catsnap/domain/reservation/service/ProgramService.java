@@ -3,16 +3,15 @@ package net.catsnap.domain.reservation.service;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.domain.user.photographer.entity.Photographer;
-import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.reservation.dto.PhotographerProgramListResponse;
 import net.catsnap.domain.reservation.dto.PhotographerProgramResponse;
 import net.catsnap.domain.reservation.dto.photographer.request.ProgramRequest;
 import net.catsnap.domain.reservation.dto.photographer.response.photographerProgramIdResponse;
 import net.catsnap.domain.reservation.entity.Program;
 import net.catsnap.domain.reservation.repository.ProgramRepository;
+import net.catsnap.domain.user.photographer.entity.Photographer;
+import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.global.Exception.authority.ResourceNotFoundException;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,20 +36,18 @@ public class ProgramService {
      * 왜냐하면 기존의 Program을 예약한 고객이 있을 수 있기 때문이다.
      */
     public photographerProgramIdResponse createProgram(
-        ProgramRequest programRequest, Long programId) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+        ProgramRequest programRequest, Long programId, long photographerId) {
         Photographer photographer = photographerRepository.getReferenceById(photographerId);
         Program program = programRequest.toEntity(photographer);
         if (programId != null) {
-            softDeleteProgram(programId);
+            softDeleteProgram(programId, photographerId);
         }
         Program savedProgram = programRepository.save(program);
 
         return photographerProgramIdResponse.from(savedProgram);
     }
 
-    public void softDeleteProgram(Long programId) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public void softDeleteProgram(Long programId, long photographerId) {
         programRepository.findById(programId).ifPresentOrElse(
             p -> {
                 p.checkOwnership(photographerId);
@@ -60,8 +57,7 @@ public class ProgramService {
             });
     }
 
-    public PhotographerProgramListResponse getMyProgramList() {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public PhotographerProgramListResponse getMyProgramList(long photographerId) {
         List<Program> programList = programRepository.findByPhotographerIdAndDeletedFalse(
             photographerId);
         return PhotographerProgramListResponse.from(

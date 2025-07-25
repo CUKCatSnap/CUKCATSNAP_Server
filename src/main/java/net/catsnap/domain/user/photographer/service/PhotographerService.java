@@ -9,7 +9,6 @@ import net.catsnap.domain.user.photographer.repository.PhotographerRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationLocationRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerReservationNoticeRepository;
 import net.catsnap.domain.user.photographer.repository.PhotographerSettingRepository;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,14 +22,12 @@ public class PhotographerService {
     private final PhotographerReservationNoticeRepository photographerReservationNoticeRepository;
     private final PhotographerReservationLocationRepository photographerReservationLocationRepository;
 
-    public PhotographerSetting getPhotographerSetting() {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+    public PhotographerSetting getPhotographerSetting(long photographerId) {
         return photographerSettingRepository.findByPhotographerId(photographerId);
     }
 
     public void updatePhotographerSetting(
-        PhotographerRequest.PhotographerSetting photographerSetting) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+        PhotographerRequest.PhotographerSetting photographerSetting, long photographerId) {
         PhotographerSetting photographerSettingDocument = PhotographerSetting.builder()
             .photographerId(photographerId)
             .autoReservationAccept(photographerSetting.getAutoReservationAccept())
@@ -40,14 +37,13 @@ public class PhotographerService {
         photographerSettingRepository.updatePhotographerSetting(photographerSettingDocument);
     }
 
-    public PhotographerReservationNotice getReservationNotice() {
-        return photographerReservationNoticeRepository.findByPhotographerId(
-            GetAuthenticationInfo.getUserId());
+    public PhotographerReservationNotice getReservationNotice(long photographerId) {
+        return photographerReservationNoticeRepository.findByPhotographerId(photographerId);
     }
 
     public void updateReservationNotice(
-        PhotographerRequest.PhotographerReservationNotice photographerReservationNotice) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+        PhotographerRequest.PhotographerReservationNotice photographerReservationNotice,
+        long photographerId) {
         PhotographerReservationNotice photographerReservationNoticeDocument = PhotographerReservationNotice.builder()
             .photographerId(photographerId)
             .content(photographerReservationNotice.getContent())
@@ -56,14 +52,13 @@ public class PhotographerService {
             photographerReservationNoticeDocument);
     }
 
-    public PhotographerReservationLocation getReservationLocation() {
-        return photographerReservationLocationRepository.findByPhotographerId(
-            GetAuthenticationInfo.getUserId());
+    public PhotographerReservationLocation getReservationLocation(long photographerId) {
+        return photographerReservationLocationRepository.findByPhotographerId(photographerId);
     }
 
     public void updateReservationLocation(
-        PhotographerRequest.PhotographerReservationLocation photographerReservationLocation) {
-        Long photographerId = GetAuthenticationInfo.getUserId();
+        PhotographerRequest.PhotographerReservationLocation photographerReservationLocation,
+        long photographerId) {
         PhotographerReservationLocation photographerReservationLocationDocument = PhotographerReservationLocation.builder()
             .photographerId(photographerId)
             .content(photographerReservationLocation.getContent())
