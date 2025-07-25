@@ -3,15 +3,17 @@ package net.catsnap.global.security.contextholder;
 import net.catsnap.global.security.authority.CatsnapAuthority;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
-public class GetAuthenticationInfo {
+@Component
+public class AuthenticationInfo {
 
-    public static Long getUserId() {
+    public Long getUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return (Long) authentication.getDetails();
     }
 
-    public static CatsnapAuthority getAuthority() {
+    public CatsnapAuthority getAuthority() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getAuthorities().stream()
             .map(CatsnapAuthority.class::cast)

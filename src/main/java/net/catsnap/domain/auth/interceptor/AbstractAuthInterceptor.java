@@ -6,7 +6,8 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import net.catsnap.global.Exception.authority.UnauthorizedAccessException;
 import net.catsnap.global.security.authority.CatsnapAuthority;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import net.catsnap.global.security.contextholder.AuthenticationInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -15,6 +16,8 @@ public abstract class AbstractAuthInterceptor<A extends Annotation, Y extends Ca
 
     private final Class<A> checkAnnotation;
     private final List<Y> checkAuthority;
+    @Autowired
+    private AuthenticationInfo authenticationInfo;
 
     protected AbstractAuthInterceptor(Class<A> checkAnnotation, List<Y> checkAuthority) {
         this.checkAnnotation = checkAnnotation;
@@ -54,7 +57,7 @@ public abstract class AbstractAuthInterceptor<A extends Annotation, Y extends Ca
 
     private void checkAuthority() {
         for (CatsnapAuthority authority : checkAuthority) {
-            if (GetAuthenticationInfo.getAuthority() == authority) {
+            if (authenticationInfo.getAuthority() == authority) {
                 return;
             }
         }
