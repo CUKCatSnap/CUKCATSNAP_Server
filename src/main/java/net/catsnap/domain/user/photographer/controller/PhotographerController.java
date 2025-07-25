@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.LoginPhotographer;
 import net.catsnap.domain.user.photographer.converter.PhotographerConverter;
 import net.catsnap.domain.user.photographer.document.PhotographerReservationLocation;
@@ -38,8 +39,12 @@ public class PhotographerController {
     })
     @GetMapping("/my/setting")
     @LoginPhotographer
-    public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerSetting>> lookUpMySetting() {
-        PhotographerSetting photographerSetting = photographerService.getPhotographerSetting();
+    public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerSetting>> lookUpMySetting(
+        @UserId
+        long photographerId
+    ) {
+        PhotographerSetting photographerSetting = photographerService.getPhotographerSetting(
+            photographerId);
         PhotographerResponse.PhotographerSetting photographerSettingDto = photographerConverter.toPhotographerSetting(
             photographerSetting);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_MY_SETTING, photographerSettingDto);
@@ -54,9 +59,11 @@ public class PhotographerController {
     public ResponseEntity<ResultResponse<PhotographerResultCode>> updateMySetting(
         @Parameter(description = "작가의 환경설정", required = true)
         @RequestBody
-        PhotographerRequest.PhotographerSetting photographerSetting
+        PhotographerRequest.PhotographerSetting photographerSetting,
+        @UserId
+        long photographerId
     ) {
-        photographerService.updatePhotographerSetting(photographerSetting);
+        photographerService.updatePhotographerSetting(photographerSetting, photographerId);
         return ResultResponse.of(PhotographerResultCode.UPDATE_MY_SETTING);
     }
 
@@ -67,8 +74,11 @@ public class PhotographerController {
     @GetMapping("/my/reservation/notice")
     @LoginPhotographer
     public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerReservationNotice>> lookUpMyReservationNotice(
+        @UserId
+        long photographerId
     ) {
-        PhotographerReservationNotice photographerReservationNotice = photographerService.getReservationNotice();
+        PhotographerReservationNotice photographerReservationNotice = photographerService.getReservationNotice(
+            photographerId);
         PhotographerResponse.PhotographerReservationNotice photographerReservationNoticeDto = photographerConverter.toPhotographerReservationNotice(
             photographerReservationNotice);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_NOTICE,
@@ -84,9 +94,11 @@ public class PhotographerController {
     public ResponseEntity<ResultResponse<PhotographerResultCode>> updateMyReservationNotice(
         @Parameter(description = "작가의 예약 전 알림", required = true)
         @RequestBody
-        PhotographerRequest.PhotographerReservationNotice photographerReservationNotice
+        PhotographerRequest.PhotographerReservationNotice photographerReservationNotice,
+        @UserId
+        long photographerId
     ) {
-        photographerService.updateReservationNotice(photographerReservationNotice);
+        photographerService.updateReservationNotice(photographerReservationNotice, photographerId);
         return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_NOTICE);
     }
 
@@ -97,8 +109,11 @@ public class PhotographerController {
     @GetMapping("/my/reservation/location")
     @LoginPhotographer
     public ResponseEntity<ResultResponse<PhotographerResponse.PhotographerReservationLocation>> lookUpMyReservationLocation(
+        @UserId
+        long photographerId
     ) {
-        PhotographerReservationLocation photographerReservationLocation = photographerService.getReservationLocation();
+        PhotographerReservationLocation photographerReservationLocation = photographerService.getReservationLocation(
+            photographerId);
         PhotographerResponse.PhotographerReservationLocation photographerReservationLocationDto = photographerConverter.toPhotographerReservationLocation(
             photographerReservationLocation);
         return ResultResponse.of(PhotographerResultCode.LOOK_UP_RESERVATION_LOCATION,
@@ -114,9 +129,12 @@ public class PhotographerController {
     public ResponseEntity<ResultResponse<PhotographerResultCode>> updateMyReservationLocation(
         @Parameter(description = "작가의 예약 전 알림", required = true)
         @RequestBody
-        PhotographerRequest.PhotographerReservationLocation photographerReservationLocation
+        PhotographerRequest.PhotographerReservationLocation photographerReservationLocation,
+        @UserId
+        long photographerId
     ) {
-        photographerService.updateReservationLocation(photographerReservationLocation);
+        photographerService.updateReservationLocation(photographerReservationLocation,
+            photographerId);
         return ResultResponse.of(PhotographerResultCode.UPDATE_RESERVATION_LOCATION);
     }
 }
