@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.domain.auth.argumentresolver.UserId;
 import net.catsnap.domain.auth.interceptor.AnyUser;
 import net.catsnap.domain.auth.interceptor.LoginMember;
 import net.catsnap.domain.reservation.dto.MonthReservationCheckListResponse;
@@ -51,9 +52,11 @@ public class MemberReservationController {
         @Parameter(description = "ALL : 내 모든 예약(정렬 : 최근 예약한 시간 느릴수록 먼저옴) UPCOMING : 미래에 시작하는 예약(정렬 : 미래 예약 중 현재와 가까운 것이 먼저옴. 예약의 상태가 PENDING, APPROVED 인 것만 보여줌) ")
         @RequestParam("type")
         ReservationQueryType reservationQueryType,
+        @UserId
+        Long memberId,
         Pageable pageable) {
         SlicedData<MemberReservationInformationListResponse> memberReservationInformationList = memberReservationService.getMyReservation(
-            reservationQueryType, pageable);
+            reservationQueryType, pageable, memberId);
 
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
             memberReservationInformationList);
@@ -69,10 +72,12 @@ public class MemberReservationController {
         @Parameter(description = "조회하고 싶은 달", example = "yyyy-MM")
         @RequestParam("month")
         @DateTimeFormat(pattern = "yyyy-MM")
-        YearMonth reservationMonth
+        YearMonth reservationMonth,
+        @UserId
+        Long memberId
     ) {
         MonthReservationCheckListResponse monthReservationCheckListResponse = memberReservationService.getReservationListByMonth(
-            reservationMonth.atDay(1));
+            reservationMonth.atDay(1), memberId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
             monthReservationCheckListResponse);
     }
@@ -87,10 +92,12 @@ public class MemberReservationController {
         @Parameter(description = "조회하고 싶은 일", example = "yyyy-MM-dd")
         @RequestParam("day")
         @JsonFormat(pattern = "yyyy-MM-dd")
-        LocalDate reservationDay
+        LocalDate reservationDay,
+        @UserId
+        Long memberId
     ) {
         MemberReservationInformationListResponse memberReservationInformationListResponse = memberReservationService.getReservationDetailListByDay(
-            reservationDay);
+            reservationDay, memberId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_LOOK_UP,
             memberReservationInformationListResponse);
     }
@@ -127,10 +134,12 @@ public class MemberReservationController {
     public ResponseEntity<ResultResponse<ReservationBookResultResponse>> postBookReservation(
         @Parameter(description = "새로운 예약 형식")
         @RequestBody
-        MemberReservationRequest memberReservationRequest
+        MemberReservationRequest memberReservationRequest,
+        @UserId
+        Long memberId
     ) {
         ReservationBookResultResponse reservationBookResultResponse = memberReservationFacade.createReservation(
-            memberReservationRequest);
+            memberReservationRequest, memberId);
         return ResultResponse.of(ReservationResultCode.RESERVATION_BOOK_COMPLETE,
             reservationBookResultResponse);
     }

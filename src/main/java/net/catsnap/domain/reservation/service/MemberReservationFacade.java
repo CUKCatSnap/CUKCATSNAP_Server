@@ -16,10 +16,10 @@ public class MemberReservationFacade {
 
 
     public ReservationBookResultResponse createReservation(
-        MemberReservationRequest memberReservationRequest) {
+        MemberReservationRequest memberReservationRequest, Long memberId) {
 
         Reservation reservation = memberReservationService.createReservation(
-            memberReservationRequest);
+            memberReservationRequest, memberId);
         addressRequestSender.sendRequestAddress(reservation.getId());
         return ReservationBookResultResponse.from(reservation);
     }
