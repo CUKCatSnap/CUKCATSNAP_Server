@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Scanner;
 import net.catsnap.global.security.authority.CatsnapAuthority;
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import net.catsnap.global.security.contextholder.AuthenticationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
@@ -16,6 +16,12 @@ import org.springframework.web.util.ContentCachingRequestWrapper;
 
 @Component
 public class LogService {
+
+    private final AuthenticationInfo authenticationInfo;
+
+    public LogService(AuthenticationInfo authenticationInfo) {
+        this.authenticationInfo = authenticationInfo;
+    }
 
     private final String LOG_FORMAT
         = "\n[ERROR]\n{}: {} \n[REQUEST URL] ({} {})\n[QUERY STRING] {} \n[REQUEST BODY] \n{}  \n[USER TYPE] {} \n[User DB Id] {} \n[CALLED BY] \n{}";
@@ -28,10 +34,10 @@ public class LogService {
     );
 
     public void log(Level level, Exception e, HttpServletRequest request) throws IOException {
-        CatsnapAuthority catsnapAuthority = GetAuthenticationInfo.getAuthority();
+        CatsnapAuthority catsnapAuthority = authenticationInfo.getAuthority();
         Long userId = null;
         if (catsnapAuthority != CatsnapAuthority.ANONYMOUS) {
-            userId = GetAuthenticationInfo.getUserId();
+            userId = authenticationInfo.getUserId();
         }
         logFunctions.get(level)
             .log(LOG_FORMAT, e.getClass().getSimpleName(), e.getMessage(), request.getMethod(),

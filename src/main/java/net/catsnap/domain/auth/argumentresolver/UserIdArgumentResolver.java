@@ -1,6 +1,6 @@
 package net.catsnap.domain.auth.argumentresolver;
 
-import net.catsnap.global.security.contextholder.GetAuthenticationInfo;
+import net.catsnap.global.security.contextholder.AuthenticationInfo;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -19,6 +19,6 @@ public class UserIdArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
         NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        return GetAuthenticationInfo.getUserId();
+        return AuthenticationInfo.getUserId();
     }
 }
