@@ -1,0 +1,47 @@
+package net.catsnap.CatsnapGateway.auth.service;
+
+import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Service;
+
+@Service
+/**
+ * PassportService는 사용자 인증 정보를 기반으로 HTTP 요청에 '여권' 헤더를 발행하거나 무효화하는 서비스를 제공합니다.
+ * 이 서비스는 게이트웨이에서 사용자 인증 정보를 다운스트림 서비스로 전달하는 데 사용됩니다.
+ */
+public class PassportService {
+
+    private static final String USER_ID_HEADER = "X-User-Id";
+    private static final String AUTHORITY_HEADER = "X-Authority";
+
+    /**
+     * 주어진 ServerHttpRequest에 사용자 인증 정보를 기반으로 '여권' 헤더를 발행합니다. 이 메서드는 사용자 ID와 권한 정보를 HTTP 헤더로 추가하여
+     * 다운스트림 서비스에서 사용할 수 있도록 합니다.
+     *
+     * @param serverHttpRequest   헤더를 추가할 ServerHttpRequest 객체.
+     * @param userAuthInformation 발행할 사용자 인증 정보를 포함하는 UserAuthInformation 객체.
+     */
+    public void issuePassport(ServerHttpRequest serverHttpRequest,
+        UserAuthInformation userAuthInformation) {
+        serverHttpRequest.mutate()
+            .header(USER_ID_HEADER, String.valueOf(userAuthInformation.userId()))
+            .header(AUTHORITY_HEADER, userAuthInformation.authority())
+            .build();
+    }
+
+    /**
+     * 주어진 ServerHttpRequest에서 '여권' 헤더를 무효화합니다. 이 메서드는 사용자 ID와 권한 헤더를 null로 설정하여 기존의 인증 정보를 제거합니다.
+     * 이는 주로 로그아웃 또는 인증 정보가 더 이상 유효하지 않을 때 사용됩니다.
+     * <p>
+     * 또한, 사용자가 의도적으로 주입한 값을 무효화 합니다.
+     *
+     * @param serverHttpRequest 헤더를 무효화할 ServerHttpRequest 객체.
+     */
+    public void invalidatePassport(ServerHttpRequest serverHttpRequest) {
+        serverHttpRequest.mutate()
+            .header(USER_ID_HEADER, (String) null)
+            .header(AUTHORITY_HEADER, (String) null)
+            .build();
+    }
+
+}
