@@ -1,13 +1,8 @@
 package net.catsnap.CatsnapGateway.auth.service;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.JwtParser;
-import io.jsonwebtoken.Jwts;
 import java.util.List;
 import java.util.Optional;
-import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
 import org.springframework.http.HttpHeaders;
@@ -15,14 +10,14 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
 
 /**
- * JWT 토큰을 파싱하고 사용자 인증 정보를 추출하는 서비스 클래스입니다. 이 클래스는 HTTP 요청에서 JWT를 검증하고, 유효한 경우 사용자 정보를 생성합니다.
+ * JWT 토큰에서 사용자 인증 정보를 추출하는 서비스 클래스입니다. 이 클래스는 HTTP 요청에서 JWT를 추출하고, 유효한 경우 사용자 정보를 생성합니다.
  */
 @Service
 @RequiredArgsConstructor
 public class JwtTokenService implements TokenService {
 
     private static final String BEARER_PREFIX = "Bearer ";
-    private final SecretKey secretKey;
+    private final JwtTokenParser jwtTokenParser;
 
     /**
      * HTTP 요청에서 JWT 토큰을 추출하고 파싱하여 사용자 인증 정보를 반환합니다. 토큰이 유효하면 해당 사용자의 인증 정보를, 그렇지 않으면 익명 사용자의 인증 정보를
@@ -40,7 +35,7 @@ public class JwtTokenService implements TokenService {
         }
 
         // 2. 토큰 파싱하여 클레임(정보) 추출
-        Optional<Claims> claimsOptional = parseClaims(tokenOptional.get());
+        Optional<Claims> claimsOptional = jwtTokenParser.parseClaims(tokenOptional.get());
         if (claimsOptional.isEmpty()) {
             return getAnonymousUserAuthInformation();
         } else {
@@ -63,27 +58,6 @@ public class JwtTokenService implements TokenService {
         }
 
         return new UserAuthInformation(id, authorities.get(0));
-    }
-
-    /**
-     * JWT 토큰 문자열을 파싱하여 클레임(Claims)을 Optional 객체로 반환합니다. 토큰의 형식이 잘못되었거나, 서명이 유효하지 않거나, 만료된 경우 빈
-     * Optional을 반환합니다.
-     *
-     * @param token 파싱할 JWT 토큰 문자열
-     * @return 파싱된 클레임을 담은 Optional 객체. 파싱 실패 시 Optional.empty()
-     */
-    private Optional<Claims> parseClaims(String token) {
-        try {
-            JwtParser jwtParser = Jwts.parserBuilder()
-                .setSigningKey(secretKey)
-                .build();
-            return Optional.of(jwtParser.parseClaimsJws(token).getBody());
-        } catch (ExpiredJwtException e) {
-            // TODO: 리프레시 토큰 발행 로직 구현
-            return Optional.empty();
-        } catch (JwtException e) {
-            return Optional.empty();
-        }
     }
 
     /**
