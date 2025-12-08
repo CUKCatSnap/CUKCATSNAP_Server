@@ -11,7 +11,7 @@ public interface TokenService {
 
     /**
      * 주어진 `ServerHttpRequest`에서 인증 토큰을 추출하고 파싱하여 사용자 인증 정보를 반환합니다. 토큰이 유효하고 사용자 정보를 포함하고 있는 경우,
-     * `UserAuthInformation` 객체를 반환합니다. 토큰이 없거나 유효하지 않은 경우에는 어나니머스 사용자 정보를 반환합니다.
+     * `UserAuthInformation` 객체를 반환합니다. 토큰이 없거나 유효하지 않은 경우에는 익명 사용자 정보를 반환합니다.
      *
      * @param serverHttpRequest 사용자 인증 정보를 추출할 `ServerHttpRequest` 객체.
      * @return 사용자 인증 정보를 담고 있는 `UserAuthInformation` 객체. 토큰이 유효하지 않거나 없는 경우 `null`을 반환합니다.

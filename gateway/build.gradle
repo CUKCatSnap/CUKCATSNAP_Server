@@ -6,7 +6,7 @@ plugins {
 
 group = 'net.catsnap'
 version = '0.0.1-SNAPSHOT'
-description = 'Catsnap Gateway Serer'
+description = 'Catsnap Gateway Server'
 
 java {
     toolchain {
