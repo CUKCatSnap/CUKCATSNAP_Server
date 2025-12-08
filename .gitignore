@@ -37,5 +37,5 @@ out/
 ### VS Code ###
 .vscode/
 
-src/main/**/application*
+**/main/**/application*
 *.log
