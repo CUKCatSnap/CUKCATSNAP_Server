@@ -45,3 +45,11 @@ jobs:
         with:
           report_paths: 'gateway/build/test-results/test/TEST-*.xml'
           check_name: Test Report (gateway)
+
+      - name: Upload coverage reports to Codecov for gateway
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: gateway/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: gateway
+          name: gateway-coverage
