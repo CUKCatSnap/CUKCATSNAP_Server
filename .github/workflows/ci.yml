@@ -35,6 +35,7 @@ jobs:
       contents: read
       checks: write
       pull-requests: write
+    secrets: inherit
     uses: ./.github/workflows/test-gateway.yml
 
   test-mono:
@@ -44,4 +45,5 @@ jobs:
       contents: read
       checks: write
       pull-requests: write
+    secrets: inherit
     uses: ./.github/workflows/test-mono.yml
