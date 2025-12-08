@@ -31,9 +31,17 @@ jobs:
   test-gateway:
     needs: detect-changes
     if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.common == 'true'
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     uses: ./.github/workflows/test-gateway.yml
 
   test-mono:
     needs: detect-changes
     if: needs.detect-changes.outputs.mono == 'true' || needs.detect-changes.outputs.common == 'true'
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     uses: ./.github/workflows/test-mono.yml
