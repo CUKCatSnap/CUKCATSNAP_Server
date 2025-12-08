@@ -20,10 +20,11 @@ public class PassportService {
      *
      * @param serverHttpRequest   헤더를 추가할 ServerHttpRequest 객체.
      * @param userAuthInformation 발행할 사용자 인증 정보를 포함하는 UserAuthInformation 객체.
+     * @return 여권 헤더가 추가된 새로운 ServerHttpRequest 객체.
      */
-    public void issuePassport(ServerHttpRequest serverHttpRequest,
+    public ServerHttpRequest issuePassport(ServerHttpRequest serverHttpRequest,
         UserAuthInformation userAuthInformation) {
-        serverHttpRequest.mutate()
+        return serverHttpRequest.mutate()
             .header(USER_ID_HEADER, String.valueOf(userAuthInformation.userId()))
             .header(AUTHORITY_HEADER, userAuthInformation.authority())
             .build();
@@ -36,11 +37,14 @@ public class PassportService {
      * 또한, 사용자가 의도적으로 주입한 값을 무효화 합니다.
      *
      * @param serverHttpRequest 헤더를 무효화할 ServerHttpRequest 객체.
+     * @return 여권 헤더가 무효화된 새로운 ServerHttpRequest 객체.
      */
-    public void invalidatePassport(ServerHttpRequest serverHttpRequest) {
-        serverHttpRequest.mutate()
-            .header(USER_ID_HEADER, (String) null)
-            .header(AUTHORITY_HEADER, (String) null)
+    public ServerHttpRequest invalidatePassport(ServerHttpRequest serverHttpRequest) {
+        return serverHttpRequest.mutate()
+            .headers(httpHeaders -> {
+                httpHeaders.remove(USER_ID_HEADER);
+                httpHeaders.remove(AUTHORITY_HEADER);
+            })
             .build();
     }
 
