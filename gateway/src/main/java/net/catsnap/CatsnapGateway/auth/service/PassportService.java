@@ -4,11 +4,11 @@ import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
 
-@Service
 /**
- * PassportService는 사용자 인증 정보를 기반으로 HTTP 요청에 '여권' 헤더를 발행하거나 무효화하는 서비스를 제공합니다.
- * 이 서비스는 게이트웨이에서 사용자 인증 정보를 다운스트림 서비스로 전달하는 데 사용됩니다.
+ * PassportService는 사용자 인증 정보를 기반으로 HTTP 요청에 '여권' 헤더를 발행하거나 무효화하는 서비스를 제공합니다. 이 서비스는 게이트웨이에서 사용자 인증
+ * 정보를 다운스트림 서비스로 전달하는 데 사용됩니다.
  */
+@Service
 public class PassportService {
 
     private static final String USER_ID_HEADER = "X-User-Id";
