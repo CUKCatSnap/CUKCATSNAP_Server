@@ -22,10 +22,11 @@
 
 ### 모듈별 커버리지
 
-| 모듈      | 커버리지                                                                                                                                                                           | 상세             |
-|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Gateway | [![gateway](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=gateway)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=gateway) | API Gateway 서버 |
-| Mono    | [![mono](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=mono)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=mono)          | 메인 비즈니스 로직     |
+| 모듈            | 커버리지                                                                                                                                                                                    | 상세             |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| Gateway       | [![gateway](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=gateway)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=gateway)          | API Gateway 서버 |
+| Authorization | [![mono](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization) | 사용자 인증 서버      |
+| Mono          | [![mono](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=mono)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=mono)                   | 메인 비즈니스 로직     |
 
 </div>
 

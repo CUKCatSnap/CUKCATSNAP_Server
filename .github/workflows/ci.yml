@@ -10,6 +10,7 @@ jobs:
     outputs:
       gateway: ${{ steps.filter.outputs.gateway }}
       mono: ${{ steps.filter.outputs.mono }}
+      authorization: ${{ steps.filter.outputs.authorization }}
       common: ${{ steps.filter.outputs.common }}
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +24,8 @@ jobs:
               - 'gateway/**'
             mono:
               - 'mono/**'
+            authorization:
+              - 'authorization/**'
             common:
               - 'settings.gradle'
               - 'gradle/**'
@@ -47,3 +50,13 @@ jobs:
       pull-requests: write
     secrets: inherit
     uses: ./.github/workflows/test-mono.yml
+
+  test-authorization:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.authorization == 'true' || needs.detect-changes.outputs.common == 'true'
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    secrets: inherit
+    uses: ./.github/workflows/test-authorization.yml
