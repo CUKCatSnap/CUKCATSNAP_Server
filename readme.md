@@ -6,7 +6,6 @@
 [![codecov](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server)
 [![Java](https://img.shields.io/badge/Java-17-007396?logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![License](https://img.shields.io/github/license/CUKCatSnap/CUKCATSNAP_Server)](LICENSE)
 
 </div>
 
