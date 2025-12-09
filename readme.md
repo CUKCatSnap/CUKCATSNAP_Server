@@ -1,7 +1,33 @@
 # Catsnap
 
+<div align="center">
+
+[![CI](https://github.com/CUKCatSnap/CUKCATSNAP_Server/actions/workflows/ci.yml/badge.svg)](https://github.com/CUKCatSnap/CUKCATSNAP_Server/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server)
+[![Java](https://img.shields.io/badge/Java-17-007396?logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+
+</div>
+
 기존 스냅사진 예약은 작가에 대한 리뷰만을 볼 수 있었습니다. 그러나 스냅사진은 사진작가뿐만 아니라 촬영 장소도 중요한 요소입니다. 이에 Catsnap 서비스는 사진작가뿐만 아니라
 촬영 장소에 대한 리뷰도 함께 확인할 수 있는 서비스를 제공하고자 개발을 했습니다.
+
+# 코드 커버리지
+
+<div align="center">
+
+### 전체 커버리지
+
+[![codecov](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/graphs/sunburst.svg)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server)
+
+### 모듈별 커버리지
+
+| 모듈      | 커버리지                                                                                                                                                                           | 상세             |
+|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| Gateway | [![gateway](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=gateway)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=gateway) | API Gateway 서버 |
+| Mono    | [![mono](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=mono)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=mono)          | 메인 비즈니스 로직     |
+
+</div>
 
 # 기술 스택
 
