@@ -27,11 +27,10 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Grant execute permission for gradlew
-        run: chmod +x authorization/gradlew
+        run: chmod +x gradlew
 
       - name: Test authorization module
-        working-directory: authorization
-        run: ./gradlew --info test
+        run: ./gradlew --info :authorization:test
 
       - name: Publish test results for authorization
         uses: EnricoMi/publish-unit-test-result-action@v2
