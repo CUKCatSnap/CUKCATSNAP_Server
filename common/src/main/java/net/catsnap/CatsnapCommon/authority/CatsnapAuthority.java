@@ -14,8 +14,7 @@ public enum CatsnapAuthority {
      *
      * @return 권한의 소문자 문자열 표현
      */
-    @Override
-    public String toString() {
+    public String getAuthorityName() {
         return super.toString().toLowerCase();
     }
 }

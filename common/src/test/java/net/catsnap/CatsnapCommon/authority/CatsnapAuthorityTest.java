@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 class CatsnapAuthorityTest {
 
     @Test
-    void toString_메서드는_권한_이름의_소문자_버전을_반환해야_합니다() {
+    void getAuthorityName_메서드는_권한_이름의_소문자를_반환해야_합니다() {
         for (CatsnapAuthority authority : CatsnapAuthority.values()) {
-            assertEquals(authority.name().toLowerCase(), authority.toString());
+            assertEquals(authority.name().toLowerCase(), authority.getAuthorityName());
         }
     }
 
