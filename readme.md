@@ -16,17 +16,46 @@
 
 <div align="center">
 
-### 전체 커버리지
-
-[![codecov](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/graphs/sunburst.svg)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server)
-
-### 모듈별 커버리지
-
-| 모듈            | 커버리지                                                                                                                                                                                    | 상세             |
-|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Gateway       | [![gateway](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=gateway)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=gateway)          | API Gateway 서버 |
-| Authorization | [![mono](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization) | 사용자 인증 서버      |
-| Mono          | [![mono](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=mono)](https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=mono)                   | 메인 비즈니스 로직     |
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <h3>전체 커버리지</h3>
+      <a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server">
+        <img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/graphs/sunburst.svg" alt="codecov" width="400"/>
+      </a>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <h3>모듈별 커버리지</h3>
+      <table>
+        <tr>
+          <th>모듈</th>
+          <th>커버리지</th>
+          <th>상세</th>
+        </tr>
+        <tr>
+          <td>Gateway</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=gateway"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=gateway" alt="gateway"/></a></td>
+          <td>API Gateway 서버</td>
+        </tr>
+        <tr>
+          <td>Authorization</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization" alt="authorization"/></a></td>
+          <td>사용자 인증 서버</td>
+        </tr>
+        <tr>
+          <td>Mono</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=mono"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=mono" alt="mono"/></a></td>
+          <td>메인 비즈니스 로직</td>
+        </tr>
+        <tr>
+          <td>Common</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=common"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=common" alt="common"/></a></td>
+          <td>공통 모듈</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
 </div>
 
