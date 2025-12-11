@@ -32,13 +32,13 @@ public class JwtTokenService implements TokenService {
         // 1. 요청에서 토큰 추출
         Optional<String> tokenOptional = extractJwtToken(serverHttpRequest);
         if (tokenOptional.isEmpty()) {
-            return getAnonymousUserAuthInformation();
+            return issueAnonymousUserPassport();
         }
 
         // 2. 토큰 파싱하여 클레임(정보) 추출
         Optional<Claims> claimsOptional = jwtTokenParser.parseClaims(tokenOptional.get());
         if (claimsOptional.isEmpty()) {
-            return getAnonymousUserAuthInformation();
+            return issueAnonymousUserPassport();
         } else {
             return createAuthenticationPassport(claimsOptional.get());
         }
@@ -55,13 +55,13 @@ public class JwtTokenService implements TokenService {
         List<String> authorities = claims.get("authorities", List.class);
 
         if (id == null || authorities == null || authorities.isEmpty()) {
-            return getAnonymousUserAuthInformation();
+            return issueAnonymousUserPassport();
         }
 
         Optional<CatsnapAuthority> authority = CatsnapAuthority.findAuthorityByName(
             authorities.get(0));
         return authority.map(catsnapAuthority -> new AuthenticationPassport(id, catsnapAuthority))
-            .orElseGet(this::getAnonymousUserAuthInformation);
+            .orElseGet(this::issueAnonymousUserPassport);
     }
 
     /**
@@ -83,7 +83,7 @@ public class JwtTokenService implements TokenService {
      *
      * @return 익명 사용자 인증 정보 (AuthenticationPassport)
      */
-    private AuthenticationPassport getAnonymousUserAuthInformation() {
+    private AuthenticationPassport issueAnonymousUserPassport() {
         return new AuthenticationPassport(-1L, CatsnapAuthority.ANONYMOUS);
     }
 }
