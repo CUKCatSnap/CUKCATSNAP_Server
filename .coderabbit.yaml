@@ -32,19 +32,19 @@ reviews:
       timeout: 5
 
   path_filters:
-    - "**/build/**"
-    - "**/out/**"
-    - "**/.gradle/**"
-    - "**/gradle/**"
-    - "**/gradlew"
-    - "**/gradlew.bat"
-    - "**/*.png"
-    - "**/*.jpg"
-    - "**/*.jpeg"
-    - "**/*.gif"
-    - "**/*.svg"
-    - "**/package-lock.json"
-    - "**/yarn.lock"
+    - "!**/build/**"
+    - "!**/out/**"
+    - "!**/.gradle/**"
+    - "!**/gradle/**"
+    - "!**/gradlew"
+    - "!**/gradlew.bat"
+    - "!**/*.png"
+    - "!**/*.jpg"
+    - "!**/*.jpeg"
+    - "!**/*.gif"
+    - "!**/*.svg"
+    - "!**/package-lock.json"
+    - "!**/yarn.lock"
 
   # 모듈별 리뷰 가이드 (reviews 섹션 내부로 이동)
   path_instructions:
