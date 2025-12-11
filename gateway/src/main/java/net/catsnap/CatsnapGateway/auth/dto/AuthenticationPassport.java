@@ -11,7 +11,7 @@ public record AuthenticationPassport(
      */
     Long userId,
     /**
-     * 사용자의 권한 (예: "PHOTOGRAPHER", "MODEL", "ANONYMOUS", ADMIN )
+     * 사용자의 권한 (예: "PHOTOGRAPHER", "MODEL", "ANONYMOUS", "ADMIN" )
      */
     CatsnapAuthority authority
 ) {

@@ -17,7 +17,7 @@ public enum CatsnapAuthority {
      * @return 권한의 소문자 문자열 표현
      */
     public String getAuthorityName() {
-        return super.toString().toLowerCase();
+        return name().toLowerCase();
     }
 
     /**
@@ -32,7 +32,7 @@ public enum CatsnapAuthority {
             return Optional.empty();
         }
         for (CatsnapAuthority authority : CatsnapAuthority.values()) {
-            if (authority.toString().equalsIgnoreCase(authorityName)) {
+            if (authority.name().equalsIgnoreCase(authorityName)) {
                 return Optional.of(authority);
             }
         }
