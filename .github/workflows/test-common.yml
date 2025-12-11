@@ -1,4 +1,4 @@
-name: Test Gateway Module
+name: Test Common Module
 
 on:
   workflow_call:
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test gateway module
-        run: ./gradlew --info :gateway:test
+      - name: Test common module
+        run: ./gradlew --info :common:test
 
-      - name: Publish test results for gateway
+      - name: Publish test results for common
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'gateway/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (gateway)
+          files: 'common/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (common)
 
-      - name: Publish test report for gateway
+      - name: Publish test report for common
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'gateway/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (gateway)
+          report_paths: 'common/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (common)
 
-      - name: Upload coverage reports to Codecov for gateway
+      - name: Upload coverage reports to Codecov for common
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: gateway/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: gateway
-          name: gateway-coverage
+          files: common/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: common
+          name: common-coverage

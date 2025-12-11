@@ -27,6 +27,7 @@ jobs:
             authorization:
               - 'authorization/**'
             common:
+              - 'common/**'
               - 'settings.gradle'
               - 'gradle/**'
               - '.github/workflows/**'
@@ -60,3 +61,13 @@ jobs:
       pull-requests: write
     secrets: inherit
     uses: ./.github/workflows/test-authorization.yml
+
+  test-common:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.common == 'true'
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    secrets: inherit
+    uses: ./.github/workflows/test-common.yml
