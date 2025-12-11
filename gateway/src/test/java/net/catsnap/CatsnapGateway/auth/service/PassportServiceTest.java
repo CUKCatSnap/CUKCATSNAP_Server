@@ -3,7 +3,7 @@ package net.catsnap.CatsnapGateway.auth.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
-import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
@@ -19,12 +19,12 @@ class PassportServiceTest {
     @Test
     void 사용자_인증_정보를_기반으로_여권_헤더를_발행한다() {
         // given
-        UserAuthInformation userAuthInformation = new UserAuthInformation(1L,
+        AuthenticationPassport authenticationPassport = new AuthenticationPassport(1L,
             CatsnapAuthority.MODEL);
         MockServerHttpRequest request = MockServerHttpRequest.get("/test").build();
 
         // when
-        ServerHttpRequest result = passportService.issuePassport(request, userAuthInformation);
+        ServerHttpRequest result = passportService.issuePassport(request, authenticationPassport);
 
         // then
         assertThat(result.getHeaders().getFirst("X-User-Id")).isEqualTo("1");

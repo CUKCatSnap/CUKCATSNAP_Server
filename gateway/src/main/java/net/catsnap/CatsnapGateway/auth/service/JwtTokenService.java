@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
-import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
@@ -24,11 +24,11 @@ public class JwtTokenService implements TokenService {
      * HTTP 요청에서 JWT 토큰을 추출하고 파싱하여 사용자 인증 정보를 반환합니다. 토큰이 유효하면 해당 사용자의 인증 정보를, 그렇지 않으면 익명 사용자의 인증 정보를
      * 반환합니다.
      *
-     * @param serverHttpRequest HTTP 요청 객체 (ServerHttpRequest)
-     * @return 사용자 인증 정보 (UserAuthInformation).
+     * @param serverHttpRequest HTTP 요청 객체
+     * @return 사용자 인증 정보 .
      */
     @Override
-    public UserAuthInformation getUserAuthInformation(ServerHttpRequest serverHttpRequest) {
+    public AuthenticationPassport getAuthenticationPassport(ServerHttpRequest serverHttpRequest) {
         // 1. 요청에서 토큰 추출
         Optional<String> tokenOptional = extractJwtToken(serverHttpRequest);
         if (tokenOptional.isEmpty()) {
@@ -40,7 +40,7 @@ public class JwtTokenService implements TokenService {
         if (claimsOptional.isEmpty()) {
             return getAnonymousUserAuthInformation();
         } else {
-            return createUserAuthInfoFrom(claimsOptional.get());
+            return createAuthenticationPassport(claimsOptional.get());
         }
     }
 
@@ -50,7 +50,7 @@ public class JwtTokenService implements TokenService {
      * @param claims JWT에서 추출한 클레임 객체
      * @return 생성된 사용자 인증 정보. 필수 클레임이 없으면 익명 사용자 정보를 반환합니다.
      */
-    private UserAuthInformation createUserAuthInfoFrom(Claims claims) {
+    private AuthenticationPassport createAuthenticationPassport(Claims claims) {
         Long id = claims.get("id", Long.class);
         List<String> authorities = claims.get("authorities", List.class);
 
@@ -60,7 +60,7 @@ public class JwtTokenService implements TokenService {
 
         Optional<CatsnapAuthority> authority = CatsnapAuthority.findAuthorityByName(
             authorities.get(0));
-        return new UserAuthInformation(id, authority.orElse(null));
+        return new AuthenticationPassport(id, authority.orElse(null));
     }
 
     /**
@@ -82,7 +82,7 @@ public class JwtTokenService implements TokenService {
      *
      * @return 익명 사용자 인증 정보 (UserAuthInformation)
      */
-    private UserAuthInformation getAnonymousUserAuthInformation() {
-        return new UserAuthInformation(-1L, CatsnapAuthority.ANONYMOUS);
+    private AuthenticationPassport getAnonymousUserAuthInformation() {
+        return new AuthenticationPassport(-1L, CatsnapAuthority.ANONYMOUS);
     }
 }

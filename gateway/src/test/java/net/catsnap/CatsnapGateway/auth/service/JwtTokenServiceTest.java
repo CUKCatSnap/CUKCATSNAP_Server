@@ -8,7 +8,7 @@ import io.jsonwebtoken.Jwts;
 import java.util.List;
 import java.util.Optional;
 import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
-import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
@@ -44,11 +44,12 @@ class JwtTokenServiceTest {
         when(jwtTokenParser.parseClaims(validToken)).thenReturn(Optional.of(claims));
 
         // when
-        UserAuthInformation userAuthInformation = jwtTokenService.getUserAuthInformation(request);
+        AuthenticationPassport authenticationPassport = jwtTokenService.getAuthenticationPassport(
+            request);
 
         // then
-        assertThat(userAuthInformation.userId()).isEqualTo(1L);
-        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.MODEL);
+        assertThat(authenticationPassport.userId()).isEqualTo(1L);
+        assertThat(authenticationPassport.authority()).isEqualTo(CatsnapAuthority.MODEL);
     }
 
     @Test
@@ -57,11 +58,12 @@ class JwtTokenServiceTest {
         MockServerHttpRequest request = MockServerHttpRequest.get("/test").build();
 
         // when
-        UserAuthInformation userAuthInformation = jwtTokenService.getUserAuthInformation(request);
+        AuthenticationPassport authenticationPassport = jwtTokenService.getAuthenticationPassport(
+            request);
 
         // then
-        assertThat(userAuthInformation.userId()).isEqualTo(-1L);
-        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
+        assertThat(authenticationPassport.userId()).isEqualTo(-1L);
+        assertThat(authenticationPassport.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
     }
 
     @Test
@@ -72,11 +74,12 @@ class JwtTokenServiceTest {
             .build();
 
         // when
-        UserAuthInformation userAuthInformation = jwtTokenService.getUserAuthInformation(request);
+        AuthenticationPassport authenticationPassport = jwtTokenService.getAuthenticationPassport(
+            request);
 
         // then
-        assertThat(userAuthInformation.userId()).isEqualTo(-1L);
-        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
+        assertThat(authenticationPassport.userId()).isEqualTo(-1L);
+        assertThat(authenticationPassport.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
     }
 
     @Test
@@ -89,10 +92,11 @@ class JwtTokenServiceTest {
         when(jwtTokenParser.parseClaims(invalidToken)).thenReturn(Optional.empty());
 
         // when
-        UserAuthInformation userAuthInformation = jwtTokenService.getUserAuthInformation(request);
+        AuthenticationPassport authenticationPassport = jwtTokenService.getAuthenticationPassport(
+            request);
 
         // then
-        assertThat(userAuthInformation.userId()).isEqualTo(-1L);
-        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
+        assertThat(authenticationPassport.userId()).isEqualTo(-1L);
+        assertThat(authenticationPassport.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
     }
 }

@@ -1,6 +1,6 @@
 package net.catsnap.CatsnapGateway.auth.service;
 
-import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +18,15 @@ public class PassportService {
      * 주어진 ServerHttpRequest에 사용자 인증 정보를 기반으로 '여권' 헤더를 발행합니다. 이 메서드는 사용자 ID와 권한 정보를 HTTP 헤더로 추가하여
      * 다운스트림 서비스에서 사용할 수 있도록 합니다.
      *
-     * @param serverHttpRequest   헤더를 추가할 ServerHttpRequest 객체.
-     * @param userAuthInformation 발행할 사용자 인증 정보를 포함하는 UserAuthInformation 객체.
+     * @param serverHttpRequest      헤더를 추가할 객체.
+     * @param authenticationPassport 발행할 사용자 인증 정보를 담은 객체.
      * @return 여권 헤더가 추가된 새로운 ServerHttpRequest 객체.
      */
     public ServerHttpRequest issuePassport(ServerHttpRequest serverHttpRequest,
-        UserAuthInformation userAuthInformation) {
+        AuthenticationPassport authenticationPassport) {
         return serverHttpRequest.mutate()
-            .header(USER_ID_HEADER, String.valueOf(userAuthInformation.userId()))
-            .header(AUTHORITY_HEADER, userAuthInformation.authority().getAuthorityName())
+            .header(USER_ID_HEADER, String.valueOf(authenticationPassport.userId()))
+            .header(AUTHORITY_HEADER, authenticationPassport.authority().getAuthorityName())
             .build();
     }
 
