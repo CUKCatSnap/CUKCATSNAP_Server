@@ -40,12 +40,22 @@ jacocoTestReport {
 }
 
 dependencies {
+    // Project Dependencies
+    implementation project(':common')
+
+    // Spring Cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+
+    // JWT
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
