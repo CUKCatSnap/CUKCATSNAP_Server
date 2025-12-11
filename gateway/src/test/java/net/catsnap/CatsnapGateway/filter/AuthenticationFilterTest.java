@@ -6,7 +6,8 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
+import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import net.catsnap.CatsnapGateway.auth.service.PassportService;
 import net.catsnap.CatsnapGateway.auth.service.TokenService;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,14 +55,15 @@ class AuthenticationFilterTest {
         ServerWebExchange exchange = MockServerWebExchange.from(request);
 
         ServerHttpRequest invalidatedPassportRequest = request.mutate().build();
-        UserAuthInformation anonymousUser = new UserAuthInformation(-1L, "ANONYMOUS");
+        AuthenticationPassport anonymousUser = new AuthenticationPassport(-1L,
+            CatsnapAuthority.ANONYMOUS);
         ServerHttpRequest passportIssuedRequest = request.mutate()
             .header("X-User-Id", "-1")
             .header("X-Authority", "ANONYMOUS")
             .build();
 
         given(passportService.invalidatePassport(request)).willReturn(invalidatedPassportRequest);
-        given(tokenService.getUserAuthInformation(invalidatedPassportRequest)).willReturn(
+        given(tokenService.getAuthenticationPassport(invalidatedPassportRequest)).willReturn(
             anonymousUser);
         given(passportService.issuePassport(invalidatedPassportRequest, anonymousUser))
             .willReturn(passportIssuedRequest);
@@ -71,7 +73,7 @@ class AuthenticationFilterTest {
 
         // then
         verify(passportService).invalidatePassport(request);
-        verify(tokenService).getUserAuthInformation(invalidatedPassportRequest);
+        verify(tokenService).getAuthenticationPassport(invalidatedPassportRequest);
         verify(passportService).issuePassport(invalidatedPassportRequest, anonymousUser);
         verify(filterChain).filter(any(ServerWebExchange.class));
     }
@@ -85,14 +87,15 @@ class AuthenticationFilterTest {
         ServerWebExchange exchange = MockServerWebExchange.from(request);
 
         ServerHttpRequest invalidatedRequest = request.mutate().build();
-        UserAuthInformation authenticatedUser = new UserAuthInformation(1L, "MEMBER");
+        AuthenticationPassport authenticatedUser = new AuthenticationPassport(1L,
+            CatsnapAuthority.MODEL);
         ServerHttpRequest passportIssuedRequest = request.mutate()
             .header("X-User-Id", "1")
-            .header("X-Authority", "MEMBER")
+            .header("X-Authority", "model")
             .build();
 
         given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
-        given(tokenService.getUserAuthInformation(invalidatedRequest)).willReturn(
+        given(tokenService.getAuthenticationPassport(invalidatedRequest)).willReturn(
             authenticatedUser);
         given(passportService.issuePassport(invalidatedRequest, authenticatedUser))
             .willReturn(passportIssuedRequest);
@@ -102,7 +105,7 @@ class AuthenticationFilterTest {
 
         // then
         verify(passportService).invalidatePassport(request);
-        verify(tokenService).getUserAuthInformation(invalidatedRequest);
+        verify(tokenService).getAuthenticationPassport(invalidatedRequest);
         verify(passportService).issuePassport(invalidatedRequest, authenticatedUser);
         verify(filterChain).filter(any(ServerWebExchange.class));
     }
@@ -122,14 +125,14 @@ class AuthenticationFilterTest {
             .header("Authorization", "Bearer valid-jwt-token")
             .build();
 
-        UserAuthInformation actualUser = new UserAuthInformation(1L, "MEMBER");
+        AuthenticationPassport actualUser = new AuthenticationPassport(1L, CatsnapAuthority.MODEL);
         ServerHttpRequest passportIssuedRequest = request.mutate()
             .header("X-User-Id", "1")
-            .header("X-Authority", "MEMBER")
+            .header("X-Authority", "model")
             .build();
 
         given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
-        given(tokenService.getUserAuthInformation(invalidatedRequest)).willReturn(actualUser);
+        given(tokenService.getAuthenticationPassport(invalidatedRequest)).willReturn(actualUser);
         given(passportService.issuePassport(invalidatedRequest, actualUser))
             .willReturn(passportIssuedRequest);
 
@@ -140,7 +143,7 @@ class AuthenticationFilterTest {
         // 기존 패스포트가 무효화되었는지 확인
         verify(passportService).invalidatePassport(request);
         // 무효화된 요청으로 사용자 정보를 가져왔는지 확인
-        verify(tokenService).getUserAuthInformation(invalidatedRequest);
+        verify(tokenService).getAuthenticationPassport(invalidatedRequest);
         // 실제 사용자 정보로 새로운 패스포트가 발급되었는지 확인
         verify(passportService).issuePassport(invalidatedRequest, actualUser);
 

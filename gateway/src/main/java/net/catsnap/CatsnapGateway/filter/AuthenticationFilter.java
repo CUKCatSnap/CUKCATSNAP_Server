@@ -1,7 +1,7 @@
 package net.catsnap.CatsnapGateway.filter;
 
 import lombok.RequiredArgsConstructor;
-import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
+import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import net.catsnap.CatsnapGateway.auth.service.PassportService;
 import net.catsnap.CatsnapGateway.auth.service.TokenService;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -34,11 +34,11 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
         ServerHttpRequest invalidatedPassportRequest = passportService.invalidatePassport(
             exchange.getRequest());
 
-        UserAuthInformation userAuthInformation = tokenService.getUserAuthInformation(
+        AuthenticationPassport authenticationPassport = tokenService.getAuthenticationPassport(
             invalidatedPassportRequest);
 
         ServerHttpRequest newRequest = passportService.issuePassport(invalidatedPassportRequest,
-            userAuthInformation);
+            authenticationPassport);
 
         ServerWebExchange modifiedExchange = exchange.mutate().request(newRequest).build();
 
