@@ -60,7 +60,8 @@ public class JwtTokenService implements TokenService {
 
         Optional<CatsnapAuthority> authority = CatsnapAuthority.findAuthorityByName(
             authorities.get(0));
-        return new AuthenticationPassport(id, authority.orElse(null));
+        return authority.map(catsnapAuthority -> new AuthenticationPassport(id, catsnapAuthority))
+            .orElseGet(this::getAnonymousUserAuthInformation);
     }
 
     /**
