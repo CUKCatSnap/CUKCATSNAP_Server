@@ -6,6 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
 import net.catsnap.CatsnapGateway.auth.service.PassportService;
 import net.catsnap.CatsnapGateway.auth.service.TokenService;
@@ -54,7 +55,8 @@ class AuthenticationFilterTest {
         ServerWebExchange exchange = MockServerWebExchange.from(request);
 
         ServerHttpRequest invalidatedPassportRequest = request.mutate().build();
-        UserAuthInformation anonymousUser = new UserAuthInformation(-1L, "ANONYMOUS");
+        UserAuthInformation anonymousUser = new UserAuthInformation(-1L,
+            CatsnapAuthority.ANONYMOUS);
         ServerHttpRequest passportIssuedRequest = request.mutate()
             .header("X-User-Id", "-1")
             .header("X-Authority", "ANONYMOUS")
@@ -85,10 +87,10 @@ class AuthenticationFilterTest {
         ServerWebExchange exchange = MockServerWebExchange.from(request);
 
         ServerHttpRequest invalidatedRequest = request.mutate().build();
-        UserAuthInformation authenticatedUser = new UserAuthInformation(1L, "MEMBER");
+        UserAuthInformation authenticatedUser = new UserAuthInformation(1L, CatsnapAuthority.MODEL);
         ServerHttpRequest passportIssuedRequest = request.mutate()
             .header("X-User-Id", "1")
-            .header("X-Authority", "MEMBER")
+            .header("X-Authority", "model")
             .build();
 
         given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
@@ -122,10 +124,10 @@ class AuthenticationFilterTest {
             .header("Authorization", "Bearer valid-jwt-token")
             .build();
 
-        UserAuthInformation actualUser = new UserAuthInformation(1L, "MEMBER");
+        UserAuthInformation actualUser = new UserAuthInformation(1L, CatsnapAuthority.MODEL);
         ServerHttpRequest passportIssuedRequest = request.mutate()
             .header("X-User-Id", "1")
-            .header("X-Authority", "MEMBER")
+            .header("X-Authority", "model")
             .build();
 
         given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);

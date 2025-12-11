@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -57,7 +58,9 @@ public class JwtTokenService implements TokenService {
             return getAnonymousUserAuthInformation();
         }
 
-        return new UserAuthInformation(id, authorities.get(0));
+        Optional<CatsnapAuthority> authority = CatsnapAuthority.findAuthorityByName(
+            authorities.get(0));
+        return new UserAuthInformation(id, authority.orElse(null));
     }
 
     /**
@@ -80,6 +83,6 @@ public class JwtTokenService implements TokenService {
      * @return 익명 사용자 인증 정보 (UserAuthInformation)
      */
     private UserAuthInformation getAnonymousUserAuthInformation() {
-        return new UserAuthInformation(-1L, "ANONYMOUS");
+        return new UserAuthInformation(-1L, CatsnapAuthority.ANONYMOUS);
     }
 }

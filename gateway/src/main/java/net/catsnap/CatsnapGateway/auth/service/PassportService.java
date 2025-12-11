@@ -26,7 +26,7 @@ public class PassportService {
         UserAuthInformation userAuthInformation) {
         return serverHttpRequest.mutate()
             .header(USER_ID_HEADER, String.valueOf(userAuthInformation.userId()))
-            .header(AUTHORITY_HEADER, userAuthInformation.authority())
+            .header(AUTHORITY_HEADER, userAuthInformation.authority().getAuthorityName())
             .build();
     }
 

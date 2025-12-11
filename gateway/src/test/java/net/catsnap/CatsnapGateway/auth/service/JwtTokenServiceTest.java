@@ -7,6 +7,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import java.util.List;
 import java.util.Optional;
+import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.UserAuthInformation;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -39,7 +40,7 @@ class JwtTokenServiceTest {
 
         Claims claims = Jwts.claims();
         claims.put("id", 1L);
-        claims.put("authorities", List.of("MEMBER"));
+        claims.put("authorities", List.of("model"));
         when(jwtTokenParser.parseClaims(validToken)).thenReturn(Optional.of(claims));
 
         // when
@@ -47,7 +48,7 @@ class JwtTokenServiceTest {
 
         // then
         assertThat(userAuthInformation.userId()).isEqualTo(1L);
-        assertThat(userAuthInformation.authority()).isEqualTo("MEMBER");
+        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.MODEL);
     }
 
     @Test
@@ -60,7 +61,7 @@ class JwtTokenServiceTest {
 
         // then
         assertThat(userAuthInformation.userId()).isEqualTo(-1L);
-        assertThat(userAuthInformation.authority()).isEqualTo("ANONYMOUS");
+        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
     }
 
     @Test
@@ -75,7 +76,7 @@ class JwtTokenServiceTest {
 
         // then
         assertThat(userAuthInformation.userId()).isEqualTo(-1L);
-        assertThat(userAuthInformation.authority()).isEqualTo("ANONYMOUS");
+        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
     }
 
     @Test
@@ -92,6 +93,6 @@ class JwtTokenServiceTest {
 
         // then
         assertThat(userAuthInformation.userId()).isEqualTo(-1L);
-        assertThat(userAuthInformation.authority()).isEqualTo("ANONYMOUS");
+        assertThat(userAuthInformation.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
     }
 }
