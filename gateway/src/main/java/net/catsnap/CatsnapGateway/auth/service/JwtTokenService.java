@@ -80,7 +80,7 @@ public class JwtTokenService implements TokenService {
     /**
      * 익명 사용자 인증 정보를 생성하여 반환합니다.
      *
-     * @return 익명 사용자 인증 정보 (UserAuthInformation)
+     * @return 익명 사용자 인증 정보 (AuthenticationPassport)
      */
     private AuthenticationPassport getAnonymousUserAuthInformation() {
         return new AuthenticationPassport(-1L, CatsnapAuthority.ANONYMOUS);
