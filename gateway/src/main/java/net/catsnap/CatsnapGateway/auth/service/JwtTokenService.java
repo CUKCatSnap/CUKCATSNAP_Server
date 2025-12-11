@@ -25,7 +25,7 @@ public class JwtTokenService implements TokenService {
      * 반환합니다.
      *
      * @param serverHttpRequest HTTP 요청 객체
-     * @return 사용자 인증 정보 .
+     * @return AuthenticationPassport 객체. 사용자 ID와 권한 정보를 포함합니다. 토큰이 유효하지 않으면 익명 사용자 정보를 반환합니다.
      */
     @Override
     public AuthenticationPassport getAuthenticationPassport(ServerHttpRequest serverHttpRequest) {
