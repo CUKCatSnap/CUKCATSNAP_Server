@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.config;
+package net.catsnap.CatsnapAuthorization.password.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
