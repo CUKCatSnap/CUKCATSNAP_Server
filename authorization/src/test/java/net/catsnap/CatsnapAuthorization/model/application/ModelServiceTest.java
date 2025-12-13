@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import net.catsnap.CatsnapAuthorization.model.domain.Model;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
 import net.catsnap.CatsnapAuthorization.model.infrastructure.ModelRepository;
+import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -91,8 +93,9 @@ class ModelServiceTest {
         //when & then
         // 두 번째 가입은 새로운 트랜잭션에서 실행됨
         assertThatThrownBy(() -> modelService.signUp(duplicateRequest))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("이미 존재하는 식별자입니다");
+            .isInstanceOf(BusinessException.class)
+            .extracting("resultCode")
+            .isEqualTo(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION);
 
         // cleanup()에서 데이터 정리됨
     }
