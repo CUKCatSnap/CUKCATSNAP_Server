@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 @DisplayName("ResultResponse 테스트")
@@ -51,7 +52,7 @@ class ResultResponseTest {
     private static class TestResultCode implements ResultCode {
 
         @Override
-        public org.springframework.http.HttpStatusCode getHttpStatus() {
+        public HttpStatusCode getHttpStatus() {
             return HttpStatus.OK;
         }
 
