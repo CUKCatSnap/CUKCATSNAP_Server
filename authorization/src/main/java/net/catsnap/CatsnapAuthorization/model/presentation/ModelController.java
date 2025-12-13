@@ -1,5 +1,6 @@
 package net.catsnap.CatsnapAuthorization.model.presentation;
 
+import jakarta.validation.Valid;
 import net.catsnap.CatsnapAuthorization.model.application.ModelService;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ModelController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> signUp(@RequestBody ModelSignUpRequest request) {
+    public ResponseEntity<Void> signUp(@Valid @RequestBody ModelSignUpRequest request) {
         modelService.signUp(request);
         return ResponseEntity.ok().build();
     }
