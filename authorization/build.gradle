@@ -40,9 +40,7 @@ jacocoTestReport {
 }
 
 dependencies {
-    // === Spring Boot 기본 의존성 ===
     implementation 'org.springframework.boot:spring-boot-starter'
-    // === Spring Boot 테스트 의존성 ===
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
