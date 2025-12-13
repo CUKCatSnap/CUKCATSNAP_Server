@@ -116,18 +116,4 @@ public class ModelTestFixture {
             this.passwordEncoder
         );
     }
-
-    /**
-     * 설정된 값으로 Model 엔티티 생성 (커스텀 PasswordEncoder 사용)
-     */
-    public Model build(PasswordEncoder passwordEncoder) {
-        return Model.signUp(
-            new Identifier(identifier),
-            new RawPassword(password),
-            new Nickname(nickname),
-            birthday,
-            new PhoneNumber(phoneNumber),
-            passwordEncoder
-        );
-    }
 }
