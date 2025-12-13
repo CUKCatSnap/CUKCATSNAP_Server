@@ -2,6 +2,7 @@ package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.erro
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;

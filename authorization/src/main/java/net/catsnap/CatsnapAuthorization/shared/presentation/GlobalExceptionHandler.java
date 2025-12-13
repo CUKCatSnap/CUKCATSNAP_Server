@@ -1,9 +1,9 @@
-package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.exception;
+package net.catsnap.CatsnapAuthorization.shared.presentation;
 
 import lombok.extern.slf4j.Slf4j;
-import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
-import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.ResultResponse;
-import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.presentation.response.ResultResponse;
+import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -81,7 +81,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ResultResponse<Void>> handleMethodArgumentNotValidException(
         MethodArgumentNotValidException e) {
         FieldError fieldError = e.getBindingResult().getFieldError();
-        String errorMessage = fieldError != null ? fieldError.getDefaultMessage() : "입력값이 올바르지 않습니다.";
+        String errorMessage =
+            fieldError != null ? fieldError.getDefaultMessage() : "입력값이 올바르지 않습니다.";
 
         log.warn("MethodArgumentNotValidException: {}", errorMessage);
         return ResultResponse.of(CommonErrorCode.INVALID_REQUEST_BODY);

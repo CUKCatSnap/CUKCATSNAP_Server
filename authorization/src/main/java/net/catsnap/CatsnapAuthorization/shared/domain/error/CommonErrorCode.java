@@ -1,8 +1,7 @@
-package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode;
+package net.catsnap.CatsnapAuthorization.shared.domain.error;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.ResultCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 

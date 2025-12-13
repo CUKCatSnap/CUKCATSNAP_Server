@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response;
+package net.catsnap.CatsnapAuthorization.shared.domain.error;
 
 import org.springframework.http.HttpStatusCode;
 

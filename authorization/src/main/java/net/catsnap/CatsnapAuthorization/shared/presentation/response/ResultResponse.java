@@ -1,7 +1,8 @@
-package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response;
+package net.catsnap.CatsnapAuthorization.shared.presentation.response;
 
 import lombok.Builder;
 import lombok.Getter;
+import net.catsnap.CatsnapAuthorization.shared.domain.error.ResultCode;
 import org.springframework.http.ResponseEntity;
 
 /**

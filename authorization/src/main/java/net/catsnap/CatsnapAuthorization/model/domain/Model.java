@@ -22,6 +22,7 @@ import net.catsnap.CatsnapAuthorization.model.infrastructure.converter.Identifie
 import net.catsnap.CatsnapAuthorization.model.infrastructure.converter.NicknameConverter;
 import net.catsnap.CatsnapAuthorization.model.infrastructure.converter.PhoneNumberConverter;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
+import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -88,8 +89,7 @@ public class Model {
      * @param phoneNumberValue 전화번호 문자열
      * @param passwordEncoder  비밀번호 암호화 인터페이스
      * @return 생성된 Model 엔티티
-     * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 값 객체 생성 시 유효성 검증
-     *                                                                             실패
+     * @throws BusinessException 값 객체 생성 시 유효성 검증 실패
      * @see RawPassword
      * @see EncodedPassword
      */

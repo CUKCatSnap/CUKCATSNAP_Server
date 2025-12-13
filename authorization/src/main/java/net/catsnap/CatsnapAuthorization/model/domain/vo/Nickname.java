@@ -2,8 +2,8 @@ package net.catsnap.CatsnapAuthorization.model.domain.vo;
 
 import java.util.Objects;
 import lombok.Getter;
-import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
-import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 
 /**
  * 닉네임 값 객체 (Value Object)

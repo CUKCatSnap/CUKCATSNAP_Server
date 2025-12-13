@@ -1,7 +1,7 @@
-package net.catsnap.CatsnapAuthorization.shared.exception;
+package net.catsnap.CatsnapAuthorization.shared.domain;
 
 import lombok.Getter;
-import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.ResultCode;
+import net.catsnap.CatsnapAuthorization.shared.domain.error.ResultCode;
 
 /**
  * 비즈니스 예외 최상위 클래스
