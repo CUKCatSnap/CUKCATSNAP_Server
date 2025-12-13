@@ -3,12 +3,19 @@ package net.catsnap.CatsnapAuthorization.model.presentation;
 import jakarta.validation.Valid;
 import net.catsnap.CatsnapAuthorization.model.application.ModelService;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.ResultResponse;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.code.CommonResultCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Model(사용자) 관련 API 컨트롤러
+ *
+ * <p>회원가입, 인증 등 사용자 관리 기능을 제공합니다.</p>
+ */
 @RestController
 @RequestMapping("/authorization/model")
 public class ModelController {
@@ -19,10 +26,16 @@ public class ModelController {
         this.modelService = modelService;
     }
 
+    /**
+     * 회원가입 API
+     *
+     * @param request 회원가입 요청 정보
+     * @return 성공 응답
+     */
     @PostMapping("/signup")
-    public ResponseEntity<Void> signUp(@Valid @RequestBody ModelSignUpRequest request) {
+    public ResponseEntity<ResultResponse<Void>> signUp(
+        @Valid @RequestBody ModelSignUpRequest request) {
         modelService.signUp(request);
-        return ResponseEntity.ok().build();
+        return ResultResponse.of(CommonResultCode.COMMON_CREATE);
     }
 }
-

@@ -3,12 +3,15 @@ package net.catsnap.CatsnapAuthorization.model.presentation;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import net.catsnap.CatsnapAuthorization.model.application.ModelService;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.code.CommonResultCode;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -50,6 +53,69 @@ class ModelControllerTest {
         mockMvc.perform(post("/authorization/model/signup")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
-            .andExpect(status().isOk());
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.code").value(CommonResultCode.COMMON_CREATE.getCode()));
+    }
+
+    @Test
+    void 필수_값_누락_시_예외가_발생한다() throws Exception {
+        //given - identifier가 누락된 요청
+        String invalidRequest = """
+            {
+                "password": "password1234",
+                "nickname": "새유저",
+                "birthday": "1995-05-15",
+                "phoneNumber": "010-1234-5678"
+            }
+            """;
+
+        //when & then
+        mockMvc.perform(post("/authorization/model/signup")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(invalidRequest))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+    }
+
+    @Test
+    void 빈_값_전달_시_예외가_발생한다() throws Exception {
+        //given - 빈 identifier 전달
+        ModelSignUpRequest request = new ModelSignUpRequest(
+            "",
+            "password1234",
+            "새유저",
+            LocalDate.of(1995, 5, 15),
+            "010-1234-5678"
+        );
+
+        //when & then
+        mockMvc.perform(post("/authorization/model/signup")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+            .andExpect(status().isBadRequest())
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+    }
+
+    @Test
+    void null_값_전달_시_예외가_발생한다() throws Exception {
+        //given - null password 전달
+        String invalidRequest = """
+            {
+                "identifier": "newuser",
+                "password": null,
+                "nickname": "새유저",
+                "birthday": "1995-05-15",
+                "phoneNumber": "010-1234-5678"
+            }
+            """;
+
+        //when & then
+        mockMvc.perform(post("/authorization/model/signup")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(invalidRequest))
+            .andExpect(status().isBadRequest())
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
     }
 }

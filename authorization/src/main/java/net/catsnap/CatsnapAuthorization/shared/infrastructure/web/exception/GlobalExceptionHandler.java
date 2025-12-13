@@ -6,8 +6,10 @@ import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.Resul
 import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -70,6 +72,19 @@ public class GlobalExceptionHandler {
         HttpMediaTypeNotSupportedException e) {
         log.warn("HttpMediaTypeNotSupportedException: {}", e.getMessage());
         return ResultResponse.of(CommonErrorCode.UNSUPPORTED_MEDIA_TYPE);
+    }
+
+    /**
+     * @Valid 검증 실패 처리
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ResultResponse<Void>> handleMethodArgumentNotValidException(
+        MethodArgumentNotValidException e) {
+        FieldError fieldError = e.getBindingResult().getFieldError();
+        String errorMessage = fieldError != null ? fieldError.getDefaultMessage() : "입력값이 올바르지 않습니다.";
+
+        log.warn("MethodArgumentNotValidException: {}", errorMessage);
+        return ResultResponse.of(CommonErrorCode.INVALID_REQUEST_BODY);
     }
 
     /**
