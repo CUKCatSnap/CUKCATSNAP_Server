@@ -58,7 +58,7 @@ dependencies {
     testRuntimeOnly 'com.h2database:h2'
     // === 비밀번호 암호화 의존성 ===
     implementation 'org.springframework.security:spring-security-crypto'
-    // === 롬복 의존성
+    // === 롬복 의존성 ===
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 }
