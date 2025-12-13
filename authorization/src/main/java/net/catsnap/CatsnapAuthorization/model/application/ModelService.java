@@ -40,14 +40,14 @@ public class ModelService {
      * 새로운 사용자를 시스템에 등록합니다.
      *
      * @param request 회원가입 요청 정보를 담은 DTO
-     * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 값 객체 생성 시 유효성 검증 실패 또는 식별자 중복
+     * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 값 객체 생성 시 유효성 검증
+     *                                                                             실패 또는 식별자 중복
      * @see ModelSignUpRequest
      */
     @Transactional
     public void signUp(ModelSignUpRequest request) {
-        // 중복 체크를 위한 Identifier 생성
-        Identifier identifier = new Identifier(request.identifier());
-        if (checkIdentifierExists(identifier)) {
+        // 식별자 중복 체크
+        if (checkIdentifierExists(request.identifier())) {
             throw new IllegalArgumentException("이미 존재하는 식별자입니다: " + request.identifier());
         }
 
@@ -70,13 +70,15 @@ public class ModelService {
      * <p>주어진 식별자가 이미 시스템에 등록되어 있는지 확인합니다.
      * 회원가입 전 프론트엔드에서 실시간 중복 체크에 사용될 수 있습니다.</p>
      *
-     * @param identifier 중복 확인할 식별자 (원시 String 타입)
+     * @param identifierValue 중복 확인할 식별자 문자열
      * @return 식별자가 이미 존재하면 {@code true}, 그렇지 않으면 {@code false}
-     * @throws IllegalArgumentException 식별자 형식이 유효하지 않은 경우 (값 객체 생성 실패)
-     * @see Identifier
+     * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 식별자 형식이 유효하지 않은
+     *                                                                             경우 (값 객체 생성 실패)
      */
     @Transactional(readOnly = true)
-    public boolean checkIdentifierExists(Identifier identifier) {
+    public boolean checkIdentifierExists(String identifierValue) {
+        // 내부에서 VO로 변환하여 Repository 조회
+        Identifier identifier = new Identifier(identifierValue);
         return modelRepository.existsByIdentifier(identifier);
     }
 }

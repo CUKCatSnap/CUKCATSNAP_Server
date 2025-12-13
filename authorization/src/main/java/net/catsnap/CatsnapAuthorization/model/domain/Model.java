@@ -85,7 +85,7 @@ public class Model {
      * @param rawPasswordValue 평문 비밀번호 문자열
      * @param nicknameValue    닉네임 문자열
      * @param birthday         생년월일
-     * @param phoneNumberValue 전화번호 문자열 (선택)
+     * @param phoneNumberValue 전화번호 문자열
      * @param passwordEncoder  비밀번호 암호화 인터페이스
      * @return 생성된 Model 엔티티
      * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 값 객체 생성 시 유효성 검증
@@ -96,7 +96,6 @@ public class Model {
     public static Model signUp(String identifierValue, String rawPasswordValue,
         String nicknameValue,
         LocalDate birthday, String phoneNumberValue, PasswordEncoder passwordEncoder) {
-        // Aggregate Root가 자신의 VO를 직접 생성 (DDD 패턴)
         Identifier identifier = new Identifier(identifierValue);
         RawPassword rawPassword = new RawPassword(rawPasswordValue);
         Nickname nickname = new Nickname(nicknameValue);
