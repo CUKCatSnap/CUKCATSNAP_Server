@@ -18,7 +18,7 @@ public enum CommonResultCode implements ResultCode {
     /**
      * 데이터 조회 성공
      */
-    COMMON_LOOK_UP(HttpStatus.OK, "SA000", "성공적으로 데이터를 조회했습니다."),
+    COMMON_READ(HttpStatus.OK, "SA000", "성공적으로 데이터를 조회했습니다."),
 
     /**
      * 데이터 생성 성공
