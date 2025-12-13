@@ -19,7 +19,7 @@ public record ModelSignUpRequest(
     @Past(message = "생년월일은 과거 날짜여야 합니다")
     LocalDate birthday,
 
-    @NotNull(message = "생년월일은 필수입니다")
+    @NotNull(message = "전화번호는 필수입니다")
     String phoneNumber
 ) {
 
