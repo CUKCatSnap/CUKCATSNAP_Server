@@ -19,11 +19,7 @@ public class PhoneNumber {
     }
 
     private void validate(String value) {
-        if (value == null || value.isBlank()) {
-            return; // 전화번호는 선택사항
-        }
-        // 숫자와 하이픈만 허용
-        if (!value.matches("^[0-9-]+$")) {
+        if (!value.matches("^010-\\d{4}-\\d{4}$")) {
             throw new IllegalArgumentException("전화번호는 숫자와 하이픈만 포함할 수 있습니다.");
         }
     }
@@ -47,6 +43,6 @@ public class PhoneNumber {
 
     @Override
     public String toString() {
-        return value;
+        return "***-****-****";
     }
 }
