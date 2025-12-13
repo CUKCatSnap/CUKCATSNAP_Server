@@ -93,7 +93,6 @@ class ModelControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest())
-            .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
     }
 
@@ -114,7 +113,6 @@ class ModelControllerTest {
         mockMvc.perform(post("/authorization/model/signup")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(invalidRequest))
-            .andExpect(status().isBadRequest())
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
     }
