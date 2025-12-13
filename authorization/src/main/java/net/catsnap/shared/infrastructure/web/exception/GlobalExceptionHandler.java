@@ -1,6 +1,7 @@
 package net.catsnap.shared.infrastructure.web.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import net.catsnap.shared.exception.BusinessException;
 import net.catsnap.shared.infrastructure.web.response.ResultResponse;
 import net.catsnap.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 import org.springframework.http.ResponseEntity;
@@ -68,6 +69,17 @@ public class GlobalExceptionHandler {
         HttpMediaTypeNotSupportedException e) {
         log.warn("HttpMediaTypeNotSupportedException: {}", e.getMessage());
         return ResultResponse.of(CommonErrorCode.UNSUPPORTED_MEDIA_TYPE);
+    }
+
+    /**
+     * 비즈니스 예외 처리
+     * <p>
+     * BusinessException에 포함된 ResultCode를 사용하여 응답을 생성합니다.
+     */
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ResultResponse<Void>> handleBusinessException(BusinessException e) {
+        log.warn("BusinessException: [{}] {}", e.getResultCode().getCode(), e.getMessage());
+        return ResultResponse.of(e.getResultCode());
     }
 
     /**
