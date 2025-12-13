@@ -79,21 +79,29 @@ public class Model {
      * 회원가입을 위한 정적 팩토리 메서드
      *
      * <p>비즈니스 규칙을 검증하고 비밀번호를 암호화하여 Model 객체를 생성합니다.
-     * 모든 값 객체는 생성 시점에 자동으로 유효성 검증이 수행됩니다.</p>
+     * 값 객체는 내부에서 생성되며, 생성 시점에 자동으로 유효성 검증이 수행됩니다.</p>
      *
-     * @param identifier      고유 식별자 (값 객체로 자동 검증)
-     * @param rawPassword     평문 비밀번호 (값 객체로 자동 검증)
-     * @param nickname        닉네임 (값 객체로 자동 검증)
-     * @param birthday        생년월일
-     * @param phoneNumber     전화번호 (값 객체로 자동 검증)
-     * @param passwordEncoder 비밀번호 암호화 인터페이스
+     * @param identifierValue  고유 식별자 문자열
+     * @param rawPasswordValue 평문 비밀번호 문자열
+     * @param nicknameValue    닉네임 문자열
+     * @param birthday         생년월일
+     * @param phoneNumberValue 전화번호 문자열 (선택)
+     * @param passwordEncoder  비밀번호 암호화 인터페이스
      * @return 생성된 Model 엔티티
+     * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 값 객체 생성 시 유효성 검증
+     *                                                                             실패
      * @see RawPassword
      * @see EncodedPassword
      */
-    public static Model signUp(Identifier identifier, RawPassword rawPassword, Nickname nickname,
-        LocalDate birthday, PhoneNumber phoneNumber, PasswordEncoder passwordEncoder) {
-        // RawPassword 값 객체가 이미 검증을 수행했으므로 별도 검증 불필요
+    public static Model signUp(String identifierValue, String rawPasswordValue,
+        String nicknameValue,
+        LocalDate birthday, String phoneNumberValue, PasswordEncoder passwordEncoder) {
+        // Aggregate Root가 자신의 VO를 직접 생성 (DDD 패턴)
+        Identifier identifier = new Identifier(identifierValue);
+        RawPassword rawPassword = new RawPassword(rawPasswordValue);
+        Nickname nickname = new Nickname(nicknameValue);
+        PhoneNumber phoneNumber = new PhoneNumber(phoneNumberValue);
+
         EncodedPassword encodedPassword = rawPassword.encode(passwordEncoder);
         return new Model(identifier, encodedPassword, nickname, birthday, phoneNumber);
     }

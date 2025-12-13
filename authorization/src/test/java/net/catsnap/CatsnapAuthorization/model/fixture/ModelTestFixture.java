@@ -2,10 +2,6 @@ package net.catsnap.CatsnapAuthorization.model.fixture;
 
 import java.time.LocalDate;
 import net.catsnap.CatsnapAuthorization.model.domain.Model;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.Nickname;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.PhoneNumber;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.RawPassword;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
 
 /**
@@ -104,15 +100,18 @@ public class ModelTestFixture {
     }
 
     /**
-     * 설정된 값으로 Model 엔티티 생성 (내부 PasswordEncoder 사용)
+     * 설정된 값으로 Model 엔티티 생성
+     *
+     * <p>Aggregate Root인 Model이 내부에서 VO를 직접 생성합니다 (DDD 패턴).
+     * 원시 타입만 전달하면 Model이 검증과 VO 생성을 담당합니다.</p>
      */
     public Model build() {
         return Model.signUp(
-            new Identifier(identifier),
-            new RawPassword(password),
-            new Nickname(nickname),
+            identifier,
+            password,
+            nickname,
             birthday,
-            new PhoneNumber(phoneNumber),
+            phoneNumber,
             this.passwordEncoder
         );
     }

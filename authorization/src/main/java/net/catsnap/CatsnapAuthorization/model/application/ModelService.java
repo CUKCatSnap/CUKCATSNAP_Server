@@ -2,9 +2,6 @@ package net.catsnap.CatsnapAuthorization.model.application;
 
 import net.catsnap.CatsnapAuthorization.model.domain.Model;
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.Nickname;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.PhoneNumber;
-import net.catsnap.CatsnapAuthorization.model.domain.vo.RawPassword;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
 import net.catsnap.CatsnapAuthorization.model.infrastructure.ModelRepository;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
@@ -43,26 +40,24 @@ public class ModelService {
      * 새로운 사용자를 시스템에 등록합니다.
      *
      * @param request 회원가입 요청 정보를 담은 DTO
-     * @throws IllegalArgumentException 값 객체 생성 시 유효성 검증 실패 또는 식별자 중복
+     * @throws net.catsnap.CatsnapAuthorization.shared.exception.BusinessException 값 객체 생성 시 유효성 검증 실패 또는 식별자 중복
      * @see ModelSignUpRequest
      */
     @Transactional
     public void signUp(ModelSignUpRequest request) {
+        // 중복 체크를 위한 Identifier 생성
         Identifier identifier = new Identifier(request.identifier());
-        RawPassword rawPassword = new RawPassword(request.password());
-        Nickname nickname = new Nickname(request.nickname());
-        PhoneNumber phoneNumber = new PhoneNumber(request.phoneNumber());
-
         if (checkIdentifierExists(identifier)) {
             throw new IllegalArgumentException("이미 존재하는 식별자입니다: " + request.identifier());
         }
 
+        // Aggregate Root가 VO를 직접 생성하도록 원시 타입 전달
         Model model = Model.signUp(
-            identifier,
-            rawPassword,
-            nickname,
+            request.identifier(),
+            request.password(),
+            request.nickname(),
             request.birthday(),
-            phoneNumber,
+            request.phoneNumber(),
             passwordEncoder
         );
 
