@@ -6,6 +6,7 @@ import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
 import net.catsnap.CatsnapAuthorization.model.infrastructure.ModelRepository;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +49,8 @@ public class ModelService {
     public void signUp(ModelSignUpRequest request) {
         // 식별자 중복 체크
         if (checkIdentifierExists(request.identifier())) {
-            throw new IllegalArgumentException("이미 존재하는 식별자입니다: " + request.identifier());
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "중복되는 Id는 사용할 수 없습니다.");
         }
 
         // Aggregate Root가 VO를 직접 생성하도록 원시 타입 전달

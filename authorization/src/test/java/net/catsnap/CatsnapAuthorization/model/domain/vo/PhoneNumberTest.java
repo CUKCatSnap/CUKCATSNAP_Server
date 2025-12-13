@@ -93,6 +93,27 @@ class PhoneNumberTest {
     }
 
     @Test
+    void null값으로_생성_시_예외가_발생한다() {
+        // when & then
+        assertThatThrownBy(() -> new PhoneNumber(null))
+            .isInstanceOf(BusinessException.class)
+            .extracting("resultCode")
+            .isEqualTo(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION);
+    }
+
+    @Test
+    void 공백값으로_생성_시_예외가_발생한다() {
+        // given
+        String blank = "   ";
+
+        // when & then
+        assertThatThrownBy(() -> new PhoneNumber(blank))
+            .isInstanceOf(BusinessException.class)
+            .extracting("resultCode")
+            .isEqualTo(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION);
+    }
+
+    @Test
     void toString은_보안을_위해_마스킹된_문자열을_반환한다() {
         // given
         String validValue = "010-1234-5678";

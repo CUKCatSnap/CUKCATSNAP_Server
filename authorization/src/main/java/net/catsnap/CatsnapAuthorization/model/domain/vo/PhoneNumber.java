@@ -21,6 +21,11 @@ public class PhoneNumber {
     }
 
     private void validate(String value) {
+        if (value == null) {
+            String message = "전화번호는 필수입니다.";
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
+        }
+
         if (!value.matches("^010-\\d{4}-\\d{4}$")) {
             String message = "전화번호는 010-XXXX-XXXX 형식이어야 합니다.";
             throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
