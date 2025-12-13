@@ -48,7 +48,12 @@ public enum CommonErrorCode implements ResultCode {
     /**
      * 미지원 미디어 타입
      */
-    UNSUPPORTED_MEDIA_TYPE(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "EA006", "지원하지 않는 미디어 타입입니다.");
+    UNSUPPORTED_MEDIA_TYPE(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "EA006", "지원하지 않는 미디어 타입입니다."),
+
+    /**
+     * 도메인 로직 상 잘못된 값
+     */
+    DOMAIN_CONSTRAINT_VIOLATION(HttpStatus.BAD_REQUEST, "EA007", "해당 값이 유효하지 않습니다.");
 
     private final HttpStatusCode httpStatus;
     private final String code;

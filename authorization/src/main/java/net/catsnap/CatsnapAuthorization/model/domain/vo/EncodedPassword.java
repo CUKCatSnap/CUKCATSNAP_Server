@@ -3,6 +3,8 @@ package net.catsnap.CatsnapAuthorization.model.domain.vo;
 import java.util.Objects;
 import lombok.Getter;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
+import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 
 /**
  * 암호화된 비밀번호 값 객체 (Value Object)
@@ -32,7 +34,8 @@ public class EncodedPassword {
      */
     public EncodedPassword(String encodedValue) {
         if (encodedValue == null || encodedValue.isBlank()) {
-            throw new IllegalArgumentException("암호화된 비밀번호는 필수입니다.");
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "암호화된 비밀번호는 필수입니다.");
         }
         this.value = encodedValue;
     }

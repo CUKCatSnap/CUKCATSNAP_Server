@@ -38,7 +38,7 @@ public class BusinessException extends RuntimeException {
      * ResultCode와 추가 메시지를 포함한 비즈니스 예외를 생성합니다.
      *
      * @param resultCode        응답에 사용할 결과 코드
-     * @param additionalMessage 추가 메시지 (로깅용)
+     * @param additionalMessage 추가 메시지
      */
     public BusinessException(ResultCode resultCode, String additionalMessage) {
         super(resultCode.getMessage() + " - " + additionalMessage);

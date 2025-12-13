@@ -2,6 +2,8 @@ package net.catsnap.CatsnapAuthorization.model.domain.vo;
 
 import java.util.Objects;
 import lombok.Getter;
+import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 
 /**
  * 닉네임 값 객체 (Value Object)
@@ -23,11 +25,12 @@ public class Nickname {
 
     private void validate(String value) {
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("닉네임은 필수입니다.");
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "닉네임은 필수입니다.");
         }
         if (value.length() < MIN_LENGTH || value.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException(
-                String.format("닉네임은 %d자 이상 %d자 이하여야 합니다.", MIN_LENGTH, MAX_LENGTH));
+            String message = String.format("닉네임은 %d자 이상 %d자 이하여야 합니다. 현재: %d자",
+                MIN_LENGTH, MAX_LENGTH, value.length());
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
         }
     }
 

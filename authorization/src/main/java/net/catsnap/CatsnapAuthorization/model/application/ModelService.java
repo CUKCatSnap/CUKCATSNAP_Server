@@ -51,9 +51,7 @@ public class ModelService {
         Identifier identifier = new Identifier(request.identifier());
         RawPassword rawPassword = new RawPassword(request.password());
         Nickname nickname = new Nickname(request.nickname());
-        PhoneNumber phoneNumber = request.phoneNumber() != null
-            ? new PhoneNumber(request.phoneNumber())
-            : null;
+        PhoneNumber phoneNumber = new PhoneNumber(request.phoneNumber());
 
         if (checkIdentifierExists(identifier)) {
             throw new IllegalArgumentException("이미 존재하는 식별자입니다: " + request.identifier());

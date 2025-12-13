@@ -2,6 +2,8 @@ package net.catsnap.CatsnapAuthorization.model.domain.vo;
 
 import java.util.Objects;
 import lombok.Getter;
+import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 
 /**
  * 전화번호 값 객체 (Value Object)
@@ -20,7 +22,8 @@ public class PhoneNumber {
 
     private void validate(String value) {
         if (!value.matches("^010-\\d{4}-\\d{4}$")) {
-            throw new IllegalArgumentException("전화번호는 숫자와 하이픈만 포함할 수 있습니다.");
+            String message = "전화번호는 010-XXXX-XXXX 형식이어야 합니다.";
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
         }
     }
 

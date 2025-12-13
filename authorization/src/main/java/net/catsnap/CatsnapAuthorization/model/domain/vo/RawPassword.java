@@ -3,6 +3,8 @@ package net.catsnap.CatsnapAuthorization.model.domain.vo;
 import java.util.Objects;
 import lombok.Getter;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
+import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 
 /**
  * 평문 비밀번호 값 객체 (Value Object)
@@ -33,15 +35,18 @@ public class RawPassword {
 
     private void validate(String value) {
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("비밀번호는 필수입니다.");
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "비밀번호는 필수입니다.");
         }
         if (value.length() < MIN_LENGTH) {
-            throw new IllegalArgumentException(
-                String.format("비밀번호는 최소 %d자 이상이어야 합니다.", MIN_LENGTH));
+            String message = String.format("비밀번호는 최소 %d자 이상이어야 합니다. 현재: %d자",
+                MIN_LENGTH, value.length());
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
         }
         if (value.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException(
-                String.format("비밀번호는 최대 %d자 이하여야 합니다.", MAX_LENGTH));
+            String message = String.format("비밀번호는 최대 %d자 이하여야 합니다. 현재: %d자",
+                MAX_LENGTH, value.length());
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
         }
     }
 
