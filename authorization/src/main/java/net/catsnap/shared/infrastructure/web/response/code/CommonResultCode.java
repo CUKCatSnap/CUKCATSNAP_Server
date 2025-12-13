@@ -28,7 +28,7 @@ public enum CommonResultCode implements ResultCode {
     /**
      * 데이터 수정 성공
      */
-    COMMON_REVISE(HttpStatus.OK, "SA002", "성공적으로 데이터를 수정했습니다."),
+    COMMON_UPDATE(HttpStatus.OK, "SA002", "성공적으로 데이터를 수정했습니다."),
 
     /**
      * 데이터 삭제 성공
