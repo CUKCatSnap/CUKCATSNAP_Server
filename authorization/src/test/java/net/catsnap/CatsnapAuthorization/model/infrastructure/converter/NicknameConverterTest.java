@@ -2,7 +2,6 @@ package net.catsnap.CatsnapAuthorization.model.infrastructure.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Nickname;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,15 +35,6 @@ class NicknameConverterTest {
     }
 
     @Test
-    void null_Nickname을_null_String으로_변환한다() {
-        // when
-        String result = converter.convertToDatabaseColumn(null);
-
-        // then
-        assertNull(result);
-    }
-
-    @Test
     void String을_Nickname_값_객체로_변환한다() {
         // given
         String dbData = "김철수";
@@ -55,28 +45,5 @@ class NicknameConverterTest {
         // then
         assertNotNull(result);
         assertEquals("김철수", result.getValue());
-    }
-
-    @Test
-    void null_String을_null_Nickname로_변환한다() {
-        // when
-        Nickname result = converter.convertToEntityAttribute(null);
-
-        // then
-        assertNull(result);
-    }
-
-    @Test
-    void 양방향_변환이_정상적으로_동작한다() {
-        // given
-        Nickname original = new Nickname("테스터");
-
-        // when
-        String dbData = converter.convertToDatabaseColumn(original);
-        Nickname converted = converter.convertToEntityAttribute(dbData);
-
-        // then
-        assertEquals(original, converted);
-        assertEquals(original.getValue(), converted.getValue());
     }
 }

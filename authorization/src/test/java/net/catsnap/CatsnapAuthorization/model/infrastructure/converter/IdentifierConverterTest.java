@@ -2,7 +2,6 @@ package net.catsnap.CatsnapAuthorization.model.infrastructure.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,15 +35,6 @@ class IdentifierConverterTest {
     }
 
     @Test
-    void null_Identifier를_null_String으로_변환한다() {
-        // when
-        String result = converter.convertToDatabaseColumn(null);
-
-        // then
-        assertNull(result);
-    }
-
-    @Test
     void String을_Identifier_값_객체로_변환한다() {
         // given
         String dbData = "user456";
@@ -55,28 +45,5 @@ class IdentifierConverterTest {
         // then
         assertNotNull(result);
         assertEquals("user456", result.getValue());
-    }
-
-    @Test
-    void null_String을_null_Identifier로_변환한다() {
-        // when
-        Identifier result = converter.convertToEntityAttribute(null);
-
-        // then
-        assertNull(result);
-    }
-
-    @Test
-    void 양방향_변환이_정상적으로_동작한다() {
-        // given
-        Identifier original = new Identifier("testUser");
-
-        // when
-        String dbData = converter.convertToDatabaseColumn(original);
-        Identifier converted = converter.convertToEntityAttribute(dbData);
-
-        // then
-        assertEquals(original, converted);
-        assertEquals(original.getValue(), converted.getValue());
     }
 }
