@@ -38,10 +38,10 @@ class ResultResponseTest {
         TestResultCode resultCode = new TestResultCode();
 
         // when
-        ResponseEntity<ResultResponse<Object>> response = ResultResponse.of(resultCode);
+        ResponseEntity<ResultResponse<Void>> response = ResultResponse.of(resultCode);
 
         // then
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getStatusCode()).isEqualTo(resultCode.getHttpStatus());
         assertThat(response.getBody()).isNotNull();
         assertThat(response.getBody().getCode()).isEqualTo("TEST001");
         assertThat(response.getBody().getMessage()).isEqualTo("테스트 성공");
