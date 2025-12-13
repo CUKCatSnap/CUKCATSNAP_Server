@@ -1,9 +1,9 @@
-package net.catsnap.shared.infrastructure.web.exception;
+package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.exception;
 
 import lombok.extern.slf4j.Slf4j;
-import net.catsnap.shared.exception.BusinessException;
-import net.catsnap.shared.infrastructure.web.response.ResultResponse;
-import net.catsnap.shared.infrastructure.web.response.errorcode.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.ResultResponse;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -26,7 +26,8 @@ public class GlobalExceptionHandler {
      * 존재하지 않는 API 엔드포인트 요청 처리
      */
     @ExceptionHandler(NoHandlerFoundException.class)
-    public ResponseEntity<ResultResponse<Void>> handleNoHandlerFoundException(NoHandlerFoundException e) {
+    public ResponseEntity<ResultResponse<Void>> handleNoHandlerFoundException(
+        NoHandlerFoundException e) {
         log.warn("NoHandlerFoundException: {}", e.getMessage());
         return ResultResponse.of(CommonErrorCode.NOT_FOUND_API);
     }

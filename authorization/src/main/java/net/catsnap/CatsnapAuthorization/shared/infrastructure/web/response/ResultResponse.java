@@ -1,4 +1,4 @@
-package net.catsnap.shared.infrastructure.web.response;
+package net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response;
 
 import lombok.Builder;
 import lombok.Getter;

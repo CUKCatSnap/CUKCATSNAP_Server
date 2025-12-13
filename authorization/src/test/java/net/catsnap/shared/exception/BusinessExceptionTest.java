@@ -2,8 +2,9 @@ package net.catsnap.shared.exception;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import net.catsnap.shared.infrastructure.web.response.ResultCode;
-import net.catsnap.shared.infrastructure.web.response.errorcode.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.exception.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.ResultCode;
+import net.catsnap.CatsnapAuthorization.shared.infrastructure.web.response.errorcode.CommonErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
