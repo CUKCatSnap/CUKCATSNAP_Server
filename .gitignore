@@ -38,4 +38,5 @@ out/
 .vscode/
 
 **/main/**/application*.yml
+**/main/**/application*.yaml
 *.log
