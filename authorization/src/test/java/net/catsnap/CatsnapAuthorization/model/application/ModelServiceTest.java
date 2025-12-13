@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import net.catsnap.CatsnapAuthorization.model.domain.Model;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
 import net.catsnap.CatsnapAuthorization.model.infrastructure.ModelRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -15,9 +16,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @SpringBootTest
-@Transactional
 @DisplayName("ModelService 통합 테스트")
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -29,7 +30,19 @@ class ModelServiceTest {
     @Autowired
     private ModelRepository modelRepository;
 
+    @Autowired
+    private TransactionTemplate transactionTemplate;
+
+    @AfterEach
+    void cleanup() {
+        // 테스트 격리를 위해 데이터 정리
+        transactionTemplate.executeWithoutResult(status -> {
+            modelRepository.deleteAll();
+        });
+    }
+
     @Test
+    @Transactional
     void 회원가입을_성공한다() {
         //given
         ModelSignUpRequest request = new ModelSignUpRequest(
@@ -61,7 +74,11 @@ class ModelServiceTest {
             LocalDate.of(1990, 1, 1),
             "010-1111-1111"
         );
-        modelService.signUp(firstRequest);
+
+        // 첫 번째 가입을 별도 트랜잭션에서 실행하고 커밋 (운영 환경 시뮬레이션)
+        transactionTemplate.executeWithoutResult(status -> {
+            modelService.signUp(firstRequest);
+        });
 
         ModelSignUpRequest duplicateRequest = new ModelSignUpRequest(
             "duplicateuser",
@@ -72,8 +89,11 @@ class ModelServiceTest {
         );
 
         //when & then
+        // 두 번째 가입은 새로운 트랜잭션에서 실행됨
         assertThatThrownBy(() -> modelService.signUp(duplicateRequest))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("이미 존재하는 식별자입니다");
+
+        // cleanup()에서 데이터 정리됨
     }
 }
