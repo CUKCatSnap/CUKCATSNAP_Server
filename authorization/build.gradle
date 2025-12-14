@@ -40,6 +40,8 @@ jacocoTestReport {
 }
 
 dependencies {
+    // // === 인증 모듈 추가 ===
+    implementation project(':auth-shared')
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
