@@ -1,6 +1,5 @@
 package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,7 +48,7 @@ class AdminInterceptorTest {
         HandlerMethod handler = createHandlerMethod("adminMethod");
 
         // when & then
-        assertDoesNotThrow(() -> adminInterceptor.preHandle(request, response, handler));
+        assertTrue(adminInterceptor.preHandle(request, response, handler));
     }
 
     @Test

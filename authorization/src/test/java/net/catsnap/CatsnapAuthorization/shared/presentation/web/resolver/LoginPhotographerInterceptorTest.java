@@ -1,6 +1,5 @@
 package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,8 +48,7 @@ class LoginPhotographerInterceptorTest {
         HandlerMethod handler = createHandlerMethod("photographerMethod");
 
         // when & then
-        assertDoesNotThrow(
-            () -> loginPhotographerInterceptor.preHandle(request, response, handler));
+        assertTrue(loginPhotographerInterceptor.preHandle(request, response, handler));
     }
 
     @Test
@@ -60,8 +58,7 @@ class LoginPhotographerInterceptorTest {
         HandlerMethod handler = createHandlerMethod("photographerMethod");
 
         // when & then
-        assertDoesNotThrow(
-            () -> loginPhotographerInterceptor.preHandle(request, response, handler));
+        assertTrue(loginPhotographerInterceptor.preHandle(request, response, handler));
     }
 
     @Test
