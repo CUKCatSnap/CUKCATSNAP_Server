@@ -11,7 +11,8 @@ jobs:
       gateway: ${{ steps.filter.outputs.gateway }}
       mono: ${{ steps.filter.outputs.mono }}
       authorization: ${{ steps.filter.outputs.authorization }}
-      common: ${{ steps.filter.outputs.common }}
+      auth-shared: ${{ steps.filter.outputs.auth-shared }}
+      common-files: ${{ steps.filter.outputs.common-files }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,15 +27,16 @@ jobs:
               - 'mono/**'
             authorization:
               - 'authorization/**'
-            common:
-              - 'common/**'
+            auth-shared:
+              - 'auth-shared/**'
+            common-files:
               - 'settings.gradle'
               - 'gradle/**'
               - '.github/workflows/**'
 
   test-gateway:
     needs: detect-changes
-    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.common == 'true'
+    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
@@ -44,7 +46,7 @@ jobs:
 
   test-mono:
     needs: detect-changes
-    if: needs.detect-changes.outputs.mono == 'true' || needs.detect-changes.outputs.common == 'true'
+    if: needs.detect-changes.outputs.mono == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
@@ -54,7 +56,7 @@ jobs:
 
   test-authorization:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authorization == 'true' || needs.detect-changes.outputs.common == 'true'
+    if: needs.detect-changes.outputs.authorization == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
@@ -62,12 +64,12 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/test-authorization.yml
 
-  test-common:
+  test-auth-shared:
     needs: detect-changes
-    if: needs.detect-changes.outputs.common == 'true'
+    if: needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-common.yml
+    uses: ./.github/workflows/test-auth-shared.yml
