@@ -7,7 +7,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import java.util.List;
 import java.util.Optional;
-import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;

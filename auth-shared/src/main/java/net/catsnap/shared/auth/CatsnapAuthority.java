@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapCommon.authority;
+package net.catsnap.shared.auth;
 
 import java.util.Optional;
 

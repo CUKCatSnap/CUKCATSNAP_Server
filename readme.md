@@ -48,9 +48,9 @@
           <td>메인 비즈니스 로직</td>
         </tr>
         <tr>
-          <td>Common</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=common"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=common" alt="common"/></a></td>
-          <td>공통 모듈</td>
+          <td>Auth-Shared</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=auth-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=auth-shared" alt="auth-shared"/></a></td>
+          <td>인증 공유 모듈</td>
         </tr>
       </table>
     </td>
