@@ -1,5 +1,6 @@
 package net.catsnap.CatsnapAuthorization.model.presentation;
 
+import static net.catsnap.CatsnapAuthorization.shared.fixture.PassportTestHelper.withAnonymous;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -50,7 +51,7 @@ class ModelControllerTest {
         doNothing().when(modelService).signUp(any(ModelSignUpRequest.class));
 
         //when & then
-        mockMvc.perform(post("/authorization/model/signup")
+        mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
             .andExpect(status().isCreated())
@@ -70,7 +71,7 @@ class ModelControllerTest {
             """;
 
         //when & then
-        mockMvc.perform(post("/authorization/model/signup")
+        mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(invalidRequest))
             .andExpect(status().isBadRequest())
@@ -89,7 +90,7 @@ class ModelControllerTest {
         );
 
         //when & then
-        mockMvc.perform(post("/authorization/model/signup")
+        mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest())
@@ -110,7 +111,7 @@ class ModelControllerTest {
             """;
 
         //when & then
-        mockMvc.perform(post("/authorization/model/signup")
+        mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(invalidRequest))
             .andExpect(status().isBadRequest())

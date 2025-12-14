@@ -3,8 +3,9 @@ package net.catsnap.CatsnapAuthorization.model.presentation;
 import jakarta.validation.Valid;
 import net.catsnap.CatsnapAuthorization.model.application.ModelService;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
-import net.catsnap.CatsnapAuthorization.shared.presentation.response.ResultResponse;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
+import net.catsnap.CatsnapAuthorization.shared.presentation.response.ResultResponse;
+import net.catsnap.shared.auth.AnyUser;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,7 @@ public class ModelController {
      * @return 성공 응답
      */
     @PostMapping("/signup")
+    @AnyUser
     public ResponseEntity<ResultResponse<Void>> signUp(
         @Valid @RequestBody ModelSignUpRequest request) {
         modelService.signUp(request);

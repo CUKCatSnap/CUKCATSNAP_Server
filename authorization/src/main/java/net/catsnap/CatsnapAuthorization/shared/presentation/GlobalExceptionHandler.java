@@ -2,6 +2,8 @@ package net.catsnap.CatsnapAuthorization.shared.presentation;
 
 import lombok.extern.slf4j.Slf4j;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
+import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
+import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthorizationException;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.ResultResponse;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import org.springframework.http.ResponseEntity;
@@ -89,9 +91,42 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * 인증 실패 예외 처리 (401 Unauthorized)
+     * <p>
+     * 인증 헤더가 없거나 유효하지 않은 경우 발생하는 예외를 처리합니다.
+     * </p>
+     *
+     * @param e 인증 예외
+     * @return 401 상태 코드와 에러 응답
+     */
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ResultResponse<Void>> handleAuthenticationException(
+        AuthenticationException e) {
+        log.warn("AuthenticationException: [{}] {}", e.getErrorCode().getCode(), e.getMessage());
+        return ResultResponse.of(e.getErrorCode());
+    }
+
+    /**
+     * 권한 부족 예외 처리 (403 Forbidden)
+     * <p>
+     * 인증은 되었으나 해당 리소스에 접근할 권한이 없는 경우 발생하는 예외를 처리합니다.
+     * </p>
+     *
+     * @param e 권한 예외
+     * @return 403 상태 코드와 에러 응답
+     */
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<ResultResponse<Void>> handleAuthorizationException(
+        AuthorizationException e) {
+        log.warn("AuthorizationException: [{}] {}", e.getErrorCode().getCode(), e.getMessage());
+        return ResultResponse.of(e.getErrorCode());
+    }
+
+    /**
      * 비즈니스 예외 처리
      * <p>
      * BusinessException에 포함된 ResultCode를 사용하여 응답을 생성합니다.
+     * </p>
      */
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ResultResponse<Void>> handleBusinessException(BusinessException e) {
