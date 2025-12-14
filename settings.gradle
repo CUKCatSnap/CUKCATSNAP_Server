@@ -1,4 +1,4 @@
 include 'gateway'
 include 'authorization'
-include 'common'
+include 'auth-shared'
 include 'mono'

@@ -6,7 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import net.catsnap.CatsnapGateway.auth.service.PassportService;
 import net.catsnap.CatsnapGateway.auth.service.TokenService;

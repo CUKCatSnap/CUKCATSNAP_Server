@@ -2,7 +2,7 @@ package net.catsnap.CatsnapGateway.auth.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;

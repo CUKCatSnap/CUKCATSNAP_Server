@@ -4,7 +4,7 @@ import io.jsonwebtoken.Claims;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import net.catsnap.CatsnapCommon.authority.CatsnapAuthority;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
