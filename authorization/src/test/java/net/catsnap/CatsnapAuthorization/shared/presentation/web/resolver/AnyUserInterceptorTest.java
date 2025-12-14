@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.lang.reflect.Method;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
 import net.catsnap.shared.auth.AnyUser;
 import org.junit.jupiter.api.BeforeEach;
@@ -91,7 +92,9 @@ class AnyUserInterceptorTest {
     }
 
     private HandlerMethod createHandlerMethod(String methodName) throws NoSuchMethodException {
-        return new HandlerMethod(new TestController(), methodName);
+        TestController controller = new TestController();
+        Method method = controller.getClass().getMethod(methodName);
+        return new HandlerMethod(controller, method);
     }
 
     @RestController
