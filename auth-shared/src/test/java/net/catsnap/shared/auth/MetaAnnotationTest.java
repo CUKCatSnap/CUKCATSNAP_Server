@@ -16,8 +16,8 @@ class MetaAnnotationTest {
         Class<?>[] authAnnotations = new Class<?>[]{
             LoginUser.class,
             AnyUser.class,
-            Photographer.class,
-            Model.class,
+            LoginPhotographer.class,
+            LonginModel.class,
             Admin.class
         };
 

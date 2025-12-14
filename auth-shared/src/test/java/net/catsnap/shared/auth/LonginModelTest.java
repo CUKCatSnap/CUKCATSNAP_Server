@@ -15,12 +15,12 @@ import org.junit.jupiter.api.Test;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class ModelTest {
+class LonginModelTest {
 
     @Test
     void Target이_METHOD여야_한다() {
         // given
-        Target target = Model.class.getAnnotation(Target.class);
+        Target target = LonginModel.class.getAnnotation(Target.class);
 
         // when & then
         assertNotNull(target);
@@ -30,7 +30,7 @@ class ModelTest {
     @Test
     void Retention이_RUNTIME이어야_한다() {
         // given
-        Retention retention = Model.class.getAnnotation(Retention.class);
+        Retention retention = LonginModel.class.getAnnotation(Retention.class);
 
         // when & then
         assertNotNull(retention);
@@ -40,7 +40,7 @@ class ModelTest {
     @Test
     void Authentication_메타_어노테이션이_붙어있어야_한다() {
         // given
-        Authentication authentication = Model.class.getAnnotation(Authentication.class);
+        Authentication authentication = LonginModel.class.getAnnotation(Authentication.class);
 
         // when & then
         assertNotNull(authentication);
@@ -51,14 +51,14 @@ class ModelTest {
         // given
         class TestClass {
 
-            @Model
+            @LonginModel
             public void testMethod() {
             }
         }
 
         // when
         Method method = TestClass.class.getMethod("testMethod");
-        Model annotation = method.getAnnotation(Model.class);
+        LonginModel annotation = method.getAnnotation(LonginModel.class);
 
         // then
         assertNotNull(annotation);

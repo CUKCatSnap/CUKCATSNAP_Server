@@ -17,7 +17,6 @@ import java.lang.annotation.Target;
  *     public UserProfile getProfile() { ... }
  * </pre>
  * <p>
- * parameter resolver)을 사용하는 경우, 해당 프레임워크의 컨벤션에 맞게 추가 설정이 필요할 수 있습니다.
  * <b>주의사항:</b>
  * <ul>
  *   <li>이 어노테이션 자체는 인증 로직을 수행하지 않습니다. 인증/인가 로직은 별도의 구성요소에서 구현되어야 합니다.</li>

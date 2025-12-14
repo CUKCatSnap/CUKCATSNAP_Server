@@ -15,12 +15,12 @@ import org.junit.jupiter.api.Test;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class PhotographerTest {
+class LoginPhotographerTest {
 
     @Test
     void Target이_METHOD여야_한다() {
         // given
-        Target target = Photographer.class.getAnnotation(Target.class);
+        Target target = LoginPhotographer.class.getAnnotation(Target.class);
 
         // when & then
         assertNotNull(target);
@@ -30,7 +30,7 @@ class PhotographerTest {
     @Test
     void Retention이_RUNTIME이어야_한다() {
         // given
-        Retention retention = Photographer.class.getAnnotation(Retention.class);
+        Retention retention = LoginPhotographer.class.getAnnotation(Retention.class);
 
         // when & then
         assertNotNull(retention);
@@ -40,7 +40,7 @@ class PhotographerTest {
     @Test
     void Authentication_메타_어노테이션이_붙어있어야_한다() {
         // given
-        Authentication authentication = Photographer.class.getAnnotation(Authentication.class);
+        Authentication authentication = LoginPhotographer.class.getAnnotation(Authentication.class);
 
         // when & then
         assertNotNull(authentication);
@@ -51,14 +51,14 @@ class PhotographerTest {
         // given
         class TestClass {
 
-            @Photographer
+            @LoginPhotographer
             public void testMethod() {
             }
         }
 
         // when
         Method method = TestClass.class.getMethod("testMethod");
-        Photographer annotation = method.getAnnotation(Photographer.class);
+        LoginPhotographer annotation = method.getAnnotation(LoginPhotographer.class);
 
         // then
         assertNotNull(annotation);

@@ -26,6 +26,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Authentication
-public @interface Model {
+public @interface LonginModel {
 
 }
