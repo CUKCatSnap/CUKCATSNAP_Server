@@ -34,7 +34,7 @@ import org.springframework.stereotype.Component;
  * @see AbstractAuthInterceptor
  */
 @Component
-public class AdminInterceptor extends AbstractAuthInterceptor<Admin, CatsnapAuthority> {
+public class AdminInterceptor extends AbstractAuthInterceptor<Admin> {
 
     public AdminInterceptor() {
         super(Admin.class, List.of(CatsnapAuthority.ADMIN));

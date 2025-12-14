@@ -42,7 +42,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LoginPhotographerInterceptor
-    extends AbstractAuthInterceptor<LoginPhotographer, CatsnapAuthority> {
+    extends AbstractAuthInterceptor<LoginPhotographer> {
 
     public LoginPhotographerInterceptor() {
         super(LoginPhotographer.class, List.of(

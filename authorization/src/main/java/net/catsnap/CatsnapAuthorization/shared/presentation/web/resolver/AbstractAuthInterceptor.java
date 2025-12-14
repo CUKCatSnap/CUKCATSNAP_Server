@@ -18,9 +18,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * </p>
  *
  * @param <A> 검증 대상 어노테이션 타입
- * @param <Y> 권한 타입 (CatsnapAuthority를 상속)
  */
-public abstract class AbstractAuthInterceptor<A extends Annotation, Y extends CatsnapAuthority> implements
+public abstract class AbstractAuthInterceptor<A extends Annotation> implements
     HandlerInterceptor {
 
     /**
@@ -36,7 +35,7 @@ public abstract class AbstractAuthInterceptor<A extends Annotation, Y extends Ca
     /**
      * 접근을 허용할 권한 목록
      */
-    private final List<Y> allowedAuthorities;
+    private final List<CatsnapAuthority> allowedAuthorities;
 
     /**
      * 인터셉터를 생성합니다.
@@ -44,7 +43,7 @@ public abstract class AbstractAuthInterceptor<A extends Annotation, Y extends Ca
      * @param targetAnnotationType 검증할 어노테이션 클래스
      * @param allowedAuthorities   접근을 허용할 권한 목록
      */
-    protected AbstractAuthInterceptor(Class<A> targetAnnotationType, List<Y> allowedAuthorities) {
+    protected AbstractAuthInterceptor(Class<A> targetAnnotationType, List<CatsnapAuthority> allowedAuthorities) {
         this.targetAnnotationType = targetAnnotationType;
         this.allowedAuthorities = allowedAuthorities;
     }

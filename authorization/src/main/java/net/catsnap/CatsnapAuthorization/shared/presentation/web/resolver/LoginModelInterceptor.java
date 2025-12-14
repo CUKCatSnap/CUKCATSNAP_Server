@@ -40,7 +40,7 @@ import org.springframework.stereotype.Component;
  * @see AbstractAuthInterceptor
  */
 @Component
-public class LoginModelInterceptor extends AbstractAuthInterceptor<LonginModel, CatsnapAuthority> {
+public class LoginModelInterceptor extends AbstractAuthInterceptor<LonginModel> {
 
     public LoginModelInterceptor() {
         super(LonginModel.class, List.of(

@@ -41,7 +41,7 @@ import org.springframework.stereotype.Component;
  * @see AbstractAuthInterceptor
  */
 @Component
-public class LoginUserInterceptor extends AbstractAuthInterceptor<LoginUser, CatsnapAuthority> {
+public class LoginUserInterceptor extends AbstractAuthInterceptor<LoginUser> {
 
     public LoginUserInterceptor() {
         super(LoginUser.class, List.of(
