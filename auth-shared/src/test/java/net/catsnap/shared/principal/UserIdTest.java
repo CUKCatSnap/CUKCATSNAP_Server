@@ -1,4 +1,4 @@
-package net.catsnap.shared.auth;
+package net.catsnap.shared.principal;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;

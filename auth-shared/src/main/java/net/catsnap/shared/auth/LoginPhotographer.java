@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  * <p>
  * 사용 예:
  * <pre>
- *     {@code @Photographer}
+ *     {@code @LoginPhotographer}
  *     public void managePortfolio() { ... }
  * </pre>
  * <p>
