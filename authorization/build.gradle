@@ -46,6 +46,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    // === ArchUnit 아키텍처 테스트 의존성 ===
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.2.1'
+
     // === Spring Web 의존성 ===
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // === Spring Validation 의존성 ===
