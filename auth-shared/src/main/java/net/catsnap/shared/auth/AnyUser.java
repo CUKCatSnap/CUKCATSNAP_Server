@@ -16,9 +16,10 @@ import java.lang.annotation.Target;
  *     {@code @AnyUser}
  *     public Response getMyProfile() { ... }
  * </pre>
- * <p>
- * 주의사항: - 이 어노테이션 자체는 인증/인가 로직을 포함하지 않습니다. 실제 검사와 사용자 정보 주입은 별도의 런타임 컴포넌트(예: 인터셉터 또는 AOP)에서 구현되어야
- * 합니다.
+ * <p><b>주의사항:</b></p>
+ * <ul>
+ *   <li>이 어노테이션 자체는 인증/인가 로직을 포함하지 않습니다. 실제 검사와 사용자 정보 주입은 별도의 런타임 컴포넌트(예: 인터셉터 또는 AOP)에서 구현되어야 합니다.</li>
+ * </ul>
  *
  */
 @Target(ElementType.METHOD)

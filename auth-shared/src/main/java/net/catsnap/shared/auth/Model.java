@@ -17,8 +17,11 @@ import java.lang.annotation.Target;
  *     public void viewPortfolio() { ... }
  * </pre>
  * <p>
- * 주의사항: - 이 어노테이션 자체는 권한 검사 로직을 포함하지 않으며, 별도의 인가 검사 컴포넌트가 필요합니다. - 이름이 일반적인 `Model`이므로 프로젝트 내 다른
- * `Model` 클래스/어노테이션과 혼동되지 않도록 패키지 경로를 주의하세요.
+ * <b>주의사항:</b>
+ * <ul>
+ *   <li>이 어노테이션 자체는 권한 검사 로직을 포함하지 않으며, 별도의 인가 검사 컴포넌트가 필요합니다.</li>
+ *   <li>이름이 일반적인 <code>Model</code>이므로 프로젝트 내 다른 <code>Model</code> 클래스/어노테이션과 혼동되지 않도록 패키지 경로를 주의하세요.</li>
+ * </ul>
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

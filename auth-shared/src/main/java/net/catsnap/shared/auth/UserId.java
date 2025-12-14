@@ -16,8 +16,11 @@ import java.lang.annotation.Target;
  *     public Response getProfile(@UserId Long userId) { ... }
  * </pre>
  * <p>
- * 주의사항: - 이 어노테이션 자체는 사용자 식별자 취득/검증 로직을 포함하지 않습니다. 실제 값 주입은 프레임워크의 파라미터 리졸버나 인터셉터에서 구현되어야 합니다. -
- * 파라미터 타입(nullable/primitive 등)에 따라 추가 검증이 필요할 수 있습니다.
+ * <b>주의사항:</b>
+ * <ul>
+ *   <li>이 어노테이션 자체는 사용자 식별자 취득/검증 로직을 포함하지 않습니다. 실제 값 주입은 프레임워크의 파라미터 리졸버나 인터셉터에서 구현되어야 합니다.</li>
+ *   <li>파라미터 타입(nullable/primitive 등)에 따라 추가 검증이 필요할 수 있습니다.</li>
+ * </ul>
  */
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)

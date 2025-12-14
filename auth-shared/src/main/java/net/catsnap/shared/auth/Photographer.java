@@ -17,7 +17,11 @@ import java.lang.annotation.Target;
  *     public void managePortfolio() { ... }
  * </pre>
  * <p>
- * 주의사항: - 이 어노테이션은 자체적으로 권한 검사를 수행하지 않습니다. 인가를 위해 별도의 로직(AOP, 필터 등)이 필요합니다. - 메서드 수준에서만 적용됩니다.
+ * 주의사항:
+ * <ul>
+ *   <li>이 어노테이션은 자체적으로 권한 검사를 수행하지 않습니다. 인가를 위해 별도의 로직(AOP, 필터 등)이 필요합니다.</li>
+ *   <li>메서드 수준에서만 적용됩니다.</li>
+ * </ul>
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
