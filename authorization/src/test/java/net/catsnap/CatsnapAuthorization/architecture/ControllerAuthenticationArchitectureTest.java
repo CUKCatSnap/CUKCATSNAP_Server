@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 컨트롤러 인증 아키텍처 테스트
  * <p>
- * 모든 컨트롤러 메서드가 Authentication 메타 어노테이션을 가져야 함을 검증합니다.
- * 테스트 코드 내의 컨트롤러는 검증 대상에서 제외됩니다.
+ * 모든 컨트롤러 메서드가 Authentication 메타 어노테이션을 가져야 함을 검증합니다. 테스트 코드 내의 컨트롤러는 검증 대상에서 제외됩니다.
  * </p>
  */
 @AnalyzeClasses(
@@ -36,7 +35,7 @@ class ControllerAuthenticationArchitectureTest {
      *   <li>@AnyUser</li>
      *   <li>@LoginUser</li>
      *   <li>@LoginPhotographer</li>
-     *   <li>@LonginModel</li>
+     *   <li>@LoginModel</li>
      * </ul>
      * </p>
      */
@@ -63,7 +62,7 @@ class ControllerAuthenticationArchitectureTest {
                 if (!hasAuthenticationAnnotation) {
                     String message = String.format(
                         "메서드 %s.%s()는 @Authentication 메타 어노테이션이 필요합니다. " +
-                            "(@Admin, @AnyUser, @LoginUser, @LoginPhotographer, @LonginModel 중 하나를 사용하세요)",
+                            "(@Admin, @AnyUser, @LoginUser, @LoginPhotographer, @LoginModel 중 하나를 사용하세요)",
                         method.getOwner().getSimpleName(),
                         method.getName()
                     );

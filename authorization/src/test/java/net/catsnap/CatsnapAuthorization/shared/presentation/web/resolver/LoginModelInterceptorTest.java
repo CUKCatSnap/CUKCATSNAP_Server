@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthorizationException;
-import net.catsnap.shared.auth.LonginModel;
+import net.catsnap.shared.auth.LoginModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -32,7 +32,7 @@ class LoginModelInterceptorTest {
     }
 
     @Test
-    void LonginModel_어노테이션을_붙이지_않으면_통과한다() throws Exception {
+    void LoginModel_어노테이션을_붙이지_않으면_통과한다() throws Exception {
         // given
         HandlerMethod handler = createHandlerMethod("methodWithoutAnnotation");
 
@@ -89,7 +89,7 @@ class LoginModelInterceptorTest {
     static class TestController {
 
         @GetMapping("/model")
-        @LonginModel
+        @LoginModel
         public void modelMethod() {
         }
 

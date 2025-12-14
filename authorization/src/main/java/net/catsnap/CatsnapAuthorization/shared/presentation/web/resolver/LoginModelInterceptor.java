@@ -2,13 +2,13 @@ package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
 
 import java.util.List;
 import net.catsnap.shared.auth.CatsnapAuthority;
-import net.catsnap.shared.auth.LonginModel;
+import net.catsnap.shared.auth.LoginModel;
 import org.springframework.stereotype.Component;
 
 /**
  * 모델 권한 검증 인터셉터입니다.
  * <p>
- * {@link LonginModel} 어노테이션이 붙은 컨트롤러 메서드에 대해 모델 권한을 검증합니다. 모델(MODEL)과 관리자(ADMIN)만 접근할 수 있습니다.
+ * {@link LoginModel} 어노테이션이 붙은 컨트롤러 메서드에 대해 모델 권한을 검증합니다. 모델(MODEL)과 관리자(ADMIN)만 접근할 수 있습니다.
  * </p>
  *
  * <h3>허용 권한</h3>
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
  * @RestController
  * public class BookingController {
  *
- *     @LonginModel // 모델과 관리자만 접근 가능
+ *     @LoginModel // 모델과 관리자만 접근 가능
  *     @GetMapping("/bookings/my")
  *     public List<BookingResponse> getMyBookings() {
  *         // 모델이 자신의 촬영 예약 목록 조회
@@ -36,14 +36,14 @@ import org.springframework.stereotype.Component;
  * }
  * }</pre>
  *
- * @see LonginModel
+ * @see LoginModel
  * @see AbstractAuthInterceptor
  */
 @Component
-public class LoginModelInterceptor extends AbstractAuthInterceptor<LonginModel> {
+public class LoginModelInterceptor extends AbstractAuthInterceptor<LoginModel> {
 
     public LoginModelInterceptor() {
-        super(LonginModel.class, List.of(
+        super(LoginModel.class, List.of(
             CatsnapAuthority.MODEL,
             CatsnapAuthority.ADMIN
         ));

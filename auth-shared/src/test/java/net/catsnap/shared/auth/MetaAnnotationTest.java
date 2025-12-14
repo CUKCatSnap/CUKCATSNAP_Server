@@ -17,7 +17,7 @@ class MetaAnnotationTest {
             LoginUser.class,
             AnyUser.class,
             LoginPhotographer.class,
-            LonginModel.class,
+            LoginModel.class,
             Admin.class
         };
 
