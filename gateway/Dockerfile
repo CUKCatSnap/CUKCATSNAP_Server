@@ -13,9 +13,15 @@ RUN ./gradlew :gateway:clean :gateway:build -x test --no-daemon
 
 FROM amazoncorretto:17-alpine
 
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 WORKDIR /app
 
 COPY --from=builder /app/gateway/build/libs/*.jar app.jar
+
+RUN chown -R appuser:appgroup /app
+
+USER appuser
 
 EXPOSE 8080
 

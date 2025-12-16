@@ -1,4 +1,4 @@
-FROM  amazoncorretto:17-alpine AS builder
+FROM amazoncorretto:17-alpine AS builder
 
 WORKDIR /app
 
@@ -13,9 +13,15 @@ RUN ./gradlew :authorization:clean :authorization:build -x test --no-daemon
 
 FROM amazoncorretto:17-alpine
 
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 WORKDIR /app
 
 COPY --from=builder /app/authorization/build/libs/*.jar app.jar
+
+RUN chown -R appuser:appgroup /app
+
+USER appuser
 
 EXPOSE 8080
 
