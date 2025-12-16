@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
-FROM amazoncorretto:17-al2023 AS builder
-=======
 FROM eclipse-temurin:17-jre AS builder
->>>>>>> Stashed changes
+
 
 WORKDIR /app
 
@@ -15,17 +12,11 @@ COPY authorization authorization
 RUN chmod +x gradlew
 RUN ./gradlew :authorization:clean :authorization:build -x test --no-daemon
 
-<<<<<<< Updated upstream
-FROM amazoncorretto:17-al2023
-
-RUN groupadd -r appgroup && useradd -r -g appgroup appuser
-=======
 
 FROM eclipse-temurin:17-jre
 
 RUN groupadd -g 10001 appgroup \
  && useradd -u 10001 -g appgroup -s /usr/sbin/nologin -m appuser
->>>>>>> Stashed changes
 
 WORKDIR /app
 
