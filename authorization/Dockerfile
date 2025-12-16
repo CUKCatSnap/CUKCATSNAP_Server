@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-amazonlinux AS builder
+FROM amazoncorretto:17-al2023 AS builder
 
 WORKDIR /app
 
@@ -11,9 +11,9 @@ COPY authorization authorization
 RUN chmod +x gradlew
 RUN ./gradlew :authorization:clean :authorization:build -x test --no-daemon
 
-FROM amazoncorretto:17-amazonlinux
+FROM amazoncorretto:17-al2023
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
 
 WORKDIR /app
 
