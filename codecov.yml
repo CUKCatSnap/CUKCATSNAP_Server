@@ -1,0 +1,57 @@
+# Codecov 기본 설정
+codecov:
+  # CI가 통과해야만 커버리지 리포트를 업데이트
+  require_ci_to_pass: true
+
+# 커버리지 상태 체크 설정
+coverage:
+  # 커버리지 감소 여부를 체크하지 않고 현황만 표시
+  status: false
+
+# Flag 관리 설정 (모듈별 커버리지 추적)
+flag_management:
+  # 모든 flag에 적용되는 기본 규칙
+  default_rules:
+    # 이전 커버리지 값을 유지 (테스트하지 않은 모듈은 이전 값 사용)
+    carryforward: true
+    # 모든 경우에 carryforward 적용
+    carryforward_mode: all
+
+# 각 모듈별 flag 설정
+flags:
+  # Gateway 모듈
+  gateway:
+    paths:
+      - gateway/
+    # Gateway 테스트가 실행되지 않으면 이전 커버리지 유지
+    carryforward: true
+
+  # Authorization 모듈
+  authorization:
+    paths:
+      - authorization/
+    # Authorization 테스트가 실행되지 않으면 이전 커버리지 유지
+    carryforward: true
+
+  # Mono 모듈
+  mono:
+    paths:
+      - mono/
+    # Mono 테스트가 실행되지 않으면 이전 커버리지 유지
+    carryforward: true
+
+  # Auth-Shared 공유 모듈
+  auth-shared:
+    paths:
+      - auth-shared/
+    # Auth-Shared 테스트가 실행되지 않으면 이전 커버리지 유지
+    carryforward: true
+
+# PR에 달리는 커버리지 코멘트 설정
+comment:
+  # 코멘트 레이아웃: 도달률, 차이, flag별 커버리지, 트리 뷰
+  layout: "reach,diff,flags,tree"
+  # 기본 동작
+  behavior: default
+  # 변경사항이 없어도 코멘트 표시
+  require_changes: false
