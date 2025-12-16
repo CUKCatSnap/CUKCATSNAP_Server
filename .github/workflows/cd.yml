@@ -1,0 +1,45 @@
+name: Catsnap CD Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      gateway: ${{ steps.filter.outputs.gateway }}
+      authorization: ${{ steps.filter.outputs.authorization }}
+      auth-shared: ${{ steps.filter.outputs.auth-shared }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect changed modules
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            gateway:
+              - 'gateway/**'
+            authorization:
+              - 'authorization/**'
+            auth-shared:
+              - 'auth-shared/**'
+
+  deploy-gateway:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.auth-shared == 'true'
+    permissions:
+      contents: read
+      packages: write
+    secrets: inherit
+    uses: ./.github/workflows/deploy-gateway.yml
+
+  deploy-authorization:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.authorization == 'true' || needs.detect-changes.outputs.auth-shared == 'true'
+    permissions:
+      contents: read
+      packages: write
+    secrets: inherit
+    uses: ./.github/workflows/deploy-authorization.yml
