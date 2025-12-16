@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-alpine AS builder
+FROM amazoncorretto:17-amazonlinux AS builder
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY gateway gateway
 RUN chmod +x gradlew
 RUN ./gradlew :gateway:clean :gateway:build -x test --no-daemon
 
-FROM amazoncorretto:17-alpine
+FROM amazoncorretto:17-amazonlinux
 
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
