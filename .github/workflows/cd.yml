@@ -33,7 +33,7 @@ jobs:
       contents: read
       packages: write
     secrets: inherit
-    uses: ./.github/workflows/deploy-gateway.yml
+    uses: ./.github/workflows/cd/deploy-gateway.yml
 
   deploy-authorization:
     needs: detect-changes
@@ -42,4 +42,4 @@ jobs:
       contents: read
       packages: write
     secrets: inherit
-    uses: ./.github/workflows/deploy-authorization.yml
+    uses: ./.github/workflows/cd/deploy-authorization.yml

@@ -42,7 +42,7 @@ jobs:
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-gateway.yml
+    uses: ./.github/workflows/ci/test-gateway.yml
 
   test-mono:
     needs: detect-changes
@@ -52,7 +52,7 @@ jobs:
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-mono.yml
+    uses: ./.github/workflows/ci/test-mono.yml
 
   test-authorization:
     needs: detect-changes
@@ -62,7 +62,7 @@ jobs:
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-authorization.yml
+    uses: ./.github/workflows/ci/test-authorization.yml
 
   test-auth-shared:
     needs: detect-changes
@@ -72,4 +72,4 @@ jobs:
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-auth-shared.yml
+    uses: ./.github/workflows/ci/test-auth-shared.yml
