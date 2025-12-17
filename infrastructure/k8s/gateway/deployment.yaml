@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catsnap-gateway
+  labels:
+    app: catsnap-gateway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: catsnap-gateway
+  template:
+    metadata:
+      labels:
+        app: catsnap-gateway
+    spec:
+      containers:
+        - name: catsnap-gateway
+          image: chokyungho/catsnap-gateway:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
+            - name: JAVA_OPTS
+              value: "-Xmx1g -Xms1g"
+          resources:
+            requests:
+              memory: "1.5Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
