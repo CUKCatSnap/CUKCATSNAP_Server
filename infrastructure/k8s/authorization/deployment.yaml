@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catsnap-authorization
+  labels:
+    app: catsnap-authorization
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: catsnap-authorization
+  template:
+    metadata:
+      labels:
+        app: catsnap-authorization
+    spec:
+      containers:
+        - name: catsnap-authorization
+          image: chokyungho/catsnap-authentication:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
+            - name: JAVA_OPTS
+              value: "-Xmx1g -Xms1g"
+          resources:
+            requests:
+              memory: "1.5Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+
