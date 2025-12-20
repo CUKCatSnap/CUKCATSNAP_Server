@@ -17,7 +17,7 @@ spec:
       containers:
         - name: catsnap-gateway
           image: chokyungho/catsnap-gateway:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8000
