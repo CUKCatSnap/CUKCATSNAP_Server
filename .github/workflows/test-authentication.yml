@@ -1,4 +1,4 @@
-name: Test Authorization Module
+name: Test Authentication Module
 
 on:
   workflow_call:
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test authorization module
-        run: ./gradlew --info :authorization:test
+      - name: Test authentication module
+        run: ./gradlew --info :authentication:test
 
-      - name: Publish test results for authorization
+      - name: Publish test results for authentication
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'authorization/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (authorization)
+          files: 'authentication/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (authentication)
 
-      - name: Publish test report for authorization
+      - name: Publish test report for authentication
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'authorization/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (authorization)
+          report_paths: 'authentication/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (authentication)
 
-      - name: Upload coverage reports to Codecov for authorization
+      - name: Upload coverage reports to Codecov for authentication
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: authorization/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: authorization
-          name: authorization-coverage
+          files: authentication/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: authentication
+          name: authentication-coverage

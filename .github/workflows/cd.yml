@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       gateway: ${{ steps.filter.outputs.gateway }}
-      authorization: ${{ steps.filter.outputs.authorization }}
-      auth-shared: ${{ steps.filter.outputs.auth-shared }}
+      authentication: ${{ steps.filter.outputs.authentication }}
+      authorization-shared: ${{ steps.filter.outputs.authorization-shared }}
     steps:
       - uses: actions/checkout@v4
 
@@ -21,25 +21,25 @@ jobs:
           filters: |
             gateway:
               - 'gateway/**'
-            authorization:
-              - 'authorization/**'
-            auth-shared:
-              - 'auth-shared/**'
+            authentication:
+              - 'authentication/**'
+            authorization-shared:
+              - 'authorization-shared/**'
 
   deploy-gateway:
     needs: detect-changes
-    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.auth-shared == 'true'
+    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.authorization-shared == 'true'
     permissions:
       contents: read
       packages: write
     secrets: inherit
     uses: ./.github/workflows/deploy-gateway.yml
 
-  deploy-authorization:
+  deploy-authentication:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authorization == 'true' || needs.detect-changes.outputs.auth-shared == 'true'
+    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.authorization-shared == 'true'
     permissions:
       contents: read
       packages: write
     secrets: inherit
-    uses: ./.github/workflows/deploy-authorization.yml
+    uses: ./.github/workflows/deploy-authentication.yml

@@ -38,8 +38,8 @@
           <td>API Gateway 서버</td>
         </tr>
         <tr>
-          <td>Authorization</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization" alt="authorization"/></a></td>
+          <td>Authentication</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authentication"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authentication" alt="authentication"/></a></td>
           <td>사용자 인증 서버</td>
         </tr>
         <tr>
@@ -48,9 +48,9 @@
           <td>메인 비즈니스 로직</td>
         </tr>
         <tr>
-          <td>Auth-Shared</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=auth-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=auth-shared" alt="auth-shared"/></a></td>
-          <td>인증 공유 모듈</td>
+          <td>Authorization-Shared</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization-shared" alt="authorization-shared"/></a></td>
+          <td>인가 공유 모듈</td>
         </tr>
       </table>
     </td>

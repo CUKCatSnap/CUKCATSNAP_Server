@@ -26,11 +26,11 @@ flags:
     # Gateway 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
-  # Authorization 모듈
-  authorization:
+  # Authentication 모듈
+  authentication:
     paths:
-      - authorization/
-    # Authorization 테스트가 실행되지 않으면 이전 커버리지 유지
+      - authentication/
+    # Authentication 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Mono 모듈
@@ -40,11 +40,11 @@ flags:
     # Mono 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
-  # Auth-Shared 공유 모듈
-  auth-shared:
+  # Authorization-Shared 공유 모듈
+  authorization-shared:
     paths:
-      - auth-shared/
-    # Auth-Shared 테스트가 실행되지 않으면 이전 커버리지 유지
+      - authorization-shared/
+    # Authorization-Shared 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
 # PR에 달리는 커버리지 코멘트 설정

@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY gradlew .
 COPY gradle gradle
-COPY auth-shared auth-shared
+COPY authorization-shared authorization-shared
 COPY gateway gateway
 
 RUN echo "include 'gateway'" > settings.gradle && \
-    echo "include 'auth-shared'" >> settings.gradle
+    echo "include 'authorization-shared'" >> settings.gradle
 
 RUN chmod +x gradlew
 RUN ./gradlew :gateway:clean :gateway:build -x test --no-daemon

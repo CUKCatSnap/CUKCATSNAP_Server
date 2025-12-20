@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catsnap-authorization
+  name: catsnap-authentication
   labels:
-    app: catsnap-authorization
+    app: catsnap-authentication
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: catsnap-authorization
+      app: catsnap-authentication
   template:
     metadata:
       labels:
-        app: catsnap-authorization
+        app: catsnap-authentication
     spec:
       containers:
-        - name: catsnap-authorization
+        - name: catsnap-authentication
           image: chokyungho/catsnap-authentication:latest
           imagePullPolicy: Always
           ports:
