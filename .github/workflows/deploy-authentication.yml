@@ -1,4 +1,4 @@
-name: Deploy Authorization Service
+name: Deploy Authentication Service
 
 on:
   workflow_call:
@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./authorization/Dockerfile
+          file: ./authentication/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

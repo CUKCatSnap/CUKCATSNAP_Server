@@ -38,8 +38,8 @@
           <td>API Gateway 서버</td>
         </tr>
         <tr>
-          <td>Authorization</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization" alt="authorization"/></a></td>
+          <td>Authentication</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authentication"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authentication" alt="authentication"/></a></td>
           <td>사용자 인증 서버</td>
         </tr>
         <tr>

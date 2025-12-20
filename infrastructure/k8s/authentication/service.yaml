@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: catsnap-authorization
+  name: catsnap-authentication
   labels:
-    app: catsnap-authorization
+    app: catsnap-authentication
 spec:
   type: ClusterIP
   selector:
-    app: catsnap-authorization
+    app: catsnap-authentication
   ports:
     - name: http
       protocol: TCP

@@ -10,7 +10,7 @@ jobs:
     outputs:
       gateway: ${{ steps.filter.outputs.gateway }}
       mono: ${{ steps.filter.outputs.mono }}
-      authorization: ${{ steps.filter.outputs.authorization }}
+      authentication: ${{ steps.filter.outputs.authentication }}
       auth-shared: ${{ steps.filter.outputs.auth-shared }}
       common-files: ${{ steps.filter.outputs.common-files }}
     steps:
@@ -25,8 +25,8 @@ jobs:
               - 'gateway/**'
             mono:
               - 'mono/**'
-            authorization:
-              - 'authorization/**'
+            authentication:
+              - 'authentication/**'
             auth-shared:
               - 'auth-shared/**'
             common-files:
@@ -54,15 +54,15 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/test-mono.yml
 
-  test-authorization:
+  test-authentication:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authorization == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-authorization.yml
+    uses: ./.github/workflows/test-authentication.yml
 
   test-auth-shared:
     needs: detect-changes

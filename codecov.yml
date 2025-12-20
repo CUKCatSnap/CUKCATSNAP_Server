@@ -26,11 +26,11 @@ flags:
     # Gateway 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
-  # Authorization 모듈
-  authorization:
+  # Authentication 모듈
+  authentication:
     paths:
-      - authorization/
-    # Authorization 테스트가 실행되지 않으면 이전 커버리지 유지
+      - authentication/
+    # Authentication 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Mono 모듈
