@@ -5,11 +5,11 @@ WORKDIR /app
 
 COPY gradlew .
 COPY gradle gradle
-COPY auth-shared auth-shared
+COPY authorization-shared authorization-shared
 COPY authentication authentication
 
 RUN echo "include 'authentication'" > settings.gradle && \
-    echo "include 'auth-shared'" >> settings.gradle
+    echo "include 'authorization-shared'" >> settings.gradle
 
 RUN chmod +x gradlew
 RUN ./gradlew :authentication:clean :authentication:build -x test --no-daemon

@@ -10,7 +10,7 @@ jobs:
     outputs:
       gateway: ${{ steps.filter.outputs.gateway }}
       authentication: ${{ steps.filter.outputs.authentication }}
-      auth-shared: ${{ steps.filter.outputs.auth-shared }}
+      authorization-shared: ${{ steps.filter.outputs.authorization-shared }}
     steps:
       - uses: actions/checkout@v4
 
@@ -23,12 +23,12 @@ jobs:
               - 'gateway/**'
             authentication:
               - 'authentication/**'
-            auth-shared:
-              - 'auth-shared/**'
+            authorization-shared:
+              - 'authorization-shared/**'
 
   deploy-gateway:
     needs: detect-changes
-    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.auth-shared == 'true'
+    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.authorization-shared == 'true'
     permissions:
       contents: read
       packages: write
@@ -37,7 +37,7 @@ jobs:
 
   deploy-authentication:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.auth-shared == 'true'
+    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.authorization-shared == 'true'
     permissions:
       contents: read
       packages: write

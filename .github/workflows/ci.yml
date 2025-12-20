@@ -11,7 +11,7 @@ jobs:
       gateway: ${{ steps.filter.outputs.gateway }}
       mono: ${{ steps.filter.outputs.mono }}
       authentication: ${{ steps.filter.outputs.authentication }}
-      auth-shared: ${{ steps.filter.outputs.auth-shared }}
+      authorization-shared: ${{ steps.filter.outputs.authorization-shared }}
       common-files: ${{ steps.filter.outputs.common-files }}
     steps:
       - uses: actions/checkout@v4
@@ -27,8 +27,8 @@ jobs:
               - 'mono/**'
             authentication:
               - 'authentication/**'
-            auth-shared:
-              - 'auth-shared/**'
+            authorization-shared:
+              - 'authorization-shared/**'
             common-files:
               - 'settings.gradle'
               - 'gradle/**'
@@ -36,7 +36,7 @@ jobs:
 
   test-gateway:
     needs: detect-changes
-    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
@@ -46,7 +46,7 @@ jobs:
 
   test-mono:
     needs: detect-changes
-    if: needs.detect-changes.outputs.mono == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.mono == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
@@ -56,7 +56,7 @@ jobs:
 
   test-authentication:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
@@ -64,12 +64,12 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/test-authentication.yml
 
-  test-auth-shared:
+  test-authorization-shared:
     needs: detect-changes
-    if: needs.detect-changes.outputs.auth-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-auth-shared.yml
+    uses: ./.github/workflows/test-authorization-shared.yml

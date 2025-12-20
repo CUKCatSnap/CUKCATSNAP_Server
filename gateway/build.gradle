@@ -41,7 +41,7 @@ jacocoTestReport {
 
 dependencies {
     // Project Dependencies
-    implementation project(':auth-shared')
+    implementation project(':authorization-shared')
 
     // Spring Cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'

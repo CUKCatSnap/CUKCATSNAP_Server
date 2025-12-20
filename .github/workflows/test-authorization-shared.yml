@@ -1,4 +1,4 @@
-name: Test Auth Shared Module
+name: Test Authorization Shared Module
 
 on:
   workflow_call:
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test auth-shared module
-        run: ./gradlew --info :auth-shared:test
+      - name: Test authorization-shared module
+        run: ./gradlew --info :authorization-shared:test
 
-      - name: Publish test results for auth-shared
+      - name: Publish test results for authorization-shared
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'auth-shared/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (auth-shared)
+          files: 'authorization-shared/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (authorization-shared)
 
-      - name: Publish test report for auth-shared
+      - name: Publish test report for authorization-shared
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'auth-shared/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (auth-shared)
+          report_paths: 'authorization-shared/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (authorization-shared)
 
-      - name: Upload coverage reports to Codecov for auth-shared
+      - name: Upload coverage reports to Codecov for authorization-shared
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: auth-shared/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: auth-shared
-          name: auth-shared-coverage
+          files: authorization-shared/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: authorization-shared
+          name: authorization-shared-coverage
