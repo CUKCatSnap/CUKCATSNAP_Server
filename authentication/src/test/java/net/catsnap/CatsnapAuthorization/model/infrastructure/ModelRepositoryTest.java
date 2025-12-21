@@ -10,9 +10,9 @@ import net.catsnap.CatsnapAuthorization.model.domain.Model;
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
 import net.catsnap.CatsnapAuthorization.model.fixture.ModelTestFixture;
 import net.catsnap.CatsnapAuthorization.shared.infrastructure.persistence.JpaConfiguration;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -20,7 +20,6 @@ import org.springframework.context.annotation.Import;
 
 @DataJpaTest
 @Import(JpaConfiguration.class)
-@DisplayName("ModelRepository 테스트")
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 class ModelRepositoryTest {
@@ -28,96 +27,104 @@ class ModelRepositoryTest {
     @Autowired
     private ModelRepository modelRepository;
 
-    @Test
-    void 존재하는_Identifier는_true를_반환한다() {
-        // given
-        Identifier identifier = new Identifier("testuser");
-        Model model = ModelTestFixture.builder()
-            .identifier(identifier.getValue())
-            .build();
-        modelRepository.save(model);
+    @Nested
+    class existsByIdentifier_메서드_단위_테스트 {
 
-        // when
-        boolean exists = modelRepository.existsByIdentifier(identifier);
+        @Test
+        void 존재하는_Identifier는_true를_반환한다() {
+            // given
+            Identifier identifier = new Identifier("testuser");
+            Model model = ModelTestFixture.builder()
+                .identifier(identifier.getValue())
+                .build();
+            modelRepository.save(model);
 
-        // then
-        assertTrue(exists);
+            // when
+            boolean exists = modelRepository.existsByIdentifier(identifier);
+
+            // then
+            assertTrue(exists);
+        }
+
+        @Test
+        void 존재하지_않는_Identifier는_false를_반환한다() {
+            // given
+            Identifier nonExistentIdentifier = new Identifier("nonexistent");
+
+            // when
+            boolean exists = modelRepository.existsByIdentifier(nonExistentIdentifier);
+
+            // then
+            assertFalse(exists);
+        }
     }
 
-    @Test
-    void 존재하지_않는_Identifier는_false를_반환한다() {
-        // given
-        Identifier nonExistentIdentifier = new Identifier("nonexistent");
+    @Nested
+    class findByIdentifier_메서드_단위_테스트 {
 
-        // when
-        boolean exists = modelRepository.existsByIdentifier(nonExistentIdentifier);
+        @Test
+        void findByIdentifier_존재하는_Identifier로_조회하면_Model을_반환한다() {
+            // given
+            Identifier identifier = new Identifier("findtest");
+            Model savedModel = ModelTestFixture.builder()
+                .identifier(identifier.getValue())
+                .nickname("테스트유저")
+                .build();
+            modelRepository.save(savedModel);
 
-        // then
-        assertFalse(exists);
-    }
+            // when
+            Optional<Model> result = modelRepository.findByIdentifier(identifier);
 
-    @Test
-    void findByIdentifier_존재하는_Identifier로_조회하면_Model을_반환한다() {
-        // given
-        Identifier identifier = new Identifier("findtest");
-        Model savedModel = ModelTestFixture.builder()
-            .identifier(identifier.getValue())
-            .nickname("테스트유저")
-            .build();
-        modelRepository.save(savedModel);
+            // then
+            assertThat(result).isPresent();
+            assertThat(result.get().getIdentifier()).isEqualTo(identifier);
+            assertThat(result.get().getNickname().getValue()).isEqualTo("테스트유저");
+        }
 
-        // when
-        Optional<Model> result = modelRepository.findByIdentifier(identifier);
+        @Test
+        void findByIdentifier_존재하지_않는_Identifier로_조회하면_빈_Optional을_반환한다() {
+            // given
+            Identifier nonExistentIdentifier = new Identifier("nonexistent");
 
-        // then
-        assertThat(result).isPresent();
-        assertThat(result.get().getIdentifier()).isEqualTo(identifier);
-        assertThat(result.get().getNickname().getValue()).isEqualTo("테스트유저");
-    }
+            // when
+            Optional<Model> result = modelRepository.findByIdentifier(nonExistentIdentifier);
 
-    @Test
-    void findByIdentifier_존재하지_않는_Identifier로_조회하면_빈_Optional을_반환한다() {
-        // given
-        Identifier nonExistentIdentifier = new Identifier("nonexistent");
+            // then
+            assertThat(result).isEmpty();
+        }
 
-        // when
-        Optional<Model> result = modelRepository.findByIdentifier(nonExistentIdentifier);
+        @Test
+        void findByIdentifier_조회된_Model의_모든_필드가_저장된_값과_일치한다() {
+            // given
+            Identifier identifier = new Identifier("fulltest");
+            String nickname = "풀테스트";
+            String phoneNumber = "010-9999-8888";
+            LocalDate birthday = LocalDate.of(1995, 5, 15);
+            String rawPassword = "testpass1234";
 
-        // then
-        assertThat(result).isEmpty();
-    }
+            Model savedModel = ModelTestFixture.builder()
+                .identifier(identifier.getValue())
+                .nickname(nickname)
+                .phoneNumber(phoneNumber)
+                .birthday(birthday)
+                .password(rawPassword)
+                .build();
+            Model saved = modelRepository.save(savedModel);
 
-    @Test
-    void findByIdentifier_조회된_Model의_모든_필드가_저장된_값과_일치한다() {
-        // given
-        Identifier identifier = new Identifier("fulltest");
-        String nickname = "풀테스트";
-        String phoneNumber = "010-9999-8888";
-        LocalDate birthday = LocalDate.of(1995, 5, 15);
-        String rawPassword = "testpass1234";
+            // when
+            Optional<Model> result = modelRepository.findByIdentifier(identifier);
 
-        Model savedModel = ModelTestFixture.builder()
-            .identifier(identifier.getValue())
-            .nickname(nickname)
-            .phoneNumber(phoneNumber)
-            .birthday(birthday)
-            .password(rawPassword)
-            .build();
-        Model saved = modelRepository.save(savedModel);
-
-        // when
-        Optional<Model> result = modelRepository.findByIdentifier(identifier);
-
-        // then
-        assertThat(result).isPresent();
-        Model foundModel = result.get();
-        assertThat(foundModel.getId()).isEqualTo(saved.getId());
-        assertThat(foundModel.getIdentifier()).isEqualTo(identifier);
-        assertThat(foundModel.getNickname().getValue()).isEqualTo(nickname);
-        assertThat(foundModel.getPhoneNumber().getValue()).isEqualTo(phoneNumber);
-        assertThat(foundModel.getBirthday()).isEqualTo(birthday);
-        assertThat(foundModel.getPassword().getValue()).isNotEqualTo(rawPassword); // 암호화됨
-        assertThat(foundModel.getCreatedAt()).isNotNull();
-        assertThat(foundModel.getUpdatedAt()).isNotNull();
+            // then
+            assertThat(result).isPresent();
+            Model foundModel = result.get();
+            assertThat(foundModel.getId()).isEqualTo(saved.getId());
+            assertThat(foundModel.getIdentifier()).isEqualTo(identifier);
+            assertThat(foundModel.getNickname().getValue()).isEqualTo(nickname);
+            assertThat(foundModel.getPhoneNumber().getValue()).isEqualTo(phoneNumber);
+            assertThat(foundModel.getBirthday()).isEqualTo(birthday);
+            assertThat(foundModel.getPassword().getValue()).isNotEqualTo(rawPassword); // 암호화됨
+            assertThat(foundModel.getCreatedAt()).isNotNull();
+            assertThat(foundModel.getUpdatedAt()).isNotNull();
+        }
     }
 }
