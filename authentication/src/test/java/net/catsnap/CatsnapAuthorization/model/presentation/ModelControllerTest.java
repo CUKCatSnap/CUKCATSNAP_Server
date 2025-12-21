@@ -3,6 +3,7 @@ package net.catsnap.CatsnapAuthorization.model.presentation;
 import static net.catsnap.CatsnapAuthorization.shared.fixture.PassportTestHelper.withAnonymous;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -10,9 +11,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import net.catsnap.CatsnapAuthorization.model.application.ModelService;
+import net.catsnap.CatsnapAuthorization.model.dto.request.ModelLoginRequest;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
-import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
+import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -114,6 +117,87 @@ class ModelControllerTest {
         mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(invalidRequest))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+    }
+
+    @Test
+    void 로그인을_성공한다() throws Exception {
+        // given
+        ModelLoginRequest request = new ModelLoginRequest("testuser", "password1234");
+        TokenResponse tokenResponse = new TokenResponse(
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U",
+            "550e8400-e29b-41d4-a716-446655440000"
+        );
+
+        when(modelService.login(any(ModelLoginRequest.class))).thenReturn(tokenResponse);
+
+        // when & then
+        mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.code").value(CommonResultCode.COMMON_READ.getCode()))
+            .andExpect(jsonPath("$.data.accessToken").value(tokenResponse.accessToken()))
+            .andExpect(jsonPath("$.data.refreshToken").value(tokenResponse.refreshToken()));
+    }
+
+    @Test
+    void 로그인_시_identifier_누락_시_예외가_발생한다() throws Exception {
+        // given - identifier가 누락된 요청
+        String invalidRequest = """
+            {
+                "password": "password1234"
+            }
+            """;
+
+        // when & then
+        mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(invalidRequest))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+    }
+
+    @Test
+    void 로그인_시_password_누락_시_예외가_발생한다() throws Exception {
+        // given - password가 누락된 요청
+        String invalidRequest = """
+            {
+                "identifier": "testuser"
+            }
+            """;
+
+        // when & then
+        mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(invalidRequest))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+    }
+
+    @Test
+    void 로그인_시_빈_identifier_전달_시_예외가_발생한다() throws Exception {
+        // given - 빈 identifier 전달
+        ModelLoginRequest request = new ModelLoginRequest("", "password1234");
+
+        // when & then
+        mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+    }
+
+    @Test
+    void 로그인_시_빈_password_전달_시_예외가_발생한다() throws Exception {
+        // given - 빈 password 전달
+        ModelLoginRequest request = new ModelLoginRequest("testuser", "");
+
+        // when & then
+        mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
     }
