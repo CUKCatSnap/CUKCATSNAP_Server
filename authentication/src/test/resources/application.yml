@@ -17,3 +17,10 @@ spring:
   h2:
     console:
       enabled: false
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  security:
+    jwt-key: bQgFtVDjNXYlBQcEZ4Tmz5jlZoucRxx4
+    expiration: 5  # 액세스 토큰 만료 시간 (분 단위)

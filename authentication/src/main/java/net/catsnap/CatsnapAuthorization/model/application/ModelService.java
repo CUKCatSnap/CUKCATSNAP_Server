@@ -2,11 +2,17 @@ package net.catsnap.CatsnapAuthorization.model.application;
 
 import net.catsnap.CatsnapAuthorization.model.domain.Model;
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
+import net.catsnap.CatsnapAuthorization.model.dto.request.ModelLoginRequest;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
+import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.model.infrastructure.ModelRepository;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
+import net.catsnap.CatsnapAuthorization.session.domain.AccessTokenManager;
+import net.catsnap.CatsnapAuthorization.session.domain.LoginSession;
+import net.catsnap.CatsnapAuthorization.session.domain.LoginSessionRepository;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,16 +30,23 @@ public class ModelService {
 
     private final ModelRepository modelRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccessTokenManager accessTokenManager;
+    private final LoginSessionRepository loginSessionRepository;
 
     /**
      * ModelService 생성자
      *
-     * @param modelRepository Model 엔티티의 영속성 관리를 위한 Repository
-     * @param passwordEncoder 비밀번호 암호화 및 검증을 위한 인터페이스
+     * @param modelRepository        Model 엔티티의 영속성 관리를 위한 Repository
+     * @param passwordEncoder        비밀번호 암호화 및 검증을 위한 인터페이스
+     * @param accessTokenManager     액세스 토큰 발급을 위한 인터페이스
+     * @param loginSessionRepository 리프레시 세션 Repository
      */
-    public ModelService(ModelRepository modelRepository, PasswordEncoder passwordEncoder) {
+    public ModelService(ModelRepository modelRepository, PasswordEncoder passwordEncoder,
+        AccessTokenManager accessTokenManager, LoginSessionRepository loginSessionRepository) {
         this.modelRepository = modelRepository;
         this.passwordEncoder = passwordEncoder;
+        this.accessTokenManager = accessTokenManager;
+        this.loginSessionRepository = loginSessionRepository;
     }
 
     /**
@@ -64,6 +77,43 @@ public class ModelService {
         );
 
         modelRepository.save(model);
+    }
+
+    /**
+     * 로그인 유스케이스
+     *
+     * <p>사용자 인증 후 액세스 토큰과 리프레시 세션을 생성합니다.
+     *
+     * @param request 로그인 요청 정보를 담은 DTO
+     * @return 발급된 액세스 토큰과 리프레시 세션 키
+     * @throws BusinessException 식별자가 존재하지 않거나 비밀번호가 일치하지 않는 경우
+     * @see ModelLoginRequest
+     */
+    @Transactional(readOnly = true)
+    public TokenResponse login(ModelLoginRequest request) {
+        // 식별자로 모델 조회
+        Identifier identifier = new Identifier(request.identifier());
+        Model model = modelRepository.findByIdentifier(identifier)
+            .orElseThrow(() -> new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "존재하지 않는 사용자입니다."));
+
+        // 비밀번호 검증
+        if (!model.validatePassword(request.password(), passwordEncoder)) {
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "비밀번호가 일치하지 않습니다.");
+        }
+
+        // 로그인 세션 생성
+        LoginSession loginSession = LoginSession.create(
+            model.getId(),
+            CatsnapAuthority.MODEL
+        );
+        loginSessionRepository.save(loginSession);
+
+        // 액세스 토큰 생성
+        String accessToken = loginSession.generateAccessToken(accessTokenManager);
+
+        return new TokenResponse(accessToken, loginSession.getSessionKey());
     }
 
     /**

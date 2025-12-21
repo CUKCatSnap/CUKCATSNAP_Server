@@ -2,6 +2,7 @@ package net.catsnap.CatsnapAuthorization.model.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -86,5 +87,48 @@ class ModelTest {
         // then
         assertThat(model.getProfilePhotoUrl()).isNotNull();
         assertThat(model.getProfilePhotoUrl()).isEqualTo("https://placehold.co/100x100");
+    }
+
+    @Test
+    void 올바른_비밀번호로_검증하면_true를_반환한다() {
+        // given
+        String rawPasswordValue = "password1234";
+        String encodedPasswordValue = "$2a$10$encodedPassword";
+
+        when(passwordEncoder.encode(anyString())).thenReturn(encodedPasswordValue);
+        when(passwordEncoder.matches(eq(rawPasswordValue), eq(encodedPasswordValue))).thenReturn(
+            true);
+
+        Model model = Model.signUp("testuser", rawPasswordValue, "테스터",
+            LocalDate.of(1990, 1, 1), "010-1234-5678", passwordEncoder);
+
+        // when
+        boolean result = model.validatePassword(rawPasswordValue, passwordEncoder);
+
+        // then
+        assertThat(result).isTrue();
+        verify(passwordEncoder).matches(eq(rawPasswordValue), eq(encodedPasswordValue));
+    }
+
+    @Test
+    void 잘못된_비밀번호로_검증하면_false를_반환한다() {
+        // given
+        String correctPassword = "password1234";
+        String wrongPassword = "wrongpassword";
+        String encodedPasswordValue = "$2a$10$encodedPassword";
+
+        when(passwordEncoder.encode(anyString())).thenReturn(encodedPasswordValue);
+        when(passwordEncoder.matches(eq(wrongPassword), eq(encodedPasswordValue))).thenReturn(
+            false);
+
+        Model model = Model.signUp("testuser", correctPassword, "테스터",
+            LocalDate.of(1990, 1, 1), "010-1234-5678", passwordEncoder);
+
+        // when
+        boolean result = model.validatePassword(wrongPassword, passwordEncoder);
+
+        // then
+        assertThat(result).isFalse();
+        verify(passwordEncoder).matches(eq(wrongPassword), eq(encodedPasswordValue));
     }
 }

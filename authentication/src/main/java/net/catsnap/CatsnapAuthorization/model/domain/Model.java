@@ -114,4 +114,16 @@ public class Model {
         this.phoneNumber = phoneNumber;
         this.profilePhotoUrl = DEFAULT_PROFILE_PHOTO_URL;
     }
+
+    /**
+     * 로그인 시 비밀번호를 검증합니다.
+     *
+     * @param rawPasswordValue 사용자가 입력한 평문 비밀번호
+     * @param passwordEncoder  비밀번호 검증을 위한 인터페이스
+     * @return 비밀번호가 일치하면 {@code true}, 그렇지 않으면 {@code false}
+     */
+    public boolean validatePassword(String rawPasswordValue, PasswordEncoder passwordEncoder) {
+        RawPassword rawPassword = new RawPassword(rawPasswordValue);
+        return this.password.matches(rawPassword, passwordEncoder);
+    }
 }
