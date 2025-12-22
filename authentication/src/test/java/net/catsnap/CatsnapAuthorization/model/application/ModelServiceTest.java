@@ -167,7 +167,7 @@ class ModelServiceTest {
             // when & then
             assertThatThrownBy(() -> modelService.login(loginRequest))
                 .isInstanceOf(BusinessException.class)
-                .hasMessageContaining("존재하지 않는 사용자입니다")
+                .hasMessageContaining("아이디 또는 비밀번호가 존재하지 않는 사용자입니다.")
                 .extracting("resultCode")
                 .isEqualTo(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION);
         }
@@ -196,7 +196,7 @@ class ModelServiceTest {
             // when & then
             assertThatThrownBy(() -> modelService.login(loginRequest))
                 .isInstanceOf(BusinessException.class)
-                .hasMessageContaining("비밀번호가 일치하지 않습니다")
+                .hasMessageContaining("아이디 또는 비밀번호가 존재하지 않는 사용자입니다.")
                 .extracting("resultCode")
                 .isEqualTo(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION);
 
