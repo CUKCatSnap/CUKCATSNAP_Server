@@ -2,7 +2,9 @@ package net.catsnap.CatsnapAuthorization.model.presentation;
 
 import jakarta.validation.Valid;
 import net.catsnap.CatsnapAuthorization.model.application.ModelService;
+import net.catsnap.CatsnapAuthorization.model.dto.request.ModelLoginRequest;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
+import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.ResultResponse;
 import net.catsnap.shared.auth.AnyUser;
@@ -39,5 +41,19 @@ public class ModelController {
         @Valid @RequestBody ModelSignUpRequest request) {
         modelService.signUp(request);
         return ResultResponse.of(CommonResultCode.COMMON_CREATE);
+    }
+
+    /**
+     * 로그인 API
+     *
+     * @param request 로그인 요청 정보 (identifier, password)
+     * @return 액세스 토큰과 로그인 세션 키
+     */
+    @PostMapping("/login")
+    @AnyUser
+    public ResponseEntity<ResultResponse<TokenResponse>> login(
+        @Valid @RequestBody ModelLoginRequest request) {
+        TokenResponse tokenResponse = modelService.login(request);
+        return ResultResponse.of(CommonResultCode.COMMON_READ, tokenResponse);
     }
 }
