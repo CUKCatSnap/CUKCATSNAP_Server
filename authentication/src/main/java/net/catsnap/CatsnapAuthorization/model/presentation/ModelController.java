@@ -47,7 +47,7 @@ public class ModelController {
      * 로그인 API
      *
      * @param request 로그인 요청 정보 (identifier, password)
-     * @return 액세스 토큰과 리프레시 세션 키
+     * @return 액세스 토큰과 로그인 세션 키
      */
     @PostMapping("/login")
     @AnyUser

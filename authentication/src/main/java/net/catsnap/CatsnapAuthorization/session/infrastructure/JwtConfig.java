@@ -33,7 +33,7 @@ public class JwtConfig {
      * JWT 기반 액세스 토큰 발급자를 생성합니다.
      *
      * @param secretKey JWT 서명에 사용할 비밀 키
-     * @return AccessTokenIssuer 구현체
+     * @return AccessTokenManager 구현체
      */
     @Bean
     public AccessTokenManager accessTokenIssuer(SecretKey secretKey) {

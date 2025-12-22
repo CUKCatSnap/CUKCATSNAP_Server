@@ -39,11 +39,11 @@ public class LoginSession {
     private final Long sessionLiveDuration = LOGIN_SESSION_DURATION_SECONDS;
 
     /**
-     * 로그인 시 리프레시 세션을 생성하는 정적 팩토리 메서드
+     * 로그인 시 세션을 생성하는 정적 팩토리 메서드
      *
      * @param userId    사용자 ID
      * @param authority 권한
-     * @return 생성된 RefreshSession
+     * @return 생성된 LoginSession
      */
     public static LoginSession create(Long userId, CatsnapAuthority authority) {
         String sessionKey = UUID.randomUUID().toString();
@@ -63,7 +63,7 @@ public class LoginSession {
     /**
      * 액세스 토큰을 생성합니다.
      *
-     * <p>리프레시 세션을 통해 액세스 토큰을 발급하며, 마지막 접근 시간을 갱신합니다.</p>
+     * <p>로그인 세션을 통해 액세스 토큰을 발급하며, 마지막 접근 시간을 갱신합니다.</p>
      *
      * @param accessTokenManager 액세스 토큰 발급자
      * @return 생성된 액세스 토큰

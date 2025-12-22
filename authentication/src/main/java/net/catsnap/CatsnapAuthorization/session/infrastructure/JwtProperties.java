@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "spring.security")
+@ConfigurationProperties(prefix = "app.jwt")
 public class JwtProperties {
 
     /**
@@ -18,7 +18,7 @@ public class JwtProperties {
     private String jwtKey;
 
     /**
-     * 토큰 만료 시간 설정
+     * 토큰 만료 시간 설정 단위 : 분(minutes)
      */
     private Long expiration;
 }

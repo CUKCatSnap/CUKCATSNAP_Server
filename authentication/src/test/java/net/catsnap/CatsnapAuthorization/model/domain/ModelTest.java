@@ -111,7 +111,8 @@ class ModelTest {
     }
 
     @Test
-    void 잘못된_비밀번호로_로그인하면_false를_반환한다() {        // given
+    void 잘못된_비밀번호로_로그인하면_false를_반환한다() {
+        // given
         String correctPassword = "password1234";
         String wrongPassword = "wrongpassword";
         String encodedPasswordValue = "$2a$10$encodedPassword";

@@ -16,7 +16,7 @@ public class JwtAccessTokenManager implements AccessTokenManager {
     private final Long expirationMinutes;
 
     /**
-     * JwtAccessTokenIssuer 생성자
+     * JwtAccessTokenManager 생성자
      *
      * @param secretKey         JWT 서명에 사용할 비밀 키
      * @param expirationMinutes 액세스 토큰 만료 시간 (분 단위)

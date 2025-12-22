@@ -63,7 +63,7 @@ class ModelRepositoryTest {
     class findByIdentifier_메서드_단위_테스트 {
 
         @Test
-        void findByIdentifier_존재하는_Identifier로_조회하면_Model을_반환한다() {
+        void 존재하는_Identifier로_조회하면_Model을_반환한다() {
             // given
             Identifier identifier = new Identifier("findtest");
             Model savedModel = ModelTestFixture.builder()

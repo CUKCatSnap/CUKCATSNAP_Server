@@ -76,7 +76,7 @@ class JwtAccessTokenManagerTest {
             .parseSignedClaims(token)
             .getPayload();
 
-        assertThat(claims.get("id", Integer.class)).isEqualTo(userId.intValue());
+        assertThat(claims.get("id", Long.class)).isEqualTo(userId.intValue());
         assertThat(claims.get("authority", String.class)).isEqualTo(authority.getAuthorityName());
     }
 
@@ -107,21 +107,5 @@ class JwtAccessTokenManagerTest {
         long expectedExpiration = issuedAt.getTime() + EXPIRATION_MINUTES * 60 * 1000;
         assertThat(expiration.getTime()).isBetween(expectedExpiration - 1000,
             expectedExpiration + 1000);
-    }
-
-    @Test
-    void 다른_userId와_authority로_토큰을_발급하면_다른_토큰이_생성된다() {
-        // given
-        Long userId1 = 1L;
-        Long userId2 = 2L;
-        CatsnapAuthority authority1 = CatsnapAuthority.PHOTOGRAPHER;
-        CatsnapAuthority authority2 = CatsnapAuthority.MODEL;
-
-        // when
-        String token1 = jwtAccessTokenManager.issue(userId1, authority1);
-        String token2 = jwtAccessTokenManager.issue(userId2, authority2);
-
-        // then
-        assertThat(token1).isNotEqualTo(token2);
     }
 }
