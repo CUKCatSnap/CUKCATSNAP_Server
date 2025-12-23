@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapGateway.config;
+package net.catsnap.CatsnapGateway.auth.infrastructure.config;
 
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
