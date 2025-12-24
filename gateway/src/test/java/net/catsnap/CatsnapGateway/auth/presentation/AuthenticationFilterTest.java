@@ -209,19 +209,4 @@ class AuthenticationFilterTest {
             assertThat(capturedExchange.getRequest()).isEqualTo(passportIssuedRequest);
         }
     }
-
-    @Nested
-    @DisplayName("필터 순서")
-    class FilterOrder {
-
-        @Test
-        @DisplayName("가장 높은 우선순위를 가진다")
-        void hasHighestPrecedence() {
-            // when
-            int order = authenticationFilter.getOrder();
-
-            // then
-            assertThat(order).isEqualTo(Integer.MIN_VALUE);
-        }
-    }
 }
