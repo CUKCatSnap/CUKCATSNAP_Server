@@ -8,6 +8,11 @@ import net.catsnap.CatsnapAuthorization.shared.presentation.error.Authentication
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthorizationException;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.SecurityErrorCode;
 import net.catsnap.shared.auth.CatsnapAuthority;
+import net.catsnap.shared.passport.domain.Passport;
+import net.catsnap.shared.passport.domain.PassportHandler;
+import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
+import net.catsnap.shared.passport.domain.exception.InvalidPassportException;
+import net.catsnap.shared.passport.domain.exception.PassportParsingException;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -23,11 +28,6 @@ public abstract class AbstractAuthInterceptor<A extends Annotation> implements
     HandlerInterceptor {
 
     /**
-     * Passport 헤더: 사용자 권한
-     */
-    private static final String AUTHORITY_HEADER = "X-Authority";
-
-    /**
      * 검증할 어노테이션의 타입
      */
     private final Class<A> targetAnnotationType;
@@ -38,14 +38,22 @@ public abstract class AbstractAuthInterceptor<A extends Annotation> implements
     private final List<CatsnapAuthority> allowedAuthorities;
 
     /**
+     * Passport를 파싱하는 핸들러
+     */
+    private final PassportHandler passportHandler;
+
+    /**
      * 인터셉터를 생성합니다.
      *
      * @param targetAnnotationType 검증할 어노테이션 클래스
      * @param allowedAuthorities   접근을 허용할 권한 목록
+     * @param passportHandler      Passport 파싱 핸들러
      */
-    protected AbstractAuthInterceptor(Class<A> targetAnnotationType, List<CatsnapAuthority> allowedAuthorities) {
+    protected AbstractAuthInterceptor(Class<A> targetAnnotationType,
+        List<CatsnapAuthority> allowedAuthorities, PassportHandler passportHandler) {
         this.targetAnnotationType = targetAnnotationType;
         this.allowedAuthorities = allowedAuthorities;
+        this.passportHandler = passportHandler;
     }
 
     /**
@@ -112,28 +120,34 @@ public abstract class AbstractAuthInterceptor<A extends Annotation> implements
     /**
      * 사용자의 권한을 검증합니다.
      * <p>
-     * 현재 사용자의 권한이 허용된 권한 목록({@link #allowedAuthorities})에 포함되는지 확인합니다.
-     * 게이트웨이에서 발급한 Passport 헤더(X-Authority)를 통해 사용자 권한을 확인합니다.
+     * 현재 사용자의 권한이 허용된 권한 목록({@link #allowedAuthorities})에 포함되는지 확인합니다. 게이트웨이에서 발급한 서명된 Passport
+     * 헤더(X-Passport)를 파싱하여 사용자 권한을 확인합니다.
      * </p>
      *
      * @param request HTTP 요청 객체
-     * @throws AuthenticationException 인증 정보가 없거나 유효하지 않은 경우 (401)
-     * @throws AuthorizationException 접근 권한이 없는 경우 (403)
+     * @throws AuthenticationException 인증 정보가 없거나 유효하지 않은 경우. Passport가 만기된 경우 (401)
+     * @throws AuthorizationException  접근 권한이 없는 경우 (403)
      */
     protected void validateUserAuthority(HttpServletRequest request) {
-        String authorityHeader = request.getHeader(AUTHORITY_HEADER);
+        String signedPassport = request.getHeader(PassportHandler.PassportKey);
 
-        // 1. 인증 헤더가 없는 경우 예외 발생
-        if (authorityHeader == null || authorityHeader.isBlank()) {
+        // 1. Passport 헤더가 없는 경우 예외 발생
+        if (signedPassport == null || signedPassport.isBlank()) {
             throw new AuthenticationException(SecurityErrorCode.UNAUTHORIZED);
         }
 
-        // 2. 헤더 값을 CatsnapAuthority enum으로 변환
-        CatsnapAuthority userAuthority = CatsnapAuthority.findAuthorityByName(authorityHeader)
-            .orElseThrow(() -> new AuthenticationException(SecurityErrorCode.INVALID_AUTHORITY));
+        // 2. 서명된 Passport를 파싱 및 검증
+        Passport passport;
+        try {
+            passport = passportHandler.parse(signedPassport);
+        } catch (PassportParsingException | InvalidPassportException e) {
+            throw new AuthenticationException(SecurityErrorCode.INVALID_PASSPORT);
+        } catch (ExpiredPassportException e) {
+            throw new AuthenticationException(SecurityErrorCode.EXPIRED_PASSPORT);
+        }
 
         // 3. 사용자 권한이 허용 목록에 포함되는지 확인
-        if (!allowedAuthorities.contains(userAuthority)) {
+        if (!allowedAuthorities.contains(passport.authority())) {
             throw new AuthorizationException(SecurityErrorCode.FORBIDDEN);
         }
     }

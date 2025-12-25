@@ -36,7 +36,21 @@ public enum SecurityErrorCode implements ResultCode {
      * <p>
      * 인증은 되었으나 해당 리소스에 접근할 권한이 없는 경우
      */
-    FORBIDDEN(HttpStatus.FORBIDDEN, "EA102", "접근 권한이 없습니다.");
+    FORBIDDEN(HttpStatus.FORBIDDEN, "EA102", "접근 권한이 없습니다."),
+
+    /**
+     * 유효하지 않은 Passport (401 Unauthorized)
+     * <p>
+     * Passport 서명 검증에 실패했거나 파싱할 수 없는 경우
+     */
+    INVALID_PASSPORT(HttpStatus.UNAUTHORIZED, "EA103", "유효하지 않은 Passport입니다."),
+
+    /**
+     * 만료된 Passport (401 Unauthorized)
+     * <p>
+     * Passport의 유효기간이 만료된 경우
+     */
+    EXPIRED_PASSPORT(HttpStatus.UNAUTHORIZED, "EA104", "만료된 Passport입니다.");
 
     private final HttpStatusCode httpStatus;
     private final String code;
