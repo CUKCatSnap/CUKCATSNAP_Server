@@ -18,7 +18,7 @@ public class PassportParsingException extends PassportException {
      * 기본 메시지로 예외를 생성합니다.
      */
     public PassportParsingException() {
-        super("Failed to parse passport");
+        super("passport를 파싱하는데 실패했습니다.");
     }
 
     /**

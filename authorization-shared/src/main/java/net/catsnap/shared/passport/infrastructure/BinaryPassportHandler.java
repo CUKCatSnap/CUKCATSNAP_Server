@@ -121,8 +121,7 @@ public class BinaryPassportHandler implements PassportHandler {
 
             // 만료 확인
             if (Instant.now().isAfter(exp)) {
-                throw new ExpiredPassportException(
-                    String.format("Passport가 만료되었습니다. exp=%s, now=%s", exp, Instant.now()));
+                throw new ExpiredPassportException();
             }
 
             // Passport 생성

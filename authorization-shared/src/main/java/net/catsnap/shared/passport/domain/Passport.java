@@ -2,6 +2,7 @@ package net.catsnap.shared.passport.domain;
 
 import java.time.Instant;
 import net.catsnap.shared.auth.CatsnapAuthority;
+import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
 
 /**
  * 검증된 사용자 인증 정보를 담는 Value Object. Gateway에서 발급되어 내부 서비스 간 전달됩니다.
@@ -42,5 +43,23 @@ public record Passport(
      */
     public boolean isExpired() {
         return Instant.now().isAfter(exp);
+    }
+
+    @Override
+    public long userId() {
+        if (!isExpired()) {
+            return userId;
+        } else {
+            throw new ExpiredPassportException();
+        }
+    }
+
+    @Override
+    public CatsnapAuthority authority() {
+        if (!isExpired()) {
+            return authority;
+        } else {
+            throw new ExpiredPassportException();
+        }
     }
 }

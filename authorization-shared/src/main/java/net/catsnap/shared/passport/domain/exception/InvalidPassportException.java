@@ -18,7 +18,7 @@ public class InvalidPassportException extends PassportException {
      * 기본 메시지로 예외를 생성합니다.
      */
     public InvalidPassportException() {
-        super("Invalid passport");
+        super("잘못된 passport 입니다.");
     }
 
     /**
