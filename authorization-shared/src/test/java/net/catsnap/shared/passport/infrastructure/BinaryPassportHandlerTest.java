@@ -91,6 +91,18 @@ class BinaryPassportHandlerTest {
             // Base64 문자열은 A-Z, a-z, 0-9, +, /, = 로만 구성됨
             assertTrue(signed.matches("^[A-Za-z0-9+/=]+$"));
         }
+
+        @Test
+        void 이전_날짜로_설정된_만기의_Passport는_예외가_발생한다() {
+            //given
+            Instant past = Instant.now().minus(10, ChronoUnit.MINUTES);
+            Instant exp = Instant.now().minus(5, ChronoUnit.MINUTES); // 5분 전 만료
+            Passport expiredPassport = new Passport((byte) 1, 999L, CatsnapAuthority.MODEL, past,
+                exp);
+
+            //when & then
+            assertThrows(ExpiredPassportException.class, () -> handler.sign(expiredPassport));
+        }
     }
 
     @Nested
@@ -174,19 +186,6 @@ class BinaryPassportHandlerTest {
 
             //when & then
             assertThrows(PassportParsingException.class, () -> handler.parse(tampered));
-        }
-
-        @Test
-        void 만료된_Passport는_예외가_발생한다() {
-            //given
-            Instant past = Instant.now().minus(10, ChronoUnit.MINUTES);
-            Instant exp = Instant.now().minus(5, ChronoUnit.MINUTES); // 5분 전 만료
-            Passport expiredPassport = new Passport((byte) 1, 999L, CatsnapAuthority.MODEL, past,
-                exp);
-            String signed = handler.sign(expiredPassport);
-
-            //when & then
-            assertThrows(ExpiredPassportException.class, () -> handler.parse(signed));
         }
     }
 
