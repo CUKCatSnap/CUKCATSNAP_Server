@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapGateway.auth.service;
+package net.catsnap.CatsnapGateway.auth.application;
 
 import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
 import org.springframework.http.server.reactive.ServerHttpRequest;
