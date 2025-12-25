@@ -1,17 +1,20 @@
 package net.catsnap.shared.passport.infrastructure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Optional;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.Passport;
+import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
+import net.catsnap.shared.passport.domain.exception.InvalidPassportException;
+import net.catsnap.shared.passport.domain.exception.PassportParsingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -102,79 +105,64 @@ class BinaryPassportHandlerTest {
             String signed = handler.sign(original);
 
             //when
-            Optional<Passport> result = handler.parse(signed);
+            Passport result = handler.parse(signed);
 
             //then
-            assertTrue(result.isPresent());
-            assertEquals(original.version(), result.get().version());
-            assertEquals(original.userId(), result.get().userId());
-            assertEquals(original.authority(), result.get().authority());
-            assertEquals(original.iat(), result.get().iat());
-            assertEquals(original.exp(), result.get().exp());
+            assertNotNull(result);
+            assertEquals(original.version(), result.version());
+            assertEquals(original.userId(), result.userId());
+            assertEquals(original.authority(), result.authority());
+            assertEquals(original.iat(), result.iat());
+            assertEquals(original.exp(), result.exp());
         }
 
         @Test
-        void null_입력_시_빈_Optional을_반환한다() {
+        void null_입력_시_예외가_발생한다() {
             //given
             String nullInput = null;
 
-            //when
-            Optional<Passport> result = handler.parse(nullInput);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(PassportParsingException.class, () -> handler.parse(nullInput));
         }
 
         @Test
-        void 빈_문자열_입력_시_빈_Optional을_반환한다() {
+        void 빈_문자열_입력_시_예외가_발생한다() {
             //given
             String emptyInput = "";
 
-            //when
-            Optional<Passport> result = handler.parse(emptyInput);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(PassportParsingException.class, () -> handler.parse(emptyInput));
         }
 
         @Test
-        void 공백_문자열_입력_시_빈_Optional을_반환한다() {
+        void 공백_문자열_입력_시_예외가_발생한다() {
             //given
             String blankInput = "   ";
 
-            //when
-            Optional<Passport> result = handler.parse(blankInput);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(PassportParsingException.class, () -> handler.parse(blankInput));
         }
 
         @Test
-        void 잘못된_Base64_형식_시_빈_Optional을_반환한다() {
+        void 잘못된_Base64_형식_시_예외가_발생한다() {
             //given
             String invalidBase64 = "this-is-not-base64!@#$";
 
-            //when
-            Optional<Passport> result = handler.parse(invalidBase64);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(PassportParsingException.class, () -> handler.parse(invalidBase64));
         }
 
         @Test
-        void 잘못된_길이의_데이터_시_빈_Optional을_반환한다() {
+        void 잘못된_길이의_데이터_시_예외가_발생한다() {
             //given
             String shortData = "YWJj"; // "abc" in base64 (3 bytes, expected 58)
 
-            //when
-            Optional<Passport> result = handler.parse(shortData);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(PassportParsingException.class, () -> handler.parse(shortData));
         }
 
         @Test
-        void 잘못된_서명_시_빈_Optional을_반환한다() {
+        void 잘못된_서명_시_예외가_발생한다() {
             //given
             Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
             Instant exp = now.plus(5, ChronoUnit.MINUTES);
@@ -184,15 +172,12 @@ class BinaryPassportHandlerTest {
             // 서명 부분 변조 (마지막 문자 변경)
             String tampered = signed.substring(0, signed.length() - 1) + "X";
 
-            //when
-            Optional<Passport> result = handler.parse(tampered);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(PassportParsingException.class, () -> handler.parse(tampered));
         }
 
         @Test
-        void 만료된_Passport는_빈_Optional을_반환한다() {
+        void 만료된_Passport는_예외가_발생한다() {
             //given
             Instant past = Instant.now().minus(10, ChronoUnit.MINUTES);
             Instant exp = Instant.now().minus(5, ChronoUnit.MINUTES); // 5분 전 만료
@@ -200,11 +185,8 @@ class BinaryPassportHandlerTest {
                 exp);
             String signed = handler.sign(expiredPassport);
 
-            //when
-            Optional<Passport> result = handler.parse(signed);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(ExpiredPassportException.class, () -> handler.parse(signed));
         }
     }
 
@@ -221,10 +203,10 @@ class BinaryPassportHandlerTest {
             for (CatsnapAuthority authority : CatsnapAuthority.values()) {
                 Passport original = new Passport((byte) 1, 123L, authority, now, exp);
                 String signed = handler.sign(original);
-                Optional<Passport> parsed = handler.parse(signed);
+                Passport parsed = handler.parse(signed);
 
-                assertTrue(parsed.isPresent());
-                assertEquals(original.authority(), parsed.get().authority());
+                assertNotNull(parsed);
+                assertEquals(original.authority(), parsed.authority());
             }
         }
 
@@ -240,10 +222,10 @@ class BinaryPassportHandlerTest {
                 Passport original = new Passport((byte) 1, userId, CatsnapAuthority.MODEL, now,
                     exp);
                 String signed = handler.sign(original);
-                Optional<Passport> parsed = handler.parse(signed);
+                Passport parsed = handler.parse(signed);
 
-                assertTrue(parsed.isPresent());
-                assertEquals(userId, parsed.get().userId());
+                assertNotNull(parsed);
+                assertEquals(userId, parsed.userId());
             }
         }
 
@@ -263,11 +245,8 @@ class BinaryPassportHandlerTest {
                 differentKeyString.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
             BinaryPassportHandler differentHandler = new BinaryPassportHandler(differentKey);
 
-            //when
-            Optional<Passport> result = differentHandler.parse(signed);
-
-            //then
-            assertTrue(result.isEmpty());
+            //when & then
+            assertThrows(InvalidPassportException.class, () -> differentHandler.parse(signed));
         }
     }
 }

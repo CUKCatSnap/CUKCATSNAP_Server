@@ -5,12 +5,14 @@ import java.security.MessageDigest;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.Optional;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.Passport;
 import net.catsnap.shared.passport.domain.PassportHandler;
+import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
+import net.catsnap.shared.passport.domain.exception.InvalidPassportException;
+import net.catsnap.shared.passport.domain.exception.PassportParsingException;
 
 /**
  * 바이트 기반 Passport 발급 및 파싱 구현체.
@@ -64,18 +66,25 @@ public class BinaryPassportHandler implements PassportHandler {
     }
 
     @Override
-    public Optional<Passport> parse(String signedPassport) {
+    public Passport parse(String signedPassport) {
         if (signedPassport == null || signedPassport.isBlank()) {
-            return Optional.empty();
+            throw new PassportParsingException("Passport 문자열이 null이거나 비어있습니다");
         }
 
         try {
             // Base64 디코딩
-            byte[] bytes = Base64.getDecoder().decode(signedPassport);
+            byte[] bytes;
+            try {
+                bytes = Base64.getDecoder().decode(signedPassport);
+            } catch (IllegalArgumentException e) {
+                throw new PassportParsingException("Base64 디코딩 실패", e);
+            }
 
             // 길이 검증
             if (bytes.length != TOTAL_SIZE) {
-                return Optional.empty();
+                throw new PassportParsingException(
+                    String.format("잘못된 Passport 길이: expected=%d, actual=%d", TOTAL_SIZE,
+                        bytes.length));
             }
 
             ByteBuffer buffer = ByteBuffer.wrap(bytes);
@@ -95,11 +104,16 @@ public class BinaryPassportHandler implements PassportHandler {
             byte[] computedSignature = generateSignature(data);
 
             if (!MessageDigest.isEqual(receivedSignature, computedSignature)) {
-                return Optional.empty();
+                throw new InvalidPassportException("Passport 서명 검증 실패");
             }
 
             // Authority 변환
-            CatsnapAuthority authority = CatsnapAuthority.fromByte(authorityByte);
+            CatsnapAuthority authority;
+            try {
+                authority = CatsnapAuthority.fromByte(authorityByte);
+            } catch (IllegalArgumentException e) {
+                throw new InvalidPassportException("유효하지 않은 권한 정보", e);
+            }
 
             // 시간 변환
             Instant iat = Instant.ofEpochSecond(iatSeconds);
@@ -107,15 +121,19 @@ public class BinaryPassportHandler implements PassportHandler {
 
             // 만료 확인
             if (Instant.now().isAfter(exp)) {
-                return Optional.empty();
+                throw new ExpiredPassportException(
+                    String.format("Passport가 만료되었습니다. exp=%s, now=%s", exp, Instant.now()));
             }
 
             // Passport 생성
-            Passport passport = new Passport(version, userId, authority, iat, exp);
-            return Optional.of(passport);
+            return new Passport(version, userId, authority, iat, exp);
 
+        } catch (PassportParsingException | InvalidPassportException | ExpiredPassportException e) {
+            // Passport 예외는 그대로 재던지기
+            throw e;
         } catch (Exception e) {
-            return Optional.empty();
+            // 예상하지 못한 예외는 PassportParsingException으로 래핑
+            throw new PassportParsingException("Passport 파싱 중 예상치 못한 오류 발생", e);
         }
     }
 

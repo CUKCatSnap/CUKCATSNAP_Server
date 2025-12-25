@@ -1,6 +1,8 @@
 package net.catsnap.shared.passport.domain;
 
-import java.util.Optional;
+import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
+import net.catsnap.shared.passport.domain.exception.InvalidPassportException;
+import net.catsnap.shared.passport.domain.exception.PassportParsingException;
 
 /**
  * Passport 발급 및 파싱을 담당하는 도메인 인터페이스. 바이트 기반 서명 및 검증을 통해 내부 서비스 간 안전한 인증 정보 전달을 제공합니다.
@@ -14,7 +16,7 @@ import java.util.Optional;
  */
 public interface PassportHandler {
 
-    public final String PassportKey = "X-Passport";
+    String PassportKey = "X-Passport";
 
     /**
      * Passport를 서명하여 base64 인코딩된 문자열로 변환합니다.
@@ -29,7 +31,10 @@ public interface PassportHandler {
      * 서명된 passport 문자열을 파싱하고 검증합니다.
      *
      * @param signedPassport base64 인코딩된 서명된 passport 문자열
-     * @return 검증된 Passport 객체. 검증 실패 시 Optional.empty()
+     * @return 검증된 Passport 객체
+     * @throws PassportParsingException  Passport 파싱에 실패한 경우 (Base64 디코딩 실패, 잘못된 형식 등)
+     * @throws InvalidPassportException  Passport 서명 검증에 실패한 경우
+     * @throws ExpiredPassportException  Passport가 만료된 경우
      */
-    Optional<Passport> parse(String signedPassport);
+    Passport parse(String signedPassport);
 }
