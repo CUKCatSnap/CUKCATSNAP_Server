@@ -3,6 +3,7 @@ package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
 import java.util.List;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.auth.LoginModel;
+import net.catsnap.shared.passport.domain.PassportHandler;
 import org.springframework.stereotype.Component;
 
 /**
@@ -42,10 +43,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginModelInterceptor extends AbstractAuthInterceptor<LoginModel> {
 
-    public LoginModelInterceptor() {
+    public LoginModelInterceptor(PassportHandler passportHandler) {
         super(LoginModel.class, List.of(
             CatsnapAuthority.MODEL,
             CatsnapAuthority.ADMIN
-        ));
+        ), passportHandler);
     }
 }

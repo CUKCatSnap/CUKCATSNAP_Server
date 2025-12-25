@@ -2,10 +2,18 @@ package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Method;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
 import net.catsnap.shared.auth.AnyUser;
+import net.catsnap.shared.auth.CatsnapAuthority;
+import net.catsnap.shared.passport.domain.Passport;
+import net.catsnap.shared.passport.domain.PassportHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -21,12 +29,14 @@ import org.springframework.web.method.HandlerMethod;
 class AnyUserInterceptorTest {
 
     private AnyUserInterceptor anyUserInterceptor;
+    private PassportHandler passportHandler;
     private MockHttpServletRequest request;
     private MockHttpServletResponse response;
 
     @BeforeEach
     void setUp() {
-        anyUserInterceptor = new AnyUserInterceptor();
+        passportHandler = mock(PassportHandler.class);
+        anyUserInterceptor = new AnyUserInterceptor(passportHandler);
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
     }
@@ -43,7 +53,13 @@ class AnyUserInterceptorTest {
     @Test
     void ANONYMOUS_권한이_있으면_통과한다() throws Exception {
         // given
-        request.addHeader("X-Authority", "anonymous");
+        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        Instant exp = now.plus(30, ChronoUnit.MINUTES);
+        Passport passport = new Passport((byte) 1, -1L, CatsnapAuthority.ANONYMOUS, now, exp);
+
+        when(passportHandler.parse(anyString())).thenReturn(passport);
+
+        request.addHeader("X-Passport", "signed-passport-string");
         HandlerMethod handler = createHandlerMethod("anyUserMethod");
 
         // when & then
@@ -53,7 +69,13 @@ class AnyUserInterceptorTest {
     @Test
     void MODEL_권한이_있으면_통과한다() throws Exception {
         // given
-        request.addHeader("X-Authority", "model");
+        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        Instant exp = now.plus(30, ChronoUnit.MINUTES);
+        Passport passport = new Passport((byte) 1, 1L, CatsnapAuthority.MODEL, now, exp);
+
+        when(passportHandler.parse(anyString())).thenReturn(passport);
+
+        request.addHeader("X-Passport", "signed-passport-string");
         HandlerMethod handler = createHandlerMethod("anyUserMethod");
 
         // when & then
@@ -63,7 +85,13 @@ class AnyUserInterceptorTest {
     @Test
     void PHOTOGRAPHER_권한이_있으면_통과한다() throws Exception {
         // given
-        request.addHeader("X-Authority", "photographer");
+        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        Instant exp = now.plus(30, ChronoUnit.MINUTES);
+        Passport passport = new Passport((byte) 1, 2L, CatsnapAuthority.PHOTOGRAPHER, now, exp);
+
+        when(passportHandler.parse(anyString())).thenReturn(passport);
+
+        request.addHeader("X-Passport", "signed-passport-string");
         HandlerMethod handler = createHandlerMethod("anyUserMethod");
 
         // when & then
@@ -73,7 +101,13 @@ class AnyUserInterceptorTest {
     @Test
     void ADMIN_권한이_있으면_통과한다() throws Exception {
         // given
-        request.addHeader("X-Authority", "admin");
+        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        Instant exp = now.plus(30, ChronoUnit.MINUTES);
+        Passport passport = new Passport((byte) 1, 3L, CatsnapAuthority.ADMIN, now, exp);
+
+        when(passportHandler.parse(anyString())).thenReturn(passport);
+
+        request.addHeader("X-Passport", "signed-passport-string");
         HandlerMethod handler = createHandlerMethod("anyUserMethod");
 
         // when & then

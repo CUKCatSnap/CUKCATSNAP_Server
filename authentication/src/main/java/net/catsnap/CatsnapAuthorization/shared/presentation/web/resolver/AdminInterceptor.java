@@ -3,13 +3,14 @@ package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
 import java.util.List;
 import net.catsnap.shared.auth.Admin;
 import net.catsnap.shared.auth.CatsnapAuthority;
+import net.catsnap.shared.passport.domain.PassportHandler;
 import org.springframework.stereotype.Component;
 
 /**
  * 관리자 권한 검증 인터셉터입니다.
  * <p>
- * {@link Admin} 어노테이션이 붙은 컨트롤러 메서드에 대해 ADMIN 권한을 검증합니다. 게이트웨이에서 발급한 Passport 헤더(X-Authority)의 권한
- * 정보를 확인하여 접근을 제어합니다.
+ * {@link Admin} 어노테이션이 붙은 컨트롤러 메서드에 대해 ADMIN 권한을 검증합니다. 게이트웨이에서 발급한 Passport 헤더(X-Passport)의 권한 정보를
+ * 확인하여 접근을 제어합니다.
  * </p>
  *
  * <h3>허용 권한</h3>
@@ -36,7 +37,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdminInterceptor extends AbstractAuthInterceptor<Admin> {
 
-    public AdminInterceptor() {
-        super(Admin.class, List.of(CatsnapAuthority.ADMIN));
+    public AdminInterceptor(PassportHandler passportHandler) {
+        super(Admin.class, List.of(CatsnapAuthority.ADMIN), passportHandler);
     }
 }
