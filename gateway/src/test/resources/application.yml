@@ -13,3 +13,6 @@ spring:
           uri: http://localhost:8080
           predicates:
             - Path=/**
+
+passport:
+  secret-key: itstestsecreykey123123123

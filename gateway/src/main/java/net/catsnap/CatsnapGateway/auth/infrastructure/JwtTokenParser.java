@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import net.catsnap.CatsnapGateway.auth.domain.TokenParser;
 import net.catsnap.CatsnapGateway.auth.domain.vo.Token;
 import net.catsnap.CatsnapGateway.auth.domain.vo.TokenClaims;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import org.springframework.stereotype.Component;
 
 /**
@@ -56,21 +57,28 @@ public class JwtTokenParser implements TokenParser {
     }
 
     /**
-     * Claims에서 도메인 객체인 TokenClaims를 추출합니다. userId 또는 authority가 없으면 빈 Optional을 반환합니다.
+     * Claims에서 도메인 객체인 TokenClaims를 추출합니다. userId 또는 authority가 없거나 유효하지 않으면 빈 Optional을 반환합니다.
      *
      * @param claims JWT Claims
      * @return TokenClaims를 담은 Optional
      */
     private Optional<TokenClaims> extractTokenClaims(Claims claims) {
         Long userId = claims.get("id", Long.class);
-        String authority = claims.get("authority", String.class);
+        String authorityString = claims.get("authority", String.class);
 
-        if (userId == null || authority == null || authority.isBlank()) {
+        if (userId == null || authorityString == null || authorityString.isBlank()) {
+            return Optional.empty();
+        }
+
+        // String을 CatsnapAuthority enum으로 변환
+        Optional<CatsnapAuthority> authorityOptional = CatsnapAuthority.findAuthorityByName(
+            authorityString);
+        if (authorityOptional.isEmpty()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(new TokenClaims(userId, authority));
+            return Optional.of(new TokenClaims(userId, authorityOptional.get()));
         } catch (IllegalArgumentException e) {
             return Optional.empty();
         }

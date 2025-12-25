@@ -3,23 +3,24 @@ package net.catsnap.CatsnapGateway.auth.domain.vo;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.DisplayName;
+import net.catsnap.shared.auth.CatsnapAuthority;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("TokenClaims 테스트")
+@DisplayNameGeneration(ReplaceUnderscores.class)
+@SuppressWarnings("NonAsciiCharacters")
 class TokenClaimsTest {
 
     @Nested
-    @DisplayName("TokenClaims 생성 시")
-    class CreateTokenClaims {
+    class 유효한_정보를_인증_정보를_전달할_때 {
 
         @Test
-        @DisplayName("유효한 클레임 정보로 생성에 성공한다")
-        void createWithValidClaims() {
+        void 유효한_클레임_정보로_생성에_성공한다() {
             // given
             Long userId = 1L;
-            String authority = "PHOTOGRAPHER";
+            CatsnapAuthority authority = CatsnapAuthority.PHOTOGRAPHER;
 
             // when
             TokenClaims tokenClaims = new TokenClaims(userId, authority);
@@ -30,11 +31,10 @@ class TokenClaimsTest {
         }
 
         @Test
-        @DisplayName("MODEL 권한으로 생성에 성공한다")
-        void createWithModelAuthority() {
+        void 모델_권한으로_생성에_성공한다() {
             // given
             Long userId = 2L;
-            String authority = "MODEL";
+            CatsnapAuthority authority = CatsnapAuthority.MODEL;
 
             // when
             TokenClaims tokenClaims = new TokenClaims(userId, authority);
@@ -45,11 +45,10 @@ class TokenClaimsTest {
         }
 
         @Test
-        @DisplayName("userId가 null이면 예외가 발생한다")
-        void createWithNullUserId() {
+        void userId가_null이면_예외가_발생한다() {
             // given
             Long nullUserId = null;
-            String authority = "PHOTOGRAPHER";
+            CatsnapAuthority authority = CatsnapAuthority.PHOTOGRAPHER;
 
             // when & then
             assertThatThrownBy(() -> new TokenClaims(nullUserId, authority))
@@ -58,55 +57,26 @@ class TokenClaimsTest {
         }
 
         @Test
-        @DisplayName("authority가 null이면 예외가 발생한다")
-        void createWithNullAuthority() {
+        void authority가_null이면_예외가_발생한다() {
             // given
             Long userId = 1L;
-            String nullAuthority = null;
+            CatsnapAuthority nullAuthority = null;
 
             // when & then
             assertThatThrownBy(() -> new TokenClaims(userId, nullAuthority))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Authority cannot be null or empty");
-        }
-
-        @Test
-        @DisplayName("authority가 빈 문자열이면 예외가 발생한다")
-        void createWithEmptyAuthority() {
-            // given
-            Long userId = 1L;
-            String emptyAuthority = "";
-
-            // when & then
-            assertThatThrownBy(() -> new TokenClaims(userId, emptyAuthority))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Authority cannot be null or empty");
-        }
-
-        @Test
-        @DisplayName("authority가 공백만 있으면 예외가 발생한다")
-        void createWithBlankAuthority() {
-            // given
-            Long userId = 1L;
-            String blankAuthority = "   ";
-
-            // when & then
-            assertThatThrownBy(() -> new TokenClaims(userId, blankAuthority))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Authority cannot be null or empty");
+                .hasMessage("Authority cannot be null");
         }
     }
 
     @Nested
-    @DisplayName("TokenClaims 동등성 비교 시")
-    class TokenClaimsEquality {
+    class TokenClaims_동등성_비교_시 {
 
         @Test
-        @DisplayName("같은 값을 가진 TokenClaims는 동등하다")
-        void equalTokenClaimsWithSameValue() {
+        void 같은_값을_가진_TokenClaims는_동등하다() {
             // given
-            TokenClaims claims1 = new TokenClaims(1L, "PHOTOGRAPHER");
-            TokenClaims claims2 = new TokenClaims(1L, "PHOTOGRAPHER");
+            TokenClaims claims1 = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
+            TokenClaims claims2 = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
 
             // when & then
             assertThat(claims1).isEqualTo(claims2);
@@ -114,25 +84,73 @@ class TokenClaimsTest {
         }
 
         @Test
-        @DisplayName("다른 userId를 가진 TokenClaims는 동등하지 않다")
-        void notEqualTokenClaimsWithDifferentUserId() {
+        void 다른_userId를_가진_TokenClaims는_동등하지_않다() {
             // given
-            TokenClaims claims1 = new TokenClaims(1L, "PHOTOGRAPHER");
-            TokenClaims claims2 = new TokenClaims(2L, "PHOTOGRAPHER");
+            TokenClaims claims1 = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
+            TokenClaims claims2 = new TokenClaims(2L, CatsnapAuthority.PHOTOGRAPHER);
 
             // when & then
             assertThat(claims1).isNotEqualTo(claims2);
         }
 
         @Test
-        @DisplayName("다른 authority를 가진 TokenClaims는 동등하지 않다")
-        void notEqualTokenClaimsWithDifferentAuthority() {
+        void 다른_authority를_가진_TokenClaims는_동등하지_않다() {
             // given
-            TokenClaims claims1 = new TokenClaims(1L, "PHOTOGRAPHER");
-            TokenClaims claims2 = new TokenClaims(1L, "MODEL");
+            TokenClaims claims1 = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
+            TokenClaims claims2 = new TokenClaims(1L, CatsnapAuthority.MODEL);
 
             // when & then
             assertThat(claims1).isNotEqualTo(claims2);
+        }
+    }
+
+    @Nested
+    class 익명_사용자_관련_메서드 {
+
+        @Test
+        void anonymous_메서드로_익명_사용자_TokenClaims를_생성한다() {
+            // when
+            TokenClaims anonymous = TokenClaims.anonymous();
+
+            // then
+            assertThat(anonymous.userId()).isEqualTo(-1L);
+            assertThat(anonymous.authority()).isEqualTo(CatsnapAuthority.ANONYMOUS);
+        }
+
+        @Test
+        void 익명_사용자는_isAnonymous_true를_반환한다() {
+            // given
+            TokenClaims anonymous = TokenClaims.anonymous();
+
+            // when & then
+            assertThat(anonymous.isAnonymous()).isTrue();
+        }
+
+        @Test
+        void 익명_사용자는_isAuthenticated_false를_반환한다() {
+            // given
+            TokenClaims anonymous = TokenClaims.anonymous();
+
+            // when & then
+            assertThat(anonymous.isAuthenticated()).isFalse();
+        }
+
+        @Test
+        void 인증된_사용자는_isAnonymous_false를_반환한다() {
+            // given
+            TokenClaims authenticated = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
+
+            // when & then
+            assertThat(authenticated.isAnonymous()).isFalse();
+        }
+
+        @Test
+        void 인증된_사용자는_isAuthenticated_true를_반환한다() {
+            // given
+            TokenClaims authenticated = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
+
+            // when & then
+            assertThat(authenticated.isAuthenticated()).isTrue();
         }
     }
 }
