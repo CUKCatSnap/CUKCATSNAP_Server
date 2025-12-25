@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapGateway.config;
+package net.catsnap.CatsnapGateway.auth.infrastructure.config;
 
 import lombok.Getter;
 import lombok.Setter;
