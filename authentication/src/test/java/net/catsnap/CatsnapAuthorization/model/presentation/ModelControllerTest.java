@@ -1,6 +1,5 @@
 package net.catsnap.CatsnapAuthorization.model.presentation;
 
-import static net.catsnap.CatsnapAuthorization.shared.fixture.PassportTestHelper.withAnonymous;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -15,7 +14,9 @@ import net.catsnap.CatsnapAuthorization.model.dto.request.ModelLoginRequest;
 import net.catsnap.CatsnapAuthorization.model.dto.request.ModelSignUpRequest;
 import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.fixture.PassportTestHelper;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.config.PassportConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -23,12 +24,14 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(ModelController.class)
 @DisplayName("ModelController 테스트")
+@Import({PassportConfig.class, PassportTestHelper.class})
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 class ModelControllerTest {
@@ -38,6 +41,9 @@ class ModelControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private PassportTestHelper passportTestHelper;
 
     @MockitoBean
     private ModelService modelService;
@@ -58,7 +64,7 @@ class ModelControllerTest {
             doNothing().when(modelService).signUp(any(ModelSignUpRequest.class));
 
             //when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/signup"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isCreated())
@@ -78,7 +84,7 @@ class ModelControllerTest {
                 """;
 
             //when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/signup"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(invalidRequest))
                 .andExpect(status().isBadRequest())
@@ -98,7 +104,7 @@ class ModelControllerTest {
             );
 
             //when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/signup"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
@@ -120,7 +126,7 @@ class ModelControllerTest {
                 """;
 
             //when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/signup"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/signup"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(invalidRequest))
                 .andExpect(status().isBadRequest())
@@ -144,7 +150,7 @@ class ModelControllerTest {
             when(modelService.login(any(ModelLoginRequest.class))).thenReturn(tokenResponse);
 
             // when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/login"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
@@ -163,7 +169,7 @@ class ModelControllerTest {
                 """;
 
             // when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/login"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(invalidRequest))
                 .andExpect(status().isBadRequest())
@@ -181,7 +187,7 @@ class ModelControllerTest {
                 """;
 
             // when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/login"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(invalidRequest))
                 .andExpect(status().isBadRequest())
@@ -195,7 +201,7 @@ class ModelControllerTest {
             ModelLoginRequest request = new ModelLoginRequest("", "password1234");
 
             // when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/login"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
@@ -209,7 +215,7 @@ class ModelControllerTest {
             ModelLoginRequest request = new ModelLoginRequest("testuser", "");
 
             // when & then
-            mockMvc.perform(withAnonymous(post("/authorization/model/login"))
+            mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/model/login"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
