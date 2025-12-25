@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
+package net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor;
 
 import java.util.List;
 import net.catsnap.shared.auth.CatsnapAuthority;

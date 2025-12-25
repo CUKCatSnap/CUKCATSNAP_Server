@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthorizationException;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.AdminInterceptor;
 import net.catsnap.shared.auth.Admin;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.Passport;
@@ -83,7 +84,8 @@ class AdminInterceptorTest {
         // given
         Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
         Instant exp = now.plus(30, ChronoUnit.MINUTES);
-        Passport photographerPassport = new Passport((byte) 1, 2L, CatsnapAuthority.PHOTOGRAPHER, now, exp);
+        Passport photographerPassport = new Passport((byte) 1, 2L, CatsnapAuthority.PHOTOGRAPHER,
+            now, exp);
 
         when(passportHandler.parse(anyString())).thenReturn(photographerPassport);
 
@@ -98,7 +100,8 @@ class AdminInterceptorTest {
     @Test
     void 유효하지_않은_Passport면_AuthenticationException_발생합니다() throws Exception {
         // given
-        when(passportHandler.parse(anyString())).thenThrow(new InvalidPassportException("Invalid passport"));
+        when(passportHandler.parse(anyString())).thenThrow(
+            new InvalidPassportException("Invalid passport"));
 
         request.addHeader("X-Passport", "invalid-passport");
         HandlerMethod handler = createHandlerMethod("adminMethod");

@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthorizationException;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.LoginUserInterceptor;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.auth.LoginUser;
 import net.catsnap.shared.passport.domain.Passport;

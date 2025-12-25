@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver;
+package net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

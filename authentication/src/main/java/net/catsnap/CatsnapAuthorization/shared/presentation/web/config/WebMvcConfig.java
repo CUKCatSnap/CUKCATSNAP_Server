@@ -1,10 +1,10 @@
 package net.catsnap.CatsnapAuthorization.shared.presentation.web.config;
 
-import net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver.AdminInterceptor;
-import net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver.AnyUserInterceptor;
-import net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver.LoginModelInterceptor;
-import net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver.LoginPhotographerInterceptor;
-import net.catsnap.CatsnapAuthorization.shared.presentation.web.resolver.LoginUserInterceptor;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.AdminInterceptor;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.AnyUserInterceptor;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.LoginModelInterceptor;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.LoginPhotographerInterceptor;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.LoginUserInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

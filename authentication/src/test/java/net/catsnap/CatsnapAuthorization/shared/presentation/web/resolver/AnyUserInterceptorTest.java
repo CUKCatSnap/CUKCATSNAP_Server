@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import net.catsnap.CatsnapAuthorization.shared.presentation.error.AuthenticationException;
+import net.catsnap.CatsnapAuthorization.shared.presentation.web.interceptor.AnyUserInterceptor;
 import net.catsnap.shared.auth.AnyUser;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.Passport;
