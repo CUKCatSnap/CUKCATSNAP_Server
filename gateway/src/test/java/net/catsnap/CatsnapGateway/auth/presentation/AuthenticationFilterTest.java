@@ -65,7 +65,7 @@ class AuthenticationFilterTest {
                 CatsnapAuthority.ANONYMOUS);
             ServerHttpRequest passportIssuedRequest = request.mutate()
                 .header("X-User-Id", "-1")
-                .header("X-Authority", "ANONYMOUS")
+                .header("X-Authority", "anonymous")
                 .build();
 
             given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
@@ -165,7 +165,7 @@ class AuthenticationFilterTest {
             // given
             MockServerHttpRequest request = MockServerHttpRequest.get("/test")
                 .header("X-User-Id", "999")  // 사용자가 임의로 주입
-                .header("X-Authority", "ADMIN")  // 사용자가 임의로 주입
+                .header("X-Authority", "amdin")  // 사용자가 임의로 주입
                 .header("Authorization", "Bearer valid-jwt-token")
                 .build();
             ServerWebExchange exchange = MockServerWebExchange.from(request);
