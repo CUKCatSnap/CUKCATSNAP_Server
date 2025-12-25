@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 public interface PassportHandler {
 
-    public static final String PassportKey = "X-Passport";
+    public final String PassportKey = "X-Passport";
 
     /**
      * Passport를 서명하여 base64 인코딩된 문자열로 변환합니다.
