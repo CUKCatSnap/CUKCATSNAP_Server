@@ -26,3 +26,6 @@ app:
   jwt:
     jwt-key: V4MXn2rSWF4mNPIa1QXaVLjo1Q2ZHLmGAVLJjJMkJ0h54l387yI3RYuf91Cq8eeM8AZnAOG1VkrWFV65tKHkHXxIR7lx9RbnlyCkdxVCN0e0t8Hq1pfmrgbSg0Scj5v6
     expiration: 5  # 액세스 토큰 만료 시간 (분 단위)
+
+passport:
+  secret-key: itstestsecreykey123123123
