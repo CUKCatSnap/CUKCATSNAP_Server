@@ -137,18 +137,17 @@ public abstract class AbstractAuthInterceptor<A extends Annotation> implements
         }
 
         // 2. 서명된 Passport를 파싱 및 검증
-        Passport passport;
+        // 3. 사용자 권한이 허용 목록에 포함되는지 확인
         try {
-            passport = passportHandler.parse(signedPassport);
+            Passport passport = passportHandler.parse(signedPassport);
+
+            if (!allowedAuthorities.contains(passport.authority())) {
+                throw new AuthorizationException(SecurityErrorCode.FORBIDDEN);
+            }
         } catch (PassportParsingException | InvalidPassportException e) {
             throw new AuthenticationException(SecurityErrorCode.INVALID_PASSPORT);
         } catch (ExpiredPassportException e) {
             throw new AuthenticationException(SecurityErrorCode.EXPIRED_PASSPORT);
-        }
-
-        // 3. 사용자 권한이 허용 목록에 포함되는지 확인
-        if (!allowedAuthorities.contains(passport.authority())) {
-            throw new AuthorizationException(SecurityErrorCode.FORBIDDEN);
         }
     }
 }
