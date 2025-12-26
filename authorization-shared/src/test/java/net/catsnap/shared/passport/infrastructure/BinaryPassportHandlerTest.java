@@ -5,11 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.Passport;
 import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
@@ -32,8 +30,7 @@ class BinaryPassportHandlerTest {
     void setUp() {
         // 32바이트 테스트 시크릿 키 생성
         String keyString = "test-secret-key-32-bytes-long!!";
-        secretKey = new SecretKeySpec(keyString.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-        handler = new BinaryPassportHandler(secretKey);
+        handler = new BinaryPassportHandler(keyString);
     }
 
     @Nested
@@ -240,9 +237,7 @@ class BinaryPassportHandlerTest {
 
             // 다른 시크릿 키로 새로운 핸들러 생성
             String differentKeyString = "different-key-32-bytes-long!!!";
-            SecretKey differentKey = new SecretKeySpec(
-                differentKeyString.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-            BinaryPassportHandler differentHandler = new BinaryPassportHandler(differentKey);
+            BinaryPassportHandler differentHandler = new BinaryPassportHandler(differentKeyString);
 
             //when & then
             assertThrows(InvalidPassportException.class, () -> differentHandler.parse(signed));
