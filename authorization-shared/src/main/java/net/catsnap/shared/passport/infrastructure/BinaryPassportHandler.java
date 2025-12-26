@@ -1,12 +1,14 @@
 package net.catsnap.shared.passport.infrastructure;
 
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Base64;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.Passport;
 import net.catsnap.shared.passport.domain.PassportHandler;
@@ -34,11 +36,23 @@ public class BinaryPassportHandler implements PassportHandler {
 
     private final SecretKey secretKey;
 
-    public BinaryPassportHandler(SecretKey secretKey) {
-        if (secretKey == null) {
-            throw new IllegalArgumentException("secretKey는 null일 수 없습니다.");
+    public BinaryPassportHandler(String secretKeyString) {
+        if (secretKeyString == null || secretKeyString.isBlank()) {
+            throw new IllegalArgumentException("secretKeyString은 null이거나 비어있을 수 없습니다.");
         }
-        this.secretKey = secretKey;
+
+        // UTF-8 인코딩으로 바이트 배열 생성
+        byte[] keyBytes = secretKeyString.getBytes(StandardCharsets.UTF_8);
+
+        // HMAC-SHA256 보안을 위해 최소 32바이트 키 길이 검증
+        if (keyBytes.length < 32) {
+            throw new IllegalArgumentException(
+                "Secret key must be at least 32 bytes long for HMAC-SHA256 security. " +
+                "Current key length: " + keyBytes.length + " bytes"
+            );
+        }
+
+        this.secretKey = new SecretKeySpec(keyBytes, "HmacSHA256");
     }
 
     @Override

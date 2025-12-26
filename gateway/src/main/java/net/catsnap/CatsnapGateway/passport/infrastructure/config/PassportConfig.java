@@ -1,8 +1,5 @@
 package net.catsnap.CatsnapGateway.passport.infrastructure.config;
 
-import java.nio.charset.StandardCharsets;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import net.catsnap.shared.passport.domain.PassportHandler;
 import net.catsnap.shared.passport.infrastructure.BinaryPassportHandler;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,12 +22,6 @@ public class PassportConfig {
      */
     @Bean
     public PassportHandler passportHandler() {
-        // 시크릿 키 생성 (환경변수에서 읽음)
-        SecretKey secretKey = new SecretKeySpec(
-            secretKeyString.getBytes(StandardCharsets.UTF_8),
-            "HmacSHA256"
-        );
-
-        return new BinaryPassportHandler(secretKey);
+        return new BinaryPassportHandler(secretKeyString);
     }
 }
