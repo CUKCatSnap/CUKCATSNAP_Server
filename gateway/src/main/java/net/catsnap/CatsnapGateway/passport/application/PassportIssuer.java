@@ -45,7 +45,7 @@ public class PassportIssuer {
 
         // HTTP 헤더에 추가
         return invalidatedRequest.mutate()
-            .header(PassportHandler.PassportKey, signedPassport)
+            .header(PassportHandler.PASSPORT_KEY, signedPassport)
             .build();
     }
 
@@ -57,7 +57,7 @@ public class PassportIssuer {
      */
     public ServerHttpRequest invalidatePassport(ServerHttpRequest serverHttpRequest) {
         return serverHttpRequest.mutate()
-            .headers(httpHeaders -> httpHeaders.remove(PassportHandler.PassportKey))
+            .headers(httpHeaders -> httpHeaders.remove(PassportHandler.PASSPORT_KEY))
             .build();
     }
 }

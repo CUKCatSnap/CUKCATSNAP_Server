@@ -16,7 +16,7 @@ import net.catsnap.shared.passport.domain.exception.PassportParsingException;
  */
 public interface PassportHandler {
 
-    String PassportKey = "X-Passport";
+    String PASSPORT_KEY = "X-Passport";
 
     /**
      * Passport를 서명하여 base64 인코딩된 문자열로 변환합니다.
@@ -32,9 +32,9 @@ public interface PassportHandler {
      *
      * @param signedPassport base64 인코딩된 서명된 passport 문자열
      * @return 검증된 Passport 객체
-     * @throws PassportParsingException  Passport 파싱에 실패한 경우 (Base64 디코딩 실패, 잘못된 형식 등)
-     * @throws InvalidPassportException  Passport 서명 검증에 실패한 경우
-     * @throws ExpiredPassportException  Passport가 만료된 경우
+     * @throws PassportParsingException Passport 파싱에 실패한 경우 (Base64 디코딩 실패, 잘못된 형식 등)
+     * @throws InvalidPassportException Passport 서명 검증에 실패한 경우
+     * @throws ExpiredPassportException Passport가 만료된 경우
      */
     Passport parse(String signedPassport);
 }

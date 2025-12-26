@@ -129,7 +129,7 @@ public abstract class AbstractAuthInterceptor<A extends Annotation> implements
      * @throws AuthorizationException  접근 권한이 없는 경우 (403)
      */
     protected void validateUserAuthority(HttpServletRequest request) {
-        String signedPassport = request.getHeader(PassportHandler.PassportKey);
+        String signedPassport = request.getHeader(PassportHandler.PASSPORT_KEY);
 
         // 1. Passport 헤더가 없는 경우 예외 발생
         if (signedPassport == null || signedPassport.isBlank()) {

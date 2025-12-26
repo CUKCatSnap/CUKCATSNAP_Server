@@ -46,7 +46,7 @@ public class PassportTestHelper {
     /**
      * Passport 헤더 키
      */
-    private static final String PASSPORT_HEADER = PassportHandler.PassportKey;
+    private static final String PASSPORT_HEADER = PassportHandler.PASSPORT_KEY;
 
     /**
      * 기본 관리자 사용자 ID
@@ -69,8 +69,7 @@ public class PassportTestHelper {
     private static final byte DEFAULT_PASSPORT_VERSION = 1;
 
     /**
-     * PassportTestHelper 생성자
-     * PassportConfig에서 제공하는 PassportHandler를 주입받습니다.
+     * PassportTestHelper 생성자 PassportConfig에서 제공하는 PassportHandler를 주입받습니다.
      *
      * @param passportHandler PassportConfig에서 생성된 PassportHandler 빈
      */
