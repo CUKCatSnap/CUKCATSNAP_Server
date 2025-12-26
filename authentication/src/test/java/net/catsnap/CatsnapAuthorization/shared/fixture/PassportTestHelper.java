@@ -64,6 +64,11 @@ public class PassportTestHelper {
     private static final int DEFAULT_EXPIRATION_MINUTES = 30;
 
     /**
+     * 기본 Passport 버전
+     */
+    private static final byte DEFAULT_PASSPORT_VERSION = 1;
+
+    /**
      * PassportTestHelper 생성자
      * PassportConfig에서 제공하는 PassportHandler를 주입받습니다.
      *
@@ -149,7 +154,7 @@ public class PassportTestHelper {
         Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
         Instant exp = now.plus(DEFAULT_EXPIRATION_MINUTES, ChronoUnit.MINUTES);
 
-        Passport passport = new Passport((byte) 1, userId, authority, now, exp);
+        Passport passport = new Passport(DEFAULT_PASSPORT_VERSION, userId, authority, now, exp);
         String signedPassport = passportHandler.sign(passport);
 
         return builder.header(PASSPORT_HEADER, signedPassport);
