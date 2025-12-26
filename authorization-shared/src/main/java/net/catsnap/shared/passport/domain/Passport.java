@@ -1,6 +1,7 @@
 package net.catsnap.shared.passport.domain;
 
 import java.time.Instant;
+import java.util.Objects;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
 
@@ -10,18 +11,15 @@ import net.catsnap.shared.passport.domain.exception.ExpiredPassportException;
  * <p>이 객체는 이미 서명 검증이 완료된 상태의 인증 정보를 나타냅니다.
  * 서명 검증은 PassportParser에서 수행되며, 검증된 후에는 신뢰할 수 있는 정보로 사용됩니다.</p>
  */
-public record Passport(
-    byte version,
-    long userId,
-    CatsnapAuthority authority,
-    Instant iat,
-    Instant exp
-) {
+public final class Passport {
 
-    /**
-     * Compact constructor - 유효성 검증
-     */
-    public Passport {
+    private final byte version;
+    private final long userId;
+    private final CatsnapAuthority authority;
+    private final Instant iat;
+    private final Instant exp;
+
+    public Passport(byte version, long userId, CatsnapAuthority authority, Instant iat, Instant exp) {
         if (version < 1) {
             throw new IllegalArgumentException("version은 1 이상이어야 합니다.");
         }
@@ -34,6 +32,12 @@ public record Passport(
         if (iat.isAfter(exp)) {
             throw new IllegalArgumentException("iat는 exp보다 이전이어야 합니다.");
         }
+
+        this.version = version;
+        this.userId = userId;
+        this.authority = authority;
+        this.iat = iat;
+        this.exp = exp;
     }
 
     /**
@@ -41,25 +45,77 @@ public record Passport(
      *
      * @return 현재 시간이 만료 시간을 지났으면 true, 아니면 false
      */
-    public boolean isExpired() {
+    private boolean isExpired() {
         return Instant.now().isAfter(exp);
     }
 
-    @Override
+    public byte version() {
+        return version;
+    }
+
+    /**
+     * 사용자 ID를 반환합니다.
+     *
+     * @return 사용자 ID
+     * @throws ExpiredPassportException Passport가 만료된 경우
+     */
     public long userId() {
-        if (!isExpired()) {
-            return userId;
-        } else {
+        if (isExpired()) {
             throw new ExpiredPassportException();
         }
+        return userId;
+    }
+
+    /**
+     * 사용자 권한을 반환합니다.
+     *
+     * @return 사용자 권한
+     * @throws ExpiredPassportException Passport가 만료된 경우
+     */
+    public CatsnapAuthority authority() {
+        if (isExpired()) {
+            throw new ExpiredPassportException();
+        }
+        return authority;
+    }
+
+    public Instant iat() {
+        return iat;
+    }
+
+    public Instant exp() {
+        return exp;
     }
 
     @Override
-    public CatsnapAuthority authority() {
-        if (!isExpired()) {
-            return authority;
-        } else {
-            throw new ExpiredPassportException();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Passport passport = (Passport) o;
+        return version == passport.version
+            && userId == passport.userId
+            && authority == passport.authority
+            && Objects.equals(iat, passport.iat)
+            && Objects.equals(exp, passport.exp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(version, userId, authority, iat, exp);
+    }
+
+    @Override
+    public String toString() {
+        return "Passport{"
+            + "version=" + version
+            + ", userId=" + userId
+            + ", authority=" + authority
+            + ", iat=" + iat
+            + ", exp=" + exp
+            + '}';
     }
 }

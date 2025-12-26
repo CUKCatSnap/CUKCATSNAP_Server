@@ -1,9 +1,7 @@
 package net.catsnap.shared.passport.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -125,52 +123,6 @@ class PassportTest {
             //then
             assertEquals(sameTime, passport.iat());
             assertEquals(sameTime, passport.exp());
-        }
-    }
-
-    @Nested
-    class 만료_확인_테스트 {
-
-        @Test
-        void 만료되지_않은_Passport는_false를_반환한다() {
-            //given
-            Instant iat = Instant.now();
-            Instant exp = iat.plus(5, ChronoUnit.MINUTES); // 5분 후 만료
-            Passport passport = new Passport((byte) 1, 123L, CatsnapAuthority.MODEL, iat, exp);
-
-            //when
-            boolean expired = passport.isExpired();
-
-            //then
-            assertFalse(expired);
-        }
-
-        @Test
-        void 만료된_Passport는_true를_반환한다() {
-            //given
-            Instant iat = Instant.now().minus(10, ChronoUnit.MINUTES);
-            Instant exp = Instant.now().minus(5, ChronoUnit.MINUTES); // 5분 전 만료
-            Passport passport = new Passport((byte) 1, 123L, CatsnapAuthority.MODEL, iat, exp);
-
-            //when
-            boolean expired = passport.isExpired();
-
-            //then
-            assertTrue(expired);
-        }
-
-        @Test
-        void 만료_시간이_현재_시간과_거의_같으면_만료된_것으로_처리된다() {
-            //given
-            Instant iat = Instant.now().minus(1, ChronoUnit.SECONDS);
-            Instant exp = Instant.now().minus(1, ChronoUnit.MILLIS); // 1ms 전 만료
-            Passport passport = new Passport((byte) 1, 123L, CatsnapAuthority.MODEL, iat, exp);
-
-            //when
-            boolean expired = passport.isExpired();
-
-            //then
-            assertTrue(expired);
         }
     }
 
