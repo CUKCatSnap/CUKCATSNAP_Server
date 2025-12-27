@@ -9,7 +9,6 @@ import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.security.filter.JwtAuthenticationFilter;
-import net.catsnap.global.security.filter.RefreshAccessTokenFilter;
 import net.catsnap.global.security.filter.SignInAuthenticationFilter;
 import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
@@ -107,11 +106,6 @@ public class SecurityConfig {
             .addFilterAt(
                 new SignInAuthenticationFilter(authenticationManager(), objectMapper,
                     servletSecurityResponse, authTokenIssuer),
-                BasicAuthenticationFilter.class
-            )
-            .addFilterAt(
-                new RefreshAccessTokenFilter(servletSecurityResponse, jwtTokenAuthentication(),
-                    authTokenIssuer),
                 BasicAuthenticationFilter.class
             )
             .oauth2Login((oauth2) -> oauth2
