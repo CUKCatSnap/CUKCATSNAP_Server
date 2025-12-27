@@ -1,12 +1,18 @@
 package net.catsnap.CatsnapAuthorization.photographer.application;
 
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
+import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
 import net.catsnap.CatsnapAuthorization.photographer.domain.Photographer;
+import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerLoginRequest;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerSignUpRequest;
 import net.catsnap.CatsnapAuthorization.photographer.infrastructure.PhotographerRepository;
+import net.catsnap.CatsnapAuthorization.session.domain.AccessTokenManager;
+import net.catsnap.CatsnapAuthorization.session.domain.LoginSession;
+import net.catsnap.CatsnapAuthorization.session.domain.LoginSessionRepository;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,17 +30,24 @@ public class PhotographerService {
 
     private final PhotographerRepository photographerRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccessTokenManager accessTokenManager;
+    private final LoginSessionRepository loginSessionRepository;
 
     /**
      * PhotographerService 생성자
      *
      * @param photographerRepository Photographer 엔티티의 영속성 관리를 위한 Repository
      * @param passwordEncoder        비밀번호 암호화 및 검증을 위한 인터페이스
+     * @param accessTokenManager     액세스 토큰 발급을 위한 인터페이스
+     * @param loginSessionRepository 로그인 세션 Repository
      */
     public PhotographerService(PhotographerRepository photographerRepository,
-        PasswordEncoder passwordEncoder) {
+        PasswordEncoder passwordEncoder, AccessTokenManager accessTokenManager,
+        LoginSessionRepository loginSessionRepository) {
         this.photographerRepository = photographerRepository;
         this.passwordEncoder = passwordEncoder;
+        this.accessTokenManager = accessTokenManager;
+        this.loginSessionRepository = loginSessionRepository;
     }
 
     /**
@@ -64,6 +77,44 @@ public class PhotographerService {
         );
 
         photographerRepository.save(photographer);
+    }
+
+    /**
+     * 로그인 유스케이스
+     *
+     * <p>사용자 인증 후 액세스 토큰과 로그인 세션을 생성합니다.
+     *
+     * @param request 로그인 요청 정보를 담은 DTO
+     * @return 발급된 액세스 토큰과 로그인 세션 키
+     * @throws BusinessException 식별자가 존재하지 않거나 비밀번호가 일치하지 않는 경우
+     * @see PhotographerLoginRequest
+     */
+    @Transactional
+    public TokenResponse login(PhotographerLoginRequest request) {
+        // 식별자로 작가 조회
+        Identifier identifier = new Identifier(request.identifier());
+        Photographer photographer = photographerRepository.findByIdentifier(identifier)
+            .orElseThrow(() -> new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "아이디 또는 비밀번호가 존재하지 않는 사용자입니다."));
+
+        // 비밀번호 검증
+        if (!photographer.validatePassword(request.password(), passwordEncoder)) {
+            throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                "아이디 또는 비밀번호가 존재하지 않는 사용자입니다.");
+        }
+
+        // 로그인 세션 생성
+        LoginSession loginSession = LoginSession.create(
+            photographer.getId(),
+            CatsnapAuthority.PHOTOGRAPHER
+        );
+
+        // 액세스 토큰 생성
+        String accessToken = loginSession.generateAccessToken(accessTokenManager);
+
+        loginSessionRepository.save(loginSession);
+
+        return new TokenResponse(accessToken, loginSession.getSessionKey());
     }
 
     /**
