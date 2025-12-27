@@ -48,7 +48,7 @@ public class BinaryPassportHandler implements PassportHandler {
         if (keyBytes.length < 32) {
             throw new IllegalArgumentException(
                 "Secret key must be at least 32 bytes long for HMAC-SHA256 security. " +
-                "Current key length: " + keyBytes.length + " bytes"
+                    "Current key length: " + keyBytes.length + " bytes"
             );
         }
 
@@ -132,11 +132,6 @@ public class BinaryPassportHandler implements PassportHandler {
             // 시간 변환
             Instant iat = Instant.ofEpochSecond(iatSeconds);
             Instant exp = Instant.ofEpochSecond(expSeconds);
-
-            // 만료 확인
-            if (Instant.now().isAfter(exp)) {
-                throw new ExpiredPassportException();
-            }
 
             // Passport 생성
             return new Passport(version, userId, authority, iat, exp);
