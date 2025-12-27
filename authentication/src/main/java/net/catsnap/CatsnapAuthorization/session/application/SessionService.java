@@ -53,7 +53,7 @@ public class SessionService {
             .orElseThrow(() -> new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
                 "유효하지 않거나 만료된 리프레시 토큰입니다."));
 
-        // 액세스 토큰 재발급 (lastAccessedAt 자동 갱신)
+        // 액세스 토큰 재발급 (세션 갱신: lastAccessedAt 및 TTL 자동 갱신)
         String newAccessToken = loginSession.generateAccessToken(accessTokenManager);
 
         // 세션 저장 (lastAccessedAt 및 TTL 갱신 반영)
