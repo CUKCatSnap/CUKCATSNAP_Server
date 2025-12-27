@@ -5,7 +5,7 @@ import net.catsnap.CatsnapAuthorization.session.domain.AccessTokenManager;
 import net.catsnap.CatsnapAuthorization.session.domain.LoginSession;
 import net.catsnap.CatsnapAuthorization.session.domain.LoginSessionRepository;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
-import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.presentation.error.SecurityErrorCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,7 +50,7 @@ public class SessionService {
     public TokenRefreshResponse refreshAccessToken(String refreshToken) {
         // 리프레시 토큰(sessionKey)으로 세션 조회
         LoginSession loginSession = loginSessionRepository.findById(refreshToken)
-            .orElseThrow(() -> new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+            .orElseThrow(() -> new BusinessException(SecurityErrorCode.UNAUTHORIZED,
                 "유효하지 않거나 만료된 리프레시 토큰입니다."));
 
         // 액세스 토큰 재발급 (세션 갱신: lastAccessedAt 및 TTL 자동 갱신)

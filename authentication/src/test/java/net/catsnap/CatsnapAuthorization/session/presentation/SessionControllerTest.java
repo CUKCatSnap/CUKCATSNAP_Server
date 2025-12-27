@@ -13,6 +13,7 @@ import net.catsnap.CatsnapAuthorization.session.application.dto.response.TokenRe
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import net.catsnap.CatsnapAuthorization.shared.fixture.PassportTestHelper;
+import net.catsnap.CatsnapAuthorization.shared.presentation.error.SecurityErrorCode;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
 import net.catsnap.CatsnapAuthorization.shared.presentation.web.config.PassportConfig;
 import org.junit.jupiter.api.DisplayName;
@@ -125,17 +126,16 @@ class SessionControllerTest {
             TokenRefreshRequest request = new TokenRefreshRequest("invalid-refresh-token");
 
             when(sessionService.refreshAccessToken(any(String.class)))
-                .thenThrow(new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
+                .thenThrow(new BusinessException(SecurityErrorCode.UNAUTHORIZED,
                     "유효하지 않거나 만료된 리프레시 토큰입니다."));
 
             // when & then
             mockMvc.perform(passportTestHelper.withAnonymous(post("/authorization/refresh"))
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isUnauthorized())
                 .andExpect(
-                    jsonPath("$.code").value(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION.getCode()))
-                .andExpect(jsonPath("$.message").value("해당 값이 유효하지 않습니다."));
+                    jsonPath("$.code").value(SecurityErrorCode.UNAUTHORIZED.getCode()));
         }
     }
 }
