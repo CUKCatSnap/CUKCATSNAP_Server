@@ -38,4 +38,35 @@ public enum CatsnapAuthority {
         }
         return Optional.empty();
     }
+
+    /**
+     * 권한을 바이트 값으로 변환합니다. Passport 직렬화에 사용됩니다.
+     *
+     * @return 권한의 바이트 표현 (MODEL=0, PHOTOGRAPHER=1, ADMIN=2, ANONYMOUS=3)
+     */
+    public byte toByte() {
+        return switch (this) {
+            case MODEL -> 0;
+            case PHOTOGRAPHER -> 1;
+            case ADMIN -> 2;
+            case ANONYMOUS -> 3;
+        };
+    }
+
+    /**
+     * 바이트 값에서 권한을 생성합니다. Passport 역직렬화에 사용됩니다.
+     *
+     * @param value 권한의 바이트 값
+     * @return 해당하는 CatsnapAuthority 상수
+     * @throws IllegalArgumentException 유효하지 않은 바이트 값인 경우
+     */
+    public static CatsnapAuthority fromByte(byte value) {
+        return switch (value) {
+            case 0 -> MODEL;
+            case 1 -> PHOTOGRAPHER;
+            case 2 -> ADMIN;
+            case 3 -> ANONYMOUS;
+            default -> throw new IllegalArgumentException("유효하지 않은 권한 바이트 값: " + value);
+        };
+    }
 }

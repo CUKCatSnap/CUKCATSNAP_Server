@@ -13,12 +13,15 @@ import java.util.Optional;
 import javax.crypto.SecretKey;
 import net.catsnap.CatsnapGateway.auth.domain.vo.Token;
 import net.catsnap.CatsnapGateway.auth.domain.vo.TokenClaims;
+import net.catsnap.shared.auth.CatsnapAuthority;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("JwtTokenParser 테스트")
+@DisplayNameGeneration(ReplaceUnderscores.class)
+@SuppressWarnings("NonAsciiCharacters")
 class JwtTokenParserTest {
 
     private SecretKey secretKey;
@@ -33,17 +36,15 @@ class JwtTokenParserTest {
     }
 
     @Nested
-    @DisplayName("유효한 토큰 파싱 시")
-    class ParseValidToken {
+    class 유효한_토큰_파싱_시 {
 
         @Test
-        @DisplayName("유효한 JWT 토큰을 파싱하여 TokenClaims를 반환한다")
-        void parseValidToken() {
+        void 유효한_JWT_토큰을_파싱하여_TokenClaims를_반환한다() {
             // given
             String tokenValue = Jwts.builder()
                 .claims(Map.of(
                     "id", 1L,
-                    "authority", "PHOTOGRAPHER"
+                    "authority", "photographer"
                 ))
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().plus(1, ChronoUnit.HOURS)))
@@ -57,17 +58,16 @@ class JwtTokenParserTest {
             // then
             assertThat(result).isPresent();
             assertThat(result.get().userId()).isEqualTo(1L);
-            assertThat(result.get().authority()).isEqualTo("PHOTOGRAPHER");
+            assertThat(result.get().authority()).isEqualTo(CatsnapAuthority.PHOTOGRAPHER);
         }
 
         @Test
-        @DisplayName("MODEL 권한을 가진 토큰을 파싱한다")
-        void parseTokenWithModelAuthority() {
+        void MODEL_권한을_가진_토큰을_파싱한다() {
             // given
             String tokenValue = Jwts.builder()
                 .claims(Map.of(
                     "id", 2L,
-                    "authority", "MODEL"
+                    "authority", "model"
                 ))
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().plus(1, ChronoUnit.HOURS)))
@@ -81,12 +81,11 @@ class JwtTokenParserTest {
             // then
             assertThat(result).isPresent();
             assertThat(result.get().userId()).isEqualTo(2L);
-            assertThat(result.get().authority()).isEqualTo("MODEL");
+            assertThat(result.get().authority()).isEqualTo(CatsnapAuthority.MODEL);
         }
 
         @Test
-        @DisplayName("헤더가 포함된 토큰을 파싱한다")
-        void parseTokenWithHeaders() {
+        void 헤더가_포함된_토큰을_파싱한다() {
             // given
             String tokenValue = Jwts.builder()
                 .header()
@@ -95,7 +94,7 @@ class JwtTokenParserTest {
                 .and()
                 .claims(Map.of(
                     "id", 1L,
-                    "authority", "PHOTOGRAPHER"
+                    "authority", "photographer"
                 ))
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().plus(1, ChronoUnit.HOURS)))
@@ -109,22 +108,20 @@ class JwtTokenParserTest {
             // then
             assertThat(result).isPresent();
             assertThat(result.get().userId()).isEqualTo(1L);
-            assertThat(result.get().authority()).isEqualTo("PHOTOGRAPHER");
+            assertThat(result.get().authority()).isEqualTo(CatsnapAuthority.PHOTOGRAPHER);
         }
     }
 
     @Nested
-    @DisplayName("만료된 토큰 파싱 시")
-    class ParseExpiredToken {
+    class 만료된_토큰_파싱_시 {
 
         @Test
-        @DisplayName("만료된 JWT 토큰은 빈 Optional을 반환한다")
-        void parseExpiredToken() {
+        void 만료된_JWT_토큰은_빈_Optional을_반환한다() {
             // given
             String expiredTokenValue = Jwts.builder()
                 .claims(Map.of(
                     "id", 1L,
-                    "authority", "PHOTOGRAPHER"
+                    "authority", "photographer"
                 ))
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().minus(1, ChronoUnit.HOURS)))
@@ -141,12 +138,10 @@ class JwtTokenParserTest {
     }
 
     @Nested
-    @DisplayName("잘못된 서명의 토큰 파싱 시")
-    class ParseTokenWithWrongSignature {
+    class 잘못된_서명_토큰_파싱_시 {
 
         @Test
-        @DisplayName("잘못된 서명의 JWT 토큰은 빈 Optional을 반환한다")
-        void parseTokenWithWrongSignature() {
+        void 잘못된_서명의_JWT_토큰은_빈_Optional을_반환한다() {
             // given
             SecretKey wrongKey = Keys.hmacShaKeyFor(
                 "wrongSecretKeyForJwtTokenParserTestThatIsLongEnough1234567890".getBytes(
@@ -154,7 +149,7 @@ class JwtTokenParserTest {
             String tokenValue = Jwts.builder()
                 .claims(Map.of(
                     "id", 1L,
-                    "authority", "PHOTOGRAPHER"
+                    "authority", "photographer"
                 ))
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().plus(1, ChronoUnit.HOURS)))
@@ -171,12 +166,10 @@ class JwtTokenParserTest {
     }
 
     @Nested
-    @DisplayName("형식이 잘못된 토큰 파싱 시")
-    class ParseMalformedToken {
+    class 형식_잘못된_토큰_파싱_시 {
 
         @Test
-        @DisplayName("형식이 잘못된 토큰은 빈 Optional을 반환한다")
-        void parseMalformedToken() {
+        void 형식이_잘못된_토큰은_빈_Optional을_반환한다() {
             // given
             Token malformedToken = new Token("this.is.not.a.valid.jwt.token");
 
@@ -189,15 +182,13 @@ class JwtTokenParserTest {
     }
 
     @Nested
-    @DisplayName("필수 클레임이 없는 토큰 파싱 시")
-    class ParseTokenWithMissingClaims {
+    class 필수_클레임_없는_토큰_파싱_시 {
 
         @Test
-        @DisplayName("userId가 없는 토큰은 빈 Optional을 반환한다")
-        void parseTokenWithoutUserId() {
+        void userId가_없는_토큰은_빈_Optional을_반환한다() {
             // given
             String tokenValue = Jwts.builder()
-                .claims(Map.of("authority", "PHOTOGRAPHER"))
+                .claims(Map.of("authority", "photographer"))
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().plus(1, ChronoUnit.HOURS)))
                 .signWith(secretKey)
@@ -212,8 +203,7 @@ class JwtTokenParserTest {
         }
 
         @Test
-        @DisplayName("authority가 없는 토큰은 빈 Optional을 반환한다")
-        void parseTokenWithoutAuthority() {
+        void authority가_없는_토큰은_빈_Optional을_반환한다() {
             // given
             String tokenValue = Jwts.builder()
                 .claims(Map.of("id", 1L))
@@ -231,8 +221,7 @@ class JwtTokenParserTest {
         }
 
         @Test
-        @DisplayName("authority가 빈 문자열인 토큰은 빈 Optional을 반환한다")
-        void parseTokenWithEmptyAuthority() {
+        void authority가_빈_문자열이면_빈_Optional을_반환한다() {
             // given
             String tokenValue = Jwts.builder()
                 .claims(Map.of(
@@ -253,8 +242,7 @@ class JwtTokenParserTest {
         }
 
         @Test
-        @DisplayName("authority가 공백만 있는 토큰은 빈 Optional을 반환한다")
-        void parseTokenWithBlankAuthority() {
+        void authority가_공백이면_빈_Optional을_반환한다() {
             // given
             String tokenValue = Jwts.builder()
                 .claims(Map.of(

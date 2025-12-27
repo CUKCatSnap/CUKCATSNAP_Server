@@ -3,20 +3,20 @@ package net.catsnap.CatsnapGateway.auth.domain.vo;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Token 테스트")
+@DisplayNameGeneration(ReplaceUnderscores.class)
+@SuppressWarnings("NonAsciiCharacters")
 class TokenTest {
 
     @Nested
-    @DisplayName("Token 생성 시")
-    class CreateToken {
+    class 토큰_생성_시 {
 
         @Test
-        @DisplayName("유효한 토큰 문자열로 생성에 성공한다")
-        void createWithValidToken() {
+        void 유효한_문자열로_토큰_생성에_성공한다() {
             // given
             String validTokenValue = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U";
 
@@ -28,8 +28,7 @@ class TokenTest {
         }
 
         @Test
-        @DisplayName("null 토큰으로 생성 시 예외가 발생한다")
-        void createWithNullToken() {
+        void null_문자열로_생성시_예외가_발생한다() {
             // given
             String nullToken = null;
 
@@ -40,8 +39,7 @@ class TokenTest {
         }
 
         @Test
-        @DisplayName("빈 문자열 토큰으로 생성 시 예외가 발생한다")
-        void createWithEmptyToken() {
+        void 빈_문자열_토큰으로_생성시_예외가_발생한다() {
             // given
             String emptyToken = "";
 
@@ -52,8 +50,7 @@ class TokenTest {
         }
 
         @Test
-        @DisplayName("공백만 있는 토큰으로 생성 시 예외가 발생한다")
-        void createWithBlankToken() {
+        void 공백만_있는_토큰으로_생성시_예외가_발생한다() {
             // given
             String blankToken = "   ";
 
@@ -65,12 +62,10 @@ class TokenTest {
     }
 
     @Nested
-    @DisplayName("Token 동등성 비교 시")
-    class TokenEquality {
+    class 동등성_비교_시 {
 
         @Test
-        @DisplayName("같은 값을 가진 Token은 동등하다")
-        void equalTokensWithSameValue() {
+        void 같은_값을_가진_Token은_동등하다() {
             // given
             String tokenValue = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
             Token token1 = new Token(tokenValue);
@@ -82,8 +77,7 @@ class TokenTest {
         }
 
         @Test
-        @DisplayName("다른 값을 가진 Token은 동등하지 않다")
-        void notEqualTokensWithDifferentValue() {
+        void 다른_값을_가진_Token은_동등하지_않다() {
             // given
             Token token1 = new Token("token1");
             Token token2 = new Token("token2");

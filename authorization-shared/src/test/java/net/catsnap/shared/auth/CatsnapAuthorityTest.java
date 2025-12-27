@@ -1,6 +1,7 @@
 package net.catsnap.shared.auth;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
@@ -123,6 +124,138 @@ class CatsnapAuthorityTest {
 
             //then
             assertTrue(authority.isEmpty());
+        }
+    }
+
+    @Nested
+    class 바이트_변환_테스트 {
+
+        @Test
+        void MODEL은_0으로_변환된다() {
+            //given
+            CatsnapAuthority authority = CatsnapAuthority.MODEL;
+
+            //when
+            byte result = authority.toByte();
+
+            //then
+            assertEquals(0, result);
+        }
+
+        @Test
+        void PHOTOGRAPHER는_1로_변환된다() {
+            //given
+            CatsnapAuthority authority = CatsnapAuthority.PHOTOGRAPHER;
+
+            //when
+            byte result = authority.toByte();
+
+            //then
+            assertEquals(1, result);
+        }
+
+        @Test
+        void ADMIN은_2로_변환된다() {
+            //given
+            CatsnapAuthority authority = CatsnapAuthority.ADMIN;
+
+            //when
+            byte result = authority.toByte();
+
+            //then
+            assertEquals(2, result);
+        }
+
+        @Test
+        void ANONYMOUS는_3으로_변환된다() {
+            //given
+            CatsnapAuthority authority = CatsnapAuthority.ANONYMOUS;
+
+            //when
+            byte result = authority.toByte();
+
+            //then
+            assertEquals(3, result);
+        }
+
+        @Test
+        void 바이트_0은_MODEL로_변환된다() {
+            //given
+            byte value = 0;
+
+            //when
+            CatsnapAuthority result = CatsnapAuthority.fromByte(value);
+
+            //then
+            assertEquals(CatsnapAuthority.MODEL, result);
+        }
+
+        @Test
+        void 바이트_1은_PHOTOGRAPHER로_변환된다() {
+            //given
+            byte value = 1;
+
+            //when
+            CatsnapAuthority result = CatsnapAuthority.fromByte(value);
+
+            //then
+            assertEquals(CatsnapAuthority.PHOTOGRAPHER, result);
+        }
+
+        @Test
+        void 바이트_2는_ADMIN으로_변환된다() {
+            //given
+            byte value = 2;
+
+            //when
+            CatsnapAuthority result = CatsnapAuthority.fromByte(value);
+
+            //then
+            assertEquals(CatsnapAuthority.ADMIN, result);
+        }
+
+        @Test
+        void 바이트_3은_ANONYMOUS로_변환된다() {
+            //given
+            byte value = 3;
+
+            //when
+            CatsnapAuthority result = CatsnapAuthority.fromByte(value);
+
+            //then
+            assertEquals(CatsnapAuthority.ANONYMOUS, result);
+        }
+
+        @Test
+        void 유효하지_않은_바이트_값은_예외를_발생시킨다() {
+            //given
+            byte invalidValue = 99;
+
+            //when & then
+            assertThrows(IllegalArgumentException.class, () -> {
+                CatsnapAuthority.fromByte(invalidValue);
+            });
+        }
+
+        @Test
+        void 음수_바이트_값은_예외를_발생시킨다() {
+            //given
+            byte negativeValue = -1;
+
+            //when & then
+            assertThrows(IllegalArgumentException.class, () -> {
+                CatsnapAuthority.fromByte(negativeValue);
+            });
+        }
+
+        @Test
+        void 모든_권한은_바이트_변환_후_복원된다() {
+            //given & when & then
+            for (CatsnapAuthority authority : CatsnapAuthority.values()) {
+                byte byteValue = authority.toByte();
+                CatsnapAuthority restored = CatsnapAuthority.fromByte(byteValue);
+                assertEquals(authority, restored);
+            }
         }
     }
 }

@@ -5,14 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Optional;
 import net.catsnap.CatsnapGateway.auth.domain.vo.Token;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.mock.http.server.reactive.MockServerHttpRequest;
 
-@DisplayName("BearerTokenExtractor 테스트")
+@DisplayNameGeneration(ReplaceUnderscores.class)
+@SuppressWarnings("NonAsciiCharacters")
 class BearerTokenExtractorTest {
 
     private BearerTokenExtractor bearerTokenExtractor;
@@ -23,12 +25,10 @@ class BearerTokenExtractorTest {
     }
 
     @Nested
-    @DisplayName("유효한 Bearer 토큰 추출 시")
-    class ExtractValidBearerToken {
+    class 유효한_Bearer_토큰_추출_시 {
 
         @Test
-        @DisplayName("Authorization 헤더에서 Bearer 토큰을 추출한다")
-        void extractBearerToken() {
+        void Authorization_헤더에서_Bearer_토큰을_추출한다() {
             // given
             String tokenValue = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0";
             ServerHttpRequest request = MockServerHttpRequest
@@ -45,8 +45,7 @@ class BearerTokenExtractorTest {
         }
 
         @Test
-        @DisplayName("긴 Bearer 토큰을 추출한다")
-        void extractLongBearerToken() {
+        void 긴_Bearer_토큰을_추출한다() {
             // given
             String tokenValue = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
             ServerHttpRequest request = MockServerHttpRequest
@@ -64,12 +63,10 @@ class BearerTokenExtractorTest {
     }
 
     @Nested
-    @DisplayName("Authorization 헤더가 없는 경우")
-    class NoAuthorizationHeader {
+    class Authorization_헤더가_없는_경우 {
 
         @Test
-        @DisplayName("빈 Optional을 반환한다")
-        void returnEmptyOptional() {
+        void 빈_Optional을_반환한다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")
@@ -84,12 +81,10 @@ class BearerTokenExtractorTest {
     }
 
     @Nested
-    @DisplayName("Bearer 접두사가 없는 경우")
-    class NoBearerPrefix {
+    class Bearer_접두사가_없는_경우 {
 
         @Test
-        @DisplayName("토큰만 있는 경우 빈 Optional을 반환한다")
-        void returnEmptyOptionalWhenTokenOnly() {
+        void 토큰만_있는_경우_빈_Optional을_반환한다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")
@@ -104,8 +99,7 @@ class BearerTokenExtractorTest {
         }
 
         @Test
-        @DisplayName("다른 인증 방식(Basic)인 경우 빈 Optional을 반환한다")
-        void returnEmptyOptionalWhenBasicAuth() {
+        void 다른_인증_방식_Basic인_경우_빈_Optional을_반환한다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")
@@ -121,12 +115,10 @@ class BearerTokenExtractorTest {
     }
 
     @Nested
-    @DisplayName("Bearer 뒤에 토큰이 없는 경우")
-    class BearerWithoutToken {
+    class Bearer_뒤에_토큰이_없는_경우 {
 
         @Test
-        @DisplayName("Bearer만 있는 경우 빈 Optional을 반환한다")
-        void returnEmptyOptionalWhenBearerOnly() {
+        void Bearer만_있는_경우_빈_Optional을_반환한다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")
@@ -141,8 +133,7 @@ class BearerTokenExtractorTest {
         }
 
         @Test
-        @DisplayName("Bearer 뒤에 공백만 있는 경우 빈 Optional을 반환한다")
-        void returnEmptyOptionalWhenBearerWithSpaces() {
+        void Bearer_뒤에_공백만_있는_경우_빈_Optional을_반환한다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")
@@ -158,12 +149,10 @@ class BearerTokenExtractorTest {
     }
 
     @Nested
-    @DisplayName("대소문자 구분")
-    class CaseSensitivity {
+    class 대소문자_구분 {
 
         @Test
-        @DisplayName("소문자 bearer는 인식하지 않는다")
-        void notRecognizeLowercaseBearer() {
+        void 소문자_bearer는_인식하지_않는다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")
@@ -178,8 +167,7 @@ class BearerTokenExtractorTest {
         }
 
         @Test
-        @DisplayName("BEARER(대문자)는 인식하지 않는다")
-        void notRecognizeUppercaseBearer() {
+        void 대문자_BEARER는_인식하지_않는다() {
             // given
             ServerHttpRequest request = MockServerHttpRequest
                 .get("/test")

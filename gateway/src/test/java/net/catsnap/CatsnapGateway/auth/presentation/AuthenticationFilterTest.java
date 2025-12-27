@@ -2,17 +2,18 @@ package net.catsnap.CatsnapGateway.auth.presentation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import net.catsnap.CatsnapGateway.auth.application.AuthenticationService;
-import net.catsnap.CatsnapGateway.auth.application.PassportService;
-import net.catsnap.CatsnapGateway.auth.domain.vo.Passport;
-import net.catsnap.CatsnapGateway.auth.dto.AuthenticationPassport;
+import net.catsnap.CatsnapGateway.auth.domain.vo.TokenClaims;
+import net.catsnap.CatsnapGateway.passport.application.PassportIssuer;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,14 +29,15 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("AuthenticationFilter 테스트")
+@DisplayNameGeneration(ReplaceUnderscores.class)
+@SuppressWarnings("NonAsciiCharacters")
 class AuthenticationFilterTest {
 
     @Mock
     private AuthenticationService authenticationService;
 
     @Mock
-    private PassportService passportService;
+    private PassportIssuer passportIssuer;
 
     @InjectMocks
     private AuthenticationFilter authenticationFilter;
@@ -49,156 +51,120 @@ class AuthenticationFilterTest {
     }
 
     @Nested
-    @DisplayName("JWT 토큰이 없는 경우")
-    class NoToken {
+    class JWT_토큰이_없는_경우 {
 
         @Test
-        @DisplayName("익명 사용자로 처리되고 익명 Passport가 발급된다")
-        void processAsAnonymousUser() {
+        void 익명_사용자로_처리되고_익명_Passport가_발급된다() {
             // given
             MockServerHttpRequest request = MockServerHttpRequest.get("/test").build();
             ServerWebExchange exchange = MockServerWebExchange.from(request);
 
-            ServerHttpRequest invalidatedRequest = request.mutate().build();
-            Passport anonymousPassport = Passport.createAnonymous();
-            AuthenticationPassport anonymousAuthPassport = new AuthenticationPassport(-1L,
-                CatsnapAuthority.ANONYMOUS);
+            TokenClaims anonymousClaims = TokenClaims.anonymous();
             ServerHttpRequest passportIssuedRequest = request.mutate()
-                .header("X-User-Id", "-1")
-                .header("X-Authority", "anonymous")
+                .header("X-Passport", "signed-passport-data")
                 .build();
 
-            given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
-            given(authenticationService.authenticate(invalidatedRequest)).willReturn(
-                anonymousPassport);
-            given(passportService.issuePassport(invalidatedRequest, anonymousAuthPassport))
+            given(authenticationService.authenticate(request)).willReturn(anonymousClaims);
+            given(
+                passportIssuer.issuePassport(eq(request), eq(-1L), eq(CatsnapAuthority.ANONYMOUS)))
                 .willReturn(passportIssuedRequest);
 
             // when
             authenticationFilter.filter(exchange, filterChain);
 
             // then
-            verify(passportService).invalidatePassport(request);
-            verify(authenticationService).authenticate(invalidatedRequest);
-            verify(passportService).issuePassport(invalidatedRequest, anonymousAuthPassport);
+            verify(authenticationService).authenticate(request);
+            verify(passportIssuer).issuePassport(request, -1L, CatsnapAuthority.ANONYMOUS);
             verify(filterChain).filter(any(ServerWebExchange.class));
         }
     }
 
     @Nested
-    @DisplayName("유효한 JWT 토큰이 있는 경우")
-    class ValidToken {
+    class 유효한_JWT_토큰이_있는_경우 {
 
         @Test
-        @DisplayName("사용자 인증 정보가 추출되고 Passport가 발급된다")
-        void extractAuthenticationAndIssuePassport() {
+        void 사용자_인증_정보가_추출되고_Passport가_발급된다() {
             // given
             MockServerHttpRequest request = MockServerHttpRequest.get("/test")
                 .header("Authorization", "Bearer valid-jwt-token")
                 .build();
             ServerWebExchange exchange = MockServerWebExchange.from(request);
 
-            ServerHttpRequest invalidatedRequest = request.mutate().build();
-            Passport authenticatedPassport = new Passport(1L, CatsnapAuthority.PHOTOGRAPHER);
-            AuthenticationPassport authPassport = new AuthenticationPassport(1L,
-                CatsnapAuthority.PHOTOGRAPHER);
+            TokenClaims photographerClaims = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
             ServerHttpRequest passportIssuedRequest = request.mutate()
-                .header("X-User-Id", "1")
-                .header("X-Authority", "photographer")
+                .header("X-Passport", "signed-passport-data")
                 .build();
 
-            given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
-            given(authenticationService.authenticate(invalidatedRequest)).willReturn(
-                authenticatedPassport);
-            given(passportService.issuePassport(invalidatedRequest, authPassport))
+            given(authenticationService.authenticate(request)).willReturn(photographerClaims);
+            given(passportIssuer.issuePassport(eq(request), eq(1L),
+                eq(CatsnapAuthority.PHOTOGRAPHER)))
                 .willReturn(passportIssuedRequest);
 
             // when
             authenticationFilter.filter(exchange, filterChain);
 
             // then
-            verify(passportService).invalidatePassport(request);
-            verify(authenticationService).authenticate(invalidatedRequest);
-            verify(passportService).issuePassport(invalidatedRequest, authPassport);
+            verify(authenticationService).authenticate(request);
+            verify(passportIssuer).issuePassport(request, 1L, CatsnapAuthority.PHOTOGRAPHER);
             verify(filterChain).filter(any(ServerWebExchange.class));
         }
 
         @Test
-        @DisplayName("MODEL 권한을 가진 사용자로 인증된다")
-        void authenticateAsModelUser() {
+        void MODEL_권한을_가진_사용자로_인증된다() {
             // given
             MockServerHttpRequest request = MockServerHttpRequest.get("/test")
                 .header("Authorization", "Bearer model-jwt-token")
                 .build();
             ServerWebExchange exchange = MockServerWebExchange.from(request);
 
-            ServerHttpRequest invalidatedRequest = request.mutate().build();
-            Passport modelPassport = new Passport(2L, CatsnapAuthority.MODEL);
-            AuthenticationPassport authPassport = new AuthenticationPassport(2L,
-                CatsnapAuthority.MODEL);
+            TokenClaims modelClaims = new TokenClaims(2L, CatsnapAuthority.MODEL);
             ServerHttpRequest passportIssuedRequest = request.mutate()
-                .header("X-User-Id", "2")
-                .header("X-Authority", "model")
+                .header("X-Passport", "signed-passport-data")
                 .build();
 
-            given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
-            given(authenticationService.authenticate(invalidatedRequest)).willReturn(modelPassport);
-            given(passportService.issuePassport(invalidatedRequest, authPassport))
+            given(authenticationService.authenticate(request)).willReturn(modelClaims);
+            given(passportIssuer.issuePassport(eq(request), eq(2L), eq(CatsnapAuthority.MODEL)))
                 .willReturn(passportIssuedRequest);
 
             // when
             authenticationFilter.filter(exchange, filterChain);
 
             // then
-            verify(authenticationService).authenticate(invalidatedRequest);
-            verify(passportService).issuePassport(invalidatedRequest, authPassport);
+            verify(authenticationService).authenticate(request);
+            verify(passportIssuer).issuePassport(request, 2L, CatsnapAuthority.MODEL);
         }
     }
 
     @Nested
-    @DisplayName("사용자가 임의로 Passport를 주입한 경우")
-    class InjectedPassport {
+    class 사용자가_임의로_Passport를_주입한_경우 {
 
         @Test
-        @DisplayName("주입된 Passport가 무효화되고 실제 인증 정보로 새로운 Passport가 발급된다")
-        void invalidateInjectedPassportAndIssueRealOne() {
+        void 주입된_Passport가_무효화되고_실제_인증정보로_새로운_Passport가_발급된다() {
             // given
             MockServerHttpRequest request = MockServerHttpRequest.get("/test")
-                .header("X-User-Id", "999")  // 사용자가 임의로 주입
-                .header("X-Authority", "amdin")  // 사용자가 임의로 주입
+                .header("X-Passport", "fake-passport-data")  // 사용자가 임의로 주입
                 .header("Authorization", "Bearer valid-jwt-token")
                 .build();
             ServerWebExchange exchange = MockServerWebExchange.from(request);
 
-            // 임의로 주입된 헤더가 제거된 요청
-            ServerHttpRequest invalidatedRequest = MockServerHttpRequest.get("/test")
-                .header("Authorization", "Bearer valid-jwt-token")
-                .build();
-
-            Passport actualPassport = new Passport(1L, CatsnapAuthority.PHOTOGRAPHER);
-            AuthenticationPassport actualAuthPassport = new AuthenticationPassport(1L,
-                CatsnapAuthority.PHOTOGRAPHER);
+            TokenClaims actualClaims = new TokenClaims(1L, CatsnapAuthority.PHOTOGRAPHER);
             ServerHttpRequest passportIssuedRequest = request.mutate()
-                .header("X-User-Id", "1")
-                .header("X-Authority", "photographer")
+                .header("X-Passport", "real-signed-passport-data")
                 .build();
 
-            given(passportService.invalidatePassport(request)).willReturn(invalidatedRequest);
-            given(authenticationService.authenticate(invalidatedRequest)).willReturn(
-                actualPassport);
-            given(passportService.issuePassport(invalidatedRequest, actualAuthPassport))
+            given(authenticationService.authenticate(request)).willReturn(actualClaims);
+            given(passportIssuer.issuePassport(eq(request), eq(1L),
+                eq(CatsnapAuthority.PHOTOGRAPHER)))
                 .willReturn(passportIssuedRequest);
 
             // when
             authenticationFilter.filter(exchange, filterChain);
 
             // then
-            // 기존 패스포트가 무효화되었는지 확인
-            verify(passportService).invalidatePassport(request);
-            // 무효화된 요청으로 인증이 수행되었는지 확인
-            verify(authenticationService).authenticate(invalidatedRequest);
-            // 실제 인증 정보로 새로운 패스포트가 발급되었는지 확인
-            verify(passportService).issuePassport(invalidatedRequest, actualAuthPassport);
+            // 인증이 수행되었는지 확인
+            verify(authenticationService).authenticate(request);
+            // 실제 인증 정보로 새로운 패스포트가 발급되었는지 확인 (내부적으로 기존 Passport 무효화)
+            verify(passportIssuer).issuePassport(request, 1L, CatsnapAuthority.PHOTOGRAPHER);
 
             // 수정된 exchange로 필터 체인이 계속되는지 확인
             ArgumentCaptor<ServerWebExchange> exchangeCaptor = ArgumentCaptor.forClass(
