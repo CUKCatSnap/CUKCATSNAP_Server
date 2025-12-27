@@ -1,7 +1,9 @@
 package net.catsnap.CatsnapAuthorization.photographer.presentation;
 
 import jakarta.validation.Valid;
+import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.photographer.application.PhotographerService;
+import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerLoginRequest;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerSignUpRequest;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.CommonResultCode;
 import net.catsnap.CatsnapAuthorization.shared.presentation.response.ResultResponse;
@@ -39,5 +41,19 @@ public class PhotographerController {
         @Valid @RequestBody PhotographerSignUpRequest request) {
         photographerService.signUp(request);
         return ResultResponse.of(CommonResultCode.COMMON_CREATE);
+    }
+
+    /**
+     * 로그인 API
+     *
+     * @param request 로그인 요청 정보 (identifier, password)
+     * @return 액세스 토큰과 로그인 세션 키
+     */
+    @PostMapping("/login")
+    @AnyUser
+    public ResponseEntity<ResultResponse<TokenResponse>> login(
+        @Valid @RequestBody PhotographerLoginRequest request) {
+        TokenResponse tokenResponse = photographerService.login(request);
+        return ResultResponse.of(CommonResultCode.COMMON_READ, tokenResponse);
     }
 }
