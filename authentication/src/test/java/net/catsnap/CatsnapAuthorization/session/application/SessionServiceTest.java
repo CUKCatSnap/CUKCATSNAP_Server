@@ -7,7 +7,7 @@ import net.catsnap.CatsnapAuthorization.session.application.dto.response.TokenRe
 import net.catsnap.CatsnapAuthorization.session.domain.LoginSession;
 import net.catsnap.CatsnapAuthorization.session.domain.LoginSessionRepository;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
-import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
+import net.catsnap.CatsnapAuthorization.shared.presentation.error.SecurityErrorCode;
 import net.catsnap.shared.auth.CatsnapAuthority;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -76,7 +76,7 @@ class SessionServiceTest {
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("유효하지 않거나 만료된 리프레시 토큰입니다.")
                 .extracting("resultCode")
-                .isEqualTo(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION);
+                .isEqualTo(SecurityErrorCode.UNAUTHORIZED);
         }
 
         @Test
