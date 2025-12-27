@@ -67,8 +67,8 @@ public class BinaryPassportHandler implements PassportHandler {
         buffer.put(passport.version());
         buffer.putLong(passport.userId());
         buffer.put(passport.authority().toByte());
-        buffer.putLong(passport.exp().getEpochSecond());
         buffer.putLong(passport.iat().getEpochSecond());
+        buffer.putLong(passport.exp().getEpochSecond());
 
         // 서명 생성 (처음 26바이트)
         byte[] data = Arrays.copyOfRange(buffer.array(), 0, DATA_SIZE);
