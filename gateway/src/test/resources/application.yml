@@ -15,4 +15,4 @@ spring:
             - Path=/**
 
 passport:
-  secret-key: itstestsecreykey123123123
+  secret-key: itstestsecreykey123123123itstestsecreykey123123123

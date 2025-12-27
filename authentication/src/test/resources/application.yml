@@ -28,4 +28,4 @@ app:
     expiration: 5  # 액세스 토큰 만료 시간 (분 단위)
 
 passport:
-  secret-key: itstestsecreykey123123123
+  secret-key: itstestsecreykey123123123itstestsecreykey123123123
