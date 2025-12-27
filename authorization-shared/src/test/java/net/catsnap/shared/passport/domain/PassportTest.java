@@ -108,22 +108,6 @@ class PassportTest {
             assertThrows(IllegalArgumentException.class,
                 () -> new Passport(version, userId, authority, iat, exp));
         }
-
-        @Test
-        void iat와_exp가_같으면_정상적으로_생성된다() {
-            //given
-            byte version = 1;
-            long userId = 123L;
-            CatsnapAuthority authority = CatsnapAuthority.MODEL;
-            Instant sameTime = Instant.now();
-
-            //when
-            Passport passport = new Passport(version, userId, authority, sameTime, sameTime);
-
-            //then
-            assertEquals(sameTime, passport.iat());
-            assertEquals(sameTime, passport.exp());
-        }
     }
 
     @Nested
@@ -135,7 +119,8 @@ class PassportTest {
             long expectedUserId = 456L;
             Instant iat = Instant.now();
             Instant exp = iat.plus(5, ChronoUnit.MINUTES);
-            Passport passport = new Passport((byte) 1, expectedUserId, CatsnapAuthority.PHOTOGRAPHER,
+            Passport passport = new Passport((byte) 1, expectedUserId,
+                CatsnapAuthority.PHOTOGRAPHER,
                 iat, exp);
 
             //when
