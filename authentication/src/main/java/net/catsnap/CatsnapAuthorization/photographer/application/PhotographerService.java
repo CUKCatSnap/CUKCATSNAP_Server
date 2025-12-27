@@ -51,7 +51,7 @@ public class PhotographerService {
         // 식별자 중복 체크
         if (checkIdentifierExists(request.identifier())) {
             throw new BusinessException(CommonErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
-                "중복되는 Id는 사용할 수 없습니다.");
+                "중복되는 identifier는 사용할 수 없습니다.");
         }
 
         // Aggregate Root가 VO를 직접 생성하도록 원시 타입 전달

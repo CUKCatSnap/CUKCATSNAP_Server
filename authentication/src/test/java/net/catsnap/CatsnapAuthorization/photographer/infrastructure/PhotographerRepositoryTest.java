@@ -81,7 +81,7 @@ class PhotographerRepositoryTest {
         }
 
         @Test
-        void findByIdentifier_존재하지_않는_Identifier로_조회하면_빈_Optional을_반환한다() {
+        void 존재하지_않는_Identifier로_조회하면_빈_Optional을_반환한다() {
             // given
             Identifier nonExistentIdentifier = new Identifier("nonexistent");
 
@@ -94,7 +94,7 @@ class PhotographerRepositoryTest {
         }
 
         @Test
-        void findByIdentifier_조회된_Photographer의_모든_필드가_저장된_값과_일치한다() {
+        void 조회된_Photographer의_모든_필드가_저장된_값과_일치한다() {
             // given
             Identifier identifier = new Identifier("fulltest");
             String name = "풀테스트작가";

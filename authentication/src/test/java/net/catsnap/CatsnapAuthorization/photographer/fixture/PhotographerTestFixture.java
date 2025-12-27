@@ -16,7 +16,7 @@ import net.catsnap.CatsnapAuthorization.photographer.domain.Photographer;
 public class PhotographerTestFixture {
 
     /**
-     * 테스트용 PasswordEncoder 구현 실제 암호화 없이 간단히 접두사만 추가합니다.
+     * 테스트용 PasswordEncoder 구현입니다. 실제 암호화 없이 간단히 접두사만 추가합니다.
      */
     private static class TestPasswordEncoder implements PasswordEncoder {
 
@@ -60,7 +60,7 @@ public class PhotographerTestFixture {
     }
 
     /**
-     * 기본값으로 Photographer 생성 (커스텀 PasswordEncoder 사용)
+     * 커스텀 PasswordEncoder를 사용하여 기본 설정의 Photographer 생성
      */
     public static Photographer create(PasswordEncoder passwordEncoder) {
         return builder().passwordEncoder(passwordEncoder).build();
