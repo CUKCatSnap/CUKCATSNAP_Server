@@ -29,7 +29,7 @@ class BinaryPassportHandlerTest {
     @BeforeEach
     void setUp() {
         // 32바이트 테스트 시크릿 키 생성
-        String keyString = "test-secret-key-32-bytes-long!!";
+        String keyString = "test-secret-key-32-bytes-long!!11";
         handler = new BinaryPassportHandler(keyString);
     }
 
@@ -236,7 +236,7 @@ class BinaryPassportHandlerTest {
             String signed = handler.sign(passport);
 
             // 다른 시크릿 키로 새로운 핸들러 생성
-            String differentKeyString = "different-key-32-bytes-long!!!";
+            String differentKeyString = "different-key-32-bytes-long!!11!";
             BinaryPassportHandler differentHandler = new BinaryPassportHandler(differentKeyString);
 
             //when & then
