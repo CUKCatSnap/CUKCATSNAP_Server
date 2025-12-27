@@ -35,7 +35,7 @@ public class PassportIssuer {
         // 기존 Passport 헤더 무효화 (사용자가 의도적으로 주입한 값 제거)
         ServerHttpRequest invalidatedRequest = invalidatePassport(serverHttpRequest);
 
-        // 2. Passport 생성
+        // Passport 생성
         Instant now = Instant.now();
         Instant exp = now.plus(EXPIRATION_MINUTES, ChronoUnit.MINUTES);
         Passport passport = new Passport(PASSPORT_VERSION, userId, authority, now, exp);
