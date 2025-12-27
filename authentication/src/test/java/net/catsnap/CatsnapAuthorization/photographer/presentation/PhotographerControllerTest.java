@@ -2,12 +2,15 @@ package net.catsnap.CatsnapAuthorization.photographer.presentation;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.photographer.application.PhotographerService;
+import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerLoginRequest;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerSignUpRequest;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import net.catsnap.CatsnapAuthorization.shared.fixture.PassportTestHelper;
@@ -167,6 +170,103 @@ class PhotographerControllerTest {
                     passportTestHelper.withAnonymous(post("/authorization/photographer/signup"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(invalidRequest))
+                .andExpect(status().isBadRequest())
+                .andExpect(
+                    jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+        }
+    }
+
+    @Nested
+    class 로그인 {
+
+        @Test
+        void 로그인을_성공한다() throws Exception {
+            // given
+            PhotographerLoginRequest request = new PhotographerLoginRequest("testphotographer",
+                "password1234");
+            TokenResponse tokenResponse = new TokenResponse(
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U",
+                "550e8400-e29b-41d4-a716-446655440000"
+            );
+
+            when(photographerService.login(any(PhotographerLoginRequest.class))).thenReturn(
+                tokenResponse);
+
+            // when & then
+            mockMvc.perform(
+                    passportTestHelper.withAnonymous(post("/authorization/photographer/login"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.code").value(CommonResultCode.COMMON_READ.getCode()))
+                .andExpect(jsonPath("$.data.accessToken").value(tokenResponse.accessToken()))
+                .andExpect(jsonPath("$.data.refreshToken").value(tokenResponse.refreshToken()));
+        }
+
+        @Test
+        void 로그인_시_identifier_누락_시_예외가_발생한다() throws Exception {
+            // given - identifier가 누락된 요청
+            String invalidRequest = """
+                {
+                    "password": "password1234"
+                }
+                """;
+
+            // when & then
+            mockMvc.perform(
+                    passportTestHelper.withAnonymous(post("/authorization/photographer/login"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(invalidRequest))
+                .andExpect(status().isBadRequest())
+                .andExpect(
+                    jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+        }
+
+        @Test
+        void 로그인_시_password_누락_시_예외가_발생한다() throws Exception {
+            // given - password가 누락된 요청
+            String invalidRequest = """
+                {
+                    "identifier": "testphotographer"
+                }
+                """;
+
+            // when & then
+            mockMvc.perform(
+                    passportTestHelper.withAnonymous(post("/authorization/photographer/login"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(invalidRequest))
+                .andExpect(status().isBadRequest())
+                .andExpect(
+                    jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+        }
+
+        @Test
+        void 로그인_시_빈_identifier_전달_시_예외가_발생한다() throws Exception {
+            // given - 빈 identifier 전달
+            PhotographerLoginRequest request = new PhotographerLoginRequest("", "password1234");
+
+            // when & then
+            mockMvc.perform(
+                    passportTestHelper.withAnonymous(post("/authorization/photographer/login"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest())
+                .andExpect(
+                    jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
+        }
+
+        @Test
+        void 로그인_시_빈_password_전달_시_예외가_발생한다() throws Exception {
+            // given - 빈 password 전달
+            PhotographerLoginRequest request = new PhotographerLoginRequest("testphotographer",
+                "");
+
+            // when & then
+            mockMvc.perform(
+                    passportTestHelper.withAnonymous(post("/authorization/photographer/login"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
                 .andExpect(
                     jsonPath("$.code").value(CommonErrorCode.INVALID_REQUEST_BODY.getCode()));
