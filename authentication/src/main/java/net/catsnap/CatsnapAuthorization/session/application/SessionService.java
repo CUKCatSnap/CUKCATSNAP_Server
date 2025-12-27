@@ -56,7 +56,7 @@ public class SessionService {
         // 액세스 토큰 재발급 (lastAccessedAt 자동 갱신)
         String newAccessToken = loginSession.generateAccessToken(accessTokenManager);
 
-        // 3. 세션 저장 (lastAccessedAt 갱신 반영)
+        // 세션 저장 (lastAccessedAt 및 TTL 갱신 반영)
         loginSessionRepository.save(loginSession);
 
         return new TokenRefreshResponse(newAccessToken);
