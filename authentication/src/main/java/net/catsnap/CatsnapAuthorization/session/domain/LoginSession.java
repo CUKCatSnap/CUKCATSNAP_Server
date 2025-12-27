@@ -36,7 +36,7 @@ public class LoginSession {
     private LocalDateTime lastAccessedAt;
 
     @TimeToLive  // Redis TTL (초 단위)
-    private final Long sessionLiveDuration = LOGIN_SESSION_DURATION_SECONDS;
+    private Long sessionLiveDuration = LOGIN_SESSION_DURATION_SECONDS;
 
     /**
      * 로그인 시 세션을 생성하는 정적 팩토리 메서드
@@ -61,22 +61,26 @@ public class LoginSession {
     }
 
     /**
+     * 세션을 갱신합니다.
+     *
+     * <p>마지막 접근 시간과 세션 만료 시간(TTL)을 갱신하여 세션을 연장합니다.
+     * 액세스 토큰 재발급 시 호출되어 활성 사용자의 세션이 계속 유지되도록 합니다.</p>
+     */
+    public void renewSession() {
+        this.lastAccessedAt = LocalDateTime.now();
+        this.sessionLiveDuration = LOGIN_SESSION_DURATION_SECONDS;
+    }
+
+    /**
      * 액세스 토큰을 생성합니다.
      *
-     * <p>로그인 세션을 통해 액세스 토큰을 발급하며, 마지막 접근 시간을 갱신합니다.</p>
+     * <p>로그인 세션을 통해 액세스 토큰을 발급하며, 세션을 갱신합니다.</p>
      *
      * @param accessTokenManager 액세스 토큰 발급자
      * @return 생성된 액세스 토큰
      */
     public String generateAccessToken(AccessTokenManager accessTokenManager) {
-        updateLastAccessedAt();
+        renewSession();
         return accessTokenManager.issue(userId, authority);
-    }
-
-    /**
-     * 마지막 접근 시간을 현재 시간으로 갱신합니다.
-     */
-    private void updateLastAccessedAt() {
-        this.lastAccessedAt = LocalDateTime.now();
     }
 }
