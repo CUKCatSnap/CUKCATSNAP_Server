@@ -24,8 +24,8 @@ import net.catsnap.shared.passport.domain.exception.PassportParsingException;
  * [0]:     version (1 byte)
  * [1-8]:   userId (long, 8 bytes)
  * [9]:     authority (byte, 1 byte) - enum ordinal
- * [10-17]: exp (long, 8 bytes, epoch seconds)
- * [18-25]: iat (long, 8 bytes, epoch seconds)
+ * [10-17]: iat (long, 8 bytes, epoch seconds)
+ * [18-25]: exp (long, 8 bytes, epoch seconds)
  * [26-57]: signature (32 bytes, HMAC-SHA256)
  * </pre>
  */
