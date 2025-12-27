@@ -107,8 +107,8 @@ public class BinaryPassportHandler implements PassportHandler {
             byte version = buffer.get();
             long userId = buffer.getLong();
             byte authorityByte = buffer.get();
-            long expSeconds = buffer.getLong();
             long iatSeconds = buffer.getLong();
+            long expSeconds = buffer.getLong();
 
             byte[] receivedSignature = new byte[32];
             buffer.get(receivedSignature);
