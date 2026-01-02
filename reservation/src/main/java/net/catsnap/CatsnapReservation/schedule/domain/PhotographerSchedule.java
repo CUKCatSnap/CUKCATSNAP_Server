@@ -81,7 +81,7 @@ public class PhotographerSchedule {
         return rules;
     }
 
-    public PhotographerSchedule initSchedule(Long photographerId) {
+    public static PhotographerSchedule initSchedule(Long photographerId) {
         return new PhotographerSchedule(photographerId, null);
     }
 

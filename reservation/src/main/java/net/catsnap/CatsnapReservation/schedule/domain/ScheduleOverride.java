@@ -67,6 +67,27 @@ public class ScheduleOverride {
         }
     }
 
+    /**
+     * 예외 규칙 생성 (커스텀 시간 설정)
+     */
+    public static ScheduleOverride create(
+        Long photographerId,
+        LocalDate targetDate,
+        AvailableStartTimes availableTimes
+    ) {
+        return new ScheduleOverride(photographerId, targetDate, availableTimes);
+    }
+
+    /**
+     * 특정 날짜를 휴무로 설정
+     */
+    public static ScheduleOverride dayOff(
+        Long photographerId,
+        LocalDate targetDate
+    ) {
+        return new ScheduleOverride(photographerId, targetDate, AvailableStartTimes.empty());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
