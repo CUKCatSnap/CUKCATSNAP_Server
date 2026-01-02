@@ -52,6 +52,11 @@
           <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization-shared" alt="authorization-shared"/></a></td>
           <td>인가 공유 모듈</td>
         </tr>
+        <tr>
+          <td>Reservation</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=reservation"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=reservation" alt="reservation"/></a></td>
+          <td>예약 관리 서버</td>
+        </tr>
       </table>
     </td>
   </tr>
