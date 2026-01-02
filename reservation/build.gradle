@@ -52,6 +52,10 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     // === H2 데이터베이스 (테스트 전용) ===
     testRuntimeOnly 'com.h2database:h2'
+
+    // === 롬복 의존성 ===
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
