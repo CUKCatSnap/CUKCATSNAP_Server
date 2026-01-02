@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catsnap-reservation
+  labels:
+    app: catsnap-reservation
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: catsnap-reservation
+  template:
+    metadata:
+      labels:
+        app: catsnap-reservation
+    spec:
+      containers:
+        - name: catsnap-reservation
+          image: chokyungho/catsnap-reservation:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
+            - name: JAVA_OPTS
+              value: "-Xmx1g -Xms1g"
+          resources:
+            requests:
+              memory: "1.5Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
