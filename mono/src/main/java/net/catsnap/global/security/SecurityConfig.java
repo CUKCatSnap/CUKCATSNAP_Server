@@ -9,7 +9,6 @@ import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import net.catsnap.domain.user.repository.UserRepository;
 import net.catsnap.global.security.filter.JwtAuthenticationFilter;
-import net.catsnap.global.security.filter.SignInAuthenticationFilter;
 import net.catsnap.global.security.handler.OAuth2LoginSuccessHandler;
 import net.catsnap.global.security.provider.CatsnapAuthenticationProvider;
 import net.catsnap.global.security.service.CatsnapUserDetailsService;
@@ -103,11 +102,6 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors
                 .configurationSource(corsConfigurationSource()))
-            .addFilterAt(
-                new SignInAuthenticationFilter(authenticationManager(), objectMapper,
-                    servletSecurityResponse, authTokenIssuer),
-                BasicAuthenticationFilter.class
-            )
             .oauth2Login((oauth2) -> oauth2
                 .userInfoEndpoint(userInfo -> userInfo
                     .userService(memberOAuth2UserService)
