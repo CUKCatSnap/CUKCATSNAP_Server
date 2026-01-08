@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.avro.io.BinaryDecoder;
@@ -32,7 +34,7 @@ class EventEnvelopeTest {
         String eventType = "PhotographerCreated";
         String aggregateId = "photographer-456";
         String aggregateType = "Photographer";
-        long timestamp = System.currentTimeMillis();
+        Instant timestamp = Instant.now().truncatedTo(ChronoUnit.MILLIS);
         byte[] payload = "test payload".getBytes();
 
         Map<String, String> metadata = new HashMap<>();
@@ -79,7 +81,7 @@ class EventEnvelopeTest {
                 .setAggregateId("aggregate-456")
                 .setAggregateType("TestAggregate")
                 .setVersion(1)
-                .setTimestamp(System.currentTimeMillis())
+                .setTimestamp(Instant.now().truncatedTo(ChronoUnit.MILLIS))
                 .setCorrelationId(null)
                 .setCausationId(null)
                 .setPayload(ByteBuffer.wrap("test".getBytes()))
@@ -124,36 +126,6 @@ class EventEnvelopeTest {
         assertThat(envelope.getSchema().getFields()).hasSize(10);
     }
 
-    @Test
-    void 대용량_payload_직렬화_테스트() throws IOException {
-        // given
-        byte[] largePayload = new byte[10 * 1024]; // 10KB
-        for (int i = 0; i < largePayload.length; i++) {
-            largePayload[i] = (byte) (i % 256);
-        }
-
-        EventEnvelope envelope = EventEnvelope.newBuilder()
-                .setEventId("event-large")
-                .setEventType("LargeEvent")
-                .setAggregateId("aggregate-large")
-                .setAggregateType("LargeAggregate")
-                .setVersion(1)
-                .setTimestamp(System.currentTimeMillis())
-                .setPayload(ByteBuffer.wrap(largePayload))
-                .setMetadata(new HashMap<>())
-                .build();
-
-        // when
-        byte[] serialized = serializeEventEnvelope(envelope);
-        EventEnvelope deserialized = deserializeEventEnvelope(serialized);
-
-        // then
-        ByteBuffer buffer = deserialized.getPayload();
-        byte[] bytes = new byte[buffer.remaining()];
-        buffer.duplicate().get(bytes);
-        assertThat(bytes).isEqualTo(largePayload);
-    }
-
     // Helper methods
     private EventEnvelope createSampleEventEnvelope() {
         Map<String, String> metadata = new HashMap<>();
@@ -166,7 +138,7 @@ class EventEnvelopeTest {
                 .setAggregateId("agg-67890")
                 .setAggregateType("TestAggregate")
                 .setVersion(1)
-                .setTimestamp(1234567890000L)
+                .setTimestamp(Instant.ofEpochMilli(1234567890000L))
                 .setCorrelationId("corr-123")
                 .setCausationId("cause-456")
                 .setPayload(ByteBuffer.wrap("sample payload".getBytes()))

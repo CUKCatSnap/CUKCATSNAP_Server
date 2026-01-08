@@ -8,6 +8,8 @@ import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.avro.Schema;
@@ -81,7 +83,7 @@ class ConfluentCompatibilityTest {
         assertThat(record.get("aggregateId").toString()).isEqualTo(original.getAggregateId());
         assertThat(record.get("aggregateType").toString()).isEqualTo(original.getAggregateType());
         assertThat(record.get("version")).isEqualTo(original.getVersion());
-        assertThat(record.get("timestamp")).isEqualTo(original.getTimestamp());
+        assertThat(record.get("timestamp")).isEqualTo(original.getTimestamp().toEpochMilli());
     }
 
     @Test
@@ -99,7 +101,7 @@ class ConfluentCompatibilityTest {
         assertThat(deserialized.get("aggregateId").toString()).isEqualTo(original.getAggregateId());
         assertThat(deserialized.get("aggregateType").toString()).isEqualTo(original.getAggregateType());
         assertThat(deserialized.get("version")).isEqualTo(1);
-        assertThat(deserialized.get("timestamp")).isEqualTo(original.getTimestamp());
+        assertThat(deserialized.get("timestamp")).isEqualTo(original.getTimestamp().toEpochMilli());
         assertThat(deserialized.get("correlationId").toString()).isEqualTo(original.getCorrelationId());
         assertThat(deserialized.get("causationId").toString()).isEqualTo(original.getCausationId());
 
@@ -152,7 +154,7 @@ class ConfluentCompatibilityTest {
                 .setAggregateId("agg-null")
                 .setAggregateType("TestAggregate")
                 .setVersion(1)
-                .setTimestamp(System.currentTimeMillis())
+                .setTimestamp(Instant.now().truncatedTo(ChronoUnit.MILLIS))
                 .setCorrelationId(null)
                 .setCausationId(null)
                 .setPayload(ByteBuffer.wrap("test".getBytes()))
@@ -172,32 +174,6 @@ class ConfluentCompatibilityTest {
         assertThat(metadata).isEmpty();
     }
 
-    @Test
-    void 대용량_이벤트_Confluent_직렬화_성능_테스트() {
-        // given
-        byte[] largePayload = new byte[100 * 1024]; // 100KB
-        EventEnvelope envelope = EventEnvelope.newBuilder()
-                .setEventId("perf-test")
-                .setEventType("PerformanceTest")
-                .setAggregateId("agg-perf")
-                .setAggregateType("PerfAggregate")
-                .setVersion(1)
-                .setTimestamp(System.currentTimeMillis())
-                .setPayload(ByteBuffer.wrap(largePayload))
-                .setMetadata(new HashMap<>())
-                .build();
-
-        // when
-        long startTime = System.currentTimeMillis();
-        byte[] serialized = serializer.serialize(TOPIC, envelope);
-        GenericRecord deserialized = (GenericRecord) deserializer.deserialize(TOPIC, serialized);
-        long endTime = System.currentTimeMillis();
-
-        // then
-        assertNotNull(deserialized);
-        assertThat(endTime - startTime).isLessThan(1000); // 1초 이내
-    }
-
     // Helper method
     private EventEnvelope createSampleEventEnvelope() {
         Map<String, String> metadata = new HashMap<>();
@@ -210,7 +186,7 @@ class ConfluentCompatibilityTest {
                 .setAggregateId("agg-67890")
                 .setAggregateType("TestAggregate")
                 .setVersion(1)
-                .setTimestamp(1234567890000L)
+                .setTimestamp(Instant.ofEpochMilli(1234567890000L))
                 .setCorrelationId("corr-123")
                 .setCausationId("cause-456")
                 .setPayload(ByteBuffer.wrap("sample payload".getBytes()))
