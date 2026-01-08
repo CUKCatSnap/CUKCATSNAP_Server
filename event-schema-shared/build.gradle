@@ -30,14 +30,11 @@ jacocoTestReport {
         xml.required = true
         csv.required = false
     }
+    finalizedBy jacocoTestCoverageVerification
 }
 
 test {
     finalizedBy jacocoTestReport
-}
-
-jacocoTestReport {
-    finalizedBy jacocoTestCoverageVerification
 }
 
 dependencies {
