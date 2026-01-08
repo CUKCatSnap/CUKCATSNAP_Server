@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id "com.github.davidmc24.gradle.plugin.avro" version "1.9.1"
+    id 'jacoco'
 }
 
 group = 'net.catsnap'
@@ -17,6 +18,26 @@ repositories {
     maven {
         url "https://packages.confluent.io/maven/"
     }
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    reports {
+        html.required = true
+        xml.required = true
+        csv.required = false
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    finalizedBy jacocoTestCoverageVerification
 }
 
 dependencies {
@@ -39,6 +60,6 @@ avro {
     enableDecimalLogicalType = true
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }
