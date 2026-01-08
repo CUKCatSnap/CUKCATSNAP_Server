@@ -62,7 +62,10 @@ class EventEnvelopeTest {
         assertThat(envelope.getTimestamp()).isEqualTo(timestamp);
         assertThat(envelope.getCorrelationId()).isEqualTo("correlation-123");
         assertThat(envelope.getCausationId()).isEqualTo("causation-456");
-        assertThat(envelope.getPayload().array()).isEqualTo(payload);
+        ByteBuffer buffer = envelope.getPayload();
+        byte[] bytes = new byte[buffer.remaining()];
+        buffer.duplicate().get(bytes);
+        assertThat(bytes).isEqualTo(payload);
         assertThat(envelope.getMetadata()).hasSize(2);
         assertThat(envelope.getMetadata().get("userId")).isEqualTo("user-789");
     }
@@ -145,7 +148,10 @@ class EventEnvelopeTest {
         EventEnvelope deserialized = deserializeEventEnvelope(serialized);
 
         // then
-        assertThat(deserialized.getPayload().array()).isEqualTo(largePayload);
+        ByteBuffer buffer = deserialized.getPayload();
+        byte[] bytes = new byte[buffer.remaining()];
+        buffer.duplicate().get(bytes);
+        assertThat(bytes).isEqualTo(largePayload);
     }
 
     // Helper methods
