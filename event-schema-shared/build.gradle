@@ -46,7 +46,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // Confluent Schema Registry compatibility
-    testImplementation 'io.confluent:kafka-avro-serializer:7.5.7'
+    testImplementation 'io.confluent:kafka-avro-serializer:8.1.1'
     testImplementation 'org.assertj:assertj-core:3.25.3'
 }
 
