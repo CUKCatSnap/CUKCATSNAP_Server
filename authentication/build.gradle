@@ -67,6 +67,8 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
     // === Redis 의존성 ===
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    // === Kafka 의존성 ===
+    implementation 'org.springframework.kafka:spring-kafka'
     // === Testcontainers 의존성 ===
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
