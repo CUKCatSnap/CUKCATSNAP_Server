@@ -1,0 +1,68 @@
+{
+  "type": "record",
+  "name": "EventEnvelope",
+  "namespace": "net.catsnap.event.shared",
+  "doc": "Common envelope for all domain events in the system",
+  "fields": [
+    {
+      "name": "eventId",
+      "type": "string",
+      "doc": "Unique identifier for this event (UUID)"
+    },
+    {
+      "name": "eventType",
+      "type": "string",
+      "doc": "Type of the event (e.g., PhotographerCreated, ReservationConfirmed)"
+    },
+    {
+      "name": "aggregateId",
+      "type": "string",
+      "doc": "Identifier of the aggregate that produced this event"
+    },
+    {
+      "name": "aggregateType",
+      "type": "string",
+      "doc": "Type of the aggregate"
+    },
+    {
+      "name": "version",
+      "type": "int",
+      "doc": "Schema version of the payload",
+      "default": 1
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      },
+      "doc": "Event occurrence timestamp (epoch milliseconds)"
+    },
+    {
+      "name": "correlationId",
+      "type": ["null", "string"],
+      "doc": "Correlation ID for tracking related events across services",
+      "default": null
+    },
+    {
+      "name": "causationId",
+      "type": ["null", "string"],
+      "doc": "ID of the event/command that caused this event",
+      "default": null
+    },
+    {
+      "name": "payload",
+      "type": "bytes",
+      "doc": "Serialized event payload (domain-specific data)"
+    },
+    {
+      "name": "metadata",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "doc": "Additional metadata (e.g., userId, sourceService)",
+      "default": {}
+    }
+  ]
+}

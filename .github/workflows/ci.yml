@@ -13,6 +13,7 @@ jobs:
       authentication: ${{ steps.filter.outputs.authentication }}
       authorization-shared: ${{ steps.filter.outputs.authorization-shared }}
       reservation: ${{ steps.filter.outputs.reservation }}
+      event-schema-shared: ${{ steps.filter.outputs.event-schema-shared }}
       common-files: ${{ steps.filter.outputs.common-files }}
     steps:
       - uses: actions/checkout@v4
@@ -32,6 +33,8 @@ jobs:
               - 'authorization-shared/**'
             reservation:
               - 'reservation/**'
+            event-schema-shared:
+              - 'event-schema-shared/**'
             common-files:
               - 'settings.gradle'
               - 'gradle/**'
@@ -86,3 +89,13 @@ jobs:
       pull-requests: write
     secrets: inherit
     uses: ./.github/workflows/test-reservation.yml
+
+  test-event-schema-shared:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.event-schema-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    secrets: inherit
+    uses: ./.github/workflows/test-event-schema-shared.yml

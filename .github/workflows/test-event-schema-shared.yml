@@ -1,0 +1,55 @@
+name: Test Event Schema Shared Module
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Test event-schema-shared module
+        run: ./gradlew --info :event-schema-shared:test
+
+      - name: Publish test results for event-schema-shared
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: 'event-schema-shared/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (event-schema-shared)
+
+      - name: Publish test report for event-schema-shared
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        with:
+          report_paths: 'event-schema-shared/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (event-schema-shared)
+
+      - name: Upload coverage reports to Codecov for event-schema-shared
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: event-schema-shared/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: event-schema-shared
+          name: event-schema-shared-coverage
