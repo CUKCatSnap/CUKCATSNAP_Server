@@ -195,7 +195,6 @@ class ConfluentCompatibilityTest {
 
         // then
         assertNotNull(deserialized);
-        System.out.println("Serialization/Deserialization time for 100KB payload: " + (endTime - startTime) + "ms");
         assertThat(endTime - startTime).isLessThan(1000); // 1초 이내
     }
 
