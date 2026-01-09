@@ -1,0 +1,33 @@
+{
+  "type": "record",
+  "name": "TestEventFixture",
+  "namespace": "net.catsnap.event.test.v1",
+  "doc": "테스트 전용 이벤트 스키마",
+  "fields": [
+    {
+      "name": "eventId",
+      "type": "string",
+      "doc": "이벤트 고유 식별자"
+    },
+    {
+      "name": "eventType",
+      "type": "string",
+      "doc": "이벤트 타입"
+    },
+    {
+      "name": "occurredAt",
+      "type": "long",
+      "doc": "이벤트 발생 시각 (timestamp)"
+    },
+    {
+      "name": "userId",
+      "type": "long",
+      "doc": "사용자 ID"
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "doc": "활성화 여부"
+    }
+  ]
+}
