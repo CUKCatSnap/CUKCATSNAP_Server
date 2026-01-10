@@ -1,6 +1,5 @@
 package net.catsnap.shared.application;
 
-import net.catsnap.shared.infrastructure.AvroEventSerializer;
 import org.apache.avro.specific.SpecificRecordBase;
 
 /**
@@ -9,7 +8,6 @@ import org.apache.avro.specific.SpecificRecordBase;
  * <p>도메인 이벤트를 바이너리로 직렬화하기 위한 추상화된 인터페이스입니다.
  * 실제 구현은 Infrastructure 계층에서 제공됩니다.</p>
  *
- * @see AvroEventSerializer
  */
 public interface EventSerializer {
 
