@@ -40,13 +40,13 @@ test {
 dependencies {
     implementation 'org.apache.avro:avro:1.11.4'
 
+    // Confluent Schema Registry compatibility
+    implementation 'io.confluent:kafka-avro-serializer:8.1.1'
+
     // Test dependencies
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-    // Confluent Schema Registry compatibility
-    testImplementation 'io.confluent:kafka-avro-serializer:8.1.1'
     testImplementation 'org.assertj:assertj-core:3.25.3'
 }
 
