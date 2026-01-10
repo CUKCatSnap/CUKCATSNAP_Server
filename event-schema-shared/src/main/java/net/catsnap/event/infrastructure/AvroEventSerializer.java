@@ -47,18 +47,22 @@ public class AvroEventSerializer implements EventSerializer {
     /**
      * Avro 이벤트를 바이너리로 직렬화합니다.
      *
-     * <p>제네릭을 사용하여 모든 Avro 이벤트 타입을 처리합니다. </p>
+     * <p>제네릭을 사용하여 모든 Avro 이벤트 타입을 처리합니다.
+     * try-with-resources를 사용하여 리소스를 안전하게 관리합니다.</p>
      *
-     * @param event Avro 이벤트 객체
+     * @param event Avro 이벤트 객체 (null 불가)
      * @param <T>   SpecificRecordBase를 상속받은 Avro 이벤트 타입
      * @return 직렬화된 바이트 배열
+     * @throws IllegalArgumentException    event가 null인 경우
      * @throws EventSerializationException 직렬화 실패 시
      */
-    @Override
     public <T extends SpecificRecordBase> byte[] serialize(T event) {
-        try {
+        if (event == null) {
+            throw new IllegalArgumentException("이벤트는 null일 수 없습니다.");
+        }
+
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             SpecificDatumWriter<T> writer = new SpecificDatumWriter<>(event.getSchema());
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(outputStream, null);
             writer.write(event, encoder);
             encoder.flush();
