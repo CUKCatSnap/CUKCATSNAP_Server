@@ -73,6 +73,9 @@ public class KafkaValueSerializer implements Serializer<EventEnvelope> {
      */
     @Override
     public byte[] serialize(String topic, EventEnvelope data) {
+        if (data == null) {
+            throw new IllegalArgumentException("EventEnvelope 'data' must not be null when serializing for topic '" + topic + "'.");
+        }
         return avroSerializer.serialize(topic, data);
     }
 
