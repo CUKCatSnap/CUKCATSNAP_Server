@@ -1,4 +1,4 @@
-package net.catsnap.event.infrastructure.exception;
+package net.catsnap.shared.infrastructure.exception;
 
 /**
  * 이벤트 처리 관련 예외의 공통 추상 클래스입니다.

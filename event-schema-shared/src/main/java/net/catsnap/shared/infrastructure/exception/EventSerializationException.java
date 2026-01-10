@@ -1,4 +1,4 @@
-package net.catsnap.event.infrastructure.exception;
+package net.catsnap.shared.infrastructure.exception;
 
 /**
  * 이벤트 직렬화 중 오류가 발생한 경우 발생하는 예외입니다.

@@ -1,9 +1,9 @@
-package net.catsnap.event.infrastructure;
+package net.catsnap.shared.infrastructure;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import net.catsnap.event.application.EventSerializer;
-import net.catsnap.event.infrastructure.exception.EventSerializationException;
+import net.catsnap.shared.application.EventSerializer;
+import net.catsnap.shared.infrastructure.exception.EventSerializationException;
 import org.apache.avro.io.BinaryEncoder;
 import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumWriter;
@@ -40,7 +40,7 @@ import org.apache.avro.specific.SpecificRecordBase;
  * // payload를 데이터베이스에 저장
  * }</pre>
  *
- * @see net.catsnap.event.application.EventSerializer
+ * @see EventSerializer
  */
 public class AvroEventSerializer implements EventSerializer {
 

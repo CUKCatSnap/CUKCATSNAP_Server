@@ -1,4 +1,4 @@
-package net.catsnap.event.infrastructure.kafka;
+package net.catsnap.shared.infrastructure.kafka;
 
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import java.util.Map;
