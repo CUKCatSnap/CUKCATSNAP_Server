@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -46,7 +47,7 @@ class PhotographerCreatedTest {
         deserializer.configure(config, false);
     }
 
-    @AfterEach  
+    @AfterEach
     void tearDown() {  
         if (serializer != null) {  
             serializer.close();  
