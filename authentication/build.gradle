@@ -42,8 +42,6 @@ jacocoTestReport {
 dependencies {
     // === 인증 모듈 추가 ===
     implementation project(':authorization-shared')
-    // === 이벤트 스키마 모듈 추가 ===
-    implementation project(':event-schema-shared')
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -69,8 +67,6 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
     // === Redis 의존성 ===
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    // === Kafka 의존성 ===
-    implementation 'org.springframework.kafka:spring-kafka'
     // === Testcontainers 의존성 ===
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
