@@ -45,26 +45,36 @@ import org.apache.avro.specific.SpecificRecordBase;
 public class AvroEventSerializer implements EventSerializer {
 
     /**
-     * Avro 이벤트를 바이너리로 직렬화합니다.
+     * 이벤트 객체를 바이너리로 직렬화합니다.
      *
-     * <p>제네릭을 사용하여 모든 Avro 이벤트 타입을 처리합니다.
+     * <p>내부적으로 Avro를 사용하여 직렬화하지만, 사용자는 이를 알 필요가 없습니다.
      * try-with-resources를 사용하여 리소스를 안전하게 관리합니다.</p>
      *
-     * @param event Avro 이벤트 객체 (null 불가)
-     * @param <T>   SpecificRecordBase를 상속받은 Avro 이벤트 타입
+     * @param event 직렬화할 이벤트 객체 (null 불가)
      * @return 직렬화된 바이트 배열
-     * @throws IllegalArgumentException    event가 null인 경우
+     * @throws IllegalArgumentException    event가 null이거나 지원되지 않는 타입인 경우
      * @throws EventSerializationException 직렬화 실패 시
      */
-    public <T extends SpecificRecordBase> byte[] serialize(T event) {
+    @Override
+    public byte[] serialize(Object event) {
         if (event == null) {
             throw new IllegalArgumentException("이벤트는 null일 수 없습니다.");
         }
 
+        if (!(event instanceof SpecificRecordBase)) {
+            throw new IllegalArgumentException(
+                "지원되지 않는 이벤트 타입입니다: " + event.getClass().getName() +
+                ". Avro 생성 이벤트 클래스만 직렬화할 수 있습니다."
+            );
+        }
+
+        SpecificRecordBase avroEvent = (SpecificRecordBase) event;
+
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-            SpecificDatumWriter<T> writer = new SpecificDatumWriter<>(event.getSchema());
+            @SuppressWarnings("unchecked")
+            SpecificDatumWriter<SpecificRecordBase> writer = new SpecificDatumWriter<>(avroEvent.getSchema());
             BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(outputStream, null);
-            writer.write(event, encoder);
+            writer.write(avroEvent, encoder);
             encoder.flush();
             return outputStream.toByteArray();
         } catch (IOException e) {
