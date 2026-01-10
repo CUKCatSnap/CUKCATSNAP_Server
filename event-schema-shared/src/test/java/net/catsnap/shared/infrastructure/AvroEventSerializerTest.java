@@ -1,10 +1,9 @@
-package net.catsnap.event.infrastructure;
+package net.catsnap.shared.infrastructure;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
 import net.catsnap.event.test.v1.TestEventFixture;
-import net.catsnap.shared.infrastructure.AvroEventSerializer;
 import org.apache.avro.io.BinaryDecoder;
 import org.apache.avro.io.DecoderFactory;
 import org.apache.avro.specific.SpecificDatumReader;
