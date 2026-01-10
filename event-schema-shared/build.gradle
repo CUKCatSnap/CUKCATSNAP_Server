@@ -38,9 +38,10 @@ test {
 }
 
 dependencies {
-    implementation 'org.apache.avro:avro:1.11.4'
+    // Avro 스키마 클래스를 사용하는 모듈에 공개 (공유 계약)
+    api 'org.apache.avro:avro:1.11.4'
 
-    // Confluent Schema Registry compatibility
+    // Confluent Schema Registry는 구현 세부사항으로 숨김
     implementation 'io.confluent:kafka-avro-serializer:8.1.1'
 
     // Test dependencies
