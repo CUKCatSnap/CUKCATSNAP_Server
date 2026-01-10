@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "PhotographerCreated",
+  "namespace": "net.catsnap.event.photographer.v1",
+  "doc": "Event triggered when a new photographer is created",
+  "fields": [
+    {
+      "name": "photographerId",
+      "type": "long",
+      "doc": "Unique identifier of the photographer"
+    }
+  ]
+}
