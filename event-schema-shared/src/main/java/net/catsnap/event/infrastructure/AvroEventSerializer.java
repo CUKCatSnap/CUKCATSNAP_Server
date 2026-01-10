@@ -32,7 +32,7 @@ import org.apache.avro.specific.SpecificRecordBase;
  * <pre>{@code
  * // Outbox 패턴에서 데이터베이스에 저장할 payload 생성
  * PhotographerCreated event = PhotographerCreated.newBuilder()
- *     .setPhotographerId("123")
+ *     .setPhotographerId(123L)
  *     .build();
  *
  * EventSerializer serializer = new AvroEventSerializer();
