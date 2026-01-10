@@ -18,9 +18,8 @@ import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
 
 /**
- * PhotographerCreated 이벤트의 Confluent Schema Registry 호환성 테스트
- * - Kafka Avro Serializer/Deserializer 사용
- * - Mock Schema Registry를 사용한 스키마 등록 및 호환성 검증
+ * PhotographerCreated 이벤트의 Confluent Schema Registry 호환성 테스트 - Kafka Avro Serializer/Deserializer
+ * 사용 - Mock Schema Registry를 사용한 스키마 등록 및 호환성 검증
  */
 @DisplayNameGeneration(ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -48,14 +47,14 @@ class PhotographerCreatedTest {
     }
 
     @AfterEach
-    void tearDown() {  
-        if (serializer != null) {  
-            serializer.close();  
-        }  
-        if (deserializer != null) {  
-            deserializer.close();  
-        }  
-    }  
+    void tearDown() {
+        if (serializer != null) {
+            serializer.close();
+        }
+        if (deserializer != null) {
+            deserializer.close();
+        }
+    }
 
     @Test
     void PhotographerCreated_기본_생성_및_필드_검증() {
@@ -64,8 +63,8 @@ class PhotographerCreatedTest {
 
         // when
         PhotographerCreated event = PhotographerCreated.newBuilder()
-                .setPhotographerId(photographerId)
-                .build();
+            .setPhotographerId(photographerId)
+            .build();
 
         // then
         assertThat(event.getPhotographerId()).isEqualTo(photographerId);
@@ -134,7 +133,7 @@ class PhotographerCreatedTest {
     }
 
     @Test
-    void 스키마_버전_관리_테스트() throws Exception {
+    void 스키마_등록_멱등성_테스트() throws Exception {
         // given
         PhotographerCreated event = createSamplePhotographerCreated();
         Schema schema = event.getSchema();
@@ -169,10 +168,11 @@ class PhotographerCreatedTest {
         for (Long testId : testIds) {
             // when
             PhotographerCreated event = PhotographerCreated.newBuilder()
-                    .setPhotographerId(testId)
-                    .build();
+                .setPhotographerId(testId)
+                .build();
             byte[] serialized = serializer.serialize(TOPIC, event);
-            GenericRecord deserialized = (GenericRecord) deserializer.deserialize(TOPIC, serialized);
+            GenericRecord deserialized = (GenericRecord) deserializer.deserialize(TOPIC,
+                serialized);
 
             // then
             assertThat(deserialized.get("photographerId")).isEqualTo(testId);
@@ -182,7 +182,7 @@ class PhotographerCreatedTest {
     // Helper method
     private PhotographerCreated createSamplePhotographerCreated() {
         return PhotographerCreated.newBuilder()
-                .setPhotographerId(12345L)
-                .build();
+            .setPhotographerId(12345L)
+            .build();
     }
 }
