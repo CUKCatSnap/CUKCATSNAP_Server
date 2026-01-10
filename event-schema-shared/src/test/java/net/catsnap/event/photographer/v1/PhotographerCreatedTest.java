@@ -46,6 +46,16 @@ class PhotographerCreatedTest {
         deserializer.configure(config, false);
     }
 
+    @AfterEach  
+    void tearDown() {  
+        if (serializer != null) {  
+            serializer.close();  
+        }  
+        if (deserializer != null) {  
+            deserializer.close();  
+        }  
+    }  
+
     @Test
     void PhotographerCreated_기본_생성_및_필드_검증() {
         // given
