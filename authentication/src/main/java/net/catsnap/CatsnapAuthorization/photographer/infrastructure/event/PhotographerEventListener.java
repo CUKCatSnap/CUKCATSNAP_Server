@@ -50,7 +50,7 @@ public class PhotographerEventListener {
         eventPublisher.publish(
             "Photographer",
             event.photographerId().toString(),
-            "PhotographerCreated",
+            PhotographerCreated.getClassSchema().getName(),
             payload,
             1,                    // version
             event.timestamp(),    // 이벤트 발생 시점
