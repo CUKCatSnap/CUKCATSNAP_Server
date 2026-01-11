@@ -42,6 +42,8 @@ jacocoTestReport {
 dependencies {
     // === 인증 모듈 추가 ===
     implementation project(':authorization-shared')
+    // === 이벤트 스키마 모듈 추가 ===
+    implementation project(':event-schema-shared')
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -73,6 +75,8 @@ dependencies {
     // === 롬복 의존성 ===
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    // === kafka 의존성 ===
+    implementation 'org.springframework.kafka:spring-kafka'
 }
 
 tasks.named('test') {
