@@ -1,0 +1,9 @@
+// 모든 서브프로젝트에 공통 repository 설정
+subprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://packages.confluent.io/maven/"
+        }
+    }
+}

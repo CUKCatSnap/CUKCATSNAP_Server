@@ -1,9 +1,11 @@
 package net.catsnap.CatsnapAuthorization.photographer.application;
 
+import java.time.ZoneId;
 import net.catsnap.CatsnapAuthorization.model.domain.vo.Identifier;
 import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.password.domain.PasswordEncoder;
 import net.catsnap.CatsnapAuthorization.photographer.domain.Photographer;
+import net.catsnap.CatsnapAuthorization.photographer.domain.events.PhotographerCreatedEvent;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerLoginRequest;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerSignUpRequest;
 import net.catsnap.CatsnapAuthorization.photographer.infrastructure.PhotographerRepository;
@@ -13,6 +15,7 @@ import net.catsnap.CatsnapAuthorization.session.domain.LoginSessionRepository;
 import net.catsnap.CatsnapAuthorization.shared.domain.BusinessException;
 import net.catsnap.CatsnapAuthorization.shared.domain.error.CommonErrorCode;
 import net.catsnap.shared.auth.CatsnapAuthority;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +35,7 @@ public class PhotographerService {
     private final PasswordEncoder passwordEncoder;
     private final AccessTokenManager accessTokenManager;
     private final LoginSessionRepository loginSessionRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     /**
      * PhotographerService 생성자
@@ -40,14 +44,16 @@ public class PhotographerService {
      * @param passwordEncoder        비밀번호 암호화 및 검증을 위한 인터페이스
      * @param accessTokenManager     액세스 토큰 발급을 위한 인터페이스
      * @param loginSessionRepository 로그인 세션 Repository
+     * @param eventPublisher         Spring 이벤트 발행을 위한 인터페이스
      */
     public PhotographerService(PhotographerRepository photographerRepository,
         PasswordEncoder passwordEncoder, AccessTokenManager accessTokenManager,
-        LoginSessionRepository loginSessionRepository) {
+        LoginSessionRepository loginSessionRepository, ApplicationEventPublisher eventPublisher) {
         this.photographerRepository = photographerRepository;
         this.passwordEncoder = passwordEncoder;
         this.accessTokenManager = accessTokenManager;
         this.loginSessionRepository = loginSessionRepository;
+        this.eventPublisher = eventPublisher;
     }
 
     /**
@@ -77,6 +83,14 @@ public class PhotographerService {
         );
 
         photographerRepository.save(photographer);
+
+        // 도메인 이벤트 발행
+        eventPublisher.publishEvent(
+            new PhotographerCreatedEvent(
+                photographer.getId(),
+                photographer.getCreatedAt().atZone(ZoneId.systemDefault()).toInstant()
+            )
+        );
     }
 
     /**
