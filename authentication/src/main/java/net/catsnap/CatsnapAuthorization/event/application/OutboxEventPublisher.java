@@ -21,7 +21,7 @@ public class OutboxEventPublisher implements EventPublisher {
         this.outboxRepository = outboxRepository;
     }
 
-    /*
+    /**
      * 이벤트를 Outbox 테이블에 저장합니다.
      *
      * <p>도메인 트랜잭션과 동일한 트랜잭션 내에서 실행되어야합니다.

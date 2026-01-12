@@ -1,6 +1,5 @@
 package net.catsnap.CatsnapAuthorization.event.application;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
