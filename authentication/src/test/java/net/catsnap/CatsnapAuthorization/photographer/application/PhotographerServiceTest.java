@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import net.catsnap.CatsnapAuthorization.event.domain.Outbox;
 import net.catsnap.CatsnapAuthorization.event.domain.OutboxStatus;
-import net.catsnap.CatsnapAuthorization.event.infrastrucutre.OutboxRepository;
+import net.catsnap.CatsnapAuthorization.event.infrastructure.OutboxRepository;
 import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.photographer.domain.Photographer;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerLoginRequest;

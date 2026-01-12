@@ -6,7 +6,7 @@ import static org.mockito.Mockito.verify;
 
 import java.time.Instant;
 import net.catsnap.CatsnapAuthorization.event.domain.Outbox;
-import net.catsnap.CatsnapAuthorization.event.infrastrucutre.OutboxRepository;
+import net.catsnap.CatsnapAuthorization.event.infrastructure.OutboxRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;

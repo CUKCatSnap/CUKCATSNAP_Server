@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.event.infrastrucutre;
+package net.catsnap.CatsnapAuthorization.event.infrastructure;
 
 import static net.catsnap.CatsnapAuthorization.event.domain.OutboxFixture.aOutbox;
 import static org.assertj.core.api.Assertions.assertThat;

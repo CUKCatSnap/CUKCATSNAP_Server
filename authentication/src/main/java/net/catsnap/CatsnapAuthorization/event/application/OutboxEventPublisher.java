@@ -2,7 +2,7 @@ package net.catsnap.CatsnapAuthorization.event.application;
 
 import java.time.Instant;
 import net.catsnap.CatsnapAuthorization.event.domain.Outbox;
-import net.catsnap.CatsnapAuthorization.event.infrastrucutre.OutboxRepository;
+import net.catsnap.CatsnapAuthorization.event.infrastructure.OutboxRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.event.infrastrucutre;
+package net.catsnap.CatsnapAuthorization.event.infrastructure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;

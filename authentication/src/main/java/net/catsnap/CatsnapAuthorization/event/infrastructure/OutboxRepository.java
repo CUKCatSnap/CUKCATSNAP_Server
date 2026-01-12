@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.event.infrastrucutre;
+package net.catsnap.CatsnapAuthorization.event.infrastructure;
 
 import java.util.List;
 import net.catsnap.CatsnapAuthorization.event.domain.Outbox;

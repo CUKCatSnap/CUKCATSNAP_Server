@@ -1,4 +1,4 @@
-package net.catsnap.CatsnapAuthorization.event.infrastrucutre;
+package net.catsnap.CatsnapAuthorization.event.infrastructure;
 
 import net.catsnap.shared.application.EventSerializer;
 import net.catsnap.shared.infrastructure.AvroEventSerializer;
