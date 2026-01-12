@@ -3,7 +3,7 @@ package net.catsnap.CatsnapAuthorization.event.infrastructure;
 import net.catsnap.shared.application.EventSerializer;
 import net.catsnap.shared.infrastructure.AvroEventSerializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 이벤트 직렬화 설정을 담당하는 구성 클래스
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @see EventSerializer
  * @see AvroEventSerializer
  */
-@Component
+@Configuration
 public class EventSerializerConfig {
 
     /**
