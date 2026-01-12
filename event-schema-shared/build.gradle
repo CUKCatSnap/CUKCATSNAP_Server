@@ -13,13 +13,6 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-    maven {
-        url "https://packages.confluent.io/maven/"
-    }
-}
-
 jacoco {
     toolVersion = "0.8.12"
 }

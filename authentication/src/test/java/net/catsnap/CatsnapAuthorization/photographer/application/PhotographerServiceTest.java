@@ -4,6 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+import net.catsnap.CatsnapAuthorization.event.domain.Outbox;
+import net.catsnap.CatsnapAuthorization.event.domain.OutboxStatus;
+import net.catsnap.CatsnapAuthorization.event.infrastructure.OutboxRepository;
 import net.catsnap.CatsnapAuthorization.model.dto.response.TokenResponse;
 import net.catsnap.CatsnapAuthorization.photographer.domain.Photographer;
 import net.catsnap.CatsnapAuthorization.photographer.dto.request.PhotographerLoginRequest;
@@ -49,6 +53,9 @@ class PhotographerServiceTest {
     private LoginSessionRepository loginSessionRepository;
 
     @Autowired
+    private OutboxRepository outboxRepository;
+
+    @Autowired
     private TransactionTemplate transactionTemplate;
 
     @AfterEach
@@ -57,6 +64,7 @@ class PhotographerServiceTest {
         transactionTemplate.executeWithoutResult(status -> {
             loginSessionRepository.deleteAll();
             photographerRepository.deleteAll();
+            outboxRepository.deleteAll();
         });
     }
 
@@ -83,6 +91,28 @@ class PhotographerServiceTest {
             assertThat(savedPhotographer).isNotNull();
             assertThat(savedPhotographer.getIdentifier().getValue()).isEqualTo("newphotographer");
             assertThat(savedPhotographer.getName().getValue()).isEqualTo("김작가");
+        }
+
+        @Test
+        void 회원가입_성공_시_PhotographerCreated_이벤트가_발행된다() {
+            // given
+            PhotographerSignUpRequest request = new PhotographerSignUpRequest(
+                "eventphotographer",
+                "password1234",
+                "이벤트작가",
+                "010-5555-6666"
+            );
+
+            // when
+            transactionTemplate.executeWithoutResult(status -> {
+                photographerService.signUp(request);
+            });
+
+            // then
+            List<Outbox> pendingEvents = outboxRepository.findByStatus(OutboxStatus.PENDING);
+            assertThat(pendingEvents).hasSize(1);
+            assertThat(pendingEvents.get(0).getAggregateType()).isEqualTo("Photographer");
+            assertThat(pendingEvents.get(0).getEventType()).isEqualTo("PhotographerCreated");
         }
 
         @Test
