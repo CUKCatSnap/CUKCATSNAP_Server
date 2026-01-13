@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import net.catsnap.CatsnapReservation.schedule.domain.vo.WeekdayScheduleRule;
+import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -30,10 +30,10 @@ class WeekdayRulesConverterTest {
     @Test
     void WeekdayRules_맵을_JSON_문자열로_변환한다() {
         // given
-        Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
+        Map<DayOfWeek, AvailableStartTimes> rules = new EnumMap<>(DayOfWeek.class);
         List<LocalTime> mondayTimes = List.of(LocalTime.of(9, 0), LocalTime.of(10, 0));
-        rules.put(DayOfWeek.MONDAY, WeekdayScheduleRule.workingDay(mondayTimes));
-        rules.put(DayOfWeek.TUESDAY, WeekdayScheduleRule.dayOff());
+        rules.put(DayOfWeek.MONDAY, AvailableStartTimes.of(mondayTimes));
+        rules.put(DayOfWeek.TUESDAY, AvailableStartTimes.empty());
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
@@ -42,7 +42,6 @@ class WeekdayRulesConverterTest {
         assertThat(json).isNotNull();
         assertThat(json).contains("MONDAY");
         assertThat(json).contains("TUESDAY");
-        assertThat(json).contains("isWorkingDay");
         assertThat(json).contains("09:00");
         assertThat(json).contains("10:00");
     }
@@ -59,7 +58,7 @@ class WeekdayRulesConverterTest {
     @Test
     void 빈_맵을_DB_컬럼으로_변환하면_null을_반환한다() {
         // given
-        Map<DayOfWeek, WeekdayScheduleRule> emptyRules = new EnumMap<>(DayOfWeek.class);
+        Map<DayOfWeek, AvailableStartTimes> emptyRules = new EnumMap<>(DayOfWeek.class);
 
         // when
         String json = converter.convertToDatabaseColumn(emptyRules);
@@ -71,21 +70,19 @@ class WeekdayRulesConverterTest {
     @Test
     void 근무일_규칙을_JSON으로_변환한다() {
         // given
-        Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
+        Map<DayOfWeek, AvailableStartTimes> rules = new EnumMap<>(DayOfWeek.class);
         List<LocalTime> times = List.of(
             LocalTime.of(9, 0),
             LocalTime.of(10, 30),
             LocalTime.of(14, 0)
         );
-        rules.put(DayOfWeek.WEDNESDAY, WeekdayScheduleRule.workingDay(times));
+        rules.put(DayOfWeek.WEDNESDAY, AvailableStartTimes.of(times));
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
 
         // then
         assertThat(json).contains("WEDNESDAY");
-        assertThat(json).contains("\"isWorkingDay\":true");
-        assertThat(json).contains("availableStartTimes");
         assertThat(json).contains("09:00");
         assertThat(json).contains("10:30");
         assertThat(json).contains("14:00");
@@ -94,16 +91,15 @@ class WeekdayRulesConverterTest {
     @Test
     void 휴무일_규칙을_JSON으로_변환한다() {
         // given
-        Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
-        rules.put(DayOfWeek.SUNDAY, WeekdayScheduleRule.dayOff());
+        Map<DayOfWeek, AvailableStartTimes> rules = new EnumMap<>(DayOfWeek.class);
+        rules.put(DayOfWeek.SUNDAY, AvailableStartTimes.empty());
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
 
         // then
         assertThat(json).contains("SUNDAY");
-        assertThat(json).contains("\"isWorkingDay\":false");
-        assertThat(json).doesNotContain("availableStartTimes");
+        assertThat(json).contains("[]");
     }
 
     @Test
@@ -111,40 +107,35 @@ class WeekdayRulesConverterTest {
         // given
         String json = """
             {
-              "MONDAY": {
-                "isWorkingDay": true,
-                "availableStartTimes": ["09:00", "10:00"]
-              },
-              "TUESDAY": {
-                "isWorkingDay": false
-              }
+              "MONDAY": ["09:00", "10:00"],
+              "TUESDAY": []
             }
             """;
 
         // when
-        Map<DayOfWeek, WeekdayScheduleRule> rules = converter.convertToEntityAttribute(json);
+        Map<DayOfWeek, AvailableStartTimes> rules = converter.convertToEntityAttribute(json);
 
         // then
         assertThat(rules).isNotNull();
         assertThat(rules).hasSize(2);
 
-        WeekdayScheduleRule mondayRule = rules.get(DayOfWeek.MONDAY);
-        assertThat(mondayRule).isNotNull();
-        assertThat(mondayRule.isWorkingDay()).isTrue();
-        assertThat(mondayRule.generateAvailableTimes()).containsExactly(
+        AvailableStartTimes mondayTimes = rules.get(DayOfWeek.MONDAY);
+        assertThat(mondayTimes).isNotNull();
+        assertThat(mondayTimes.isEmpty()).isFalse();
+        assertThat(mondayTimes.toList()).containsExactly(
             LocalTime.of(9, 0),
             LocalTime.of(10, 0)
         );
 
-        WeekdayScheduleRule tuesdayRule = rules.get(DayOfWeek.TUESDAY);
-        assertThat(tuesdayRule).isNotNull();
-        assertThat(tuesdayRule.isWorkingDay()).isFalse();
+        AvailableStartTimes tuesdayTimes = rules.get(DayOfWeek.TUESDAY);
+        assertThat(tuesdayTimes).isNotNull();
+        assertThat(tuesdayTimes.isEmpty()).isTrue();
     }
 
     @Test
     void null_DB_데이터를_엔티티_속성으로_변환하면_빈_맵을_반환한다() {
         // when
-        Map<DayOfWeek, WeekdayScheduleRule> rules = converter.convertToEntityAttribute(null);
+        Map<DayOfWeek, AvailableStartTimes> rules = converter.convertToEntityAttribute(null);
 
         // then
         assertThat(rules).isNotNull();
@@ -154,7 +145,7 @@ class WeekdayRulesConverterTest {
     @Test
     void 빈_문자열_DB_데이터를_엔티티_속성으로_변환하면_빈_맵을_반환한다() {
         // when
-        Map<DayOfWeek, WeekdayScheduleRule> rules = converter.convertToEntityAttribute("");
+        Map<DayOfWeek, AvailableStartTimes> rules = converter.convertToEntityAttribute("");
 
         // then
         assertThat(rules).isNotNull();
@@ -164,7 +155,7 @@ class WeekdayRulesConverterTest {
     @Test
     void 공백_문자열_DB_데이터를_엔티티_속성으로_변환하면_빈_맵을_반환한다() {
         // when
-        Map<DayOfWeek, WeekdayScheduleRule> rules = converter.convertToEntityAttribute("   ");
+        Map<DayOfWeek, AvailableStartTimes> rules = converter.convertToEntityAttribute("   ");
 
         // then
         assertThat(rules).isNotNull();
@@ -176,21 +167,18 @@ class WeekdayRulesConverterTest {
         // given
         String json = """
             {
-              "FRIDAY": {
-                "isWorkingDay": true,
-                "availableStartTimes": ["14:00", "15:30", "17:00"]
-              }
+              "FRIDAY": ["14:00", "15:30", "17:00"]
             }
             """;
 
         // when
-        Map<DayOfWeek, WeekdayScheduleRule> rules = converter.convertToEntityAttribute(json);
+        Map<DayOfWeek, AvailableStartTimes> rules = converter.convertToEntityAttribute(json);
 
         // then
         assertThat(rules).hasSize(1);
-        WeekdayScheduleRule fridayRule = rules.get(DayOfWeek.FRIDAY);
-        assertThat(fridayRule.isWorkingDay()).isTrue();
-        assertThat(fridayRule.generateAvailableTimes()).containsExactly(
+        AvailableStartTimes fridayTimes = rules.get(DayOfWeek.FRIDAY);
+        assertThat(fridayTimes.isEmpty()).isFalse();
+        assertThat(fridayTimes.toList()).containsExactly(
             LocalTime.of(14, 0),
             LocalTime.of(15, 30),
             LocalTime.of(17, 0)
@@ -202,20 +190,18 @@ class WeekdayRulesConverterTest {
         // given
         String json = """
             {
-              "SATURDAY": {
-                "isWorkingDay": false
-              }
+              "SATURDAY": []
             }
             """;
 
         // when
-        Map<DayOfWeek, WeekdayScheduleRule> rules = converter.convertToEntityAttribute(json);
+        Map<DayOfWeek, AvailableStartTimes> rules = converter.convertToEntityAttribute(json);
 
         // then
         assertThat(rules).hasSize(1);
-        WeekdayScheduleRule saturdayRule = rules.get(DayOfWeek.SATURDAY);
-        assertThat(saturdayRule.isWorkingDay()).isFalse();
-        assertThat(saturdayRule.generateAvailableTimes()).isEmpty();
+        AvailableStartTimes saturdayTimes = rules.get(DayOfWeek.SATURDAY);
+        assertThat(saturdayTimes.isEmpty()).isTrue();
+        assertThat(saturdayTimes.toList()).isEmpty();
     }
 
     @Test
@@ -232,17 +218,17 @@ class WeekdayRulesConverterTest {
     @Test
     void 양방향_변환이_올바르게_동작한다() {
         // given
-        Map<DayOfWeek, WeekdayScheduleRule> original = new EnumMap<>(DayOfWeek.class);
+        Map<DayOfWeek, AvailableStartTimes> original = new EnumMap<>(DayOfWeek.class);
         List<LocalTime> mondayTimes = List.of(LocalTime.of(9, 0), LocalTime.of(10, 0));
         List<LocalTime> wednesdayTimes = List.of(LocalTime.of(14, 0), LocalTime.of(15, 0));
 
-        original.put(DayOfWeek.MONDAY, WeekdayScheduleRule.workingDay(mondayTimes));
-        original.put(DayOfWeek.TUESDAY, WeekdayScheduleRule.dayOff());
-        original.put(DayOfWeek.WEDNESDAY, WeekdayScheduleRule.workingDay(wednesdayTimes));
+        original.put(DayOfWeek.MONDAY, AvailableStartTimes.of(mondayTimes));
+        original.put(DayOfWeek.TUESDAY, AvailableStartTimes.empty());
+        original.put(DayOfWeek.WEDNESDAY, AvailableStartTimes.of(wednesdayTimes));
 
         // when
         String json = converter.convertToDatabaseColumn(original);
-        Map<DayOfWeek, WeekdayScheduleRule> restored = converter.convertToEntityAttribute(json);
+        Map<DayOfWeek, AvailableStartTimes> restored = converter.convertToEntityAttribute(json);
 
         // then
         assertThat(restored).hasSize(3);
@@ -254,19 +240,19 @@ class WeekdayRulesConverterTest {
     @Test
     void 모든_요일_규칙을_포함한_맵을_변환한다() {
         // given
-        Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
+        Map<DayOfWeek, AvailableStartTimes> rules = new EnumMap<>(DayOfWeek.class);
         for (DayOfWeek day : DayOfWeek.values()) {
             if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
-                rules.put(day, WeekdayScheduleRule.dayOff());
+                rules.put(day, AvailableStartTimes.empty());
             } else {
                 List<LocalTime> times = List.of(LocalTime.of(9, 0), LocalTime.of(14, 0));
-                rules.put(day, WeekdayScheduleRule.workingDay(times));
+                rules.put(day, AvailableStartTimes.of(times));
             }
         }
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
-        Map<DayOfWeek, WeekdayScheduleRule> restored = converter.convertToEntityAttribute(json);
+        Map<DayOfWeek, AvailableStartTimes> restored = converter.convertToEntityAttribute(json);
 
         // then
         assertThat(restored).hasSize(7);

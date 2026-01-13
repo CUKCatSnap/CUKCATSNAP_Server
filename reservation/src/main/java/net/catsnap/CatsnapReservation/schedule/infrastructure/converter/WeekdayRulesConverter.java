@@ -13,45 +13,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
-import net.catsnap.CatsnapReservation.schedule.domain.vo.WeekdayScheduleRule;
 
 /**
- * 요일별 스케줄 규칙 맵을 JSON으로 변환하는 JPA Converter
+ * 요일별 예약 가능 시간 맵을 JSON으로 변환하는 JPA Converter
  * <p>
- * DB: {"MONDAY": {"isWorkingDay": true, "availableStartTimes": ["09:00", "09:30", ...]}} Java:
- * Map<DayOfWeek, WeekdayScheduleRule>
+ * DB: {"MONDAY": ["09:00", "09:30", ...], "TUESDAY": []} Java: Map<DayOfWeek, AvailableStartTimes>
  */
 @Converter
 public class WeekdayRulesConverter implements
-    AttributeConverter<Map<DayOfWeek, WeekdayScheduleRule>, String> {
+    AttributeConverter<Map<DayOfWeek, AvailableStartTimes>, String> {
 
     private static final ObjectMapper objectMapper = new ObjectMapper()
         .registerModule(new JavaTimeModule());
 
     @Override
-    public String convertToDatabaseColumn(Map<DayOfWeek, WeekdayScheduleRule> attribute) {
+    public String convertToDatabaseColumn(Map<DayOfWeek, AvailableStartTimes> attribute) {
         if (attribute == null || attribute.isEmpty()) {
             return null;
         }
 
         try {
-            // WeekdayScheduleRule -> Map 변환
-            Map<String, Map<String, Object>> jsonMap = new HashMap<>();
+            // AvailableStartTimes -> List<String> 변환
+            Map<String, List<String>> jsonMap = new HashMap<>();
 
-            for (Map.Entry<DayOfWeek, WeekdayScheduleRule> entry : attribute.entrySet()) {
-                WeekdayScheduleRule rule = entry.getValue();
-                Map<String, Object> ruleMap = new HashMap<>();
-
-                ruleMap.put("isWorkingDay", rule.isWorkingDay());
-
-                if (rule.isWorkingDay() && !rule.getAvailableStartTimes().isEmpty()) {
-                    List<String> timeStrings = rule.getAvailableStartTimes().toList().stream()
-                        .map(LocalTime::toString)
-                        .toList();
-                    ruleMap.put("availableStartTimes", timeStrings);
-                }
-
-                jsonMap.put(entry.getKey().name(), ruleMap);
+            for (Map.Entry<DayOfWeek, AvailableStartTimes> entry : attribute.entrySet()) {
+                AvailableStartTimes times = entry.getValue();
+                List<String> timeStrings = times.toList().stream()
+                    .map(LocalTime::toString)
+                    .toList();
+                jsonMap.put(entry.getKey().name(), timeStrings);
             }
 
             return objectMapper.writeValueAsString(jsonMap);
@@ -61,41 +51,31 @@ public class WeekdayRulesConverter implements
     }
 
     @Override
-    public Map<DayOfWeek, WeekdayScheduleRule> convertToEntityAttribute(String dbData) {
+    public Map<DayOfWeek, AvailableStartTimes> convertToEntityAttribute(String dbData) {
         if (dbData == null || dbData.isBlank()) {
             return new EnumMap<>(DayOfWeek.class);
         }
 
         try {
-            Map<String, Map<String, Object>> jsonMap = objectMapper.readValue(
+            Map<String, List<String>> jsonMap = objectMapper.readValue(
                 dbData,
-                new TypeReference<Map<String, Map<String, Object>>>() {
+                new TypeReference<Map<String, List<String>>>() {
                 }
             );
 
-            Map<DayOfWeek, WeekdayScheduleRule> result = new EnumMap<>(DayOfWeek.class);
+            Map<DayOfWeek, AvailableStartTimes> result = new EnumMap<>(DayOfWeek.class);
 
-            for (Map.Entry<String, Map<String, Object>> entry : jsonMap.entrySet()) {
+            for (Map.Entry<String, List<String>> entry : jsonMap.entrySet()) {
                 DayOfWeek dayOfWeek = DayOfWeek.valueOf(entry.getKey());
-                Map<String, Object> ruleMap = entry.getValue();
+                List<String> timeStrings = entry.getValue();
 
-                boolean isWorkingDay = (Boolean) ruleMap.get("isWorkingDay");
-
-                if (!isWorkingDay) {
-                    result.put(dayOfWeek, WeekdayScheduleRule.dayOff());
+                if (timeStrings == null || timeStrings.isEmpty()) {
+                    result.put(dayOfWeek, AvailableStartTimes.empty());
                 } else {
-                    @SuppressWarnings("unchecked")
-                    List<String> timeStrings = (List<String>) ruleMap.get("availableStartTimes");
-
-                    if (timeStrings != null && !timeStrings.isEmpty()) {
-                        List<LocalTime> timeList = timeStrings.stream()
-                            .map(LocalTime::parse)
-                            .toList();
-
-                        AvailableStartTimes availableStartTimes = AvailableStartTimes.of(timeList);
-
-                        result.put(dayOfWeek, WeekdayScheduleRule.workingDay(availableStartTimes));
-                    }
+                    List<LocalTime> timeList = timeStrings.stream()
+                        .map(LocalTime::parse)
+                        .toList();
+                    result.put(dayOfWeek, AvailableStartTimes.of(timeList));
                 }
             }
 

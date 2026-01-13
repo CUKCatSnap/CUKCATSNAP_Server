@@ -3,9 +3,12 @@ package net.catsnap.CatsnapReservation.schedule.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.Objects;
 import lombok.AccessLevel;
@@ -28,7 +31,9 @@ public class ScheduleOverride {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long photographerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private PhotographerSchedule photographerSchedule;
 
     private LocalDate targetDate;
 
@@ -40,25 +45,19 @@ public class ScheduleOverride {
     private AvailableStartTimes availableTimes;
 
     private ScheduleOverride(
-        Long photographerId,
         LocalDate targetDate,
         AvailableStartTimes availableTimes
     ) {
-        validateOverride(photographerId, targetDate, availableTimes);
+        validateOverride(targetDate, availableTimes);
 
-        this.photographerId = photographerId;
         this.targetDate = targetDate;
         this.availableTimes = availableTimes;
     }
 
     private void validateOverride(
-        Long photographerId,
         LocalDate targetDate,
         AvailableStartTimes availableTimes
     ) {
-        if (photographerId == null) {
-            throw new IllegalArgumentException("작가 ID는 필수입니다.");
-        }
         if (targetDate == null) {
             throw new IllegalArgumentException("대상 날짜는 필수입니다.");
         }
@@ -71,21 +70,55 @@ public class ScheduleOverride {
      * 예외 규칙 생성 (커스텀 시간 설정)
      */
     public static ScheduleOverride create(
-        Long photographerId,
         LocalDate targetDate,
         AvailableStartTimes availableTimes
     ) {
-        return new ScheduleOverride(photographerId, targetDate, availableTimes);
+        return new ScheduleOverride(targetDate, availableTimes);
     }
 
     /**
      * 특정 날짜를 휴무로 설정
      */
-    public static ScheduleOverride dayOff(
-        Long photographerId,
-        LocalDate targetDate
-    ) {
-        return new ScheduleOverride(photographerId, targetDate, AvailableStartTimes.empty());
+    public static ScheduleOverride dayOff(LocalDate targetDate) {
+        return new ScheduleOverride(targetDate, AvailableStartTimes.empty());
+    }
+
+    /**
+     * 예약 가능 시간이 있는지 확인
+     */
+    public boolean hasAvailableTimes() {
+        return availableTimes != null && !availableTimes.isEmpty();
+    }
+
+    /**
+     * 예약 가능 시간 변경
+     */
+    public void updateAvailableTimes(AvailableStartTimes newTimes) {
+        if (newTimes == null) {
+            throw new IllegalArgumentException("예약 가능 시간은 null일 수 없습니다.");
+        }
+        this.availableTimes = newTimes;
+    }
+
+    /**
+     * 휴무일로 변경
+     */
+    public void changeToDayOff() {
+        this.availableTimes = AvailableStartTimes.empty();
+    }
+
+    /**
+     * 편의 메서드: 작가 ID 조회
+     */
+    public Long getPhotographerId() {
+        return photographerSchedule != null ? photographerSchedule.getPhotographerId() : null;
+    }
+
+    /**
+     * 양방향 연관관계 설정 (package-private)
+     */
+    void setPhotographerSchedule(PhotographerSchedule photographerSchedule) {
+        this.photographerSchedule = photographerSchedule;
     }
 
     @Override
@@ -108,7 +141,7 @@ public class ScheduleOverride {
     @Override
     public String toString() {
         return String.format(
-            "AvailabilityOverride{id=%d, photographerId=%d, targetDate=%s}",
-            id, photographerId, targetDate);
+            "ScheduleOverride{id=%d, targetDate=%s}",
+            id, targetDate);
     }
 }

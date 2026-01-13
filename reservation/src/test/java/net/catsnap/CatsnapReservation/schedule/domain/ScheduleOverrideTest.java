@@ -20,7 +20,6 @@ class ScheduleOverrideTest {
     @Test
     void 커스텀_시간으로_예외_규칙_생성에_성공한다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = LocalDate.of(2024, 1, 15);
         List<LocalTime> customTimes = List.of(
             LocalTime.of(14, 0),
@@ -30,14 +29,9 @@ class ScheduleOverrideTest {
         AvailableStartTimes availableTimes = AvailableStartTimes.of(customTimes);
 
         // when
-        ScheduleOverride override = ScheduleOverride.create(
-            photographerId,
-            targetDate,
-            availableTimes
-        );
+        ScheduleOverride override = ScheduleOverride.create(targetDate, availableTimes);
 
         // then
-        assertThat(override.getPhotographerId()).isEqualTo(photographerId);
         assertThat(override.getTargetDate()).isEqualTo(targetDate);
         assertThat(override.getAvailableTimes()).isEqualTo(availableTimes);
         assertThat(override.getAvailableTimes().isEmpty()).isFalse();
@@ -47,41 +41,25 @@ class ScheduleOverrideTest {
     @Test
     void 휴무로_예외_규칙_생성에_성공한다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = LocalDate.of(2024, 1, 15);
 
         // when
-        ScheduleOverride override = ScheduleOverride.dayOff(photographerId, targetDate);
+        ScheduleOverride override = ScheduleOverride.dayOff(targetDate);
 
         // then
-        assertThat(override.getPhotographerId()).isEqualTo(photographerId);
         assertThat(override.getTargetDate()).isEqualTo(targetDate);
         assertThat(override.getAvailableTimes()).isNotNull();
         assertThat(override.getAvailableTimes().isEmpty()).isTrue();
     }
 
     @Test
-    void photographerId가_null이면_예외가_발생한다() {
-        // given
-        Long photographerId = null;
-        LocalDate targetDate = LocalDate.of(2024, 1, 15);
-        AvailableStartTimes availableTimes = AvailableStartTimes.empty();
-
-        // when & then
-        assertThatThrownBy(() -> ScheduleOverride.create(photographerId, targetDate, availableTimes))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("작가 ID는 필수입니다.");
-    }
-
-    @Test
     void targetDate가_null이면_예외가_발생한다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = null;
         AvailableStartTimes availableTimes = AvailableStartTimes.empty();
 
         // when & then
-        assertThatThrownBy(() -> ScheduleOverride.create(photographerId, targetDate, availableTimes))
+        assertThatThrownBy(() -> ScheduleOverride.create(targetDate, availableTimes))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("대상 날짜는 필수입니다.");
     }
@@ -89,36 +67,22 @@ class ScheduleOverrideTest {
     @Test
     void availableTimes가_null이면_예외가_발생한다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = LocalDate.of(2024, 1, 15);
         AvailableStartTimes availableTimes = null;
 
         // when & then
-        assertThatThrownBy(() -> ScheduleOverride.create(photographerId, targetDate, availableTimes))
+        assertThatThrownBy(() -> ScheduleOverride.create(targetDate, availableTimes))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("덮어쓴 시간표는 null일 수 없습니다.");
     }
 
     @Test
-    void dayOff_팩토리_메서드로_생성_시_photographerId가_null이면_예외가_발생한다() {
-        // given
-        Long photographerId = null;
-        LocalDate targetDate = LocalDate.of(2024, 1, 15);
-
-        // when & then
-        assertThatThrownBy(() -> ScheduleOverride.dayOff(photographerId, targetDate))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("작가 ID는 필수입니다.");
-    }
-
-    @Test
     void dayOff_팩토리_메서드로_생성_시_targetDate가_null이면_예외가_발생한다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = null;
 
         // when & then
-        assertThatThrownBy(() -> ScheduleOverride.dayOff(photographerId, targetDate))
+        assertThatThrownBy(() -> ScheduleOverride.dayOff(targetDate))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("대상 날짜는 필수입니다.");
     }
@@ -126,7 +90,6 @@ class ScheduleOverrideTest {
     @Test
     void 커스텀_시간_설정_시_예약_가능_시간이_올바르게_설정된다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = LocalDate.of(2024, 1, 15);
         List<LocalTime> customTimes = List.of(
             LocalTime.of(9, 0),
@@ -136,11 +99,7 @@ class ScheduleOverrideTest {
         AvailableStartTimes availableTimes = AvailableStartTimes.of(customTimes);
 
         // when
-        ScheduleOverride override = ScheduleOverride.create(
-            photographerId,
-            targetDate,
-            availableTimes
-        );
+        ScheduleOverride override = ScheduleOverride.create(targetDate, availableTimes);
 
         // then
         assertThat(override.getAvailableTimes().toList()).containsExactly(
@@ -153,16 +112,78 @@ class ScheduleOverrideTest {
     @Test
     void toString이_올바르게_동작한다() {
         // given
-        Long photographerId = 1L;
         LocalDate targetDate = LocalDate.of(2024, 1, 15);
-        ScheduleOverride override = ScheduleOverride.dayOff(photographerId, targetDate);
+        ScheduleOverride override = ScheduleOverride.dayOff(targetDate);
 
         // when
         String result = override.toString();
 
         // then
-        assertThat(result).contains("AvailabilityOverride");
-        assertThat(result).contains("photographerId=" + photographerId);
+        assertThat(result).contains("ScheduleOverride");
         assertThat(result).contains("targetDate=" + targetDate);
+    }
+
+    @Test
+    void 예약_가능_시간을_변경할_수_있다() {
+        // given
+        LocalDate targetDate = LocalDate.of(2024, 1, 15);
+        ScheduleOverride override = ScheduleOverride.dayOff(targetDate);
+        List<LocalTime> newTimes = List.of(
+            LocalTime.of(14, 0),
+            LocalTime.of(15, 0)
+        );
+        AvailableStartTimes availableTimes = AvailableStartTimes.of(newTimes);
+
+        // when
+        override.updateAvailableTimes(availableTimes);
+
+        // then
+        assertThat(override.getAvailableTimes()).isEqualTo(availableTimes);
+        assertThat(override.hasAvailableTimes()).isTrue();
+    }
+
+    @Test
+    void 예약_가능_시간_변경_시_null이면_예외가_발생한다() {
+        // given
+        LocalDate targetDate = LocalDate.of(2024, 1, 15);
+        ScheduleOverride override = ScheduleOverride.dayOff(targetDate);
+
+        // when & then
+        assertThatThrownBy(() -> override.updateAvailableTimes(null))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("예약 가능 시간은 null일 수 없습니다.");
+    }
+
+    @Test
+    void 휴무일로_변경할_수_있다() {
+        // given
+        LocalDate targetDate = LocalDate.of(2024, 1, 15);
+        List<LocalTime> times = List.of(
+            LocalTime.of(9, 0),
+            LocalTime.of(10, 0)
+        );
+        AvailableStartTimes availableTimes = AvailableStartTimes.of(times);
+        ScheduleOverride override = ScheduleOverride.create(targetDate, availableTimes);
+
+        // when
+        override.changeToDayOff();
+
+        // then
+        assertThat(override.hasAvailableTimes()).isFalse();
+        assertThat(override.getAvailableTimes().isEmpty()).isTrue();
+    }
+
+    @Test
+    void 예약_가능_시간이_있는지_확인할_수_있다() {
+        // given
+        LocalDate targetDate = LocalDate.of(2024, 1, 15);
+        List<LocalTime> times = List.of(LocalTime.of(9, 0));
+        AvailableStartTimes availableTimes = AvailableStartTimes.of(times);
+        ScheduleOverride workingOverride = ScheduleOverride.create(targetDate, availableTimes);
+        ScheduleOverride dayOffOverride = ScheduleOverride.dayOff(targetDate);
+
+        // when & then
+        assertThat(workingOverride.hasAvailableTimes()).isTrue();
+        assertThat(dayOffOverride.hasAvailableTimes()).isFalse();
     }
 }
