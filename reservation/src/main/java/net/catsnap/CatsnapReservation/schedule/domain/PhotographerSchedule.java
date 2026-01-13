@@ -43,7 +43,7 @@ public class PhotographerSchedule {
      */
     @Column(columnDefinition = "jsonb")
     @Convert(converter = WeekdayRulesConverter.class)
-    private Map<DayOfWeek, WeekdayScheduleRule> weekdayRules = new EnumMap<>(DayOfWeek.class);
+    private Map<DayOfWeek, WeekdayScheduleRule> weekdayRules;
 
     /**
      * 예외 규칙들 (Aggregate 내부 관리)
