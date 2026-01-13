@@ -42,7 +42,6 @@ public class WeekdayRulesConverter implements
                 WeekdayScheduleRule rule = entry.getValue();
                 Map<String, Object> ruleMap = new HashMap<>();
 
-                ruleMap.put("dayOfWeek", rule.getDayOfWeek().name());
                 ruleMap.put("isWorkingDay", rule.isWorkingDay());
 
                 if (rule.isWorkingDay() && !rule.getAvailableStartTimes().isEmpty()) {
@@ -83,7 +82,7 @@ public class WeekdayRulesConverter implements
                 boolean isWorkingDay = (Boolean) ruleMap.get("isWorkingDay");
 
                 if (!isWorkingDay) {
-                    result.put(dayOfWeek, WeekdayScheduleRule.dayOff(dayOfWeek));
+                    result.put(dayOfWeek, WeekdayScheduleRule.dayOff());
                 } else {
                     @SuppressWarnings("unchecked")
                     List<String> timeStrings = (List<String>) ruleMap.get("availableStartTimes");
@@ -95,10 +94,7 @@ public class WeekdayRulesConverter implements
 
                         AvailableStartTimes availableStartTimes = AvailableStartTimes.of(timeList);
 
-                        result.put(dayOfWeek, WeekdayScheduleRule.workingDay(
-                            dayOfWeek,
-                            availableStartTimes
-                        ));
+                        result.put(dayOfWeek, WeekdayScheduleRule.workingDay(availableStartTimes));
                     }
                 }
             }

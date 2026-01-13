@@ -1,6 +1,5 @@
 package net.catsnap.CatsnapReservation.schedule.domain.vo;
 
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
@@ -15,46 +14,35 @@ import lombok.Getter;
 @Getter
 public class WeekdayScheduleRule {
 
-    private final DayOfWeek dayOfWeek;
     private final AvailableStartTimes availableStartTimes;
 
-    private WeekdayScheduleRule(DayOfWeek dayOfWeek, AvailableStartTimes availableStartTimes) {
-        if (dayOfWeek == null) {
-            throw new IllegalArgumentException("요일은 필수입니다.");
-        }
+    private WeekdayScheduleRule(AvailableStartTimes availableStartTimes) {
         if (availableStartTimes == null) {
             throw new IllegalArgumentException("예약 가능 시간은 필수입니다.");
         }
 
-        this.dayOfWeek = dayOfWeek;
         this.availableStartTimes = availableStartTimes;
     }
 
     /**
      * 근무일 규칙 생성
      */
-    public static WeekdayScheduleRule workingDay(
-        DayOfWeek dayOfWeek,
-        AvailableStartTimes availableStartTimes
-    ) {
-        return new WeekdayScheduleRule(dayOfWeek, availableStartTimes);
+    public static WeekdayScheduleRule workingDay(AvailableStartTimes availableStartTimes) {
+        return new WeekdayScheduleRule(availableStartTimes);
     }
 
     /**
      * 근무일 규칙 생성 (List<LocalTime>으로 편의 메서드)
      */
-    public static WeekdayScheduleRule workingDay(
-        DayOfWeek dayOfWeek,
-        List<LocalTime> times
-    ) {
-        return new WeekdayScheduleRule(dayOfWeek, AvailableStartTimes.of(times));
+    public static WeekdayScheduleRule workingDay(List<LocalTime> times) {
+        return new WeekdayScheduleRule(AvailableStartTimes.of(times));
     }
 
     /**
      * 휴무일 규칙 생성
      */
-    public static WeekdayScheduleRule dayOff(DayOfWeek dayOfWeek) {
-        return new WeekdayScheduleRule(dayOfWeek, AvailableStartTimes.empty());
+    public static WeekdayScheduleRule dayOff() {
+        return new WeekdayScheduleRule(AvailableStartTimes.empty());
     }
 
     /**
@@ -90,20 +78,19 @@ public class WeekdayScheduleRule {
             return false;
         }
         WeekdayScheduleRule that = (WeekdayScheduleRule) o;
-        return dayOfWeek == that.dayOfWeek
-            && Objects.equals(availableStartTimes, that.availableStartTimes);
+        return Objects.equals(availableStartTimes, that.availableStartTimes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dayOfWeek, availableStartTimes);
+        return Objects.hash(availableStartTimes);
     }
 
     @Override
     public String toString() {
         if (!isWorkingDay()) {
-            return String.format("%s: 휴무", dayOfWeek);
+            return "WeekdayScheduleRule{휴무}";
         }
-        return String.format("%s: %s", dayOfWeek, availableStartTimes);
+        return String.format("WeekdayScheduleRule{%s}", availableStartTimes);
     }
 }

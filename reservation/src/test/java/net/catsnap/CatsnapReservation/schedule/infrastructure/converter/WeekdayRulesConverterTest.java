@@ -32,8 +32,8 @@ class WeekdayRulesConverterTest {
         // given
         Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
         List<LocalTime> mondayTimes = List.of(LocalTime.of(9, 0), LocalTime.of(10, 0));
-        rules.put(DayOfWeek.MONDAY, WeekdayScheduleRule.workingDay(DayOfWeek.MONDAY, mondayTimes));
-        rules.put(DayOfWeek.TUESDAY, WeekdayScheduleRule.dayOff(DayOfWeek.TUESDAY));
+        rules.put(DayOfWeek.MONDAY, WeekdayScheduleRule.workingDay(mondayTimes));
+        rules.put(DayOfWeek.TUESDAY, WeekdayScheduleRule.dayOff());
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
@@ -77,7 +77,7 @@ class WeekdayRulesConverterTest {
             LocalTime.of(10, 30),
             LocalTime.of(14, 0)
         );
-        rules.put(DayOfWeek.WEDNESDAY, WeekdayScheduleRule.workingDay(DayOfWeek.WEDNESDAY, times));
+        rules.put(DayOfWeek.WEDNESDAY, WeekdayScheduleRule.workingDay(times));
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
@@ -95,7 +95,7 @@ class WeekdayRulesConverterTest {
     void 휴무일_규칙을_JSON으로_변환한다() {
         // given
         Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
-        rules.put(DayOfWeek.SUNDAY, WeekdayScheduleRule.dayOff(DayOfWeek.SUNDAY));
+        rules.put(DayOfWeek.SUNDAY, WeekdayScheduleRule.dayOff());
 
         // when
         String json = converter.convertToDatabaseColumn(rules);
@@ -112,12 +112,10 @@ class WeekdayRulesConverterTest {
         String json = """
             {
               "MONDAY": {
-                "dayOfWeek": "MONDAY",
                 "isWorkingDay": true,
                 "availableStartTimes": ["09:00", "10:00"]
               },
               "TUESDAY": {
-                "dayOfWeek": "TUESDAY",
                 "isWorkingDay": false
               }
             }
@@ -132,7 +130,6 @@ class WeekdayRulesConverterTest {
 
         WeekdayScheduleRule mondayRule = rules.get(DayOfWeek.MONDAY);
         assertThat(mondayRule).isNotNull();
-        assertThat(mondayRule.getDayOfWeek()).isEqualTo(DayOfWeek.MONDAY);
         assertThat(mondayRule.isWorkingDay()).isTrue();
         assertThat(mondayRule.generateAvailableTimes()).containsExactly(
             LocalTime.of(9, 0),
@@ -141,7 +138,6 @@ class WeekdayRulesConverterTest {
 
         WeekdayScheduleRule tuesdayRule = rules.get(DayOfWeek.TUESDAY);
         assertThat(tuesdayRule).isNotNull();
-        assertThat(tuesdayRule.getDayOfWeek()).isEqualTo(DayOfWeek.TUESDAY);
         assertThat(tuesdayRule.isWorkingDay()).isFalse();
     }
 
@@ -181,7 +177,6 @@ class WeekdayRulesConverterTest {
         String json = """
             {
               "FRIDAY": {
-                "dayOfWeek": "FRIDAY",
                 "isWorkingDay": true,
                 "availableStartTimes": ["14:00", "15:30", "17:00"]
               }
@@ -208,7 +203,6 @@ class WeekdayRulesConverterTest {
         String json = """
             {
               "SATURDAY": {
-                "dayOfWeek": "SATURDAY",
                 "isWorkingDay": false
               }
             }
@@ -242,9 +236,9 @@ class WeekdayRulesConverterTest {
         List<LocalTime> mondayTimes = List.of(LocalTime.of(9, 0), LocalTime.of(10, 0));
         List<LocalTime> wednesdayTimes = List.of(LocalTime.of(14, 0), LocalTime.of(15, 0));
 
-        original.put(DayOfWeek.MONDAY, WeekdayScheduleRule.workingDay(DayOfWeek.MONDAY, mondayTimes));
-        original.put(DayOfWeek.TUESDAY, WeekdayScheduleRule.dayOff(DayOfWeek.TUESDAY));
-        original.put(DayOfWeek.WEDNESDAY, WeekdayScheduleRule.workingDay(DayOfWeek.WEDNESDAY, wednesdayTimes));
+        original.put(DayOfWeek.MONDAY, WeekdayScheduleRule.workingDay(mondayTimes));
+        original.put(DayOfWeek.TUESDAY, WeekdayScheduleRule.dayOff());
+        original.put(DayOfWeek.WEDNESDAY, WeekdayScheduleRule.workingDay(wednesdayTimes));
 
         // when
         String json = converter.convertToDatabaseColumn(original);
@@ -263,10 +257,10 @@ class WeekdayRulesConverterTest {
         Map<DayOfWeek, WeekdayScheduleRule> rules = new EnumMap<>(DayOfWeek.class);
         for (DayOfWeek day : DayOfWeek.values()) {
             if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
-                rules.put(day, WeekdayScheduleRule.dayOff(day));
+                rules.put(day, WeekdayScheduleRule.dayOff());
             } else {
                 List<LocalTime> times = List.of(LocalTime.of(9, 0), LocalTime.of(14, 0));
-                rules.put(day, WeekdayScheduleRule.workingDay(day, times));
+                rules.put(day, WeekdayScheduleRule.workingDay(times));
             }
         }
 

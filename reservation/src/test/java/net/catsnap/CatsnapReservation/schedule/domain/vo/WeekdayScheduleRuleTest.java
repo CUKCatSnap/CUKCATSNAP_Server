@@ -3,7 +3,6 @@ package net.catsnap.CatsnapReservation.schedule.domain.vo;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +18,6 @@ class WeekdayScheduleRuleTest {
     @Test
     void 근무일_규칙_생성에_성공한다() {
         // given
-        DayOfWeek dayOfWeek = DayOfWeek.MONDAY;
         List<LocalTime> times = List.of(
             LocalTime.of(9, 0),
             LocalTime.of(10, 0),
@@ -28,10 +26,9 @@ class WeekdayScheduleRuleTest {
         AvailableStartTimes availableStartTimes = AvailableStartTimes.of(times);
 
         // when
-        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(dayOfWeek, availableStartTimes);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(availableStartTimes);
 
         // then
-        assertThat(rule.getDayOfWeek()).isEqualTo(DayOfWeek.MONDAY);
         assertThat(rule.isWorkingDay()).isTrue();
         assertThat(rule.getAvailableStartTimes()).isEqualTo(availableStartTimes);
     }
@@ -39,17 +36,15 @@ class WeekdayScheduleRuleTest {
     @Test
     void List로_근무일_규칙_생성에_성공한다() {
         // given
-        DayOfWeek dayOfWeek = DayOfWeek.TUESDAY;
         List<LocalTime> times = List.of(
             LocalTime.of(14, 0),
             LocalTime.of(15, 0)
         );
 
         // when
-        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(dayOfWeek, times);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(times);
 
         // then
-        assertThat(rule.getDayOfWeek()).isEqualTo(DayOfWeek.TUESDAY);
         assertThat(rule.isWorkingDay()).isTrue();
         assertThat(rule.generateAvailableTimes()).containsExactly(
             LocalTime.of(14, 0),
@@ -59,38 +54,21 @@ class WeekdayScheduleRuleTest {
 
     @Test
     void 휴무일_규칙_생성에_성공한다() {
-        // given
-        DayOfWeek dayOfWeek = DayOfWeek.SUNDAY;
-
         // when
-        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff(dayOfWeek);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff();
 
         // then
-        assertThat(rule.getDayOfWeek()).isEqualTo(DayOfWeek.SUNDAY);
         assertThat(rule.isWorkingDay()).isFalse();
         assertThat(rule.getAvailableStartTimes().isEmpty()).isTrue();
     }
 
     @Test
-    void dayOfWeek가_null이면_예외가_발생한다() {
-        // given
-        DayOfWeek dayOfWeek = null;
-        List<LocalTime> times = List.of(LocalTime.of(9, 0));
-
-        // when & then
-        assertThatThrownBy(() -> WeekdayScheduleRule.workingDay(dayOfWeek, times))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("요일은 필수입니다.");
-    }
-
-    @Test
     void availableStartTimes가_null이면_예외가_발생한다() {
         // given
-        DayOfWeek dayOfWeek = DayOfWeek.MONDAY;
         AvailableStartTimes availableStartTimes = null;
 
         // when & then
-        assertThatThrownBy(() -> WeekdayScheduleRule.workingDay(dayOfWeek, availableStartTimes))
+        assertThatThrownBy(() -> WeekdayScheduleRule.workingDay(availableStartTimes))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("예약 가능 시간은 필수입니다.");
     }
@@ -102,7 +80,7 @@ class WeekdayScheduleRuleTest {
             LocalTime.of(9, 0),
             LocalTime.of(10, 0)
         );
-        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(DayOfWeek.WEDNESDAY, times);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(times);
 
         // when
         List<LocalTime> availableTimes = rule.generateAvailableTimes();
@@ -117,7 +95,7 @@ class WeekdayScheduleRuleTest {
     @Test
     void 휴무일은_예약_가능_시간이_없다() {
         // given
-        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff(DayOfWeek.SATURDAY);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff();
 
         // when
         List<LocalTime> availableTimes = rule.generateAvailableTimes();
@@ -133,7 +111,7 @@ class WeekdayScheduleRuleTest {
             LocalTime.of(9, 0),
             LocalTime.of(10, 0)
         );
-        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(DayOfWeek.MONDAY, times);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(times);
 
         // when & then
         assertThat(rule.isValidStartTime(LocalTime.of(9, 0))).isTrue();
@@ -144,7 +122,7 @@ class WeekdayScheduleRuleTest {
     @Test
     void 휴무일은_모든_시간이_유효하지_않다() {
         // given
-        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff(DayOfWeek.SUNDAY);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff();
 
         // when & then
         assertThat(rule.isValidStartTime(LocalTime.of(9, 0))).isFalse();
@@ -155,8 +133,8 @@ class WeekdayScheduleRuleTest {
     void 동일한_내용의_규칙은_같다() {
         // given
         List<LocalTime> times = List.of(LocalTime.of(9, 0), LocalTime.of(10, 0));
-        WeekdayScheduleRule rule1 = WeekdayScheduleRule.workingDay(DayOfWeek.MONDAY, times);
-        WeekdayScheduleRule rule2 = WeekdayScheduleRule.workingDay(DayOfWeek.MONDAY, times);
+        WeekdayScheduleRule rule1 = WeekdayScheduleRule.workingDay(times);
+        WeekdayScheduleRule rule2 = WeekdayScheduleRule.workingDay(times);
 
         // when & then
         assertThat(rule1).isEqualTo(rule2);
@@ -170,26 +148,26 @@ class WeekdayScheduleRuleTest {
             LocalTime.of(9, 0),
             LocalTime.of(10, 0)
         );
-        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(DayOfWeek.MONDAY, times);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.workingDay(times);
 
         // when
         String result = rule.toString();
 
         // then
-        assertThat(result).contains("MONDAY");
+        assertThat(result).contains("WeekdayScheduleRule");
         assertThat(result).doesNotContain("휴무");
     }
 
     @Test
     void toString이_휴무일에_대해_올바르게_동작한다() {
         // given
-        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff(DayOfWeek.SUNDAY);
+        WeekdayScheduleRule rule = WeekdayScheduleRule.dayOff();
 
         // when
         String result = rule.toString();
 
         // then
-        assertThat(result).contains("SUNDAY");
+        assertThat(result).contains("WeekdayScheduleRule");
         assertThat(result).contains("휴무");
     }
 }
