@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -124,8 +125,8 @@ class PhotographerScheduleTest {
         Long photographerId = 1L;
         PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
         DayOfWeek monday = DayOfWeek.MONDAY;
-        java.time.LocalTime time1 = java.time.LocalTime.of(9, 0);
-        java.time.LocalTime time2 = java.time.LocalTime.of(10, 0);
+        LocalTime time1 = LocalTime.of(9, 0);
+        LocalTime time2 = LocalTime.of(10, 0);
         AvailableStartTimes newTimes = AvailableStartTimes.of(java.util.List.of(time1, time2));
 
         // when
@@ -185,7 +186,7 @@ class PhotographerScheduleTest {
         DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
 
         // 기본 규칙은 근무일로 설정
-        java.time.LocalTime time = java.time.LocalTime.of(9, 0);
+        LocalTime time = LocalTime.of(9, 0);
         AvailableStartTimes workingTimes = AvailableStartTimes.of(java.util.List.of(time));
         schedule.updateWeekdayRule(dayOfWeek, workingTimes);
 
@@ -209,7 +210,7 @@ class PhotographerScheduleTest {
         DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
 
         // 기본 규칙을 근무일로 설정
-        java.time.LocalTime time = java.time.LocalTime.of(9, 0);
+        LocalTime time = LocalTime.of(9, 0);
         AvailableStartTimes workingTimes = AvailableStartTimes.of(java.util.List.of(time));
         schedule.updateWeekdayRule(dayOfWeek, workingTimes);
 
