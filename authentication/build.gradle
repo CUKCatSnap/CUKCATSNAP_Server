@@ -73,6 +73,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     // === kafka 의존성 ===
     implementation 'org.springframework.kafka:spring-kafka'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
 
 tasks.named('test') {

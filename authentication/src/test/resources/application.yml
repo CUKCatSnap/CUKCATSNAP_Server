@@ -22,6 +22,26 @@ spring:
       host: localhost
       port: 6379
 
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: net.catsnap.shared.infrastructure.kafka.KafkaValueSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        batch.size: 16384
+        linger.ms: 10
+        buffer.memory: 33554432
+        schema.registry.url: mock://test-registry
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: net.catsnap.shared.infrastructure.kafka.KafkaValueDeserializer
+      auto-offset-reset: earliest
+      properties:
+        schema.registry.url: mock://test-registry
+        specific.avro.reader: true
+
 app:
   jwt:
     jwt-key: V4MXn2rSWF4mNPIa1QXaVLjo1Q2ZHLmGAVLJjJMkJ0h54l387yI3RYuf91Cq8eeM8AZnAOG1VkrWFV65tKHkHXxIR7lx9RbnlyCkdxVCN0e0t8Hq1pfmrgbSg0Scj5v6
