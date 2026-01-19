@@ -28,7 +28,7 @@ public class SchedulingConfig {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(1);
         scheduler.setThreadNamePrefix("scheduled-task-");
-        //todo 추후 모니터링 시스템 연동 고려
+        // TODO 추후 모니터링 시스템 연동 고려
         scheduler.setErrorHandler(throwable -> log.error("스케줄 작업 실패", throwable));
         return scheduler;
     }

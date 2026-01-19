@@ -7,8 +7,8 @@ COPY gradlew .
 COPY gradle gradle
 COPY build.gradle .
 
-# authentication 빌드에 필요한 모듈만 포함하는 settings.gradle 생성
-RUN echo "include 'authentication'\ninclude 'authorization-shared'\ninclude 'event-schema-shared'" > settings.gradle
+# authentication 빌드를 위한 settings.gradle 생성 (필요 모듈만 포함)
+RUN printf "include 'authentication'\ninclude 'authorization-shared'\ninclude 'event-schema-shared'\n" > settings.gradle
 
 # 의존성 다운로드를 위한 빌드 파일 복사
 COPY authorization-shared/build.gradle authorization-shared/build.gradle

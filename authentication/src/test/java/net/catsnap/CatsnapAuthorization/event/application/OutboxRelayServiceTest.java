@@ -32,8 +32,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @SpringBootTest
 @EmbeddedKafka(
     partitions = 1,
-    topics = {"PhotographerCreated"},
-    brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"}
+    topics = {"PhotographerCreated"}
 )
 @TestPropertySource(properties = {
     "spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}"
