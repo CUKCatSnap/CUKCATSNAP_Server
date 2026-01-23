@@ -40,6 +40,8 @@ jacocoTestReport {
 }
 
 dependencies {
+    // === Event Schema Shared 모듈 ===
+    implementation project(':event-schema-shared')
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -56,6 +58,10 @@ dependencies {
     // === 롬복 의존성 ===
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // === Kafka 의존성 ===
+    implementation 'org.springframework.kafka:spring-kafka'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
 
 tasks.named('test') {
