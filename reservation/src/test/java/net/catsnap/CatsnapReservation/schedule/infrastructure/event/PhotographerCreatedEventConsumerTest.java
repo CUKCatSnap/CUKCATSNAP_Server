@@ -1,6 +1,7 @@
 package net.catsnap.CatsnapReservation.schedule.infrastructure.event;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -8,6 +9,7 @@ import static org.mockito.Mockito.never;
 
 import java.nio.ByteBuffer;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Map;
 import net.catsnap.CatsnapReservation.schedule.application.PhotographerScheduleService;
 import net.catsnap.event.photographer.v1.PhotographerCreated;
@@ -62,14 +64,15 @@ class PhotographerCreatedEventConsumerTest {
         EventEnvelope envelope = createEventEnvelope("event-1", "1", payloadBytes);
         PhotographerCreated event = new PhotographerCreated(photographerId);
 
-        given(eventDeserializer.deserialize(eq(payloadBytes), eq(PhotographerCreated.class)))
+        given(eventDeserializer.deserialize(any(byte[].class), eq(PhotographerCreated.class)))
             .willReturn(event);
 
         // when
         consumer.consume(envelope);
 
         // then
-        then(eventDeserializer).should().deserialize(payloadBytes, PhotographerCreated.class);
+        then(eventDeserializer).should()
+            .deserialize(argThat(bytes -> Arrays.equals(bytes, payloadBytes)), eq(PhotographerCreated.class));
     }
 
     @Test

@@ -14,6 +14,7 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.stereotype.Component;
+import java.nio.ByteBuffer;
 
 /**
  * PhotographerCreated 이벤트 Kafka Consumer
@@ -60,8 +61,12 @@ public class PhotographerCreatedEventConsumer {
         log.info("Received PhotographerCreated event: eventId={}, aggregateId={}",
             envelope.getEventId(), envelope.getAggregateId());
 
+        ByteBuffer buffer = envelope.getPayload();
+        byte[] payloadBytes = new byte[buffer.remaining()];
+        buffer.duplicate().get(payloadBytes);
+
         PhotographerCreated event = eventDeserializer.deserialize(
-            envelope.getPayload().array(),
+            payloadBytes,
             PhotographerCreated.class
         );
 
