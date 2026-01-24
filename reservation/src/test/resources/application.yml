@@ -17,3 +17,6 @@ spring:
   h2:
     console:
       enabled: false
+
+passport:
+  secret-key: itstestsecreykey123123123itstestsecreykey123123123
