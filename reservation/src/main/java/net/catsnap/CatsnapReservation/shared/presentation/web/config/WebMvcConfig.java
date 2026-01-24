@@ -1,0 +1,43 @@
+package net.catsnap.CatsnapReservation.shared.presentation.web.config;
+
+import net.catsnap.CatsnapReservation.shared.presentation.web.interceptor.AdminInterceptor;
+import net.catsnap.CatsnapReservation.shared.presentation.web.interceptor.AnyUserInterceptor;
+import net.catsnap.CatsnapReservation.shared.presentation.web.interceptor.LoginModelInterceptor;
+import net.catsnap.CatsnapReservation.shared.presentation.web.interceptor.LoginPhotographerInterceptor;
+import net.catsnap.CatsnapReservation.shared.presentation.web.interceptor.LoginUserInterceptor;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    private final AdminInterceptor adminInterceptor;
+    private final AnyUserInterceptor anyUserInterceptor;
+    private final LoginUserInterceptor loginUserInterceptor;
+    private final LoginPhotographerInterceptor loginPhotographerInterceptor;
+    private final LoginModelInterceptor loginModelInterceptor;
+
+    public WebMvcConfig(
+        AdminInterceptor adminInterceptor,
+        AnyUserInterceptor anyUserInterceptor,
+        LoginUserInterceptor loginUserInterceptor,
+        LoginPhotographerInterceptor loginPhotographerInterceptor,
+        LoginModelInterceptor loginModelInterceptor
+    ) {
+        this.adminInterceptor = adminInterceptor;
+        this.anyUserInterceptor = anyUserInterceptor;
+        this.loginUserInterceptor = loginUserInterceptor;
+        this.loginPhotographerInterceptor = loginPhotographerInterceptor;
+        this.loginModelInterceptor = loginModelInterceptor;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(adminInterceptor);
+        registry.addInterceptor(anyUserInterceptor);
+        registry.addInterceptor(loginUserInterceptor);
+        registry.addInterceptor(loginPhotographerInterceptor);
+        registry.addInterceptor(loginModelInterceptor);
+    }
+}
