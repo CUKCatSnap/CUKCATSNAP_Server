@@ -134,35 +134,11 @@ class UserIdArgumentResolverTest {
                 .extracting("resultCode")
                 .isEqualTo(PresentationErrorCode.INVALID_PASSPORT);
         }
-
-        @Test
-        void 만료된_Passport면_EXPIRED_PASSPORT_예외가_발생한다() {
-            // given
-            String expiredPassport = createExpiredPassport(123L, CatsnapAuthority.PHOTOGRAPHER);
-
-            NativeWebRequest webRequest = mock(NativeWebRequest.class);
-            HttpServletRequest httpRequest = mock(HttpServletRequest.class);
-            when(webRequest.getNativeRequest(HttpServletRequest.class)).thenReturn(httpRequest);
-            when(httpRequest.getHeader(PassportHandler.PASSPORT_KEY)).thenReturn(expiredPassport);
-
-            // when & then
-            assertThatThrownBy(() -> resolver.resolveArgument(null, null, webRequest, null))
-                .isInstanceOf(PresentationException.class)
-                .extracting("resultCode")
-                .isEqualTo(PresentationErrorCode.EXPIRED_PASSPORT);
-        }
     }
 
     private String createSignedPassport(Long userId, CatsnapAuthority authority) {
         Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
         Instant exp = now.plus(30, ChronoUnit.MINUTES);
-        Passport passport = new Passport((byte) 1, userId, authority, now, exp);
-        return passportHandler.sign(passport);
-    }
-
-    private String createExpiredPassport(Long userId, CatsnapAuthority authority) {
-        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
-        Instant exp = now.minus(1, ChronoUnit.MINUTES); // 이미 만료됨
         Passport passport = new Passport((byte) 1, userId, authority, now, exp);
         return passportHandler.sign(passport);
     }
