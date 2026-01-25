@@ -3,10 +3,7 @@ package net.catsnap.CatsnapReservation.program.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import net.catsnap.CatsnapReservation.program.domain.vo.Description;
-import net.catsnap.CatsnapReservation.program.domain.vo.Duration;
-import net.catsnap.CatsnapReservation.program.domain.vo.Price;
-import net.catsnap.CatsnapReservation.program.domain.vo.Title;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -21,20 +18,20 @@ class ProgramTest {
     void 프로그램_생성에_성공한다() {
         // given
         Long photographerId = 1L;
-        Title title = new Title("웨딩 스냅 촬영");
-        Description description = new Description("아름다운 웨딩 스냅입니다.");
-        Price price = new Price(150000L);
-        Duration duration = new Duration(90);
+        String title = "웨딩 스냅 촬영";
+        String description = "아름다운 웨딩 스냅입니다.";
+        Long price = 150000L;
+        Integer duration = 90;
 
         // when
         Program program = Program.create(photographerId, title, description, price, duration);
 
         // then
         assertThat(program.getPhotographerId()).isEqualTo(photographerId);
-        assertThat(program.getTitle()).isEqualTo(title);
-        assertThat(program.getDescription()).isEqualTo(description);
-        assertThat(program.getPrice()).isEqualTo(price);
-        assertThat(program.getDuration()).isEqualTo(duration);
+        assertThat(program.getTitle().getValue()).isEqualTo(title);
+        assertThat(program.getDescription().getValue()).isEqualTo(description);
+        assertThat(program.getPrice().getValue()).isEqualTo(price);
+        assertThat(program.getDuration().getValue()).isEqualTo(duration);
         assertThat(program.isDeleted()).isFalse();
     }
 
@@ -42,13 +39,9 @@ class ProgramTest {
     void 설명_없이_프로그램_생성에_성공한다() {
         // given
         Long photographerId = 1L;
-        Title title = new Title("프로필 촬영");
-        Description description = new Description(null);
-        Price price = new Price(100000L);
-        Duration duration = new Duration(60);
 
         // when
-        Program program = Program.create(photographerId, title, description, price, duration);
+        Program program = Program.create(photographerId, "프로필 촬영", null, 100000L, 60);
 
         // then
         assertThat(program.getDescription().isEmpty()).isTrue();
@@ -56,35 +49,46 @@ class ProgramTest {
 
     @Test
     void null_작가ID로_생성_시_예외가_발생한다() {
-        // given
-        Title title = new Title("웨딩 스냅");
-        Description description = new Description("설명");
-        Price price = new Price(150000L);
-        Duration duration = new Duration(90);
-
         // when & then
-        assertThatThrownBy(() -> Program.create(null, title, description, price, duration))
+        assertThatThrownBy(() -> Program.create(null, "웨딩 스냅", "설명", 150000L, 90))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("작가 ID는 필수입니다");
+    }
+
+    @Test
+    void 빈_제목으로_생성_시_예외가_발생한다() {
+        // when & then
+        assertThatThrownBy(() -> Program.create(1L, "", "설명", 150000L, 90))
+            .isInstanceOf(DomainException.class);
+    }
+
+    @Test
+    void 음수_가격으로_생성_시_예외가_발생한다() {
+        // when & then
+        assertThatThrownBy(() -> Program.create(1L, "제목", "설명", -1L, 90))
+            .isInstanceOf(DomainException.class);
+    }
+
+    @Test
+    void 영분_소요시간으로_생성_시_예외가_발생한다() {
+        // when & then
+        assertThatThrownBy(() -> Program.create(1L, "제목", "설명", 150000L, 0))
+            .isInstanceOf(DomainException.class);
     }
 
     @Test
     void 프로그램_정보_수정에_성공한다() {
         // given
         Program program = createDefaultProgram();
-        Title newTitle = new Title("수정된 제목");
-        Description newDescription = new Description("수정된 설명");
-        Price newPrice = new Price(200000L);
-        Duration newDuration = new Duration(120);
 
         // when
-        program.update(newTitle, newDescription, newPrice, newDuration);
+        program.update("수정된 제목", "수정된 설명", 200000L, 120);
 
         // then
-        assertThat(program.getTitle()).isEqualTo(newTitle);
-        assertThat(program.getDescription()).isEqualTo(newDescription);
-        assertThat(program.getPrice()).isEqualTo(newPrice);
-        assertThat(program.getDuration()).isEqualTo(newDuration);
+        assertThat(program.getTitle().getValue()).isEqualTo("수정된 제목");
+        assertThat(program.getDescription().getValue()).isEqualTo("수정된 설명");
+        assertThat(program.getPrice().getValue()).isEqualTo(200000L);
+        assertThat(program.getDuration().getValue()).isEqualTo(120);
     }
 
     @Test
@@ -113,13 +117,7 @@ class ProgramTest {
     void 소유권_확인에_성공한다() {
         // given
         Long photographerId = 1L;
-        Program program = Program.create(
-            photographerId,
-            new Title("제목"),
-            new Description("설명"),
-            new Price(100000L),
-            new Duration(60)
-        );
+        Program program = Program.create(photographerId, "제목", "설명", 100000L, 60);
 
         // when & then
         assertThat(program.isOwnedBy(1L)).isTrue();
@@ -141,13 +139,7 @@ class ProgramTest {
     @Test
     void toString이_올바르게_동작한다() {
         // given
-        Program program = Program.create(
-            1L,
-            new Title("웨딩 스냅"),
-            new Description("설명"),
-            new Price(150000L),
-            new Duration(90)
-        );
+        Program program = Program.create(1L, "웨딩 스냅", "설명", 150000L, 90);
 
         // when
         String result = program.toString();
@@ -159,12 +151,6 @@ class ProgramTest {
     }
 
     private Program createDefaultProgram() {
-        return Program.create(
-            1L,
-            new Title("기본 프로그램"),
-            new Description("기본 설명"),
-            new Price(100000L),
-            new Duration(60)
-        );
+        return Program.create(1L, "기본 프로그램", "기본 설명", 100000L, 60);
     }
 }
