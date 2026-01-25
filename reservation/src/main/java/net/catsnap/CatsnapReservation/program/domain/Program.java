@@ -86,37 +86,52 @@ public class Program {
 
     /**
      * 새로운 프로그램 생성
+     * <p>
+     * 원시 타입을 받아 내부에서 VO를 생성하고 검증합니다.
+     * 도메인 엔티티가 자신의 불변식(invariant)을 보장합니다.
      *
-     * @param photographerId 작가 ID
-     * @param title          프로그램 제목
-     * @param description    프로그램 설명 (nullable)
-     * @param price          가격
-     * @param duration       소요 시간
+     * @param photographerId   작가 ID
+     * @param titleValue       프로그램 제목
+     * @param descriptionValue 프로그램 설명 (nullable)
+     * @param priceValue       가격
+     * @param durationMinutes  소요 시간 (분)
      * @return 생성된 Program
      */
     public static Program create(
         Long photographerId,
-        Title title,
-        Description description,
-        Price price,
-        Duration duration
+        String titleValue,
+        String descriptionValue,
+        Long priceValue,
+        Integer durationMinutes
     ) {
+        Title title = new Title(titleValue);
+        Description description = new Description(descriptionValue);
+        Price price = new Price(priceValue);
+        Duration duration = new Duration(durationMinutes);
+
         return new Program(photographerId, title, description, price, duration);
     }
 
     /**
      * 프로그램 정보 수정
+     * <p>
+     * 원시 타입을 받아 내부에서 VO를 생성하고 검증합니다.
+     *
+     * @param titleValue       프로그램 제목
+     * @param descriptionValue 프로그램 설명 (nullable)
+     * @param priceValue       가격
+     * @param durationMinutes  소요 시간 (분)
      */
     public void update(
-        Title title,
-        Description description,
-        Price price,
-        Duration duration
+        String titleValue,
+        String descriptionValue,
+        Long priceValue,
+        Integer durationMinutes
     ) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
+        this.title = new Title(titleValue);
+        this.description = new Description(descriptionValue);
+        this.price = new Price(priceValue);
+        this.duration = new Duration(durationMinutes);
     }
 
     /**
