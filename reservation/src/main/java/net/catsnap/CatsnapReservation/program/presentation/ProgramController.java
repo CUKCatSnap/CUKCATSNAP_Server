@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
  * 프로그램 관련 API 컨트롤러
  *
  * <p>작가의 프로그램 생성, 수정, 삭제, 조회 기능을 제공합니다.</p>
+ *
+ * <p>기본 경로: {@code /reservation/program}</p>
  */
 @RestController
 @RequestMapping("/reservation/program")
@@ -32,9 +34,12 @@ public class ProgramController {
     /**
      * 프로그램 생성 API
      *
+     * <p>요청 경로: {@code POST /reservation/program}</p>
+     * <p>응답 타입: {@code ResponseEntity<ResultResponse<ProgramResponse>>}</p>
+     *
      * @param photographerId 인증된 작가 ID
      * @param request        프로그램 생성 요청 정보
-     * @return 생성된 프로그램 정보
+     * @return 생성 성공 응답(생성된 프로그램 ID 포함)
      */
     @PostMapping
     @LoginPhotographer
