@@ -136,6 +136,8 @@ public class Program {
 
     /**
      * 프로그램 소프트 삭제
+     * <p>
+     * 멱등성을 보장합니다. 이미 삭제된 프로그램은 조용히 무시합니다.
      *
      * @param deletedAt 삭제 시간
      * @throws IllegalArgumentException 삭제 시간이 null인 경우
@@ -143,6 +145,9 @@ public class Program {
     public void delete(LocalDateTime deletedAt) {
         if (deletedAt == null) {
             throw new IllegalArgumentException("삭제 시간은 필수입니다.");
+        }
+        if (isDeleted()) {
+            return;  // 이미 삭제됨 - 멱등성 보장
         }
         this.deletedAt = deletedAt;
     }

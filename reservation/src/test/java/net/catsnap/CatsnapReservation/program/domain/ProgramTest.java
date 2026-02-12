@@ -119,6 +119,23 @@ class ProgramTest {
     }
 
     @Test
+    void 이미_삭제된_프로그램을_다시_삭제해도_멱등성이_보장된다() {
+        // given
+        Program program = ProgramFixture.createDefault();
+        LocalDateTime firstDeletedAt = LocalDateTime.of(2024, 1, 1, 12, 0, 0);
+        LocalDateTime secondDeletedAt = LocalDateTime.of(2024, 1, 2, 14, 0, 0);
+
+        program.delete(firstDeletedAt);
+
+        // when - 이미 삭제된 프로그램을 다시 삭제 시도
+        program.delete(secondDeletedAt);
+
+        // then - 첫 번째 삭제 시간이 유지됨 (덮어씌워지지 않음)
+        assertThat(program.isDeleted()).isTrue();
+        assertThat(program.getDeletedAt()).isEqualTo(firstDeletedAt);
+    }
+
+    @Test
     void 삭제되지_않은_프로그램의_isDeleted는_false를_반환한다() {
         // given
         Program program = ProgramFixture.createDefault();
