@@ -136,7 +136,16 @@ public class PhotographerSchedule {
         if (targetDate.isBefore(LocalDate.now())) {
             return false;
         }
+        return !getAvailableStartTimesAt(targetDate).isEmpty();
+    }
 
+    /**
+     * 특정 날짜의 예약 가능 시작 시간 목록을 반환
+     *
+     * @param targetDate 조회할 날짜
+     * @return 예약 가능 시작 시간 목록 (예외 규칙 우선, 없으면 요일 규칙)
+     */
+    public AvailableStartTimes getAvailableStartTimesAt(LocalDate targetDate) {
         // 1. 예외 규칙 먼저 확인
         ScheduleOverride override = overrides.stream()
             .filter(o -> o.getTargetDate().equals(targetDate))
@@ -144,12 +153,12 @@ public class PhotographerSchedule {
             .orElse(null);
 
         if (override != null) {
-            return override.hasAvailableTimes();
+            return override.getAvailableTimes();
         }
 
         // 2. 기본 요일 규칙 확인
         AvailableStartTimes times = weekdayRules.get(targetDate.getDayOfWeek());
-        return times != null && !times.isEmpty();
+        return times != null ? times : AvailableStartTimes.empty();
     }
 
     private void validateOverride(ScheduleOverride override) {
