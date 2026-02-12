@@ -49,8 +49,7 @@ class ReservationTest {
         @Test
         void null_모델ID로_생성_시_예외가_발생한다() {
             // when & then
-            assertThatThrownBy(() -> Reservation.hold(
-                null, DEFAULT_PHOTOGRAPHER_ID, DEFAULT_PROGRAM_ID, DEFAULT_TIME_SLOT, DEFAULT_AMOUNT, DEFAULT_HOLD_EXPIRES_AT))
+            assertThatThrownBy(() -> ReservationFixture.createWithModelId(null))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("모델 ID는 필수입니다");
         }
@@ -58,8 +57,7 @@ class ReservationTest {
         @Test
         void null_작가ID로_생성_시_예외가_발생한다() {
             // when & then
-            assertThatThrownBy(() -> Reservation.hold(
-                DEFAULT_MODEL_ID, null, DEFAULT_PROGRAM_ID, DEFAULT_TIME_SLOT, DEFAULT_AMOUNT, DEFAULT_HOLD_EXPIRES_AT))
+            assertThatThrownBy(() -> ReservationFixture.createWithPhotographerId(null))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("작가 ID는 필수입니다");
         }
@@ -67,8 +65,7 @@ class ReservationTest {
         @Test
         void null_프로그램ID로_생성_시_예외가_발생한다() {
             // when & then
-            assertThatThrownBy(() -> Reservation.hold(
-                DEFAULT_MODEL_ID, DEFAULT_PHOTOGRAPHER_ID, null, DEFAULT_TIME_SLOT, DEFAULT_AMOUNT, DEFAULT_HOLD_EXPIRES_AT))
+            assertThatThrownBy(() -> ReservationFixture.createWithProgramId(null))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("프로그램 ID는 필수입니다");
         }
@@ -76,8 +73,7 @@ class ReservationTest {
         @Test
         void null_홀드만료시각으로_생성_시_예외가_발생한다() {
             // when & then
-            assertThatThrownBy(() -> Reservation.hold(
-                DEFAULT_MODEL_ID, DEFAULT_PHOTOGRAPHER_ID, DEFAULT_PROGRAM_ID, DEFAULT_TIME_SLOT, DEFAULT_AMOUNT, null))
+            assertThatThrownBy(() -> ReservationFixture.createWithHoldExpiresAt(null))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("홀드 만료 시각은 필수입니다");
         }
@@ -287,6 +283,19 @@ class ReservationTest {
             assertThatThrownBy(() -> reservation.expire(null))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("만료 시각은 필수입니다");
+        }
+
+        @Test
+        void 홀드_만료_이전에는_만료_처리를_무시한다() {
+            // given
+            Reservation reservation = ReservationFixture.createDefault();
+            LocalDateTime beforeExpiry = DEFAULT_HOLD_EXPIRES_AT.minusMinutes(1);
+
+            // when & then
+            assertThatCode(() -> reservation.expire(beforeExpiry))
+                .doesNotThrowAnyException();
+            assertThat(reservation.getStatus()).isEqualTo(ReservationStatus.PENDING);
+            assertThat(reservation.getHoldExpiresAt()).isEqualTo(DEFAULT_HOLD_EXPIRES_AT);
         }
     }
 

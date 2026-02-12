@@ -252,8 +252,8 @@ public class Reservation {
     /**
      * 예약을 만료 상태로 전이합니다.
      *
-     * <p>홀드 만료 시각이 지난 PENDING 예약에 대해 스케줄러 등에서 호출합니다.
-     * 이미 만료된 예약은 멱등하게 무시합니다.</p>
+     * <p>홀드 만료 시각이 지난 PENDING 예약에 대해 만료 처리를 수행합니다.
+     * 홀드 만료 이전 또는 이미 만료된 예약은 멱등하게 무시합니다.</p>
      *
      * @param expiredAt 만료 처리 시각
      * @throws DomainException PENDING 상태가 아닌 경우
@@ -267,6 +267,9 @@ public class Reservation {
             return;
         }
         ensurePending("임시예약 상태에서만 만료 처리할 수 있습니다.");
+        if (!isHoldExpiredAt(expiredAt)) {
+            return;
+        }
 
         this.status = ReservationStatus.EXPIRED;
         this.holdExpiresAt = null;
