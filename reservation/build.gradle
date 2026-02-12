@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.5.8'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'jacoco'
+    id 'idea'  // IntelliJ IDEA 플러그인 추가
 }
 
 group = 'net.catsnap'
@@ -62,9 +63,18 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // === JPA Metamodel Generator (타입 안전한 Criteria API) ===
+    annotationProcessor 'org.hibernate.orm:hibernate-jpamodelgen'
+
     // === Kafka 의존성 ===
     implementation 'org.springframework.kafka:spring-kafka'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
+
+    // === Spring Validation 의존성 ===
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // === ArchUnit 아키텍처 테스트 의존성 ===
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
 }
 
 tasks.named('test') {
@@ -73,4 +83,11 @@ tasks.named('test') {
 
 jar {
     enabled = false
+}
+
+// IntelliJ IDEA가 generated 소스를 인식하도록 설정
+idea {
+    module {
+        sourceDirs += file('build/generated/sources/annotationProcessor/java/main')
+    }
 }
