@@ -71,6 +71,22 @@ class ReservationTest {
         }
 
         @Test
+        void null_시간대로_생성_시_예외가_발생한다() {
+            // when & then
+            assertThatThrownBy(() -> ReservationFixture.createWithTimeSlot(null))
+                .isInstanceOf(DomainException.class)
+                .hasMessageContaining("예약 시간대는 필수입니다");
+        }
+
+        @Test
+        void null_금액으로_생성_시_예외가_발생한다() {
+            // when & then
+            assertThatThrownBy(() -> ReservationFixture.createWithAmount(null))
+                .isInstanceOf(DomainException.class)
+                .hasMessageContaining("예약 금액은 필수입니다");
+        }
+
+        @Test
         void null_홀드만료시각으로_생성_시_예외가_발생한다() {
             // when & then
             assertThatThrownBy(() -> ReservationFixture.createWithHoldExpiresAt(null))

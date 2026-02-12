@@ -151,6 +151,8 @@ public class Reservation {
         LocalDateTime holdExpiresAt
     ) {
         validateIds(modelId, photographerId, programId);
+        validateNotNull(timeSlot, "예약 시간대는 필수입니다.");
+        validateNotNull(amount, "예약 금액은 필수입니다.");
         validateHoldExpiresAt(holdExpiresAt);
 
         this.reservationNumber = reservationNumber;
@@ -176,7 +178,7 @@ public class Reservation {
      * @param amount         예약 시점의 프로그램 가격 스냅샷
      * @param holdExpiresAt  임시 점유 만료 시각
      * @return PENDING 상태의 새 예약
-     * @throws DomainException ID가 유효하지 않거나 holdExpiresAt이 null인 경우
+     * @throws DomainException 필수 파라미터가 null이거나 ID가 유효하지 않은 경우
      */
     public static Reservation hold(
         Long modelId,
@@ -345,6 +347,12 @@ public class Reservation {
         if (holdExpiresAt == null) {
             throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION,
                 "홀드 만료 시각은 필수입니다.");
+        }
+    }
+
+    private void validateNotNull(Object value, String message) {
+        if (value == null) {
+            throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, message);
         }
     }
 

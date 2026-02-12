@@ -79,6 +79,20 @@ public class ReservationFixture {
     }
 
     /**
+     * 지정된 timeSlot으로 PENDING 예약 생성
+     */
+    public static Reservation createWithTimeSlot(ReservationTimeSlot timeSlot) {
+        return Reservation.hold(
+            DEFAULT_MODEL_ID,
+            DEFAULT_PHOTOGRAPHER_ID,
+            DEFAULT_PROGRAM_ID,
+            timeSlot,
+            DEFAULT_AMOUNT,
+            DEFAULT_HOLD_EXPIRES_AT
+        );
+    }
+
+    /**
      * 지정된 금액으로 PENDING 예약 생성
      */
     public static Reservation createWithAmount(Money amount) {
