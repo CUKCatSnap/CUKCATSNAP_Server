@@ -78,7 +78,7 @@ class MoneyConverterTest {
     }
 
     @Test
-    void 영원_금액도_양방향_변환이_동작한다() {
+    void 무료_금액도_양방향_변환이_동작한다() {
         // given
         Money original = new Money(0L);
 

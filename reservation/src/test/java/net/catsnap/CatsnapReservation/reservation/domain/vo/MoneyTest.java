@@ -27,7 +27,7 @@ class MoneyTest {
     }
 
     @Test
-    void 영원으로_생성에_성공한다() {
+    void 무료로_생성에_성공한다() {
         // given & when
         Money money = new Money(0L);
 
