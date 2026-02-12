@@ -3,6 +3,7 @@ package net.catsnap.CatsnapReservation.program.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.time.LocalDateTime;
 import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -95,13 +96,25 @@ class ProgramTest {
     void 프로그램_삭제에_성공한다() {
         // given
         Program program = createDefaultProgram();
+        LocalDateTime deletedAt = LocalDateTime.of(2024, 1, 1, 12, 0, 0);
 
         // when
-        program.delete();
+        program.delete(deletedAt);
 
         // then
         assertThat(program.isDeleted()).isTrue();
-        assertThat(program.getDeletedAt()).isNotNull();
+        assertThat(program.getDeletedAt()).isEqualTo(deletedAt);
+    }
+
+    @Test
+    void null_삭제_시간으로_삭제_시_예외가_발생한다() {
+        // given
+        Program program = createDefaultProgram();
+
+        // when & then
+        assertThatThrownBy(() -> program.delete(null))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("삭제 시간은 필수입니다");
     }
 
     @Test

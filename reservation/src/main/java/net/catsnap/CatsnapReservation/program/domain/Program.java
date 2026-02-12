@@ -136,9 +136,15 @@ public class Program {
 
     /**
      * 프로그램 소프트 삭제
+     *
+     * @param deletedAt 삭제 시간
+     * @throws IllegalArgumentException 삭제 시간이 null인 경우
      */
-    public void delete() {
-        this.deletedAt = LocalDateTime.now();
+    public void delete(LocalDateTime deletedAt) {
+        if (deletedAt == null) {
+            throw new IllegalArgumentException("삭제 시간은 필수입니다.");
+        }
+        this.deletedAt = deletedAt;
     }
 
     /**
