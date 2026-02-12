@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.LocalDateTime;
+import net.catsnap.CatsnapReservation.program.fixture.ProgramFixture;
 import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -80,7 +81,7 @@ class ProgramTest {
     @Test
     void 프로그램_정보_수정에_성공한다() {
         // given
-        Program program = createDefaultProgram();
+        Program program = ProgramFixture.createDefault();
 
         // when
         program.update("수정된 제목", "수정된 설명", 200000L, 120);
@@ -95,7 +96,7 @@ class ProgramTest {
     @Test
     void 프로그램_삭제에_성공한다() {
         // given
-        Program program = createDefaultProgram();
+        Program program = ProgramFixture.createDefault();
         LocalDateTime deletedAt = LocalDateTime.of(2024, 1, 1, 12, 0, 0);
 
         // when
@@ -109,7 +110,7 @@ class ProgramTest {
     @Test
     void null_삭제_시간으로_삭제_시_예외가_발생한다() {
         // given
-        Program program = createDefaultProgram();
+        Program program = ProgramFixture.createDefault();
 
         // when & then
         assertThatThrownBy(() -> program.delete(null))
@@ -120,7 +121,7 @@ class ProgramTest {
     @Test
     void 삭제되지_않은_프로그램의_isDeleted는_false를_반환한다() {
         // given
-        Program program = createDefaultProgram();
+        Program program = ProgramFixture.createDefault();
 
         // when & then
         assertThat(program.isDeleted()).isFalse();
@@ -130,7 +131,7 @@ class ProgramTest {
     void 소유권_확인에_성공한다() {
         // given
         Long photographerId = 1L;
-        Program program = Program.create(photographerId, "제목", "설명", 100000L, 60);
+        Program program = ProgramFixture.createWithPhotographerId(photographerId);
 
         // when & then
         assertThat(program.isOwnedBy(1L)).isTrue();
@@ -140,7 +141,7 @@ class ProgramTest {
     @Test
     void toString이_올바르게_동작한다() {
         // given
-        Program program = Program.create(1L, "웨딩 스냅", "설명", 150000L, 90);
+        Program program = ProgramFixture.create(1L, "웨딩 스냅", "설명", 150000L, 90);
 
         // when
         String result = program.toString();
@@ -149,9 +150,5 @@ class ProgramTest {
         assertThat(result).contains("Program");
         assertThat(result).contains("photographerId=1");
         assertThat(result).contains("웨딩 스냅");
-    }
-
-    private Program createDefaultProgram() {
-        return Program.create(1L, "기본 프로그램", "기본 설명", 100000L, 60);
     }
 }
