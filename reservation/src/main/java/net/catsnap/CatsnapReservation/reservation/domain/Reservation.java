@@ -75,6 +75,7 @@ public class Reservation {
     /**
      * 낙관적 잠금을 위한 버전 필드.
      * 동일 슬롯에 대한 동시 변경 시 {@link jakarta.persistence.OptimisticLockException}을 발생시킵니다.
+     * 단, 이는 충돌 감지용이며 동시 예약을 원천적으로 차단하지는 않습니다.
      */
     @Version
     private Long version;
