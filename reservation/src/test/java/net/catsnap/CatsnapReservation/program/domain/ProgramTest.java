@@ -138,18 +138,6 @@ class ProgramTest {
     }
 
     @Test
-    void 동일한_ID를_가진_프로그램은_같다() {
-        // given
-        Program program1 = createDefaultProgram();
-        Program program2 = createDefaultProgram();
-
-        // then
-        // ID가 null이므로 equals는 ID 기반으로 동작
-        // 실제 DB 저장 후에는 ID가 할당되어 비교 가능
-        assertThat(program1).isEqualTo(program1);
-    }
-
-    @Test
     void toString이_올바르게_동작한다() {
         // given
         Program program = Program.create(1L, "웨딩 스냅", "설명", 150000L, 90);
