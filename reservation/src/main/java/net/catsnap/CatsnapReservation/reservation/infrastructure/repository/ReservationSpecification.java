@@ -43,22 +43,24 @@ public class ReservationSpecification {
     }
 
     /**
-     * 특정 날짜에 시작하는 예약만 필터링합니다.
+     * 특정 날짜와 시간대가 겹치는 예약을 필터링합니다.
      *
-     * <p>예약의 {@code startDateTime}이 해당 날짜의 00:00:00 ~ 23:59:59 범위에 포함되는지 확인합니다.</p>
+     * <p>예약의 시간 범위({@code startDateTime} ~ {@code endDateTime})가
+     * 해당 날짜(00:00:00 ~ 23:59:59)와 겹치는지 확인합니다.
+     * 전날 시작하여 대상 날짜까지 이어지는 예약도 포함됩니다.</p>
      *
      * @param date 조회할 날짜
-     * @return 해당 날짜의 예약만 포함하는 Specification
+     * @return 해당 날짜와 시간대가 겹치는 예약을 포함하는 Specification
      */
     public static Specification<Reservation> onDate(LocalDate date) {
         return (root, query, cb) -> {
             LocalDateTime dayStart = date.atStartOfDay();
             LocalDateTime dayEnd = date.atTime(LocalTime.MAX);
             return cb.and(
-                cb.greaterThanOrEqualTo(
-                    root.get(Reservation_.timeSlot).get(ReservationTimeSlot_.startDateTime), dayStart),
                 cb.lessThanOrEqualTo(
-                    root.get(Reservation_.timeSlot).get(ReservationTimeSlot_.startDateTime), dayEnd)
+                    root.get(Reservation_.timeSlot).get(ReservationTimeSlot_.startDateTime), dayEnd),
+                cb.greaterThan(
+                    root.get(Reservation_.timeSlot).get(ReservationTimeSlot_.endDateTime), dayStart)
             );
         };
     }
