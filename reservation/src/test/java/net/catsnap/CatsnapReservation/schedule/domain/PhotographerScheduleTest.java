@@ -229,6 +229,31 @@ class PhotographerScheduleTest {
     }
 
     @Test
+    void 예외_규칙에_다른_시간대가_설정되면_요일_규칙_시간은_예약_불가능하다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+
+        // 요일 규칙: 10:00
+        LocalTime weekdayTime = LocalTime.of(10, 0);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(weekdayTime)));
+
+        // 예외 규칙: 14:00으로 변경
+        LocalTime overrideTime = LocalTime.of(14, 0);
+        schedule.addOverride(ScheduleOverride.create(targetDate, AvailableStartTimes.of(java.util.List.of(overrideTime))));
+
+        // when & then - 요일 규칙 시간(10:00)은 예외 규칙에 없으므로 예약 불가
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, weekdayTime))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
+
+        // 예외 규칙 시간(14:00)은 예약 가능
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, overrideTime))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
     void 예외_규칙이_없으면_기본_요일_규칙을_따른다() {
         // given
         PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
