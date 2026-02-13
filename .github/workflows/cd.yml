@@ -12,6 +12,7 @@ jobs:
       authentication: ${{ steps.filter.outputs.authentication }}
       authorization-shared: ${{ steps.filter.outputs.authorization-shared }}
       reservation: ${{ steps.filter.outputs.reservation }}
+      payment: ${{ steps.filter.outputs.payment }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,6 +29,8 @@ jobs:
               - 'authorization-shared/**'
             reservation:
               - 'reservation/**'
+            payment:
+              - 'payment/**'
 
   deploy-gateway:
     needs: detect-changes
@@ -55,3 +58,12 @@ jobs:
       packages: write
     secrets: inherit
     uses: ./.github/workflows/deploy-reservation.yml
+
+  deploy-payment:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.payment == 'true'
+    permissions:
+      contents: read
+      packages: write
+    secrets: inherit
+    uses: ./.github/workflows/deploy-payment.yml
