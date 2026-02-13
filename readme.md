@@ -34,37 +34,37 @@
         </tr>
         <tr>
           <td>Gateway</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=gateway"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=gateway" alt="gateway"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-gateway"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-gateway" alt="catsnap-gateway"/></a></td>
           <td>API Gateway 서버</td>
         </tr>
         <tr>
           <td>Authentication</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authentication"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authentication" alt="authentication"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-authentication"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-authentication" alt="catsnap-authentication"/></a></td>
           <td>사용자 인증 서버</td>
         </tr>
         <tr>
           <td>Mono</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=mono"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=mono" alt="mono"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-mono"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-mono" alt="catsnap-mono"/></a></td>
           <td>메인 비즈니스 로직</td>
         </tr>
         <tr>
           <td>Authorization-Shared</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=authorization-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=authorization-shared" alt="authorization-shared"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-authorization-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-authorization-shared" alt="catsnap-authorization-shared"/></a></td>
           <td>인가 공유 모듈</td>
         </tr>
         <tr>
           <td>Reservation</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=reservation"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=reservation" alt="reservation"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-reservation"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-reservation" alt="catsnap-reservation"/></a></td>
           <td>예약 관리 서버</td>
         </tr>
         <tr>
           <td>Event-Schema-Shared</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=event-schema-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=event-schema-shared" alt="event-schema-shared"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-event-schema-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-event-schema-shared" alt="catsnap-event-schema-shared"/></a></td>
           <td>이벤트 스키마 공유 모듈</td>
         </tr>
         <tr>
           <td>Payment</td>
-          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=payment"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=payment" alt="payment"/></a></td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=catsnap-payment"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=catsnap-payment" alt="catsnap-payment"/></a></td>
           <td>결제 서버</td>
         </tr>
       </table>

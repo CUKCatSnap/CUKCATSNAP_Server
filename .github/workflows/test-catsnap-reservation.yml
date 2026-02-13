@@ -1,4 +1,4 @@
-name: Test Event Schema Shared Module
+name: Test Reservation Module
 
 on:
   workflow_call:
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test event-schema-shared module
-        run: ./gradlew --info :event-schema-shared:test
+      - name: Test reservation module
+        run: ./gradlew --info :catsnap-reservation:test
 
-      - name: Publish test results for event-schema-shared
+      - name: Publish test results for reservation
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'event-schema-shared/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (event-schema-shared)
+          files: 'catsnap-reservation/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (catsnap-reservation)
 
-      - name: Publish test report for event-schema-shared
+      - name: Publish test report for reservation
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'event-schema-shared/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (event-schema-shared)
+          report_paths: 'catsnap-reservation/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (catsnap-reservation)
 
-      - name: Upload coverage reports to Codecov for event-schema-shared
+      - name: Upload coverage reports to Codecov for reservation
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: event-schema-shared/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: event-schema-shared
-          name: event-schema-shared-coverage
+          files: catsnap-reservation/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: catsnap-reservation
+          name: catsnap-reservation-coverage

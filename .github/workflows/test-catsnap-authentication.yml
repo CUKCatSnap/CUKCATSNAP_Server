@@ -1,4 +1,4 @@
-name: Test Gateway Module
+name: Test Authentication Module
 
 on:
   workflow_call:
@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Gradle Caching
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test gateway module
-        run: ./gradlew --info :gateway:test
+      - name: Test authentication module
+        run: ./gradlew --info :catsnap-authentication:test
 
-      - name: Publish test results for gateway
+      - name: Publish test results for authentication
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'gateway/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (gateway)
+          files: 'catsnap-authentication/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (catsnap-authentication)
 
-      - name: Publish test report for gateway
+      - name: Publish test report for authentication
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'gateway/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (gateway)
+          report_paths: 'catsnap-authentication/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (catsnap-authentication)
 
-      - name: Upload coverage reports to Codecov for gateway
+      - name: Upload coverage reports to Codecov for authentication
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: gateway/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: gateway
-          name: gateway-coverage
+          files: catsnap-authentication/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: catsnap-authentication
+          name: catsnap-authentication-coverage

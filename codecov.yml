@@ -20,44 +20,44 @@ flag_management:
 # 각 모듈별 flag 설정
 flags:
   # Gateway 모듈
-  gateway:
+  catsnap-gateway:
     paths:
-      - gateway/
+      - catsnap-gateway/
     # Gateway 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Authentication 모듈
-  authentication:
+  catsnap-authentication:
     paths:
-      - authentication/
+      - catsnap-authentication/
     # Authentication 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Mono 모듈
-  mono:
+  catsnap-mono:
     paths:
-      - mono/
+      - catsnap-mono/
     # Mono 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Authorization-Shared 공유 모듈
-  authorization-shared:
+  catsnap-authorization-shared:
     paths:
-      - authorization-shared/
+      - catsnap-authorization-shared/
     # Authorization-Shared 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Event-Schema-Shared 공유 모듈
-  event-schema-shared:
+  catsnap-event-schema-shared:
     paths:
-      - event-schema-shared/
+      - catsnap-event-schema-shared/
     # Event-Schema-Shared 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 
   # Payment 모듈
-  payment:
+  catsnap-payment:
     paths:
-      - payment/
+      - catsnap-payment/
     # Payment 테스트가 실행되지 않으면 이전 커버리지 유지
     carryforward: true
 

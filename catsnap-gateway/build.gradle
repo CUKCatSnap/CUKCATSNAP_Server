@@ -41,7 +41,7 @@ jacocoTestReport {
 
 dependencies {
     // Project Dependencies
-    implementation project(':authorization-shared')
+    implementation project(':catsnap-authorization-shared')
 
     // Spring Cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'

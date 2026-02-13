@@ -47,26 +47,26 @@ jobs:
         run: chmod +x gradlew
 
       - name: Test mono module
-        run: ./gradlew --info :mono:test
+        run: ./gradlew --info :catsnap-mono:test
 
       - name: Publish test results for mono
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'mono/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (mono)
+          files: 'catsnap-mono/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (catsnap-mono)
 
       - name: Publish test report for mono
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'mono/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (mono)
+          report_paths: 'catsnap-mono/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (catsnap-mono)
 
       - name: Upload coverage reports to Codecov for mono
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: mono/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: mono
-          name: mono-coverage
+          files: catsnap-mono/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: catsnap-mono
+          name: catsnap-mono-coverage
