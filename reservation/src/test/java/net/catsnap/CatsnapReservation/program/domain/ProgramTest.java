@@ -2,6 +2,7 @@ package net.catsnap.CatsnapReservation.program.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 
 import java.time.LocalDateTime;
 import net.catsnap.CatsnapReservation.program.fixture.ProgramFixture;
@@ -150,7 +151,7 @@ class ProgramTest {
         Program program = ProgramFixture.createDefault();
 
         // when & then
-        org.assertj.core.api.Assertions.assertThatCode(program::ensureBookable)
+        assertThatCode(program::ensureBookable)
             .doesNotThrowAnyException();
     }
 
