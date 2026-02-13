@@ -3,16 +3,21 @@ plugins {
     id 'org.springframework.boot' version '3.5.8'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'jacoco'
+    id 'idea'  // IntelliJ IDEA 플러그인 추가
 }
 
 group = 'net.catsnap'
 version = '0.0.1-SNAPSHOT'
-description = 'Catsnap Authorization Service'
+description = 'Catsnap Reservation Service'
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+}
+
+repositories {
+    mavenCentral()
 }
 
 jacoco {
@@ -37,43 +42,39 @@ jacocoTestReport {
 
 dependencies {
     // === 인증 모듈 추가 ===
-    implementation project(':authorization-shared')
-    // === 이벤트 스키마 모듈 추가 ===
-    implementation project(':event-schema-shared')
+    implementation project(':catsnap-authorization-shared')
+    // === Event Schema Shared 모듈 ===
+    implementation project(':catsnap-event-schema-shared')
+    
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // === ArchUnit 아키텍처 테스트 의존성 ===
-    testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
-
     // === Spring Web 의존성 ===
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // === Spring Validation 의존성 ===
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
     // === Spring Data JPA 의존성 ===
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // === PostgreSQL 드라이버 ===
     runtimeOnly 'org.postgresql:postgresql'
     // === H2 데이터베이스 (테스트 전용) ===
     testRuntimeOnly 'com.h2database:h2'
-    // === 비밀번호 암호화 의존성 ===
-    implementation 'org.springframework.security:spring-security-crypto'
-    // === JWT 의존성 ===
-    implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
-    // === Redis 의존성 ===
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    // === Testcontainers 의존성 ===
-    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    testImplementation 'org.testcontainers:junit-jupiter'
+
     // === 롬복 의존성 ===
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    // === kafka 의존성 ===
+
+    // === JPA Metamodel Generator (타입 안전한 Criteria API) ===
+    annotationProcessor 'org.hibernate.orm:hibernate-jpamodelgen'
+
+    // === Kafka 의존성 ===
     implementation 'org.springframework.kafka:spring-kafka'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
+
+    // === Spring Validation 의존성 ===
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // === ArchUnit 아키텍처 테스트 의존성 ===
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
 }
 
 tasks.named('test') {
@@ -82,4 +83,11 @@ tasks.named('test') {
 
 jar {
     enabled = false
+}
+
+// IntelliJ IDEA가 generated 소스를 인식하도록 설정
+idea {
+    module {
+        sourceDirs += file('build/generated/sources/annotationProcessor/java/main')
+    }
 }

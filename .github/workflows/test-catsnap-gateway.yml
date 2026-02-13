@@ -1,4 +1,4 @@
-name: Test Authorization Shared Module
+name: Test Gateway Module
 
 on:
   workflow_call:
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test authorization-shared module
-        run: ./gradlew --info :authorization-shared:test
+      - name: Test gateway module
+        run: ./gradlew --info :catsnap-gateway:test
 
-      - name: Publish test results for authorization-shared
+      - name: Publish test results for gateway
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'authorization-shared/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (authorization-shared)
+          files: 'catsnap-gateway/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (catsnap-gateway)
 
-      - name: Publish test report for authorization-shared
+      - name: Publish test report for gateway
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'authorization-shared/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (authorization-shared)
+          report_paths: 'catsnap-gateway/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (catsnap-gateway)
 
-      - name: Upload coverage reports to Codecov for authorization-shared
+      - name: Upload coverage reports to Codecov for gateway
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: authorization-shared/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: authorization-shared
-          name: authorization-shared-coverage
+          files: catsnap-gateway/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: catsnap-gateway
+          name: catsnap-gateway-coverage

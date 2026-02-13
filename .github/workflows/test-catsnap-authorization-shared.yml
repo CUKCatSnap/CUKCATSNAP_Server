@@ -1,4 +1,4 @@
-name: Test Reservation Module
+name: Test Authorization Shared Module
 
 on:
   workflow_call:
@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Gradle Caching
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test reservation module
-        run: ./gradlew --info :reservation:test
+      - name: Test authorization-shared module
+        run: ./gradlew --info :catsnap-authorization-shared:test
 
-      - name: Publish test results for reservation
+      - name: Publish test results for authorization-shared
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'reservation/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (reservation)
+          files: 'catsnap-authorization-shared/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (catsnap-authorization-shared)
 
-      - name: Publish test report for reservation
+      - name: Publish test report for authorization-shared
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'reservation/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (reservation)
+          report_paths: 'catsnap-authorization-shared/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (catsnap-authorization-shared)
 
-      - name: Upload coverage reports to Codecov for reservation
+      - name: Upload coverage reports to Codecov for authorization-shared
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: reservation/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: reservation
-          name: reservation-coverage
+          files: catsnap-authorization-shared/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: catsnap-authorization-shared
+          name: catsnap-authorization-shared-coverage

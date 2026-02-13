@@ -8,13 +8,13 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      gateway: ${{ steps.filter.outputs.gateway }}
-      mono: ${{ steps.filter.outputs.mono }}
-      authentication: ${{ steps.filter.outputs.authentication }}
-      authorization-shared: ${{ steps.filter.outputs.authorization-shared }}
-      reservation: ${{ steps.filter.outputs.reservation }}
-      event-schema-shared: ${{ steps.filter.outputs.event-schema-shared }}
-      payment: ${{ steps.filter.outputs.payment }}
+      catsnap-gateway: ${{ steps.filter.outputs.catsnap-gateway }}
+      catsnap-mono: ${{ steps.filter.outputs.catsnap-mono }}
+      catsnap-authentication: ${{ steps.filter.outputs.catsnap-authentication }}
+      catsnap-authorization-shared: ${{ steps.filter.outputs.catsnap-authorization-shared }}
+      catsnap-reservation: ${{ steps.filter.outputs.catsnap-reservation }}
+      catsnap-event-schema-shared: ${{ steps.filter.outputs.catsnap-event-schema-shared }}
+      catsnap-payment: ${{ steps.filter.outputs.catsnap-payment }}
       common-files: ${{ steps.filter.outputs.common-files }}
     steps:
       - uses: actions/checkout@v4
@@ -24,20 +24,20 @@ jobs:
         id: filter
         with:
           filters: |
-            gateway:
-              - 'gateway/**'
-            mono:
-              - 'mono/**'
-            authentication:
-              - 'authentication/**'
-            authorization-shared:
-              - 'authorization-shared/**'
-            reservation:
-              - 'reservation/**'
-            event-schema-shared:
-              - 'event-schema-shared/**'
-            payment:
-              - 'payment/**'
+            catsnap-gateway:
+              - 'catsnap-gateway/**'
+            catsnap-mono:
+              - 'catsnap-mono/**'
+            catsnap-authentication:
+              - 'catsnap-authentication/**'
+            catsnap-authorization-shared:
+              - 'catsnap-authorization-shared/**'
+            catsnap-reservation:
+              - 'catsnap-reservation/**'
+            catsnap-event-schema-shared:
+              - 'catsnap-event-schema-shared/**'
+            catsnap-payment:
+              - 'catsnap-payment/**'
             common-files:
               - 'settings.gradle'
               - 'gradle/**'
@@ -45,70 +45,70 @@ jobs:
 
   test-gateway:
     needs: detect-changes
-    if: needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-gateway == 'true' || needs.detect-changes.outputs.catsnap-authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-gateway.yml
+    uses: ./.github/workflows/test-catsnap-gateway.yml
 
   test-mono:
     needs: detect-changes
-    if: needs.detect-changes.outputs.mono == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-mono == 'true' || needs.detect-changes.outputs.catsnap-authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-mono.yml
+    uses: ./.github/workflows/test-catsnap-mono.yml
 
   test-authentication:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authentication == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-authentication == 'true' || needs.detect-changes.outputs.catsnap-authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-authentication.yml
+    uses: ./.github/workflows/test-catsnap-authentication.yml
 
   test-authorization-shared:
     needs: detect-changes
-    if: needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-authorization-shared.yml
+    uses: ./.github/workflows/test-catsnap-authorization-shared.yml
 
   test-reservation:
     needs: detect-changes
-    if: needs.detect-changes.outputs.reservation == 'true' || needs.detect-changes.outputs.authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-reservation == 'true' || needs.detect-changes.outputs.catsnap-authorization-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-reservation.yml
+    uses: ./.github/workflows/test-catsnap-reservation.yml
 
   test-event-schema-shared:
     needs: detect-changes
-    if: needs.detect-changes.outputs.event-schema-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-event-schema-shared == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-event-schema-shared.yml
+    uses: ./.github/workflows/test-catsnap-event-schema-shared.yml
 
   test-payment:
     needs: detect-changes
-    if: needs.detect-changes.outputs.payment == 'true' || needs.detect-changes.outputs.common-files == 'true'
+    if: needs.detect-changes.outputs.catsnap-payment == 'true' || needs.detect-changes.outputs.common-files == 'true'
     permissions:
       contents: read
       checks: write
       pull-requests: write
     secrets: inherit
-    uses: ./.github/workflows/test-payment.yml
+    uses: ./.github/workflows/test-catsnap-payment.yml

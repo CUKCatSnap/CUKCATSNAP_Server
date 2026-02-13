@@ -1,4 +1,4 @@
-name: Test Authentication Module
+name: Test Payment Module
 
 on:
   workflow_call:
@@ -29,27 +29,27 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test authentication module
-        run: ./gradlew --info :authentication:test
+      - name: Test payment module
+        run: ./gradlew --info :catsnap-payment:test
 
-      - name: Publish test results for authentication
+      - name: Publish test results for payment
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'authentication/build/test-results/test/TEST-*.xml'
-          check_name: Test Results (authentication)
+          files: 'catsnap-payment/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (catsnap-payment)
 
-      - name: Publish test report for authentication
+      - name: Publish test report for payment
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'authentication/build/test-results/test/TEST-*.xml'
-          check_name: Test Report (authentication)
+          report_paths: 'catsnap-payment/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (catsnap-payment)
 
-      - name: Upload coverage reports to Codecov for authentication
+      - name: Upload coverage reports to Codecov for payment
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: authentication/build/reports/jacoco/test/jacocoTestReport.xml
-          flags: authentication
-          name: authentication-coverage
+          files: catsnap-payment/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: catsnap-payment
+          name: catsnap-payment-coverage
