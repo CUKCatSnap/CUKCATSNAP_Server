@@ -78,7 +78,7 @@ class ReservationServiceIntegrationTest {
         void 정상적으로_예약을_생성한다() {
             // given
             Program program = saveProgram();
-            LocalDate date = LocalDate.of(2025, 6, 16);
+            LocalDate date = LocalDate.now().plusDays(1);
             saveSchedule(date, LocalTime.of(10, 0), LocalTime.of(11, 0));
 
             ReservationCreateRequest request = new ReservationCreateRequest(
@@ -98,7 +98,7 @@ class ReservationServiceIntegrationTest {
         void 생성된_예약이_DB에_PENDING_상태로_저장된다() {
             // given
             Program program = saveProgram();
-            LocalDate date = LocalDate.of(2025, 6, 16);
+            LocalDate date = LocalDate.now().plusDays(1);
             saveSchedule(date, LocalTime.of(10, 0));
 
             ReservationCreateRequest request = new ReservationCreateRequest(
@@ -116,9 +116,9 @@ class ReservationServiceIntegrationTest {
             assertThat(saved.getModelId()).isEqualTo(MODEL_ID);
             assertThat(saved.getPhotographerId()).isEqualTo(PHOTOGRAPHER_ID);
             assertThat(saved.getTimeSlot().getStartDateTime())
-                .isEqualTo(LocalDateTime.of(2025, 6, 16, 10, 0));
+                .isEqualTo(date.atTime(10, 0));
             assertThat(saved.getTimeSlot().getEndDateTime())
-                .isEqualTo(LocalDateTime.of(2025, 6, 16, 11, 0));
+                .isEqualTo(date.atTime(11, 0));
         }
 
         @Test
@@ -126,7 +126,7 @@ class ReservationServiceIntegrationTest {
         void 같은_작가의_겹치지_않는_시간대는_예약할_수_있다() {
             // given
             Program program = saveProgram();
-            LocalDate date = LocalDate.of(2025, 6, 16);
+            LocalDate date = LocalDate.now().plusDays(1);
             saveSchedule(date, LocalTime.of(10, 0), LocalTime.of(11, 0));
 
             ReservationCreateRequest request1 = new ReservationCreateRequest(
@@ -150,7 +150,7 @@ class ReservationServiceIntegrationTest {
         void 프로그램이_존재하지_않으면_예외가_발생한다() {
             // given
             ReservationCreateRequest request = new ReservationCreateRequest(
-                999L, LocalDate.of(2025, 6, 16), LocalTime.of(10, 0));
+                999L, LocalDate.now().plusDays(1), LocalTime.of(10, 0));
 
             // when & then
             assertThatThrownBy(() -> reservationService.createReservation(MODEL_ID, request))
@@ -163,7 +163,7 @@ class ReservationServiceIntegrationTest {
         void 삭제된_프로그램이면_예외가_발생한다() {
             // given
             Program program = saveProgram();
-            LocalDate date = LocalDate.of(2025, 6, 16);
+            LocalDate date = LocalDate.now().plusDays(1);
             saveSchedule(date, LocalTime.of(10, 0));
 
             program.delete(LocalDateTime.now());
@@ -185,7 +185,7 @@ class ReservationServiceIntegrationTest {
             Program program = saveProgram();
 
             ReservationCreateRequest request = new ReservationCreateRequest(
-                program.getId(), LocalDate.of(2025, 6, 16), LocalTime.of(10, 0));
+                program.getId(), LocalDate.now().plusDays(1), LocalTime.of(10, 0));
 
             // when & then
             assertThatThrownBy(() -> reservationService.createReservation(MODEL_ID, request))
@@ -198,7 +198,7 @@ class ReservationServiceIntegrationTest {
         void 예약_불가능한_시간대이면_예외가_발생한다() {
             // given
             Program program = saveProgram();
-            LocalDate date = LocalDate.of(2025, 6, 16);
+            LocalDate date = LocalDate.now().plusDays(1);
             saveSchedule(date, LocalTime.of(10, 0));
 
             ReservationCreateRequest request = new ReservationCreateRequest(
@@ -215,7 +215,7 @@ class ReservationServiceIntegrationTest {
         void 기존_예약과_시간이_겹치면_예외가_발생한다() {
             // given
             Program program = saveProgram();
-            LocalDate date = LocalDate.of(2025, 6, 16);
+            LocalDate date = LocalDate.now().plusDays(1);
             saveSchedule(date, LocalTime.of(10, 0));
 
             ReservationCreateRequest request = new ReservationCreateRequest(

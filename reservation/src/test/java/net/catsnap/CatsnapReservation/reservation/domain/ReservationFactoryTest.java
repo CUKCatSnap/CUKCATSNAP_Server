@@ -32,9 +32,9 @@ class ReservationFactoryTest {
 
     private static final Long MODEL_ID = 1L;
     private static final Long PHOTOGRAPHER_ID = 1L;
-    private static final LocalDate RESERVATION_DATE = LocalDate.of(2025, 6, 16);
+    private static final LocalDate RESERVATION_DATE = LocalDate.now().plusDays(1);
     private static final LocalTime START_TIME = LocalTime.of(10, 0);
-    private static final LocalDateTime HOLD_EXPIRES_AT = LocalDateTime.of(2025, 6, 16, 10, 15);
+    private static final LocalDateTime HOLD_EXPIRES_AT = RESERVATION_DATE.atTime(10, 15);
 
     @BeforeEach
     void setUp() {
