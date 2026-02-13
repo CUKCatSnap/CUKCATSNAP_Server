@@ -162,11 +162,14 @@ class ReservationServiceIntegrationTest {
         void 삭제된_프로그램이면_예외가_발생한다() {
             // given
             Program program = saveProgram();
+            LocalDate date = LocalDate.of(2025, 6, 16);
+            saveSchedule(date, LocalTime.of(10, 0));
+
             program.delete(LocalDateTime.now());
             programRepository.save(program);
 
             ReservationCreateRequest request = new ReservationCreateRequest(
-                program.getId(), LocalDate.of(2025, 6, 16), LocalTime.of(10, 0));
+                program.getId(), date, LocalTime.of(10, 0));
 
             // when & then
             assertThatThrownBy(() -> reservationService.createReservation(MODEL_ID, request))
