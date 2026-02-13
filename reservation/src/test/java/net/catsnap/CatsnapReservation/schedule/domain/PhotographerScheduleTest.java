@@ -175,7 +175,7 @@ class PhotographerScheduleTest {
         schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(availableTime)));
 
         // when & then
-        assertThatCode(() -> schedule.ensureAvailable(targetDate, availableTime))
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, availableTime, LocalDate.now()))
             .doesNotThrowAnyException();
     }
 
@@ -188,7 +188,7 @@ class PhotographerScheduleTest {
         schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(LocalTime.of(10, 0))));
 
         // when & then
-        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(14, 0)))
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(14, 0), LocalDate.now()))
             .isInstanceOf(DomainException.class)
             .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
     }
@@ -197,13 +197,14 @@ class PhotographerScheduleTest {
     void 과거_날짜는_예약_불가능하다() {
         // given
         PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
-        LocalDate pastDate = LocalDate.now().minusDays(1);
+        LocalDate today = LocalDate.of(2025, 6, 16);
+        LocalDate pastDate = today.minusDays(1);
         DayOfWeek dayOfWeek = pastDate.getDayOfWeek();
         LocalTime time = LocalTime.of(10, 0);
         schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(time)));
 
         // when & then
-        assertThatThrownBy(() -> schedule.ensureAvailable(pastDate, time))
+        assertThatThrownBy(() -> schedule.ensureAvailable(pastDate, time, today))
             .isInstanceOf(DomainException.class)
             .hasMessageContaining("과거 날짜에는 예약할 수 없습니다");
     }
@@ -223,7 +224,7 @@ class PhotographerScheduleTest {
         schedule.addOverride(ScheduleOverride.dayOff(targetDate));
 
         // when & then - 요일 규칙에는 있지만 예외 규칙(휴무)이 우선되어 예약 불가
-        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, time))
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, time, LocalDate.now()))
             .isInstanceOf(DomainException.class)
             .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
     }
@@ -244,12 +245,12 @@ class PhotographerScheduleTest {
         schedule.addOverride(ScheduleOverride.create(targetDate, AvailableStartTimes.of(java.util.List.of(overrideTime))));
 
         // when & then - 요일 규칙 시간(10:00)은 예외 규칙에 없으므로 예약 불가
-        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, weekdayTime))
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, weekdayTime, LocalDate.now()))
             .isInstanceOf(DomainException.class)
             .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
 
         // 예외 규칙 시간(14:00)은 예약 가능
-        assertThatCode(() -> schedule.ensureAvailable(targetDate, overrideTime))
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, overrideTime, LocalDate.now()))
             .doesNotThrowAnyException();
     }
 
@@ -265,7 +266,7 @@ class PhotographerScheduleTest {
         schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(time)));
 
         // when & then - 예외 규칙 없으므로 요일 규칙에 따라 예약 가능
-        assertThatCode(() -> schedule.ensureAvailable(targetDate, time))
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, time, LocalDate.now()))
             .doesNotThrowAnyException();
     }
 
@@ -278,7 +279,7 @@ class PhotographerScheduleTest {
         // 기본 규칙은 모두 휴무 (초기화 시 기본값)
 
         // when & then
-        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(10, 0)))
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(10, 0), LocalDate.now()))
             .isInstanceOf(DomainException.class)
             .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
     }

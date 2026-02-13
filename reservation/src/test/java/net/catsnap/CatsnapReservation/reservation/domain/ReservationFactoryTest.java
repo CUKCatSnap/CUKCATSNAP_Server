@@ -32,7 +32,8 @@ class ReservationFactoryTest {
 
     private static final Long MODEL_ID = 1L;
     private static final Long PHOTOGRAPHER_ID = 1L;
-    private static final LocalDate RESERVATION_DATE = LocalDate.now().plusDays(1);
+    private static final LocalDate TODAY = LocalDate.now();
+    private static final LocalDate RESERVATION_DATE = TODAY.plusDays(1);
     private static final LocalTime START_TIME = LocalTime.of(10, 0);
     private static final LocalDateTime HOLD_EXPIRES_AT = RESERVATION_DATE.atTime(10, 15);
 
@@ -66,7 +67,7 @@ class ReservationFactoryTest {
             // when
             Reservation reservation = reservationFactory.create(
                 MODEL_ID, program, schedule, Collections.emptyList(),
-                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT
+                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT, TODAY
             );
 
             // then
@@ -101,7 +102,7 @@ class ReservationFactoryTest {
             // when
             Reservation reservation = reservationFactory.create(
                 MODEL_ID, program, schedule, List.of(existing),
-                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT
+                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT, TODAY
             );
 
             // then
@@ -121,7 +122,7 @@ class ReservationFactoryTest {
             // when & then
             assertThatThrownBy(() -> reservationFactory.create(
                 MODEL_ID, program, schedule, Collections.emptyList(),
-                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT
+                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT, TODAY
             ))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("삭제된 프로그램은 예약할 수 없습니다");
@@ -136,7 +137,7 @@ class ReservationFactoryTest {
             // when & then
             assertThatThrownBy(() -> reservationFactory.create(
                 MODEL_ID, program, schedule, Collections.emptyList(),
-                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT
+                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT, TODAY
             ))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
@@ -161,7 +162,7 @@ class ReservationFactoryTest {
             // when & then
             assertThatThrownBy(() -> reservationFactory.create(
                 MODEL_ID, program, schedule, List.of(existing),
-                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT
+                RESERVATION_DATE, START_TIME, HOLD_EXPIRES_AT, TODAY
             ))
                 .isInstanceOf(DomainException.class)
                 .hasMessageContaining("해당 시간대에 이미 예약이 존재합니다");

@@ -40,6 +40,7 @@ public class ReservationFactory {
      * @param reservationDate      예약 날짜
      * @param startTime            예약 시작 시간
      * @param holdExpiresAt        임시 점유 만료 시각
+     * @param today                오늘 날짜
      * @return PENDING 상태의 새 예약
      * @throws DomainException 예약 불가능한 경우
      */
@@ -50,13 +51,14 @@ public class ReservationFactory {
         List<Reservation> existingReservations,
         LocalDate reservationDate,
         LocalTime startTime,
-        LocalDateTime holdExpiresAt
+        LocalDateTime holdExpiresAt,
+        LocalDate today
     ) {
         // 1. 프로그램 예약 가능 상태 검증
         program.ensureBookable();
 
         // 2. 작가 스케줄 가용성 검증
-        schedule.ensureAvailable(reservationDate, startTime);
+        schedule.ensureAvailable(reservationDate, startTime, today);
 
         // 3. 시간대 생성 및 겹침 검증
         LocalDateTime startDateTime = reservationDate.atTime(startTime);

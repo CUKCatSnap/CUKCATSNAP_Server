@@ -137,10 +137,11 @@ public class PhotographerSchedule {
      *
      * @param date      예약 날짜
      * @param startTime 예약 시작 시간
+     * @param today     오늘 날짜
      * @throws DomainException 과거 날짜이거나 해당 시간대에 예약이 불가능한 경우
      */
-    public void ensureAvailable(LocalDate date, LocalTime startTime) {
-        if (date.isBefore(LocalDate.now())) {
+    public void ensureAvailable(LocalDate date, LocalTime startTime, LocalDate today) {
+        if (date.isBefore(today)) {
             throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "과거 날짜에는 예약할 수 없습니다.");
         }
         if (!getAvailableStartTimesAt(date).contains(startTime)) {

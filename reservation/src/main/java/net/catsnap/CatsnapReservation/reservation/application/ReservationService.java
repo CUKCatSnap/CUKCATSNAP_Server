@@ -3,6 +3,7 @@ package net.catsnap.CatsnapReservation.reservation.application;
 import static net.catsnap.CatsnapReservation.reservation.infrastructure.repository.ReservationSpecification.activeReservationsOf;
 
 import java.time.Clock;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import net.catsnap.CatsnapReservation.program.domain.Program;
@@ -63,6 +64,7 @@ public class ReservationService {
         );
 
         // 2. 도메인 서비스에 위임 (검증 + 생성)
+        LocalDate today = LocalDate.now(clock);
         LocalDateTime holdExpiresAt = LocalDateTime.now(clock).plusMinutes(HOLD_MINUTES);
 
         Reservation reservation = reservationFactory.create(
@@ -72,7 +74,8 @@ public class ReservationService {
             activeReservations,
             request.reservationDate(),
             request.startTime(),
-            holdExpiresAt
+            holdExpiresAt,
+            today
         );
 
         // 3. 저장 및 응답
