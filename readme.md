@@ -62,6 +62,11 @@
           <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=event-schema-shared"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=event-schema-shared" alt="event-schema-shared"/></a></td>
           <td>이벤트 스키마 공유 모듈</td>
         </tr>
+        <tr>
+          <td>Payment</td>
+          <td><a href="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server?flags[0]=payment"><img src="https://codecov.io/gh/CUKCatSnap/CUKCATSNAP_Server/branch/main/graph/badge.svg?flag=payment" alt="payment"/></a></td>
+          <td>결제 서버</td>
+        </tr>
       </table>
     </td>
   </tr>
