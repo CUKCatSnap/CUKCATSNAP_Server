@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import net.catsnap.CatsnapReservation.program.domain.Program;
+import net.catsnap.CatsnapReservation.program.fixture.ProgramFixture;
 import net.catsnap.CatsnapReservation.program.infrastructure.repository.ProgramRepository;
 import net.catsnap.CatsnapReservation.reservation.application.dto.request.ReservationCreateRequest;
 import net.catsnap.CatsnapReservation.reservation.application.dto.response.ReservationCreateResponse;
@@ -58,7 +59,7 @@ class ReservationServiceIntegrationTest {
     }
 
     private Program saveProgram() {
-        Program program = Program.create(PHOTOGRAPHER_ID, "테스트 프로그램", "설명", 100000L, 60);
+        Program program = ProgramFixture.createWithPhotographerId(PHOTOGRAPHER_ID);
         return programRepository.save(program);
     }
 
