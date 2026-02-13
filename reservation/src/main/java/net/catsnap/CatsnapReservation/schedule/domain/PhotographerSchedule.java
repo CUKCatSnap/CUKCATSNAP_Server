@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -21,6 +22,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
 import net.catsnap.CatsnapReservation.schedule.infrastructure.converter.WeekdayRulesConverter;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainErrorCode;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 
 /**
  * 작가 예약 가능 시간 Aggregate Root
@@ -127,6 +130,19 @@ public class PhotographerSchedule {
             throw new IllegalArgumentException("예약 가능 시간은 필수입니다.");
         }
         this.weekdayRules.put(day, availableTimes);
+    }
+
+    /**
+     * 특정 날짜와 시간에 예약 가능한지 검증합니다.
+     *
+     * @param date      예약 날짜
+     * @param startTime 예약 시작 시간
+     * @throws DomainException 해당 시간대에 예약이 불가능한 경우
+     */
+    public void ensureAvailable(LocalDate date, LocalTime startTime) {
+        if (!getAvailableStartTimesAt(date).contains(startTime)) {
+            throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "해당 시간대는 예약할 수 없습니다.");
+        }
     }
 
     /**

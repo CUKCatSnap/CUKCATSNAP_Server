@@ -1,12 +1,14 @@
 package net.catsnap.CatsnapReservation.schedule.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -164,6 +166,34 @@ class PhotographerScheduleTest {
     }
 
     @Test
+    void 예약_가능한_시간이면_ensureAvailable이_성공한다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+        LocalTime availableTime = LocalTime.of(10, 0);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(availableTime)));
+
+        // when & then
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, availableTime))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 예약_불가능한_시간이면_ensureAvailable에서_예외가_발생한다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(LocalTime.of(10, 0))));
+
+        // when & then
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(14, 0)))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
+    }
+
+    @Test
     void 과거_날짜는_예약_불가능하다() {
         // given
         Long photographerId = 1L;
@@ -235,6 +265,62 @@ class PhotographerScheduleTest {
 
         // then
         assertThat(available).isFalse();
+    }
+
+    @Test
+    void getAvailableStartTimesAt은_예외_규칙이_있으면_예외_규칙의_시간을_반환한다() {
+        // given
+        Long photographerId = 1L;
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+
+        AvailableStartTimes weekdayTimes = AvailableStartTimes.of(java.util.List.of(LocalTime.of(9, 0)));
+        schedule.updateWeekdayRule(dayOfWeek, weekdayTimes);
+
+        AvailableStartTimes overrideTimes = AvailableStartTimes.of(
+            java.util.List.of(LocalTime.of(14, 0), LocalTime.of(15, 0)));
+        ScheduleOverride override = ScheduleOverride.create(targetDate, overrideTimes);
+        schedule.addOverride(override);
+
+        // when
+        AvailableStartTimes result = schedule.getAvailableStartTimesAt(targetDate);
+
+        // then
+        assertThat(result).isEqualTo(overrideTimes);
+    }
+
+    @Test
+    void getAvailableStartTimesAt은_예외_규칙이_없으면_요일_규칙의_시간을_반환한다() {
+        // given
+        Long photographerId = 1L;
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+
+        AvailableStartTimes weekdayTimes = AvailableStartTimes.of(
+            java.util.List.of(LocalTime.of(9, 0), LocalTime.of(10, 0)));
+        schedule.updateWeekdayRule(dayOfWeek, weekdayTimes);
+
+        // when
+        AvailableStartTimes result = schedule.getAvailableStartTimesAt(targetDate);
+
+        // then
+        assertThat(result).isEqualTo(weekdayTimes);
+    }
+
+    @Test
+    void getAvailableStartTimesAt은_규칙이_없으면_빈_목록을_반환한다() {
+        // given
+        Long photographerId = 1L;
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+
+        // when
+        AvailableStartTimes result = schedule.getAvailableStartTimesAt(targetDate);
+
+        // then
+        assertThat(result.isEmpty()).isTrue();
     }
 
     @Test
