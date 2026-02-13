@@ -1,8 +1,6 @@
 package net.catsnap.CatsnapReservation.reservation.fixture;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import net.catsnap.CatsnapReservation.reservation.domain.CanceledBy;
 import net.catsnap.CatsnapReservation.reservation.domain.Reservation;
 import net.catsnap.CatsnapReservation.reservation.domain.vo.CancelReason;
@@ -18,7 +16,8 @@ public class ReservationFixture {
     public static final Long DEFAULT_PHOTOGRAPHER_ID = 2L;
     public static final Long DEFAULT_PROGRAM_ID = 3L;
     public static final ReservationTimeSlot DEFAULT_TIME_SLOT = new ReservationTimeSlot(
-        LocalDate.of(2025, 6, 15), LocalTime.of(10, 0), LocalTime.of(12, 0));
+        LocalDateTime.of(2025, 6, 15, 10, 0),
+        LocalDateTime.of(2025, 6, 15, 12, 0));
     public static final Money DEFAULT_AMOUNT = new Money(150000L);
     public static final LocalDateTime DEFAULT_HOLD_EXPIRES_AT = LocalDateTime.of(2025, 6, 15, 9, 30);
 

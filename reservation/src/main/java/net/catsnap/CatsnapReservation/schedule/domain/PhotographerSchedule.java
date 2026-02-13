@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -21,6 +22,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
 import net.catsnap.CatsnapReservation.schedule.infrastructure.converter.WeekdayRulesConverter;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainErrorCode;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 
 /**
  * 작가 예약 가능 시간 Aggregate Root
@@ -130,13 +133,29 @@ public class PhotographerSchedule {
     }
 
     /**
-     * 특정 날짜에 예약 가능한지 확인
+     * 특정 날짜와 시간에 예약 가능한지 검증합니다.
+     *
+     * @param date      예약 날짜
+     * @param startTime 예약 시작 시간
+     * @param today     오늘 날짜
+     * @throws DomainException 과거 날짜이거나 해당 시간대에 예약이 불가능한 경우
      */
-    public boolean isAvailableAt(LocalDate targetDate) {
-        if (targetDate.isBefore(LocalDate.now())) {
-            return false;
+    public void ensureAvailable(LocalDate date, LocalTime startTime, LocalDate today) {
+        if (date.isBefore(today)) {
+            throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "과거 날짜에는 예약할 수 없습니다.");
         }
+        if (!getAvailableStartTimesAt(date).contains(startTime)) {
+            throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "해당 시간대는 예약할 수 없습니다.");
+        }
+    }
 
+    /**
+     * 특정 날짜의 예약 가능 시작 시간 목록을 반환
+     *
+     * @param targetDate 조회할 날짜
+     * @return 예약 가능 시작 시간 목록 (예외 규칙 우선, 없으면 요일 규칙)
+     */
+    public AvailableStartTimes getAvailableStartTimesAt(LocalDate targetDate) {
         // 1. 예외 규칙 먼저 확인
         ScheduleOverride override = overrides.stream()
             .filter(o -> o.getTargetDate().equals(targetDate))
@@ -144,12 +163,12 @@ public class PhotographerSchedule {
             .orElse(null);
 
         if (override != null) {
-            return override.hasAvailableTimes();
+            return override.getAvailableTimes();
         }
 
         // 2. 기본 요일 규칙 확인
         AvailableStartTimes times = weekdayRules.get(targetDate.getDayOfWeek());
-        return times != null && !times.isEmpty();
+        return times != null ? times : AvailableStartTimes.empty();
     }
 
     private void validateOverride(ScheduleOverride override) {

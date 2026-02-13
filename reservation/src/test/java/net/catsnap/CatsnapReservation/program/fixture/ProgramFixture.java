@@ -2,6 +2,7 @@ package net.catsnap.CatsnapReservation.program.fixture;
 
 import java.time.LocalDateTime;
 import net.catsnap.CatsnapReservation.program.domain.Program;
+import org.springframework.test.util.ReflectionTestUtils;
 
 /**
  * Program 테스트용 Fixture
@@ -51,6 +52,24 @@ public class ProgramFixture {
         Integer durationMinutes
     ) {
         return Program.create(photographerId, title, description, price, durationMinutes);
+    }
+
+    /**
+     * ID가 포함된 기본 프로그램 생성
+     */
+    public static Program createDefaultWithId(Long id) {
+        Program program = createDefault();
+        ReflectionTestUtils.setField(program, "id", id);
+        return program;
+    }
+
+    /**
+     * ID가 포함된 삭제 프로그램 생성
+     */
+    public static Program createDeletedWithId(Long id) {
+        Program program = createDefaultDeleted();
+        ReflectionTestUtils.setField(program, "id", id);
+        return program;
     }
 
     /**

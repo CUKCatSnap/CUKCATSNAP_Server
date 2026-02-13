@@ -16,6 +16,8 @@ import net.catsnap.CatsnapReservation.program.domain.vo.Description;
 import net.catsnap.CatsnapReservation.program.domain.vo.Duration;
 import net.catsnap.CatsnapReservation.program.domain.vo.Price;
 import net.catsnap.CatsnapReservation.program.domain.vo.Title;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainErrorCode;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import net.catsnap.CatsnapReservation.program.infrastructure.converter.DescriptionConverter;
 import net.catsnap.CatsnapReservation.program.infrastructure.converter.DurationConverter;
 import net.catsnap.CatsnapReservation.program.infrastructure.converter.PriceConverter;
@@ -150,6 +152,17 @@ public class Program {
             return;  // 이미 삭제됨 - 멱등성 보장
         }
         this.deletedAt = deletedAt;
+    }
+
+    /**
+     * 예약 가능 상태인지 검증합니다.
+     *
+     * @throws DomainException 삭제된 프로그램인 경우
+     */
+    public void ensureBookable() {
+        if (isDeleted()) {
+            throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "삭제된 프로그램은 예약할 수 없습니다.");
+        }
     }
 
     /**

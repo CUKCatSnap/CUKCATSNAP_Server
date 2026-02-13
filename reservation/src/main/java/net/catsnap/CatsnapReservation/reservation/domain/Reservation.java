@@ -100,7 +100,7 @@ public class Reservation {
     @Column(nullable = false)
     private Long programId;
 
-    /** 예약 날짜 및 시간대 (날짜, 시작 시간, 종료 시간) */
+    /** 예약 시간대 (시작 시각, 종료 시각) */
     @Embedded
     private ReservationTimeSlot timeSlot;
 

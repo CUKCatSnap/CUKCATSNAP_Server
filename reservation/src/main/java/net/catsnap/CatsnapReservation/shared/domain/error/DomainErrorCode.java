@@ -23,7 +23,9 @@ public enum DomainErrorCode implements ResultCode {
      * 도메인 로직 상 허용되지 않는 값이나 상태인 경우
      * </p>
      */
-    DOMAIN_CONSTRAINT_VIOLATION(HttpStatus.BAD_REQUEST, "ED000", "해당 값이 유효하지 않습니다.");
+    DOMAIN_CONSTRAINT_VIOLATION(HttpStatus.BAD_REQUEST, "ED000", "해당 값이 유효하지 않습니다."),
+    NOT_FOUND(HttpStatus.NOT_FOUND, "ED001", "리소스를 찾을 수 없습니다."),
+    CONFLICT(HttpStatus.CONFLICT, "ED002", "리소스가 충돌합니다.");
 
     private final HttpStatusCode httpStatus;
     private final String code;

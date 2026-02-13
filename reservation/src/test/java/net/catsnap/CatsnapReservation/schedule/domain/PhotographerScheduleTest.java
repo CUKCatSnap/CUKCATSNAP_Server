@@ -1,12 +1,14 @@
 package net.catsnap.CatsnapReservation.schedule.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import net.catsnap.CatsnapReservation.schedule.domain.vo.AvailableStartTimes;
+import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -164,77 +166,178 @@ class PhotographerScheduleTest {
     }
 
     @Test
+    void 예약_가능한_시간이면_ensureAvailable이_성공한다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+        LocalTime availableTime = LocalTime.of(10, 0);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(availableTime)));
+
+        // when & then
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, availableTime, LocalDate.now()))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 예약_불가능한_시간이면_ensureAvailable에서_예외가_발생한다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(LocalTime.of(10, 0))));
+
+        // when & then
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(14, 0), LocalDate.now()))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
+    }
+
+    @Test
     void 과거_날짜는_예약_불가능하다() {
         // given
-        Long photographerId = 1L;
-        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
-        LocalDate pastDate = LocalDate.now().minusDays(1);
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate today = LocalDate.of(2025, 6, 16);
+        LocalDate pastDate = today.minusDays(1);
+        DayOfWeek dayOfWeek = pastDate.getDayOfWeek();
+        LocalTime time = LocalTime.of(10, 0);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(time)));
 
-        // when
-        boolean available = schedule.isAvailableAt(pastDate);
-
-        // then
-        assertThat(available).isFalse();
+        // when & then
+        assertThatThrownBy(() -> schedule.ensureAvailable(pastDate, time, today))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("과거 날짜에는 예약할 수 없습니다");
     }
 
     @Test
     void 예외_규칙이_있으면_예외_규칙을_우선한다() {
         // given
-        Long photographerId = 1L;
-        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
         LocalDate targetDate = LocalDate.now().plusDays(1);
         DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
 
         // 기본 규칙은 근무일로 설정
         LocalTime time = LocalTime.of(9, 0);
-        AvailableStartTimes workingTimes = AvailableStartTimes.of(java.util.List.of(time));
-        schedule.updateWeekdayRule(dayOfWeek, workingTimes);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(time)));
 
         // 예외 규칙은 휴무로 설정
-        ScheduleOverride override = ScheduleOverride.dayOff(targetDate);
-        schedule.addOverride(override);
+        schedule.addOverride(ScheduleOverride.dayOff(targetDate));
 
-        // when
-        boolean available = schedule.isAvailableAt(targetDate);
+        // when & then - 요일 규칙에는 있지만 예외 규칙(휴무)이 우선되어 예약 불가
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, time, LocalDate.now()))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
+    }
 
-        // then
-        assertThat(available).isFalse();
+    @Test
+    void 예외_규칙에_다른_시간대가_설정되면_요일_규칙_시간은_예약_불가능하다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+
+        // 요일 규칙: 10:00
+        LocalTime weekdayTime = LocalTime.of(10, 0);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(weekdayTime)));
+
+        // 예외 규칙: 14:00으로 변경
+        LocalTime overrideTime = LocalTime.of(14, 0);
+        schedule.addOverride(ScheduleOverride.create(targetDate, AvailableStartTimes.of(java.util.List.of(overrideTime))));
+
+        // when & then - 요일 규칙 시간(10:00)은 예외 규칙에 없으므로 예약 불가
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, weekdayTime, LocalDate.now()))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
+
+        // 예외 규칙 시간(14:00)은 예약 가능
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, overrideTime, LocalDate.now()))
+            .doesNotThrowAnyException();
     }
 
     @Test
     void 예외_규칙이_없으면_기본_요일_규칙을_따른다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+
+        // 기본 규칙을 근무일로 설정
+        LocalTime time = LocalTime.of(9, 0);
+        schedule.updateWeekdayRule(dayOfWeek, AvailableStartTimes.of(java.util.List.of(time)));
+
+        // when & then - 예외 규칙 없으므로 요일 규칙에 따라 예약 가능
+        assertThatCode(() -> schedule.ensureAvailable(targetDate, time, LocalDate.now()))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 기본_규칙이_휴무면_예약_불가능하다() {
+        // given
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(1L);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+
+        // 기본 규칙은 모두 휴무 (초기화 시 기본값)
+
+        // when & then
+        assertThatThrownBy(() -> schedule.ensureAvailable(targetDate, LocalTime.of(10, 0), LocalDate.now()))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("해당 시간대는 예약할 수 없습니다");
+    }
+
+    @Test
+    void getAvailableStartTimesAt은_예외_규칙이_있으면_예외_규칙의_시간을_반환한다() {
         // given
         Long photographerId = 1L;
         PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
         LocalDate targetDate = LocalDate.now().plusDays(1);
         DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
 
-        // 기본 규칙을 근무일로 설정
-        LocalTime time = LocalTime.of(9, 0);
-        AvailableStartTimes workingTimes = AvailableStartTimes.of(java.util.List.of(time));
-        schedule.updateWeekdayRule(dayOfWeek, workingTimes);
+        AvailableStartTimes weekdayTimes = AvailableStartTimes.of(java.util.List.of(LocalTime.of(9, 0)));
+        schedule.updateWeekdayRule(dayOfWeek, weekdayTimes);
+
+        AvailableStartTimes overrideTimes = AvailableStartTimes.of(
+            java.util.List.of(LocalTime.of(14, 0), LocalTime.of(15, 0)));
+        ScheduleOverride override = ScheduleOverride.create(targetDate, overrideTimes);
+        schedule.addOverride(override);
 
         // when
-        boolean available = schedule.isAvailableAt(targetDate);
+        AvailableStartTimes result = schedule.getAvailableStartTimesAt(targetDate);
 
         // then
-        assertThat(available).isTrue();
+        assertThat(result).isEqualTo(overrideTimes);
     }
 
     @Test
-    void 기본_규칙이_휴무면_예약_불가능하다() {
+    void getAvailableStartTimesAt은_예외_규칙이_없으면_요일_규칙의_시간을_반환한다() {
+        // given
+        Long photographerId = 1L;
+        PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
+        LocalDate targetDate = LocalDate.now().plusDays(1);
+        DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+
+        AvailableStartTimes weekdayTimes = AvailableStartTimes.of(
+            java.util.List.of(LocalTime.of(9, 0), LocalTime.of(10, 0)));
+        schedule.updateWeekdayRule(dayOfWeek, weekdayTimes);
+
+        // when
+        AvailableStartTimes result = schedule.getAvailableStartTimesAt(targetDate);
+
+        // then
+        assertThat(result).isEqualTo(weekdayTimes);
+    }
+
+    @Test
+    void getAvailableStartTimesAt은_규칙이_없으면_빈_목록을_반환한다() {
         // given
         Long photographerId = 1L;
         PhotographerSchedule schedule = PhotographerSchedule.initSchedule(photographerId);
         LocalDate targetDate = LocalDate.now().plusDays(1);
 
-        // 기본 규칙은 모두 휴무 (초기화 시 기본값)
-
         // when
-        boolean available = schedule.isAvailableAt(targetDate);
+        AvailableStartTimes result = schedule.getAvailableStartTimesAt(targetDate);
 
         // then
-        assertThat(available).isFalse();
+        assertThat(result.isEmpty()).isTrue();
     }
 
     @Test
