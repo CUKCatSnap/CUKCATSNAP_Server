@@ -3,6 +3,7 @@ package net.catsnap.CatsnapReservation.program.domain.vo;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.time.LocalDateTime;
 import net.catsnap.CatsnapReservation.shared.domain.error.DomainException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -96,6 +97,30 @@ class DurationTest {
 
         // then
         assertThat(hours).isEqualTo(0);
+    }
+
+    @Test
+    void addTo가_시작_시각에_소요시간을_더한_시각을_반환한다() {
+        // given
+        Duration duration = new Duration(90);
+        LocalDateTime startTime = LocalDateTime.of(2025, 6, 15, 10, 0);
+
+        // when
+        LocalDateTime endTime = duration.addTo(startTime);
+
+        // then
+        assertThat(endTime).isEqualTo(LocalDateTime.of(2025, 6, 15, 11, 30));
+    }
+
+    @Test
+    void addTo에_null_시작_시각을_전달하면_예외가_발생한다() {
+        // given
+        Duration duration = new Duration(60);
+
+        // when & then
+        assertThatThrownBy(() -> duration.addTo(null))
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("시작 시각은 필수입니다");
     }
 
     @Test

@@ -1,5 +1,6 @@
 package net.catsnap.CatsnapReservation.program.domain.vo;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import lombok.Getter;
 import net.catsnap.CatsnapReservation.shared.domain.error.DomainErrorCode;
@@ -38,6 +39,19 @@ public class Duration {
 
     public int remainingMinutes() {
         return value % 60;
+    }
+
+    /**
+     * 시작 시각에 소요 시간을 더한 종료 시각을 반환합니다.
+     *
+     * @param startTime 시작 시각
+     * @return 종료 시각
+     */
+    public LocalDateTime addTo(LocalDateTime startTime) {
+        if (startTime == null) {
+            throw new DomainException(DomainErrorCode.DOMAIN_CONSTRAINT_VIOLATION, "시작 시각은 필수입니다.");
+        }
+        return startTime.plusMinutes(value);
     }
 
     @Override

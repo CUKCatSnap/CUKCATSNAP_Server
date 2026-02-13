@@ -145,6 +145,27 @@ class ProgramTest {
     }
 
     @Test
+    void 활성_프로그램은_ensureBookable이_성공한다() {
+        // given
+        Program program = ProgramFixture.createDefault();
+
+        // when & then
+        org.assertj.core.api.Assertions.assertThatCode(program::ensureBookable)
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 삭제된_프로그램은_ensureBookable에서_예외가_발생한다() {
+        // given
+        Program program = ProgramFixture.createDefaultDeleted();
+
+        // when & then
+        assertThatThrownBy(program::ensureBookable)
+            .isInstanceOf(DomainException.class)
+            .hasMessageContaining("삭제된 프로그램은 예약할 수 없습니다");
+    }
+
+    @Test
     void 소유권_확인에_성공한다() {
         // given
         Long photographerId = 1L;
