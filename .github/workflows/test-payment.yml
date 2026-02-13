@@ -1,0 +1,55 @@
+name: Test Payment Module
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Test payment module
+        run: ./gradlew --info :payment:test
+
+      - name: Publish test results for payment
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: 'payment/build/test-results/test/TEST-*.xml'
+          check_name: Test Results (payment)
+
+      - name: Publish test report for payment
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        with:
+          report_paths: 'payment/build/test-results/test/TEST-*.xml'
+          check_name: Test Report (payment)
+
+      - name: Upload coverage reports to Codecov for payment
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: payment/build/reports/jacoco/test/jacocoTestReport.xml
+          flags: payment
+          name: payment-coverage
